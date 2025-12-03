@@ -1,0 +1,5304 @@
+%-12345X@PJL JOB
+@PJL SET RESOLUTION = 600
+@PJL ENTER LANGUAGE = POSTSCRIPT 
+
+%!PS-Adobe-3.0
+%%Title: FIGURE1_AIC
+%%Creator: PSCRIPT.DRV Version 4.0
+%%CreationDate: 11/20/97 11:38:03
+%%BoundingBox: 13 13 599 780 
+%%Pages: (atend)
+%%PageOrder: Special
+%%Requirements: 
+%%DocumentNeededFonts: (atend)
+%%DocumentSuppliedFonts: (atend)
+%%DocumentData: Clean7Bit
+%%LanguageLevel: 2
+%%EndComments
+
+%%BeginProlog 
+%%BeginProcSet: Pscript_Win_ErrorHandler 1.0 1
+/currentpacking where{pop/oldpack currentpacking def/setpacking where{pop
+false setpacking}if}if/$brkpage 64 dict def $brkpage begin/prnt{dup type
+/stringtype ne{=string cvs}if dup length 6 mul/tx exch def/ty 10 def
+currentpoint/toy exch def/tox exch def 1 setgray newpath tox toy 2 sub moveto
+0 ty rlineto tx 0 rlineto 0 ty neg rlineto closepath fill tox toy moveto 0
+setgray show}bind def/nl{currentpoint exch pop lmargin exch moveto 0 -10
+rmoveto}def/=={/cp 0 def typeprint nl}def/typeprint{dup type exec}readonly def
+/lmargin 72 def/rmargin 72 def/tprint{dup length cp add rmargin gt{nl/cp 0 def
+}if dup length cp add/cp exch def prnt}readonly def/cvsprint{=string cvs
+tprint( )tprint}readonly def/integertype{cvsprint}readonly def/realtype{
+cvsprint}readonly def/booleantype{cvsprint}readonly def/operatortype{(--)
+tprint =string cvs tprint(-- )tprint}readonly def/marktype{pop(-mark- )tprint}
+readonly def/dicttype{pop(-dictionary- )tprint}readonly def/nulltype{pop
+(-null- )tprint}readonly def/filetype{pop(-filestream- )tprint}readonly def
+/savetype{pop(-savelevel- )tprint}readonly def/fonttype{pop(-fontid- )tprint}
+readonly def/nametype{dup xcheck not{(/)tprint}if cvsprint}readonly def
+/stringtype{dup rcheck{(\()tprint tprint(\))tprint}{pop(-string- )tprint}
+ifelse}readonly def/arraytype{dup rcheck{dup xcheck{({)tprint{typeprint}forall
+(})tprint}{([)tprint{typeprint}forall(])tprint}ifelse}{pop(-array- )tprint}
+ifelse}readonly def/packedarraytype{dup rcheck{dup xcheck{({)tprint{typeprint}
+forall(})tprint}{([)tprint{typeprint}forall(])tprint}ifelse}{pop
+(-packedarray- )tprint}ifelse}readonly def/courier/Courier findfont 10
+scalefont def end errordict/handleerror{systemdict begin $error begin $brkpage
+begin newerror{/newerror false store vmstatus pop pop 0 ne{grestoreall}if
+showpage initgraphics courier setfont lmargin 720 moveto(ERROR: )prnt
+errorname prnt nl(OFFENDING COMMAND: )prnt/command load prnt $error/ostack
+known{nl nl(STACK:)prnt nl nl $error/ostack get aload length{==}repeat}if
+systemdict/showpage get exec(%%[ Error: )print errorname =print
+(; OffendingCommand: )print/command load =print( ]%%)= flush}if end end end}
+dup 0 systemdict put dup 4 $brkpage put bind readonly put/currentpacking where
+{pop/setpacking where{pop oldpack setpacking}if}if
+%%EndProcSet
+userdict /Pscript_Win_Driver_Incr 200 dict dup begin put
+%%BeginResource: file Pscript_FatalError 2.0 0
+/FatalErrorIf{{initgraphics findfont exch scalefont setfont counttomark 3 div
+cvi{moveto show}repeat showpage quit}{cleartomark}ifelse}bind def
+%%EndResource
+/VM? {vmstatus exch sub exch pop gt { [
+(This job requires more memory than is available in this printer.) 100 500
+(Try one or more of the following, and then print again:) 100 485
+(In the PostScript dialog box, click Optimize For Portability.) 115 470
+(In the Device Options dialog box, make sure the Available Printer Memory is accurate.) 115 455
+(Reduce the number of fonts in the document.) 115 440
+(Print the document in parts.) 115 425
+12 /Times-Roman showpage
+(%%[ PrinterError: Low Printer VM ]%%) =
+true FatalErrorIf}if} bind def
+30000  VM?
+%%BeginResource: file Pscript_Win_Utils 2.0 0
+/|/def load def/,/load load |/~/exch , |/?/ifelse , |/!/pop , |/`/begin , |/^
+/index , |/@/dup , |/+/translate , |/$/roll , |/U/userdict , |/M/moveto , |/-
+/rlineto , |/&/currentdict , |/:/gsave , |/;/grestore , |/F/false , |/T/true ,
+|/N/newpath , |/E/end , |/Ac/arc , |/An/arcn , |/A/ashow , |/D/awidthshow , |
+/C/closepath , |/V/div , |/O/eofill , |/L/fill , |/I/lineto , |/-C/rcurveto ,
+|/-M/rmoveto , |/+S/scale , |/Ji/setfont , |/Lc/setlinecap , |/Lj/setlinejoin
+, |/Lw/setlinewidth , |/S/show , |/LH/showpage , |/K/stroke , |/W/widthshow ,
+|/R/rotate , |/b{bind |}bind |/bd{bind |}bind |/xd{~ |}bd/ld{, |}bd/lw/Lw ld
+/lc/Lc ld/lj/Lj ld/sg/setgray ld/L2? F/languagelevel where{! languagelevel 2
+ge{! T}if}if |/g{@ not{U/DefIf_save save put}if U/DefIf_bool 2 ^ put}b
+/DefIf_El{if U/DefIf_bool get not @{U/DefIf_save get restore}if}b/e{DefIf_El !
+}b/self & |/reinitialize{[/TextInit/GraphInit/UtilsInit counttomark{@ where{
+self eq}{F}?{cvx exec}{!}?}repeat cleartomark}b/initialize{`{/ADO_mxRot ~ |
+/TextInitialised? F | reinitialize E}{U/Pscript_Win_Data 200 dict @ ` put
+/ADO_mxRot ~ |/TextInitialised? F | reinitialize}?}b/terminate{!{& self eq{
+exit}{E}?}loop E}b/suspend/terminate , |/resume{` Pscript_Win_Data `}b/snap{
+transform 0.25 sub round 0.25 add ~ 0.25 sub round 0.25 add ~ itransform}b
+/dsnap{dtransform round ~ round ~ idtransform}b<04>cvn{}|/setjn{{statusdict
+/jobname known{statusdict/jobname 3 -1 $ put}if}stopped cleartomark}b/solid{[]
+0 setdash}b/setdsh{0 setdash}b/colspRefresh{}b/rp{4 2 $ M 1 ^ 0 - 0 ~ - neg 0
+-}b/rr{1 ^ 0 - 0 ~ - neg 0 - C}b
+%%EndResource
+%%BeginResource: file Pscript_Win_Utils_L1 2.0 0
+L2? not g{/rf{N rp L}b/fx{1 1 dtransform @ 0 ge{1 sub 1}{1 add -0.25}? 3 -1 $
+@ 0 ge{1 sub 1}{1 add -0.25}? 3 1 $ 4 1 $ idtransform 4 -2 $ idtransform}b/BZ{
+4 -2 $ snap + +S fx rf}b/rs{N rp C K}b/rc{N rp clip N}b/sg{setgray}b/sco{
+setrgbcolor}b/sgco{{sg}{sco}?}b}e
+%%EndResource
+%%BeginResource: file Pscript_Win_Utils_L2 2.0 0
+L2? g{/colspA/DeviceGray |/colspABC/DeviceRGB |/setAorABC{{colspA}{colspABC}?
+setcolorspace}b/rf/rectfill , |/fx{1 1 dtransform @ 0 ge{1 sub 0.5}{1 add -0.5
+}? 3 -1 $ @ 0 ge{1 sub 0.5}{1 add -0.5}? 3 1 $ 4 1 $ idtransform 4 -2 $
+idtransform}b/BZ{4 -2 $ snap + +S fx rf}b/rs/rectstroke , |/rc/rectclip , |/sg
+{@ @ setcolor}b/sco{setcolor}b/colspRefresh{colspABC setcolorspace}b/sgco{{sg
+}{sco}?}b/UtilsInit{F setglobal}b/definecolorrendering{/ColorRendering
+defineresource !}b/findcolorrendering{@/ColorRendering resourcestatus{! !
+/ColorRendering findresource T}{! F}?}b/selectcolorrendering{@/ColorRendering
+resourcestatus{! !/ColorRendering}{!/DefaultColorRendering/ColorRendering}?
+findresource setcolorrendering}b}e
+%%EndResource
+end
+%%EndProlog
+
+%%BeginSetup 
+[ 1.000 0 0 1.000 0 0 ] false Pscript_Win_Driver_Incr dup /initialize get exec
+
+[{0 
+/languagelevel where{pop languagelevel}{1}ifelse 2 ge{1 dict dup/JobTimeout  4 -1 roll put setuserparams}{statusdict/setjobtimeout get exec}ifelse 
+} stopped cleartomark
+[{240 
+/languagelevel where{pop languagelevel}{1}ifelse 2 ge{1 dict dup/WaitTimeout 4 -1 roll put setuserparams}{statusdict/waittimeout 3 -1 roll put}ifelse 
+} stopped cleartomark
+[{
+%%BeginFeature: *Levels of Gray Printer’s Current Setting
+
+%%EndFeature
+} stopped cleartomark
+[{
+
+             <</ManualFeed false>> setpagedevice
+} stopped cleartomark
+[{
+%%BeginFeature: *InputSlot AutoSelect Tray
+
+%%EndFeature
+} stopped cleartomark
+[{
+%%BeginFeature: *Resolution Enhancement Printer’s Current Setting
+
+%%EndFeature
+} stopped cleartomark
+[{
+%%BeginFeature: *PageSize Letter
+
+             <</DeferredMediaSelection true /PageSize [612 792] /ImagingBBox null>> setpagedevice
+%%EndFeature
+} stopped cleartomark
+1 setlinecap 1 setlinejoin 
+/mysetup [ 0.120 0 0 -0.120 13.000 780.000 ] | 
+%%EndSetup
+
+userdict begin /savelevel0 save def end
+%%Page: 1 1
+%%BeginPageSetup
+[{
+%%BeginFeature: *VMOption 3MB
+
+%%EndFeature
+} stopped cleartomark
+[{
+%%BeginFeature: *Duplex 
+
+%%EndFeature
+} stopped cleartomark
+userdict begin /pagesave save def end mysetup concat colspRefresh : 1.000 1.000 1.000 sco 0 0 5100 6600 rf ; 
+%%EndPageSetup
+
+: 1054 2617 156 57 rc pagesave restore
+Pscript_Win_Driver_Incr begin
+%%BeginResource: file Pscript_Win_Encoding 2.0 0
+/bullets{{/bullet}repeat}b/ANSIEncoding[/grave/acute/circumflex/tilde/macron
+/breve/dotaccent/dieresis/ring/cedilla/hungarumlaut/ogonek/caron/dotlessi 18
+bullets StandardEncoding 32 95 getinterval aload ! 3 bullets/quotesinglbase
+/florin/quotedblbase/ellipsis/dagger/daggerdbl/circumflex/perthousand/Scaron
+/guilsinglleft/OE 4 bullets/quoteleft/quoteright/quotedblleft/quotedblright
+/bullet/endash/emdash/tilde/trademark/scaron/guilsinglright/oe 2 bullets
+/Ydieresis/space/exclamdown/cent/sterling/currency/yen/brokenbar/section
+/dieresis/copyright/ordfeminine/guillemotleft/logicalnot/hyphen/registered
+/macron/degree/plusminus/twosuperior/threesuperior/acute/mu/paragraph
+/periodcentered/cedilla/onesuperior/ordmasculine/guillemotright/onequarter
+/onehalf/threequarters/questiondown/Agrave/Aacute/Acircumflex/Atilde/Adieresis
+/Aring/AE/Ccedilla/Egrave/Eacute/Ecircumflex/Edieresis/Igrave/Iacute
+/Icircumflex/Idieresis/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis
+/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute/Thorn/germandbls
+/agrave/aacute/acircumflex/atilde/adieresis/aring/ae/ccedilla/egrave/eacute
+/ecircumflex/edieresis/igrave/iacute/icircumflex/idieresis/eth/ntilde/ograve
+/oacute/ocircumflex/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex
+/udieresis/yacute/thorn/ydieresis]| ANSIEncoding @ 39/quotesingle put 96/grave
+put/ANSIEncodingOld ANSIEncoding 256 array copy | ANSIEncodingOld @[138 153
+154 169 172 174 177 178 179 181 185 188 189 190 208 215 221 222 240 247 253
+254]{/bullet put @}forall 166/bar put 176/ring put
+%%EndResource
+
+%%BeginResource: file Pscript_Win_Text 2.0 0
+/TextInit{TextInitialised? not{/Pscript_Windows_Font & |/TextInitialised? T |
+/fM[1 0 0 -1 0 0]|/mFM matrix |/iMat[1 0 0.212557 neg 1 0 0]|}if}b/xUP null |
+/yUP null |/uW null |/xSP null |/ySP null |/sW null |/copyfont{1 ^ length add
+dict `{1 ^/FID ne{|}{! !}?}forall & E}b/rF{3 copyfont @ `/Encoding
+ANSIEncoding &/CharStrings known{CharStrings/Eth known not{! ANSIEncodingOld}
+if}if | E}b/mF{findfont ~{@/Encoding get @ StandardEncoding eq{! T}{{
+ISOLatin1Encoding}stopped{! F}{eq}?{T}{@ ` T 32 1 127{Encoding 1 ^ get
+StandardEncoding 3 -1 $ get eq and}for E}?}?}{F}?{rF}{3 copyfont}? `
+/OrigFontType ~ |/OrigFontName ~ | & E 2 ^ ~ definefont fM 5 4 -1 $ put fM 4 0
+put fM makefont Pscript_Windows_Font 3 1 $ put}b/xF{scalefont
+Pscript_Windows_Font 3 1 $ put}b/xMF{mFM astore makefont Pscript_Windows_Font
+3 1 $ put}b/xF2/scalefont , |/xMF2{mFM astore makefont}b/sLT{: Lw -M
+currentpoint snap M 0 - 0 Lc K ;}b/sSU{N/uW ~ |/yUP ~ |/xUP ~ |}b/sU{xUP yUP
+uW sLT}b/sST{N/sW ~ |/ySP ~ |/xSP ~ |}b/sT{xSP ySP sW sLT}b/sR{: + R 0 0 M}b
+/sRxy{: matrix astore concat 0 0 M}b/eR/; , |
+%%EndResource
+
+end reinitialize
+userdict begin /pagesave save def end mysetup concat colspRefresh 
+: 0 0 0 sco 1 Lc 1 Lj solid 1054 2617 156 57 rc 0 0 0 sco %%IncludeFont: Helvetica
+(F0) cvn
+0.920 
+ (Helvetica) cvn /Type1 
+T 
+(Helvetica) cvn
+mF 
+(F0_50) cvn
+F0
+50 
+xF 
+F0_50
+Ji 
+1106 2617 M 
+0.200 0 (0)A 
+; pagesave restore
+Pscript_Win_Driver_Incr begin
+%%BeginResource: file Pscript_Win_Graphics 2.0 0
+/SavedCTM null |/CTMsave{/SavedCTM SavedCTM currentmatrix |}b/CTMrestore{
+SavedCTM setmatrix}b/mp null |/ADO_mxRot null |/GDIHMatrix null |
+/GDIHPatternDict 22 dict | GDIHPatternDict `/PatternType 1 |/PaintType 2 |
+/Reps L2?{1}{5}? |/XStep 8 Reps mul |/YStep XStep |/BBox[0 0 XStep YStep]|
+/TilingType 1 |/PaintProc{` 1 Lw[]0 setdash PaintData , exec E}b/FGnd null |
+/BGnd null |/HS_Horizontal{horiz}b/HS_Vertical{vert}b/HS_FDiagonal{fdiag}b
+/HS_BDiagonal{biag}b/HS_Cross{horiz vert}b/HS_DiagCross{fdiag biag}b/MaxXYStep
+XStep YStep gt{XStep}{YStep}? |/horiz{Reps{0 4 M XStep 0 - 0 8 +}repeat 0 -8
+Reps mul + K}b/vert{Reps{4 0 M 0 YStep - 8 0 +}repeat 0 -8 Reps mul + K}b/biag
+{Reps{0 0 M MaxXYStep @ - 0 YStep neg M MaxXYStep @ - 0 8 +}repeat 0 -8 Reps
+mul + 0 YStep M 8 8 - K}b/fdiag{Reps{0 0 M MaxXYStep @ neg - 0 YStep M
+MaxXYStep @ neg - 0 8 +}repeat 0 -8 Reps mul + MaxXYStep @ M 8 -8 - K}b E
+/makehatch{GDIHPatternDict/PaintData 3 -1 $ put CTMsave GDIHMatrix setmatrix
+GDIHPatternDict matrix mp CTMrestore ~ U ~ 2 ^ put}b/h0{/h0/HS_Horizontal
+makehatch}b/h1{/h1/HS_Vertical makehatch}b/h2{/h2/HS_FDiagonal makehatch}b/h3{
+/h3/HS_BDiagonal makehatch}b/h4{/h4/HS_Cross makehatch}b/h5{/h5/HS_DiagCross
+makehatch}b/GDIBWPatternDict 17 dict @ `/PatternType 1 |/PaintType L2?{1}{2}?
+|/RepsV L2?{1}{6}? |/RepsH L2?{1}{5}? |/BBox[0 0 RepsH 1]|/TilingType 1 |
+/XStep 1 |/YStep 1 |/Height 8 RepsV mul |/Width 8 |/mx[Width 0 0 Height neg 0
+Height]|/FGnd null |/BGnd null |/SetBGndFGnd L2?{{BGnd null ne{BGnd aload !
+sgco BBox aload ! 2 ^ sub ~ 3 ^ sub ~ rf}if FGnd null ne{FGnd aload ! sgco}if}
+}{{}}? b/PaintProc{` SetBGndFGnd RepsH{Width Height F mx PaintData imagemask
+Width 0 +}repeat E}b E |/GDIBWPatternMx null |/pfprep{save 4 1 $
+/PatternOfTheDay 4 1 $ GDIBWPatternDict `/PaintData ~ |/BGnd ~ |/FGnd ~ | E
+CTMsave GDIBWPatternMx setmatrix GDIBWPatternDict matrix mp CTMrestore ~ !}b
+/hrf null |/prf{pfprep ~ 6 1 $ 5 hrf restore}b/GraphInit{GDIHMatrix null eq{
+/SavedCTM matrix | : ADO_mxRot concat 0 0 snap + : 0.48 @ GDIHPatternDict `
+YStep mul ~ XStep mul ~ dsnap YStep V ~ XStep V ~ E +S/GDIHMatrix matrix
+currentmatrix readonly | ; : 0.24 -0.24 +S GDIBWPatternDict ` Width Height E
+dsnap +S/GDIBWPatternMx matrix currentmatrix readonly | ; ;}if}b/cirp{360 0 An
+C}b/ellp{CTMsave + +S 0.5 0 M 0 0 0.5 360 0 An C CTMrestore}b/rrp{/rad ~ |/y2
+~ |/x2 ~ |/y1 ~ |/x1 ~ | x2 x1 add 2 V y1 M x1 y1 x1 y2 rad arct x1 y2 x2 y2
+rad arct x2 y2 x2 y1 rad arct x2 y1 x1 y1 rad arct C}b/RRp{CTMsave + +S/dyS ~
+|/dxS ~ | dxS 2 V 0 M 0 0 0 dyS 0.5 arct 0 dyS dxS dyS 0.5 arct dxS dyS dxS 0
+0.5 arct dxS 0 0 0 0.5 arct C CTMrestore}b
+%%EndResource
+
+%%BeginResource: file Pscript_Win_Graphics_L1 2.0 0
+L2? not g{/arct{arcto ! ! ! !}b/GDIpattfill{@ ` BGnd null ne PaintType 2 eq
+and{: BGnd aload ! sgco fEOFill{O}{L}? ; FGnd aload ! U/fGray 2 ^ put{2}{4}?
+-1 $}if E @ patterncalc : 4 ^/PaintType get 2 eq{fGray{6 -1 $ sg}{8 -3 $ sco}?
+}if fEOFill{eoclip}{clip}? N patternfill ; N}b/hrf{/fGray 1 ^ 6 eq | -4 $ N rp
+C/fEOFill F | GDIpattfill}b/hfMain{/fEOFill ~ |/fGray ~ | GDIpattfill}b/hf{T
+hfMain}b/hfW{F hfMain}b/hs{currentpoint strokepath M hfW}b/pfMain{/fEOFill ~ |
+pfprep GDIpattfill restore N}b/pf{T pfMain}b/pfW{F pfMain}b/ps{currentpoint
+strokepath M pfW}b/mpstr 1 string |/mp{~ @ length 12 add dict copy `
+/PatternCTM matrix currentmatrix |/PatternMatrix ~ |/PatWidth XStep mpstr
+length mul |/PatHeight YStep |/FontType 3 |/Encoding 256 array | 3 string 0 1
+255{Encoding ~ @ 3 ^ cvs cvn put}for !/FontMatrix matrix |/FontBBox BBox |
+/BuildChar{! @ ` XStep 0 FontBBox aload ! setcachedevice/PaintProc , E : exec
+;}b & E ~ @ 3 -1 $ definefont}b/patterncalc{` : PatternCTM setmatrix
+PatternMatrix concat BBox aload ! ! ! + pathbbox ; PatHeight V ceiling 4 1 $
+PatWidth V ceiling 4 1 $ PatHeight V floor 4 1 $ PatWidth V floor 4 1 $ 2 ^
+sub cvi abs ~ 3 ^ sub cvi abs ~ 4 2 $ PatHeight mul ~ PatWidth mul ~ E}b
+/patternfill{5 -1 $ @ ` Ji PatternCTM setmatrix PatternMatrix concat 0 2 ^ 2 ^
+M 0 1 mpstr length 1 sub{1 ^ mpstr 3 1 $ put}for ! 2 ^{currentpoint 5 ^{mpstr
+S}repeat YStep add M}repeat ! ! ! ! E}b}e
+%%EndResource
+
+%%BeginResource: file Pscript_Win_Graphics_L2 2.0 0
+L2? g{/mp/makepattern , |/hrf{6 eq setAorABC setpattern rectfill}b/hf{
+setAorABC setpattern O}b/hfW{setAorABC setpattern L}b/hs{setAorABC setpattern
+K}b/pf{pfprep setpattern O restore N}b/pfW{pfprep setpattern L restore N}b/ps{
+pfprep setpattern K restore N}b}e
+%%EndResource
+
+end reinitialize
+userdict begin /pagesave save def end mysetup concat colspRefresh 
+
+1144 2653 N M 15 0 - 5 Lw 1 Lc 1 Lj solid 0 0 0 sco K : 1054 2468 156 57 rc 0 0 0 sco %%IncludeFont: Helvetica
+(F0) cvn
+0.920 
+ (Helvetica) cvn /Type1 
+T 
+(Helvetica) cvn
+mF 
+(F0_50) cvn
+F0
+50 
+xF 
+F0_50
+Ji 
+1106 2468 M 
+0.200 0 (1)A 
+; 
+1144 2504 N M 15 0 - 0 0 0 sco K : 1054 2319 156 57 rc 0 0 0 sco F0_50
+Ji 
+1106 2319 M 
+0.200 0 (2)A 
+; 
+1144 2355 N M 15 0 - 0 0 0 sco K : 1054 2171 156 57 rc 0 0 0 sco F0_50
+Ji 
+1106 2171 M 
+0.200 0 (3)A 
+; 
+1144 2207 N M 15 0 - 0 0 0 sco K : 1054 2022 156 57 rc 0 0 0 sco F0_50
+Ji 
+1106 2022 M 
+0.200 0 (4)A 
+; 
+1144 2058 N M 15 0 - 0 0 0 sco K : 1054 1873 156 57 rc 0 0 0 sco F0_50
+Ji 
+1106 1873 M 
+0.200 0 (5)A 
+; 
+1144 1909 N M 15 0 - 0 0 0 sco K : 1054 1725 156 57 rc 0 0 0 sco F0_50
+Ji 
+1106 1725 M 
+0.200 0 (6)A 
+; 
+1144 1761 N M 15 0 - 0 0 0 sco K : 2337 2617 156 57 rc 0 0 0 sco F0_50
+Ji 
+2389 2617 M 
+0.200 0 (0)A 
+; 
+2363 2653 N M 13 0 - 0 0 0 sco K : 2337 2319 156 57 rc 0 0 0 sco F0_50
+Ji 
+2389 2319 M 
+0.200 0 (5)A 
+; 
+2363 2355 N M 13 0 - 0 0 0 sco K : 2337 2022 208 57 rc 0 0 0 sco F0_50
+Ji 
+2389 2022 M 
+0.200 0 (10)A 
+; 
+2363 2058 N M 13 0 - 0 0 0 sco K : 2337 1725 208 57 rc 0 0 0 sco F0_50
+Ji 
+2389 1725 M 
+0.200 0 (15)A 
+; 
+2363 1761 N M 13 0 - 0 0 0 sco K 
+1165 2662 N M 0 11 - 0 0 0 sco K : 1156 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+1208 2680 M 
+0.200 0 (70)A 
+; 
+1208 2662 N M 0 11 - 0 0 0 sco K 
+1252 2662 N M 0 11 - 0 0 0 sco K : 1244 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+1296 2680 M 
+0.200 0 (72)A 
+; 
+1296 2662 N M 0 11 - 0 0 0 sco K 
+1339 2662 N M 0 11 - 0 0 0 sco K : 1331 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+1383 2680 M 
+0.200 0 (74)A 
+; 
+1383 2662 N M 0 11 - 0 0 0 sco K 
+1427 2662 N M 0 11 - 0 0 0 sco K : 1418 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+1470 2680 M 
+0.200 0 (76)A 
+; 
+1470 2662 N M 0 11 - 0 0 0 sco K 
+1514 2662 N M 0 11 - 0 0 0 sco K : 1506 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+1558 2680 M 
+0.200 0 (78)A 
+; 
+1558 2662 N M 0 11 - 0 0 0 sco K 
+1601 2662 N M 0 11 - 0 0 0 sco K : 1593 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+1645 2680 M 
+0.200 0 (80)A 
+; 
+1645 2662 N M 0 11 - 0 0 0 sco K 
+1689 2662 N M 0 11 - 0 0 0 sco K : 1680 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+1732 2680 M 
+0.200 0 (82)A 
+; 
+1732 2662 N M 0 11 - 0 0 0 sco K 
+1776 2662 N M 0 11 - 0 0 0 sco K : 1768 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+1820 2680 M 
+0.200 0 (84)A 
+; 
+1820 2662 N M 0 11 - 0 0 0 sco K 
+1864 2662 N M 0 11 - 0 0 0 sco K : 1855 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+1907 2680 M 
+0.200 0 (86)A 
+; 
+1907 2662 N M 0 11 - 0 0 0 sco K 
+1951 2662 N M 0 11 - 0 0 0 sco K : 1943 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+1995 2680 M 
+0.200 0 (88)A 
+; 
+1995 2662 N M 0 11 - 0 0 0 sco K 
+2038 2662 N M 0 11 - 0 0 0 sco K : 2030 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+2082 2680 M 
+0.200 0 (90)A 
+; 
+2082 2662 N M 0 11 - 0 0 0 sco K 
+2126 2662 N M 0 11 - 0 0 0 sco K : 2117 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+2169 2680 M 
+0.200 0 (92)A 
+; 
+2169 2662 N M 0 11 - 0 0 0 sco K 
+2213 2662 N M 0 11 - 0 0 0 sco K : 2205 2680 208 57 rc 0 0 0 sco F0_50
+Ji 
+2257 2680 M 
+0.200 0 (94)A 
+; 
+2257 2662 N M 0 11 - 0 0 0 sco K 
+2300 2662 N M 0 11 - 0 0 0 sco K 
+2344 2662 N M 0 11 - 0 0 0 sco K 
+1165 2355 N M 3 0 - 0 0 0 sco K 
+1168 2355 N M 4 0 - 0 0 0 sco K 
+1172 2355 N M 3 0 - 0 0 0 sco K 
+1175 2355 N M 4 0 - 0 0 0 sco K 
+1179 2355 N M 4 0 - 0 0 0 sco K 
+1183 2355 N M 3 149 - 0 0 0 sco K 
+1186 2504 N M 4 0 - 0 0 0 sco K 
+1190 2504 N M 4 0 - 0 0 0 sco K 
+1194 2504 N M 3 0 - 0 0 0 sco K 
+1197 2504 N M 4 0 - 0 0 0 sco K 
+1201 2504 N M 4 0 - 0 0 0 sco K 
+1205 2504 N M 3 0 - 0 0 0 sco K 
+1208 2504 N M 4 0 - 0 0 0 sco K 
+1212 2504 N M 3 0 - 0 0 0 sco K 
+1215 2504 N M 4 0 - 0 0 0 sco K 
+1219 2504 N M 4 0 - 0 0 0 sco K 
+1223 2504 N M 3 0 - 0 0 0 sco K 
+1226 2504 N M 4 0 - 0 0 0 sco K 
+1230 2504 N M 4 0 - 0 0 0 sco K 
+1234 2504 N M 3 0 - 0 0 0 sco K 
+1237 2504 N M 4 0 - 0 0 0 sco K 
+1241 2504 N M 4 0 - 0 0 0 sco K 
+1245 2504 N M 3 0 - 0 0 0 sco K 
+1248 2504 N M 4 0 - 0 0 0 sco K 
+1252 2504 N M 3 0 - 0 0 0 sco K 
+1255 2504 N M 4 -149 - 0 0 0 sco K 
+1259 2355 N M 4 0 - 0 0 0 sco K 
+1263 2355 N M 3 0 - 0 0 0 sco K 
+1266 2355 N M 4 0 - 0 0 0 sco K 
+1270 2355 N M 4 149 - 0 0 0 sco K 
+1274 2504 N M 3 -149 - 0 0 0 sco K 
+1277 2355 N M 4 0 - 0 0 0 sco K 
+1281 2355 N M 4 0 - 0 0 0 sco K 
+1285 2355 N M 3 0 - 0 0 0 sco K 
+1288 2355 N M 4 0 - 0 0 0 sco K 
+1292 2355 N M 4 149 - 0 0 0 sco K 
+1296 2504 N M 3 -149 - 0 0 0 sco K 
+1299 2355 N M 4 0 - 0 0 0 sco K 
+1303 2355 N M 3 0 - 0 0 0 sco K 
+1306 2355 N M 4 0 - 0 0 0 sco K 
+1310 2355 N M 4 149 - 0 0 0 sco K 
+1314 2504 N M 3 0 - 0 0 0 sco K 
+1317 2504 N M 4 -446 - 0 0 0 sco K 
+1321 2058 N M 4 0 - 0 0 0 sco K 
+1325 2058 N M 3 0 - 0 0 0 sco K 
+1328 2058 N M 4 297 - 0 0 0 sco K 
+1332 2355 N M 4 0 - 0 0 0 sco K 
+1336 2355 N M 3 -297 - 0 0 0 sco K 
+1339 2058 N M 4 297 - 0 0 0 sco K 
+1343 2355 N M 3 0 - 0 0 0 sco K 
+1346 2355 N M 4 0 - 0 0 0 sco K 
+1350 2355 N M 4 0 - 0 0 0 sco K 
+1354 2355 N M 3 0 - 0 0 0 sco K 
+1357 2355 N M 4 0 - 0 0 0 sco K 
+1361 2355 N M 4 0 - 0 0 0 sco K 
+1365 2355 N M 3 0 - 0 0 0 sco K 
+1368 2355 N M 4 0 - 0 0 0 sco K 
+1372 2355 N M 4 149 - 0 0 0 sco K 
+1376 2504 N M 3 -149 - 0 0 0 sco K 
+1379 2355 N M 4 0 - 0 0 0 sco K 
+1383 2355 N M 3 0 - 0 0 0 sco K 
+1386 2355 N M 4 149 - 0 0 0 sco K 
+1390 2504 N M 4 -149 - 0 0 0 sco K 
+1394 2355 N M 3 0 - 0 0 0 sco K 
+1397 2355 N M 4 0 - 0 0 0 sco K 
+1401 2355 N M 4 0 - 0 0 0 sco K 
+1405 2355 N M 3 149 - 0 0 0 sco K 
+1408 2504 N M 4 0 - 0 0 0 sco K 
+1412 2504 N M 4 0 - 0 0 0 sco K 
+1416 2504 N M 3 0 - 0 0 0 sco K 
+1419 2504 N M 4 0 - 0 0 0 sco K 
+1423 2504 N M 4 -149 - 0 0 0 sco K 
+1427 2355 N M 3 -148 - 0 0 0 sco K 
+1430 2207 N M 4 0 - 0 0 0 sco K 
+1434 2207 N M 3 0 - 0 0 0 sco K 
+1437 2207 N M 4 148 - 0 0 0 sco K 
+1441 2355 N M 4 0 - 0 0 0 sco K 
+1445 2355 N M 3 0 - 0 0 0 sco K 
+1448 2355 N M 4 0 - 0 0 0 sco K 
+1452 2355 N M 4 0 - 0 0 0 sco K 
+1456 2355 N M 3 0 - 0 0 0 sco K 
+1459 2355 N M 4 -148 - 0 0 0 sco K 
+1463 2207 N M 4 0 - 0 0 0 sco K 
+1467 2207 N M 3 0 - 0 0 0 sco K 
+1470 2207 N M 4 148 - 0 0 0 sco K 
+1474 2355 N M 3 0 - 0 0 0 sco K 
+1477 2355 N M 4 0 - 0 0 0 sco K 
+1481 2355 N M 4 0 - 0 0 0 sco K 
+1485 2355 N M 3 298 - 0 0 0 sco K 
+1488 2653 N M 4 -149 - 0 0 0 sco K 
+1492 2504 N M 4 0 - 0 0 0 sco K 
+1496 2504 N M 3 0 - 0 0 0 sco K 
+1499 2504 N M 4 0 - 0 0 0 sco K 
+1503 2504 N M 4 0 - 0 0 0 sco K 
+1507 2504 N M 3 0 - 0 0 0 sco K 
+1510 2504 N M 4 0 - 0 0 0 sco K 
+1514 2504 N M 3 0 - 0 0 0 sco K 
+1517 2504 N M 4 0 - 0 0 0 sco K 
+1521 2504 N M 4 0 - 0 0 0 sco K 
+1525 2504 N M 3 0 - 0 0 0 sco K 
+1528 2504 N M 4 0 - 0 0 0 sco K 
+1532 2504 N M 4 0 - 0 0 0 sco K 
+1536 2504 N M 3 0 - 0 0 0 sco K 
+1539 2504 N M 4 0 - 0 0 0 sco K 
+1543 2504 N M 4 0 - 0 0 0 sco K 
+1547 2504 N M 3 0 - 0 0 0 sco K 
+1550 2504 N M 4 0 - 0 0 0 sco K 
+1554 2504 N M 4 0 - 0 0 0 sco K 
+1558 2504 N M 3 0 - 0 0 0 sco K 
+1561 2504 N M 4 0 - 0 0 0 sco K 
+1565 2504 N M 3 0 - 0 0 0 sco K 
+1568 2504 N M 4 0 - 0 0 0 sco K 
+1572 2504 N M 4 0 - 0 0 0 sco K 
+1576 2504 N M 3 0 - 0 0 0 sco K 
+1579 2504 N M 4 0 - 0 0 0 sco K 
+1583 2504 N M 4 0 - 0 0 0 sco K 
+1587 2504 N M 3 0 - 0 0 0 sco K 
+1590 2504 N M 4 0 - 0 0 0 sco K 
+1594 2504 N M 4 0 - 0 0 0 sco K 
+1598 2504 N M 3 0 - 0 0 0 sco K 
+1601 2504 N M 4 0 - 0 0 0 sco K 
+1605 2504 N M 3 0 - 0 0 0 sco K 
+1608 2504 N M 4 0 - 0 0 0 sco K 
+1612 2504 N M 4 0 - 0 0 0 sco K 
+1616 2504 N M 3 0 - 0 0 0 sco K 
+1619 2504 N M 4 0 - 0 0 0 sco K 
+1623 2504 N M 4 149 - 0 0 0 sco K 
+1627 2653 N M 3 0 - 0 0 0 sco K 
+1630 2653 N M 4 0 - 0 0 0 sco K 
+1634 2653 N M 4 0 - 0 0 0 sco K 
+1638 2653 N M 3 0 - 0 0 0 sco K 
+1641 2653 N M 4 0 - 0 0 0 sco K 
+1645 2653 N M 4 0 - 0 0 0 sco K 
+1649 2653 N M 3 0 - 0 0 0 sco K 
+1652 2653 N M 4 -298 - 0 0 0 sco K 
+1656 2355 N M 3 0 - 0 0 0 sco K 
+1659 2355 N M 4 298 - 0 0 0 sco K 
+1663 2653 N M 4 -149 - 0 0 0 sco K 
+1667 2504 N M 3 149 - 0 0 0 sco K 
+1670 2653 N M 4 -149 - 0 0 0 sco K 
+1674 2504 N M 4 -297 - 0 0 0 sco K 
+1678 2207 N M 3 446 - 0 0 0 sco K 
+1681 2653 N M 4 0 - 0 0 0 sco K 
+1685 2653 N M 4 0 - 0 0 0 sco K 
+1689 2653 N M 3 0 - 0 0 0 sco K 
+1692 2653 N M 4 0 - 0 0 0 sco K 
+1696 2653 N M 3 0 - 0 0 0 sco K 
+1699 2653 N M 4 0 - 0 0 0 sco K 
+1703 2653 N M 4 0 - 0 0 0 sco K 
+1707 2653 N M 3 0 - 0 0 0 sco K 
+1710 2653 N M 4 0 - 0 0 0 sco K 
+1714 2653 N M 4 0 - 0 0 0 sco K 
+1718 2653 N M 3 0 - 0 0 0 sco K 
+1721 2653 N M 4 -298 - 0 0 0 sco K 
+1725 2355 N M 4 298 - 0 0 0 sco K 
+1729 2653 N M 3 -446 - 0 0 0 sco K 
+1732 2207 N M 4 446 - 0 0 0 sco K 
+1736 2653 N M 3 0 - 0 0 0 sco K 
+1739 2653 N M 4 0 - 0 0 0 sco K 
+1743 2653 N M 4 0 - 0 0 0 sco K 
+1747 2653 N M 3 -595 - 0 0 0 sco K 
+1750 2058 N M 4 0 - 0 0 0 sco K 
+1754 2058 N M 4 0 - 0 0 0 sco K 
+1758 2058 N M 3 595 - 0 0 0 sco K 
+1761 2653 N M 4 0 - 0 0 0 sco K 
+1765 2653 N M 4 0 - 0 0 0 sco K 
+1769 2653 N M 3 0 - 0 0 0 sco K 
+1772 2653 N M 4 0 - 0 0 0 sco K 
+1776 2653 N M 4 0 - 0 0 0 sco K 
+1780 2653 N M 3 -595 - 0 0 0 sco K 
+1783 2058 N M 4 595 - 0 0 0 sco K 
+1787 2653 N M 3 0 - 0 0 0 sco K 
+1790 2653 N M 4 0 - 0 0 0 sco K 
+1794 2653 N M 4 -595 - 0 0 0 sco K 
+1798 2058 N M 3 595 - 0 0 0 sco K 
+1801 2653 N M 4 0 - 0 0 0 sco K 
+1805 2653 N M 4 0 - 0 0 0 sco K 
+1809 2653 N M 3 0 - 0 0 0 sco K 
+1812 2653 N M 4 0 - 0 0 0 sco K 
+1816 2653 N M 4 0 - 0 0 0 sco K 
+1820 2653 N M 3 0 - 0 0 0 sco K 
+1823 2653 N M 4 0 - 0 0 0 sco K 
+1827 2653 N M 3 0 - 0 0 0 sco K 
+1830 2653 N M 4 0 - 0 0 0 sco K 
+1834 2653 N M 4 0 - 0 0 0 sco K 
+1838 2653 N M 3 0 - 0 0 0 sco K 
+1841 2653 N M 4 0 - 0 0 0 sco K 
+1845 2653 N M 4 0 - 0 0 0 sco K 
+1849 2653 N M 3 0 - 0 0 0 sco K 
+1852 2653 N M 4 0 - 0 0 0 sco K 
+1856 2653 N M 4 0 - 0 0 0 sco K 
+1860 2653 N M 3 0 - 0 0 0 sco K 
+1863 2653 N M 4 0 - 0 0 0 sco K 
+1867 2653 N M 3 0 - 0 0 0 sco K 
+1870 2653 N M 4 0 - 0 0 0 sco K 
+1874 2653 N M 4 0 - 0 0 0 sco K 
+1878 2653 N M 3 0 - 0 0 0 sco K 
+1881 2653 N M 4 0 - 0 0 0 sco K 
+1885 2653 N M 4 0 - 0 0 0 sco K 
+1889 2653 N M 3 0 - 0 0 0 sco K 
+1892 2653 N M 4 0 - 0 0 0 sco K 
+1896 2653 N M 4 0 - 0 0 0 sco K 
+1900 2653 N M 3 0 - 0 0 0 sco K 
+1903 2653 N M 4 0 - 0 0 0 sco K 
+1907 2653 N M 4 0 - 0 0 0 sco K 
+1911 2653 N M 3 0 - 0 0 0 sco K 
+1914 2653 N M 4 0 - 0 0 0 sco K 
+1918 2653 N M 3 0 - 0 0 0 sco K 
+1921 2653 N M 4 0 - 0 0 0 sco K 
+1925 2653 N M 4 0 - 0 0 0 sco K 
+1929 2653 N M 3 0 - 0 0 0 sco K 
+1932 2653 N M 4 0 - 0 0 0 sco K 
+1936 2653 N M 4 0 - 0 0 0 sco K 
+1940 2653 N M 3 0 - 0 0 0 sco K 
+1943 2653 N M 4 0 - 0 0 0 sco K 
+1947 2653 N M 4 0 - 0 0 0 sco K 
+1951 2653 N M 3 0 - 0 0 0 sco K 
+1954 2653 N M 4 0 - 0 0 0 sco K 
+1958 2653 N M 3 0 - 0 0 0 sco K 
+1961 2653 N M 4 0 - 0 0 0 sco K 
+1965 2653 N M 4 0 - 0 0 0 sco K 
+1969 2653 N M 3 0 - 0 0 0 sco K 
+1972 2653 N M 4 0 - 0 0 0 sco K 
+1976 2653 N M 4 0 - 0 0 0 sco K 
+1980 2653 N M 3 0 - 0 0 0 sco K 
+1983 2653 N M 4 0 - 0 0 0 sco K 
+1987 2653 N M 4 0 - 0 0 0 sco K 
+1991 2653 N M 3 0 - 0 0 0 sco K 
+1994 2653 N M 4 0 - 0 0 0 sco K 
+1998 2653 N M 4 0 - 0 0 0 sco K 
+2002 2653 N M 3 0 - 0 0 0 sco K 
+2005 2653 N M 4 0 - 0 0 0 sco K 
+2009 2653 N M 3 0 - 0 0 0 sco K 
+2012 2653 N M 4 0 - 0 0 0 sco K 
+2016 2653 N M 4 0 - 0 0 0 sco K 
+2020 2653 N M 3 0 - 0 0 0 sco K 
+2023 2653 N M 4 0 - 0 0 0 sco K 
+2027 2653 N M 4 0 - 0 0 0 sco K 
+2031 2653 N M 3 0 - 0 0 0 sco K 
+2034 2653 N M 4 0 - 0 0 0 sco K 
+2038 2653 N M 4 0 - 0 0 0 sco K 
+2042 2653 N M 3 0 - 0 0 0 sco K 
+2045 2653 N M 4 0 - 0 0 0 sco K 
+2049 2653 N M 3 0 - 0 0 0 sco K 
+2052 2653 N M 4 0 - 0 0 0 sco K 
+2056 2653 N M 4 0 - 0 0 0 sco K 
+2060 2653 N M 3 0 - 0 0 0 sco K 
+2063 2653 N M 4 0 - 0 0 0 sco K 
+2067 2653 N M 4 0 - 0 0 0 sco K 
+2071 2653 N M 3 0 - 0 0 0 sco K 
+2074 2653 N M 4 0 - 0 0 0 sco K 
+2078 2653 N M 4 0 - 0 0 0 sco K 
+2082 2653 N M 3 0 - 0 0 0 sco K 
+2085 2653 N M 4 0 - 0 0 0 sco K 
+2089 2653 N M 3 0 - 0 0 0 sco K 
+2092 2653 N M 4 0 - 0 0 0 sco K 
+2096 2653 N M 4 0 - 0 0 0 sco K 
+2100 2653 N M 3 0 - 0 0 0 sco K 
+2103 2653 N M 4 0 - 0 0 0 sco K 
+2107 2653 N M 4 0 - 0 0 0 sco K 
+2111 2653 N M 3 0 - 0 0 0 sco K 
+2114 2653 N M 4 0 - 0 0 0 sco K 
+2118 2653 N M 4 0 - 0 0 0 sco K 
+2122 2653 N M 3 0 - 0 0 0 sco K 
+2125 2653 N M 4 0 - 0 0 0 sco K 
+2129 2653 N M 4 0 - 0 0 0 sco K 
+2133 2653 N M 3 0 - 0 0 0 sco K 
+2136 2653 N M 4 0 - 0 0 0 sco K 
+2140 2653 N M 3 0 - 0 0 0 sco K 
+2143 2653 N M 4 0 - 0 0 0 sco K 
+2147 2653 N M 4 0 - 0 0 0 sco K 
+2151 2653 N M 3 0 - 0 0 0 sco K 
+2154 2653 N M 4 0 - 0 0 0 sco K 
+2158 2653 N M 4 0 - 0 0 0 sco K 
+2162 2653 N M 3 0 - 0 0 0 sco K 
+2165 2653 N M 4 0 - 0 0 0 sco K 
+2169 2653 N M 4 0 - 0 0 0 sco K 
+2173 2653 N M 3 0 - 0 0 0 sco K 
+2176 2653 N M 4 -149 - 0 0 0 sco K 
+2180 2504 N M 3 0 - 0 0 0 sco K 
+2183 2504 N M 4 0 - 0 0 0 sco K 
+2187 2504 N M 4 0 - 0 0 0 sco K 
+2191 2504 N M 3 0 - 0 0 0 sco K 
+2194 2504 N M 4 149 - 0 0 0 sco K 
+2198 2653 N M 4 0 - 0 0 0 sco K 
+2202 2653 N M 3 -149 - 0 0 0 sco K 
+2205 2504 N M 4 0 - 0 0 0 sco K 
+2209 2504 N M 4 0 - 0 0 0 sco K 
+2213 2504 N M 3 0 - 0 0 0 sco K 
+2216 2504 N M 4 0 - 0 0 0 sco K 
+2220 2504 N M 3 0 - 0 0 0 sco K 
+2223 2504 N M 4 0 - 0 0 0 sco K 
+2227 2504 N M 4 0 - 0 0 0 sco K 
+2231 2504 N M 3 0 - 0 0 0 sco K 
+2234 2504 N M 4 0 - 0 0 0 sco K 
+2238 2504 N M 4 0 - 0 0 0 sco K 
+2242 2504 N M 3 0 - 0 0 0 sco K 
+2245 2504 N M 4 0 - 0 0 0 sco K 
+2249 2504 N M 4 0 - 0 0 0 sco K 
+2253 2504 N M 3 0 - 0 0 0 sco K 
+2256 2504 N M 4 0 - 0 0 0 sco K 
+2260 2504 N M 4 0 - 0 0 0 sco K 
+2264 2504 N M 3 0 - 0 0 0 sco K 
+2267 2504 N M 4 0 - 0 0 0 sco K 
+2271 2504 N M 3 0 - 0 0 0 sco K 
+2274 2504 N M 4 0 - 0 0 0 sco K 
+2278 2504 N M 4 0 - 0 0 0 sco K 
+2282 2504 N M 3 0 - 0 0 0 sco K 
+2285 2504 N M 4 0 - 0 0 0 sco K 
+2289 2504 N M 4 0 - 0 0 0 sco K 
+2293 2504 N M 3 0 - 0 0 0 sco K 
+2296 2504 N M 4 0 - 0 0 0 sco K 
+2300 2504 N M 4 0 - 0 0 0 sco K 
+2304 2504 N M 3 -297 - 0 0 0 sco K 
+2307 2207 N M 4 0 - 0 0 0 sco K 
+2311 2207 N M 3 0 - 0 0 0 sco K 
+2314 2207 N M 4 148 - 0 0 0 sco K 
+2318 2355 N M 4 0 - 0 0 0 sco K 
+2322 2355 N M 3 149 - 0 0 0 sco K 
+2325 2504 N M 4 0 - 0 0 0 sco K 
+2329 2504 N M 4 0 - 0 0 0 sco K 
+2333 2504 N M 3 0 - 0 0 0 sco K 
+2336 2504 N M 4 0 - 0 0 0 sco K 
+2340 2504 N M 4 0 - 0 0 0 sco K 
+2344 2504 N M 3 0 - 0 0 0 sco K 
+2347 2504 N M 4 0 - 0 0 0 sco K 
+2351 2504 N M 4 0 - 0 0 0 sco K 
+1165 1879 N M 3 0 - 0 0 0 sco K 
+1168 1879 N M 4 0 - 0 0 0 sco K 
+1172 1879 N M 3 0 - 0 0 0 sco K 
+1175 1879 N M 4 0 - 0 0 0 sco K 
+1179 1879 N M 4 0 - 0 0 0 sco K 
+1183 1879 N M 0 1 - 0 0 0 sco K 
+1183 1894 N M 0 19 - 0 0 0 sco K 
+1183 1927 N M 0 19 - 0 0 0 sco K 
+1183 1960 N M 0 19 - 0 0 0 sco K 
+1183 1993 N M 0 19 - 0 0 0 sco K 
+1183 2026 N M 1 19 - 0 0 0 sco K 
+1184 2059 N M 0 19 - 0 0 0 sco K 
+1184 2092 N M 0 19 - 0 0 0 sco K 
+1184 2125 N M 0 19 - 0 0 0 sco K 
+1184 2158 N M 0 19 - 0 0 0 sco K 
+1184 2191 N M 1 19 - 0 0 0 sco K 
+1185 2224 N M 0 19 - 0 0 0 sco K 
+1185 2257 N M 0 19 - 0 0 0 sco K 
+1185 2290 N M 0 19 - 0 0 0 sco K 
+1185 2323 N M 0 19 - 0 0 0 sco K 
+1187 2355 N M 3 0 - 0 0 0 sco K 
+1190 2355 N M 4 0 - 0 0 0 sco K 
+1194 2355 N M 3 0 - 0 0 0 sco K 
+1197 2355 N M 4 0 - 0 0 0 sco K 
+1201 2355 N M 4 0 - 0 0 0 sco K 
+1205 2355 N M 1 0 - 0 0 0 sco K 
+1220 2355 N M 3 0 - 0 0 0 sco K 
+1223 2355 N M 3 0 - 0 0 0 sco K 
+1226 2355 N M 4 0 - 0 0 0 sco K 
+1230 2355 N M 4 0 - 0 0 0 sco K 
+1234 2355 N M 3 0 - 0 0 0 sco K 
+1237 2355 N M 2 0 - 0 0 0 sco K 
+1253 2355 N M 2 0 - 0 0 0 sco K 
+1255 2355 N M 4 0 - 0 0 0 sco K 
+1259 2355 N M 4 0 - 0 0 0 sco K 
+1263 2355 N M 3 0 - 0 0 0 sco K 
+1266 2355 N M 4 0 - 0 0 0 sco K 
+1270 2355 N M 2 0 - 0 0 0 sco K 
+1285 2356 N M 0 19 - 0 0 0 sco K 
+1286 2389 N M 1 19 - 0 0 0 sco K 
+1288 2408 N M 1 -19 - 0 0 0 sco K 
+1290 2375 N M 1 -19 - 0 0 0 sco K 
+1292 2368 N M 2 19 - 0 0 0 sco K 
+1295 2401 N M 1 14 - 0 0 0 sco K 
+1296 2415 N M 0 -5 - 0 0 0 sco K 
+1296 2396 N M 1 -19 - 0 0 0 sco K 
+1298 2363 N M 1 -8 - 0 0 0 sco K 
+1299 2355 N M 4 0 - 0 0 0 sco K 
+1303 2355 N M 3 0 - 0 0 0 sco K 
+1306 2355 N M 4 0 - 0 0 0 sco K 
+1310 2369 N M 2 19 - 0 0 0 sco K 
+1313 2402 N M 1 13 - 0 0 0 sco K 
+1314 2415 N M 3 0 - 0 0 0 sco K 
+1317 2415 N M 0 3 - 0 0 0 sco K 
+1317 2432 N M 1 19 - 0 0 0 sco K 
+1318 2465 N M 1 19 - 0 0 0 sco K 
+1319 2498 N M 1 19 - 0 0 0 sco K 
+1320 2531 N M 1 3 - 0 0 0 sco K 
+1321 2534 N M 4 0 - 0 0 0 sco K 
+1325 2534 N M 3 0 - 0 0 0 sco K 
+1328 2534 N M 0 -9 - 0 0 0 sco K 
+1328 2511 N M 0 -19 - 0 0 0 sco K 
+1329 2478 N M 0 -19 - 0 0 0 sco K 
+1329 2445 N M 1 -19 - 0 0 0 sco K 
+1330 2412 N M 1 -19 - 0 0 0 sco K 
+1331 2379 N M 0 -19 - 0 0 0 sco K 
+1336 2360 N M 0 19 - 0 0 0 sco K 
+1336 2393 N M 0 19 - 0 0 0 sco K 
+1337 2426 N M 0 19 - 0 0 0 sco K 
+1337 2459 N M 1 19 - 0 0 0 sco K 
+1338 2492 N M 0 19 - 0 0 0 sco K 
+1338 2525 N M 1 9 - 0 0 0 sco K 
+1339 2534 N M 0 -10 - 0 0 0 sco K 
+1339 2510 N M 0 -19 - 0 0 0 sco K 
+1340 2477 N M 0 -19 - 0 0 0 sco K 
+1340 2444 N M 1 -19 - 0 0 0 sco K 
+1341 2411 N M 1 -19 - 0 0 0 sco K 
+1342 2378 N M 0 -19 - 0 0 0 sco K 
+1346 2362 N M 0 19 - 0 0 0 sco K 
+1346 2395 N M 1 19 - 0 0 0 sco K 
+1347 2428 N M 1 19 - 0 0 0 sco K 
+1348 2461 N M 0 19 - 0 0 0 sco K 
+1349 2494 N M 0 19 - 0 0 0 sco K 
+1349 2527 N M 1 7 - 0 0 0 sco K 
+1350 2534 N M 4 0 - 0 0 0 sco K 
+1354 2534 N M 3 0 - 0 0 0 sco K 
+1357 2534 N M 4 0 - 0 0 0 sco K 
+1361 2534 N M 1 0 - 0 0 0 sco K 
+1368 2526 N M 0 -19 - 0 0 0 sco K 
+1368 2493 N M 1 -19 - 0 0 0 sco K 
+1369 2460 N M 1 -19 - 0 0 0 sco K 
+1370 2427 N M 0 -19 - 0 0 0 sco K 
+1371 2394 N M 0 -19 - 0 0 0 sco K 
+1371 2361 N M 1 -6 - 0 0 0 sco K 
+1372 2355 N M 0 -13 - 0 0 0 sco K 
+1372 2328 N M 1 -19 - 0 0 0 sco K 
+1373 2295 N M 0 -19 - 0 0 0 sco K 
+1374 2262 N M 0 -19 - 0 0 0 sco K 
+1374 2229 N M 1 -19 - 0 0 0 sco K 
+1375 2196 N M 0 -19 - 0 0 0 sco K 
+1376 2190 N M 0 19 - 0 0 0 sco K 
+1376 2223 N M 1 19 - 0 0 0 sco K 
+1377 2256 N M 0 19 - 0 0 0 sco K 
+1377 2289 N M 1 19 - 0 0 0 sco K 
+1378 2322 N M 0 19 - 0 0 0 sco K 
+1378 2355 N M 1 0 - 0 0 0 sco K 
+1379 2355 N M 1 18 - 0 0 0 sco K 
+1381 2387 N M 1 19 - 0 0 0 sco K 
+1386 2413 N M 0 -19 - 0 0 0 sco K 
+1386 2380 N M 0 -19 - 0 0 0 sco K 
+1386 2347 N M 1 -19 - 0 0 0 sco K 
+1387 2314 N M 0 -19 - 0 0 0 sco K 
+1387 2281 N M 1 -19 - 0 0 0 sco K 
+1388 2248 N M 0 -19 - 0 0 0 sco K 
+1388 2215 N M 0 -19 - 0 0 0 sco K 
+1389 2182 N M 0 -19 - 0 0 0 sco K 
+1389 2149 N M 0 -19 - 0 0 0 sco K 
+1390 2116 N M 0 -19 - 0 0 0 sco K 
+1390 2083 N M 0 -19 - 0 0 0 sco K 
+1391 2050 N M 0 -19 - 0 0 0 sco K 
+1391 2017 N M 0 -19 - 0 0 0 sco K 
+1392 1984 N M 0 -19 - 0 0 0 sco K 
+1392 1951 N M 1 -19 - 0 0 0 sco K 
+1393 1918 N M 0 -19 - 0 0 0 sco K 
+1393 1885 N M 1 -6 - 0 0 0 sco K 
+1394 1879 N M 3 0 - 0 0 0 sco K 
+1397 1879 N M 0 10 - 0 0 0 sco K 
+1397 1903 N M 0 19 - 0 0 0 sco K 
+1397 1936 N M 0 19 - 0 0 0 sco K 
+1397 1969 N M 0 19 - 0 0 0 sco K 
+1398 2002 N M 0 19 - 0 0 0 sco K 
+1398 2035 N M 0 19 - 0 0 0 sco K 
+1398 2068 N M 0 19 - 0 0 0 sco K 
+1398 2101 N M 1 19 - 0 0 0 sco K 
+1399 2134 N M 0 19 - 0 0 0 sco K 
+1399 2167 N M 0 19 - 0 0 0 sco K 
+1399 2200 N M 0 19 - 0 0 0 sco K 
+1399 2233 N M 1 19 - 0 0 0 sco K 
+1400 2266 N M 0 19 - 0 0 0 sco K 
+1400 2299 N M 0 19 - 0 0 0 sco K 
+1400 2332 N M 0 19 - 0 0 0 sco K 
+1405 2349 N M 0 -19 - 0 0 0 sco K 
+1405 2316 N M 0 -19 - 0 0 0 sco K 
+1406 2283 N M 0 -19 - 0 0 0 sco K 
+1406 2250 N M 1 -19 - 0 0 0 sco K 
+1407 2217 N M 0 -19 - 0 0 0 sco K 
+1407 2184 N M 1 -7 - 0 0 0 sco K 
+1408 2177 N M 0 -12 - 0 0 0 sco K 
+1408 2151 N M 0 -19 - 0 0 0 sco K 
+1408 2118 N M 1 -19 - 0 0 0 sco K 
+1409 2085 N M 0 -19 - 0 0 0 sco K 
+1409 2052 N M 0 -19 - 0 0 0 sco K 
+1410 2019 N M 0 -19 - 0 0 0 sco K 
+1410 1986 N M 0 -19 - 0 0 0 sco K 
+1411 1953 N M 0 -19 - 0 0 0 sco K 
+1411 1920 N M 0 -19 - 0 0 0 sco K 
+1411 1887 N M 1 -8 - 0 0 0 sco K 
+1412 1879 N M 4 0 - 0 0 0 sco K 
+1416 1879 N M 3 0 - 0 0 0 sco K 
+1419 1879 N M 4 0 - 0 0 0 sco K 
+1427 1889 N M 0 19 - 0 0 0 sco K 
+1427 1922 N M 0 19 - 0 0 0 sco K 
+1427 1955 N M 0 19 - 0 0 0 sco K 
+1427 1988 N M 0 19 - 0 0 0 sco K 
+1427 2021 N M 1 19 - 0 0 0 sco K 
+1428 2054 N M 0 19 - 0 0 0 sco K 
+1428 2087 N M 0 19 - 0 0 0 sco K 
+1428 2120 N M 0 19 - 0 0 0 sco K 
+1428 2153 N M 0 19 - 0 0 0 sco K 
+1428 2186 N M 1 19 - 0 0 0 sco K 
+1429 2219 N M 0 19 - 0 0 0 sco K 
+1429 2252 N M 0 19 - 0 0 0 sco K 
+1429 2285 N M 0 19 - 0 0 0 sco K 
+1429 2318 N M 0 19 - 0 0 0 sco K 
+1429 2351 N M 1 4 - 0 0 0 sco K 
+1430 2355 N M 4 0 - 0 0 0 sco K 
+1434 2355 N M 3 0 - 0 0 0 sco K 
+1437 2355 N M 4 0 - 0 0 0 sco K 
+1441 2355 N M 4 0 - 0 0 0 sco K 
+1459 2355 N M 4 0 - 0 0 0 sco K 
+1463 2355 N M 4 0 - 0 0 0 sco K 
+1467 2355 N M 3 0 - 0 0 0 sco K 
+1470 2355 N M 4 0 - 0 0 0 sco K 
+1474 2355 N M 3 0 - 0 0 0 sco K 
+1477 2355 N M 1 0 - 0 0 0 sco K 
+1485 2348 N M 0 -19 - 0 0 0 sco K 
+1486 2315 N M 0 -19 - 0 0 0 sco K 
+1486 2282 N M 1 -19 - 0 0 0 sco K 
+1487 2249 N M 1 -13 - 0 0 0 sco K 
+1488 2236 N M 0 -6 - 0 0 0 sco K 
+1488 2216 N M 0 -19 - 0 0 0 sco K 
+1488 2183 N M 0 -19 - 0 0 0 sco K 
+1488 2150 N M 1 -19 - 0 0 0 sco K 
+1489 2117 N M 0 -19 - 0 0 0 sco K 
+1489 2084 N M 0 -19 - 0 0 0 sco K 
+1490 2051 N M 0 -19 - 0 0 0 sco K 
+1490 2018 N M 0 -19 - 0 0 0 sco K 
+1490 1985 N M 1 -19 - 0 0 0 sco K 
+1491 1952 N M 0 -19 - 0 0 0 sco K 
+1491 1919 N M 0 -19 - 0 0 0 sco K 
+1491 1886 N M 1 -7 - 0 0 0 sco K 
+1492 1879 N M 4 0 - 0 0 0 sco K 
+1496 1879 N M 0 8 - 0 0 0 sco K 
+1496 1901 N M 0 19 - 0 0 0 sco K 
+1496 1934 N M 0 19 - 0 0 0 sco K 
+1496 1967 N M 1 19 - 0 0 0 sco K 
+1497 2000 N M 0 19 - 0 0 0 sco K 
+1497 2033 N M 0 19 - 0 0 0 sco K 
+1497 2066 N M 1 19 - 0 0 0 sco K 
+1498 2099 N M 0 19 - 0 0 0 sco K 
+1498 2132 N M 0 19 - 0 0 0 sco K 
+1498 2165 N M 1 12 - 0 0 0 sco K 
+1499 2177 N M 4 0 - 0 0 0 sco K 
+1503 2177 N M 3 0 - 0 0 0 sco K 
+1507 2164 N M 0 -19 - 0 0 0 sco K 
+1507 2131 N M 0 -19 - 0 0 0 sco K 
+1507 2098 N M 0 -19 - 0 0 0 sco K 
+1508 2065 N M 0 -19 - 0 0 0 sco K 
+1508 2032 N M 0 -19 - 0 0 0 sco K 
+1508 1999 N M 0 -19 - 0 0 0 sco K 
+1509 1966 N M 0 -19 - 0 0 0 sco K 
+1509 1933 N M 0 -19 - 0 0 0 sco K 
+1509 1900 N M 0 -19 - 0 0 0 sco K 
+1517 1884 N M 0 19 - 0 0 0 sco K 
+1517 1917 N M 0 19 - 0 0 0 sco K 
+1517 1950 N M 1 19 - 0 0 0 sco K 
+1518 1983 N M 0 19 - 0 0 0 sco K 
+1518 2016 N M 1 19 - 0 0 0 sco K 
+1519 2049 N M 0 19 - 0 0 0 sco K 
+1519 2082 N M 0 19 - 0 0 0 sco K 
+1520 2115 N M 0 19 - 0 0 0 sco K 
+1520 2148 N M 0 19 - 0 0 0 sco K 
+1525 2177 N M 0 -19 - 0 0 0 sco K 
+1525 2144 N M 0 -19 - 0 0 0 sco K 
+1525 2111 N M 0 -19 - 0 0 0 sco K 
+1525 2078 N M 1 -19 - 0 0 0 sco K 
+1526 2045 N M 0 -19 - 0 0 0 sco K 
+1526 2012 N M 0 -19 - 0 0 0 sco K 
+1526 1979 N M 1 -19 - 0 0 0 sco K 
+1527 1946 N M 0 -19 - 0 0 0 sco K 
+1527 1913 N M 0 -19 - 0 0 0 sco K 
+1527 1880 N M 1 -1 - 0 0 0 sco K 
+1528 1879 N M 4 0 - 0 0 0 sco K 
+1532 1879 N M 0 14 - 0 0 0 sco K 
+1532 1907 N M 0 19 - 0 0 0 sco K 
+1532 1940 N M 1 19 - 0 0 0 sco K 
+1533 1973 N M 0 19 - 0 0 0 sco K 
+1533 2006 N M 0 19 - 0 0 0 sco K 
+1534 2039 N M 0 19 - 0 0 0 sco K 
+1534 2072 N M 0 19 - 0 0 0 sco K 
+1535 2105 N M 0 19 - 0 0 0 sco K 
+1535 2138 N M 0 19 - 0 0 0 sco K 
+1535 2171 N M 1 6 - 0 0 0 sco K 
+1536 2177 N M 3 0 - 0 0 0 sco K 
+1539 2177 N M 4 0 - 0 0 0 sco K 
+1543 2177 N M 4 0 - 0 0 0 sco K 
+1547 2177 N M 2 0 - 0 0 0 sco K 
+1563 2177 N M 2 0 - 0 0 0 sco K 
+1565 2177 N M 3 0 - 0 0 0 sco K 
+1568 2177 N M 4 0 - 0 0 0 sco K 
+1572 2177 N M 4 0 - 0 0 0 sco K 
+1576 2177 N M 3 0 - 0 0 0 sco K 
+1579 2177 N M 3 0 - 0 0 0 sco K 
+1596 2177 N M 2 0 - 0 0 0 sco K 
+1598 2177 N M 3 0 - 0 0 0 sco K 
+1601 2177 N M 4 0 - 0 0 0 sco K 
+1605 2177 N M 3 0 - 0 0 0 sco K 
+1608 2177 N M 4 0 - 0 0 0 sco K 
+1612 2177 N M 3 0 - 0 0 0 sco K 
+1629 2177 N M 1 0 - 0 0 0 sco K 
+1630 2177 N M 4 0 - 0 0 0 sco K 
+1634 2177 N M 4 0 - 0 0 0 sco K 
+1638 2177 N M 3 0 - 0 0 0 sco K 
+1641 2177 N M 4 0 - 0 0 0 sco K 
+1645 2177 N M 3 0 - 0 0 0 sco K 
+1652 2187 N M 0 19 - 0 0 0 sco K 
+1652 2220 N M 0 19 - 0 0 0 sco K 
+1652 2253 N M 1 19 - 0 0 0 sco K 
+1653 2286 N M 0 19 - 0 0 0 sco K 
+1653 2319 N M 0 19 - 0 0 0 sco K 
+1653 2352 N M 1 19 - 0 0 0 sco K 
+1654 2385 N M 0 19 - 0 0 0 sco K 
+1654 2418 N M 0 19 - 0 0 0 sco K 
+1655 2451 N M 0 19 - 0 0 0 sco K 
+1655 2484 N M 0 19 - 0 0 0 sco K 
+1655 2517 N M 1 17 - 0 0 0 sco K 
+1656 2534 N M 2 0 - 0 0 0 sco K 
+1659 2521 N M 0 -19 - 0 0 0 sco K 
+1659 2488 N M 0 -19 - 0 0 0 sco K 
+1659 2455 N M 1 -19 - 0 0 0 sco K 
+1660 2422 N M 0 -19 - 0 0 0 sco K 
+1660 2389 N M 0 -19 - 0 0 0 sco K 
+1660 2356 N M 1 -19 - 0 0 0 sco K 
+1661 2323 N M 0 -19 - 0 0 0 sco K 
+1661 2290 N M 0 -19 - 0 0 0 sco K 
+1662 2257 N M 0 -19 - 0 0 0 sco K 
+1662 2224 N M 0 -19 - 0 0 0 sco K 
+1662 2191 N M 1 -14 - 0 0 0 sco K 
+1663 2177 N M 0 -5 - 0 0 0 sco K 
+1663 2158 N M 0 -19 - 0 0 0 sco K 
+1663 2125 N M 0 -19 - 0 0 0 sco K 
+1664 2092 N M 0 -19 - 0 0 0 sco K 
+1664 2059 N M 0 -19 - 0 0 0 sco K 
+1665 2026 N M 0 -19 - 0 0 0 sco K 
+1665 1993 N M 0 -19 - 0 0 0 sco K 
+1665 1960 N M 1 -19 - 0 0 0 sco K 
+1666 1927 N M 0 -19 - 0 0 0 sco K 
+1666 1894 N M 1 -15 - 0 0 0 sco K 
+1667 1879 N M 0 4 - 0 0 0 sco K 
+1667 1897 N M 0 19 - 0 0 0 sco K 
+1667 1930 N M 0 19 - 0 0 0 sco K 
+1667 1963 N M 1 19 - 0 0 0 sco K 
+1668 1996 N M 0 19 - 0 0 0 sco K 
+1668 2029 N M 0 19 - 0 0 0 sco K 
+1668 2062 N M 1 19 - 0 0 0 sco K 
+1669 2095 N M 0 19 - 0 0 0 sco K 
+1669 2128 N M 0 19 - 0 0 0 sco K 
+1669 2161 N M 1 16 - 0 0 0 sco K 
+1670 2177 N M 0 -3 - 0 0 0 sco K 
+1670 2160 N M 0 -19 - 0 0 0 sco K 
+1670 2127 N M 0 -19 - 0 0 0 sco K 
+1671 2094 N M 0 -19 - 0 0 0 sco K 
+1671 2061 N M 0 -19 - 0 0 0 sco K 
+1672 2028 N M 0 -19 - 0 0 0 sco K 
+1672 1995 N M 0 -19 - 0 0 0 sco K 
+1672 1962 N M 1 -19 - 0 0 0 sco K 
+1673 1929 N M 0 -19 - 0 0 0 sco K 
+1673 1896 N M 1 -17 - 0 0 0 sco K 
+1674 1879 N M 0 2 - 0 0 0 sco K 
+1674 1895 N M 0 19 - 0 0 0 sco K 
+1674 1928 N M 0 19 - 0 0 0 sco K 
+1674 1961 N M 0 19 - 0 0 0 sco K 
+1674 1994 N M 1 19 - 0 0 0 sco K 
+1675 2027 N M 0 19 - 0 0 0 sco K 
+1675 2060 N M 0 19 - 0 0 0 sco K 
+1675 2093 N M 0 19 - 0 0 0 sco K 
+1676 2126 N M 0 19 - 0 0 0 sco K 
+1676 2159 N M 0 19 - 0 0 0 sco K 
+1676 2192 N M 0 19 - 0 0 0 sco K 
+1676 2225 N M 1 19 - 0 0 0 sco K 
+1677 2258 N M 0 19 - 0 0 0 sco K 
+1677 2291 N M 0 19 - 0 0 0 sco K 
+1677 2324 N M 0 19 - 0 0 0 sco K 
+1678 2353 N M 0 -19 - 0 0 0 sco K 
+1678 2320 N M 0 -19 - 0 0 0 sco K 
+1679 2287 N M 0 -19 - 0 0 0 sco K 
+1679 2254 N M 1 -19 - 0 0 0 sco K 
+1680 2221 N M 0 -19 - 0 0 0 sco K 
+1680 2188 N M 1 -11 - 0 0 0 sco K 
+1681 2177 N M 4 0 - 0 0 0 sco K 
+1685 2177 N M 4 0 - 0 0 0 sco K 
+1692 2166 N M 0 -19 - 0 0 0 sco K 
+1692 2133 N M 0 -19 - 0 0 0 sco K 
+1693 2100 N M 0 -19 - 0 0 0 sco K 
+1693 2067 N M 0 -19 - 0 0 0 sco K 
+1693 2034 N M 1 -19 - 0 0 0 sco K 
+1694 2001 N M 0 -19 - 0 0 0 sco K 
+1694 1968 N M 1 -19 - 0 0 0 sco K 
+1695 1935 N M 0 -19 - 0 0 0 sco K 
+1695 1902 N M 0 -19 - 0 0 0 sco K 
+1699 1886 N M 0 19 - 0 0 0 sco K 
+1699 1919 N M 0 19 - 0 0 0 sco K 
+1699 1952 N M 1 19 - 0 0 0 sco K 
+1700 1985 N M 0 19 - 0 0 0 sco K 
+1700 2018 N M 0 19 - 0 0 0 sco K 
+1700 2051 N M 1 19 - 0 0 0 sco K 
+1701 2084 N M 0 19 - 0 0 0 sco K 
+1701 2117 N M 0 19 - 0 0 0 sco K 
+1702 2150 N M 0 19 - 0 0 0 sco K 
+1702 2183 N M 0 19 - 0 0 0 sco K 
+1702 2216 N M 0 19 - 0 0 0 sco K 
+1703 2223 N M 0 -19 - 0 0 0 sco K 
+1703 2190 N M 0 -19 - 0 0 0 sco K 
+1703 2157 N M 1 -19 - 0 0 0 sco K 
+1704 2124 N M 0 -19 - 0 0 0 sco K 
+1704 2091 N M 0 -19 - 0 0 0 sco K 
+1704 2058 N M 1 -19 - 0 0 0 sco K 
+1705 2025 N M 0 -19 - 0 0 0 sco K 
+1705 1992 N M 0 -19 - 0 0 0 sco K 
+1706 1959 N M 0 -19 - 0 0 0 sco K 
+1706 1926 N M 0 -19 - 0 0 0 sco K 
+1706 1893 N M 1 -14 - 0 0 0 sco K 
+1707 1879 N M 3 0 - 0 0 0 sco K 
+1710 1879 N M 2 0 - 0 0 0 sco K 
+1721 1884 N M 0 19 - 0 0 0 sco K 
+1721 1917 N M 0 19 - 0 0 0 sco K 
+1721 1950 N M 0 19 - 0 0 0 sco K 
+1721 1983 N M 0 19 - 0 0 0 sco K 
+1721 2016 N M 0 19 - 0 0 0 sco K 
+1722 2049 N M 0 19 - 0 0 0 sco K 
+1722 2082 N M 0 19 - 0 0 0 sco K 
+1722 2115 N M 0 19 - 0 0 0 sco K 
+1722 2148 N M 0 19 - 0 0 0 sco K 
+1722 2181 N M 0 19 - 0 0 0 sco K 
+1723 2214 N M 0 19 - 0 0 0 sco K 
+1723 2247 N M 0 19 - 0 0 0 sco K 
+1723 2280 N M 0 19 - 0 0 0 sco K 
+1723 2313 N M 0 19 - 0 0 0 sco K 
+1723 2346 N M 0 19 - 0 0 0 sco K 
+1724 2379 N M 0 19 - 0 0 0 sco K 
+1724 2412 N M 0 19 - 0 0 0 sco K 
+1724 2445 N M 0 19 - 0 0 0 sco K 
+1724 2478 N M 0 19 - 0 0 0 sco K 
+1724 2511 N M 0 19 - 0 0 0 sco K 
+1725 2524 N M 0 -19 - 0 0 0 sco K 
+1725 2491 N M 0 -19 - 0 0 0 sco K 
+1725 2458 N M 0 -19 - 0 0 0 sco K 
+1725 2425 N M 0 -19 - 0 0 0 sco K 
+1725 2392 N M 0 -19 - 0 0 0 sco K 
+1726 2359 N M 0 -19 - 0 0 0 sco K 
+1726 2326 N M 0 -19 - 0 0 0 sco K 
+1726 2293 N M 0 -19 - 0 0 0 sco K 
+1726 2260 N M 0 -19 - 0 0 0 sco K 
+1726 2227 N M 0 -19 - 0 0 0 sco K 
+1727 2194 N M 0 -19 - 0 0 0 sco K 
+1727 2161 N M 0 -19 - 0 0 0 sco K 
+1727 2128 N M 0 -19 - 0 0 0 sco K 
+1727 2095 N M 0 -19 - 0 0 0 sco K 
+1727 2062 N M 0 -19 - 0 0 0 sco K 
+1728 2029 N M 0 -19 - 0 0 0 sco K 
+1728 1996 N M 0 -19 - 0 0 0 sco K 
+1728 1963 N M 0 -19 - 0 0 0 sco K 
+1728 1930 N M 0 -19 - 0 0 0 sco K 
+1728 1897 N M 1 -18 - 0 0 0 sco K 
+1729 1879 N M 0 1 - 0 0 0 sco K 
+1729 1894 N M 0 19 - 0 0 0 sco K 
+1729 1927 N M 0 19 - 0 0 0 sco K 
+1729 1960 N M 0 19 - 0 0 0 sco K 
+1729 1993 N M 0 19 - 0 0 0 sco K 
+1729 2026 N M 0 19 - 0 0 0 sco K 
+1729 2059 N M 0 19 - 0 0 0 sco K 
+1729 2092 N M 1 19 - 0 0 0 sco K 
+1730 2125 N M 0 19 - 0 0 0 sco K 
+1730 2158 N M 0 19 - 0 0 0 sco K 
+1730 2191 N M 0 19 - 0 0 0 sco K 
+1730 2224 N M 0 19 - 0 0 0 sco K 
+1730 2257 N M 0 19 - 0 0 0 sco K 
+1730 2290 N M 0 19 - 0 0 0 sco K 
+1731 2323 N M 0 19 - 0 0 0 sco K 
+1731 2356 N M 0 19 - 0 0 0 sco K 
+1731 2389 N M 0 19 - 0 0 0 sco K 
+1731 2422 N M 0 19 - 0 0 0 sco K 
+1731 2455 N M 0 19 - 0 0 0 sco K 
+1731 2488 N M 0 19 - 0 0 0 sco K 
+1731 2521 N M 1 13 - 0 0 0 sco K 
+1732 2534 N M 0 -6 - 0 0 0 sco K 
+1732 2514 N M 0 -19 - 0 0 0 sco K 
+1732 2481 N M 0 -19 - 0 0 0 sco K 
+1732 2448 N M 0 -19 - 0 0 0 sco K 
+1732 2415 N M 0 -19 - 0 0 0 sco K 
+1732 2382 N M 1 -19 - 0 0 0 sco K 
+1733 2349 N M 0 -19 - 0 0 0 sco K 
+1733 2316 N M 0 -19 - 0 0 0 sco K 
+1733 2283 N M 0 -19 - 0 0 0 sco K 
+1733 2250 N M 0 -19 - 0 0 0 sco K 
+1733 2217 N M 1 -19 - 0 0 0 sco K 
+1734 2184 N M 0 -19 - 0 0 0 sco K 
+1734 2151 N M 0 -19 - 0 0 0 sco K 
+1734 2118 N M 0 -19 - 0 0 0 sco K 
+1734 2085 N M 0 -19 - 0 0 0 sco K 
+1734 2052 N M 1 -19 - 0 0 0 sco K 
+1735 2019 N M 0 -19 - 0 0 0 sco K 
+1735 1986 N M 0 -19 - 0 0 0 sco K 
+1735 1953 N M 0 -19 - 0 0 0 sco K 
+1735 1920 N M 0 -19 - 0 0 0 sco K 
+1735 1887 N M 1 -8 - 0 0 0 sco K 
+1736 1879 N M 0 11 - 0 0 0 sco K 
+1736 1904 N M 0 19 - 0 0 0 sco K 
+1736 1937 N M 0 19 - 0 0 0 sco K 
+1736 1970 N M 0 19 - 0 0 0 sco K 
+1737 2003 N M 0 19 - 0 0 0 sco K 
+1737 2036 N M 0 19 - 0 0 0 sco K 
+1737 2069 N M 0 19 - 0 0 0 sco K 
+1737 2102 N M 1 19 - 0 0 0 sco K 
+1738 2135 N M 0 19 - 0 0 0 sco K 
+1738 2168 N M 0 19 - 0 0 0 sco K 
+1738 2201 N M 0 19 - 0 0 0 sco K 
+1738 2234 N M 1 2 - 0 0 0 sco K 
+1739 2236 N M 4 0 - 0 0 0 sco K 
+1743 2236 N M 4 0 - 0 0 0 sco K 
+1747 2236 N M 0 9 - 0 0 0 sco K 
+1747 2259 N M 0 19 - 0 0 0 sco K 
+1747 2292 N M 0 19 - 0 0 0 sco K 
+1747 2325 N M 1 19 - 0 0 0 sco K 
+1748 2358 N M 0 19 - 0 0 0 sco K 
+1748 2391 N M 0 19 - 0 0 0 sco K 
+1748 2424 N M 1 19 - 0 0 0 sco K 
+1749 2457 N M 0 19 - 0 0 0 sco K 
+1749 2490 N M 0 19 - 0 0 0 sco K 
+1749 2523 N M 1 11 - 0 0 0 sco K 
+1750 2534 N M 4 0 - 0 0 0 sco K 
+1754 2534 N M 4 0 - 0 0 0 sco K 
+1758 2520 N M 0 -19 - 0 0 0 sco K 
+1758 2487 N M 0 -19 - 0 0 0 sco K 
+1758 2454 N M 0 -19 - 0 0 0 sco K 
+1758 2421 N M 1 -19 - 0 0 0 sco K 
+1759 2388 N M 0 -19 - 0 0 0 sco K 
+1759 2355 N M 0 -19 - 0 0 0 sco K 
+1759 2322 N M 0 -19 - 0 0 0 sco K 
+1760 2289 N M 0 -19 - 0 0 0 sco K 
+1760 2256 N M 0 -19 - 0 0 0 sco K 
+1760 2223 N M 0 -19 - 0 0 0 sco K 
+1760 2190 N M 1 -13 - 0 0 0 sco K 
+1761 2177 N M 4 0 - 0 0 0 sco K 
+1765 2177 N M 2 0 - 0 0 0 sco K 
+1776 2182 N M 1 19 - 0 0 0 sco K 
+1778 2215 N M 1 19 - 0 0 0 sco K 
+1780 2248 N M 0 19 - 0 0 0 sco K 
+1780 2281 N M 0 19 - 0 0 0 sco K 
+1780 2314 N M 0 19 - 0 0 0 sco K 
+1781 2347 N M 0 19 - 0 0 0 sco K 
+1781 2380 N M 0 19 - 0 0 0 sco K 
+1781 2413 N M 0 19 - 0 0 0 sco K 
+1782 2446 N M 0 19 - 0 0 0 sco K 
+1782 2479 N M 0 19 - 0 0 0 sco K 
+1782 2512 N M 0 19 - 0 0 0 sco K 
+1783 2523 N M 0 -19 - 0 0 0 sco K 
+1783 2490 N M 0 -19 - 0 0 0 sco K 
+1784 2457 N M 0 -19 - 0 0 0 sco K 
+1784 2424 N M 0 -19 - 0 0 0 sco K 
+1784 2391 N M 1 -19 - 0 0 0 sco K 
+1785 2358 N M 0 -19 - 0 0 0 sco K 
+1785 2325 N M 1 -19 - 0 0 0 sco K 
+1786 2292 N M 0 -19 - 0 0 0 sco K 
+1786 2259 N M 0 -19 - 0 0 0 sco K 
+1794 2239 N M 0 19 - 0 0 0 sco K 
+1794 2272 N M 0 19 - 0 0 0 sco K 
+1794 2305 N M 1 19 - 0 0 0 sco K 
+1795 2338 N M 0 19 - 0 0 0 sco K 
+1795 2371 N M 1 19 - 0 0 0 sco K 
+1796 2404 N M 0 19 - 0 0 0 sco K 
+1796 2437 N M 0 19 - 0 0 0 sco K 
+1797 2470 N M 0 19 - 0 0 0 sco K 
+1797 2503 N M 0 19 - 0 0 0 sco K 
+1798 2532 N M 0 -19 - 0 0 0 sco K 
+1798 2499 N M 0 -19 - 0 0 0 sco K 
+1798 2466 N M 0 -19 - 0 0 0 sco K 
+1799 2433 N M 0 -19 - 0 0 0 sco K 
+1799 2400 N M 0 -19 - 0 0 0 sco K 
+1799 2367 N M 0 -19 - 0 0 0 sco K 
+1800 2334 N M 0 -19 - 0 0 0 sco K 
+1800 2301 N M 0 -19 - 0 0 0 sco K 
+1800 2268 N M 0 -19 - 0 0 0 sco K 
+1802 2236 N M 3 0 - 0 0 0 sco K 
+1805 2236 N M 4 0 - 0 0 0 sco K 
+1809 2236 N M 3 0 - 0 0 0 sco K 
+1812 2236 N M 4 0 - 0 0 0 sco K 
+1816 2236 N M 4 0 - 0 0 0 sco K 
+1820 2236 N M 1 0 - 0 0 0 sco K 
+1835 2236 N M 3 0 - 0 0 0 sco K 
+1838 2236 N M 3 0 - 0 0 0 sco K 
+1841 2236 N M 4 0 - 0 0 0 sco K 
+1845 2236 N M 4 0 - 0 0 0 sco K 
+1849 2236 N M 3 0 - 0 0 0 sco K 
+1852 2236 N M 2 0 - 0 0 0 sco K 
+1868 2236 N M 2 0 - 0 0 0 sco K 
+1870 2236 N M 4 0 - 0 0 0 sco K 
+1874 2236 N M 4 0 - 0 0 0 sco K 
+1878 2236 N M 3 0 - 0 0 0 sco K 
+1881 2236 N M 4 0 - 0 0 0 sco K 
+1885 2236 N M 2 0 - 0 0 0 sco K 
+1901 2236 N M 2 0 - 0 0 0 sco K 
+1903 2236 N M 4 0 - 0 0 0 sco K 
+1907 2236 N M 4 0 - 0 0 0 sco K 
+1911 2236 N M 3 0 - 0 0 0 sco K 
+1914 2236 N M 4 0 - 0 0 0 sco K 
+1918 2236 N M 2 0 - 0 0 0 sco K 
+1934 2236 N M 2 0 - 0 0 0 sco K 
+1936 2236 N M 4 0 - 0 0 0 sco K 
+1940 2236 N M 3 0 - 0 0 0 sco K 
+1943 2236 N M 4 0 - 0 0 0 sco K 
+1947 2236 N M 4 0 - 0 0 0 sco K 
+1951 2236 N M 2 0 - 0 0 0 sco K 
+1961 2230 N M 1 -19 - 0 0 0 sco K 
+1963 2197 N M 1 -19 - 0 0 0 sco K 
+1965 2190 N M 2 19 - 0 0 0 sco K 
+1968 2223 N M 1 13 - 0 0 0 sco K 
+1969 2236 N M 3 0 - 0 0 0 sco K 
+1972 2236 N M 3 0 - 0 0 0 sco K 
+1980 2227 N M 1 -19 - 0 0 0 sco K 
+1982 2194 N M 1 -17 - 0 0 0 sco K 
+1983 2177 N M 2 0 - 0 0 0 sco K 
+1999 2177 N M 3 0 - 0 0 0 sco K 
+2002 2177 N M 3 0 - 0 0 0 sco K 
+2005 2177 N M 4 0 - 0 0 0 sco K 
+2009 2177 N M 3 0 - 0 0 0 sco K 
+2012 2177 N M 4 0 - 0 0 0 sco K 
+2016 2177 N M 2 0 - 0 0 0 sco K 
+2032 2177 N M 2 0 - 0 0 0 sco K 
+2034 2177 N M 1 17 - 0 0 0 sco K 
+2036 2208 N M 1 19 - 0 0 0 sco K 
+2043 2236 N M 2 0 - 0 0 0 sco K 
+2045 2236 N M 4 0 - 0 0 0 sco K 
+2049 2236 N M 3 0 - 0 0 0 sco K 
+2052 2236 N M 4 0 - 0 0 0 sco K 
+2056 2236 N M 0 -6 - 0 0 0 sco K 
+2057 2216 N M 1 -19 - 0 0 0 sco K 
+2059 2183 N M 1 -6 - 0 0 0 sco K 
+2060 2177 N M 3 0 - 0 0 0 sco K 
+2063 2177 N M 4 0 - 0 0 0 sco K 
+2067 2177 N M 4 0 - 0 0 0 sco K 
+2071 2177 N M 2 0 - 0 0 0 sco K 
+2087 2177 N M 2 0 - 0 0 0 sco K 
+2089 2177 N M 3 0 - 0 0 0 sco K 
+2092 2177 N M 4 0 - 0 0 0 sco K 
+2096 2177 N M 4 0 - 0 0 0 sco K 
+2100 2177 N M 3 0 - 0 0 0 sco K 
+2103 2177 N M 3 0 - 0 0 0 sco K 
+2120 2177 N M 2 0 - 0 0 0 sco K 
+2122 2177 N M 3 0 - 0 0 0 sco K 
+2125 2177 N M 4 0 - 0 0 0 sco K 
+2129 2177 N M 4 0 - 0 0 0 sco K 
+2133 2177 N M 3 0 - 0 0 0 sco K 
+2136 2177 N M 3 0 - 0 0 0 sco K 
+2153 2177 N M 1 0 - 0 0 0 sco K 
+2154 2177 N M 4 0 - 0 0 0 sco K 
+2158 2177 N M 4 0 - 0 0 0 sco K 
+2162 2177 N M 3 0 - 0 0 0 sco K 
+2165 2177 N M 4 0 - 0 0 0 sco K 
+2169 2177 N M 3 0 - 0 0 0 sco K 
+2186 2177 N M 1 0 - 0 0 0 sco K 
+2187 2177 N M 4 0 - 0 0 0 sco K 
+2191 2177 N M 3 0 - 0 0 0 sco K 
+2194 2177 N M 4 0 - 0 0 0 sco K 
+2198 2177 N M 4 0 - 0 0 0 sco K 
+2202 2177 N M 3 0 - 0 0 0 sco K 
+2219 2177 N M 1 0 - 0 0 0 sco K 
+2220 2177 N M 3 0 - 0 0 0 sco K 
+2223 2177 N M 4 0 - 0 0 0 sco K 
+2227 2177 N M 4 0 - 0 0 0 sco K 
+2231 2177 N M 3 0 - 0 0 0 sco K 
+2234 2177 N M 4 0 - 0 0 0 sco K 
+2252 2177 N M 1 0 - 0 0 0 sco K 
+2253 2177 N M 3 0 - 0 0 0 sco K 
+2256 2177 N M 4 0 - 0 0 0 sco K 
+2260 2177 N M 4 0 - 0 0 0 sco K 
+2264 2177 N M 3 0 - 0 0 0 sco K 
+2267 2177 N M 4 0 - 0 0 0 sco K 
+2285 2177 N M 4 0 - 0 0 0 sco K 
+2289 2177 N M 4 0 - 0 0 0 sco K 
+2293 2177 N M 3 0 - 0 0 0 sco K 
+2296 2177 N M 4 0 - 0 0 0 sco K 
+2300 2177 N M 4 0 - 0 0 0 sco K 
+2304 2163 N M 1 -19 - 0 0 0 sco K 
+2306 2130 N M 1 -13 - 0 0 0 sco K 
+2307 2117 N M 4 0 - 0 0 0 sco K 
+2311 2117 N M 2 0 - 0 0 0 sco K 
+2327 2117 N M 2 0 - 0 0 0 sco K 
+2329 2117 N M 1 17 - 0 0 0 sco K 
+2331 2148 N M 1 19 - 0 0 0 sco K 
+2333 2173 N M 1 -19 - 0 0 0 sco K 
+2334 2140 N M 1 -19 - 0 0 0 sco K 
+2346 2117 N M 1 0 - 0 0 0 sco K 
+2347 2117 N M 4 0 - 0 0 0 sco K 
+2351 2117 N M 4 0 - 0 0 0 sco K 
+1161 1757 N M 0 901 - 8 Lw solid 0 0 0 sco K 
+1161 2658 N M 1198 0 - 0 0 0 sco K 
+2359 2658 N M 0 -901 - 0 0 0 sco K 
+2359 1757 N M -1198 0 - 0 0 0 sco K : 2543 2592 156 57 rc 0 0 0 sco F0_50
+Ji 
+2595 2592 M 
+0.200 0 (0)A 
+; 
+2633 2628 N M 15 0 - 5 Lw solid 0 0 0 sco K : 2543 2443 156 57 rc 0 0 0 sco F0_50
+Ji 
+2595 2443 M 
+0.200 0 (1)A 
+; 
+2633 2479 N M 15 0 - 0 0 0 sco K : 2543 2294 156 57 rc 0 0 0 sco F0_50
+Ji 
+2595 2294 M 
+0.200 0 (2)A 
+; 
+2633 2330 N M 15 0 - 0 0 0 sco K : 2543 2146 156 57 rc 0 0 0 sco F0_50
+Ji 
+2595 2146 M 
+0.200 0 (3)A 
+; 
+2633 2182 N M 15 0 - 0 0 0 sco K : 2543 1997 156 57 rc 0 0 0 sco F0_50
+Ji 
+2595 1997 M 
+0.200 0 (4)A 
+; 
+2633 2033 N M 15 0 - 0 0 0 sco K : 2543 1848 156 57 rc 0 0 0 sco F0_50
+Ji 
+2595 1848 M 
+0.200 0 (5)A 
+; 
+2633 1884 N M 15 0 - 0 0 0 sco K : 2543 1700 156 57 rc 0 0 0 sco F0_50
+Ji 
+2595 1700 M 
+0.200 0 (6)A 
+; 
+2633 1736 N M 15 0 - 0 0 0 sco K : 3826 2592 156 57 rc 0 0 0 sco F0_50
+Ji 
+3878 2592 M 
+0.200 0 (0)A 
+; 
+3852 2628 N M 13 0 - 0 0 0 sco K : 3826 2294 156 57 rc 0 0 0 sco F0_50
+Ji 
+3878 2294 M 
+0.200 0 (5)A 
+; 
+3852 2330 N M 13 0 - 0 0 0 sco K : 3826 1997 208 57 rc 0 0 0 sco F0_50
+Ji 
+3878 1997 M 
+0.200 0 (10)A 
+; 
+3852 2033 N M 13 0 - 0 0 0 sco K : 3826 1700 208 57 rc 0 0 0 sco F0_50
+Ji 
+3878 1700 M 
+0.200 0 (15)A 
+; 
+3852 1736 N M 13 0 - 0 0 0 sco K 
+2654 2637 N M 0 11 - 0 0 0 sco K : 2645 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+2697 2655 M 
+0.200 0 (70)A 
+; 
+2697 2637 N M 0 11 - 0 0 0 sco K 
+2741 2637 N M 0 11 - 0 0 0 sco K : 2733 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+2785 2655 M 
+0.200 0 (72)A 
+; 
+2785 2637 N M 0 11 - 0 0 0 sco K 
+2828 2637 N M 0 11 - 0 0 0 sco K : 2820 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+2872 2655 M 
+0.200 0 (74)A 
+; 
+2872 2637 N M 0 11 - 0 0 0 sco K 
+2916 2637 N M 0 11 - 0 0 0 sco K : 2907 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+2959 2655 M 
+0.200 0 (76)A 
+; 
+2959 2637 N M 0 11 - 0 0 0 sco K 
+3003 2637 N M 0 11 - 0 0 0 sco K : 2995 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+3047 2655 M 
+0.200 0 (78)A 
+; 
+3047 2637 N M 0 11 - 0 0 0 sco K 
+3090 2637 N M 0 11 - 0 0 0 sco K : 3082 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+3134 2655 M 
+0.200 0 (80)A 
+; 
+3134 2637 N M 0 11 - 0 0 0 sco K 
+3178 2637 N M 0 11 - 0 0 0 sco K : 3169 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+3221 2655 M 
+0.200 0 (82)A 
+; 
+3221 2637 N M 0 11 - 0 0 0 sco K 
+3265 2637 N M 0 11 - 0 0 0 sco K : 3257 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+3309 2655 M 
+0.200 0 (84)A 
+; 
+3309 2637 N M 0 11 - 0 0 0 sco K 
+3353 2637 N M 0 11 - 0 0 0 sco K : 3344 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+3396 2655 M 
+0.200 0 (86)A 
+; 
+3396 2637 N M 0 11 - 0 0 0 sco K 
+3440 2637 N M 0 11 - 0 0 0 sco K : 3432 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+3484 2655 M 
+0.200 0 (88)A 
+; 
+3484 2637 N M 0 11 - 0 0 0 sco K 
+3527 2637 N M 0 11 - 0 0 0 sco K : 3519 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+3571 2655 M 
+0.200 0 (90)A 
+; 
+3571 2637 N M 0 11 - 0 0 0 sco K 
+3615 2637 N M 0 11 - 0 0 0 sco K : 3606 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+3658 2655 M 
+0.200 0 (92)A 
+; 
+3658 2637 N M 0 11 - 0 0 0 sco K 
+3702 2637 N M 0 11 - 0 0 0 sco K : 3694 2655 208 57 rc 0 0 0 sco F0_50
+Ji 
+3746 2655 M 
+0.200 0 (94)A 
+; 
+3746 2637 N M 0 11 - 0 0 0 sco K 
+3789 2637 N M 0 11 - 0 0 0 sco K 
+3833 2637 N M 0 11 - 0 0 0 sco K 
+2654 2033 N M 3 -149 - 0 0 0 sco K 
+2657 1884 N M 4 149 - 0 0 0 sco K 
+2661 2033 N M 3 0 - 0 0 0 sco K 
+2664 2033 N M 4 -149 - 0 0 0 sco K 
+2668 1884 N M 4 0 - 0 0 0 sco K 
+2672 1884 N M 3 149 - 0 0 0 sco K 
+2675 2033 N M 4 -149 - 0 0 0 sco K 
+2679 1884 N M 4 149 - 0 0 0 sco K 
+2683 2033 N M 3 0 - 0 0 0 sco K 
+2686 2033 N M 4 0 - 0 0 0 sco K 
+2690 2033 N M 4 0 - 0 0 0 sco K 
+2694 2033 N M 3 0 - 0 0 0 sco K 
+2697 2033 N M 4 0 - 0 0 0 sco K 
+2701 2033 N M 3 0 - 0 0 0 sco K 
+2704 2033 N M 4 -149 - 0 0 0 sco K 
+2708 1884 N M 4 0 - 0 0 0 sco K 
+2712 1884 N M 3 0 - 0 0 0 sco K 
+2715 1884 N M 4 0 - 0 0 0 sco K 
+2719 1884 N M 4 0 - 0 0 0 sco K 
+2723 1884 N M 3 0 - 0 0 0 sco K 
+2726 1884 N M 4 0 - 0 0 0 sco K 
+2730 1884 N M 4 298 - 0 0 0 sco K 
+2734 2182 N M 3 0 - 0 0 0 sco K 
+2737 2182 N M 4 0 - 0 0 0 sco K 
+2741 2182 N M 3 0 - 0 0 0 sco K 
+2744 2182 N M 4 -149 - 0 0 0 sco K 
+2748 2033 N M 4 0 - 0 0 0 sco K 
+2752 2033 N M 3 0 - 0 0 0 sco K 
+2755 2033 N M 4 149 - 0 0 0 sco K 
+2759 2182 N M 4 148 - 0 0 0 sco K 
+2763 2330 N M 3 -148 - 0 0 0 sco K 
+2766 2182 N M 4 0 - 0 0 0 sco K 
+2770 2182 N M 4 0 - 0 0 0 sco K 
+2774 2182 N M 3 0 - 0 0 0 sco K 
+2777 2182 N M 4 148 - 0 0 0 sco K 
+2781 2330 N M 4 0 - 0 0 0 sco K 
+2785 2330 N M 3 0 - 0 0 0 sco K 
+2788 2330 N M 4 0 - 0 0 0 sco K 
+2792 2330 N M 3 0 - 0 0 0 sco K 
+2795 2330 N M 4 0 - 0 0 0 sco K 
+2799 2330 N M 4 0 - 0 0 0 sco K 
+2803 2330 N M 3 0 - 0 0 0 sco K 
+2806 2330 N M 4 0 - 0 0 0 sco K 
+2810 2330 N M 4 0 - 0 0 0 sco K 
+2814 2330 N M 3 0 - 0 0 0 sco K 
+2817 2330 N M 4 0 - 0 0 0 sco K 
+2821 2330 N M 4 0 - 0 0 0 sco K 
+2825 2330 N M 3 0 - 0 0 0 sco K 
+2828 2330 N M 4 0 - 0 0 0 sco K 
+2832 2330 N M 3 0 - 0 0 0 sco K 
+2835 2330 N M 4 0 - 0 0 0 sco K 
+2839 2330 N M 4 0 - 0 0 0 sco K 
+2843 2330 N M 3 0 - 0 0 0 sco K 
+2846 2330 N M 4 0 - 0 0 0 sco K 
+2850 2330 N M 4 0 - 0 0 0 sco K 
+2854 2330 N M 3 0 - 0 0 0 sco K 
+2857 2330 N M 4 0 - 0 0 0 sco K 
+2861 2330 N M 4 0 - 0 0 0 sco K 
+2865 2330 N M 3 0 - 0 0 0 sco K 
+2868 2330 N M 4 0 - 0 0 0 sco K 
+2872 2330 N M 3 0 - 0 0 0 sco K 
+2875 2330 N M 4 0 - 0 0 0 sco K 
+2879 2330 N M 4 0 - 0 0 0 sco K 
+2883 2330 N M 3 0 - 0 0 0 sco K 
+2886 2330 N M 4 0 - 0 0 0 sco K 
+2890 2330 N M 4 -148 - 0 0 0 sco K 
+2894 2182 N M 3 0 - 0 0 0 sco K 
+2897 2182 N M 4 0 - 0 0 0 sco K 
+2901 2182 N M 4 0 - 0 0 0 sco K 
+2905 2182 N M 3 0 - 0 0 0 sco K 
+2908 2182 N M 4 148 - 0 0 0 sco K 
+2912 2330 N M 4 -148 - 0 0 0 sco K 
+2916 2182 N M 3 0 - 0 0 0 sco K 
+2919 2182 N M 4 0 - 0 0 0 sco K 
+2923 2182 N M 3 0 - 0 0 0 sco K 
+2926 2182 N M 4 0 - 0 0 0 sco K 
+2930 2182 N M 4 148 - 0 0 0 sco K 
+2934 2330 N M 3 0 - 0 0 0 sco K 
+2937 2330 N M 4 0 - 0 0 0 sco K 
+2941 2330 N M 4 0 - 0 0 0 sco K 
+2945 2330 N M 3 0 - 0 0 0 sco K 
+2948 2330 N M 4 149 - 0 0 0 sco K 
+2952 2479 N M 4 -149 - 0 0 0 sco K 
+2956 2330 N M 3 0 - 0 0 0 sco K 
+2959 2330 N M 4 0 - 0 0 0 sco K 
+2963 2330 N M 3 0 - 0 0 0 sco K 
+2966 2330 N M 4 0 - 0 0 0 sco K 
+2970 2330 N M 4 0 - 0 0 0 sco K 
+2974 2330 N M 3 0 - 0 0 0 sco K 
+2977 2330 N M 4 0 - 0 0 0 sco K 
+2981 2330 N M 4 0 - 0 0 0 sco K 
+2985 2330 N M 3 0 - 0 0 0 sco K 
+2988 2330 N M 4 0 - 0 0 0 sco K 
+2992 2330 N M 4 0 - 0 0 0 sco K 
+2996 2330 N M 3 0 - 0 0 0 sco K 
+2999 2330 N M 4 0 - 0 0 0 sco K 
+3003 2330 N M 3 0 - 0 0 0 sco K 
+3006 2330 N M 4 0 - 0 0 0 sco K 
+3010 2330 N M 4 0 - 0 0 0 sco K 
+3014 2330 N M 3 0 - 0 0 0 sco K 
+3017 2330 N M 4 0 - 0 0 0 sco K 
+3021 2330 N M 4 0 - 0 0 0 sco K 
+3025 2330 N M 3 0 - 0 0 0 sco K 
+3028 2330 N M 4 0 - 0 0 0 sco K 
+3032 2330 N M 4 0 - 0 0 0 sco K 
+3036 2330 N M 3 0 - 0 0 0 sco K 
+3039 2330 N M 4 0 - 0 0 0 sco K 
+3043 2330 N M 4 0 - 0 0 0 sco K 
+3047 2330 N M 3 0 - 0 0 0 sco K 
+3050 2330 N M 4 0 - 0 0 0 sco K 
+3054 2330 N M 3 0 - 0 0 0 sco K 
+3057 2330 N M 4 0 - 0 0 0 sco K 
+3061 2330 N M 4 -148 - 0 0 0 sco K 
+3065 2182 N M 3 148 - 0 0 0 sco K 
+3068 2330 N M 4 0 - 0 0 0 sco K 
+3072 2330 N M 4 0 - 0 0 0 sco K 
+3076 2330 N M 3 0 - 0 0 0 sco K 
+3079 2330 N M 4 0 - 0 0 0 sco K 
+3083 2330 N M 4 0 - 0 0 0 sco K 
+3087 2330 N M 3 0 - 0 0 0 sco K 
+3090 2330 N M 4 0 - 0 0 0 sco K 
+3094 2330 N M 3 0 - 0 0 0 sco K 
+3097 2330 N M 4 0 - 0 0 0 sco K 
+3101 2330 N M 4 0 - 0 0 0 sco K 
+3105 2330 N M 3 0 - 0 0 0 sco K 
+3108 2330 N M 4 0 - 0 0 0 sco K 
+3112 2330 N M 4 0 - 0 0 0 sco K 
+3116 2330 N M 3 0 - 0 0 0 sco K 
+3119 2330 N M 4 0 - 0 0 0 sco K 
+3123 2330 N M 4 0 - 0 0 0 sco K 
+3127 2330 N M 3 0 - 0 0 0 sco K 
+3130 2330 N M 4 0 - 0 0 0 sco K 
+3134 2330 N M 4 0 - 0 0 0 sco K 
+3138 2330 N M 3 0 - 0 0 0 sco K 
+3141 2330 N M 4 0 - 0 0 0 sco K 
+3145 2330 N M 3 0 - 0 0 0 sco K 
+3148 2330 N M 4 0 - 0 0 0 sco K 
+3152 2330 N M 4 0 - 0 0 0 sco K 
+3156 2330 N M 3 0 - 0 0 0 sco K 
+3159 2330 N M 4 -148 - 0 0 0 sco K 
+3163 2182 N M 4 148 - 0 0 0 sco K 
+3167 2330 N M 3 0 - 0 0 0 sco K 
+3170 2330 N M 4 149 - 0 0 0 sco K 
+3174 2479 N M 4 0 - 0 0 0 sco K 
+3178 2479 N M 3 -149 - 0 0 0 sco K 
+3181 2330 N M 4 149 - 0 0 0 sco K 
+3185 2479 N M 3 -149 - 0 0 0 sco K 
+3188 2330 N M 4 149 - 0 0 0 sco K 
+3192 2479 N M 4 0 - 0 0 0 sco K 
+3196 2479 N M 3 0 - 0 0 0 sco K 
+3199 2479 N M 4 -149 - 0 0 0 sco K 
+3203 2330 N M 4 0 - 0 0 0 sco K 
+3207 2330 N M 3 0 - 0 0 0 sco K 
+3210 2330 N M 4 0 - 0 0 0 sco K 
+3214 2330 N M 4 0 - 0 0 0 sco K 
+3218 2330 N M 3 0 - 0 0 0 sco K 
+3221 2330 N M 4 -148 - 0 0 0 sco K 
+3225 2182 N M 3 148 - 0 0 0 sco K 
+3228 2330 N M 4 0 - 0 0 0 sco K 
+3232 2330 N M 4 149 - 0 0 0 sco K 
+3236 2479 N M 3 0 - 0 0 0 sco K 
+3239 2479 N M 4 0 - 0 0 0 sco K 
+3243 2479 N M 4 0 - 0 0 0 sco K 
+3247 2479 N M 3 0 - 0 0 0 sco K 
+3250 2479 N M 4 -297 - 0 0 0 sco K 
+3254 2182 N M 4 297 - 0 0 0 sco K 
+3258 2479 N M 3 -149 - 0 0 0 sco K 
+3261 2330 N M 4 0 - 0 0 0 sco K 
+3265 2330 N M 4 -148 - 0 0 0 sco K 
+3269 2182 N M 3 0 - 0 0 0 sco K 
+3272 2182 N M 4 0 - 0 0 0 sco K 
+3276 2182 N M 3 0 - 0 0 0 sco K 
+3279 2182 N M 4 0 - 0 0 0 sco K 
+3283 2182 N M 4 297 - 0 0 0 sco K 
+3287 2479 N M 3 0 - 0 0 0 sco K 
+3290 2479 N M 4 0 - 0 0 0 sco K 
+3294 2479 N M 4 0 - 0 0 0 sco K 
+3298 2479 N M 3 0 - 0 0 0 sco K 
+3301 2479 N M 4 0 - 0 0 0 sco K 
+3305 2479 N M 4 0 - 0 0 0 sco K 
+3309 2479 N M 3 0 - 0 0 0 sco K 
+3312 2479 N M 4 0 - 0 0 0 sco K 
+3316 2479 N M 3 0 - 0 0 0 sco K 
+3319 2479 N M 4 0 - 0 0 0 sco K 
+3323 2479 N M 4 0 - 0 0 0 sco K 
+3327 2479 N M 3 0 - 0 0 0 sco K 
+3330 2479 N M 4 0 - 0 0 0 sco K 
+3334 2479 N M 4 0 - 0 0 0 sco K 
+3338 2479 N M 3 0 - 0 0 0 sco K 
+3341 2479 N M 4 0 - 0 0 0 sco K 
+3345 2479 N M 4 0 - 0 0 0 sco K 
+3349 2479 N M 3 0 - 0 0 0 sco K 
+3352 2479 N M 4 0 - 0 0 0 sco K 
+3356 2479 N M 3 0 - 0 0 0 sco K 
+3359 2479 N M 4 0 - 0 0 0 sco K 
+3363 2479 N M 4 0 - 0 0 0 sco K 
+3367 2479 N M 3 0 - 0 0 0 sco K 
+3370 2479 N M 4 0 - 0 0 0 sco K 
+3374 2479 N M 4 0 - 0 0 0 sco K 
+3378 2479 N M 3 0 - 0 0 0 sco K 
+3381 2479 N M 4 0 - 0 0 0 sco K 
+3385 2479 N M 4 0 - 0 0 0 sco K 
+3389 2479 N M 3 0 - 0 0 0 sco K 
+3392 2479 N M 4 0 - 0 0 0 sco K 
+3396 2479 N M 4 0 - 0 0 0 sco K 
+3400 2479 N M 3 0 - 0 0 0 sco K 
+3403 2479 N M 4 0 - 0 0 0 sco K 
+3407 2479 N M 3 0 - 0 0 0 sco K 
+3410 2479 N M 4 0 - 0 0 0 sco K 
+3414 2479 N M 4 0 - 0 0 0 sco K 
+3418 2479 N M 3 0 - 0 0 0 sco K 
+3421 2479 N M 4 0 - 0 0 0 sco K 
+3425 2479 N M 4 0 - 0 0 0 sco K 
+3429 2479 N M 3 0 - 0 0 0 sco K 
+3432 2479 N M 4 0 - 0 0 0 sco K 
+3436 2479 N M 4 0 - 0 0 0 sco K 
+3440 2479 N M 3 0 - 0 0 0 sco K 
+3443 2479 N M 4 0 - 0 0 0 sco K 
+3447 2479 N M 3 0 - 0 0 0 sco K 
+3450 2479 N M 4 0 - 0 0 0 sco K 
+3454 2479 N M 4 0 - 0 0 0 sco K 
+3458 2479 N M 3 0 - 0 0 0 sco K 
+3461 2479 N M 4 0 - 0 0 0 sco K 
+3465 2479 N M 4 0 - 0 0 0 sco K 
+3469 2479 N M 3 0 - 0 0 0 sco K 
+3472 2479 N M 4 0 - 0 0 0 sco K 
+3476 2479 N M 4 0 - 0 0 0 sco K 
+3480 2479 N M 3 0 - 0 0 0 sco K 
+3483 2479 N M 4 0 - 0 0 0 sco K 
+3487 2479 N M 4 0 - 0 0 0 sco K 
+3491 2479 N M 3 0 - 0 0 0 sco K 
+3494 2479 N M 4 0 - 0 0 0 sco K 
+3498 2479 N M 3 0 - 0 0 0 sco K 
+3501 2479 N M 4 0 - 0 0 0 sco K 
+3505 2479 N M 4 0 - 0 0 0 sco K 
+3509 2479 N M 3 0 - 0 0 0 sco K 
+3512 2479 N M 4 0 - 0 0 0 sco K 
+3516 2479 N M 4 0 - 0 0 0 sco K 
+3520 2479 N M 3 0 - 0 0 0 sco K 
+3523 2479 N M 4 0 - 0 0 0 sco K 
+3527 2479 N M 4 0 - 0 0 0 sco K 
+3531 2479 N M 3 0 - 0 0 0 sco K 
+3534 2479 N M 4 0 - 0 0 0 sco K 
+3538 2479 N M 3 0 - 0 0 0 sco K 
+3541 2479 N M 4 0 - 0 0 0 sco K 
+3545 2479 N M 4 0 - 0 0 0 sco K 
+3549 2479 N M 3 0 - 0 0 0 sco K 
+3552 2479 N M 4 0 - 0 0 0 sco K 
+3556 2479 N M 4 0 - 0 0 0 sco K 
+3560 2479 N M 3 0 - 0 0 0 sco K 
+3563 2479 N M 4 0 - 0 0 0 sco K 
+3567 2479 N M 4 0 - 0 0 0 sco K 
+3571 2479 N M 3 0 - 0 0 0 sco K 
+3574 2479 N M 4 0 - 0 0 0 sco K 
+3578 2479 N M 3 0 - 0 0 0 sco K 
+3581 2479 N M 4 0 - 0 0 0 sco K 
+3585 2479 N M 4 0 - 0 0 0 sco K 
+3589 2479 N M 3 0 - 0 0 0 sco K 
+3592 2479 N M 4 0 - 0 0 0 sco K 
+3596 2479 N M 4 0 - 0 0 0 sco K 
+3600 2479 N M 3 0 - 0 0 0 sco K 
+3603 2479 N M 4 0 - 0 0 0 sco K 
+3607 2479 N M 4 0 - 0 0 0 sco K 
+3611 2479 N M 3 0 - 0 0 0 sco K 
+3614 2479 N M 4 0 - 0 0 0 sco K 
+3618 2479 N M 4 0 - 0 0 0 sco K 
+3622 2479 N M 3 0 - 0 0 0 sco K 
+3625 2479 N M 4 0 - 0 0 0 sco K 
+3629 2479 N M 3 0 - 0 0 0 sco K 
+3632 2479 N M 4 0 - 0 0 0 sco K 
+3636 2479 N M 4 0 - 0 0 0 sco K 
+3640 2479 N M 3 -149 - 0 0 0 sco K 
+3643 2330 N M 4 0 - 0 0 0 sco K 
+3647 2330 N M 4 0 - 0 0 0 sco K 
+3651 2330 N M 3 0 - 0 0 0 sco K 
+3654 2330 N M 4 0 - 0 0 0 sco K 
+3658 2330 N M 4 0 - 0 0 0 sco K 
+3662 2330 N M 3 0 - 0 0 0 sco K 
+3665 2330 N M 4 0 - 0 0 0 sco K 
+3669 2330 N M 3 0 - 0 0 0 sco K 
+3672 2330 N M 4 0 - 0 0 0 sco K 
+3676 2330 N M 4 0 - 0 0 0 sco K 
+3680 2330 N M 3 0 - 0 0 0 sco K 
+3683 2330 N M 4 0 - 0 0 0 sco K 
+3687 2330 N M 4 0 - 0 0 0 sco K 
+3691 2330 N M 3 0 - 0 0 0 sco K 
+3694 2330 N M 4 0 - 0 0 0 sco K 
+3698 2330 N M 4 0 - 0 0 0 sco K 
+3702 2330 N M 3 0 - 0 0 0 sco K 
+3705 2330 N M 4 0 - 0 0 0 sco K 
+3709 2330 N M 3 0 - 0 0 0 sco K 
+3712 2330 N M 4 0 - 0 0 0 sco K 
+3716 2330 N M 4 0 - 0 0 0 sco K 
+3720 2330 N M 3 0 - 0 0 0 sco K 
+3723 2330 N M 4 0 - 0 0 0 sco K 
+3727 2330 N M 4 0 - 0 0 0 sco K 
+3731 2330 N M 3 0 - 0 0 0 sco K 
+3734 2330 N M 4 0 - 0 0 0 sco K 
+3738 2330 N M 4 0 - 0 0 0 sco K 
+3742 2330 N M 3 0 - 0 0 0 sco K 
+3745 2330 N M 4 0 - 0 0 0 sco K 
+3749 2330 N M 4 0 - 0 0 0 sco K 
+3753 2330 N M 3 0 - 0 0 0 sco K 
+3756 2330 N M 4 0 - 0 0 0 sco K 
+3760 2330 N M 3 0 - 0 0 0 sco K 
+3763 2330 N M 4 0 - 0 0 0 sco K 
+3767 2330 N M 4 0 - 0 0 0 sco K 
+3771 2330 N M 3 0 - 0 0 0 sco K 
+3774 2330 N M 4 0 - 0 0 0 sco K 
+3778 2330 N M 4 0 - 0 0 0 sco K 
+3782 2330 N M 3 0 - 0 0 0 sco K 
+3785 2330 N M 4 0 - 0 0 0 sco K 
+3789 2330 N M 4 -148 - 0 0 0 sco K 
+3793 2182 N M 3 0 - 0 0 0 sco K 
+3796 2182 N M 4 0 - 0 0 0 sco K 
+3800 2182 N M 3 0 - 0 0 0 sco K 
+3803 2182 N M 4 0 - 0 0 0 sco K 
+3807 2182 N M 4 0 - 0 0 0 sco K 
+3811 2182 N M 3 148 - 0 0 0 sco K 
+3814 2330 N M 4 0 - 0 0 0 sco K 
+3818 2330 N M 4 0 - 0 0 0 sco K 
+3822 2330 N M 3 0 - 0 0 0 sco K 
+3825 2330 N M 4 0 - 0 0 0 sco K 
+3829 2330 N M 4 0 - 0 0 0 sco K 
+3833 2330 N M 3 0 - 0 0 0 sco K 
+3836 2330 N M 4 0 - 0 0 0 sco K 
+3840 2330 N M 4 0 - 0 0 0 sco K 
+2654 1854 N M 3 0 - 0 0 0 sco K 
+2657 1854 N M 4 0 - 0 0 0 sco K 
+2661 1854 N M 3 0 - 0 0 0 sco K 
+2664 1854 N M 4 0 - 0 0 0 sco K 
+2668 1854 N M 0 5 - 0 0 0 sco K 
+2669 1873 N M 1 19 - 0 0 0 sco K 
+2671 1906 N M 1 8 - 0 0 0 sco K 
+2672 1914 N M 0 -11 - 0 0 0 sco K 
+2673 1889 N M 1 -19 - 0 0 0 sco K 
+2674 1856 N M 1 -2 - 0 0 0 sco K 
+2675 1854 N M 4 0 - 0 0 0 sco K 
+2679 1854 N M 4 0 - 0 0 0 sco K 
+2683 1854 N M 3 0 - 0 0 0 sco K 
+2686 1854 N M 4 0 - 0 0 0 sco K 
+2690 1854 N M 2 0 - 0 0 0 sco K 
+2706 1854 N M 2 0 - 0 0 0 sco K 
+2708 1854 N M 4 0 - 0 0 0 sco K 
+2712 1854 N M 3 0 - 0 0 0 sco K 
+2715 1854 N M 4 0 - 0 0 0 sco K 
+2719 1854 N M 4 0 - 0 0 0 sco K 
+2723 1854 N M 2 0 - 0 0 0 sco K 
+2739 1854 N M 2 0 - 0 0 0 sco K 
+2741 1854 N M 3 0 - 0 0 0 sco K 
+2744 1854 N M 4 0 - 0 0 0 sco K 
+2748 1854 N M 4 0 - 0 0 0 sco K 
+2752 1854 N M 3 0 - 0 0 0 sco K 
+2755 1854 N M 3 0 - 0 0 0 sco K 
+2772 1854 N M 2 0 - 0 0 0 sco K 
+2774 1854 N M 3 0 - 0 0 0 sco K 
+2777 1854 N M 4 0 - 0 0 0 sco K 
+2781 1854 N M 4 0 - 0 0 0 sco K 
+2785 1854 N M 3 0 - 0 0 0 sco K 
+2788 1854 N M 3 0 - 0 0 0 sco K 
+2805 1854 N M 1 0 - 0 0 0 sco K 
+2806 1854 N M 4 0 - 0 0 0 sco K 
+2810 1854 N M 4 0 - 0 0 0 sco K 
+2814 1854 N M 3 0 - 0 0 0 sco K 
+2817 1854 N M 4 0 - 0 0 0 sco K 
+2821 1854 N M 3 0 - 0 0 0 sco K 
+2838 1854 N M 1 0 - 0 0 0 sco K 
+2839 1854 N M 4 0 - 0 0 0 sco K 
+2843 1854 N M 3 0 - 0 0 0 sco K 
+2846 1854 N M 4 0 - 0 0 0 sco K 
+2850 1854 N M 4 0 - 0 0 0 sco K 
+2854 1854 N M 3 0 - 0 0 0 sco K 
+2871 1854 N M 1 0 - 0 0 0 sco K 
+2872 1854 N M 3 0 - 0 0 0 sco K 
+2875 1854 N M 4 0 - 0 0 0 sco K 
+2879 1854 N M 4 0 - 0 0 0 sco K 
+2883 1854 N M 3 0 - 0 0 0 sco K 
+2886 1854 N M 4 0 - 0 0 0 sco K 
+2904 1854 N M 1 0 - 0 0 0 sco K 
+2905 1854 N M 3 0 - 0 0 0 sco K 
+2908 1854 N M 4 0 - 0 0 0 sco K 
+2912 1854 N M 4 0 - 0 0 0 sco K 
+2916 1854 N M 3 0 - 0 0 0 sco K 
+2919 1854 N M 4 0 - 0 0 0 sco K 
+2937 1854 N M 4 0 - 0 0 0 sco K 
+2941 1854 N M 4 0 - 0 0 0 sco K 
+2945 1854 N M 3 0 - 0 0 0 sco K 
+2948 1854 N M 4 0 - 0 0 0 sco K 
+2952 1854 N M 4 0 - 0 0 0 sco K 
+2970 1854 N M 4 0 - 0 0 0 sco K 
+2974 1854 N M 3 0 - 0 0 0 sco K 
+2977 1854 N M 4 0 - 0 0 0 sco K 
+2981 1854 N M 4 0 - 0 0 0 sco K 
+2985 1854 N M 3 0 - 0 0 0 sco K 
+2988 1854 N M 1 0 - 0 0 0 sco K 
+3003 1854 N M 3 0 - 0 0 0 sco K 
+3006 1854 N M 4 0 - 0 0 0 sco K 
+3010 1854 N M 4 0 - 0 0 0 sco K 
+3014 1854 N M 3 0 - 0 0 0 sco K 
+3017 1854 N M 4 0 - 0 0 0 sco K 
+3021 1854 N M 1 0 - 0 0 0 sco K 
+3036 1854 N M 3 0 - 0 0 0 sco K 
+3039 1854 N M 4 0 - 0 0 0 sco K 
+3043 1854 N M 4 0 - 0 0 0 sco K 
+3047 1854 N M 3 0 - 0 0 0 sco K 
+3050 1854 N M 4 0 - 0 0 0 sco K 
+3054 1854 N M 1 0 - 0 0 0 sco K 
+3069 1854 N M 3 0 - 0 0 0 sco K 
+3072 1854 N M 4 0 - 0 0 0 sco K 
+3076 1854 N M 3 0 - 0 0 0 sco K 
+3079 1854 N M 4 0 - 0 0 0 sco K 
+3083 1854 N M 4 0 - 0 0 0 sco K 
+3087 1854 N M 1 0 - 0 0 0 sco K 
+3102 1854 N M 3 0 - 0 0 0 sco K 
+3105 1854 N M 3 0 - 0 0 0 sco K 
+3108 1854 N M 4 0 - 0 0 0 sco K 
+3112 1854 N M 4 0 - 0 0 0 sco K 
+3116 1854 N M 3 0 - 0 0 0 sco K 
+3119 1854 N M 2 0 - 0 0 0 sco K 
+3135 1854 N M 3 0 - 0 0 0 sco K 
+3138 1854 N M 3 0 - 0 0 0 sco K 
+3141 1854 N M 4 0 - 0 0 0 sco K 
+3145 1854 N M 3 0 - 0 0 0 sco K 
+3148 1854 N M 4 0 - 0 0 0 sco K 
+3152 1854 N M 2 0 - 0 0 0 sco K 
+3168 1854 N M 2 0 - 0 0 0 sco K 
+3170 1854 N M 4 0 - 0 0 0 sco K 
+3174 1854 N M 4 0 - 0 0 0 sco K 
+3178 1854 N M 3 0 - 0 0 0 sco K 
+3181 1854 N M 4 0 - 0 0 0 sco K 
+3185 1854 N M 2 0 - 0 0 0 sco K 
+3201 1854 N M 2 0 - 0 0 0 sco K 
+3203 1854 N M 4 0 - 0 0 0 sco K 
+3207 1854 N M 3 0 - 0 0 0 sco K 
+3210 1854 N M 4 0 - 0 0 0 sco K 
+3214 1854 N M 4 0 - 0 0 0 sco K 
+3218 1854 N M 2 0 - 0 0 0 sco K 
+3232 1856 N M 0 19 - 0 0 0 sco K 
+3232 1889 N M 0 19 - 0 0 0 sco K 
+3232 1922 N M 0 19 - 0 0 0 sco K 
+3233 1955 N M 0 19 - 0 0 0 sco K 
+3233 1988 N M 0 19 - 0 0 0 sco K 
+3233 2021 N M 1 19 - 0 0 0 sco K 
+3234 2054 N M 0 19 - 0 0 0 sco K 
+3234 2087 N M 0 19 - 0 0 0 sco K 
+3234 2120 N M 1 19 - 0 0 0 sco K 
+3235 2153 N M 0 19 - 0 0 0 sco K 
+3235 2186 N M 0 19 - 0 0 0 sco K 
+3244 2211 N M 3 0 - 0 0 0 sco K 
+3247 2211 N M 3 0 - 0 0 0 sco K 
+3250 2211 N M 0 -13 - 0 0 0 sco K 
+3250 2184 N M 0 -19 - 0 0 0 sco K 
+3250 2151 N M 0 -19 - 0 0 0 sco K 
+3251 2118 N M 0 -19 - 0 0 0 sco K 
+3251 2085 N M 0 -19 - 0 0 0 sco K 
+3251 2052 N M 0 -19 - 0 0 0 sco K 
+3252 2019 N M 0 -19 - 0 0 0 sco K 
+3252 1986 N M 0 -19 - 0 0 0 sco K 
+3252 1953 N M 1 -19 - 0 0 0 sco K 
+3253 1920 N M 0 -19 - 0 0 0 sco K 
+3253 1887 N M 0 -19 - 0 0 0 sco K 
+3254 1854 N M 0 19 - 0 0 0 sco K 
+3254 1887 N M 0 19 - 0 0 0 sco K 
+3254 1920 N M 0 19 - 0 0 0 sco K 
+3255 1953 N M 0 19 - 0 0 0 sco K 
+3255 1986 N M 0 19 - 0 0 0 sco K 
+3255 2019 N M 1 19 - 0 0 0 sco K 
+3256 2052 N M 0 19 - 0 0 0 sco K 
+3256 2085 N M 0 19 - 0 0 0 sco K 
+3256 2118 N M 1 19 - 0 0 0 sco K 
+3257 2151 N M 0 19 - 0 0 0 sco K 
+3257 2184 N M 0 19 - 0 0 0 sco K 
+3258 2205 N M 0 -19 - 0 0 0 sco K 
+3258 2172 N M 0 -19 - 0 0 0 sco K 
+3258 2139 N M 0 -19 - 0 0 0 sco K 
+3258 2106 N M 1 -19 - 0 0 0 sco K 
+3259 2073 N M 0 -19 - 0 0 0 sco K 
+3259 2040 N M 0 -19 - 0 0 0 sco K 
+3259 2007 N M 0 -19 - 0 0 0 sco K 
+3259 1974 N M 1 -19 - 0 0 0 sco K 
+3260 1941 N M 0 -19 - 0 0 0 sco K 
+3260 1908 N M 0 -19 - 0 0 0 sco K 
+3260 1875 N M 0 -19 - 0 0 0 sco K 
+3273 1854 N M 3 0 - 0 0 0 sco K 
+3276 1854 N M 3 0 - 0 0 0 sco K 
+3279 1854 N M 4 0 - 0 0 0 sco K 
+3283 1854 N M 0 9 - 0 0 0 sco K 
+3283 1877 N M 0 19 - 0 0 0 sco K 
+3283 1910 N M 0 19 - 0 0 0 sco K 
+3283 1943 N M 1 19 - 0 0 0 sco K 
+3284 1976 N M 0 19 - 0 0 0 sco K 
+3284 2009 N M 0 19 - 0 0 0 sco K 
+3285 2042 N M 0 19 - 0 0 0 sco K 
+3285 2075 N M 0 19 - 0 0 0 sco K 
+3285 2108 N M 1 19 - 0 0 0 sco K 
+3286 2141 N M 0 19 - 0 0 0 sco K 
+3286 2174 N M 0 19 - 0 0 0 sco K 
+3286 2207 N M 1 4 - 0 0 0 sco K 
+3287 2211 N M 3 0 - 0 0 0 sco K 
+3290 2211 N M 4 0 - 0 0 0 sco K 
+3294 2211 N M 4 0 - 0 0 0 sco K 
+3298 2211 N M 3 0 - 0 0 0 sco K 
+3301 2211 N M 1 0 - 0 0 0 sco K 
+3316 2211 N M 3 0 - 0 0 0 sco K 
+3319 2211 N M 4 0 - 0 0 0 sco K 
+3323 2211 N M 4 0 - 0 0 0 sco K 
+3327 2211 N M 3 0 - 0 0 0 sco K 
+3330 2211 N M 4 0 - 0 0 0 sco K 
+3334 2211 N M 1 0 - 0 0 0 sco K 
+3349 2211 N M 3 0 - 0 0 0 sco K 
+3352 2211 N M 4 0 - 0 0 0 sco K 
+3356 2211 N M 3 0 - 0 0 0 sco K 
+3359 2211 N M 4 0 - 0 0 0 sco K 
+3363 2211 N M 4 0 - 0 0 0 sco K 
+3367 2211 N M 1 0 - 0 0 0 sco K 
+3382 2211 N M 3 0 - 0 0 0 sco K 
+3385 2211 N M 4 0 - 0 0 0 sco K 
+3389 2211 N M 3 0 - 0 0 0 sco K 
+3392 2211 N M 4 0 - 0 0 0 sco K 
+3396 2211 N M 4 0 - 0 0 0 sco K 
+3400 2211 N M 1 0 - 0 0 0 sco K 
+3415 2211 N M 3 0 - 0 0 0 sco K 
+3418 2211 N M 3 0 - 0 0 0 sco K 
+3421 2211 N M 4 0 - 0 0 0 sco K 
+3425 2211 N M 4 0 - 0 0 0 sco K 
+3429 2211 N M 3 0 - 0 0 0 sco K 
+3432 2211 N M 2 0 - 0 0 0 sco K 
+3448 2211 N M 2 0 - 0 0 0 sco K 
+3450 2211 N M 4 0 - 0 0 0 sco K 
+3454 2211 N M 4 0 - 0 0 0 sco K 
+3458 2211 N M 3 0 - 0 0 0 sco K 
+3461 2211 N M 4 0 - 0 0 0 sco K 
+3465 2211 N M 2 0 - 0 0 0 sco K 
+3481 2211 N M 2 0 - 0 0 0 sco K 
+3483 2211 N M 4 0 - 0 0 0 sco K 
+3487 2211 N M 4 0 - 0 0 0 sco K 
+3491 2211 N M 3 0 - 0 0 0 sco K 
+3494 2211 N M 4 0 - 0 0 0 sco K 
+3498 2211 N M 2 0 - 0 0 0 sco K 
+3514 2211 N M 2 0 - 0 0 0 sco K 
+3516 2211 N M 4 0 - 0 0 0 sco K 
+3520 2211 N M 3 0 - 0 0 0 sco K 
+3523 2211 N M 4 0 - 0 0 0 sco K 
+3527 2211 N M 4 0 - 0 0 0 sco K 
+3531 2211 N M 2 0 - 0 0 0 sco K 
+3547 2211 N M 2 0 - 0 0 0 sco K 
+3549 2211 N M 3 0 - 0 0 0 sco K 
+3552 2211 N M 4 0 - 0 0 0 sco K 
+3556 2211 N M 4 0 - 0 0 0 sco K 
+3560 2211 N M 3 0 - 0 0 0 sco K 
+3563 2211 N M 3 0 - 0 0 0 sco K 
+3580 2211 N M 1 0 - 0 0 0 sco K 
+3581 2211 N M 4 0 - 0 0 0 sco K 
+3585 2211 N M 4 0 - 0 0 0 sco K 
+3589 2211 N M 3 0 - 0 0 0 sco K 
+3592 2211 N M 4 0 - 0 0 0 sco K 
+3596 2211 N M 3 0 - 0 0 0 sco K 
+3613 2211 N M 1 0 - 0 0 0 sco K 
+3614 2211 N M 4 0 - 0 0 0 sco K 
+3618 2211 N M 4 0 - 0 0 0 sco K 
+3622 2211 N M 3 0 - 0 0 0 sco K 
+3625 2211 N M 4 0 - 0 0 0 sco K 
+3629 2211 N M 3 0 - 0 0 0 sco K 
+3646 2211 N M 1 0 - 0 0 0 sco K 
+3647 2211 N M 4 0 - 0 0 0 sco K 
+3651 2211 N M 3 0 - 0 0 0 sco K 
+3654 2211 N M 4 0 - 0 0 0 sco K 
+3658 2211 N M 4 0 - 0 0 0 sco K 
+3662 2211 N M 3 0 - 0 0 0 sco K 
+3679 2211 N M 1 0 - 0 0 0 sco K 
+3680 2211 N M 3 0 - 0 0 0 sco K 
+3683 2211 N M 4 0 - 0 0 0 sco K 
+3687 2211 N M 4 0 - 0 0 0 sco K 
+3691 2211 N M 3 0 - 0 0 0 sco K 
+3694 2211 N M 4 0 - 0 0 0 sco K 
+3712 2211 N M 4 0 - 0 0 0 sco K 
+3716 2211 N M 4 0 - 0 0 0 sco K 
+3720 2211 N M 3 0 - 0 0 0 sco K 
+3723 2211 N M 4 0 - 0 0 0 sco K 
+3727 2211 N M 4 0 - 0 0 0 sco K 
+3745 2211 N M 4 0 - 0 0 0 sco K 
+3749 2211 N M 4 0 - 0 0 0 sco K 
+3753 2211 N M 3 0 - 0 0 0 sco K 
+3756 2211 N M 4 0 - 0 0 0 sco K 
+3760 2211 N M 3 0 - 0 0 0 sco K 
+3763 2211 N M 1 0 - 0 0 0 sco K 
+3778 2211 N M 4 0 - 0 0 0 sco K 
+3782 2211 N M 3 0 - 0 0 0 sco K 
+3785 2211 N M 4 0 - 0 0 0 sco K 
+3789 2211 N M 4 0 - 0 0 0 sco K 
+3793 2211 N M 3 0 - 0 0 0 sco K 
+3796 2211 N M 1 0 - 0 0 0 sco K 
+3811 2211 N M 3 0 - 0 0 0 sco K 
+3814 2211 N M 4 0 - 0 0 0 sco K 
+3818 2211 N M 4 0 - 0 0 0 sco K 
+3822 2211 N M 3 0 - 0 0 0 sco K 
+3825 2211 N M 4 0 - 0 0 0 sco K 
+3829 2211 N M 1 0 - 0 0 0 sco K 
+2650 1732 N M 0 901 - 8 Lw solid 0 0 0 sco K 
+2650 2633 N M 1198 0 - 0 0 0 sco K 
+3848 2633 N M 0 -901 - 0 0 0 sco K 
+3848 1732 N M -1198 0 - 0 0 0 sco K : 1030 3708 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 3708 M 
+0.200 0 (0)A 
+; 
+1120 3744 N M 15 0 - 5 Lw solid 0 0 0 sco K : 1030 3559 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 3559 M 
+0.200 0 (1)A 
+; 
+1120 3595 N M 15 0 - 0 0 0 sco K : 1030 3410 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 3410 M 
+0.200 0 (2)A 
+; 
+1120 3446 N M 15 0 - 0 0 0 sco K : 1030 3262 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 3262 M 
+0.200 0 (3)A 
+; 
+1120 3298 N M 15 0 - 0 0 0 sco K : 1030 3113 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 3113 M 
+0.200 0 (4)A 
+; 
+1120 3149 N M 15 0 - 0 0 0 sco K : 1030 2964 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 2964 M 
+0.200 0 (5)A 
+; 
+1120 3000 N M 15 0 - 0 0 0 sco K : 1030 2816 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 2816 M 
+0.200 0 (6)A 
+; 
+1120 2852 N M 15 0 - 0 0 0 sco K : 2313 3708 156 57 rc 0 0 0 sco F0_50
+Ji 
+2365 3708 M 
+0.200 0 (0)A 
+; 
+2339 3744 N M 13 0 - 0 0 0 sco K : 2313 3410 156 57 rc 0 0 0 sco F0_50
+Ji 
+2365 3410 M 
+0.200 0 (5)A 
+; 
+2339 3446 N M 13 0 - 0 0 0 sco K : 2313 3113 208 57 rc 0 0 0 sco F0_50
+Ji 
+2365 3113 M 
+0.200 0 (10)A 
+; 
+2339 3149 N M 13 0 - 0 0 0 sco K : 2313 2816 208 57 rc 0 0 0 sco F0_50
+Ji 
+2365 2816 M 
+0.200 0 (15)A 
+; 
+2339 2852 N M 13 0 - 0 0 0 sco K 
+1141 3753 N M 0 11 - 0 0 0 sco K : 1132 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+1184 3771 M 
+0.200 0 (70)A 
+; 
+1184 3753 N M 0 11 - 0 0 0 sco K 
+1228 3753 N M 0 11 - 0 0 0 sco K : 1220 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+1272 3771 M 
+0.200 0 (72)A 
+; 
+1272 3753 N M 0 11 - 0 0 0 sco K 
+1315 3753 N M 0 11 - 0 0 0 sco K : 1307 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+1359 3771 M 
+0.200 0 (74)A 
+; 
+1359 3753 N M 0 11 - 0 0 0 sco K 
+1403 3753 N M 0 11 - 0 0 0 sco K : 1394 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+1446 3771 M 
+0.200 0 (76)A 
+; 
+1446 3753 N M 0 11 - 0 0 0 sco K 
+1490 3753 N M 0 11 - 0 0 0 sco K : 1482 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+1534 3771 M 
+0.200 0 (78)A 
+; 
+1534 3753 N M 0 11 - 0 0 0 sco K 
+1577 3753 N M 0 11 - 0 0 0 sco K : 1569 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+1621 3771 M 
+0.200 0 (80)A 
+; 
+1621 3753 N M 0 11 - 0 0 0 sco K 
+1665 3753 N M 0 11 - 0 0 0 sco K : 1656 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+1708 3771 M 
+0.200 0 (82)A 
+; 
+1708 3753 N M 0 11 - 0 0 0 sco K 
+1752 3753 N M 0 11 - 0 0 0 sco K : 1744 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+1796 3771 M 
+0.200 0 (84)A 
+; 
+1796 3753 N M 0 11 - 0 0 0 sco K 
+1840 3753 N M 0 11 - 0 0 0 sco K : 1831 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+1883 3771 M 
+0.200 0 (86)A 
+; 
+1883 3753 N M 0 11 - 0 0 0 sco K 
+1927 3753 N M 0 11 - 0 0 0 sco K : 1919 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+1971 3771 M 
+0.200 0 (88)A 
+; 
+1971 3753 N M 0 11 - 0 0 0 sco K 
+2014 3753 N M 0 11 - 0 0 0 sco K : 2006 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+2058 3771 M 
+0.200 0 (90)A 
+; 
+2058 3753 N M 0 11 - 0 0 0 sco K 
+2102 3753 N M 0 11 - 0 0 0 sco K : 2093 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+2145 3771 M 
+0.200 0 (92)A 
+; 
+2145 3753 N M 0 11 - 0 0 0 sco K 
+2189 3753 N M 0 11 - 0 0 0 sco K : 2181 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+2233 3771 M 
+0.200 0 (94)A 
+; 
+2233 3753 N M 0 11 - 0 0 0 sco K 
+2276 3753 N M 0 11 - 0 0 0 sco K 
+2320 3753 N M 0 11 - 0 0 0 sco K 
+1141 3595 N M 3 0 - 0 0 0 sco K 
+1144 3595 N M 4 0 - 0 0 0 sco K 
+1148 3595 N M 3 -149 - 0 0 0 sco K 
+1151 3446 N M 4 149 - 0 0 0 sco K 
+1155 3595 N M 4 0 - 0 0 0 sco K 
+1159 3595 N M 3 -297 - 0 0 0 sco K 
+1162 3298 N M 4 297 - 0 0 0 sco K 
+1166 3595 N M 4 0 - 0 0 0 sco K 
+1170 3595 N M 3 0 - 0 0 0 sco K 
+1173 3595 N M 4 0 - 0 0 0 sco K 
+1177 3595 N M 4 0 - 0 0 0 sco K 
+1181 3595 N M 3 0 - 0 0 0 sco K 
+1184 3595 N M 4 0 - 0 0 0 sco K 
+1188 3595 N M 3 0 - 0 0 0 sco K 
+1191 3595 N M 4 0 - 0 0 0 sco K 
+1195 3595 N M 4 0 - 0 0 0 sco K 
+1199 3595 N M 3 0 - 0 0 0 sco K 
+1202 3595 N M 4 0 - 0 0 0 sco K 
+1206 3595 N M 4 0 - 0 0 0 sco K 
+1210 3595 N M 3 0 - 0 0 0 sco K 
+1213 3595 N M 4 0 - 0 0 0 sco K 
+1217 3595 N M 4 0 - 0 0 0 sco K 
+1221 3595 N M 3 0 - 0 0 0 sco K 
+1224 3595 N M 4 0 - 0 0 0 sco K 
+1228 3595 N M 3 0 - 0 0 0 sco K 
+1231 3595 N M 4 0 - 0 0 0 sco K 
+1235 3595 N M 4 0 - 0 0 0 sco K 
+1239 3595 N M 3 0 - 0 0 0 sco K 
+1242 3595 N M 4 0 - 0 0 0 sco K 
+1246 3595 N M 4 0 - 0 0 0 sco K 
+1250 3595 N M 3 0 - 0 0 0 sco K 
+1253 3595 N M 4 0 - 0 0 0 sco K 
+1257 3595 N M 4 0 - 0 0 0 sco K 
+1261 3595 N M 3 0 - 0 0 0 sco K 
+1264 3595 N M 4 0 - 0 0 0 sco K 
+1268 3595 N M 4 0 - 0 0 0 sco K 
+1272 3595 N M 3 0 - 0 0 0 sco K 
+1275 3595 N M 4 0 - 0 0 0 sco K 
+1279 3595 N M 3 0 - 0 0 0 sco K 
+1282 3595 N M 4 0 - 0 0 0 sco K 
+1286 3595 N M 4 0 - 0 0 0 sco K 
+1290 3595 N M 3 0 - 0 0 0 sco K 
+1293 3595 N M 4 0 - 0 0 0 sco K 
+1297 3595 N M 4 0 - 0 0 0 sco K 
+1301 3595 N M 3 0 - 0 0 0 sco K 
+1304 3595 N M 4 0 - 0 0 0 sco K 
+1308 3595 N M 4 0 - 0 0 0 sco K 
+1312 3595 N M 3 0 - 0 0 0 sco K 
+1315 3595 N M 4 0 - 0 0 0 sco K 
+1319 3595 N M 3 -149 - 0 0 0 sco K 
+1322 3446 N M 4 0 - 0 0 0 sco K 
+1326 3446 N M 4 0 - 0 0 0 sco K 
+1330 3446 N M 3 -297 - 0 0 0 sco K 
+1333 3149 N M 4 0 - 0 0 0 sco K 
+1337 3149 N M 4 297 - 0 0 0 sco K 
+1341 3446 N M 3 -297 - 0 0 0 sco K 
+1344 3149 N M 4 0 - 0 0 0 sco K 
+1348 3149 N M 4 0 - 0 0 0 sco K 
+1352 3149 N M 3 446 - 0 0 0 sco K 
+1355 3595 N M 4 0 - 0 0 0 sco K 
+1359 3595 N M 3 -446 - 0 0 0 sco K 
+1362 3149 N M 4 0 - 0 0 0 sco K 
+1366 3149 N M 4 0 - 0 0 0 sco K 
+1370 3149 N M 3 0 - 0 0 0 sco K 
+1373 3149 N M 4 0 - 0 0 0 sco K 
+1377 3149 N M 4 0 - 0 0 0 sco K 
+1381 3149 N M 3 446 - 0 0 0 sco K 
+1384 3595 N M 4 -446 - 0 0 0 sco K 
+1388 3149 N M 4 297 - 0 0 0 sco K 
+1392 3446 N M 3 149 - 0 0 0 sco K 
+1395 3595 N M 4 -446 - 0 0 0 sco K 
+1399 3149 N M 4 0 - 0 0 0 sco K 
+1403 3149 N M 3 0 - 0 0 0 sco K 
+1406 3149 N M 4 0 - 0 0 0 sco K 
+1410 3149 N M 3 0 - 0 0 0 sco K 
+1413 3149 N M 4 0 - 0 0 0 sco K 
+1417 3149 N M 4 0 - 0 0 0 sco K 
+1421 3149 N M 3 0 - 0 0 0 sco K 
+1424 3149 N M 4 0 - 0 0 0 sco K 
+1428 3149 N M 4 0 - 0 0 0 sco K 
+1432 3149 N M 3 0 - 0 0 0 sco K 
+1435 3149 N M 4 0 - 0 0 0 sco K 
+1439 3149 N M 4 0 - 0 0 0 sco K 
+1443 3149 N M 3 297 - 0 0 0 sco K 
+1446 3446 N M 4 -148 - 0 0 0 sco K 
+1450 3298 N M 3 297 - 0 0 0 sco K 
+1453 3595 N M 4 0 - 0 0 0 sco K 
+1457 3595 N M 4 0 - 0 0 0 sco K 
+1461 3595 N M 3 0 - 0 0 0 sco K 
+1464 3595 N M 4 0 - 0 0 0 sco K 
+1468 3595 N M 4 0 - 0 0 0 sco K 
+1472 3595 N M 3 0 - 0 0 0 sco K 
+1475 3595 N M 4 0 - 0 0 0 sco K 
+1479 3595 N M 4 0 - 0 0 0 sco K 
+1483 3595 N M 3 0 - 0 0 0 sco K 
+1486 3595 N M 4 0 - 0 0 0 sco K 
+1490 3595 N M 3 0 - 0 0 0 sco K 
+1493 3595 N M 4 0 - 0 0 0 sco K 
+1497 3595 N M 4 0 - 0 0 0 sco K 
+1501 3595 N M 3 0 - 0 0 0 sco K 
+1504 3595 N M 4 0 - 0 0 0 sco K 
+1508 3595 N M 4 0 - 0 0 0 sco K 
+1512 3595 N M 3 0 - 0 0 0 sco K 
+1515 3595 N M 4 0 - 0 0 0 sco K 
+1519 3595 N M 4 0 - 0 0 0 sco K 
+1523 3595 N M 3 0 - 0 0 0 sco K 
+1526 3595 N M 4 0 - 0 0 0 sco K 
+1530 3595 N M 4 0 - 0 0 0 sco K 
+1534 3595 N M 3 0 - 0 0 0 sco K 
+1537 3595 N M 4 0 - 0 0 0 sco K 
+1541 3595 N M 3 149 - 0 0 0 sco K 
+1544 3744 N M 4 -149 - 0 0 0 sco K 
+1548 3595 N M 4 0 - 0 0 0 sco K 
+1552 3595 N M 3 0 - 0 0 0 sco K 
+1555 3595 N M 4 0 - 0 0 0 sco K 
+1559 3595 N M 4 0 - 0 0 0 sco K 
+1563 3595 N M 3 0 - 0 0 0 sco K 
+1566 3595 N M 4 0 - 0 0 0 sco K 
+1570 3595 N M 4 0 - 0 0 0 sco K 
+1574 3595 N M 3 0 - 0 0 0 sco K 
+1577 3595 N M 4 0 - 0 0 0 sco K 
+1581 3595 N M 3 0 - 0 0 0 sco K 
+1584 3595 N M 4 0 - 0 0 0 sco K 
+1588 3595 N M 4 0 - 0 0 0 sco K 
+1592 3595 N M 3 0 - 0 0 0 sco K 
+1595 3595 N M 4 0 - 0 0 0 sco K 
+1599 3595 N M 4 0 - 0 0 0 sco K 
+1603 3595 N M 3 149 - 0 0 0 sco K 
+1606 3744 N M 4 -149 - 0 0 0 sco K 
+1610 3595 N M 4 0 - 0 0 0 sco K 
+1614 3595 N M 3 0 - 0 0 0 sco K 
+1617 3595 N M 4 149 - 0 0 0 sco K 
+1621 3744 N M 4 0 - 0 0 0 sco K 
+1625 3744 N M 3 0 - 0 0 0 sco K 
+1628 3744 N M 4 -149 - 0 0 0 sco K 
+1632 3595 N M 3 0 - 0 0 0 sco K 
+1635 3595 N M 4 149 - 0 0 0 sco K 
+1639 3744 N M 4 0 - 0 0 0 sco K 
+1643 3744 N M 3 0 - 0 0 0 sco K 
+1646 3744 N M 4 0 - 0 0 0 sco K 
+1650 3744 N M 4 -149 - 0 0 0 sco K 
+1654 3595 N M 3 0 - 0 0 0 sco K 
+1657 3595 N M 4 0 - 0 0 0 sco K 
+1661 3595 N M 4 0 - 0 0 0 sco K 
+1665 3595 N M 3 0 - 0 0 0 sco K 
+1668 3595 N M 4 0 - 0 0 0 sco K 
+1672 3595 N M 3 0 - 0 0 0 sco K 
+1675 3595 N M 4 0 - 0 0 0 sco K 
+1679 3595 N M 4 0 - 0 0 0 sco K 
+1683 3595 N M 3 0 - 0 0 0 sco K 
+1686 3595 N M 4 0 - 0 0 0 sco K 
+1690 3595 N M 4 0 - 0 0 0 sco K 
+1694 3595 N M 3 0 - 0 0 0 sco K 
+1697 3595 N M 4 0 - 0 0 0 sco K 
+1701 3595 N M 4 0 - 0 0 0 sco K 
+1705 3595 N M 3 0 - 0 0 0 sco K 
+1708 3595 N M 4 0 - 0 0 0 sco K 
+1712 3595 N M 3 0 - 0 0 0 sco K 
+1715 3595 N M 4 0 - 0 0 0 sco K 
+1719 3595 N M 4 149 - 0 0 0 sco K 
+1723 3744 N M 3 -446 - 0 0 0 sco K 
+1726 3298 N M 4 -149 - 0 0 0 sco K 
+1730 3149 N M 4 0 - 0 0 0 sco K 
+1734 3149 N M 3 446 - 0 0 0 sco K 
+1737 3595 N M 4 -446 - 0 0 0 sco K 
+1741 3149 N M 4 0 - 0 0 0 sco K 
+1745 3149 N M 3 0 - 0 0 0 sco K 
+1748 3149 N M 4 0 - 0 0 0 sco K 
+1752 3149 N M 4 0 - 0 0 0 sco K 
+1756 3149 N M 3 0 - 0 0 0 sco K 
+1759 3149 N M 4 0 - 0 0 0 sco K 
+1763 3149 N M 3 0 - 0 0 0 sco K 
+1766 3149 N M 4 0 - 0 0 0 sco K 
+1770 3149 N M 4 0 - 0 0 0 sco K 
+1774 3149 N M 3 0 - 0 0 0 sco K 
+1777 3149 N M 4 0 - 0 0 0 sco K 
+1781 3149 N M 4 0 - 0 0 0 sco K 
+1785 3149 N M 3 0 - 0 0 0 sco K 
+1788 3149 N M 4 0 - 0 0 0 sco K 
+1792 3149 N M 4 0 - 0 0 0 sco K 
+1796 3149 N M 3 0 - 0 0 0 sco K 
+1799 3149 N M 4 0 - 0 0 0 sco K 
+1803 3149 N M 3 0 - 0 0 0 sco K 
+1806 3149 N M 4 0 - 0 0 0 sco K 
+1810 3149 N M 4 0 - 0 0 0 sco K 
+1814 3149 N M 3 0 - 0 0 0 sco K 
+1817 3149 N M 4 0 - 0 0 0 sco K 
+1821 3149 N M 4 0 - 0 0 0 sco K 
+1825 3149 N M 3 0 - 0 0 0 sco K 
+1828 3149 N M 4 0 - 0 0 0 sco K 
+1832 3149 N M 4 0 - 0 0 0 sco K 
+1836 3149 N M 3 0 - 0 0 0 sco K 
+1839 3149 N M 4 0 - 0 0 0 sco K 
+1843 3149 N M 3 0 - 0 0 0 sco K 
+1846 3149 N M 4 0 - 0 0 0 sco K 
+1850 3149 N M 4 0 - 0 0 0 sco K 
+1854 3149 N M 3 0 - 0 0 0 sco K 
+1857 3149 N M 4 0 - 0 0 0 sco K 
+1861 3149 N M 4 0 - 0 0 0 sco K 
+1865 3149 N M 3 0 - 0 0 0 sco K 
+1868 3149 N M 4 0 - 0 0 0 sco K 
+1872 3149 N M 4 0 - 0 0 0 sco K 
+1876 3149 N M 3 0 - 0 0 0 sco K 
+1879 3149 N M 4 0 - 0 0 0 sco K 
+1883 3149 N M 4 0 - 0 0 0 sco K 
+1887 3149 N M 3 0 - 0 0 0 sco K 
+1890 3149 N M 4 0 - 0 0 0 sco K 
+1894 3149 N M 3 0 - 0 0 0 sco K 
+1897 3149 N M 4 0 - 0 0 0 sco K 
+1901 3149 N M 4 0 - 0 0 0 sco K 
+1905 3149 N M 3 0 - 0 0 0 sco K 
+1908 3149 N M 4 0 - 0 0 0 sco K 
+1912 3149 N M 4 0 - 0 0 0 sco K 
+1916 3149 N M 3 0 - 0 0 0 sco K 
+1919 3149 N M 4 0 - 0 0 0 sco K 
+1923 3149 N M 4 0 - 0 0 0 sco K 
+1927 3149 N M 3 0 - 0 0 0 sco K 
+1930 3149 N M 4 446 - 0 0 0 sco K 
+1934 3595 N M 3 0 - 0 0 0 sco K 
+1937 3595 N M 4 0 - 0 0 0 sco K 
+1941 3595 N M 4 0 - 0 0 0 sco K 
+1945 3595 N M 3 0 - 0 0 0 sco K 
+1948 3595 N M 4 0 - 0 0 0 sco K 
+1952 3595 N M 4 0 - 0 0 0 sco K 
+1956 3595 N M 3 0 - 0 0 0 sco K 
+1959 3595 N M 4 0 - 0 0 0 sco K 
+1963 3595 N M 4 0 - 0 0 0 sco K 
+1967 3595 N M 3 0 - 0 0 0 sco K 
+1970 3595 N M 4 0 - 0 0 0 sco K 
+1974 3595 N M 4 0 - 0 0 0 sco K 
+1978 3595 N M 3 0 - 0 0 0 sco K 
+1981 3595 N M 4 0 - 0 0 0 sco K 
+1985 3595 N M 3 0 - 0 0 0 sco K 
+1988 3595 N M 4 0 - 0 0 0 sco K 
+1992 3595 N M 4 0 - 0 0 0 sco K 
+1996 3595 N M 3 0 - 0 0 0 sco K 
+1999 3595 N M 4 0 - 0 0 0 sco K 
+2003 3595 N M 4 0 - 0 0 0 sco K 
+2007 3595 N M 3 0 - 0 0 0 sco K 
+2010 3595 N M 4 0 - 0 0 0 sco K 
+2014 3595 N M 4 0 - 0 0 0 sco K 
+2018 3595 N M 3 0 - 0 0 0 sco K 
+2021 3595 N M 4 0 - 0 0 0 sco K 
+2025 3595 N M 3 149 - 0 0 0 sco K 
+2028 3744 N M 4 0 - 0 0 0 sco K 
+2032 3744 N M 4 -149 - 0 0 0 sco K 
+2036 3595 N M 3 0 - 0 0 0 sco K 
+2039 3595 N M 4 0 - 0 0 0 sco K 
+2043 3595 N M 4 0 - 0 0 0 sco K 
+2047 3595 N M 3 0 - 0 0 0 sco K 
+2050 3595 N M 4 0 - 0 0 0 sco K 
+2054 3595 N M 4 0 - 0 0 0 sco K 
+2058 3595 N M 3 149 - 0 0 0 sco K 
+2061 3744 N M 4 0 - 0 0 0 sco K 
+2065 3744 N M 3 0 - 0 0 0 sco K 
+2068 3744 N M 4 0 - 0 0 0 sco K 
+2072 3744 N M 4 0 - 0 0 0 sco K 
+2076 3744 N M 3 0 - 0 0 0 sco K 
+2079 3744 N M 4 0 - 0 0 0 sco K 
+2083 3744 N M 4 0 - 0 0 0 sco K 
+2087 3744 N M 3 0 - 0 0 0 sco K 
+2090 3744 N M 4 0 - 0 0 0 sco K 
+2094 3744 N M 4 0 - 0 0 0 sco K 
+2098 3744 N M 3 0 - 0 0 0 sco K 
+2101 3744 N M 4 0 - 0 0 0 sco K 
+2105 3744 N M 4 0 - 0 0 0 sco K 
+2109 3744 N M 3 0 - 0 0 0 sco K 
+2112 3744 N M 4 0 - 0 0 0 sco K 
+2116 3744 N M 3 0 - 0 0 0 sco K 
+2119 3744 N M 4 0 - 0 0 0 sco K 
+2123 3744 N M 4 0 - 0 0 0 sco K 
+2127 3744 N M 3 0 - 0 0 0 sco K 
+2130 3744 N M 4 0 - 0 0 0 sco K 
+2134 3744 N M 4 0 - 0 0 0 sco K 
+2138 3744 N M 3 0 - 0 0 0 sco K 
+2141 3744 N M 4 0 - 0 0 0 sco K 
+2145 3744 N M 4 0 - 0 0 0 sco K 
+2149 3744 N M 3 0 - 0 0 0 sco K 
+2152 3744 N M 4 0 - 0 0 0 sco K 
+2156 3744 N M 3 0 - 0 0 0 sco K 
+2159 3744 N M 4 0 - 0 0 0 sco K 
+2163 3744 N M 4 0 - 0 0 0 sco K 
+2167 3744 N M 3 0 - 0 0 0 sco K 
+2170 3744 N M 4 0 - 0 0 0 sco K 
+2174 3744 N M 4 0 - 0 0 0 sco K 
+2178 3744 N M 3 0 - 0 0 0 sco K 
+2181 3744 N M 4 0 - 0 0 0 sco K 
+2185 3744 N M 4 0 - 0 0 0 sco K 
+2189 3744 N M 3 0 - 0 0 0 sco K 
+2192 3744 N M 4 0 - 0 0 0 sco K 
+2196 3744 N M 3 0 - 0 0 0 sco K 
+2199 3744 N M 4 0 - 0 0 0 sco K 
+2203 3744 N M 4 0 - 0 0 0 sco K 
+2207 3744 N M 3 0 - 0 0 0 sco K 
+2210 3744 N M 4 0 - 0 0 0 sco K 
+2214 3744 N M 4 0 - 0 0 0 sco K 
+2218 3744 N M 3 0 - 0 0 0 sco K 
+2221 3744 N M 4 0 - 0 0 0 sco K 
+2225 3744 N M 4 0 - 0 0 0 sco K 
+2229 3744 N M 3 0 - 0 0 0 sco K 
+2232 3744 N M 4 0 - 0 0 0 sco K 
+2236 3744 N M 4 0 - 0 0 0 sco K 
+2240 3744 N M 3 0 - 0 0 0 sco K 
+2243 3744 N M 4 0 - 0 0 0 sco K 
+2247 3744 N M 3 0 - 0 0 0 sco K 
+2250 3744 N M 4 0 - 0 0 0 sco K 
+2254 3744 N M 4 0 - 0 0 0 sco K 
+2258 3744 N M 3 0 - 0 0 0 sco K 
+2261 3744 N M 4 0 - 0 0 0 sco K 
+2265 3744 N M 4 0 - 0 0 0 sco K 
+2269 3744 N M 3 0 - 0 0 0 sco K 
+2272 3744 N M 4 0 - 0 0 0 sco K 
+2276 3744 N M 4 0 - 0 0 0 sco K 
+2280 3744 N M 3 0 - 0 0 0 sco K 
+2283 3744 N M 4 0 - 0 0 0 sco K 
+2287 3744 N M 3 0 - 0 0 0 sco K 
+2290 3744 N M 4 0 - 0 0 0 sco K 
+2294 3744 N M 4 0 - 0 0 0 sco K 
+2298 3744 N M 3 -149 - 0 0 0 sco K 
+2301 3595 N M 4 0 - 0 0 0 sco K 
+2305 3595 N M 4 0 - 0 0 0 sco K 
+2309 3595 N M 3 0 - 0 0 0 sco K 
+2312 3595 N M 4 0 - 0 0 0 sco K 
+2316 3595 N M 4 0 - 0 0 0 sco K 
+2320 3595 N M 3 0 - 0 0 0 sco K 
+2323 3595 N M 4 0 - 0 0 0 sco K 
+2327 3595 N M 4 0 - 0 0 0 sco K 
+1141 2970 N M 3 0 - 0 0 0 sco K 
+1144 2970 N M 4 0 - 0 0 0 sco K 
+1148 2970 N M 3 0 - 0 0 0 sco K 
+1151 2970 N M 4 0 - 0 0 0 sco K 
+1155 2970 N M 4 0 - 0 0 0 sco K 
+1159 2970 N M 1 0 - 0 0 0 sco K 
+1162 2982 N M 0 19 - 0 0 0 sco K 
+1162 3015 N M 0 19 - 0 0 0 sco K 
+1162 3048 N M 0 19 - 0 0 0 sco K 
+1162 3081 N M 1 19 - 0 0 0 sco K 
+1163 3114 N M 0 19 - 0 0 0 sco K 
+1163 3147 N M 0 19 - 0 0 0 sco K 
+1163 3180 N M 0 19 - 0 0 0 sco K 
+1164 3213 N M 0 19 - 0 0 0 sco K 
+1164 3246 N M 0 19 - 0 0 0 sco K 
+1164 3279 N M 0 19 - 0 0 0 sco K 
+1164 3312 N M 1 19 - 0 0 0 sco K 
+1165 3345 N M 0 19 - 0 0 0 sco K 
+1165 3378 N M 0 19 - 0 0 0 sco K 
+1165 3411 N M 0 19 - 0 0 0 sco K 
+1165 3444 N M 1 2 - 0 0 0 sco K 
+1166 3446 N M 4 0 - 0 0 0 sco K 
+1170 3446 N M 3 0 - 0 0 0 sco K 
+1173 3446 N M 4 0 - 0 0 0 sco K 
+1177 3446 N M 4 0 - 0 0 0 sco K 
+1181 3446 N M 2 0 - 0 0 0 sco K 
+1197 3446 N M 2 0 - 0 0 0 sco K 
+1199 3446 N M 3 0 - 0 0 0 sco K 
+1202 3446 N M 4 0 - 0 0 0 sco K 
+1206 3446 N M 4 0 - 0 0 0 sco K 
+1210 3446 N M 3 0 - 0 0 0 sco K 
+1213 3446 N M 3 0 - 0 0 0 sco K 
+1230 3446 N M 1 0 - 0 0 0 sco K 
+1231 3446 N M 4 0 - 0 0 0 sco K 
+1235 3446 N M 4 0 - 0 0 0 sco K 
+1239 3446 N M 3 0 - 0 0 0 sco K 
+1242 3446 N M 4 0 - 0 0 0 sco K 
+1246 3446 N M 3 0 - 0 0 0 sco K 
+1253 3456 N M 0 19 - 0 0 0 sco K 
+1253 3489 N M 1 19 - 0 0 0 sco K 
+1254 3522 N M 1 19 - 0 0 0 sco K 
+1255 3555 N M 0 19 - 0 0 0 sco K 
+1256 3588 N M 0 19 - 0 0 0 sco K 
+1256 3621 N M 1 4 - 0 0 0 sco K 
+1257 3625 N M 4 0 - 0 0 0 sco K 
+1261 3625 N M 3 0 - 0 0 0 sco K 
+1264 3625 N M 4 0 - 0 0 0 sco K 
+1268 3625 N M 4 0 - 0 0 0 sco K 
+1286 3625 N M 4 0 - 0 0 0 sco K 
+1290 3625 N M 3 0 - 0 0 0 sco K 
+1293 3625 N M 4 0 - 0 0 0 sco K 
+1297 3625 N M 4 0 - 0 0 0 sco K 
+1301 3625 N M 3 0 - 0 0 0 sco K 
+1304 3625 N M 1 0 - 0 0 0 sco K 
+1319 3625 N M 3 0 - 0 0 0 sco K 
+1322 3625 N M 4 0 - 0 0 0 sco K 
+1326 3625 N M 4 0 - 0 0 0 sco K 
+1330 3625 N M 3 0 - 0 0 0 sco K 
+1333 3625 N M 4 0 - 0 0 0 sco K 
+1337 3625 N M 1 0 - 0 0 0 sco K 
+1341 3614 N M 0 -19 - 0 0 0 sco K 
+1341 3581 N M 1 -19 - 0 0 0 sco K 
+1342 3548 N M 0 -19 - 0 0 0 sco K 
+1342 3515 N M 1 -19 - 0 0 0 sco K 
+1343 3482 N M 0 -19 - 0 0 0 sco K 
+1343 3449 N M 1 -3 - 0 0 0 sco K 
+1344 3446 N M 4 0 - 0 0 0 sco K 
+1348 3446 N M 4 0 - 0 0 0 sco K 
+1352 3446 N M 0 8 - 0 0 0 sco K 
+1353 3468 N M 1 19 - 0 0 0 sco K 
+1354 3501 N M 1 5 - 0 0 0 sco K 
+1355 3506 N M 4 0 - 0 0 0 sco K 
+1359 3506 N M 3 0 - 0 0 0 sco K 
+1362 3506 N M 0 -7 - 0 0 0 sco K 
+1363 3485 N M 1 -19 - 0 0 0 sco K 
+1365 3452 N M 1 -6 - 0 0 0 sco K 
+1366 3446 N M 4 0 - 0 0 0 sco K 
+1370 3446 N M 3 0 - 0 0 0 sco K 
+1373 3446 N M 4 0 - 0 0 0 sco K 
+1377 3446 N M 2 0 - 0 0 0 sco K 
+1381 3434 N M 0 -19 - 0 0 0 sco K 
+1381 3401 N M 0 -19 - 0 0 0 sco K 
+1381 3368 N M 0 -19 - 0 0 0 sco K 
+1381 3335 N M 0 -19 - 0 0 0 sco K 
+1381 3302 N M 1 -19 - 0 0 0 sco K 
+1382 3269 N M 0 -19 - 0 0 0 sco K 
+1382 3236 N M 0 -19 - 0 0 0 sco K 
+1382 3203 N M 0 -19 - 0 0 0 sco K 
+1382 3170 N M 0 -19 - 0 0 0 sco K 
+1382 3137 N M 1 -19 - 0 0 0 sco K 
+1383 3104 N M 0 -19 - 0 0 0 sco K 
+1383 3071 N M 0 -19 - 0 0 0 sco K 
+1383 3038 N M 0 -19 - 0 0 0 sco K 
+1383 3005 N M 0 -19 - 0 0 0 sco K 
+1384 2972 N M 0 -2 - 0 0 0 sco K 
+1384 2970 N M 4 0 - 0 0 0 sco K 
+1388 2970 N M 4 0 - 0 0 0 sco K 
+1392 2970 N M 3 0 - 0 0 0 sco K 
+1395 2970 N M 4 0 - 0 0 0 sco K 
+1399 2970 N M 2 0 - 0 0 0 sco K 
+1403 2982 N M 0 19 - 0 0 0 sco K 
+1403 3015 N M 0 19 - 0 0 0 sco K 
+1403 3048 N M 0 19 - 0 0 0 sco K 
+1403 3081 N M 0 19 - 0 0 0 sco K 
+1403 3114 N M 1 19 - 0 0 0 sco K 
+1404 3147 N M 0 19 - 0 0 0 sco K 
+1404 3180 N M 0 19 - 0 0 0 sco K 
+1404 3213 N M 0 19 - 0 0 0 sco K 
+1404 3246 N M 0 19 - 0 0 0 sco K 
+1404 3279 N M 1 19 - 0 0 0 sco K 
+1405 3312 N M 0 19 - 0 0 0 sco K 
+1405 3345 N M 0 19 - 0 0 0 sco K 
+1405 3378 N M 0 19 - 0 0 0 sco K 
+1405 3411 N M 0 19 - 0 0 0 sco K 
+1406 3444 N M 0 2 - 0 0 0 sco K 
+1406 3446 N M 4 0 - 0 0 0 sco K 
+1410 3446 N M 3 0 - 0 0 0 sco K 
+1413 3446 N M 4 0 - 0 0 0 sco K 
+1417 3446 N M 4 0 - 0 0 0 sco K 
+1421 3446 N M 2 0 - 0 0 0 sco K 
+1437 3446 N M 2 0 - 0 0 0 sco K 
+1439 3446 N M 4 0 - 0 0 0 sco K 
+1443 3446 N M 3 0 - 0 0 0 sco K 
+1446 3446 N M 4 0 - 0 0 0 sco K 
+1450 3446 N M 0 -6 - 0 0 0 sco K 
+1450 3426 N M 0 -19 - 0 0 0 sco K 
+1450 3393 N M 0 -19 - 0 0 0 sco K 
+1450 3360 N M 0 -19 - 0 0 0 sco K 
+1450 3327 N M 0 -19 - 0 0 0 sco K 
+1450 3294 N M 1 -19 - 0 0 0 sco K 
+1451 3261 N M 0 -19 - 0 0 0 sco K 
+1451 3228 N M 0 -19 - 0 0 0 sco K 
+1451 3195 N M 0 -19 - 0 0 0 sco K 
+1451 3162 N M 0 -19 - 0 0 0 sco K 
+1452 3129 N M 0 -19 - 0 0 0 sco K 
+1452 3096 N M 0 -19 - 0 0 0 sco K 
+1452 3063 N M 0 -19 - 0 0 0 sco K 
+1452 3030 N M 0 -19 - 0 0 0 sco K 
+1452 2997 N M 0 -19 - 0 0 0 sco K 
+1459 2970 N M 2 0 - 0 0 0 sco K 
+1461 2970 N M 3 0 - 0 0 0 sco K 
+1464 2970 N M 4 0 - 0 0 0 sco K 
+1468 2970 N M 4 0 - 0 0 0 sco K 
+1472 2970 N M 3 0 - 0 0 0 sco K 
+1475 2970 N M 3 0 - 0 0 0 sco K 
+1492 2970 N M 1 0 - 0 0 0 sco K 
+1493 2970 N M 4 0 - 0 0 0 sco K 
+1497 2970 N M 4 0 - 0 0 0 sco K 
+1501 2970 N M 3 0 - 0 0 0 sco K 
+1504 2970 N M 4 0 - 0 0 0 sco K 
+1508 2970 N M 3 0 - 0 0 0 sco K 
+1525 2970 N M 1 0 - 0 0 0 sco K 
+1526 2970 N M 4 0 - 0 0 0 sco K 
+1530 2970 N M 4 0 - 0 0 0 sco K 
+1534 2970 N M 3 0 - 0 0 0 sco K 
+1537 2970 N M 0 7 - 0 0 0 sco K 
+1537 2991 N M 0 19 - 0 0 0 sco K 
+1537 3024 N M 0 19 - 0 0 0 sco K 
+1538 3057 N M 0 19 - 0 0 0 sco K 
+1538 3090 N M 0 19 - 0 0 0 sco K 
+1539 3123 N M 0 19 - 0 0 0 sco K 
+1539 3156 N M 0 19 - 0 0 0 sco K 
+1539 3189 N M 1 19 - 0 0 0 sco K 
+1540 3222 N M 0 19 - 0 0 0 sco K 
+1540 3255 N M 1 13 - 0 0 0 sco K 
+1541 3268 N M 0 -6 - 0 0 0 sco K 
+1541 3248 N M 0 -19 - 0 0 0 sco K 
+1541 3215 N M 0 -19 - 0 0 0 sco K 
+1541 3182 N M 1 -19 - 0 0 0 sco K 
+1542 3149 N M 0 -19 - 0 0 0 sco K 
+1542 3116 N M 0 -19 - 0 0 0 sco K 
+1542 3083 N M 1 -19 - 0 0 0 sco K 
+1543 3050 N M 0 -19 - 0 0 0 sco K 
+1543 3017 N M 0 -19 - 0 0 0 sco K 
+1543 2984 N M 1 -14 - 0 0 0 sco K 
+1544 2970 N M 4 0 - 0 0 0 sco K 
+1548 2970 N M 1 0 - 0 0 0 sco K 
+1563 2970 N M 3 0 - 0 0 0 sco K 
+1566 2970 N M 4 0 - 0 0 0 sco K 
+1570 2970 N M 4 0 - 0 0 0 sco K 
+1574 2970 N M 3 0 - 0 0 0 sco K 
+1577 2970 N M 4 0 - 0 0 0 sco K 
+1581 2970 N M 1 0 - 0 0 0 sco K 
+1596 2970 N M 3 0 - 0 0 0 sco K 
+1599 2970 N M 4 0 - 0 0 0 sco K 
+1603 2970 N M 3 0 - 0 0 0 sco K 
+1606 2970 N M 4 0 - 0 0 0 sco K 
+1610 2970 N M 4 0 - 0 0 0 sco K 
+1614 2970 N M 1 0 - 0 0 0 sco K 
+1629 2970 N M 3 0 - 0 0 0 sco K 
+1632 2970 N M 3 0 - 0 0 0 sco K 
+1635 2970 N M 4 0 - 0 0 0 sco K 
+1639 2970 N M 4 0 - 0 0 0 sco K 
+1643 2970 N M 3 0 - 0 0 0 sco K 
+1646 2970 N M 2 0 - 0 0 0 sco K 
+1662 2970 N M 3 0 - 0 0 0 sco K 
+1665 2970 N M 3 0 - 0 0 0 sco K 
+1668 2970 N M 4 0 - 0 0 0 sco K 
+1672 2970 N M 3 0 - 0 0 0 sco K 
+1675 2970 N M 4 0 - 0 0 0 sco K 
+1679 2970 N M 2 0 - 0 0 0 sco K 
+1695 2970 N M 2 0 - 0 0 0 sco K 
+1697 2970 N M 0 17 - 0 0 0 sco K 
+1697 3001 N M 0 19 - 0 0 0 sco K 
+1697 3034 N M 0 19 - 0 0 0 sco K 
+1697 3067 N M 0 19 - 0 0 0 sco K 
+1697 3100 N M 0 19 - 0 0 0 sco K 
+1697 3133 N M 1 19 - 0 0 0 sco K 
+1698 3166 N M 0 19 - 0 0 0 sco K 
+1698 3199 N M 0 19 - 0 0 0 sco K 
+1698 3232 N M 0 19 - 0 0 0 sco K 
+1698 3265 N M 0 19 - 0 0 0 sco K 
+1699 3298 N M 0 19 - 0 0 0 sco K 
+1699 3331 N M 0 19 - 0 0 0 sco K 
+1699 3364 N M 0 19 - 0 0 0 sco K 
+1699 3397 N M 0 19 - 0 0 0 sco K 
+1699 3430 N M 0 19 - 0 0 0 sco K 
+1700 3463 N M 0 19 - 0 0 0 sco K 
+1700 3496 N M 0 19 - 0 0 0 sco K 
+1700 3529 N M 0 19 - 0 0 0 sco K 
+1700 3562 N M 0 19 - 0 0 0 sco K 
+1700 3595 N M 0 19 - 0 0 0 sco K 
+1701 3622 N M 0 -19 - 0 0 0 sco K 
+1701 3589 N M 0 -19 - 0 0 0 sco K 
+1701 3556 N M 0 -19 - 0 0 0 sco K 
+1701 3523 N M 0 -19 - 0 0 0 sco K 
+1701 3490 N M 0 -19 - 0 0 0 sco K 
+1702 3457 N M 0 -19 - 0 0 0 sco K 
+1702 3424 N M 0 -19 - 0 0 0 sco K 
+1702 3391 N M 0 -19 - 0 0 0 sco K 
+1702 3358 N M 0 -19 - 0 0 0 sco K 
+1702 3325 N M 0 -19 - 0 0 0 sco K 
+1703 3292 N M 0 -19 - 0 0 0 sco K 
+1703 3259 N M 0 -19 - 0 0 0 sco K 
+1703 3226 N M 0 -19 - 0 0 0 sco K 
+1703 3193 N M 0 -19 - 0 0 0 sco K 
+1703 3160 N M 0 -19 - 0 0 0 sco K 
+1704 3127 N M 0 -19 - 0 0 0 sco K 
+1704 3094 N M 0 -19 - 0 0 0 sco K 
+1704 3061 N M 0 -19 - 0 0 0 sco K 
+1704 3028 N M 0 -19 - 0 0 0 sco K 
+1704 2995 N M 0 -19 - 0 0 0 sco K 
+1713 2970 N M 2 0 - 0 0 0 sco K 
+1715 2970 N M 0 17 - 0 0 0 sco K 
+1715 3001 N M 0 19 - 0 0 0 sco K 
+1715 3034 N M 0 19 - 0 0 0 sco K 
+1715 3067 N M 0 19 - 0 0 0 sco K 
+1715 3100 N M 0 19 - 0 0 0 sco K 
+1715 3133 N M 1 19 - 0 0 0 sco K 
+1716 3166 N M 0 19 - 0 0 0 sco K 
+1716 3199 N M 0 19 - 0 0 0 sco K 
+1716 3232 N M 0 19 - 0 0 0 sco K 
+1716 3265 N M 0 19 - 0 0 0 sco K 
+1717 3298 N M 0 19 - 0 0 0 sco K 
+1717 3331 N M 0 19 - 0 0 0 sco K 
+1717 3364 N M 0 19 - 0 0 0 sco K 
+1717 3397 N M 0 19 - 0 0 0 sco K 
+1717 3430 N M 0 19 - 0 0 0 sco K 
+1718 3463 N M 0 19 - 0 0 0 sco K 
+1718 3496 N M 0 19 - 0 0 0 sco K 
+1718 3529 N M 0 19 - 0 0 0 sco K 
+1718 3562 N M 0 19 - 0 0 0 sco K 
+1718 3595 N M 0 19 - 0 0 0 sco K 
+1719 3622 N M 0 -19 - 0 0 0 sco K 
+1719 3589 N M 0 -19 - 0 0 0 sco K 
+1719 3556 N M 1 -19 - 0 0 0 sco K 
+1720 3523 N M 0 -19 - 0 0 0 sco K 
+1720 3490 N M 1 -19 - 0 0 0 sco K 
+1721 3457 N M 0 -19 - 0 0 0 sco K 
+1721 3424 N M 0 -19 - 0 0 0 sco K 
+1722 3391 N M 0 -19 - 0 0 0 sco K 
+1722 3358 N M 0 -19 - 0 0 0 sco K 
+1723 3329 N M 0 19 - 0 0 0 sco K 
+1723 3362 N M 0 19 - 0 0 0 sco K 
+1723 3395 N M 0 19 - 0 0 0 sco K 
+1724 3428 N M 0 19 - 0 0 0 sco K 
+1724 3461 N M 0 19 - 0 0 0 sco K 
+1724 3494 N M 0 19 - 0 0 0 sco K 
+1725 3527 N M 0 19 - 0 0 0 sco K 
+1725 3560 N M 0 19 - 0 0 0 sco K 
+1725 3593 N M 0 19 - 0 0 0 sco K 
+1727 3625 N M 3 0 - 0 0 0 sco K 
+1730 3625 N M 4 0 - 0 0 0 sco K 
+1734 3625 N M 0 -12 - 0 0 0 sco K 
+1734 3599 N M 0 -19 - 0 0 0 sco K 
+1734 3566 N M 0 -19 - 0 0 0 sco K 
+1734 3533 N M 0 -19 - 0 0 0 sco K 
+1735 3500 N M 0 -19 - 0 0 0 sco K 
+1735 3467 N M 0 -19 - 0 0 0 sco K 
+1735 3434 N M 0 -19 - 0 0 0 sco K 
+1735 3401 N M 1 -19 - 0 0 0 sco K 
+1736 3368 N M 0 -19 - 0 0 0 sco K 
+1736 3335 N M 0 -19 - 0 0 0 sco K 
+1736 3302 N M 0 -19 - 0 0 0 sco K 
+1736 3269 N M 1 -1 - 0 0 0 sco K 
+1737 3268 N M 0 18 - 0 0 0 sco K 
+1737 3300 N M 0 19 - 0 0 0 sco K 
+1737 3333 N M 0 19 - 0 0 0 sco K 
+1738 3366 N M 0 19 - 0 0 0 sco K 
+1738 3399 N M 0 19 - 0 0 0 sco K 
+1738 3432 N M 1 19 - 0 0 0 sco K 
+1739 3465 N M 0 19 - 0 0 0 sco K 
+1739 3498 N M 0 19 - 0 0 0 sco K 
+1739 3531 N M 1 19 - 0 0 0 sco K 
+1740 3564 N M 0 19 - 0 0 0 sco K 
+1740 3597 N M 0 19 - 0 0 0 sco K 
+1746 3625 N M 2 0 - 0 0 0 sco K 
+1748 3625 N M 4 0 - 0 0 0 sco K 
+1752 3625 N M 4 0 - 0 0 0 sco K 
+1756 3625 N M 3 0 - 0 0 0 sco K 
+1759 3625 N M 4 0 - 0 0 0 sco K 
+1763 3625 N M 2 0 - 0 0 0 sco K 
+1779 3625 N M 2 0 - 0 0 0 sco K 
+1781 3625 N M 4 0 - 0 0 0 sco K 
+1785 3625 N M 3 0 - 0 0 0 sco K 
+1788 3625 N M 4 0 - 0 0 0 sco K 
+1792 3625 N M 4 0 - 0 0 0 sco K 
+1796 3625 N M 2 0 - 0 0 0 sco K 
+1812 3625 N M 2 0 - 0 0 0 sco K 
+1814 3625 N M 3 0 - 0 0 0 sco K 
+1817 3625 N M 4 0 - 0 0 0 sco K 
+1821 3625 N M 4 0 - 0 0 0 sco K 
+1825 3625 N M 3 0 - 0 0 0 sco K 
+1828 3625 N M 3 0 - 0 0 0 sco K 
+1845 3625 N M 1 0 - 0 0 0 sco K 
+1846 3625 N M 4 0 - 0 0 0 sco K 
+1850 3625 N M 4 0 - 0 0 0 sco K 
+1854 3625 N M 3 0 - 0 0 0 sco K 
+1857 3625 N M 4 0 - 0 0 0 sco K 
+1861 3625 N M 3 0 - 0 0 0 sco K 
+1878 3625 N M 1 0 - 0 0 0 sco K 
+1879 3625 N M 4 0 - 0 0 0 sco K 
+1883 3625 N M 4 0 - 0 0 0 sco K 
+1887 3625 N M 3 0 - 0 0 0 sco K 
+1890 3625 N M 4 0 - 0 0 0 sco K 
+1894 3625 N M 3 0 - 0 0 0 sco K 
+1911 3625 N M 1 0 - 0 0 0 sco K 
+1912 3625 N M 4 0 - 0 0 0 sco K 
+1916 3625 N M 3 0 - 0 0 0 sco K 
+1919 3625 N M 4 0 - 0 0 0 sco K 
+1923 3625 N M 4 0 - 0 0 0 sco K 
+1927 3625 N M 3 0 - 0 0 0 sco K 
+1930 3611 N M 0 -19 - 0 0 0 sco K 
+1930 3578 N M 0 -19 - 0 0 0 sco K 
+1931 3545 N M 0 -19 - 0 0 0 sco K 
+1931 3512 N M 0 -19 - 0 0 0 sco K 
+1931 3479 N M 1 -19 - 0 0 0 sco K 
+1932 3446 N M 0 -19 - 0 0 0 sco K 
+1932 3413 N M 1 -19 - 0 0 0 sco K 
+1933 3380 N M 0 -19 - 0 0 0 sco K 
+1933 3347 N M 0 -19 - 0 0 0 sco K 
+1947 3327 N M 1 0 - 0 0 0 sco K 
+1948 3327 N M 4 0 - 0 0 0 sco K 
+1952 3327 N M 4 0 - 0 0 0 sco K 
+1956 3327 N M 3 0 - 0 0 0 sco K 
+1959 3327 N M 4 0 - 0 0 0 sco K 
+1963 3327 N M 3 0 - 0 0 0 sco K 
+1980 3327 N M 1 0 - 0 0 0 sco K 
+1981 3327 N M 4 0 - 0 0 0 sco K 
+1985 3327 N M 3 0 - 0 0 0 sco K 
+1988 3327 N M 4 0 - 0 0 0 sco K 
+1992 3327 N M 4 0 - 0 0 0 sco K 
+1996 3327 N M 3 0 - 0 0 0 sco K 
+2013 3327 N M 1 0 - 0 0 0 sco K 
+2014 3327 N M 4 0 - 0 0 0 sco K 
+2018 3327 N M 3 0 - 0 0 0 sco K 
+2021 3327 N M 4 0 - 0 0 0 sco K 
+2025 3327 N M 3 0 - 0 0 0 sco K 
+2028 3327 N M 4 0 - 0 0 0 sco K 
+2046 3327 N M 1 0 - 0 0 0 sco K 
+2047 3327 N M 3 0 - 0 0 0 sco K 
+2050 3327 N M 4 0 - 0 0 0 sco K 
+2054 3327 N M 4 0 - 0 0 0 sco K 
+2058 3327 N M 3 0 - 0 0 0 sco K 
+2061 3327 N M 4 0 - 0 0 0 sco K 
+2079 3327 N M 4 0 - 0 0 0 sco K 
+2083 3327 N M 0 -15 - 0 0 0 sco K 
+2084 3298 N M 2 -19 - 0 0 0 sco K 
+2090 3268 N M 4 0 - 0 0 0 sco K 
+2094 3268 N M 4 0 - 0 0 0 sco K 
+2098 3268 N M 3 0 - 0 0 0 sco K 
+2101 3268 N M 4 0 - 0 0 0 sco K 
+2105 3268 N M 4 0 - 0 0 0 sco K 
+2123 3268 N M 4 0 - 0 0 0 sco K 
+2127 3268 N M 3 0 - 0 0 0 sco K 
+2130 3268 N M 4 0 - 0 0 0 sco K 
+2134 3268 N M 4 0 - 0 0 0 sco K 
+2138 3268 N M 3 0 - 0 0 0 sco K 
+2141 3268 N M 1 0 - 0 0 0 sco K 
+2156 3268 N M 3 0 - 0 0 0 sco K 
+2159 3268 N M 4 0 - 0 0 0 sco K 
+2163 3268 N M 4 0 - 0 0 0 sco K 
+2167 3268 N M 3 0 - 0 0 0 sco K 
+2170 3268 N M 4 0 - 0 0 0 sco K 
+2174 3268 N M 1 0 - 0 0 0 sco K 
+2189 3268 N M 3 0 - 0 0 0 sco K 
+2192 3268 N M 4 0 - 0 0 0 sco K 
+2196 3268 N M 3 0 - 0 0 0 sco K 
+2199 3268 N M 4 0 - 0 0 0 sco K 
+2203 3268 N M 4 0 - 0 0 0 sco K 
+2207 3268 N M 1 0 - 0 0 0 sco K 
+2222 3268 N M 3 0 - 0 0 0 sco K 
+2225 3268 N M 4 0 - 0 0 0 sco K 
+2229 3268 N M 3 0 - 0 0 0 sco K 
+2232 3268 N M 4 0 - 0 0 0 sco K 
+2236 3268 N M 4 0 - 0 0 0 sco K 
+2240 3268 N M 1 0 - 0 0 0 sco K 
+2255 3268 N M 3 0 - 0 0 0 sco K 
+2258 3268 N M 3 0 - 0 0 0 sco K 
+2261 3268 N M 4 0 - 0 0 0 sco K 
+2265 3268 N M 4 0 - 0 0 0 sco K 
+2269 3268 N M 3 0 - 0 0 0 sco K 
+2272 3268 N M 2 0 - 0 0 0 sco K 
+2288 3268 N M 2 0 - 0 0 0 sco K 
+2290 3268 N M 4 0 - 0 0 0 sco K 
+2294 3268 N M 4 0 - 0 0 0 sco K 
+2298 3268 N M 3 0 - 0 0 0 sco K 
+2301 3268 N M 4 0 - 0 0 0 sco K 
+2305 3268 N M 2 0 - 0 0 0 sco K 
+2321 3268 N M 2 0 - 0 0 0 sco K 
+2323 3268 N M 4 0 - 0 0 0 sco K 
+2327 3268 N M 4 0 - 0 0 0 sco K 
+1137 2848 N M 0 901 - 8 Lw solid 0 0 0 sco K 
+1137 3749 N M 1198 0 - 0 0 0 sco K 
+2335 3749 N M 0 -901 - 0 0 0 sco K 
+2335 2848 N M -1198 0 - 0 0 0 sco K : 2518 3708 156 57 rc 0 0 0 sco F0_50
+Ji 
+2570 3708 M 
+0.200 0 (0)A 
+; 
+2608 3744 N M 15 0 - 5 Lw solid 0 0 0 sco K : 2518 3559 156 57 rc 0 0 0 sco F0_50
+Ji 
+2570 3559 M 
+0.200 0 (1)A 
+; 
+2608 3595 N M 15 0 - 0 0 0 sco K : 2518 3410 156 57 rc 0 0 0 sco F0_50
+Ji 
+2570 3410 M 
+0.200 0 (2)A 
+; 
+2608 3446 N M 15 0 - 0 0 0 sco K : 2518 3262 156 57 rc 0 0 0 sco F0_50
+Ji 
+2570 3262 M 
+0.200 0 (3)A 
+; 
+2608 3298 N M 15 0 - 0 0 0 sco K : 2518 3113 156 57 rc 0 0 0 sco F0_50
+Ji 
+2570 3113 M 
+0.200 0 (4)A 
+; 
+2608 3149 N M 15 0 - 0 0 0 sco K : 2518 2964 156 57 rc 0 0 0 sco F0_50
+Ji 
+2570 2964 M 
+0.200 0 (5)A 
+; 
+2608 3000 N M 15 0 - 0 0 0 sco K : 2518 2816 156 57 rc 0 0 0 sco F0_50
+Ji 
+2570 2816 M 
+0.200 0 (6)A 
+; 
+2608 2852 N M 15 0 - 0 0 0 sco K : 3801 3708 156 57 rc 0 0 0 sco F0_50
+Ji 
+3853 3708 M 
+0.200 0 (0)A 
+; 
+3827 3744 N M 13 0 - 0 0 0 sco K : 3801 3410 156 57 rc 0 0 0 sco F0_50
+Ji 
+3853 3410 M 
+0.200 0 (5)A 
+; 
+3827 3446 N M 13 0 - 0 0 0 sco K : 3801 3113 208 57 rc 0 0 0 sco F0_50
+Ji 
+3853 3113 M 
+0.200 0 (10)A 
+; 
+3827 3149 N M 13 0 - 0 0 0 sco K : 3801 2816 208 57 rc 0 0 0 sco F0_50
+Ji 
+3853 2816 M 
+0.200 0 (15)A 
+; 
+3827 2852 N M 13 0 - 0 0 0 sco K 
+2629 3753 N M 0 11 - 0 0 0 sco K : 2620 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+2672 3771 M 
+0.200 0 (70)A 
+; 
+2672 3753 N M 0 11 - 0 0 0 sco K 
+2716 3753 N M 0 11 - 0 0 0 sco K : 2708 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+2760 3771 M 
+0.200 0 (72)A 
+; 
+2760 3753 N M 0 11 - 0 0 0 sco K 
+2803 3753 N M 0 11 - 0 0 0 sco K : 2795 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+2847 3771 M 
+0.200 0 (74)A 
+; 
+2847 3753 N M 0 11 - 0 0 0 sco K 
+2891 3753 N M 0 11 - 0 0 0 sco K : 2882 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+2934 3771 M 
+0.200 0 (76)A 
+; 
+2934 3753 N M 0 11 - 0 0 0 sco K 
+2978 3753 N M 0 11 - 0 0 0 sco K : 2970 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+3022 3771 M 
+0.200 0 (78)A 
+; 
+3022 3753 N M 0 11 - 0 0 0 sco K 
+3065 3753 N M 0 11 - 0 0 0 sco K : 3057 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+3109 3771 M 
+0.200 0 (80)A 
+; 
+3109 3753 N M 0 11 - 0 0 0 sco K 
+3153 3753 N M 0 11 - 0 0 0 sco K : 3144 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+3196 3771 M 
+0.200 0 (82)A 
+; 
+3196 3753 N M 0 11 - 0 0 0 sco K 
+3240 3753 N M 0 11 - 0 0 0 sco K : 3232 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+3284 3771 M 
+0.200 0 (84)A 
+; 
+3284 3753 N M 0 11 - 0 0 0 sco K 
+3328 3753 N M 0 11 - 0 0 0 sco K : 3319 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+3371 3771 M 
+0.200 0 (86)A 
+; 
+3371 3753 N M 0 11 - 0 0 0 sco K 
+3415 3753 N M 0 11 - 0 0 0 sco K : 3407 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+3459 3771 M 
+0.200 0 (88)A 
+; 
+3459 3753 N M 0 11 - 0 0 0 sco K 
+3502 3753 N M 0 11 - 0 0 0 sco K : 3494 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+3546 3771 M 
+0.200 0 (90)A 
+; 
+3546 3753 N M 0 11 - 0 0 0 sco K 
+3590 3753 N M 0 11 - 0 0 0 sco K : 3581 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+3633 3771 M 
+0.200 0 (92)A 
+; 
+3633 3753 N M 0 11 - 0 0 0 sco K 
+3677 3753 N M 0 11 - 0 0 0 sco K : 3669 3771 208 57 rc 0 0 0 sco F0_50
+Ji 
+3721 3771 M 
+0.200 0 (94)A 
+; 
+3721 3753 N M 0 11 - 0 0 0 sco K 
+3764 3753 N M 0 11 - 0 0 0 sco K 
+3808 3753 N M 0 11 - 0 0 0 sco K 
+2629 3298 N M 3 -298 - 0 0 0 sco K 
+2632 3000 N M 4 0 - 0 0 0 sco K 
+2636 3000 N M 3 0 - 0 0 0 sco K 
+2639 3000 N M 4 0 - 0 0 0 sco K 
+2643 3000 N M 4 298 - 0 0 0 sco K 
+2647 3298 N M 3 0 - 0 0 0 sco K 
+2650 3298 N M 4 0 - 0 0 0 sco K 
+2654 3298 N M 4 0 - 0 0 0 sco K 
+2658 3298 N M 3 148 - 0 0 0 sco K 
+2661 3446 N M 4 -446 - 0 0 0 sco K 
+2665 3000 N M 4 0 - 0 0 0 sco K 
+2669 3000 N M 3 0 - 0 0 0 sco K 
+2672 3000 N M 4 0 - 0 0 0 sco K 
+2676 3000 N M 3 0 - 0 0 0 sco K 
+2679 3000 N M 4 0 - 0 0 0 sco K 
+2683 3000 N M 4 0 - 0 0 0 sco K 
+2687 3000 N M 3 0 - 0 0 0 sco K 
+2690 3000 N M 4 149 - 0 0 0 sco K 
+2694 3149 N M 4 -149 - 0 0 0 sco K 
+2698 3000 N M 3 0 - 0 0 0 sco K 
+2701 3000 N M 4 0 - 0 0 0 sco K 
+2705 3000 N M 4 0 - 0 0 0 sco K 
+2709 3000 N M 3 149 - 0 0 0 sco K 
+2712 3149 N M 4 0 - 0 0 0 sco K 
+2716 3149 N M 3 0 - 0 0 0 sco K 
+2719 3149 N M 4 149 - 0 0 0 sco K 
+2723 3298 N M 4 0 - 0 0 0 sco K 
+2727 3298 N M 3 -298 - 0 0 0 sco K 
+2730 3000 N M 4 298 - 0 0 0 sco K 
+2734 3298 N M 4 148 - 0 0 0 sco K 
+2738 3446 N M 3 -297 - 0 0 0 sco K 
+2741 3149 N M 4 297 - 0 0 0 sco K 
+2745 3446 N M 4 0 - 0 0 0 sco K 
+2749 3446 N M 3 0 - 0 0 0 sco K 
+2752 3446 N M 4 0 - 0 0 0 sco K 
+2756 3446 N M 4 0 - 0 0 0 sco K 
+2760 3446 N M 3 0 - 0 0 0 sco K 
+2763 3446 N M 4 0 - 0 0 0 sco K 
+2767 3446 N M 3 0 - 0 0 0 sco K 
+2770 3446 N M 4 0 - 0 0 0 sco K 
+2774 3446 N M 4 0 - 0 0 0 sco K 
+2778 3446 N M 3 0 - 0 0 0 sco K 
+2781 3446 N M 4 0 - 0 0 0 sco K 
+2785 3446 N M 4 0 - 0 0 0 sco K 
+2789 3446 N M 3 0 - 0 0 0 sco K 
+2792 3446 N M 4 0 - 0 0 0 sco K 
+2796 3446 N M 4 0 - 0 0 0 sco K 
+2800 3446 N M 3 0 - 0 0 0 sco K 
+2803 3446 N M 4 0 - 0 0 0 sco K 
+2807 3446 N M 3 0 - 0 0 0 sco K 
+2810 3446 N M 4 0 - 0 0 0 sco K 
+2814 3446 N M 4 0 - 0 0 0 sco K 
+2818 3446 N M 3 0 - 0 0 0 sco K 
+2821 3446 N M 4 0 - 0 0 0 sco K 
+2825 3446 N M 4 0 - 0 0 0 sco K 
+2829 3446 N M 3 0 - 0 0 0 sco K 
+2832 3446 N M 4 0 - 0 0 0 sco K 
+2836 3446 N M 4 0 - 0 0 0 sco K 
+2840 3446 N M 3 0 - 0 0 0 sco K 
+2843 3446 N M 4 0 - 0 0 0 sco K 
+2847 3446 N M 3 149 - 0 0 0 sco K 
+2850 3595 N M 4 0 - 0 0 0 sco K 
+2854 3595 N M 4 -149 - 0 0 0 sco K 
+2858 3446 N M 3 -446 - 0 0 0 sco K 
+2861 3000 N M 4 446 - 0 0 0 sco K 
+2865 3446 N M 4 0 - 0 0 0 sco K 
+2869 3446 N M 3 0 - 0 0 0 sco K 
+2872 3446 N M 4 -446 - 0 0 0 sco K 
+2876 3000 N M 4 149 - 0 0 0 sco K 
+2880 3149 N M 3 0 - 0 0 0 sco K 
+2883 3149 N M 4 0 - 0 0 0 sco K 
+2887 3149 N M 4 0 - 0 0 0 sco K 
+2891 3149 N M 3 297 - 0 0 0 sco K 
+2894 3446 N M 4 0 - 0 0 0 sco K 
+2898 3446 N M 3 0 - 0 0 0 sco K 
+2901 3446 N M 4 0 - 0 0 0 sco K 
+2905 3446 N M 4 0 - 0 0 0 sco K 
+2909 3446 N M 3 0 - 0 0 0 sco K 
+2912 3446 N M 4 0 - 0 0 0 sco K 
+2916 3446 N M 4 0 - 0 0 0 sco K 
+2920 3446 N M 3 0 - 0 0 0 sco K 
+2923 3446 N M 4 149 - 0 0 0 sco K 
+2927 3595 N M 4 -149 - 0 0 0 sco K 
+2931 3446 N M 3 0 - 0 0 0 sco K 
+2934 3446 N M 4 0 - 0 0 0 sco K 
+2938 3446 N M 3 0 - 0 0 0 sco K 
+2941 3446 N M 4 0 - 0 0 0 sco K 
+2945 3446 N M 4 0 - 0 0 0 sco K 
+2949 3446 N M 3 0 - 0 0 0 sco K 
+2952 3446 N M 4 0 - 0 0 0 sco K 
+2956 3446 N M 4 0 - 0 0 0 sco K 
+2960 3446 N M 3 0 - 0 0 0 sco K 
+2963 3446 N M 4 0 - 0 0 0 sco K 
+2967 3446 N M 4 0 - 0 0 0 sco K 
+2971 3446 N M 3 0 - 0 0 0 sco K 
+2974 3446 N M 4 0 - 0 0 0 sco K 
+2978 3446 N M 3 0 - 0 0 0 sco K 
+2981 3446 N M 4 0 - 0 0 0 sco K 
+2985 3446 N M 4 0 - 0 0 0 sco K 
+2989 3446 N M 3 0 - 0 0 0 sco K 
+2992 3446 N M 4 0 - 0 0 0 sco K 
+2996 3446 N M 4 0 - 0 0 0 sco K 
+3000 3446 N M 3 0 - 0 0 0 sco K 
+3003 3446 N M 4 0 - 0 0 0 sco K 
+3007 3446 N M 4 0 - 0 0 0 sco K 
+3011 3446 N M 3 0 - 0 0 0 sco K 
+3014 3446 N M 4 0 - 0 0 0 sco K 
+3018 3446 N M 4 0 - 0 0 0 sco K 
+3022 3446 N M 3 0 - 0 0 0 sco K 
+3025 3446 N M 4 0 - 0 0 0 sco K 
+3029 3446 N M 3 0 - 0 0 0 sco K 
+3032 3446 N M 4 0 - 0 0 0 sco K 
+3036 3446 N M 4 0 - 0 0 0 sco K 
+3040 3446 N M 3 0 - 0 0 0 sco K 
+3043 3446 N M 4 0 - 0 0 0 sco K 
+3047 3446 N M 4 0 - 0 0 0 sco K 
+3051 3446 N M 3 0 - 0 0 0 sco K 
+3054 3446 N M 4 0 - 0 0 0 sco K 
+3058 3446 N M 4 0 - 0 0 0 sco K 
+3062 3446 N M 3 0 - 0 0 0 sco K 
+3065 3446 N M 4 0 - 0 0 0 sco K 
+3069 3446 N M 3 0 - 0 0 0 sco K 
+3072 3446 N M 4 0 - 0 0 0 sco K 
+3076 3446 N M 4 0 - 0 0 0 sco K 
+3080 3446 N M 3 0 - 0 0 0 sco K 
+3083 3446 N M 4 149 - 0 0 0 sco K 
+3087 3595 N M 4 -149 - 0 0 0 sco K 
+3091 3446 N M 3 149 - 0 0 0 sco K 
+3094 3595 N M 4 -149 - 0 0 0 sco K 
+3098 3446 N M 4 0 - 0 0 0 sco K 
+3102 3446 N M 3 0 - 0 0 0 sco K 
+3105 3446 N M 4 0 - 0 0 0 sco K 
+3109 3446 N M 4 0 - 0 0 0 sco K 
+3113 3446 N M 3 149 - 0 0 0 sco K 
+3116 3595 N M 4 -149 - 0 0 0 sco K 
+3120 3446 N M 3 0 - 0 0 0 sco K 
+3123 3446 N M 4 0 - 0 0 0 sco K 
+3127 3446 N M 4 0 - 0 0 0 sco K 
+3131 3446 N M 3 0 - 0 0 0 sco K 
+3134 3446 N M 4 0 - 0 0 0 sco K 
+3138 3446 N M 4 0 - 0 0 0 sco K 
+3142 3446 N M 3 0 - 0 0 0 sco K 
+3145 3446 N M 4 0 - 0 0 0 sco K 
+3149 3446 N M 4 0 - 0 0 0 sco K 
+3153 3446 N M 3 0 - 0 0 0 sco K 
+3156 3446 N M 4 0 - 0 0 0 sco K 
+3160 3446 N M 3 0 - 0 0 0 sco K 
+3163 3446 N M 4 0 - 0 0 0 sco K 
+3167 3446 N M 4 0 - 0 0 0 sco K 
+3171 3446 N M 3 0 - 0 0 0 sco K 
+3174 3446 N M 4 0 - 0 0 0 sco K 
+3178 3446 N M 4 0 - 0 0 0 sco K 
+3182 3446 N M 3 0 - 0 0 0 sco K 
+3185 3446 N M 4 0 - 0 0 0 sco K 
+3189 3446 N M 4 149 - 0 0 0 sco K 
+3193 3595 N M 3 0 - 0 0 0 sco K 
+3196 3595 N M 4 0 - 0 0 0 sco K 
+3200 3595 N M 3 0 - 0 0 0 sco K 
+3203 3595 N M 4 0 - 0 0 0 sco K 
+3207 3595 N M 4 0 - 0 0 0 sco K 
+3211 3595 N M 3 0 - 0 0 0 sco K 
+3214 3595 N M 4 -149 - 0 0 0 sco K 
+3218 3446 N M 4 0 - 0 0 0 sco K 
+3222 3446 N M 3 0 - 0 0 0 sco K 
+3225 3446 N M 4 0 - 0 0 0 sco K 
+3229 3446 N M 4 0 - 0 0 0 sco K 
+3233 3446 N M 3 0 - 0 0 0 sco K 
+3236 3446 N M 4 0 - 0 0 0 sco K 
+3240 3446 N M 4 0 - 0 0 0 sco K 
+3244 3446 N M 3 0 - 0 0 0 sco K 
+3247 3446 N M 4 0 - 0 0 0 sco K 
+3251 3446 N M 3 0 - 0 0 0 sco K 
+3254 3446 N M 4 0 - 0 0 0 sco K 
+3258 3446 N M 4 149 - 0 0 0 sco K 
+3262 3595 N M 3 0 - 0 0 0 sco K 
+3265 3595 N M 4 0 - 0 0 0 sco K 
+3269 3595 N M 4 -149 - 0 0 0 sco K 
+3273 3446 N M 3 0 - 0 0 0 sco K 
+3276 3446 N M 4 0 - 0 0 0 sco K 
+3280 3446 N M 4 149 - 0 0 0 sco K 
+3284 3595 N M 3 -149 - 0 0 0 sco K 
+3287 3446 N M 4 0 - 0 0 0 sco K 
+3291 3446 N M 3 0 - 0 0 0 sco K 
+3294 3446 N M 4 0 - 0 0 0 sco K 
+3298 3446 N M 4 0 - 0 0 0 sco K 
+3302 3446 N M 3 149 - 0 0 0 sco K 
+3305 3595 N M 4 0 - 0 0 0 sco K 
+3309 3595 N M 4 0 - 0 0 0 sco K 
+3313 3595 N M 3 0 - 0 0 0 sco K 
+3316 3595 N M 4 0 - 0 0 0 sco K 
+3320 3595 N M 4 0 - 0 0 0 sco K 
+3324 3595 N M 3 0 - 0 0 0 sco K 
+3327 3595 N M 4 0 - 0 0 0 sco K 
+3331 3595 N M 3 0 - 0 0 0 sco K 
+3334 3595 N M 4 0 - 0 0 0 sco K 
+3338 3595 N M 4 0 - 0 0 0 sco K 
+3342 3595 N M 3 -149 - 0 0 0 sco K 
+3345 3446 N M 4 149 - 0 0 0 sco K 
+3349 3595 N M 4 0 - 0 0 0 sco K 
+3353 3595 N M 3 0 - 0 0 0 sco K 
+3356 3595 N M 4 0 - 0 0 0 sco K 
+3360 3595 N M 4 0 - 0 0 0 sco K 
+3364 3595 N M 3 0 - 0 0 0 sco K 
+3367 3595 N M 4 0 - 0 0 0 sco K 
+3371 3595 N M 4 0 - 0 0 0 sco K 
+3375 3595 N M 3 0 - 0 0 0 sco K 
+3378 3595 N M 4 0 - 0 0 0 sco K 
+3382 3595 N M 3 0 - 0 0 0 sco K 
+3385 3595 N M 4 0 - 0 0 0 sco K 
+3389 3595 N M 4 0 - 0 0 0 sco K 
+3393 3595 N M 3 0 - 0 0 0 sco K 
+3396 3595 N M 4 0 - 0 0 0 sco K 
+3400 3595 N M 4 0 - 0 0 0 sco K 
+3404 3595 N M 3 0 - 0 0 0 sco K 
+3407 3595 N M 4 0 - 0 0 0 sco K 
+3411 3595 N M 4 0 - 0 0 0 sco K 
+3415 3595 N M 3 0 - 0 0 0 sco K 
+3418 3595 N M 4 0 - 0 0 0 sco K 
+3422 3595 N M 3 0 - 0 0 0 sco K 
+3425 3595 N M 4 0 - 0 0 0 sco K 
+3429 3595 N M 4 0 - 0 0 0 sco K 
+3433 3595 N M 3 0 - 0 0 0 sco K 
+3436 3595 N M 4 0 - 0 0 0 sco K 
+3440 3595 N M 4 0 - 0 0 0 sco K 
+3444 3595 N M 3 0 - 0 0 0 sco K 
+3447 3595 N M 4 0 - 0 0 0 sco K 
+3451 3595 N M 4 0 - 0 0 0 sco K 
+3455 3595 N M 3 0 - 0 0 0 sco K 
+3458 3595 N M 4 -149 - 0 0 0 sco K 
+3462 3446 N M 4 0 - 0 0 0 sco K 
+3466 3446 N M 3 0 - 0 0 0 sco K 
+3469 3446 N M 4 0 - 0 0 0 sco K 
+3473 3446 N M 3 0 - 0 0 0 sco K 
+3476 3446 N M 4 0 - 0 0 0 sco K 
+3480 3446 N M 4 0 - 0 0 0 sco K 
+3484 3446 N M 3 0 - 0 0 0 sco K 
+3487 3446 N M 4 0 - 0 0 0 sco K 
+3491 3446 N M 4 0 - 0 0 0 sco K 
+3495 3446 N M 3 0 - 0 0 0 sco K 
+3498 3446 N M 4 0 - 0 0 0 sco K 
+3502 3446 N M 4 149 - 0 0 0 sco K 
+3506 3595 N M 3 0 - 0 0 0 sco K 
+3509 3595 N M 4 0 - 0 0 0 sco K 
+3513 3595 N M 3 0 - 0 0 0 sco K 
+3516 3595 N M 4 0 - 0 0 0 sco K 
+3520 3595 N M 4 0 - 0 0 0 sco K 
+3524 3595 N M 3 -149 - 0 0 0 sco K 
+3527 3446 N M 4 0 - 0 0 0 sco K 
+3531 3446 N M 4 0 - 0 0 0 sco K 
+3535 3446 N M 3 0 - 0 0 0 sco K 
+3538 3446 N M 4 0 - 0 0 0 sco K 
+3542 3446 N M 4 0 - 0 0 0 sco K 
+3546 3446 N M 3 149 - 0 0 0 sco K 
+3549 3595 N M 4 0 - 0 0 0 sco K 
+3553 3595 N M 3 0 - 0 0 0 sco K 
+3556 3595 N M 4 0 - 0 0 0 sco K 
+3560 3595 N M 4 0 - 0 0 0 sco K 
+3564 3595 N M 3 0 - 0 0 0 sco K 
+3567 3595 N M 4 0 - 0 0 0 sco K 
+3571 3595 N M 4 0 - 0 0 0 sco K 
+3575 3595 N M 3 0 - 0 0 0 sco K 
+3578 3595 N M 4 0 - 0 0 0 sco K 
+3582 3595 N M 4 0 - 0 0 0 sco K 
+3586 3595 N M 3 0 - 0 0 0 sco K 
+3589 3595 N M 4 0 - 0 0 0 sco K 
+3593 3595 N M 4 0 - 0 0 0 sco K 
+3597 3595 N M 3 0 - 0 0 0 sco K 
+3600 3595 N M 4 0 - 0 0 0 sco K 
+3604 3595 N M 3 0 - 0 0 0 sco K 
+3607 3595 N M 4 0 - 0 0 0 sco K 
+3611 3595 N M 4 0 - 0 0 0 sco K 
+3615 3595 N M 3 0 - 0 0 0 sco K 
+3618 3595 N M 4 0 - 0 0 0 sco K 
+3622 3595 N M 4 0 - 0 0 0 sco K 
+3626 3595 N M 3 0 - 0 0 0 sco K 
+3629 3595 N M 4 0 - 0 0 0 sco K 
+3633 3595 N M 4 0 - 0 0 0 sco K 
+3637 3595 N M 3 0 - 0 0 0 sco K 
+3640 3595 N M 4 0 - 0 0 0 sco K 
+3644 3595 N M 3 0 - 0 0 0 sco K 
+3647 3595 N M 4 0 - 0 0 0 sco K 
+3651 3595 N M 4 0 - 0 0 0 sco K 
+3655 3595 N M 3 0 - 0 0 0 sco K 
+3658 3595 N M 4 0 - 0 0 0 sco K 
+3662 3595 N M 4 0 - 0 0 0 sco K 
+3666 3595 N M 3 0 - 0 0 0 sco K 
+3669 3595 N M 4 0 - 0 0 0 sco K 
+3673 3595 N M 4 0 - 0 0 0 sco K 
+3677 3595 N M 3 0 - 0 0 0 sco K 
+3680 3595 N M 4 0 - 0 0 0 sco K 
+3684 3595 N M 3 0 - 0 0 0 sco K 
+3687 3595 N M 4 0 - 0 0 0 sco K 
+3691 3595 N M 4 0 - 0 0 0 sco K 
+3695 3595 N M 3 0 - 0 0 0 sco K 
+3698 3595 N M 4 0 - 0 0 0 sco K 
+3702 3595 N M 4 0 - 0 0 0 sco K 
+3706 3595 N M 3 -149 - 0 0 0 sco K 
+3709 3446 N M 4 0 - 0 0 0 sco K 
+3713 3446 N M 4 0 - 0 0 0 sco K 
+3717 3446 N M 3 0 - 0 0 0 sco K 
+3720 3446 N M 4 0 - 0 0 0 sco K 
+3724 3446 N M 4 0 - 0 0 0 sco K 
+3728 3446 N M 3 0 - 0 0 0 sco K 
+3731 3446 N M 4 0 - 0 0 0 sco K 
+3735 3446 N M 3 0 - 0 0 0 sco K 
+3738 3446 N M 4 0 - 0 0 0 sco K 
+3742 3446 N M 4 0 - 0 0 0 sco K 
+3746 3446 N M 3 0 - 0 0 0 sco K 
+3749 3446 N M 4 0 - 0 0 0 sco K 
+3753 3446 N M 4 0 - 0 0 0 sco K 
+3757 3446 N M 3 0 - 0 0 0 sco K 
+3760 3446 N M 4 0 - 0 0 0 sco K 
+3764 3446 N M 4 0 - 0 0 0 sco K 
+3768 3446 N M 3 0 - 0 0 0 sco K 
+3771 3446 N M 4 0 - 0 0 0 sco K 
+3775 3446 N M 3 0 - 0 0 0 sco K 
+3778 3446 N M 4 0 - 0 0 0 sco K 
+3782 3446 N M 4 0 - 0 0 0 sco K 
+3786 3446 N M 3 0 - 0 0 0 sco K 
+3789 3446 N M 4 0 - 0 0 0 sco K 
+3793 3446 N M 4 0 - 0 0 0 sco K 
+3797 3446 N M 3 0 - 0 0 0 sco K 
+3800 3446 N M 4 0 - 0 0 0 sco K 
+3804 3446 N M 4 0 - 0 0 0 sco K 
+3808 3446 N M 3 0 - 0 0 0 sco K 
+3811 3446 N M 4 0 - 0 0 0 sco K 
+3815 3446 N M 4 0 - 0 0 0 sco K 
+2629 2970 N M 3 0 - 0 0 0 sco K 
+2632 2970 N M 4 0 - 0 0 0 sco K 
+2636 2970 N M 3 0 - 0 0 0 sco K 
+2639 2970 N M 4 0 - 0 0 0 sco K 
+2643 2970 N M 4 0 - 0 0 0 sco K 
+2647 2970 N M 1 0 - 0 0 0 sco K 
+2662 2970 N M 3 0 - 0 0 0 sco K 
+2665 2970 N M 4 0 - 0 0 0 sco K 
+2669 2970 N M 3 0 - 0 0 0 sco K 
+2672 2970 N M 4 0 - 0 0 0 sco K 
+2676 2970 N M 3 0 - 0 0 0 sco K 
+2679 2970 N M 2 0 - 0 0 0 sco K 
+2695 2970 N M 3 0 - 0 0 0 sco K 
+2698 2970 N M 3 0 - 0 0 0 sco K 
+2701 2970 N M 4 0 - 0 0 0 sco K 
+2705 2970 N M 4 0 - 0 0 0 sco K 
+2709 2970 N M 3 0 - 0 0 0 sco K 
+2712 2970 N M 2 0 - 0 0 0 sco K 
+2728 2970 N M 2 0 - 0 0 0 sco K 
+2730 2970 N M 4 0 - 0 0 0 sco K 
+2734 2970 N M 4 0 - 0 0 0 sco K 
+2738 2970 N M 3 0 - 0 0 0 sco K 
+2741 2970 N M 4 0 - 0 0 0 sco K 
+2745 2970 N M 2 0 - 0 0 0 sco K 
+2761 2970 N M 2 0 - 0 0 0 sco K 
+2763 2970 N M 4 0 - 0 0 0 sco K 
+2767 2970 N M 3 0 - 0 0 0 sco K 
+2770 2970 N M 4 0 - 0 0 0 sco K 
+2774 2970 N M 4 0 - 0 0 0 sco K 
+2778 2970 N M 2 0 - 0 0 0 sco K 
+2794 2970 N M 2 0 - 0 0 0 sco K 
+2796 2970 N M 4 0 - 0 0 0 sco K 
+2800 2970 N M 3 0 - 0 0 0 sco K 
+2803 2970 N M 4 0 - 0 0 0 sco K 
+2807 2970 N M 3 0 - 0 0 0 sco K 
+2810 2970 N M 3 0 - 0 0 0 sco K 
+2827 2970 N M 2 0 - 0 0 0 sco K 
+2829 2970 N M 3 0 - 0 0 0 sco K 
+2832 2970 N M 4 0 - 0 0 0 sco K 
+2836 2970 N M 4 0 - 0 0 0 sco K 
+2840 2970 N M 3 0 - 0 0 0 sco K 
+2843 2970 N M 3 0 - 0 0 0 sco K 
+2847 2983 N M 0 19 - 0 0 0 sco K 
+2847 3016 N M 0 19 - 0 0 0 sco K 
+2847 3049 N M 0 19 - 0 0 0 sco K 
+2847 3082 N M 1 19 - 0 0 0 sco K 
+2848 3115 N M 0 19 - 0 0 0 sco K 
+2848 3148 N M 0 19 - 0 0 0 sco K 
+2848 3181 N M 0 19 - 0 0 0 sco K 
+2849 3214 N M 0 19 - 0 0 0 sco K 
+2849 3247 N M 0 19 - 0 0 0 sco K 
+2849 3280 N M 0 19 - 0 0 0 sco K 
+2849 3313 N M 1 14 - 0 0 0 sco K 
+2850 3327 N M 0 -5 - 0 0 0 sco K 
+2850 3308 N M 0 -19 - 0 0 0 sco K 
+2850 3275 N M 0 -19 - 0 0 0 sco K 
+2850 3242 N M 1 -19 - 0 0 0 sco K 
+2851 3209 N M 0 -19 - 0 0 0 sco K 
+2851 3176 N M 0 -19 - 0 0 0 sco K 
+2852 3143 N M 0 -19 - 0 0 0 sco K 
+2852 3110 N M 0 -19 - 0 0 0 sco K 
+2852 3077 N M 1 -19 - 0 0 0 sco K 
+2853 3044 N M 0 -19 - 0 0 0 sco K 
+2853 3011 N M 0 -19 - 0 0 0 sco K 
+2853 2978 N M 1 -8 - 0 0 0 sco K 
+2854 2970 N M 4 0 - 0 0 0 sco K 
+2858 2970 N M 3 0 - 0 0 0 sco K 
+2861 2970 N M 4 0 - 0 0 0 sco K 
+2879 2970 N M 1 0 - 0 0 0 sco K 
+2880 2970 N M 3 0 - 0 0 0 sco K 
+2883 2970 N M 4 0 - 0 0 0 sco K 
+2887 2970 N M 4 0 - 0 0 0 sco K 
+2891 2970 N M 3 0 - 0 0 0 sco K 
+2894 2970 N M 4 0 - 0 0 0 sco K 
+2912 2970 N M 4 0 - 0 0 0 sco K 
+2916 2970 N M 4 0 - 0 0 0 sco K 
+2920 2970 N M 3 0 - 0 0 0 sco K 
+2923 2970 N M 4 0 - 0 0 0 sco K 
+2927 2970 N M 4 0 - 0 0 0 sco K 
+2945 2970 N M 4 0 - 0 0 0 sco K 
+2949 2970 N M 3 0 - 0 0 0 sco K 
+2952 2970 N M 4 0 - 0 0 0 sco K 
+2956 2970 N M 4 0 - 0 0 0 sco K 
+2960 2970 N M 3 0 - 0 0 0 sco K 
+2963 2970 N M 1 0 - 0 0 0 sco K 
+2978 2970 N M 3 0 - 0 0 0 sco K 
+2981 2970 N M 4 0 - 0 0 0 sco K 
+2985 2970 N M 4 0 - 0 0 0 sco K 
+2989 2970 N M 3 0 - 0 0 0 sco K 
+2992 2970 N M 4 0 - 0 0 0 sco K 
+2996 2970 N M 1 0 - 0 0 0 sco K 
+3011 2970 N M 3 0 - 0 0 0 sco K 
+3014 2970 N M 4 0 - 0 0 0 sco K 
+3018 2970 N M 4 0 - 0 0 0 sco K 
+3022 2970 N M 3 0 - 0 0 0 sco K 
+3025 2970 N M 4 0 - 0 0 0 sco K 
+3029 2970 N M 1 0 - 0 0 0 sco K 
+3044 2970 N M 3 0 - 0 0 0 sco K 
+3047 2970 N M 4 0 - 0 0 0 sco K 
+3051 2970 N M 3 0 - 0 0 0 sco K 
+3054 2970 N M 4 0 - 0 0 0 sco K 
+3058 2970 N M 4 0 - 0 0 0 sco K 
+3062 2970 N M 1 0 - 0 0 0 sco K 
+3077 2970 N M 3 0 - 0 0 0 sco K 
+3080 2970 N M 3 0 - 0 0 0 sco K 
+3083 2970 N M 4 0 - 0 0 0 sco K 
+3087 2970 N M 4 0 - 0 0 0 sco K 
+3091 2970 N M 3 0 - 0 0 0 sco K 
+3094 2970 N M 2 0 - 0 0 0 sco K 
+3110 2970 N M 3 0 - 0 0 0 sco K 
+3113 2970 N M 3 0 - 0 0 0 sco K 
+3116 2970 N M 4 0 - 0 0 0 sco K 
+3120 2970 N M 3 0 - 0 0 0 sco K 
+3123 2970 N M 4 0 - 0 0 0 sco K 
+3127 2970 N M 2 0 - 0 0 0 sco K 
+3143 2970 N M 2 0 - 0 0 0 sco K 
+3145 2970 N M 4 0 - 0 0 0 sco K 
+3149 2970 N M 4 0 - 0 0 0 sco K 
+3153 2970 N M 3 0 - 0 0 0 sco K 
+3156 2970 N M 4 0 - 0 0 0 sco K 
+3160 2970 N M 2 0 - 0 0 0 sco K 
+3176 2970 N M 2 0 - 0 0 0 sco K 
+3178 2970 N M 4 0 - 0 0 0 sco K 
+3182 2970 N M 3 0 - 0 0 0 sco K 
+3185 2970 N M 4 0 - 0 0 0 sco K 
+3189 2970 N M 4 0 - 0 0 0 sco K 
+3193 2970 N M 2 0 - 0 0 0 sco K 
+3207 2972 N M 0 19 - 0 0 0 sco K 
+3207 3005 N M 0 19 - 0 0 0 sco K 
+3207 3038 N M 0 19 - 0 0 0 sco K 
+3208 3071 N M 0 19 - 0 0 0 sco K 
+3208 3104 N M 0 19 - 0 0 0 sco K 
+3208 3137 N M 1 19 - 0 0 0 sco K 
+3209 3170 N M 0 19 - 0 0 0 sco K 
+3209 3203 N M 0 19 - 0 0 0 sco K 
+3209 3236 N M 1 19 - 0 0 0 sco K 
+3210 3269 N M 0 19 - 0 0 0 sco K 
+3210 3302 N M 0 19 - 0 0 0 sco K 
+3211 3319 N M 0 -19 - 0 0 0 sco K 
+3211 3286 N M 0 -19 - 0 0 0 sco K 
+3211 3253 N M 0 -19 - 0 0 0 sco K 
+3211 3220 N M 1 -19 - 0 0 0 sco K 
+3212 3187 N M 0 -19 - 0 0 0 sco K 
+3212 3154 N M 0 -19 - 0 0 0 sco K 
+3212 3121 N M 0 -19 - 0 0 0 sco K 
+3212 3088 N M 1 -19 - 0 0 0 sco K 
+3213 3055 N M 0 -19 - 0 0 0 sco K 
+3213 3022 N M 0 -19 - 0 0 0 sco K 
+3213 2989 N M 0 -19 - 0 0 0 sco K 
+3227 2970 N M 2 0 - 0 0 0 sco K 
+3229 2970 N M 4 0 - 0 0 0 sco K 
+3233 2970 N M 3 0 - 0 0 0 sco K 
+3236 2970 N M 4 0 - 0 0 0 sco K 
+3240 2970 N M 4 0 - 0 0 0 sco K 
+3244 2970 N M 2 0 - 0 0 0 sco K 
+3258 2972 N M 0 19 - 0 0 0 sco K 
+3258 3005 N M 0 19 - 0 0 0 sco K 
+3258 3038 N M 0 19 - 0 0 0 sco K 
+3259 3071 N M 0 19 - 0 0 0 sco K 
+3259 3104 N M 0 19 - 0 0 0 sco K 
+3259 3137 N M 1 19 - 0 0 0 sco K 
+3260 3170 N M 0 19 - 0 0 0 sco K 
+3260 3203 N M 0 19 - 0 0 0 sco K 
+3260 3236 N M 1 19 - 0 0 0 sco K 
+3261 3269 N M 0 19 - 0 0 0 sco K 
+3261 3302 N M 0 19 - 0 0 0 sco K 
+3270 3327 N M 3 0 - 0 0 0 sco K 
+3273 3327 N M 3 0 - 0 0 0 sco K 
+3276 3327 N M 4 0 - 0 0 0 sco K 
+3280 3327 N M 4 0 - 0 0 0 sco K 
+3284 3327 N M 3 0 - 0 0 0 sco K 
+3287 3327 N M 2 0 - 0 0 0 sco K 
+3303 3327 N M 2 0 - 0 0 0 sco K 
+3305 3327 N M 4 0 - 0 0 0 sco K 
+3309 3327 N M 4 0 - 0 0 0 sco K 
+3313 3327 N M 3 0 - 0 0 0 sco K 
+3316 3327 N M 4 0 - 0 0 0 sco K 
+3320 3327 N M 2 0 - 0 0 0 sco K 
+3336 3327 N M 2 0 - 0 0 0 sco K 
+3338 3327 N M 4 0 - 0 0 0 sco K 
+3342 3327 N M 3 0 - 0 0 0 sco K 
+3345 3327 N M 4 0 - 0 0 0 sco K 
+3349 3327 N M 4 0 - 0 0 0 sco K 
+3353 3327 N M 2 0 - 0 0 0 sco K 
+3369 3327 N M 2 0 - 0 0 0 sco K 
+3371 3327 N M 4 0 - 0 0 0 sco K 
+3375 3327 N M 3 0 - 0 0 0 sco K 
+3378 3327 N M 4 0 - 0 0 0 sco K 
+3382 3327 N M 3 0 - 0 0 0 sco K 
+3385 3327 N M 3 0 - 0 0 0 sco K 
+3402 3327 N M 2 0 - 0 0 0 sco K 
+3404 3327 N M 3 0 - 0 0 0 sco K 
+3407 3327 N M 4 0 - 0 0 0 sco K 
+3411 3327 N M 4 0 - 0 0 0 sco K 
+3415 3327 N M 3 0 - 0 0 0 sco K 
+3418 3327 N M 3 0 - 0 0 0 sco K 
+3435 3327 N M 1 0 - 0 0 0 sco K 
+3436 3327 N M 4 0 - 0 0 0 sco K 
+3440 3327 N M 4 0 - 0 0 0 sco K 
+3444 3327 N M 3 0 - 0 0 0 sco K 
+3447 3327 N M 4 0 - 0 0 0 sco K 
+3451 3327 N M 3 0 - 0 0 0 sco K 
+3468 3327 N M 1 0 - 0 0 0 sco K 
+3469 3327 N M 4 0 - 0 0 0 sco K 
+3473 3327 N M 3 0 - 0 0 0 sco K 
+3476 3327 N M 4 0 - 0 0 0 sco K 
+3480 3327 N M 4 0 - 0 0 0 sco K 
+3484 3327 N M 3 0 - 0 0 0 sco K 
+3501 3327 N M 1 0 - 0 0 0 sco K 
+3502 3327 N M 4 0 - 0 0 0 sco K 
+3506 3327 N M 3 0 - 0 0 0 sco K 
+3509 3327 N M 4 0 - 0 0 0 sco K 
+3513 3327 N M 3 0 - 0 0 0 sco K 
+3516 3327 N M 4 0 - 0 0 0 sco K 
+3534 3327 N M 1 0 - 0 0 0 sco K 
+3535 3327 N M 3 0 - 0 0 0 sco K 
+3538 3327 N M 4 0 - 0 0 0 sco K 
+3542 3327 N M 4 0 - 0 0 0 sco K 
+3546 3327 N M 3 0 - 0 0 0 sco K 
+3549 3327 N M 4 0 - 0 0 0 sco K 
+3567 3327 N M 4 0 - 0 0 0 sco K 
+3571 3327 N M 4 0 - 0 0 0 sco K 
+3575 3327 N M 3 0 - 0 0 0 sco K 
+3578 3327 N M 4 0 - 0 0 0 sco K 
+3582 3327 N M 4 0 - 0 0 0 sco K 
+3600 3327 N M 4 0 - 0 0 0 sco K 
+3604 3327 N M 3 0 - 0 0 0 sco K 
+3607 3327 N M 4 0 - 0 0 0 sco K 
+3611 3327 N M 4 0 - 0 0 0 sco K 
+3615 3327 N M 3 0 - 0 0 0 sco K 
+3618 3327 N M 1 0 - 0 0 0 sco K 
+3633 3327 N M 4 0 - 0 0 0 sco K 
+3637 3327 N M 3 0 - 0 0 0 sco K 
+3640 3327 N M 4 0 - 0 0 0 sco K 
+3644 3327 N M 3 0 - 0 0 0 sco K 
+3647 3327 N M 4 0 - 0 0 0 sco K 
+3651 3327 N M 1 0 - 0 0 0 sco K 
+3666 3327 N M 3 0 - 0 0 0 sco K 
+3669 3327 N M 4 0 - 0 0 0 sco K 
+3673 3327 N M 4 0 - 0 0 0 sco K 
+3677 3327 N M 3 0 - 0 0 0 sco K 
+3680 3327 N M 4 0 - 0 0 0 sco K 
+3684 3327 N M 1 0 - 0 0 0 sco K 
+3699 3327 N M 3 0 - 0 0 0 sco K 
+3702 3327 N M 4 0 - 0 0 0 sco K 
+3706 3327 N M 3 0 - 0 0 0 sco K 
+3709 3327 N M 4 0 - 0 0 0 sco K 
+3713 3327 N M 4 0 - 0 0 0 sco K 
+3717 3327 N M 1 0 - 0 0 0 sco K 
+3732 3327 N M 3 0 - 0 0 0 sco K 
+3735 3327 N M 3 0 - 0 0 0 sco K 
+3738 3327 N M 4 0 - 0 0 0 sco K 
+3742 3327 N M 4 0 - 0 0 0 sco K 
+3746 3327 N M 3 0 - 0 0 0 sco K 
+3749 3327 N M 2 0 - 0 0 0 sco K 
+3765 3327 N M 3 0 - 0 0 0 sco K 
+3768 3327 N M 3 0 - 0 0 0 sco K 
+3771 3327 N M 4 0 - 0 0 0 sco K 
+3775 3327 N M 3 0 - 0 0 0 sco K 
+3778 3327 N M 4 0 - 0 0 0 sco K 
+3782 3327 N M 2 0 - 0 0 0 sco K 
+3798 3327 N M 2 0 - 0 0 0 sco K 
+3800 3327 N M 4 0 - 0 0 0 sco K 
+3804 3327 N M 4 0 - 0 0 0 sco K 
+3808 3327 N M 3 0 - 0 0 0 sco K 
+3811 3327 N M 4 0 - 0 0 0 sco K 
+3815 3327 N M 2 0 - 0 0 0 sco K 
+2625 2848 N M 0 901 - 8 Lw solid 0 0 0 sco K 
+2625 3749 N M 1198 0 - 0 0 0 sco K 
+3823 3749 N M 0 -901 - 0 0 0 sco K 
+3823 2848 N M -1198 0 - 0 0 0 sco K : 1030 5172 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 5172 M 
+0.200 0 (0)A 
+; 
+1120 5208 N M 15 0 - 5 Lw solid 0 0 0 sco K : 1030 5023 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 5023 M 
+0.200 0 (1)A 
+; 
+1120 5059 N M 15 0 - 0 0 0 sco K : 1030 4874 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 4874 M 
+0.200 0 (2)A 
+; 
+1120 4910 N M 15 0 - 0 0 0 sco K : 1030 4726 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 4726 M 
+0.200 0 (3)A 
+; 
+1120 4762 N M 15 0 - 0 0 0 sco K : 1030 4577 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 4577 M 
+0.200 0 (4)A 
+; 
+1120 4613 N M 15 0 - 0 0 0 sco K : 1030 4428 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 4428 M 
+0.200 0 (5)A 
+; 
+1120 4464 N M 15 0 - 0 0 0 sco K : 1030 4280 156 57 rc 0 0 0 sco F0_50
+Ji 
+1082 4280 M 
+0.200 0 (6)A 
+; 
+1120 4316 N M 15 0 - 0 0 0 sco K : 2313 5172 156 57 rc 0 0 0 sco F0_50
+Ji 
+2365 5172 M 
+0.200 0 (0)A 
+; 
+2339 5208 N M 13 0 - 0 0 0 sco K : 2313 4874 156 57 rc 0 0 0 sco F0_50
+Ji 
+2365 4874 M 
+0.200 0 (5)A 
+; 
+2339 4910 N M 13 0 - 0 0 0 sco K : 2313 4577 208 57 rc 0 0 0 sco F0_50
+Ji 
+2365 4577 M 
+0.200 0 (10)A 
+; 
+2339 4613 N M 13 0 - 0 0 0 sco K : 2313 4280 208 57 rc 0 0 0 sco F0_50
+Ji 
+2365 4280 M 
+0.200 0 (15)A 
+; 
+2339 4316 N M 13 0 - 0 0 0 sco K 
+1141 5217 N M 0 11 - 0 0 0 sco K : 1132 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+1184 5235 M 
+0.200 0 (70)A 
+; 
+1184 5217 N M 0 11 - 0 0 0 sco K 
+1228 5217 N M 0 11 - 0 0 0 sco K : 1220 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+1272 5235 M 
+0.200 0 (72)A 
+; 
+1272 5217 N M 0 11 - 0 0 0 sco K 
+1315 5217 N M 0 11 - 0 0 0 sco K : 1307 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+1359 5235 M 
+0.200 0 (74)A 
+; 
+1359 5217 N M 0 11 - 0 0 0 sco K 
+1403 5217 N M 0 11 - 0 0 0 sco K : 1394 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+1446 5235 M 
+0.200 0 (76)A 
+; 
+1446 5217 N M 0 11 - 0 0 0 sco K 
+1490 5217 N M 0 11 - 0 0 0 sco K : 1482 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+1534 5235 M 
+0.200 0 (78)A 
+; 
+1534 5217 N M 0 11 - 0 0 0 sco K 
+1577 5217 N M 0 11 - 0 0 0 sco K : 1569 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+1621 5235 M 
+0.200 0 (80)A 
+; 
+1621 5217 N M 0 11 - 0 0 0 sco K 
+1665 5217 N M 0 11 - 0 0 0 sco K : 1656 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+1708 5235 M 
+0.200 0 (82)A 
+; 
+1708 5217 N M 0 11 - 0 0 0 sco K 
+1752 5217 N M 0 11 - 0 0 0 sco K : 1744 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+1796 5235 M 
+0.200 0 (84)A 
+; 
+1796 5217 N M 0 11 - 0 0 0 sco K 
+1840 5217 N M 0 11 - 0 0 0 sco K : 1831 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+1883 5235 M 
+0.200 0 (86)A 
+; 
+1883 5217 N M 0 11 - 0 0 0 sco K 
+1927 5217 N M 0 11 - 0 0 0 sco K : 1919 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+1971 5235 M 
+0.200 0 (88)A 
+; 
+1971 5217 N M 0 11 - 0 0 0 sco K 
+2014 5217 N M 0 11 - 0 0 0 sco K : 2006 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+2058 5235 M 
+0.200 0 (90)A 
+; 
+2058 5217 N M 0 11 - 0 0 0 sco K 
+2102 5217 N M 0 11 - 0 0 0 sco K : 2093 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+2145 5235 M 
+0.200 0 (92)A 
+; 
+2145 5217 N M 0 11 - 0 0 0 sco K 
+2189 5217 N M 0 11 - 0 0 0 sco K : 2181 5235 208 57 rc 0 0 0 sco F0_50
+Ji 
+2233 5235 M 
+0.200 0 (94)A 
+; 
+2233 5217 N M 0 11 - 0 0 0 sco K 
+2276 5217 N M 0 11 - 0 0 0 sco K 
+2320 5217 N M 0 11 - 0 0 0 sco K 
+1141 4910 N M 3 -297 - 0 0 0 sco K 
+1144 4613 N M 4 297 - 0 0 0 sco K 
+1148 4910 N M 3 0 - 0 0 0 sco K 
+1151 4910 N M 4 -297 - 0 0 0 sco K 
+1155 4613 N M 4 149 - 0 0 0 sco K 
+1159 4762 N M 3 -149 - 0 0 0 sco K 
+1162 4613 N M 4 0 - 0 0 0 sco K 
+1166 4613 N M 4 0 - 0 0 0 sco K 
+1170 4613 N M 3 0 - 0 0 0 sco K 
+1173 4613 N M 4 0 - 0 0 0 sco K 
+1177 4613 N M 4 0 - 0 0 0 sco K 
+1181 4613 N M 3 0 - 0 0 0 sco K 
+1184 4613 N M 4 0 - 0 0 0 sco K 
+1188 4613 N M 3 297 - 0 0 0 sco K 
+1191 4910 N M 4 -148 - 0 0 0 sco K 
+1195 4762 N M 4 0 - 0 0 0 sco K 
+1199 4762 N M 3 -149 - 0 0 0 sco K 
+1202 4613 N M 4 0 - 0 0 0 sco K 
+1206 4613 N M 4 149 - 0 0 0 sco K 
+1210 4762 N M 3 0 - 0 0 0 sco K 
+1213 4762 N M 4 148 - 0 0 0 sco K 
+1217 4910 N M 4 -148 - 0 0 0 sco K 
+1221 4762 N M 3 148 - 0 0 0 sco K 
+1224 4910 N M 4 0 - 0 0 0 sco K 
+1228 4910 N M 3 0 - 0 0 0 sco K 
+1231 4910 N M 4 -297 - 0 0 0 sco K 
+1235 4613 N M 4 0 - 0 0 0 sco K 
+1239 4613 N M 3 0 - 0 0 0 sco K 
+1242 4613 N M 4 0 - 0 0 0 sco K 
+1246 4613 N M 4 297 - 0 0 0 sco K 
+1250 4910 N M 3 0 - 0 0 0 sco K 
+1253 4910 N M 4 0 - 0 0 0 sco K 
+1257 4910 N M 4 -297 - 0 0 0 sco K 
+1261 4613 N M 3 0 - 0 0 0 sco K 
+1264 4613 N M 4 0 - 0 0 0 sco K 
+1268 4613 N M 4 0 - 0 0 0 sco K 
+1272 4613 N M 3 0 - 0 0 0 sco K 
+1275 4613 N M 4 297 - 0 0 0 sco K 
+1279 4910 N M 3 0 - 0 0 0 sco K 
+1282 4910 N M 4 0 - 0 0 0 sco K 
+1286 4910 N M 4 -148 - 0 0 0 sco K 
+1290 4762 N M 3 0 - 0 0 0 sco K 
+1293 4762 N M 4 -149 - 0 0 0 sco K 
+1297 4613 N M 4 0 - 0 0 0 sco K 
+1301 4613 N M 3 149 - 0 0 0 sco K 
+1304 4762 N M 4 0 - 0 0 0 sco K 
+1308 4762 N M 4 0 - 0 0 0 sco K 
+1312 4762 N M 3 0 - 0 0 0 sco K 
+1315 4762 N M 4 0 - 0 0 0 sco K 
+1319 4762 N M 3 148 - 0 0 0 sco K 
+1322 4910 N M 4 0 - 0 0 0 sco K 
+1326 4910 N M 4 -148 - 0 0 0 sco K 
+1330 4762 N M 3 0 - 0 0 0 sco K 
+1333 4762 N M 4 148 - 0 0 0 sco K 
+1337 4910 N M 4 0 - 0 0 0 sco K 
+1341 4910 N M 3 -148 - 0 0 0 sco K 
+1344 4762 N M 4 148 - 0 0 0 sco K 
+1348 4910 N M 4 0 - 0 0 0 sco K 
+1352 4910 N M 3 0 - 0 0 0 sco K 
+1355 4910 N M 4 0 - 0 0 0 sco K 
+1359 4910 N M 3 0 - 0 0 0 sco K 
+1362 4910 N M 4 -148 - 0 0 0 sco K 
+1366 4762 N M 4 148 - 0 0 0 sco K 
+1370 4910 N M 3 0 - 0 0 0 sco K 
+1373 4910 N M 4 0 - 0 0 0 sco K 
+1377 4910 N M 4 0 - 0 0 0 sco K 
+1381 4910 N M 3 0 - 0 0 0 sco K 
+1384 4910 N M 4 0 - 0 0 0 sco K 
+1388 4910 N M 4 0 - 0 0 0 sco K 
+1392 4910 N M 3 0 - 0 0 0 sco K 
+1395 4910 N M 4 0 - 0 0 0 sco K 
+1399 4910 N M 4 0 - 0 0 0 sco K 
+1403 4910 N M 3 0 - 0 0 0 sco K 
+1406 4910 N M 4 0 - 0 0 0 sco K 
+1410 4910 N M 3 0 - 0 0 0 sco K 
+1413 4910 N M 4 0 - 0 0 0 sco K 
+1417 4910 N M 4 0 - 0 0 0 sco K 
+1421 4910 N M 3 0 - 0 0 0 sco K 
+1424 4910 N M 4 0 - 0 0 0 sco K 
+1428 4910 N M 4 -148 - 0 0 0 sco K 
+1432 4762 N M 3 148 - 0 0 0 sco K 
+1435 4910 N M 4 0 - 0 0 0 sco K 
+1439 4910 N M 4 -148 - 0 0 0 sco K 
+1443 4762 N M 3 148 - 0 0 0 sco K 
+1446 4910 N M 4 -297 - 0 0 0 sco K 
+1450 4613 N M 3 0 - 0 0 0 sco K 
+1453 4613 N M 4 297 - 0 0 0 sco K 
+1457 4910 N M 4 -297 - 0 0 0 sco K 
+1461 4613 N M 3 0 - 0 0 0 sco K 
+1464 4613 N M 4 0 - 0 0 0 sco K 
+1468 4613 N M 4 149 - 0 0 0 sco K 
+1472 4762 N M 3 148 - 0 0 0 sco K 
+1475 4910 N M 4 0 - 0 0 0 sco K 
+1479 4910 N M 4 0 - 0 0 0 sco K 
+1483 4910 N M 3 0 - 0 0 0 sco K 
+1486 4910 N M 4 0 - 0 0 0 sco K 
+1490 4910 N M 3 0 - 0 0 0 sco K 
+1493 4910 N M 4 0 - 0 0 0 sco K 
+1497 4910 N M 4 0 - 0 0 0 sco K 
+1501 4910 N M 3 0 - 0 0 0 sco K 
+1504 4910 N M 4 0 - 0 0 0 sco K 
+1508 4910 N M 4 0 - 0 0 0 sco K 
+1512 4910 N M 3 0 - 0 0 0 sco K 
+1515 4910 N M 4 0 - 0 0 0 sco K 
+1519 4910 N M 4 0 - 0 0 0 sco K 
+1523 4910 N M 3 149 - 0 0 0 sco K 
+1526 5059 N M 4 -149 - 0 0 0 sco K 
+1530 4910 N M 4 0 - 0 0 0 sco K 
+1534 4910 N M 3 0 - 0 0 0 sco K 
+1537 4910 N M 4 0 - 0 0 0 sco K 
+1541 4910 N M 3 0 - 0 0 0 sco K 
+1544 4910 N M 4 0 - 0 0 0 sco K 
+1548 4910 N M 4 0 - 0 0 0 sco K 
+1552 4910 N M 3 0 - 0 0 0 sco K 
+1555 4910 N M 4 0 - 0 0 0 sco K 
+1559 4910 N M 4 0 - 0 0 0 sco K 
+1563 4910 N M 3 -148 - 0 0 0 sco K 
+1566 4762 N M 4 0 - 0 0 0 sco K 
+1570 4762 N M 4 148 - 0 0 0 sco K 
+1574 4910 N M 3 -148 - 0 0 0 sco K 
+1577 4762 N M 4 0 - 0 0 0 sco K 
+1581 4762 N M 3 -149 - 0 0 0 sco K 
+1584 4613 N M 4 149 - 0 0 0 sco K 
+1588 4762 N M 4 148 - 0 0 0 sco K 
+1592 4910 N M 3 0 - 0 0 0 sco K 
+1595 4910 N M 4 149 - 0 0 0 sco K 
+1599 5059 N M 4 0 - 0 0 0 sco K 
+1603 5059 N M 3 -149 - 0 0 0 sco K 
+1606 4910 N M 4 0 - 0 0 0 sco K 
+1610 4910 N M 4 -148 - 0 0 0 sco K 
+1614 4762 N M 3 0 - 0 0 0 sco K 
+1617 4762 N M 4 -149 - 0 0 0 sco K 
+1621 4613 N M 4 0 - 0 0 0 sco K 
+1625 4613 N M 3 149 - 0 0 0 sco K 
+1628 4762 N M 4 0 - 0 0 0 sco K 
+1632 4762 N M 3 -149 - 0 0 0 sco K 
+1635 4613 N M 4 149 - 0 0 0 sco K 
+1639 4762 N M 4 0 - 0 0 0 sco K 
+1643 4762 N M 3 0 - 0 0 0 sco K 
+1646 4762 N M 4 148 - 0 0 0 sco K 
+1650 4910 N M 4 -148 - 0 0 0 sco K 
+1654 4762 N M 3 0 - 0 0 0 sco K 
+1657 4762 N M 4 0 - 0 0 0 sco K 
+1661 4762 N M 4 0 - 0 0 0 sco K 
+1665 4762 N M 3 0 - 0 0 0 sco K 
+1668 4762 N M 4 0 - 0 0 0 sco K 
+1672 4762 N M 3 0 - 0 0 0 sco K 
+1675 4762 N M 4 -149 - 0 0 0 sco K 
+1679 4613 N M 4 0 - 0 0 0 sco K 
+1683 4613 N M 3 0 - 0 0 0 sco K 
+1686 4613 N M 4 0 - 0 0 0 sco K 
+1690 4613 N M 4 0 - 0 0 0 sco K 
+1694 4613 N M 3 297 - 0 0 0 sco K 
+1697 4910 N M 4 0 - 0 0 0 sco K 
+1701 4910 N M 4 0 - 0 0 0 sco K 
+1705 4910 N M 3 0 - 0 0 0 sco K 
+1708 4910 N M 4 -148 - 0 0 0 sco K 
+1712 4762 N M 3 148 - 0 0 0 sco K 
+1715 4910 N M 4 -148 - 0 0 0 sco K 
+1719 4762 N M 4 0 - 0 0 0 sco K 
+1723 4762 N M 3 0 - 0 0 0 sco K 
+1726 4762 N M 4 148 - 0 0 0 sco K 
+1730 4910 N M 4 -148 - 0 0 0 sco K 
+1734 4762 N M 3 0 - 0 0 0 sco K 
+1737 4762 N M 4 0 - 0 0 0 sco K 
+1741 4762 N M 4 0 - 0 0 0 sco K 
+1745 4762 N M 3 0 - 0 0 0 sco K 
+1748 4762 N M 4 0 - 0 0 0 sco K 
+1752 4762 N M 4 148 - 0 0 0 sco K 
+1756 4910 N M 3 -148 - 0 0 0 sco K 
+1759 4762 N M 4 0 - 0 0 0 sco K 
+1763 4762 N M 3 0 - 0 0 0 sco K 
+1766 4762 N M 4 0 - 0 0 0 sco K 
+1770 4762 N M 4 0 - 0 0 0 sco K 
+1774 4762 N M 3 0 - 0 0 0 sco K 
+1777 4762 N M 4 0 - 0 0 0 sco K 
+1781 4762 N M 4 0 - 0 0 0 sco K 
+1785 4762 N M 3 0 - 0 0 0 sco K 
+1788 4762 N M 4 148 - 0 0 0 sco K 
+1792 4910 N M 4 0 - 0 0 0 sco K 
+1796 4910 N M 3 0 - 0 0 0 sco K 
+1799 4910 N M 4 0 - 0 0 0 sco K 
+1803 4910 N M 3 0 - 0 0 0 sco K 
+1806 4910 N M 4 0 - 0 0 0 sco K 
+1810 4910 N M 4 -148 - 0 0 0 sco K 
+1814 4762 N M 3 -149 - 0 0 0 sco K 
+1817 4613 N M 4 0 - 0 0 0 sco K 
+1821 4613 N M 4 0 - 0 0 0 sco K 
+1825 4613 N M 3 0 - 0 0 0 sco K 
+1828 4613 N M 4 149 - 0 0 0 sco K 
+1832 4762 N M 4 0 - 0 0 0 sco K 
+1836 4762 N M 3 148 - 0 0 0 sco K 
+1839 4910 N M 4 149 - 0 0 0 sco K 
+1843 5059 N M 3 -149 - 0 0 0 sco K 
+1846 4910 N M 4 0 - 0 0 0 sco K 
+1850 4910 N M 4 0 - 0 0 0 sco K 
+1854 4910 N M 3 -148 - 0 0 0 sco K 
+1857 4762 N M 4 0 - 0 0 0 sco K 
+1861 4762 N M 4 0 - 0 0 0 sco K 
+1865 4762 N M 3 0 - 0 0 0 sco K 
+1868 4762 N M 4 0 - 0 0 0 sco K 
+1872 4762 N M 4 0 - 0 0 0 sco K 
+1876 4762 N M 3 0 - 0 0 0 sco K 
+1879 4762 N M 4 -149 - 0 0 0 sco K 
+1883 4613 N M 4 0 - 0 0 0 sco K 
+1887 4613 N M 3 0 - 0 0 0 sco K 
+1890 4613 N M 4 297 - 0 0 0 sco K 
+1894 4910 N M 3 0 - 0 0 0 sco K 
+1897 4910 N M 4 0 - 0 0 0 sco K 
+1901 4910 N M 4 0 - 0 0 0 sco K 
+1905 4910 N M 3 -148 - 0 0 0 sco K 
+1908 4762 N M 4 0 - 0 0 0 sco K 
+1912 4762 N M 4 0 - 0 0 0 sco K 
+1916 4762 N M 3 0 - 0 0 0 sco K 
+1919 4762 N M 4 0 - 0 0 0 sco K 
+1923 4762 N M 4 148 - 0 0 0 sco K 
+1927 4910 N M 3 -148 - 0 0 0 sco K 
+1930 4762 N M 4 0 - 0 0 0 sco K 
+1934 4762 N M 3 148 - 0 0 0 sco K 
+1937 4910 N M 4 0 - 0 0 0 sco K 
+1941 4910 N M 4 0 - 0 0 0 sco K 
+1945 4910 N M 3 -148 - 0 0 0 sco K 
+1948 4762 N M 4 0 - 0 0 0 sco K 
+1952 4762 N M 4 0 - 0 0 0 sco K 
+1956 4762 N M 3 148 - 0 0 0 sco K 
+1959 4910 N M 4 0 - 0 0 0 sco K 
+1963 4910 N M 4 -148 - 0 0 0 sco K 
+1967 4762 N M 3 -149 - 0 0 0 sco K 
+1970 4613 N M 4 0 - 0 0 0 sco K 
+1974 4613 N M 4 0 - 0 0 0 sco K 
+1978 4613 N M 3 0 - 0 0 0 sco K 
+1981 4613 N M 4 0 - 0 0 0 sco K 
+1985 4613 N M 3 0 - 0 0 0 sco K 
+1988 4613 N M 4 0 - 0 0 0 sco K 
+1992 4613 N M 4 0 - 0 0 0 sco K 
+1996 4613 N M 3 0 - 0 0 0 sco K 
+1999 4613 N M 4 0 - 0 0 0 sco K 
+2003 4613 N M 4 0 - 0 0 0 sco K 
+2007 4613 N M 3 149 - 0 0 0 sco K 
+2010 4762 N M 4 0 - 0 0 0 sco K 
+2014 4762 N M 4 0 - 0 0 0 sco K 
+2018 4762 N M 3 0 - 0 0 0 sco K 
+2021 4762 N M 4 148 - 0 0 0 sco K 
+2025 4910 N M 3 0 - 0 0 0 sco K 
+2028 4910 N M 4 -148 - 0 0 0 sco K 
+2032 4762 N M 4 148 - 0 0 0 sco K 
+2036 4910 N M 3 0 - 0 0 0 sco K 
+2039 4910 N M 4 0 - 0 0 0 sco K 
+2043 4910 N M 4 0 - 0 0 0 sco K 
+2047 4910 N M 3 -148 - 0 0 0 sco K 
+2050 4762 N M 4 0 - 0 0 0 sco K 
+2054 4762 N M 4 0 - 0 0 0 sco K 
+2058 4762 N M 3 0 - 0 0 0 sco K 
+2061 4762 N M 4 0 - 0 0 0 sco K 
+2065 4762 N M 3 0 - 0 0 0 sco K 
+2068 4762 N M 4 0 - 0 0 0 sco K 
+2072 4762 N M 4 0 - 0 0 0 sco K 
+2076 4762 N M 3 0 - 0 0 0 sco K 
+2079 4762 N M 4 0 - 0 0 0 sco K 
+2083 4762 N M 4 148 - 0 0 0 sco K 
+2087 4910 N M 3 0 - 0 0 0 sco K 
+2090 4910 N M 4 0 - 0 0 0 sco K 
+2094 4910 N M 4 0 - 0 0 0 sco K 
+2098 4910 N M 3 0 - 0 0 0 sco K 
+2101 4910 N M 4 0 - 0 0 0 sco K 
+2105 4910 N M 4 0 - 0 0 0 sco K 
+2109 4910 N M 3 149 - 0 0 0 sco K 
+2112 5059 N M 4 0 - 0 0 0 sco K 
+2116 5059 N M 3 0 - 0 0 0 sco K 
+2119 5059 N M 4 0 - 0 0 0 sco K 
+2123 5059 N M 4 0 - 0 0 0 sco K 
+2127 5059 N M 3 -149 - 0 0 0 sco K 
+2130 4910 N M 4 0 - 0 0 0 sco K 
+2134 4910 N M 4 0 - 0 0 0 sco K 
+2138 4910 N M 3 0 - 0 0 0 sco K 
+2141 4910 N M 4 0 - 0 0 0 sco K 
+2145 4910 N M 4 0 - 0 0 0 sco K 
+2149 4910 N M 3 0 - 0 0 0 sco K 
+2152 4910 N M 4 -297 - 0 0 0 sco K 
+2156 4613 N M 3 297 - 0 0 0 sco K 
+2159 4910 N M 4 0 - 0 0 0 sco K 
+2163 4910 N M 4 0 - 0 0 0 sco K 
+2167 4910 N M 3 0 - 0 0 0 sco K 
+2170 4910 N M 4 0 - 0 0 0 sco K 
+2174 4910 N M 4 0 - 0 0 0 sco K 
+2178 4910 N M 3 0 - 0 0 0 sco K 
+2181 4910 N M 4 0 - 0 0 0 sco K 
+2185 4910 N M 4 0 - 0 0 0 sco K 
+2189 4910 N M 3 -148 - 0 0 0 sco K 
+2192 4762 N M 4 0 - 0 0 0 sco K 
+2196 4762 N M 3 0 - 0 0 0 sco K 
+2199 4762 N M 4 0 - 0 0 0 sco K 
+2203 4762 N M 4 148 - 0 0 0 sco K 
+2207 4910 N M 3 0 - 0 0 0 sco K 
+2210 4910 N M 4 0 - 0 0 0 sco K 
+2214 4910 N M 4 -297 - 0 0 0 sco K 
+2218 4613 N M 3 0 - 0 0 0 sco K 
+2221 4613 N M 4 0 - 0 0 0 sco K 
+2225 4613 N M 4 0 - 0 0 0 sco K 
+2229 4613 N M 3 149 - 0 0 0 sco K 
+2232 4762 N M 4 148 - 0 0 0 sco K 
+2236 4910 N M 4 -148 - 0 0 0 sco K 
+2240 4762 N M 3 0 - 0 0 0 sco K 
+2243 4762 N M 4 0 - 0 0 0 sco K 
+2247 4762 N M 3 148 - 0 0 0 sco K 
+2250 4910 N M 4 0 - 0 0 0 sco K 
+2254 4910 N M 4 0 - 0 0 0 sco K 
+2258 4910 N M 3 0 - 0 0 0 sco K 
+2261 4910 N M 4 0 - 0 0 0 sco K 
+2265 4910 N M 4 0 - 0 0 0 sco K 
+2269 4910 N M 3 0 - 0 0 0 sco K 
+2272 4910 N M 4 0 - 0 0 0 sco K 
+2276 4910 N M 4 0 - 0 0 0 sco K 
+2280 4910 N M 3 0 - 0 0 0 sco K 
+2283 4910 N M 4 -148 - 0 0 0 sco K 
+2287 4762 N M 3 -149 - 0 0 0 sco K 
+2290 4613 N M 4 0 - 0 0 0 sco K 
+2294 4613 N M 4 0 - 0 0 0 sco K 
+2298 4613 N M 3 0 - 0 0 0 sco K 
+2301 4613 N M 4 297 - 0 0 0 sco K 
+2305 4910 N M 4 0 - 0 0 0 sco K 
+2309 4910 N M 3 -148 - 0 0 0 sco K 
+2312 4762 N M 4 -149 - 0 0 0 sco K 
+2316 4613 N M 4 297 - 0 0 0 sco K 
+2320 4910 N M 3 0 - 0 0 0 sco K 
+2323 4910 N M 4 0 - 0 0 0 sco K 
+2327 4910 N M 4 0 - 0 0 0 sco K 
+1141 4434 N M 3 0 - 0 0 0 sco K 
+1144 4434 N M 4 0 - 0 0 0 sco K 
+1148 4434 N M 3 0 - 0 0 0 sco K 
+1151 4434 N M 4 0 - 0 0 0 sco K 
+1155 4434 N M 4 0 - 0 0 0 sco K 
+1159 4434 N M 1 0 - 0 0 0 sco K 
+1173 4435 N M 1 19 - 0 0 0 sco K 
+1175 4468 N M 1 19 - 0 0 0 sco K 
+1181 4491 N M 1 -19 - 0 0 0 sco K 
+1182 4458 N M 1 -19 - 0 0 0 sco K 
+1193 4434 N M 2 0 - 0 0 0 sco K 
+1195 4434 N M 4 0 - 0 0 0 sco K 
+1199 4434 N M 3 0 - 0 0 0 sco K 
+1202 4434 N M 4 0 - 0 0 0 sco K 
+1206 4434 N M 4 0 - 0 0 0 sco K 
+1210 4434 N M 2 0 - 0 0 0 sco K 
+1217 4443 N M 1 19 - 0 0 0 sco K 
+1219 4476 N M 2 18 - 0 0 0 sco K 
+1221 4494 N M 0 -1 - 0 0 0 sco K 
+1221 4479 N M 1 -19 - 0 0 0 sco K 
+1223 4446 N M 1 -12 - 0 0 0 sco K 
+1224 4434 N M 4 0 - 0 0 0 sco K 
+1228 4434 N M 3 0 - 0 0 0 sco K 
+1245 4434 N M 1 0 - 0 0 0 sco K 
+1246 4434 N M 4 0 - 0 0 0 sco K 
+1250 4434 N M 3 0 - 0 0 0 sco K 
+1253 4434 N M 4 0 - 0 0 0 sco K 
+1257 4434 N M 4 0 - 0 0 0 sco K 
+1261 4434 N M 3 0 - 0 0 0 sco K 
+1268 4444 N M 1 19 - 0 0 0 sco K 
+1270 4477 N M 2 17 - 0 0 0 sco K 
+1272 4494 N M 2 0 - 0 0 0 sco K 
+1275 4507 N M 0 19 - 0 0 0 sco K 
+1276 4540 N M 0 19 - 0 0 0 sco K 
+1276 4573 N M 1 19 - 0 0 0 sco K 
+1277 4606 N M 0 19 - 0 0 0 sco K 
+1278 4639 N M 0 19 - 0 0 0 sco K 
+1278 4672 N M 1 0 - 0 0 0 sco K 
+1279 4672 N M 3 0 - 0 0 0 sco K 
+1282 4672 N M 0 -15 - 0 0 0 sco K 
+1282 4643 N M 1 -19 - 0 0 0 sco K 
+1283 4610 N M 0 -19 - 0 0 0 sco K 
+1284 4577 N M 0 -19 - 0 0 0 sco K 
+1284 4544 N M 1 -19 - 0 0 0 sco K 
+1285 4511 N M 1 -17 - 0 0 0 sco K 
+1286 4494 N M 2 0 - 0 0 0 sco K 
+1293 4485 N M 1 -19 - 0 0 0 sco K 
+1295 4452 N M 2 -18 - 0 0 0 sco K 
+1297 4434 N M 1 0 - 0 0 0 sco K 
+1312 4434 N M 3 0 - 0 0 0 sco K 
+1315 4434 N M 4 0 - 0 0 0 sco K 
+1319 4434 N M 3 0 - 0 0 0 sco K 
+1322 4434 N M 4 0 - 0 0 0 sco K 
+1326 4434 N M 4 0 - 0 0 0 sco K 
+1330 4434 N M 1 0 - 0 0 0 sco K 
+1345 4434 N M 3 0 - 0 0 0 sco K 
+1348 4434 N M 4 0 - 0 0 0 sco K 
+1352 4434 N M 3 0 - 0 0 0 sco K 
+1355 4434 N M 4 0 - 0 0 0 sco K 
+1359 4434 N M 3 0 - 0 0 0 sco K 
+1362 4434 N M 2 0 - 0 0 0 sco K 
+1370 4442 N M 1 19 - 0 0 0 sco K 
+1372 4475 N M 0 19 - 0 0 0 sco K 
+1377 4485 N M 1 -19 - 0 0 0 sco K 
+1379 4452 N M 2 -18 - 0 0 0 sco K 
+1381 4434 N M 1 0 - 0 0 0 sco K 
+1396 4434 N M 3 0 - 0 0 0 sco K 
+1399 4434 N M 4 0 - 0 0 0 sco K 
+1403 4434 N M 3 0 - 0 0 0 sco K 
+1406 4434 N M 4 0 - 0 0 0 sco K 
+1410 4434 N M 3 0 - 0 0 0 sco K 
+1413 4434 N M 2 0 - 0 0 0 sco K 
+1429 4434 N M 3 0 - 0 0 0 sco K 
+1432 4434 N M 3 0 - 0 0 0 sco K 
+1435 4434 N M 4 0 - 0 0 0 sco K 
+1439 4434 N M 4 0 - 0 0 0 sco K 
+1443 4434 N M 3 0 - 0 0 0 sco K 
+1446 4434 N M 2 0 - 0 0 0 sco K 
+1462 4434 N M 2 0 - 0 0 0 sco K 
+1464 4434 N M 4 0 - 0 0 0 sco K 
+1468 4434 N M 4 0 - 0 0 0 sco K 
+1472 4434 N M 3 0 - 0 0 0 sco K 
+1475 4434 N M 4 0 - 0 0 0 sco K 
+1479 4434 N M 2 0 - 0 0 0 sco K 
+1495 4434 N M 2 0 - 0 0 0 sco K 
+1497 4434 N M 4 0 - 0 0 0 sco K 
+1501 4434 N M 3 0 - 0 0 0 sco K 
+1504 4434 N M 4 0 - 0 0 0 sco K 
+1508 4434 N M 4 0 - 0 0 0 sco K 
+1512 4434 N M 2 0 - 0 0 0 sco K 
+1528 4434 N M 2 0 - 0 0 0 sco K 
+1530 4434 N M 4 0 - 0 0 0 sco K 
+1534 4434 N M 3 0 - 0 0 0 sco K 
+1537 4434 N M 4 0 - 0 0 0 sco K 
+1541 4434 N M 3 0 - 0 0 0 sco K 
+1544 4434 N M 3 0 - 0 0 0 sco K 
+1561 4434 N M 2 0 - 0 0 0 sco K 
+1563 4434 N M 3 0 - 0 0 0 sco K 
+1566 4434 N M 4 0 - 0 0 0 sco K 
+1570 4434 N M 4 0 - 0 0 0 sco K 
+1574 4434 N M 3 0 - 0 0 0 sco K 
+1577 4434 N M 3 0 - 0 0 0 sco K 
+1594 4434 N M 1 0 - 0 0 0 sco K 
+1595 4434 N M 4 0 - 0 0 0 sco K 
+1599 4434 N M 4 0 - 0 0 0 sco K 
+1603 4434 N M 3 0 - 0 0 0 sco K 
+1606 4434 N M 4 0 - 0 0 0 sco K 
+1610 4434 N M 3 0 - 0 0 0 sco K 
+1627 4434 N M 1 0 - 0 0 0 sco K 
+1628 4434 N M 4 0 - 0 0 0 sco K 
+1632 4434 N M 3 0 - 0 0 0 sco K 
+1635 4434 N M 4 0 - 0 0 0 sco K 
+1639 4434 N M 4 0 - 0 0 0 sco K 
+1643 4434 N M 3 0 - 0 0 0 sco K 
+1660 4434 N M 1 0 - 0 0 0 sco K 
+1661 4434 N M 4 0 - 0 0 0 sco K 
+1665 4434 N M 3 0 - 0 0 0 sco K 
+1668 4434 N M 4 0 - 0 0 0 sco K 
+1672 4434 N M 3 0 - 0 0 0 sco K 
+1675 4434 N M 4 0 - 0 0 0 sco K 
+1693 4434 N M 1 0 - 0 0 0 sco K 
+1694 4434 N M 3 0 - 0 0 0 sco K 
+1697 4434 N M 4 0 - 0 0 0 sco K 
+1701 4434 N M 4 0 - 0 0 0 sco K 
+1705 4434 N M 3 0 - 0 0 0 sco K 
+1708 4434 N M 4 0 - 0 0 0 sco K 
+1726 4434 N M 4 0 - 0 0 0 sco K 
+1730 4434 N M 4 0 - 0 0 0 sco K 
+1734 4434 N M 3 0 - 0 0 0 sco K 
+1737 4434 N M 4 0 - 0 0 0 sco K 
+1741 4434 N M 4 0 - 0 0 0 sco K 
+1759 4434 N M 4 0 - 0 0 0 sco K 
+1763 4434 N M 3 0 - 0 0 0 sco K 
+1766 4434 N M 4 0 - 0 0 0 sco K 
+1770 4434 N M 4 0 - 0 0 0 sco K 
+1774 4434 N M 3 0 - 0 0 0 sco K 
+1777 4434 N M 1 0 - 0 0 0 sco K 
+1792 4434 N M 4 0 - 0 0 0 sco K 
+1796 4434 N M 3 0 - 0 0 0 sco K 
+1799 4434 N M 4 0 - 0 0 0 sco K 
+1803 4434 N M 3 0 - 0 0 0 sco K 
+1806 4434 N M 4 0 - 0 0 0 sco K 
+1810 4434 N M 1 0 - 0 0 0 sco K 
+1825 4434 N M 3 0 - 0 0 0 sco K 
+1828 4434 N M 4 0 - 0 0 0 sco K 
+1832 4434 N M 4 0 - 0 0 0 sco K 
+1836 4434 N M 3 0 - 0 0 0 sco K 
+1839 4434 N M 4 0 - 0 0 0 sco K 
+1843 4434 N M 1 0 - 0 0 0 sco K 
+1858 4434 N M 3 0 - 0 0 0 sco K 
+1861 4434 N M 4 0 - 0 0 0 sco K 
+1865 4434 N M 3 0 - 0 0 0 sco K 
+1868 4434 N M 4 0 - 0 0 0 sco K 
+1872 4434 N M 4 0 - 0 0 0 sco K 
+1876 4434 N M 1 0 - 0 0 0 sco K 
+1891 4434 N M 3 0 - 0 0 0 sco K 
+1894 4434 N M 3 0 - 0 0 0 sco K 
+1897 4434 N M 4 0 - 0 0 0 sco K 
+1901 4434 N M 4 0 - 0 0 0 sco K 
+1905 4434 N M 3 0 - 0 0 0 sco K 
+1908 4434 N M 2 0 - 0 0 0 sco K 
+1924 4434 N M 3 0 - 0 0 0 sco K 
+1927 4434 N M 3 0 - 0 0 0 sco K 
+1930 4434 N M 4 0 - 0 0 0 sco K 
+1934 4434 N M 3 0 - 0 0 0 sco K 
+1937 4434 N M 4 0 - 0 0 0 sco K 
+1941 4434 N M 2 0 - 0 0 0 sco K 
+1957 4434 N M 2 0 - 0 0 0 sco K 
+1959 4434 N M 4 0 - 0 0 0 sco K 
+1963 4434 N M 4 0 - 0 0 0 sco K 
+1967 4434 N M 3 0 - 0 0 0 sco K 
+1970 4434 N M 4 0 - 0 0 0 sco K 
+1974 4434 N M 2 0 - 0 0 0 sco K 
+1990 4434 N M 2 0 - 0 0 0 sco K 
+1992 4434 N M 4 0 - 0 0 0 sco K 
+1996 4434 N M 3 0 - 0 0 0 sco K 
+1999 4434 N M 4 0 - 0 0 0 sco K 
+2003 4434 N M 4 0 - 0 0 0 sco K 
+2007 4434 N M 2 0 - 0 0 0 sco K 
+2023 4434 N M 2 0 - 0 0 0 sco K 
+2025 4434 N M 3 0 - 0 0 0 sco K 
+2028 4434 N M 4 0 - 0 0 0 sco K 
+2032 4434 N M 4 0 - 0 0 0 sco K 
+2036 4434 N M 3 0 - 0 0 0 sco K 
+2039 4434 N M 3 0 - 0 0 0 sco K 
+2056 4434 N M 2 0 - 0 0 0 sco K 
+2058 4434 N M 3 0 - 0 0 0 sco K 
+2061 4434 N M 4 0 - 0 0 0 sco K 
+2065 4434 N M 3 0 - 0 0 0 sco K 
+2068 4434 N M 4 0 - 0 0 0 sco K 
+2072 4434 N M 3 0 - 0 0 0 sco K 
+2083 4440 N M 1 19 - 0 0 0 sco K 
+2085 4473 N M 1 19 - 0 0 0 sco K 
+2090 4485 N M 1 -19 - 0 0 0 sco K 
+2092 4452 N M 2 -18 - 0 0 0 sco K 
+2094 4434 N M 0 1 - 0 0 0 sco K 
+2094 4449 N M 2 19 - 0 0 0 sco K 
+2097 4482 N M 1 12 - 0 0 0 sco K 
+2098 4494 N M 3 0 - 0 0 0 sco K 
+2101 4494 N M 0 -4 - 0 0 0 sco K 
+2102 4476 N M 1 -19 - 0 0 0 sco K 
+2104 4443 N M 1 -9 - 0 0 0 sco K 
+2105 4434 N M 4 0 - 0 0 0 sco K 
+2109 4434 N M 3 0 - 0 0 0 sco K 
+2112 4434 N M 3 0 - 0 0 0 sco K 
+2129 4434 N M 1 0 - 0 0 0 sco K 
+2130 4434 N M 0 18 - 0 0 0 sco K 
+2130 4466 N M 0 19 - 0 0 0 sco K 
+2130 4499 N M 0 19 - 0 0 0 sco K 
+2130 4532 N M 1 19 - 0 0 0 sco K 
+2131 4565 N M 0 19 - 0 0 0 sco K 
+2131 4598 N M 0 19 - 0 0 0 sco K 
+2131 4631 N M 1 19 - 0 0 0 sco K 
+2132 4664 N M 0 19 - 0 0 0 sco K 
+2132 4697 N M 0 19 - 0 0 0 sco K 
+2132 4730 N M 0 19 - 0 0 0 sco K 
+2133 4763 N M 0 19 - 0 0 0 sco K 
+2133 4796 N M 0 19 - 0 0 0 sco K 
+2133 4829 N M 0 19 - 0 0 0 sco K 
+2134 4840 N M 0 -19 - 0 0 0 sco K 
+2134 4807 N M 0 -19 - 0 0 0 sco K 
+2134 4774 N M 0 -19 - 0 0 0 sco K 
+2135 4741 N M 0 -19 - 0 0 0 sco K 
+2135 4708 N M 0 -19 - 0 0 0 sco K 
+2135 4675 N M 0 -19 - 0 0 0 sco K 
+2135 4642 N M 1 -19 - 0 0 0 sco K 
+2136 4609 N M 0 -19 - 0 0 0 sco K 
+2136 4576 N M 0 -19 - 0 0 0 sco K 
+2136 4543 N M 1 -19 - 0 0 0 sco K 
+2137 4510 N M 0 -19 - 0 0 0 sco K 
+2137 4477 N M 0 -19 - 0 0 0 sco K 
+2137 4444 N M 1 -10 - 0 0 0 sco K 
+2138 4434 N M 0 9 - 0 0 0 sco K 
+2138 4457 N M 0 19 - 0 0 0 sco K 
+2138 4490 N M 0 19 - 0 0 0 sco K 
+2138 4523 N M 0 19 - 0 0 0 sco K 
+2138 4556 N M 0 19 - 0 0 0 sco K 
+2138 4589 N M 0 19 - 0 0 0 sco K 
+2138 4622 N M 0 19 - 0 0 0 sco K 
+2139 4655 N M 0 19 - 0 0 0 sco K 
+2139 4688 N M 0 19 - 0 0 0 sco K 
+2139 4721 N M 0 19 - 0 0 0 sco K 
+2139 4754 N M 0 19 - 0 0 0 sco K 
+2139 4787 N M 0 19 - 0 0 0 sco K 
+2139 4820 N M 0 19 - 0 0 0 sco K 
+2139 4853 N M 1 19 - 0 0 0 sco K 
+2140 4886 N M 0 19 - 0 0 0 sco K 
+2140 4919 N M 0 19 - 0 0 0 sco K 
+2140 4952 N M 0 19 - 0 0 0 sco K 
+2140 4985 N M 0 19 - 0 0 0 sco K 
+2140 5018 N M 0 19 - 0 0 0 sco K 
+2140 5051 N M 0 19 - 0 0 0 sco K 
+2141 5084 N M 0 5 - 0 0 0 sco K 
+2141 5089 N M 4 0 - 0 0 0 sco K 
+2145 5089 N M 4 0 - 0 0 0 sco K 
+2149 5089 N M 3 0 - 0 0 0 sco K 
+2152 5089 N M 3 0 - 0 0 0 sco K 
+2167 5087 N M 1 -19 - 0 0 0 sco K 
+2168 5054 N M 1 -19 - 0 0 0 sco K 
+2178 5029 N M 3 0 - 0 0 0 sco K 
+2181 5029 N M 4 0 - 0 0 0 sco K 
+2185 5029 N M 4 0 - 0 0 0 sco K 
+2189 5029 N M 3 0 - 0 0 0 sco K 
+2192 5029 N M 4 0 - 0 0 0 sco K 
+2196 5029 N M 1 0 - 0 0 0 sco K 
+2211 5029 N M 3 0 - 0 0 0 sco K 
+2214 5029 N M 0 -16 - 0 0 0 sco K 
+2214 4999 N M 0 -19 - 0 0 0 sco K 
+2214 4966 N M 0 -19 - 0 0 0 sco K 
+2214 4933 N M 0 -19 - 0 0 0 sco K 
+2214 4900 N M 0 -19 - 0 0 0 sco K 
+2215 4867 N M 0 -19 - 0 0 0 sco K 
+2215 4834 N M 0 -19 - 0 0 0 sco K 
+2215 4801 N M 0 -19 - 0 0 0 sco K 
+2215 4768 N M 0 -19 - 0 0 0 sco K 
+2215 4735 N M 1 -19 - 0 0 0 sco K 
+2216 4702 N M 0 -19 - 0 0 0 sco K 
+2216 4669 N M 0 -19 - 0 0 0 sco K 
+2216 4636 N M 0 -19 - 0 0 0 sco K 
+2216 4603 N M 0 -19 - 0 0 0 sco K 
+2217 4570 N M 0 -19 - 0 0 0 sco K 
+2217 4537 N M 0 -19 - 0 0 0 sco K 
+2217 4504 N M 0 -19 - 0 0 0 sco K 
+2217 4471 N M 0 -19 - 0 0 0 sco K 
+2217 4438 N M 1 -4 - 0 0 0 sco K 
+2218 4434 N M 3 0 - 0 0 0 sco K 
+2221 4434 N M 4 0 - 0 0 0 sco K 
+2225 4434 N M 4 0 - 0 0 0 sco K 
+2229 4434 N M 3 0 - 0 0 0 sco K 
+2232 4434 N M 1 0 - 0 0 0 sco K 
+2247 4434 N M 3 0 - 0 0 0 sco K 
+2250 4434 N M 4 0 - 0 0 0 sco K 
+2254 4434 N M 4 0 - 0 0 0 sco K 
+2258 4434 N M 3 0 - 0 0 0 sco K 
+2261 4434 N M 4 0 - 0 0 0 sco K 
+2265 4434 N M 1 0 - 0 0 0 sco K 
+2280 4434 N M 3 0 - 0 0 0 sco K 
+2283 4434 N M 4 0 - 0 0 0 sco K 
+2287 4434 N M 3 0 - 0 0 0 sco K 
+2290 4434 N M 4 0 - 0 0 0 sco K 
+2294 4434 N M 4 0 - 0 0 0 sco K 
+2298 4434 N M 1 0 - 0 0 0 sco K 
+2313 4434 N M 3 0 - 0 0 0 sco K 
+2316 4434 N M 4 0 - 0 0 0 sco K 
+2320 4434 N M 3 0 - 0 0 0 sco K 
+2323 4434 N M 0 9 - 0 0 0 sco K 
+2323 4457 N M 0 19 - 0 0 0 sco K 
+2323 4490 N M 0 19 - 0 0 0 sco K 
+2323 4523 N M 0 19 - 0 0 0 sco K 
+2323 4556 N M 1 19 - 0 0 0 sco K 
+2324 4589 N M 0 19 - 0 0 0 sco K 
+2324 4622 N M 0 19 - 0 0 0 sco K 
+2324 4655 N M 0 19 - 0 0 0 sco K 
+2324 4688 N M 1 19 - 0 0 0 sco K 
+2325 4721 N M 0 19 - 0 0 0 sco K 
+2325 4754 N M 0 19 - 0 0 0 sco K 
+2325 4787 N M 0 19 - 0 0 0 sco K 
+2325 4820 N M 1 19 - 0 0 0 sco K 
+2326 4853 N M 0 19 - 0 0 0 sco K 
+2326 4886 N M 0 19 - 0 0 0 sco K 
+2326 4919 N M 0 19 - 0 0 0 sco K 
+2326 4952 N M 1 18 - 0 0 0 sco K 
+2327 4970 N M 1 0 - 0 0 0 sco K 
+1137 4312 N M 0 901 - 8 Lw solid 0 0 0 sco K 
+1137 5213 N M 1198 0 - 0 0 0 sco K 
+2335 5213 N M 0 -901 - 0 0 0 sco K 
+2335 4312 N M -1198 0 - 0 0 0 sco K : 2568 5147 156 57 rc 0 0 0 sco F0_50
+Ji 
+2620 5147 M 
+0.200 0 (0)A 
+; 
+2658 5183 N M 15 0 - 5 Lw solid 0 0 0 sco K : 2568 4859 156 57 rc 0 0 0 sco F0_50
+Ji 
+2620 4859 M 
+0.200 0 (2)A 
+; 
+2658 4895 N M 15 0 - 0 0 0 sco K : 2568 4571 156 57 rc 0 0 0 sco F0_50
+Ji 
+2620 4571 M 
+0.200 0 (4)A 
+; 
+2658 4607 N M 15 0 - 0 0 0 sco K : 2568 4284 156 57 rc 0 0 0 sco F0_50
+Ji 
+2620 4284 M 
+0.200 0 (6)A 
+; 
+2658 4320 N M 15 0 - 0 0 0 sco K : 3851 5118 156 57 rc 0 0 0 sco F0_50
+Ji 
+3903 5118 M 
+0.200 0 (0)A 
+; 
+3877 5154 N M 13 0 - 0 0 0 sco K : 3851 4830 156 57 rc 0 0 0 sco F0_50
+Ji 
+3903 4830 M 
+0.200 0 (5)A 
+; 
+3877 4866 N M 13 0 - 0 0 0 sco K : 3851 4542 208 57 rc 0 0 0 sco F0_50
+Ji 
+3903 4542 M 
+0.200 0 (10)A 
+; 
+3877 4578 N M 13 0 - 0 0 0 sco K : 3851 4255 208 57 rc 0 0 0 sco F0_50
+Ji 
+3903 4255 M 
+0.200 0 (15)A 
+; 
+3877 4291 N M 13 0 - 0 0 0 sco K 
+2679 5192 N M 0 11 - 0 0 0 sco K : 2670 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+2722 5210 M 
+0.200 0 (70)A 
+; 
+2722 5192 N M 0 11 - 0 0 0 sco K 
+2766 5192 N M 0 11 - 0 0 0 sco K : 2758 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+2810 5210 M 
+0.200 0 (72)A 
+; 
+2810 5192 N M 0 11 - 0 0 0 sco K 
+2853 5192 N M 0 11 - 0 0 0 sco K : 2845 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+2897 5210 M 
+0.200 0 (74)A 
+; 
+2897 5192 N M 0 11 - 0 0 0 sco K 
+2941 5192 N M 0 11 - 0 0 0 sco K : 2932 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+2984 5210 M 
+0.200 0 (76)A 
+; 
+2984 5192 N M 0 11 - 0 0 0 sco K 
+3028 5192 N M 0 11 - 0 0 0 sco K : 3020 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+3072 5210 M 
+0.200 0 (78)A 
+; 
+3072 5192 N M 0 11 - 0 0 0 sco K 
+3115 5192 N M 0 11 - 0 0 0 sco K : 3107 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+3159 5210 M 
+0.200 0 (80)A 
+; 
+3159 5192 N M 0 11 - 0 0 0 sco K 
+3203 5192 N M 0 11 - 0 0 0 sco K : 3194 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+3246 5210 M 
+0.200 0 (82)A 
+; 
+3246 5192 N M 0 11 - 0 0 0 sco K 
+3290 5192 N M 0 11 - 0 0 0 sco K : 3282 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+3334 5210 M 
+0.200 0 (84)A 
+; 
+3334 5192 N M 0 11 - 0 0 0 sco K 
+3378 5192 N M 0 11 - 0 0 0 sco K : 3369 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+3421 5210 M 
+0.200 0 (86)A 
+; 
+3421 5192 N M 0 11 - 0 0 0 sco K 
+3465 5192 N M 0 11 - 0 0 0 sco K : 3457 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+3509 5210 M 
+0.200 0 (88)A 
+; 
+3509 5192 N M 0 11 - 0 0 0 sco K 
+3552 5192 N M 0 11 - 0 0 0 sco K : 3544 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+3596 5210 M 
+0.200 0 (90)A 
+; 
+3596 5192 N M 0 11 - 0 0 0 sco K 
+3640 5192 N M 0 11 - 0 0 0 sco K : 3631 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+3683 5210 M 
+0.200 0 (92)A 
+; 
+3683 5192 N M 0 11 - 0 0 0 sco K 
+3727 5192 N M 0 11 - 0 0 0 sco K : 3719 5210 208 57 rc 0 0 0 sco F0_50
+Ji 
+3771 5210 M 
+0.200 0 (94)A 
+; 
+3771 5192 N M 0 11 - 0 0 0 sco K 
+3814 5192 N M 0 11 - 0 0 0 sco K 
+3858 5192 N M 0 11 - 0 0 0 sco K 
+2679 4607 N M 3 -144 - 0 0 0 sco K 
+2682 4463 N M 4 144 - 0 0 0 sco K 
+2686 4607 N M 3 0 - 0 0 0 sco K 
+2689 4607 N M 4 -144 - 0 0 0 sco K 
+2693 4463 N M 4 0 - 0 0 0 sco K 
+2697 4463 N M 3 144 - 0 0 0 sco K 
+2700 4607 N M 4 0 - 0 0 0 sco K 
+2704 4607 N M 4 0 - 0 0 0 sco K 
+2708 4607 N M 3 -144 - 0 0 0 sco K 
+2711 4463 N M 4 0 - 0 0 0 sco K 
+2715 4463 N M 4 144 - 0 0 0 sco K 
+2719 4607 N M 3 0 - 0 0 0 sco K 
+2722 4607 N M 4 144 - 0 0 0 sco K 
+2726 4751 N M 3 0 - 0 0 0 sco K 
+2729 4751 N M 4 0 - 0 0 0 sco K 
+2733 4751 N M 4 144 - 0 0 0 sco K 
+2737 4895 N M 3 -144 - 0 0 0 sco K 
+2740 4751 N M 4 -144 - 0 0 0 sco K 
+2744 4607 N M 4 0 - 0 0 0 sco K 
+2748 4607 N M 3 0 - 0 0 0 sco K 
+2751 4607 N M 4 144 - 0 0 0 sco K 
+2755 4751 N M 4 0 - 0 0 0 sco K 
+2759 4751 N M 3 0 - 0 0 0 sco K 
+2762 4751 N M 4 0 - 0 0 0 sco K 
+2766 4751 N M 3 0 - 0 0 0 sco K 
+2769 4751 N M 4 -288 - 0 0 0 sco K 
+2773 4463 N M 4 0 - 0 0 0 sco K 
+2777 4463 N M 3 144 - 0 0 0 sco K 
+2780 4607 N M 4 -144 - 0 0 0 sco K 
+2784 4463 N M 4 0 - 0 0 0 sco K 
+2788 4463 N M 3 144 - 0 0 0 sco K 
+2791 4607 N M 4 0 - 0 0 0 sco K 
+2795 4607 N M 4 -144 - 0 0 0 sco K 
+2799 4463 N M 3 144 - 0 0 0 sco K 
+2802 4607 N M 4 -144 - 0 0 0 sco K 
+2806 4463 N M 4 144 - 0 0 0 sco K 
+2810 4607 N M 3 -144 - 0 0 0 sco K 
+2813 4463 N M 4 144 - 0 0 0 sco K 
+2817 4607 N M 3 0 - 0 0 0 sco K 
+2820 4607 N M 4 0 - 0 0 0 sco K 
+2824 4607 N M 4 0 - 0 0 0 sco K 
+2828 4607 N M 3 0 - 0 0 0 sco K 
+2831 4607 N M 4 -144 - 0 0 0 sco K 
+2835 4463 N M 4 144 - 0 0 0 sco K 
+2839 4607 N M 3 144 - 0 0 0 sco K 
+2842 4751 N M 4 -144 - 0 0 0 sco K 
+2846 4607 N M 4 0 - 0 0 0 sco K 
+2850 4607 N M 3 0 - 0 0 0 sco K 
+2853 4607 N M 4 0 - 0 0 0 sco K 
+2857 4607 N M 3 0 - 0 0 0 sco K 
+2860 4607 N M 4 -144 - 0 0 0 sco K 
+2864 4463 N M 4 144 - 0 0 0 sco K 
+2868 4607 N M 3 0 - 0 0 0 sco K 
+2871 4607 N M 4 0 - 0 0 0 sco K 
+2875 4607 N M 4 0 - 0 0 0 sco K 
+2879 4607 N M 3 144 - 0 0 0 sco K 
+2882 4751 N M 4 0 - 0 0 0 sco K 
+2886 4751 N M 4 0 - 0 0 0 sco K 
+2890 4751 N M 3 -144 - 0 0 0 sco K 
+2893 4607 N M 4 -144 - 0 0 0 sco K 
+2897 4463 N M 3 0 - 0 0 0 sco K 
+2900 4463 N M 4 0 - 0 0 0 sco K 
+2904 4463 N M 4 144 - 0 0 0 sco K 
+2908 4607 N M 3 0 - 0 0 0 sco K 
+2911 4607 N M 4 0 - 0 0 0 sco K 
+2915 4607 N M 4 0 - 0 0 0 sco K 
+2919 4607 N M 3 -144 - 0 0 0 sco K 
+2922 4463 N M 4 288 - 0 0 0 sco K 
+2926 4751 N M 4 0 - 0 0 0 sco K 
+2930 4751 N M 3 -144 - 0 0 0 sco K 
+2933 4607 N M 4 144 - 0 0 0 sco K 
+2937 4751 N M 4 0 - 0 0 0 sco K 
+2941 4751 N M 3 0 - 0 0 0 sco K 
+2944 4751 N M 4 0 - 0 0 0 sco K 
+2948 4751 N M 3 -288 - 0 0 0 sco K 
+2951 4463 N M 4 0 - 0 0 0 sco K 
+2955 4463 N M 4 0 - 0 0 0 sco K 
+2959 4463 N M 3 0 - 0 0 0 sco K 
+2962 4463 N M 4 0 - 0 0 0 sco K 
+2966 4463 N M 4 0 - 0 0 0 sco K 
+2970 4463 N M 3 0 - 0 0 0 sco K 
+2973 4463 N M 4 288 - 0 0 0 sco K 
+2977 4751 N M 4 -288 - 0 0 0 sco K 
+2981 4463 N M 3 0 - 0 0 0 sco K 
+2984 4463 N M 4 0 - 0 0 0 sco K 
+2988 4463 N M 3 144 - 0 0 0 sco K 
+2991 4607 N M 4 -144 - 0 0 0 sco K 
+2995 4463 N M 4 0 - 0 0 0 sco K 
+2999 4463 N M 3 0 - 0 0 0 sco K 
+3002 4463 N M 4 0 - 0 0 0 sco K 
+3006 4463 N M 4 144 - 0 0 0 sco K 
+3010 4607 N M 3 -144 - 0 0 0 sco K 
+3013 4463 N M 4 144 - 0 0 0 sco K 
+3017 4607 N M 4 0 - 0 0 0 sco K 
+3021 4607 N M 3 -144 - 0 0 0 sco K 
+3024 4463 N M 4 144 - 0 0 0 sco K 
+3028 4607 N M 3 0 - 0 0 0 sco K 
+3031 4607 N M 4 0 - 0 0 0 sco K 
+3035 4607 N M 4 0 - 0 0 0 sco K 
+3039 4607 N M 3 0 - 0 0 0 sco K 
+3042 4607 N M 4 0 - 0 0 0 sco K 
+3046 4607 N M 4 144 - 0 0 0 sco K 
+3050 4751 N M 3 0 - 0 0 0 sco K 
+3053 4751 N M 4 -144 - 0 0 0 sco K 
+3057 4607 N M 4 -144 - 0 0 0 sco K 
+3061 4463 N M 3 144 - 0 0 0 sco K 
+3064 4607 N M 4 -144 - 0 0 0 sco K 
+3068 4463 N M 4 144 - 0 0 0 sco K 
+3072 4607 N M 3 0 - 0 0 0 sco K 
+3075 4607 N M 4 0 - 0 0 0 sco K 
+3079 4607 N M 3 0 - 0 0 0 sco K 
+3082 4607 N M 4 0 - 0 0 0 sco K 
+3086 4607 N M 4 0 - 0 0 0 sco K 
+3090 4607 N M 3 0 - 0 0 0 sco K 
+3093 4607 N M 4 0 - 0 0 0 sco K 
+3097 4607 N M 4 0 - 0 0 0 sco K 
+3101 4607 N M 3 0 - 0 0 0 sco K 
+3104 4607 N M 4 -144 - 0 0 0 sco K 
+3108 4463 N M 4 0 - 0 0 0 sco K 
+3112 4463 N M 3 288 - 0 0 0 sco K 
+3115 4751 N M 4 -288 - 0 0 0 sco K 
+3119 4463 N M 3 0 - 0 0 0 sco K 
+3122 4463 N M 4 144 - 0 0 0 sco K 
+3126 4607 N M 4 0 - 0 0 0 sco K 
+3130 4607 N M 3 -144 - 0 0 0 sco K 
+3133 4463 N M 4 144 - 0 0 0 sco K 
+3137 4607 N M 4 0 - 0 0 0 sco K 
+3141 4607 N M 3 0 - 0 0 0 sco K 
+3144 4607 N M 4 0 - 0 0 0 sco K 
+3148 4607 N M 4 0 - 0 0 0 sco K 
+3152 4607 N M 3 0 - 0 0 0 sco K 
+3155 4607 N M 4 0 - 0 0 0 sco K 
+3159 4607 N M 4 0 - 0 0 0 sco K 
+3163 4607 N M 3 0 - 0 0 0 sco K 
+3166 4607 N M 4 0 - 0 0 0 sco K 
+3170 4607 N M 3 -144 - 0 0 0 sco K 
+3173 4463 N M 4 144 - 0 0 0 sco K 
+3177 4607 N M 4 0 - 0 0 0 sco K 
+3181 4607 N M 3 0 - 0 0 0 sco K 
+3184 4607 N M 4 0 - 0 0 0 sco K 
+3188 4607 N M 4 0 - 0 0 0 sco K 
+3192 4607 N M 3 0 - 0 0 0 sco K 
+3195 4607 N M 4 0 - 0 0 0 sco K 
+3199 4607 N M 4 0 - 0 0 0 sco K 
+3203 4607 N M 3 0 - 0 0 0 sco K 
+3206 4607 N M 4 -144 - 0 0 0 sco K 
+3210 4463 N M 3 0 - 0 0 0 sco K 
+3213 4463 N M 4 0 - 0 0 0 sco K 
+3217 4463 N M 4 0 - 0 0 0 sco K 
+3221 4463 N M 3 0 - 0 0 0 sco K 
+3224 4463 N M 4 0 - 0 0 0 sco K 
+3228 4463 N M 4 0 - 0 0 0 sco K 
+3232 4463 N M 3 0 - 0 0 0 sco K 
+3235 4463 N M 4 144 - 0 0 0 sco K 
+3239 4607 N M 4 0 - 0 0 0 sco K 
+3243 4607 N M 3 0 - 0 0 0 sco K 
+3246 4607 N M 4 0 - 0 0 0 sco K 
+3250 4607 N M 3 0 - 0 0 0 sco K 
+3253 4607 N M 4 0 - 0 0 0 sco K 
+3257 4607 N M 4 0 - 0 0 0 sco K 
+3261 4607 N M 3 0 - 0 0 0 sco K 
+3264 4607 N M 4 144 - 0 0 0 sco K 
+3268 4751 N M 4 -144 - 0 0 0 sco K 
+3272 4607 N M 3 0 - 0 0 0 sco K 
+3275 4607 N M 4 -144 - 0 0 0 sco K 
+3279 4463 N M 4 288 - 0 0 0 sco K 
+3283 4751 N M 3 -144 - 0 0 0 sco K 
+3286 4607 N M 4 0 - 0 0 0 sco K 
+3290 4607 N M 4 144 - 0 0 0 sco K 
+3294 4751 N M 3 -144 - 0 0 0 sco K 
+3297 4607 N M 4 0 - 0 0 0 sco K 
+3301 4607 N M 3 0 - 0 0 0 sco K 
+3304 4607 N M 4 0 - 0 0 0 sco K 
+3308 4607 N M 4 -144 - 0 0 0 sco K 
+3312 4463 N M 3 0 - 0 0 0 sco K 
+3315 4463 N M 4 0 - 0 0 0 sco K 
+3319 4463 N M 4 144 - 0 0 0 sco K 
+3323 4607 N M 3 -144 - 0 0 0 sco K 
+3326 4463 N M 4 0 - 0 0 0 sco K 
+3330 4463 N M 4 0 - 0 0 0 sco K 
+3334 4463 N M 3 0 - 0 0 0 sco K 
+3337 4463 N M 4 0 - 0 0 0 sco K 
+3341 4463 N M 3 144 - 0 0 0 sco K 
+3344 4607 N M 4 -144 - 0 0 0 sco K 
+3348 4463 N M 4 0 - 0 0 0 sco K 
+3352 4463 N M 3 0 - 0 0 0 sco K 
+3355 4463 N M 4 0 - 0 0 0 sco K 
+3359 4463 N M 4 0 - 0 0 0 sco K 
+3363 4463 N M 3 0 - 0 0 0 sco K 
+3366 4463 N M 4 0 - 0 0 0 sco K 
+3370 4463 N M 4 0 - 0 0 0 sco K 
+3374 4463 N M 3 0 - 0 0 0 sco K 
+3377 4463 N M 4 0 - 0 0 0 sco K 
+3381 4463 N M 3 0 - 0 0 0 sco K 
+3384 4463 N M 4 0 - 0 0 0 sco K 
+3388 4463 N M 4 0 - 0 0 0 sco K 
+3392 4463 N M 3 0 - 0 0 0 sco K 
+3395 4463 N M 4 0 - 0 0 0 sco K 
+3399 4463 N M 4 0 - 0 0 0 sco K 
+3403 4463 N M 3 0 - 0 0 0 sco K 
+3406 4463 N M 4 0 - 0 0 0 sco K 
+3410 4463 N M 4 0 - 0 0 0 sco K 
+3414 4463 N M 3 0 - 0 0 0 sco K 
+3417 4463 N M 4 0 - 0 0 0 sco K 
+3421 4463 N M 4 0 - 0 0 0 sco K 
+3425 4463 N M 3 0 - 0 0 0 sco K 
+3428 4463 N M 4 0 - 0 0 0 sco K 
+3432 4463 N M 3 0 - 0 0 0 sco K 
+3435 4463 N M 4 144 - 0 0 0 sco K 
+3439 4607 N M 4 0 - 0 0 0 sco K 
+3443 4607 N M 3 144 - 0 0 0 sco K 
+3446 4751 N M 4 0 - 0 0 0 sco K 
+3450 4751 N M 4 0 - 0 0 0 sco K 
+3454 4751 N M 3 -144 - 0 0 0 sco K 
+3457 4607 N M 4 0 - 0 0 0 sco K 
+3461 4607 N M 4 144 - 0 0 0 sco K 
+3465 4751 N M 3 -288 - 0 0 0 sco K 
+3468 4463 N M 4 0 - 0 0 0 sco K 
+3472 4463 N M 3 0 - 0 0 0 sco K 
+3475 4463 N M 4 0 - 0 0 0 sco K 
+3479 4463 N M 4 0 - 0 0 0 sco K 
+3483 4463 N M 3 0 - 0 0 0 sco K 
+3486 4463 N M 4 0 - 0 0 0 sco K 
+3490 4463 N M 4 0 - 0 0 0 sco K 
+3494 4463 N M 3 0 - 0 0 0 sco K 
+3497 4463 N M 4 0 - 0 0 0 sco K 
+3501 4463 N M 4 0 - 0 0 0 sco K 
+3505 4463 N M 3 0 - 0 0 0 sco K 
+3508 4463 N M 4 0 - 0 0 0 sco K 
+3512 4463 N M 4 0 - 0 0 0 sco K 
+3516 4463 N M 3 0 - 0 0 0 sco K 
+3519 4463 N M 4 0 - 0 0 0 sco K 
+3523 4463 N M 3 0 - 0 0 0 sco K 
+3526 4463 N M 4 0 - 0 0 0 sco K 
+3530 4463 N M 4 144 - 0 0 0 sco K 
+3534 4607 N M 3 0 - 0 0 0 sco K 
+3537 4607 N M 4 -144 - 0 0 0 sco K 
+3541 4463 N M 4 0 - 0 0 0 sco K 
+3545 4463 N M 3 0 - 0 0 0 sco K 
+3548 4463 N M 4 0 - 0 0 0 sco K 
+3552 4463 N M 4 0 - 0 0 0 sco K 
+3556 4463 N M 3 144 - 0 0 0 sco K 
+3559 4607 N M 4 0 - 0 0 0 sco K 
+3563 4607 N M 3 0 - 0 0 0 sco K 
+3566 4607 N M 4 0 - 0 0 0 sco K 
+3570 4607 N M 4 0 - 0 0 0 sco K 
+3574 4607 N M 3 0 - 0 0 0 sco K 
+3577 4607 N M 4 0 - 0 0 0 sco K 
+3581 4607 N M 4 0 - 0 0 0 sco K 
+3585 4607 N M 3 0 - 0 0 0 sco K 
+3588 4607 N M 4 0 - 0 0 0 sco K 
+3592 4607 N M 4 0 - 0 0 0 sco K 
+3596 4607 N M 3 0 - 0 0 0 sco K 
+3599 4607 N M 4 0 - 0 0 0 sco K 
+3603 4607 N M 3 0 - 0 0 0 sco K 
+3606 4607 N M 4 0 - 0 0 0 sco K 
+3610 4607 N M 4 0 - 0 0 0 sco K 
+3614 4607 N M 3 0 - 0 0 0 sco K 
+3617 4607 N M 4 0 - 0 0 0 sco K 
+3621 4607 N M 4 0 - 0 0 0 sco K 
+3625 4607 N M 3 0 - 0 0 0 sco K 
+3628 4607 N M 4 0 - 0 0 0 sco K 
+3632 4607 N M 4 0 - 0 0 0 sco K 
+3636 4607 N M 3 0 - 0 0 0 sco K 
+3639 4607 N M 4 0 - 0 0 0 sco K 
+3643 4607 N M 4 0 - 0 0 0 sco K 
+3647 4607 N M 3 144 - 0 0 0 sco K 
+3650 4751 N M 4 0 - 0 0 0 sco K 
+3654 4751 N M 3 -144 - 0 0 0 sco K 
+3657 4607 N M 4 -144 - 0 0 0 sco K 
+3661 4463 N M 4 0 - 0 0 0 sco K 
+3665 4463 N M 3 0 - 0 0 0 sco K 
+3668 4463 N M 4 0 - 0 0 0 sco K 
+3672 4463 N M 4 0 - 0 0 0 sco K 
+3676 4463 N M 3 0 - 0 0 0 sco K 
+3679 4463 N M 4 0 - 0 0 0 sco K 
+3683 4463 N M 4 0 - 0 0 0 sco K 
+3687 4463 N M 3 0 - 0 0 0 sco K 
+3690 4463 N M 4 0 - 0 0 0 sco K 
+3694 4463 N M 3 0 - 0 0 0 sco K 
+3697 4463 N M 4 288 - 0 0 0 sco K 
+3701 4751 N M 4 -288 - 0 0 0 sco K 
+3705 4463 N M 3 288 - 0 0 0 sco K 
+3708 4751 N M 4 0 - 0 0 0 sco K 
+3712 4751 N M 4 0 - 0 0 0 sco K 
+3716 4751 N M 3 0 - 0 0 0 sco K 
+3719 4751 N M 4 -144 - 0 0 0 sco K 
+3723 4607 N M 4 -144 - 0 0 0 sco K 
+3727 4463 N M 3 144 - 0 0 0 sco K 
+3730 4607 N M 4 0 - 0 0 0 sco K 
+3734 4607 N M 3 -144 - 0 0 0 sco K 
+3737 4463 N M 4 0 - 0 0 0 sco K 
+3741 4463 N M 4 0 - 0 0 0 sco K 
+3745 4463 N M 3 0 - 0 0 0 sco K 
+3748 4463 N M 4 0 - 0 0 0 sco K 
+3752 4463 N M 4 0 - 0 0 0 sco K 
+3756 4463 N M 3 0 - 0 0 0 sco K 
+3759 4463 N M 4 0 - 0 0 0 sco K 
+3763 4463 N M 4 0 - 0 0 0 sco K 
+3767 4463 N M 3 0 - 0 0 0 sco K 
+3770 4463 N M 4 0 - 0 0 0 sco K 
+3774 4463 N M 4 0 - 0 0 0 sco K 
+3778 4463 N M 3 0 - 0 0 0 sco K 
+3781 4463 N M 4 0 - 0 0 0 sco K 
+3785 4463 N M 3 0 - 0 0 0 sco K 
+3788 4463 N M 4 0 - 0 0 0 sco K 
+3792 4463 N M 4 144 - 0 0 0 sco K 
+3796 4607 N M 3 -144 - 0 0 0 sco K 
+3799 4463 N M 4 144 - 0 0 0 sco K 
+3803 4607 N M 4 0 - 0 0 0 sco K 
+3807 4607 N M 3 0 - 0 0 0 sco K 
+3810 4607 N M 4 0 - 0 0 0 sco K 
+3814 4607 N M 4 0 - 0 0 0 sco K 
+3818 4607 N M 3 -144 - 0 0 0 sco K 
+3821 4463 N M 4 0 - 0 0 0 sco K 
+3825 4463 N M 3 0 - 0 0 0 sco K 
+3828 4463 N M 4 0 - 0 0 0 sco K 
+3832 4463 N M 4 0 - 0 0 0 sco K 
+3836 4463 N M 3 0 - 0 0 0 sco K 
+3839 4463 N M 4 288 - 0 0 0 sco K 
+3843 4751 N M 4 0 - 0 0 0 sco K 
+3847 4751 N M 3 0 - 0 0 0 sco K 
+3850 4751 N M 4 -288 - 0 0 0 sco K 
+3854 4463 N M 4 288 - 0 0 0 sco K 
+3858 4751 N M 3 0 - 0 0 0 sco K 
+3861 4751 N M 4 0 - 0 0 0 sco K 
+3865 4751 N M 4 -144 - 0 0 0 sco K 
+2679 4406 N M 3 0 - 0 0 0 sco K 
+2682 4406 N M 4 0 - 0 0 0 sco K 
+2686 4406 N M 3 0 - 0 0 0 sco K 
+2689 4406 N M 4 0 - 0 0 0 sco K 
+2693 4406 N M 4 0 - 0 0 0 sco K 
+2697 4406 N M 1 0 - 0 0 0 sco K 
+2712 4406 N M 3 0 - 0 0 0 sco K 
+2715 4406 N M 4 0 - 0 0 0 sco K 
+2719 4406 N M 3 0 - 0 0 0 sco K 
+2722 4406 N M 4 0 - 0 0 0 sco K 
+2726 4406 N M 3 0 - 0 0 0 sco K 
+2729 4406 N M 2 0 - 0 0 0 sco K 
+2745 4406 N M 3 0 - 0 0 0 sco K 
+2748 4406 N M 3 0 - 0 0 0 sco K 
+2751 4406 N M 4 0 - 0 0 0 sco K 
+2755 4406 N M 4 0 - 0 0 0 sco K 
+2759 4406 N M 3 0 - 0 0 0 sco K 
+2762 4406 N M 2 0 - 0 0 0 sco K 
+2778 4406 N M 2 0 - 0 0 0 sco K 
+2780 4406 N M 4 0 - 0 0 0 sco K 
+2784 4406 N M 4 0 - 0 0 0 sco K 
+2788 4406 N M 3 0 - 0 0 0 sco K 
+2791 4406 N M 4 0 - 0 0 0 sco K 
+2795 4406 N M 2 0 - 0 0 0 sco K 
+2811 4406 N M 2 0 - 0 0 0 sco K 
+2813 4406 N M 4 0 - 0 0 0 sco K 
+2817 4406 N M 3 0 - 0 0 0 sco K 
+2820 4406 N M 4 0 - 0 0 0 sco K 
+2824 4406 N M 4 0 - 0 0 0 sco K 
+2828 4406 N M 2 0 - 0 0 0 sco K 
+2844 4406 N M 2 0 - 0 0 0 sco K 
+2846 4406 N M 4 0 - 0 0 0 sco K 
+2850 4406 N M 3 0 - 0 0 0 sco K 
+2853 4406 N M 4 0 - 0 0 0 sco K 
+2857 4406 N M 3 0 - 0 0 0 sco K 
+2860 4406 N M 3 0 - 0 0 0 sco K 
+2877 4406 N M 2 0 - 0 0 0 sco K 
+2879 4406 N M 3 0 - 0 0 0 sco K 
+2882 4406 N M 4 0 - 0 0 0 sco K 
+2886 4406 N M 4 0 - 0 0 0 sco K 
+2890 4406 N M 3 0 - 0 0 0 sco K 
+2893 4406 N M 3 0 - 0 0 0 sco K 
+2910 4406 N M 1 0 - 0 0 0 sco K 
+2911 4406 N M 4 0 - 0 0 0 sco K 
+2915 4406 N M 4 0 - 0 0 0 sco K 
+2919 4406 N M 3 0 - 0 0 0 sco K 
+2922 4406 N M 4 0 - 0 0 0 sco K 
+2926 4406 N M 3 0 - 0 0 0 sco K 
+2943 4406 N M 1 0 - 0 0 0 sco K 
+2944 4406 N M 4 0 - 0 0 0 sco K 
+2948 4406 N M 3 0 - 0 0 0 sco K 
+2951 4406 N M 4 0 - 0 0 0 sco K 
+2955 4406 N M 4 0 - 0 0 0 sco K 
+2959 4406 N M 3 0 - 0 0 0 sco K 
+2976 4406 N M 1 0 - 0 0 0 sco K 
+2977 4406 N M 4 0 - 0 0 0 sco K 
+2981 4406 N M 3 0 - 0 0 0 sco K 
+2984 4406 N M 4 0 - 0 0 0 sco K 
+2988 4406 N M 3 0 - 0 0 0 sco K 
+2991 4406 N M 4 0 - 0 0 0 sco K 
+3009 4406 N M 1 0 - 0 0 0 sco K 
+3010 4406 N M 3 0 - 0 0 0 sco K 
+3013 4406 N M 4 0 - 0 0 0 sco K 
+3017 4406 N M 4 0 - 0 0 0 sco K 
+3021 4406 N M 3 0 - 0 0 0 sco K 
+3024 4406 N M 4 0 - 0 0 0 sco K 
+3042 4406 N M 4 0 - 0 0 0 sco K 
+3046 4406 N M 4 0 - 0 0 0 sco K 
+3050 4406 N M 3 0 - 0 0 0 sco K 
+3053 4406 N M 4 0 - 0 0 0 sco K 
+3057 4406 N M 4 0 - 0 0 0 sco K 
+3075 4406 N M 4 0 - 0 0 0 sco K 
+3079 4406 N M 3 0 - 0 0 0 sco K 
+3082 4406 N M 4 0 - 0 0 0 sco K 
+3086 4406 N M 4 0 - 0 0 0 sco K 
+3090 4406 N M 3 0 - 0 0 0 sco K 
+3093 4406 N M 1 0 - 0 0 0 sco K 
+3108 4406 N M 4 0 - 0 0 0 sco K 
+3112 4406 N M 3 0 - 0 0 0 sco K 
+3115 4406 N M 4 0 - 0 0 0 sco K 
+3119 4406 N M 3 0 - 0 0 0 sco K 
+3122 4406 N M 4 0 - 0 0 0 sco K 
+3126 4406 N M 1 0 - 0 0 0 sco K 
+3141 4406 N M 3 0 - 0 0 0 sco K 
+3144 4406 N M 4 0 - 0 0 0 sco K 
+3148 4406 N M 4 0 - 0 0 0 sco K 
+3152 4406 N M 3 0 - 0 0 0 sco K 
+3155 4406 N M 4 0 - 0 0 0 sco K 
+3159 4406 N M 1 0 - 0 0 0 sco K 
+3174 4406 N M 3 0 - 0 0 0 sco K 
+3177 4406 N M 4 0 - 0 0 0 sco K 
+3181 4406 N M 3 0 - 0 0 0 sco K 
+3184 4406 N M 4 0 - 0 0 0 sco K 
+3188 4406 N M 4 0 - 0 0 0 sco K 
+3192 4406 N M 1 0 - 0 0 0 sco K 
+3207 4406 N M 3 0 - 0 0 0 sco K 
+3210 4406 N M 3 0 - 0 0 0 sco K 
+3213 4406 N M 4 0 - 0 0 0 sco K 
+3217 4406 N M 4 0 - 0 0 0 sco K 
+3221 4406 N M 3 0 - 0 0 0 sco K 
+3224 4406 N M 2 0 - 0 0 0 sco K 
+3240 4406 N M 3 0 - 0 0 0 sco K 
+3243 4406 N M 3 0 - 0 0 0 sco K 
+3246 4406 N M 4 0 - 0 0 0 sco K 
+3250 4406 N M 3 0 - 0 0 0 sco K 
+3253 4406 N M 4 0 - 0 0 0 sco K 
+3257 4406 N M 2 0 - 0 0 0 sco K 
+3273 4406 N M 2 0 - 0 0 0 sco K 
+3275 4406 N M 4 0 - 0 0 0 sco K 
+3279 4406 N M 4 0 - 0 0 0 sco K 
+3283 4406 N M 3 0 - 0 0 0 sco K 
+3286 4406 N M 4 0 - 0 0 0 sco K 
+3290 4406 N M 2 0 - 0 0 0 sco K 
+3306 4406 N M 2 0 - 0 0 0 sco K 
+3308 4406 N M 4 0 - 0 0 0 sco K 
+3312 4406 N M 3 0 - 0 0 0 sco K 
+3315 4406 N M 4 0 - 0 0 0 sco K 
+3319 4406 N M 4 0 - 0 0 0 sco K 
+3323 4406 N M 2 0 - 0 0 0 sco K 
+3339 4406 N M 2 0 - 0 0 0 sco K 
+3341 4406 N M 3 0 - 0 0 0 sco K 
+3344 4406 N M 4 0 - 0 0 0 sco K 
+3348 4406 N M 4 0 - 0 0 0 sco K 
+3352 4406 N M 3 0 - 0 0 0 sco K 
+3355 4406 N M 3 0 - 0 0 0 sco K 
+3372 4406 N M 2 0 - 0 0 0 sco K 
+3374 4406 N M 3 0 - 0 0 0 sco K 
+3377 4406 N M 4 0 - 0 0 0 sco K 
+3381 4406 N M 3 0 - 0 0 0 sco K 
+3384 4406 N M 4 0 - 0 0 0 sco K 
+3388 4406 N M 3 0 - 0 0 0 sco K 
+3405 4406 N M 1 0 - 0 0 0 sco K 
+3406 4406 N M 4 0 - 0 0 0 sco K 
+3410 4406 N M 4 0 - 0 0 0 sco K 
+3414 4406 N M 3 0 - 0 0 0 sco K 
+3417 4406 N M 4 0 - 0 0 0 sco K 
+3421 4406 N M 3 0 - 0 0 0 sco K 
+3438 4406 N M 1 0 - 0 0 0 sco K 
+3439 4406 N M 4 0 - 0 0 0 sco K 
+3443 4406 N M 3 0 - 0 0 0 sco K 
+3446 4406 N M 4 0 - 0 0 0 sco K 
+3450 4406 N M 4 0 - 0 0 0 sco K 
+3454 4406 N M 3 0 - 0 0 0 sco K 
+3471 4406 N M 1 0 - 0 0 0 sco K 
+3472 4406 N M 3 0 - 0 0 0 sco K 
+3475 4406 N M 4 0 - 0 0 0 sco K 
+3479 4406 N M 4 0 - 0 0 0 sco K 
+3483 4406 N M 3 0 - 0 0 0 sco K 
+3486 4406 N M 4 0 - 0 0 0 sco K 
+3504 4406 N M 1 0 - 0 0 0 sco K 
+3505 4406 N M 3 0 - 0 0 0 sco K 
+3508 4406 N M 4 0 - 0 0 0 sco K 
+3512 4406 N M 4 0 - 0 0 0 sco K 
+3516 4406 N M 3 0 - 0 0 0 sco K 
+3519 4406 N M 4 0 - 0 0 0 sco K 
+3537 4406 N M 4 0 - 0 0 0 sco K 
+3541 4406 N M 4 0 - 0 0 0 sco K 
+3545 4406 N M 3 0 - 0 0 0 sco K 
+3548 4406 N M 4 0 - 0 0 0 sco K 
+3552 4406 N M 4 0 - 0 0 0 sco K 
+3570 4406 N M 4 0 - 0 0 0 sco K 
+3574 4406 N M 3 0 - 0 0 0 sco K 
+3577 4406 N M 4 0 - 0 0 0 sco K 
+3581 4406 N M 4 0 - 0 0 0 sco K 
+3585 4406 N M 3 0 - 0 0 0 sco K 
+3588 4406 N M 1 0 - 0 0 0 sco K 
+3603 4406 N M 3 0 - 0 0 0 sco K 
+3606 4406 N M 4 0 - 0 0 0 sco K 
+3610 4406 N M 4 0 - 0 0 0 sco K 
+3614 4406 N M 3 0 - 0 0 0 sco K 
+3617 4406 N M 4 0 - 0 0 0 sco K 
+3621 4406 N M 1 0 - 0 0 0 sco K 
+3636 4406 N M 3 0 - 0 0 0 sco K 
+3639 4406 N M 4 0 - 0 0 0 sco K 
+3643 4406 N M 4 0 - 0 0 0 sco K 
+3647 4406 N M 3 0 - 0 0 0 sco K 
+3650 4406 N M 4 0 - 0 0 0 sco K 
+3654 4406 N M 1 0 - 0 0 0 sco K 
+3669 4406 N M 3 0 - 0 0 0 sco K 
+3672 4406 N M 4 0 - 0 0 0 sco K 
+3676 4406 N M 3 0 - 0 0 0 sco K 
+3679 4406 N M 4 0 - 0 0 0 sco K 
+3683 4406 N M 4 0 - 0 0 0 sco K 
+3687 4406 N M 1 0 - 0 0 0 sco K 
+3702 4406 N M 3 0 - 0 0 0 sco K 
+3705 4406 N M 3 0 - 0 0 0 sco K 
+3708 4406 N M 4 0 - 0 0 0 sco K 
+3712 4406 N M 4 0 - 0 0 0 sco K 
+3716 4406 N M 3 0 - 0 0 0 sco K 
+3719 4406 N M 2 0 - 0 0 0 sco K 
+3735 4406 N M 2 0 - 0 0 0 sco K 
+3737 4406 N M 4 0 - 0 0 0 sco K 
+3741 4406 N M 4 0 - 0 0 0 sco K 
+3745 4406 N M 3 0 - 0 0 0 sco K 
+3748 4406 N M 4 0 - 0 0 0 sco K 
+3752 4406 N M 2 0 - 0 0 0 sco K 
+3768 4406 N M 2 0 - 0 0 0 sco K 
+3770 4406 N M 4 0 - 0 0 0 sco K 
+3774 4406 N M 4 0 - 0 0 0 sco K 
+3778 4406 N M 3 0 - 0 0 0 sco K 
+3781 4406 N M 4 0 - 0 0 0 sco K 
+3785 4406 N M 2 0 - 0 0 0 sco K 
+3801 4406 N M 2 0 - 0 0 0 sco K 
+3803 4406 N M 4 0 - 0 0 0 sco K 
+3807 4406 N M 3 0 - 0 0 0 sco K 
+3810 4406 N M 4 0 - 0 0 0 sco K 
+3814 4406 N M 4 0 - 0 0 0 sco K 
+3818 4406 N M 2 0 - 0 0 0 sco K 
+3834 4406 N M 2 0 - 0 0 0 sco K 
+3836 4406 N M 3 0 - 0 0 0 sco K 
+3839 4406 N M 4 0 - 0 0 0 sco K 
+3843 4406 N M 4 0 - 0 0 0 sco K 
+3847 4406 N M 3 0 - 0 0 0 sco K 
+3850 4406 N M 3 0 - 0 0 0 sco K 
+3867 4406 N M 2 0 - 0 0 0 sco K 
+2675 4287 N M 0 901 - 8 Lw solid 0 0 0 sco K 
+2675 5188 N M 1198 0 - 0 0 0 sco K 
+3873 5188 N M 0 -901 - 0 0 0 sco K 
+3873 4287 N M -1198 0 - 0 0 0 sco K : 736 1090 4147 92 rc 0 0 0 sco (F0_83) cvn
+F0
+83 
+xF 
+F0_83
+Ji 
+823 1090 M 
+-0.012 0 (Figure 2: Rolling Estimates of Lag Orders \(Selected Using the AIC\) and Cointegrating Ranks)A 
+; : 1682 1384 3201 82 rc 0 0 0 sco (F0_74) cvn
+F0
+74 
+xF 
+F0_74
+Ji 
+1759 1384 M 
+0.086 0 (Panel A: Increasing Length Windows of Data)A 
+; : 1618 4012 3265 82 rc 0 0 0 sco F0_74
+Ji 
+1695 4012 M 
+0.052 0 (Panel B: 10 Year Fixed Length Windows of Data)A 
+; : 568 5450 1891 66 rc 0 0 0 sco (F0_58) cvn
+F0
+58 
+xF 
+F0_58
+Ji 
+629 5450 M 
+-0.094 0 (NOTES: See notes to Figure 1.)A 
+; : 2278 876 552 74 rc 0 0 0 sco (F0_66) cvn
+F0
+66 
+xF 
+F0_66
+Ji 
+2347 876 M 
+-0.007 0 (- 19 -)A 
+; : 2564 4426 260 57 rc 0 0 0 sco F0_50
+Ji 
+2616 4426 M 
+0.217 0 (5 -)A 
+; : 2564 4697 260 57 rc 0 0 0 sco F0_50
+Ji 
+2616 4697 M 
+0.217 0 (3 -)A 
+; : 2564 4985 260 57 rc 0 0 0 sco F0_50
+Ji 
+2616 4985 M 
+0.217 0 (1 -)A 
+; 
+LH 
+pagesave restore
+
+(%%[ Page: 1 ]%%)  =
+%%PageTrailer
+
+%%Trailer
+%%DocumentNeededFonts: Helvetica
+%%DocumentSuppliedFonts: 
+Pscript_Win_Driver_Incr dup /terminate get exec
+savelevel0 restore 
+%%Pages: 1
+(%%[ LastPage ]%%)  =
+%%EOF
+%-12345X@PJL EOJ
+%-12345X
