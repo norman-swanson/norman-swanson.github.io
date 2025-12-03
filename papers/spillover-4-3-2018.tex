@@ -1,0 +1,1916 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 936
+%% This document created by Scientific Word (R) Version 3.5
+
+\documentclass[a4paper,amstex,11pt]{article}%
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{verbatim}
+\usepackage{booktabs}
+\usepackage{bm}
+\usepackage{latexsym}
+\usepackage{afterpage}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{natbib}
+\usepackage{amsmath,amsthm,amsfonts,natbib,bm,latexsym,enumerate,url}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{lscape}
+\usepackage{adjustbox}
+\usepackage{afterpage}%
+\setcounter{MaxMatrixCols}{30}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{Codepage=936}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+%TCIDATA{Created=Tue Nov 04 20:07:01 2003}
+%TCIDATA{LastRevised=Thursday, March 22, 2018 19:30:22}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\providecommand{\U}[1]{\protect \rule{.1in}{.1in}}
+\providecommand{\U}[1]{\protect \rule{.1in}{.1in}}
+\providecommand{\U}[1]{\protect \rule{.1in}{.1in}}
+\renewcommand{\baselinestretch}{0.9}
+\textwidth=6.5in \textheight=9in \oddsidemargin=0in
+\evensidemargin=0in \topmargin=-0.25in
+\renewcommand {\baselinestretch}{1.3}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{assumption}{Assumption}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\begin{document}
+\bigskip\bigskip\bigskip
+
+\begin{center}
+\bigskip\bigskip{\LARGE Jump Spillover and Risk Effects on Excess Returns in
+the United States During the Great Recession*}\bigskip
+
+{\Large Jessica Schlossberg}$^{1}${\Large and Norman R. Swanson}$^{2}$
+
+\bigskip
+
+$^{1}${\Large Ernst and Young and }$^{1,2}${\Large Rutgers University}
+
+{\large April 2018}
+
+\bigskip
+
+\bigskip Abstract
+
+\bigskip
+\end{center}
+
+{\small In this paper, we review econometric methodology that is used to test for jumps and to decompose realized
+volatility into continuous and jump components. In order to illustrate how to implement the methods discussed, 
+we also present the results of an empirical analysis in which 
+we separate continuous asset return variation and finite activity
+jump variation from excess returns on various U.S. market sector exchange traded
+funds (ETFs), during and around the Great Recession of 2008. Our objective is
+to characterize the financial contagion that was present during one of the
+greatest financial crises in U.S. history. In particular, we study how shocks,
+as measured by jumps, propagate through nine different market sectors. One
+element of our analysis involves the investigation of causal linkages
+associated with jumps (via use of vector autoregressions), and
+another involves the examination of the predictive content of jumps for excess
+returns. We find that as early as 2006, jump spillover effects became more
+pronounced in the markets. We also observe that
+jumps had a significant effect on excess returns during 2008 and 2009; but not in the years before and after the recession.}
+
+\bigskip
+
+\noindent\textit{Keywords}: High-frequency jumps, jump spillover, jump risks,
+excess returns, ETFs, Great Recession, high-frequency data.
+
+\noindent\textit{JEL classification}: G12, C58, C22, G10.
+
+\renewcommand {\baselinestretch}{1.0}
+
+\_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_
+
+{\small \renewcommand {\baselinestretch}{1.0} }
+
+\begin{spacing}{1.0}
+{\small $^{\ast}$ }{\footnotesize Jessica Schlossberg, Department of Economics, Rutgers University, New Brunswick, NJ 08901, USA, jessicaschlossbe@gmail.com. Norman Swanson, Department of Economics, Rutgers University, New Brunswick, NJ 08901, USA, nswanson@econ.rutgers.edu. This chapter has been prepared for the Handbook of Financial Econometrics, Mathematics, Statistics, and Technology; and we are grateful to the editor, Cheng-Few Lee, for useful comments. Additionally, we have
+benefited from comments made by Valentina Corradi, Yuan Liao, John Landon-Lane, Bruce Mizrach, and Xiye Yang.}
+\end{spacing}
+
+
+\renewcommand {\baselinestretch}{1.3}
+
+\newpage
+
+\clearpage
+
+
+\allowdisplaybreaks
+
+
+\section{Introduction}
+
+The so-called Great Recession of 2008-2009 has received considerable attention
+in the economics and finance professions in recent years. Indeed, countless
+academic papers have studied its causes, impact, and aftermath. This paper
+provides a fresh perspective by looking at this important event through the
+lens of high frequency trading data. First, we survey recent advances in the
+econometric methodology of analyzing jumps using high frequency financial
+data. Then, we utilize five-minute trading data and apply the aforementioned
+econometric methods to analyze jump spillover effects and jump contributions
+to excess returns in U.S. markets during and around the Great Recession.
+
+The economic rationale for the paper draws on the idea that jumps are
+associated with specific economic events. Andersen, Bollerslev, Diebold, and
+Vega (2003) study foreign exchange markets and find that unexpected news
+announcements result in conditional mean jumps; and that negative news has a
+greater impact than positive news. Huang (2015) analyzes jumps using intra-day
+high frequency data in equity and fixed-income markets, and finds that more
+large jumps are present on days with news than on days without news. Evans
+(2011) discovers that approximately one third of jumps between July 1998 and
+June 2006 in the U.S. futures markets are connected with U.S. macroeconomic
+news announcements, and that these news announcements lead to large jumps.
+Jiang and Verdelhan (2011) find that pre-announcement liquidity shocks can be
+used to predict jumps in treasury bond markets and are therefore useful for
+asset pricing. Lee and Mykland (2008) apply nonparametric tests to search for
+jumps in equity markets. Their results suggest that different pricing models
+should be applied for individual equity options and index options, due to the
+fact that jumps in individual stocks are associated with company-specific news
+events. Lahaye, Laurent, and Neely (2011) focus on futures markets, and find
+that the size, frequency and timing of jumps in futures markets are related to
+economic shocks. Bollerslev, Law, and Tauchen (2008) examine jumps in both
+individual stocks and an aggregate market index. They conclude that the
+existence and pattern of co-jumps provides evidence of a relationship between
+jumps and macroeconomic news announcements. Similar results can also be seen
+in the currency markets. For example, Chatrath, Miao, Ramchander, and
+Villupuram (2014) find that correlation exists between jumps and news
+announcements. They also find evidence of co-jumps. Some authors focus on
+international markets rather than just domestic markets. For example,
+Asgharian and Bengtsson (2006) focus on the U.S. market and several European
+markets and find that significant jump spillover effects exist in countries
+that have features in common, such as industry structure or geographic
+location. Asgharian and Nossman (2011) inspect jumps in equity markets in
+several regions and conclude that local European markets are under the
+influence of U.S. markets. Jawadi, Louhichi, and Cheffou (2015) use
+nonparametric econometric methods to test contagion hypotheses, and provide
+evidence of dependence between jumps in three European markets and U.S.
+markets. Lahaye, Laurent, and Neely (2010) find that payroll announcements are
+important in stock and bond futures markets, while trade related news often
+creates co-jumps in exchange rate markets. A\"{\i}t-Sahalia and Xiu (2016)
+provide strong evidence of correlation between financial crises and increase
+in the quadratic variation of assets.
+
+In this paper, we extend the findings of Asgharian and Bengtsson (2006),
+Asgharian and Nossman (2011), Jawadi, Louhichi, and Cheffou (2015), and
+A\"{\i}t-Sahalia and Xiu (2016) in three ways. First, our research centers on
+the domestic jump spillover effects in the U.S. during the 2008 financial
+crisis. Particularly, we look at jump spillover effects across nine market
+sectors. Second, we decompose jumps based on their size and investigate
+financial market interactions using different sized jumps. By using truncation
+in order to identify (small and large) jumps, we are able to investigate how
+different economic shocks affect U.S. markets. This is important, since
+macroeconomics news events often cause large jumps, while many (asset) price
+movements are associated with small jumps. Our approach is to remain agnostic
+about the cause of jumps, and to instead focus on the relationship among
+different jumps (in different market sectors, for example). Third, we focus
+attention on the importance of jumps for explaining excess returns.
+
+Following the methodology used in much of the extant literature on jumps in
+financial markets, our approach to examining jump propagation is based on the
+use of nonparametric tools. In particular, we apply nonparametric jump tests
+and decomposition methods, which are discussed in detail in the sequel, in
+order to characterize jumps. We then perform two regression analyses. In a
+first analysis, we test the hypothesis that jump spillovers exists across
+different market sectors. Our main findings are as follows. First, large jump
+spillover effects that impact multiple markets seem to be correlated with the
+major news and events and can be industry-specific. This is because large
+jumps are known to be related to unexpected major news and \ events. Second,
+total jump spillover effects are similar to large jump spillover effects, as
+large jumps usually dominate the jump process. Third, strong large and total
+jump spillover effects are observed prior to the onset of the 2008-2009
+recession, and weakened in 2008; while small jump spillover effects
+intensified as the recession unfolded. This can be explained by the different
+origins of large jumps and small jumps. It is also consistent with a
+hypothesis that that jumps are affected by trader's behavior in the markets.
+Finally, jumps from the XLF (i.e., the financial sector) are not a major
+player in our findings, as might be expected. this might be explained in part
+by unmodelled nonlinear correlation across market sectors, for example.
+
+In a second regression analysis we study the contribution of jumps to excess
+returns. We find that jumps are statistically significant in models of excess
+returns. Moreover, we observe a sharp increase in jump contribution to sector
+excess returns in 2008 and 2009. This provides evidence that jumps are
+important in asset pricing, especially in turbulent times.
+
+The rest of the paper is organized as follows. Section 2 reviews nonparametric
+jump tests and decomposition methods. Section 3 outlines the empirical
+methodology used in our data analysis. Section 4 contains our empirical
+findings. Finally, concluding remarks are gathered in Section 5.
+
+\section{Jump Tests and Jump Decomposition Methods}
+
+\subsection{Set-up}
+
+\noindent Define log prices as $Y_{t}=log(P_{t}),$ and assume that they follow
+an It\^{o} semimartingale process,
+\begin{equation}
+Y_{t}=Y_{0}+\int_{0}^{t}a_{u}d_{u}+\int_{0}^{t}\sigma_{u}dW_{u}+\int_{0}%
+^{t}\int_{\{|y|\leq\epsilon\}}y(j-\nu)(du,dy)+\int_{0}^{t}\int_{\{|y|>\epsilon
+\}}yj(du,dy),
+\end{equation}
+where $Y_{0}+\int_{0}^{t}a_{u}d_{u}+\int_{0}^{t}\sigma_{u}dW_{u}$ is a
+Brownian semi-martingale. Here, $\int_{0}^{t}a_{u}d_{u}$ is the drift term,
+with $a_{t}$ being the instantaneous drift, and $\int_{0}^{t}\sigma_{u}dW_{u}$
+is the continuous part. with $\sigma_{t}$ being the spot volatility.
+Additionally, $j$ is the jump measure of $Y_{t}$, and its predictable
+compensator is the L\'{e}vy measure $\nu$. Finally, $\int_{0}^{t}%
+\int_{\{|y|\leq\epsilon\}}y(j-\nu)(du,dy)$ is the so-called small jump
+component, and $\int_{0}^{t}\int_{\{|y|>\epsilon\}}yj(du,dy)$ is the so-called
+large jump component, with $\epsilon$ being an arbitrary cutoff level
+specified in order to differentiate between small and large jumps.
+
+Volatility is a latent variable, and realized measures are often employed to
+consistently estimate it.\footnote{Sometimes, in financial econometrics, the
+word variance is used interchangeably with volatility. Here we follow the
+convention of equating volatility with sums of squared returns.} In the high
+frequency literature, one of the most widely known measures is realized
+volatility (RV). Suppose that $t>0$ is a fixed time period, for example, one
+trading day, and the $i$th log-price of an asset observed during day $t$ is
+$Y_{i,t}$. The intra-$i$th return on day $t$ is $r_{i,t}=Y_{i,t}-Y_{i-1,t}$,
+where $i=1,2,...,t/\delta$ and $\delta$ is the sampling frequency. For one
+trading day, we have the explicit expression for RV:
+\begin{equation}
+RV_{t}=\sum_{i=1}^{t/\delta}r_{i,t}^{2}.
+\end{equation}
+
+
+When sampling is at a high and fixed frequency (such as $N\rightarrow\infty$
+or $\delta\rightarrow0$), then realized volatility converges to so-called
+quadratic variation which is defined as follows:
+\begin{equation}
+\lbrack Y]_{t}=p\lim\limits_{\delta\rightarrow0}\sum_{i=0}^{t/\delta
+-1}(Y_{t_{i}}-Y_{t_{i}})^{2},
+\end{equation}
+for any sequence of partitions $t_{0}=0<t_{1}<...<t_{n}=t,$ with
+$sup_{i}\{t_{i+1}-t_{i}\}\rightarrow0$ for $\delta\rightarrow0$.
+Thus
+\[
+RV_{t}\overset{\mathbb{P}}{\rightarrow}[Y]_{t}%
+\]
+where $\mathbb{P}$ denotes convergence in probability. Thus, realized quadratic
+variation (QV) is expressed as:
+\begin{equation}
+QV=[Y_{\delta}]_{t}=\sum_{i=1}^{t/\delta}r_{i,t}^{2}%
+\end{equation}
+
+
+Another important measure is called integrated volatility, which is defined as
+$\int_{0}^{t}\sigma_{u}^{2}du$. When asset prices are continuous on a fixed
+interval $[0,T]$:
+\begin{equation}
+\lbrack Y]_{t}\overset{\mathbb{P}}{\rightarrow}\int_{0}^{t}\sigma_{u}^{2}du,
+\end{equation}
+and when asset prices also have a discontinuous component on $[0,T]$ (like in
+Equation (1)):
+\begin{equation}
+\lbrack Y]_{t}\overset{\mathbb{P}}{\rightarrow}\int_{0}^{t}\sigma_{u}^{2}du+\sum_{u\leq
+t}(\Delta Y_{u})^{2},
+\end{equation}
+where $\sum_{u\leq t}(\Delta Y_{u})$ is a pure jump process and a jump at time
+$s$ is defined as $\Delta Y_{t}=Y_{u}-Y_{u-}$. Here, $\sum_{u\leq t}(\Delta
+Y_{u})^{2}$ is the variation of the jump component.
+
+\subsection{Jump Testing}
+
+The literature on jump testing has been active since 2002. Testing whether or
+not jumps are present in a process is particularly useful to do prior to
+constructing realized measures of jump and continuous components of a
+variable. For early relevant discussions in this area, see Andersen, Benzoni,
+and Lund (2002) and Chernov et al. (2003), as well as A\"{\i}t-Sahalia (2002)
+and Johannes (2004). In this paper, we discuss three different tests
+including: the bipower-variation-based tests of Barndorff-Nielsen and Shephard
+(2006a, 2006b, 2006c), Huang and Tauchen (2005), Andersen, Bollerslev and
+Diebold (2007), and Lee and Mykland (2008); the swap-variance-based test due
+to Jiang and Oomen (2008); and the truncated-power-variation based tests due
+to A\"{\i}t-Sahalia and Jacod(2008, 2009a, 2009b) and Lee and Hanning (2010). We also discuss a so-called
+long time span jump test dues to Corradi, Silvapulle and Swanson (2018), which is consistent (the above fixed time span tests are not consistent, in the sense that
+power does not go to unity as the sample size increases)
+
+\subsubsection{Bipower Variation Tests}
+
+Under the assumption of Equation (1), Equation (6) shows that if the
+theoretical integrated volatility can be properly estimated, jumps can be
+measured using the difference between QV and realized integrated volatility.
+This is the key idea underpinning bipower variation based tests.
+Barndorff-Nielsen and Sharphard (2004) suggest using bipower variation to
+estimate integrated volatility. Barndorff-Nielsen and Shephard (2006a) propose
+various bipower variation based jump test statistics.
+
+The quadratic variation defined in equation (3) is a special case of power
+variation. Additionally, $s$th power variation is defined as:
+\[
+\{Y\}_{t}^{[s]}=p\lim\limits_{\delta\rightarrow0}\delta^{1-s/2}\sum
+_{i=1}^{t/\delta}|r_{i,t}|^{s},
+\]
+where $s>0$. The bipower variation process is defined as:
+\[
+\{Y\}_{t}^{[s_{1},s_{2}]}=p\lim\limits_{\delta\rightarrow0}\delta
+^{1-(s_{1}+s_{2})/2}\sum_{i=1}^{[t/\delta]-1}|r_{i,t}|^{s_{1}}|r_{i+1,t}%
+|^{s_{2}},
+\]
+where $s_{1},s_{2}>0$. When $s_{1}=s_{2}=1$, $\{Y\}_{t}^{[1,1]}$ can be
+consistently estimated using realized bipower variation (BV), defined as
+follows:
+\begin{equation}
+BV_{t}=\{Y_{\delta}\}_{t}^{[1,1]}=\sum_{i=2}^{t/\delta}|r_{i-1,t}||r_{i,t}|.
+\end{equation}
+
+
+Barndorff-Nielsen and Shephard (2004) show that the power variation and
+bipower variation can be expressed as:
+\[
+\mu^{-1}\{Y\}_{t}^{[s]}=\left\{
+\begin{array}
+[c]{lll}%
+\int_{0}^{t}\sigma_{u}^{s}du &  & s\in(0,2)\\
+\big[Y\big]_{t} &  & s=2\\
+\infty &  & s>2
+\end{array}
+\right.
+\]
+and
+\[
+\mu_{s_{1}}^{-1}\mu_{s_{2}}^{-1}\{Y\}_{t}^{[s_{1},s_{2}]}=\left\{
+\begin{array}
+[c]{lll}%
+\int_{0}^{t}\sigma_{u}^{s_{1}+s_{2}}du &  & max(s_{1},s_{2})\in(0,2)\\
+x_{t}^{\ast} &  & max(s_{1},s_{2})=2\\
+\infty &  & max(s_{1},s_{2})>2
+\end{array}
+\right.
+\]
+where $x_{t}^{\ast}$ is some stochastic process.
+
+A special case is when $s_{1}=s_{2}=1$,
+\[
+\mu_{1}^{-2}\{Y\}_{t}^{[1,1]}=\int_{0}^{t}\sigma_{u}^{2}du.
+\]
+Thus, integrated volatility can be consistently estimated as:
+\begin{equation}
+\mu_{1}^{-2}BV\overset{\mathbb{P}}{\rightarrow}\int_{0}^{t}\sigma_{u}^{2}du\\
+\end{equation}
+where $\mu_{1}=E[u]=\sqrt{2}/\sqrt{\pi}\simeq0.79788$, and $u$ is $N(0,1)$
+random variable.
+
+The bipower jump test null hypothesis is that no jumps are present. Barndorff-Nielsen and Shephard (2006a) propose a linear jump test statistic $G$, and a ratio jump test statistic $H$:
+\[
+G=\frac{\delta^{-1/2}(\mu_{1}^{-2}BV_{t}-QV_{t})}{\sqrt{\int_{0}^{t}\eta
+\sigma_{u}^{4}du}}\overset{d}{\rightarrow}N(0,1)
+\]
+and%
+\[
+H=\frac{\delta^{-1/2}(\frac{\mu_{1}^{-2}BV_{t}}{QV_{t}}-1)}{\sqrt{\eta
+\frac{\int_{0}^{t}\sigma_{u}^{4}du}{\{\int_{0}^{t}\sigma_{u}^{2}du\}^{2}}}%
+}\overset{d}{\rightarrow}N(0,1),
+\]
+where $\eta=(\pi^{2}/4)+\pi-5\simeq0.6090$ and $d$ means convergence in distribution. Here,$\int_{0}^{t}\sigma_{u}%
+^{4}du$ is the integrated quarticity and can be estimated using realized
+quadpower variation (QPV): \footnote{Barndorff-Nielsen et al. (2005) discuss a
+more general case for realized multipower variation, and Barndorff-Nielsen,
+Shephard, and Winkel (2006) analyze the case where the jump component is a
+L\`{e}vy or non-Gaussian Ornstein-Uhlenbeck (OU) process.}
+\begin{equation}
+QPV_{t}=\{Y_{\delta}\}_{t}^{[1,1,1,1]}=\delta^{-1}\sum_{i=4}^{t/\delta
+}|r_{i-3,t}||r_{i-2,t}||r_{i-1,t}||r_{i,t}|\overset{\mathbb{P}}{\rightarrow}\mu_{1}%
+^{4}\int_{0}^{t}\sigma_{u}^{4}du.
+\end{equation}
+Additionally, $\int_{0}^{t}\sigma_{u}^{2}du$ can be estimated using BV. This
+yields the following feasible linear jump and ratio jump statistics, $\hat{G}$
+and $\hat{H}:$
+\[
+\hat{G}=\frac{\delta^{-1/2}(\mu_{1}^{-2}BV_{t}-QV_{t})}{\sqrt{\eta\mu_{1}%
+^{-4}QPV_{t}}}\overset{d}{\rightarrow}N(0,1).
+\]
+and%
+\[
+\hat{H}=\frac{\delta^{-1/2}}{\sqrt{\eta QPV_{t}/BV_{t}^{2}}}(\frac{\mu
+_{1}^{-2}BV_{t}}{QV_{t}}-1)\overset{d}{\rightarrow}N(0,1),
+\]
+Inference using these tests is straightforward, as both test statistics have limiting
+standard normal distributions. Clearly, the ratio $\frac{\int_{0}^{t}%
+\sigma_{u}^{4}du}{\mu_{1}^{-4}BV^{2}}\geq1/t$, and Barndorff-Nielsen and
+Shephard (2006a) suggest replacing $\hat{H}$ by the adjusted ratio jump test
+\begin{equation}
+\hat{J}=\frac{\delta^{-1/2}}{\sqrt{\eta max(t^{-1},\frac{QPV_{t}}{BV_{t}^{2}%
+})}}\big(\frac{\mu_{1}^{-2}BV_{t}}{QV_{t}}-1\big)\overset{d}{\rightarrow
+}N(0,1).
+\end{equation}
+
+
+Huang and Tauchen (2005), Andersen, Bollerslev, and Diebold (2007) analyze the
+statistical properties of bipower variation based jump tests using S\&P index
+data, exchange rates, and bond yields; as well as via Monte Carlo simulation.
+They suggest using a daily statistic, $z_{TP,t},$ to test for jumps on a daily
+basis, where
+\begin{equation}
+z_{TP,t}=\frac{RV_{t}-BV_{t}}{\sqrt{(v_{bb}-v_{qq})\frac{1}{N}TP_{t}}%
+}\overset{d}{\rightarrow}N(0,1),
+\end{equation}
+with $v_{qq}=2$, $v_{bb}=(\frac{\pi}{2})^{2}+\pi-3$, Here, realized tripower
+quarticity (TP) is defined and estimated as follows:
+\begin{equation}
+TP_{t}=\delta^{-1}\mu_{4/3}^{-3}\sum_{j=3}^{1/\delta}|r_{i-2,t}|^{4/3}%
+|r_{i-1,t}|^{4/3}|r_{i,t}|^{4/3}\overset{\mathbb{P}}{\rightarrow}\int_{0}^{t}\sigma
+_{u}^{4}du
+\end{equation}
+
+
+Additionally, the asymptotic covariance of
+\[
+\delta^{-1/2}\big(%
+\begin{array}
+[c]{l}%
+RV_{t}-\int_{0}^{t}\sigma_{u}^{2}du\\
+BV_{t}-\int_{0}^{t}\sigma_{u}^{2}du\\
+\end{array}
+\big)
+\]
+is $\Pi\int_{0}^{t}\sigma_{u}^{4}du$, where
+\begin{align*}
+\Pi &  =\bigg(%
+\begin{array}
+[c]{ll}%
+Var(u^{2}) & 2\mu_{1}^{-2}Cov(u^{2},|u||u^{\prime}|)\\
+2\mu_{1}^{-2}Cov(u^{2},|u||u^{\prime}|) & \mu_{1}^{-4}(Var(|u||u^{\prime
+}|)+2Cov(|u||u^{\prime}|,|u^{\prime}||u^{\prime\prime}|))\\
+&
+\end{array}
+\bigg)\\
+&  =\bigg(%
+\begin{array}
+[c]{ll}%
+v_{qq} & v_{qb}\\
+v_{qb} & v_{bb}%
+\end{array}
+\bigg)
+\end{align*}
+with $v_{qb}=2$. Inference is carried out by rejecting the null of no jumps if
+$z_{TP,t}$ exceeds the critical value, $\Phi_{\alpha}$, leading to a conclusion
+that there are jumps during the day. A common choice for the critical value is 1.96, equivalent to 5\% significant level.
+
+Lee and Mykland (2008) focus on detecting jump at time $t$ without assuming
+that there are (or are not) jumps before or after time $t$. Their objective is
+to detect jumps over time. The main idea behind Lee and Mykland (2008) centers
+around the difference between observed high returns caused by jumps and by
+spot volatility. They standardize the return using instantaneous volatility
+$\sigma(ti)$, which only includes the local variance from the continuous part
+of the process. The instantaneous volatility is consistently measured using
+realized bipower variation. The test statistic that they propose is
+constructed as follows.
+\[
+LM(ti)=\frac{r_{i,t}}{\widehat{\sigma_{i,t}}},
+\]
+where
+\[
+\widehat{\sigma_{i,t}}=\frac{1}{K-2}\sum_{j=i-K+2}^{i-1}|r_{i,t}||r_{i-1,t}|,
+\]
+and $K$ is the window size of a local movement of the process, and is chosen
+so that the effect of jumps on the volatility estimator disappears. They
+suggest to choosing $K=10,$ when sampling at a 5-minute frequency.
+Asymptotically, $LM(ti)$ follows a normal distribution. Namely:
+\[
+\sqrt{\frac{2}{\pi}}LM(ti)\overset{d}{\rightarrow}N(0,1).
+\]
+
+
+\subsubsection{Swap Variance Based Tests}
+
+Inspired by the comparison between bipower variation and realized variance, as
+proposed in Barndorff-Nielsen and Shephard (2004, 2006), Jiang and Oomen
+(2008) propose comparing a jump sensitive variance measure and the realized
+variance. Their idea comes from a well known observation about market
+microstructure noise in the finance literature. Namely, in the absence of
+jumps the accumulated difference between the simple return and the log return
+captures one half of the integrated variance in the continuous-time limit.
+Since this relation is the foundation of a variance swap replication strategy,
+the accumulated difference between simple returns and log returns is called
+the swap variance. They compare this value to the realized variance in order
+to test for jumps.
+
+Intuitively, when jumps are absent, the difference between the swap variance
+and the realized variance should be indistinguishable from zero, while when
+jumps are present, it will reflect the replication error of the variance swap,
+which leads to jump detection. The swap variance is defined as:
+\[
+SwV_{t}=2\sum_{i=1}^{t/\delta}(R_{i,t}-r_{i,t}),
+\]
+where $R_{i,t}=\frac{P_{i,t}}{P_{i-1,t}}-1$, and $r_{i,t}=Y_{i,t}-Y_{i-1,t}$.
+
+Three types of swap variance jump tests are developed by these authors.
+Namely, they propose \newline the difference test
+\[
+\frac{t/\delta}{\sqrt{\Omega_{SwV}}}(SwV_{t}-RV_{t})\overset{d}{\rightarrow
+}N(0,1),
+\]
+the logarithmic test
+\[
+\frac{BV\ast N}{\sqrt{\Omega_{SwV_{t}}}}(lnSwV_{t}-lnRV_{t}%
+)\overset{d}{\rightarrow}N(0,1),
+\]
+and the ratio test
+\[
+\frac{BV\ast N}{\sqrt{\Omega_{SwV_{t}}}}(lnSwV_{t}-lnRV_{t}%
+)\overset{d}{\rightarrow}N(0,1),
+\]
+where $\Omega_{SwV_{t}}=\frac{\mu_{6}}{9}\frac{N^{3}\mu_{6/s}^{-s}}{N-s+1}%
+\sum_{i=0}^{N-s}\prod_{k=1}^{s}|r_{i+1}|^{6/s}$, $N=t/\delta$, and $\mu
+_{s}=E(|x|^{s})$ for $x\sim N(0,1)$. Setting $s$ equal to either $4$ or $6$
+(as a robust estimation of $\Omega_{SwV_{t}})$ is recommended.
+
+Jiang and Oomen (2008) provide Monte Carlo simulation evidence that their SwV
+test is more sensitive to jumps than the bipower variation tests discussed
+above, but the requirement of estimating the sixticity can be challenging in
+practice. They also provide a useful discussion of jumps when the sampling
+frequency is ultra-high and market microstructure noise needs to be taken into
+consideration when testing for jumps.
+
+\subsubsection{Truncated Power Variation Tests}
+
+The truncated $s$th realized power variation as defined in A\"{\i}t-Sahalia
+and Jacod (2012) is expressed as follows.
+\[
+B(s,u,\delta)=\sum_{i=1}^{t/\delta}|r_{i,t}|^{s}I_{\{|r_{i,t}|\leq u\}}.
+\]
+Here, the truncation level $u$ is set equal to $b\delta^{\omega},$ for some
+constant $\omega\in(0,1/2),$ with $b>0$, which results in $u$ shrinking to 0.
+As above, $\delta$ is the sampling frequency. In this framework, $\omega<1/2$
+ensures that all increments \textquotedblleft mainly" contain a Brownian
+contribution. Note, when $u$ is set to infinity, the truncated realized power
+variation becomes $B(s,\infty,\delta),$ in which case no truncation is applied.
+
+When $\delta\rightarrow0$, $B(s,\infty,\delta)$ converges in probability as
+follows.
+\[
+\left\{
+\begin{array}
+[c]{ll}%
+s>2\text{ all }Y_{t} & \Rightarrow B(s,\infty,\delta)\overset{\mathbb{P}}{\rightarrow} J(s)\\
+\text{all }s\text{ on }\Omega_{T}^{c} & \Rightarrow\frac{\delta^{1-s/2}}%
+{\mu_{1}^{s}}B(s,\infty,\delta)\overset{\mathbb{P}}{\rightarrow}\int_{0}^{t}|\sigma
+_{u}|^{s}d_{u}%
+\end{array}
+\right.
+\]
+where $\mu_{1}^{s}$ is the $s$th absolute moment of a standard normal random
+variable, and $\Omega_{T}^{c}$ =\{$Y$ is continuous in $[0,T]\}$ is a set
+defined pathwise on $[0,T]$. Also, define $\Omega_{T}^{W}$ =\{$Y$ has a Wiener
+component in $[0,T]\},$ and $\Omega_{T}^{J}$ =\{$Y$ has jumps in
+$[0,T]\},$which are additional sets defined pathwise on $[0,T]$. They
+recommend using the following test statistic:
+\[
+AJ(s,k,\delta)=\frac{B(s,\infty,k\delta)}{B(s,\infty,\delta)},
+\]
+where $s>2$, and $k>2$ is an integer that controls the sampling frequency.
+These authors show that:
+\[
+AJ(s,k,\delta)\rightarrow\left\{
+\begin{array}
+[c]{ll}%
+1 & \text{ on }\Omega_{T}^{J}\\
+k^{s/2-1} & \text{ on }\Omega_{T}^{c}\cap\Omega_{T}^{W}%
+\end{array}
+\right.
+\]
+$\Omega_{T}^{c}\cap\Omega_{T}^{W}$ means $Y_{t}$ is continuous and has a
+Wiener component in $[0,T]$.
+
+Thus, when jumps are present, the variation converges to a finite limit and so
+the ratio, $AJ(s,k,\delta),$ tends to 1, while when there are no jumps, the
+variation converges to 0, and so $AJ(s,k,\delta)$ tends to a limit that is
+greater than 1, and depends on the choice of $k$. Essentially, this test
+compares the estimator of integrated variance using different sampling
+frequencies, and is motivated by the fact that sampling frequency should have
+no influence on the estimator when there are jumps.
+
+Lee and Hanning (2010) also utilize truncated power variation, and develop a
+related test for jump detection that is robust to infinite activity jumps.
+Their test is quite similar to the test developed by Lee and Mykland (2008),
+although the Lee and Mykland test is designed to have power against
+Poisson-type (finite activity) jumps. Namely, they propose using:
+\[
+LH(ti)=\frac{r_{i,t}}{\hat{\sigma}_{i,t}\delta^{1/2}}\overset{d}{\rightarrow
+}N(0,1),
+\]
+with
+\[
+\hat{\sigma}_{i,t}^{1/2}=\frac{\delta^{-1}}{K}\sum_{j=i-K}^{i-1}%
+r_{j-m+1,t}^{2}I_{\{|r_{j-m+1,t}|\leq g\delta^{\omega}\}}%
+\]
+where $\delta$ is the sampling frequency, $g>0$, $0<\omega<1/2$, and $K$ is
+the window size, which is usually set to be $b\delta^{c},$ with $-1<c<0$, and
+$b$ a constant. \ As recommended by the Lee and Manning, $g=1.2$,
+$\omega=0.47$, $K=b\delta^{c}$ with $-1<c<0$ for some constant $b$.
+
+\subsubsection{ Long Time Span Jump Tests}
+
+Building on the work by A\"{\i}t-Sahalia (2002, 2012), Corradi, Silvapulle,
+and Swanson (2018) construct a jump test to detect jumps in the data by
+examining the intensity parameter in the data generating process. In
+particular, they develop a jump test\ for the null hypothesis that the
+probability of a jump is zero. Their test is based on realized third moments,
+and uses observations over an increasing time span. The test offers an
+alternative to the standard finite time span jump tests discussed above, and
+is designed to detect jumps in the data generating process rather than
+detecting realized jumps over a fixed time span. They also provide a test for
+self-excitement (i.e., is the intensity parameter constant or does the
+intensity follow a Hawkes diffusion process (as discussed in Andersen,
+Benzoni, and Lund (2002), A\"{\i}t-Sahalia, Cacho-Diaz, and Laeven (2015)).
+
+\bigskip Let%
+\begin{align}
+\widehat{\mu}_{3,T,\delta} &  =\frac{1}{T}\sum_{k=1}^{n-1}\left(
+Y_{(k+1)\delta}-Y_{k\delta}-\frac{Y_{n\delta}-Y_{\delta}}{n}\right)
+^{3}\nonumber\\
+&  -\frac{1}{T^{+}}\sum_{k=1}^{n^{+}-1}\left(  Y_{(k+1)\delta}-Y_{k\delta
+}-\frac{Y_{n^{+}\delta}-Y_{\delta}}{n^{+}}\right)  ^{3}1\left\{  \left\vert
+Y_{(k+1)\delta}-Y_{k\delta}\right\vert \leq\tau\left(  \delta\right)
+\right\}  ,\label{mu3}%
+\end{align}
+where $\tau\left(  \delta\right)  $ is a truncation parameter, $\delta$ is the
+sampling frequency, $T$ and $T^{+\text{ }}$are time spans (with $T^{+}%
+/T\rightarrow\infty${\small )} , and $n = \frac{T}{\delta}$ and $n^{+\text{ }}$are analogously
+defined, but denote the number of observations, as discussed in CSS (2018).
+Now, define the statistic for testing no null of no jumps as follows:%
+\begin{equation}
+S_{T,\delta}=\frac{T^{1/2}}{\delta}\widehat{\mu}_{3,T,\delta}%
+\overset{d}{\rightarrow}N\left(  0,\omega_{0}\right)  .\label{St}%
+\end{equation}
+
+\noindent where $\omega_{0}$ is defined in CSS (2018).
+
+The test has power not only against constant and self-exciting intensity, but
+also against affine jump diffusions where the intensity is an affine function
+of volatility, for example. As the variance of the statistic is of larger
+order under the alternative of positive jump intensity, one cannot construct a
+variance estimator which is consistent under all hypotheses. Thus, the authors
+construct an estimator for the variance of $S_{T,\delta}$ which is consistent
+under the null of no jumps and bounded in probability under the (union of)
+alternatives. This is done by using a threshold variance estimator, which
+filters out the contribution of the jump component. In particular, define:%
+\begin{align}
+&  \widehat{\sigma}_{\lambda,T,\delta}^{2}\nonumber\\
+&  =\frac{1}{T\delta^{2}}\sum_{k=0}^{n-1}\left(  Y_{(k+1)\delta}-Y_{k\delta}-\frac{Y_{n\delta}-Y_{\delta}}{n}\right)  ^{3}I\left\{
+\left\vert Y_{(k+1)\delta}-Y_{k\delta}\right\vert \leq\tau\left(
+\delta\right)  \right\}  .\label{jsig2}%
+\end{align}
+It follows that the $t$-statistic version of this jump test is,
+\[
+t_{\lambda,T,\delta}=\frac{S_{T,\delta}}{\widehat{\sigma}_{\lambda,T,\delta}}.
+\]
+
+\subsection{Jump Decompositions}
+In our empirical application, we utilize the jump decomposition methods
+discussed in A\"{\i}t-Sahalia and Jacod (2012) in order to decompose quadratic
+variation into continuous components and jump components. Furthermore, we
+consider large jump and small jump components, as discussed above. When
+considering truncated $s$th realized power variation, if the power, $s<2,$
+then the continuous component in the process dominates, while if $s>2$ then
+the jump component dominates. When $s=2$ both components have equal influence
+on the process. Thus, we can obtain important information about quadratic
+variation by decomposing realized power variation into continuous and jumps
+components, as follows.%
+\begin{equation}%
+\begin{tabular}
+[c]{c}%
+Percentage of total QV due to continuous component ($QVC$) = $\frac
+{B(2,u,\delta)}{B(2,\infty,\delta)}$\\
+Percentage of total QV due to jump component ($QVJ$) = $1-\frac{B(2,u,\delta
+)}{B(2,\infty,\delta)}$%
+\end{tabular}
+\end{equation}
+In our empirical section, we use the value of $u$ used in code available from
+A\"{\i}t-Sahalia and Jacod (2012). We denote the variation due to jumps (i.e.,
+increments \textquotedblleft larger\textquotedblright\ than $u)$ as:
+\begin{align*}
+U(s,u,\delta) &  =\sum_{i=1}^{t/\delta}|r_{i,t}|^{s}I_{\{|r_{i,t}|>u\}}\\
+&  =B(s,\infty,\delta)-B(s,u,\delta)
+\end{align*}
+Jump decompositions based on this metric can be calculated as:
+\begin{equation}%
+\begin{tabular}
+[c]{c}%
+Percentage of QV due to large jump component ($QVJL$) = $\frac{U(2,\epsilon
+,\delta)}{B(2,\infty,\delta)}$\\
+Percentage of QV due to small jump component ($QVJS$) = $\frac{B(2,\infty
+,\delta)-B(2,u,\delta)-U(2,\epsilon,\delta)}{B(2,\infty,\delta)}$%
+\end{tabular}
+\end{equation}
+The large jump cut-off level is $\epsilon=b\delta^{\omega},$ which is
+arbitrarily chosen, by experimenting with multiple values of $\epsilon
+$.\footnote{Recall that $u$ is set equal to $b\delta^{\omega}$. In our
+calculations, we set $b=2$ when calculating $u.$} In our analysis, we set
+$b=3$ and $b=5$. We consider the following variations: $QVJ$, $QVJL3$, $QVJL5$,
+$QVJS3$, and $QVJS5$ (where the \textquotedblleft3\textquotedblright\ and
+\textquotedblleft5\textquotedblright\ values correspond to the values of $b$
+that we utilized in our empirical analysis).
+
+\section{Empirical Methodology}
+
+Two experiments are conducted in this paper. In the first experiment,
+\textquotedblleft jump spillover effects" are examined by carrying out a
+regression analysis in which the causal linkages between quadratic jump
+variations in nine SPDR sector ETFs (see Section 4.1 for complete details) are
+examined. In the second experiment, causal linkages between excess returns
+from each of the sectors that we examine and jump variations from all nine
+sectors are examined. Excess returns are defined to be the difference between
+daily log-returns of an asset and the daily log-returns of the market. We use
+an ETF based on S\&P500 called SPY to obtain the log-returns of the market.
+
+We adopt the year over year (YoY) method from finance to compare our results,
+which means results are compared based on each calendar year. More
+specifically, for each experiment we fit vector autoregression (VAR) models
+for each calendar year. Moreover, we categorize our analysis by jump types
+(total jumps, large jumps, small jumps), as discussed above. To summarize,
+there are five jump types ($QVJ$, $QVJL3$, $QVJL5$, $QVJS3$, $QVJS5$), nine
+market sectors, and six calendar years in our dataset. Thus, we have 270
+models for each experiment.
+
+Table 1 summarizes the experimental setup used in this paper. First, we run
+$\hat{J}$ tests for each trading day in our sample, and record the dates when
+we reject the null of no jumps. Second, we use the methods described in
+Section 2.3 in order to obtain $QVJ$,$QVJL3$, $QVJL5$,$QVJS3$ and $QVJS5$ on
+trading days when we reject the null. On days when we do not reject the null,
+$QVJ=QVJL3=QVJL5=QVJS3=QVJS5=0,$ as no jumps are present. Finally, we conduct
+regression analysis for each calender year using daily data and the two VAR
+models described below.
+
+\subsection{Modeling Jump Spillover Effects}
+
+Jump spillover effects measure whether or not jumps in a given sector
+(Granger) cause jumps in other sectors. In our empirical experiment, we fit a
+linear VAR model to test for such effects. In our tabulated results (i..e,
+Tables 3 and 4), we collect coefficients on jumps variables in a given sector
+that are significantly different from zero at a 95\% level of confidence
+(based on application of $t$-tests), take the absolute value of these, and
+report the sum thereof, of each regression in our VAR. This sum represents
+jump spillover effects of a given sector on one of the other sectors. The VAR
+model that we fit is the following:
+\[
+\left[
+\begin{array}
+[c]{c}%
+Sector_{1,t,h}=\beta_{1,0,h}+\sum_{j=1}^{9}\sum_{k=1}^{k=22}\beta
+_{1,j,k,h}Sector_{j,t-k,h}+\epsilon_{1,t,h}\\
+Sector_{2,t,h}=\beta_{2,0,h}+\sum_{j=1}^{9}\sum_{k=1}^{k=22}\beta
+_{2,j,k,h}Sector_{j,t-k,h}+\epsilon_{2,t,h}\\
+Sector_{3,t,h}=\beta_{3,0,h}+\sum_{j=1}^{9}\sum_{k=1}^{k=22}\beta
+_{3,j,k,h}Sector_{j,t-k,h}+\epsilon_{3,t,h}\\
+Sector_{4,t,h}=\beta_{4,0,h}+\sum_{j=1}^{9}\sum_{k=1}^{k=22}\beta
+_{4,j,k,h}Sector_{j,t-k,h}+\epsilon_{4,t,h}\\
+Sector_{5,t,h}=\beta_{5,0,h}+\sum_{j=1}^{9}\sum_{k=1}^{k=22}\beta
+_{5,j,k,h}Sector_{j,t-k,h}+\epsilon_{5,t,h}\\
+Sector_{6,t,h}=\beta_{6,0,h}+\sum_{j=1}^{9}\sum_{k=1}^{k=22}\beta
+_{6,j,k,h}Sector_{j,t-k,h}+\epsilon_{6,t,h}\\
+Sector_{7,t,h}=\beta_{7,0,h}+\sum_{j=1}^{9}\sum_{k=1}^{k=22}\beta
+_{7,j,k,h}Sector_{j,t-k,h}+\epsilon_{7,t,h}\\
+Sector_{8,t,h}=\beta_{8,0,h}+\sum_{j=1}^{9}\sum_{k=1}^{k=22}\beta
+_{8,j,k,h}Sector_{j,t-k,h}+\epsilon_{8,t,h}\\
+Sector_{9,t,h}=\beta_{9,0,h}+\sum_{j=1}^{9}\sum_{k=1}^{k=22}\beta
+_{9,j,k,h}Sector_{j,t-k,h}+\epsilon_{9,t,h}\\
+\end{array}
+\right]
+\]
+where $Sector_{i,t,h}$ is the variation of the jump component of the $i$th
+market sector at time $t$ in year $h$, with $i=1,...,9$ representing our nine
+market sectors. $Sector_{j,t-k,h}$ is the $k^{th}$ lagged variation of the
+jump component of the $j^{th}$ market sector in year $h,$ with $j=1,...,9$
+representing nine market sectors. Here,  $h=2005,...,2010$ denotes the
+calendar year. Variations used as regressors in the above model are
+$QVJ$,$QVJL3$, $QVJL5$,$QVJS3$ and $QVJS5$. $\beta_{i,0,h}$ is the intercept for
+market sector $i$ in year $h$. $\beta_{i,j,k,h}$ denotes the coefficient on
+the $k^{th}$ lagged jump in sector $j,$ in the regression of the $i^{th}$
+sector in year $h$. Clearly, the $\beta$s quantify the causal or spillover
+effects for a given year. The number of lags is chosen based on use of the
+Akaike Information Crietion (AIC). Additionally, we believe that jump
+spillover effects can last for a long period, and in particular at least one
+month (i.e., 22 trading days). Our use of the AIC confirms our choice (i.e.,
+we find that $k=22$ for most sectors). Augmented Dickey-Fuller tests were conducted to ensure
+that variables are stationary. Maximum likelihood is used to estimate the
+model. As discussed above, jump spillover effects of market sector $j$ on
+market sector $i$ ($j \ne i$) is calculated as $\sum_{k=1}^{k=22}|\beta_{i,j,k,h}^{\ast}|$,
+where $|\beta_{i,j\neq i,k,h}^{\ast}|$ is set to zero if not significantly different from zero based on application of a 5\% level $t$-test. The total of jump spillover effects from market sector $j$ in year $h$ is then $\sum_{i}\sum_{k=1}^{k=22}|\beta_{i,j,k,h}^{\ast}|$, and $j \ne i$.
+
+Of note is that there are a total of 199 parameters in each equation of the VAR model discussed above. This does not pose a problem in our empirical analysis, since the number of daily observations used in each of the yearly regressions that we estimate is much greater than 199. However, informative interpretation of individual coefficient magnitudes in our analysis is not feasible, given multicollinearity across regressors, and given the sheer number of regressors. For this reason, our interpretation of these regressions is based on aggregation of coefficient magnitudes, as discussed above. Another approach to this problem is to utilize 
+machine learning, dimension reduction, and shrinkage methods in order to reduce the dimension of the set of regressors used in the equations in the above VAR. Refer to Kim and Swanson (2014, 2018) for further discussion and references. This is left to future research.
+
+\subsection{Modeling Jump Contributions to Excess Returns}
+
+Our assessment of jump risk in excess returns measures the impact of jumps on
+excess returns of an market sector return. As done above, we fit a linear VAR
+model in order to quantify jump risk. Our tabulated results are presented in
+the same fashion as results based on our jump spillover effect analysis. The
+VAR model is also the same, except that dependent variables are now excess
+market sector returns rather than jump variations.
+\[
+\left[
+\begin{array}
+[c]{c}%
+SectorEX_{1,t,h}=\beta_{1,0,h}+\gamma_{1,1,h}SectorEX_{1,t-1,h}+\sum_{j=1}%
+^{9}\sum_{k=0}^{k=22}\beta_{1,j,k,h}Sector_{j,t-k,h}+\epsilon_{1,t,h}\\
+SectorEX_{2,t,h}=\beta_{2,0,h}+\gamma_{2,1,h}SectorEX_{2,t-1,h}+\sum_{j=1}%
+^{9}\sum_{k=0}^{k=22}\beta_{2,j,k,h}Sector_{j,t-k,h}+\epsilon_{2,t,h}\\
+SectorEX_{3,t,h}=\beta_{3,0,h}+\gamma_{3,1,h}SectorEX_{3,t-1,h}+\sum_{j=1}%
+^{9}\sum_{k=0}^{k=22}\beta_{3,j,k,h}Sector_{j,t-k,h}+\epsilon_{3,t,h}\\
+SectorEX_{4,t,h}=\beta_{4,0,h}+\gamma_{4,1,h}SectorEX_{4,t-1,h}+\sum_{j=1}%
+^{9}\sum_{k=0}^{k=22}\beta_{4,j,k,h}Sector_{j,t-k,h}+\epsilon_{4,t,h}\\
+SectorEX_{5,t,h}=\beta_{5,0,h}+\gamma_{5,1,h}SectorEX_{5,t-1,h}+\sum_{j=1}%
+^{9}\sum_{k=0}^{k=22}\beta_{5,j,k,h}Sector_{j,t-k,h}+\epsilon_{5,t,h}\\
+SectorEX_{6,t,h}=\beta_{6,0,h}+\gamma_{6,1,h}SectorEX_{6,t-1,h}+\sum_{j=1}%
+^{9}\sum_{k=0}^{k=22}\beta_{6,j,k,h}Sector_{j,t-k,h}+\epsilon_{6,t,h}\\
+SectorEX_{7,t,h}=\beta_{7,0,h}+\gamma_{7,1,h}SectorEX_{7,t-1,h}+\sum_{j=1}%
+^{9}\sum_{k=0}^{k=22}\beta_{7,j,k,h}Sector_{j,t-k,h}+\epsilon_{7,t,h}\\
+SectorEX_{8,t,h}=\beta_{8,0,h}+\gamma_{8,1,h}SectorEX_{8,t-1,h}+\sum_{j=1}%
+^{9}\sum_{k=0}^{k=22}\beta_{8,j,k,h}Sector_{j,t-k,h}+\epsilon_{8,t,h}\\
+SectorEX_{9,t,h}=\beta_{9,0,h}+\gamma_{9,1,h}SectorEX_{9,t-1,h}+\sum_{j=1}%
+^{9}\sum_{k=0}^{k=22}\beta_{9,j,k,h}Sector_{j,t-k,h}+\epsilon_{9,t,h}\\
+\end{array}
+\right]
+\]
+where $SectorEX_{i,t,h}$ is the excess return of the $i^{th}$ market sector at
+time $t$ in year $h$, and other variables and coefficients are discussed above. The jump contribution level of market sector $j$ on excess returns of
+market sector $i$ is calculated as $C\sum_{k=0}^{k=22}|\beta_{i,j,k,h}^{\ast}|$,
+where $|\beta_{i,j,k,h}^{\ast}|$ is set to zero if not significantly different from zero based on application of a 5\% level $t$-test and $C$ is a constant to adjust the contribution level, because the $\beta$s are very close to zero. The total jump contribution level of market sector $j$ in year $h$ is then $C\sum_{i}\sum_{k=0}^{k=22}|\beta_{i,j,k,h}^{\ast}|$, where $C=10^{17}$.
+
+\section{Empirical Results}
+
+\subsection{Data}
+
+We obtain daily millisecond trading data for the period January 2005 -
+December 2010 from the TAQ database through the Wharton Research Data Services
+portal. To reduce the micro-structure noise effects, we follow convention and
+choose a sampling frequency of 5 minutes, which yields roughly 78 observations
+per day. When there is no price at an exact time stamp, we use the closest one available.
+
+Our dataset consists of nine SPDR market sector ETFs. These nine sector ETFs
+are XLY (consumer discretionary sector), XLP (consumer staples sector), XLE
+(energy sector), XLF (financials sector), XLV (health care sector), XLI
+(industrials sector), XLB (materials sector), XLK (technology sector), and XLU
+(utilities sector). According to the SPDR website, XLY includes companies from
+industries like: media, retail (specialty, multiline, internet and catalog),
+hotels, restaurants and leisure, textiles, apparel and luxury goods, household
+durables, automobiles, auto components, distributors, leisure products, and
+diversified consumer services. XLP includes food and staples, retailing,
+household products, food products, beverages, tobacco, and personal products.
+XLE includes companies in oil, gas and consumable fuels, and energy equipment
+and services. XLF includes diversified financial services, insurance, banks,
+capital markets, mortgage real estate investment trusts (REITs), consumer
+finance, and thrifts and mortgage finance. XLV includes companies in
+pharmaceuticals, health care equipment and supplies, health care providers and
+services, biotechnology, life sciences tools and services, and health care
+technology. XLI includes a wide range of industries, such as aerospace and
+defense, industrial conglomerates, marine, transportation infrastructure,
+machinery, road and rail, air freight and logistics, commercial services and
+supplies, professional services, electrical equipment, construction and
+engineering, trading companies and distributors, airlines, and building
+products. XLB includes a collection of companies in chemicals, metals and
+mining, paper and forest products, containers and packaging, and construction
+materials. XLK includes companies in technology hardware, storage, and
+peripherals, software, diversified telecommunication services, communications
+equipment, semiconductors and semiconductor equipment, internet software and
+services, IT services, electronic equipment, instruments and components, and
+wireless telecommunication services. Finally, XLU includes companies in
+electric utilities, water utilities, multi-utilities, independent power
+producers and energy traders, and gas utilities. In 2015, SPDR launched a new
+ETF targeting real estate management and development and REITs, excluding
+mortgage REITs, but since our analysis is between 2005 and 2010, we exclude
+this new sector ETF from our data set.
+
+For our the excess return calculations, we downloaded the S\&P 500 index based
+ETF (SPY) and the nine market sector ETFs from \textit{Yahoo Finance} at a
+daily frequency for the period January 2005 - December 2010.
+
+\subsection{Empirical Findings}
+
+See Sections 3.1 and 3.2 for a discussion of our empirical setup. As discussed
+in that section, tabulated results in Tables 3 and 4 collect coefficients on
+jumps variables in a given sector that are significantly different from zero
+at a 95\% level of confidence (based on application of $t$-tests), take the
+absolute value of these, and report the sum thereof, for each regression in
+our VAR.\footnote{Complete regression findings are available upon request, and
+are omitted here for the sake of brevity.} Thus, for each of our 9 market
+sectors one can assess the impact each of the other 8 sectors has on that
+sector. Our results based on $QVJL5$ and $QVJS5$ were found to be
+un-informative, so that tabulated results are presented only for regressions
+that include $QVJ$, $QVJL3$ and $QVJS3$ in this paper.\footnote{Complete
+results are available upon request.} This is not surprising, given the
+findings presented in Table 2, where it can be seen that $QVJL5$ is often 0,
+suggesting that the cut-off level used in the calculation of $QVJL5$ is not
+informative.\footnote{Table 2 only contains results for the first 6 weeks in
+2005. Similar results were found when constructing $QVJL5$ for the the rest of
+2005, and for other calendar years in our sample. } Interestingly, Table 2
+also indicates that jumps can either contribute as much as 80\% of quadratic
+variation or as little as 20\% on a given trading day. This suggests that
+market sectors are frequently beset by shocks that cause jumps. However, it
+should be noted that, large jumps usually dominate the quadratic variation,
+with a few exceptions, such as on January 11 and February 8.
+
+Before turning to our discussion of the results in Tables 3 and 4, note that
+Figures 1 - 3 plot jump spillover effects by sector, by year, based on Table
+3. Examination of these figures indicates that there are jump spillovers
+across all sectors, broadly speaking. Interestingly, total jump spillovers was
+greater in 2005, 2006, and 2007 than in 2008, large jump spillovers were
+greatest in 2006, and small jump spillovers peaked in 2008. This suggests that
+transmission of jumps of different magnitudes across sectors is asymmetric,
+and dependent upon the state of the economy. Finally, notice that there were
+no years where total jump spillover effects were notably fewer
+than in other years. The same is not the case when one examines the
+propagation of jumps through excess returns. Figures 4 - 6 plot jump
+contribution levels to excess returns, by year, based on Table 4.
+Interestingly, even cursory examination of these figures indicates that excess
+returns are affected much more significantly by both large and small jumps
+during 2008 and 2009, than during any other calendar years in our analysis.
+Indeed, large jumps exhibit almost no correlation with excess returns during
+2005, 2006, 2007, or 2010; whereas there are significant excess return-jump
+spillovers during 2008 and 2009. Thus, the effects of jump variations on
+excess returns are a clear indicator of the Great recession, while the same
+cannot be said when considering jump spillover effects.
+
+We now turn to a discussion of Tables 3 and 4. A number of clear-cut
+conclusions emerge upon inspection of the results in these tables. First,
+consider Table 3.
+
+First, large jump spillover effects from each sector seem to coincide with
+sector-related major events that happened around that time. For example, XLI,
+XLK, and XLP had the strongest large jump spillover effects in 2006, and large
+jumps spillovers in XLI and XLP might be related to the volatile housing
+market at the time. According to a report published by RealtyTrac, the number
+of total foreclosure filings nationwide rose from about 885,000 in 2005 to
+1,259,118 in 2006, which is more than 42\% increase. For the same reason, the
+large jump spillover effects for XLF in 2006 was quite strong as
+well.\footnote{For more details see:
+https://www.housingwire.com/articles/us-foreclosure-filings-42-percent-2006
+for more details.} In terms of the XLK, 2006 is often called a
+\textquotedblleft tech bubble\textquotedblright\ year. For example, Youtube
+was sold for \$1.65 billion during 2006. Also, six prominent tech companies
+filed their IPOs in 2006, but only one of them was profitable. Moreover, quite
+a few tech companies experienced skyrocketing stock prices until early 2006,
+and slid dramatically afterwards.\footnote{For more details see:
+\par
+http://www.nytimes.com/2006/10/10/technology/10deal.html,
+\par
+http://money.cnn.com/2006/05/16/technology/pluggedin\_fortuneipos0516/index.htm,
+\par
+and
+\par
+https://seekingalpha.com/article/308397-we-may-be-nearing-a-third-tech-bubble-collapse}
+In 2009, XLF, XLV, and XLY exhibited their most spillovers. Similar news
+events can be used to explain many of the other incidences of large spillover effects.
+
+Second, small jump spillover effects are quite different from large jump
+effects. Most sectors had their strongest spillover effects between 2007 and
+2010. This discrepancy between the large jump case and the small jump case can
+perhaps be best interpreted as a result of the different causes of large jumps
+and small jumps: large jumps are associated with major news and events, while
+small jumps are likely the result of things like high frequency trading and
+company specific events.
+
+Third, total jump spillover effects (both large and small) are interesting.
+For example, it is worth noting that 2008 was a relatively quiet year for all
+sectors as none of the sectors showed the strongest spillover effects in that
+year. This may be related to the fact that 2008 was the peak of the recession
+and fear dominated the market, which led to liquidity problems (Reavis
+(2012)). These issues in turn may have affect the ease with which spillover
+effects occurred.
+
+Fourth, a YoY comparison indicates that large jump spillover effects and total
+jump spillover effects in the whole U.S. market peaked in 2006, bottomed in
+2008. Small jump spillover effects started to increase in 2006, peaked in
+2008, dropped in 2009, and rose up again in 2010. This is intriguing, since
+2006 was the year of the \textquotedblleft slowdown\textquotedblright.
+According to the Center for American Progress, the U.S. economy experienced a
+fall in both economic growth and consumption growth in 2006, for the first
+time in more than three years, indicating high risks in certain areas in the
+market. Figures 1 - 3 illustrate this pattern quite clearly.\footnote{For more
+details see: https://www.americanprogress
+.org/issues/economy/news/2006/12/21/2420/the-u-s-economy-in-review-2006,
+\par
+http://money.cnn.com/2008/09/15/markets/markets\_newyork2,
+\par
+and
+\par
+{}%
+http://www.nytimes.com/2012/05/07/business/stock-trading-remains-in-a-slide-after-08-crisis.html}
+
+
+Drilling down a bit further, the results in Table 3 does no show jumps from
+XLF dominating the spillover effects prior to the recession. This is different
+from what we expected, as the financial sector was the main cause of the
+recession. What we instead observe is that the large jump spillover effects
+and total jump spillover effects peaked in 2006 and bottomed in 2008. This
+implies that prior to the Great Recession, the market was more volatile but
+not necessarily concentrated only in the financial sector.
+
+Now, consider the results contained in Table 4. Again, a number of clear-cut
+conclusion emerge upon inspection of the results in this table.
+
+\qquad First, there were scarcely any large jump and total jump contributions
+to excess returns before and after the recession (see Table 4 and Figures 4
+and 6). Additionally, large jump contributions were only prevalent during
+2008 and 2009. This provides evidence that jumps, especially large jumps
+should not be neglected in asset pricing, particularly in a volatile markets.
+Second, small jump contribution levels were rather significant across all
+sampling years, and became intensified between 2007 and 2009 (see Table 4 and
+Figure 5). It is also worth noting that while large and total jump spillover
+effects weakened during the recession, the impact of jumps on excess returns
+escalated, as discussed above. Finally, and similar to the spillover case, we
+do not observe jumps from XLF contributing to excess returns more than jumps
+from other sectors.
+
+\section{ Concluding Remarks}
+
+This paper begins with a review of jump testing and variation decomposition
+methodology. Thereafter, an empirical analysis is presented in which jump
+spillover effects in nine market sectors over a six year period around the
+Great Recession of 2008-2009 are examined. Broadly speaking, strong large and
+total jump spillover effects (i.e., jumps from one sector (Granger) causing
+jumps from another sector) were seen as early as in 2006, and weakened as the
+recession unfolded. With small jumps, the opposite occurred. In particular,
+2008 was the weakest year for large and total jump spillover effects and
+strongest year for small jumps. This can be understood by examining the causes
+of jumps of different sizes. Large jump spillover effects seem to correlate
+with major news and events, while small jump spillover effects are harder to
+interpret and seem more correlated with heterogeneous agent and firm specific
+characteristics. \ With regard to the jump contributions to excess returns,
+total jump and large jump contributions were close to zero in years other than
+2008 and 2009. This provides strong evidence that jumps play an important role
+in asset pricing during crisis times.\pagebreak
+
+\section{References}
+
+\noindent A\"{\i}t-Sahalia, Y. (2002). Telling from discrete data whether the
+underlying continuous-time model is a diffusion. \textit{The Journal of
+Finance}, 57, 2075-2112.
+
+\noindent A\"{\i}t-Sahalia, Y., and Jacod, J. (2008). Fisher's information for
+discretely sampled Levy processes. \textit{Econometrica}, 76, 727-761.
+
+\noindent A\"{\i}t-Sahalia, Y., and Jacod, J. (2009a). Testing for jumps in a
+discretely observed process. \textit{The Annals of Statistics}, 37, 184-222.
+
+\noindent A\"{\i}t-Sahalia, Y., and Jacod, J. (2009b). Estimating the degree
+of activity of jumps in high frequency data. \textit{The Annals of Statistics}, 37, 2202-2244.
+
+\noindent A\"{\i}t-Sahalia, Y., and Jacod, J. (2011). Testing whether jumps
+have finite or infinite activity. \textit{The Annals of Statistics}, 39, 1689-1719.
+
+\noindent A\"{\i}t-Sahalia, Y., and Jacod, J. (2012). Analyzing the spectrum
+of asset returns: Jump and volatility components in high frequency data.
+\textit{Journal of Economic Literature}, 50, 1007-50.
+
+\noindent A\"{\i}t-Sahalia, Y., Cacho-Diaz, J., and Laeven, R. J. (2015).
+Modeling financial contagion using mutually exciting jump processes.
+\textit{Journal of Financial Economics}, 117, 585-606.
+
+\noindent A\"{\i}t-Sahalia, Y., and Xiu, D. (2016). Increased correlation
+among asset classes: Are volatility or jumps to blame, or both?
+\textit{Journal of Econometrics}, 194, 205-219.
+
+\noindent Andersen, T. G., Benzoni, L., abd Lund, J. (2002). An empirical
+investigation of continuous-time equity return models. \textit{The Journal of
+Finance}, 57, 1239-1284.
+
+\noindent Andersen, T. G., and Bollerslev, T. (1998). Answering the skeptics:
+Yes, standard volatility models do provide accurate forecasts. \textit{International Economic Review}, 39, 885-905.
+
+\noindent Andersen, T. G., Bollerslev, T., Diebold, F. X., and Vega, C. (2003). Micro effects of macro announcements: Real-time price discovery in foreign exchange. \textit{American Economic Review}, 93, 38-62.
+
+\noindent Andersen, T. G., Bollerslev, T., Diebold, F. X., and Labys, P.
+(2003). Modeling and forecasting realized volatility. \textit{Econometrica},
+71, 579-625.
+
+\noindent Andersen, T. G., Bollerslev, T., and Diebold, F. X. (2007). Roughing
+it up: Including jump components in the measurement, modeling, and forecasting
+of return volatility. \textit{The Review of Economics and Statistics}, 89, 701-720.
+
+\noindent Andersen, T. G., Bollerslev, T., Diebold, F. X., and Labys, P.
+(2010). Parametric and nonparametric volatility measurement. L.P. A\"{\i}t-Sahalia, Y., Hansen, L. P. (Eds.). (2009). \textit{Handbook of Financial Econometrics}, North-Holland Press, Amsterdam.
+
+\noindent Asgharian, H., and Bengtsson, C. (2006). Jump spillover in
+international equity markets. \textit{Journal of Financial Econometrics},
+4, 167-203.
+
+\noindent Asgharian, H., and Nossman, M. (2011). Risk contagion among
+international stock markets. \textit{Journal of International Money and
+Finance}, 30, 22-38.
+
+\noindent Barndorff-Nielsen, O. E., and Shephard, N. (2001). Non-Gaussian
+Ornstein--Uhlenbeck-based models and some of their uses in financial
+economics. \textit{Journal of the Royal Statistical Society: Series B
+(Statistical Methodology)}, 63, 167-241.
+
+\noindent Barndorff-Nielsen, O. E., and Shephard, N. (2002a). Econometric
+analysis of realized volatility and its use in estimating stochastic
+volatility models. \textit{Journal of the Royal Statistical Society: Series B
+(Statistical Methodology)}, 64, 253-280.
+
+\noindent Barndorff-Nielsen, O. E., and Shephard, N. (2002b). Estimating
+quadratic variation using realized variance. \textit{Journal of Applied
+Econometrics}, 17, 457-477.
+
+\noindent Barndorff-Nielsen, O. E., and Shephard, N. (2003). Realized power
+variation and stochastic volatility models. \textit{Bernoulli}, 9, 243-265.
+
+\noindent Barndorff-Nielsen, O. E., and Shephard, N. (2004a). Power and
+bipower variation with stochastic volatility and jumps. \textit{Journal of
+Financial Econometrics}, 2, 1-37.
+
+\noindent Barndorff-Nielsen, O. E., and Shephard, N. (2006a). Econometrics of
+testing for jumps in financial economics using bipower variation.
+\textit{Journal of Financial Econometrics}, 4, 1-30.
+
+\noindent Barndorff-Nielsen, O. E., and Shephard, N. (2006b). Impact of jumps
+on returns and realised variances: econometric analysis of time-deformed Levy
+processes. \textit{Journal of Econometrics}, 131, 217-252.
+
+\noindent Barndorff-Nielsen, O. E., and Shephard, N. (2006c). Power variation
+and time change. \textit{Theory of Probability and Its Applications}, 50, 1-15.
+
+\noindent Barndorff-Nielsen, O. E., Graversen, S. E., and Shephard, N.
+(2004b). Power variation and stochastic volatility: a review and some new
+results. \textit{Journal of Applied Probability}, 41, 133-143.
+
+\noindent Barndorff–Nielsen, O. E., Graversen, S. E., Jacod, J., Podolskij, M., and Shephard, N. (2006). A central limit theorem for realised power and bipower variations of continuous semimartingales. In \textit{From stochastic calculus to mathematical finance} (pp. 33-68). Springer, Berlin, Heidelberg.
+
+\noindent Barndorff-Nielsen, O. E., Shephard, N., and Winkel, M. (2006). Limit
+theorems for multipower variation in the presence of jumps. \textit{Stochastic
+Processes and Their Applications}, 116, 796-806.
+
+\noindent Bollerslev, T., Law, T. H., and Tauchen, G. (2008). Risk, jumps, and
+diversification. \textit{Journal of Econometrics}, 144, 234-256.
+
+\noindent Corradi, V., Silvapulle, M. J., and Swanson, N. R. (2018). Testing
+for Jumps and Jump Intensity Path Dependence, \textit{Journal of Econometrics}, forthcoming.
+
+\noindent Evans, K. P. (2011). Intraday jumps and US macroeconomic news
+announcements, \textit{Journal of Banking and Finance}, 35, 2511-2527.
+
+\noindent Huang, X. (2015). Macroeconomic news announcements, financial market
+volatility and jumps. Mimeo, Working Paper 2015-097, Federal Reserve Board.
+
+\noindent Huang, X., and Tauchen, G. (2005). The relative contribution of
+jumps to total price variance. \textit{Journal of Financial Econometrics},
+3, 456-499.
+
+\noindent Jawadi, F., Louhichi, W., and Cheffou, A. I. (2015). Testing and
+modeling jump contagion across international stock markets: A nonparametric
+intraday approach. \textit{Journal of Financial Markets}, 26, 64-84.
+
+\noindent Jiang, G. J., and Oomen, R. C. (2008). Testing for jumps when asset
+prices are observed with noise-a "swap variance" approach. \textit{Journal of
+Econometrics}, 144, 352-370.
+
+\noindent Jiang, G. J., Lo, I., and Verdelhan, A. (2011). Information shocks,
+liquidity shocks, jumps, and price discovery: Evidence from the US treasury
+market. \textit{Journal of Financial and Quantitative Analysis}, 46, 527-551.
+
+\noindent Kim, H. H., and Swanson, N. R. (2014). Forecasting financial and macroeconomic variables using data reduction methods: New empirical evidence. \textit{Journal of Econometrics}, 178, 352-367.
+
+\noindent Kim, H. H.,  and Swanson, N. R. (2018). Mining big data using parsimonious factor, machine learning, variable selection and shrinkage methods. \textit{International Journal of Forecasting}, 34, 339-354.
+
+\noindent Lahaye, J., Laurent, S., and Neely, C. J. (2011). Jumps, co-jumps
+and macro announcements. \textit{Journal of Applied Econometrics}, 26, 893-921.
+
+\noindent Lee, S. S., and Mykland, P. A. (2008). Jumps in financial markets: A
+new nonparametric test and jump dynamics. \textit{Review of Financial
+Studies}, 21, 2535-2563.
+
+\noindent Lee, S. S., and Hannig, J. (2010). Detecting jumps from L\`{e}vy
+jump diffusion processes. \textit{Journal of Financial Economics}, 96, 271-290.
+
+\noindent Mancini, C. (2004). Estimation of the characteristics of the jumps
+of a general Poisson-diffusion model. \textit{Scandinavian Actuarial Journal},
+2004, 42-52.
+
+\noindent Mancini, C. (2006). Estimating The Integrated Volatility in
+Stochastic Volatility Models with Levy Type Jumps. Working Paper, University of Firenze. 
+
+\noindent Reavis, C. (2012). The Global Financial Crisis of 2008: The Role of
+Greed, Fear, and Oligarchs. \textit{MIT Sloan Management Review}, 16, 1-22.
+
+\noindent Todorov, V., and Tauchen, G. (2011). Volatility jumps.
+\textit{Journal of Business \& Economic Statistics}, 29, 356-371.
+
+\clearpage
+\allowdisplaybreaks
+
+
+%% tables
+
+
+\textwidth=6.5in \textheight=9.5in \topmargin=-1.2in \baselineskip=1pt \renewcommand{\baselinestretch}{1.2}
+
+\newpage
+%TABLE 1 Jump Intensity Test %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ptb]
+\caption{\textbf{Experimental Setup}}%
+\label{tb1}%
+\begin{tabular}
+[c]{p{4cm}|p{12cm}}\hline\hline
+Sample Period: & Jan. 3, 20005 to Dec. 31, 2010\\\hline
+Sampling Frequency: & 5 minutes.\\\hline
+Regression Estimation Scheme: & VAR estimation with time span equal to one
+calender year.\\\hline
+Jump types: & Total jumps ($QVJ$), large jumps at cutoff level $b=3$
+($QVJL3$), large jumps at cutoff level $b=3$ ($QVJL5$), small jumps at
+cutoff level $b=3$ ($QVJS3$), small jumps at cutoff level $b=5$ ($QVJS5$).\\\hline
+Evaluation Criterion: & Coefficients are summed that are significant using a
+5\% level $t$-test.\\\hline
+Step 1: Jump Test & Test for jumps on each trading day during sample
+period. For this, the bipower variation based test $z_{TP,t}$ described in Section 2.2.1
+is applied with significance level $\alpha$ = 5\%. The null hypothesis is that no jumps
+are present.\\\hline
+Step 2: Jump Decomposition & For trading days which reject the null in Step 1,
+the decomposition method in Section 2.3 is applied to extract $QVJ$, $QVJL3$, $QVJL5$, $QVJS3$, and $QVJS5$ on that day. For trading days for which
+the null is not rejected in Step 1, jump quadratic variation is set equal to
+0.\\\hline
+Step 3a: Jump Spillover Analysis & Fit the model in Section 3.1
+by calender year, for different jump types.\\
+Step 3b: Jump Contribution to Excess Returns & Ft the model in Section 3.2 by calender year, for different jump types.\\
+\hline\hline
+\end{tabular}
+\end{table}
+\newpage
+
+%TABLE 1 Jump Intensity Test %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ptb]
+\caption{\textbf{Disaggregate Quadratic Variation in the XLB Sector} *}%
+\label{tb1}%
+\centering
+\begin{tabular}
+[c]{cccccc}\hline\hline
+Date & $QVJ$ & $QVJL3$ & $QVJL5$ & $QVJS3$ & $QVJS5$\\\hline
+1/3/2005 & 0.4352 & 0.2521 & 0 & 0.1831 & 0.4352\\
+1/4/2005 & 0.2594 & 0 & 0 & 0.2594 & 0.2594\\
+1/5/2005 & 0.84 & 0.8006 & 0.7301 & 0.0394 & 0.1099\\
+1/6/2005 & 0.3481 & 0.1494 & 0 & 0.1987 & 0.3481\\
+1/7/2005 & 0.3668 & 0.2417 & 0 & 0.1251 & 0.3668\\
+1/10/2005 & 0.5789 & 0.3394 & 0 & 0.2395 & 0.5789\\
+1/11/2005 & 0.5809 & 0.2611 & 0 & 0.3198 & 0.5809\\
+1/12/2005 & 0.577 & 0.4163 & 0.2563 & 0.1607 & 0.3207\\
+1/13/2005 & 0.3918 & 0.2224 & 0 & 0.1694 & 0.3918\\
+1/14/2005 & 0.5241 & 0.2987 & 0 & 0.2254 & 0.5241\\
+1/18/2005 & 0.6349 & 0.3646 & 0 & 0.2703 & 0.6349\\
+1/19/2005 & 0 & 0 & 0 & 0 & 0\\
+1/20/2005 & 0.5473 & 0.419 & 0 & 0.1283 & 0.5473\\
+1/21/2005 & 0.3142 & 0.1824 & 0 & 0.1318 & 0.3142\\
+1/24/2005 & 0.5531 & 0.387 & 0.387 & 0.1661 & 0.1661\\
+1/25/2005 & 0.7079 & 0.5185 & 0.5185 & 0.1894 & 0.1894\\
+1/26/2005 & 0.4206 & 0.2352 & 0 & 0.1854 & 0.4206\\
+1/27/2005 & 0.5888 & 0.3594 & 0.3594 & 0.2294 & 0.2294\\
+1/28/2005 & 0.3973 & 0.2494 & 0 & 0.1479 & 0.3973\\
+1/31/2005 & 0.4323 & 0.3689 & 0.3689 & 0.0634 & 0.0634\\
+2/1/2005 & 0.4831 & 0.3397 & 0.3397 & 0.1434 & 0.1434\\
+2/2/2005 & 0.45 & 0.1362 & 0 & 0.3138 & 0.45\\
+2/3/2005 & 0 & 0 & 0 & 0 & 0\\
+2/4/2005 & 0.3565 & 0.1941 & 0 & 0.1624 & 0.3565\\
+2/7/2005 & 0.4154 & 0.1396 & 0 & 0.2758 & 0.4154\\
+2/8/2005 & 0.505 & 0 & 0 & 0.505 & 0.505\\
+2/9/2005 & 0.7931 & 0.7931 & 0.6389 & 0 & 0.1542\\
+2/10/2005 & 0.5243 & 0 & 0 & 0.5243 & 0.5243\\
+2/11/2005 & 0.5517 & 0.2765 & 0 & 0.2752 & 0.5517\\
+2/14/2005 & 0.3892 & 0.3229 & 0.3229 & 0.0663 & 0.0663\\
+2/15/2005 & 0.3822 & 0 & 0 & 0.3822 & 0.3822\\
+2/16/2005 & 0.4734 & 0 & 0 & 0.4734 & 0.4734\\
+2/17/2005 & 0.629 & 0.4126 & 0.4126 & 0.2164 & 0.2164\\
+2/18/2005 & 0 & 0 & 0 & 0 & 0\\\hline\hline
+\end{tabular}
+\begin{minipage}{1\columnwidth}			
+	$^{\ast}$ \footnotesize Notes: This table shows the percentage of quadratic variation (QV) that is due to total jumps, jumps at the $b=3$ cutoff level, and jumps at the $b=5$ cutoff level, for the period January 2005 - March 2005. Similar results for other time periods and market sectors are omitted for the sake of brevity, but are available upon request.
+\end{minipage}
+\end{table}
+
+\afterpage{
+	\centering
+	\small
+	\captionof{table}{\textbf{Jump Spillover Analysis of Nine SPDR Sector ETFs}}
+	\captionof{subtable}{Results Based on Analysis of 2005 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\		
+		$QVJ$&XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.000&	0.000&	0.440&	0.000&	0.000&	0.000&	0.000&	0.000 \\ 
+		XLE&	0.336&	NA&	0.705&	1.474&	1.040&	0.359&	0.731&	0.538&	0.505 \\
+		XLF&	2.040&	0.000&	NA&	0.000&	0.000&	0.436&	0.000&	0.000&	1.716 \\
+		XLI&	0.472&	0.000&	0.000&	NA&	0.000&	0.000&	0.399&	0.000&	0.873 \\
+		XLK&	0.757&	0.000&	0.000&	0.894&	NA&	0.431&	0.000&	0.365&	0.399 \\
+		XLP&	0.000&	0.000&	0.000&	0.309&	0.348&	NA&	0.000&	0.000&	0.352 \\
+		XLU&	0.000&	0.992&	0.000&	0.000&	0.000&	0.498&	NA&	0.501&	0.575 \\
+		XLV&	0.324&	0.478&	0.000&	0.000&	0.000&	0.415&	0.478&	NA&	0.000 \\
+		XLY&	0.000&	0.000&	0.000&	0.000&	0.000&	0.362&	0.000&	0.440&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		$QVJL3$&	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	NA&	0.000&	0.000&	0.000&	0.000&	0.469&	0.430&	0.394&	0.000 \\
+		XLE&	0.461&	NA&	0.000&	0.000&	0.254&	0.219&	0.000&	0.000&	0.465 \\
+		XLF&	0.000&	0.000&	NA&	0.590&	0.000&	0.512&	0.000&	0.000&	0.000 \\
+		XLI&	0.808&	1.300&	0.000&	NA&	0.000&	0.609&	0.977&	0.420&	0.000 \\
+		XLK&	0.283&	1.020&	0.000&	0.257&	NA&	0.000&	0.317&	0.000&	0.486 \\
+		XLP&	0.000&	0.796&	0.000&	0.273&	0.000&	NA&	0.000&	0.664&	0.000 \\
+		XLU&	0.000&	0.649&	0.000&	0.390&	0.000&	0.463&	NA&	0.463&	0.664 \\
+		XLV&	0.790&	2.259&	0.000&	0.677&	0.000&	1.652&	0.779&	NA&	0.454 \\
+		XLY&	0.792&	0.000&	0.911&	0.000&	0.476&	0.866&	0.710&	0.000&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		$QVJS3$&	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.502&	0.865&	0.406&	0.443&	0.000&	1.378&	0.941&	0.000 \\
+		XLE&	0.000&	NA&	0.703&	0.934&	0.000&	0.338&	0.656&	0.584&	1.032 \\
+		XLF&	0.000&	0.000&	NA&	0.000&	0.382&	0.000&	0.000&	0.000&	0.000 \\
+		XLI&	1.132&	2.847&	0.325&	NA&	0.394&	1.853&	0.437&	0.383&	0.496 \\
+		XLK&	0.000&	0.000&	0.000&	0.000&	NA&	0.000&	0.000&	0.000&	0.000 \\
+		XLP&	0.000&	0.525&	0.391&	0.000&	0.347&	NA&	0.415&	0.000&	0.000 \\
+		XLU&	0.859&	0.000&	0.754&	1.168&	0.578&	0.748&	NA&	0.000&	0.735 \\
+		XLV&	0.000&	0.416&	0.361&	0.000&	0.000&	0.000&	0.000&	NA&	0.365 \\
+		XLY&	0.000&	0.000&	0.000&	0.000&	0.330&	0.000&	0.340&	1.229&	NA \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+		$^{\ast}$ \footnotesize Notes: Entries are ``aggregate spillover effects" of lagged jumps from a given sector (see first row of entries) on the jumps in each of the sectors listed in the first column of the table. Aggregate spillover effects are aggregated absolute coefficient magnitudes, summed for statistically significant (at a 5\% level, based on application of $t$-statistics) coefficients on the lags in the VAR associated with the regression pertaining to each sector listed in the first column of the table, for all lags in the regression pertaining to the sector listed in the first row of entries in the table. For further details refer to Section 3.
+	\end{minipage}
+	\pagebreak
+	\captionof{subtable}{Results Based on Analysis of 2006 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\	
+		$QVJ$ &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.362&	0.000&	0.347&	0.508&	0.766&	0.929&	1.836&	0.772 \\
+		XLE&	0.861&	NA&	0.000&	0.000&	0.000&	0.000&	0.000&	0.402&	0.608 \\
+		XLF&	1.233&	0.768&	NA&	0.398&	0.588&	2.179&	0.328&	0.966&	0.780 \\
+		XLI&	0.000&	0.338&	0.369&	NA&	0.000&	0.000&	0.819&	0.000&	1.107 \\
+		XLK&	1.046&	0.522&	0.806&	0.000&	NA&	1.003&	0.806&	1.117&	1.633 \\
+		XLP&	0.000&	0.000&	0.000&	0.000&	0.000&	NA&	0.000&	0.000&	0.000 \\
+		XLU&	0.558&	0.000&	0.000&	0.000&	0.343&	0.000&	NA&	0.000&	0.000 \\
+		XLV&	0.364&	1.707&	0.000&	0.000&	0.581&	1.679&	0.000&	NA&	0.396 \\
+		XLY&	0.839&	0.000&	0.000&	0.281&	0.000&	0.379&	0.350&	0.000&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		$QVJL3$&	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	NA&	0.000&	0.875&	0.404&	1.168&	0.420&	0.431&	0.000&	0.490 \\
+		XLE&	0.000&	NA&	1.100&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLF&	0.000&	1.223&	NA&	1.816&	0.317&	2.329&	0.520&	0.849&	1.359 \\
+		XLI&	0.000&	0.000&	0.348&	NA&	0.000&	0.354&	0.000&	0.000&	0.000 \\
+		XLK&	0.000&	0.000&	1.028&	0.000&	NA&	0.000&	0.428&	0.000&	0.000 \\
+		XLP&	0.000&	0.000&	0.000&	0.557&	0.000&	NA&	0.535&	0.000&	0.499 \\
+		XLU&	3.211&	2.889&	2.807&	1.741&	4.453&	3.005&	NA&	1.136&	2.840 \\
+		XLV&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	NA&	0.000 \\
+		XLY&	0.291&	0.532&	1.352&	0.320&	0.000&	1.501&	0.000&	0.567&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		$QVJS3$ &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.820&	0.000&	0.823&	0.694&	0.000&	0.703&	0.335&	1.205  \\
+		XLE&	0.457&	NA&	0.000&	0.000&	0.964&	0.000&	0.424&	0.000&	1.308 \\
+		XLF&	0.882&	0.500&	NA&	0.000&	0.000&	0.343&	0.000&	0.000&	0.000 \\
+		XLI&	0.745&	0.000&	0.310&	NA&	0.000&	0.797&	0.000&	0.000&	0.000 \\
+		XLK&	0.516&	0.962&	0.787&	0.325&	NA&	0.450&	0.835&	0.325&	0.500 \\
+		XLP&	1.181&	0.714&	1.184&	0.391&	0.670&	NA&	0.415&	0.916&	0.405 \\
+		XLU&	0.457&	0.000&	0.000&	0.000&	0.337&	0.364&	NA&	0.357&	1.140 \\
+		XLV&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	NA&	0.000 \\
+		XLY&	0.000&	0.503&	0.311&	0.000&	0.338&	0.000&	0.363&	0.465&	NA \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+		$^{\ast}$ \footnotesize Notes: See notes to Table 3a.
+	\end{minipage}
+	\pagebreak		
+	\captionof{subtable}{Results Based on Analysis of 2007 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\	
+		$QVJ$ &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.000&	0.000&	0.000&	0.370&	0.403&	0.000&	0.000&	0.000  \\
+		XLE&	0.458&	NA&	0.000&	0.000&	0.000&	0.360&	0.000&	0.363&	0.888 \\
+		XLF&	1.168&	0.459&	NA&	0.334&	1.033&	0.732&	0.000&	0.000&	0.838 \\
+		XLI&	1.557&	0.587&	0.000&	NA&	0.000&	0.599&	0.433&	0.902&	0.000 \\
+		XLK&	0.000&	0.352&	0.445&	0.357&	NA&	0.465&	0.000&	0.372&	0.511 \\
+		XLP&	0.000&	0.583&	0.525&	0.000&	0.481&	NA&	0.000&	0.459&	0.000 \\
+		XLU&	1.037&	0.445&	0.544&	0.425&	1.316&	0.947&	NA&	0.000&	1.019 \\
+		XLV&	0.468&	1.062&	0.548&	0.000&	0.377&	0.488&	0.000&	NA&	1.007 \\
+		XLY&	0.342&	0.437&	0.532&	0.000&	0.346&	1.087&	0.739&	0.000&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		$QVJL3$&	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	NA&	0.609&	0.000&	0.000&	0.000&	0.462&	0.373&	0.000&	0.000 \\
+		XLE&	1.402&	NA&	1.075&	1.216&	0.336&	0.428&	0.802&	0.634&	0.788 \\
+		XLF&	0.463&	0.000&	NA&	0.000&	0.000&	0.000&	0.470&	0.000&	0.000 \\
+		XLI&	0.000&	1.232&	0.000&	NA&	0.815&	0.521&	0.000&	0.000&	0.573 \\
+		XLK&	0.787&	0.691&	0.599&	1.037&	NA&	0.000&	0.551&	0.623&	0.000 \\
+		XLP&	0.582&	1.412&	0.522&	0.000&	1.015&	NA&	0.446&	0.550&	0.598 \\
+		XLU&	0.000&	1.601&	0.452&	0.000&	0.000&	2.060&	NA&	0.000&	0.000 \\
+		XLV&	0.000&	0.000&	0.000&	0.000&	0.000&	0.993&	0.469&	NA&	0.000 \\
+		XLY&	0.566&	0.994&	0.749&	0.889&	0.441&	0.000&	0.418&	0.321&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		$QVJS3$ &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.827&	0.406&	0.364&	0.977&	0.325&	1.072&	0.364&	0.738  \\
+		XLE&	0.429&	NA&	0.000&	0.000&	0.365&	0.406&	0.000&	0.000&	0.000 \\
+		XLF&	0.858&	0.877&	NA&	0.248&	1.178&	0.805&	1.207&	1.474&	0.772 \\
+		XLI&	0.496&	0.400&	0.545&	NA&	0.000&	0.000&	0.000&	0.000&	0.954 \\
+		XLK&	0.514&	1.079&	0.938&	0.958&	NA&	1.591&	0.399&	0.863&	1.792 \\
+		XLP&	0.000&	0.000&	0.000&	0.000&	0.000&	NA&	0.000&	0.000&	0.000 \\
+		XLU&	1.761&	2.184&	0.441&	0.659&	0.326&	1.228&	NA&	0.840&	0.000 \\
+		XLV&	0.444&	0.000&	0.980&	0.385&	0.000&	0.378&	0.000&	NA&	0.000 \\
+		XLY&	0.351&	0.000&	0.000&	0.000&	0.317&	0.775&	0.000&	0.000&	NA \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+	$^{\ast}$ \footnotesize Notes: See notes to Table 3a.
+	\end{minipage}
+	\pagebreak		
+	\captionof{subtable}{Results Based on Analysis of 2008 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\	
+		$QVJ$ &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLE&	0.000&	NA&	0.000&	0.000&	0.542&	0.833&	0.000&	0.366&	0.884 \\
+		XLF&	0.000&	0.000&	NA&	0.000&	0.000&	0.000&	0.522&	1.086&	0.651 \\
+		XLI&	0.000&	0.000&	0.274&	NA&	0.786&	0.000&	0.000&	0.000&	0.000 \\
+		XLK&	0.354&	0.332&	0.000&	0.000&	NA&	0.000&	0.000&	0.447&	0.000 \\
+		XLP&	0.000&	0.000&	0.392&	0.442&	0.000&	NA&	0.000&	0.000&	0.000 \\
+		XLU&	0.000&	0.375&	0.000&	0.000&	0.919&	0.000&	NA&	0.414&	0.000 \\
+		XLV&	0.385&	0.000&	0.286&	0.000&	0.000&	0.872&	0.390&	NA&	0.428 \\
+		XLY&	0.000&	0.000&	0.000&	0.000&	0.741&	0.674&	0.000&	0.504&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		$QVJL3$&	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	NA&	0.000&	0.000&	0.000&	0.000&	0.470&	0.000&	0.000&	0.000 \\
+		XLE&	0.540&	NA&	0.396&	0.433&	0.563&	1.193&	0.390&	0.342&	1.059 \\
+		XLF&	0.000&	0.000&	NA&	0.000&	0.000&	0.000&	0.000&	0.000&	0.520 \\
+		XLI&	1.028&	0.448&	0.324&	NA&	2.220&	1.131&	1.140&	1.214&	1.910 \\
+		XLK&	1.884&	1.740&	1.172&	0.969&	NA&	1.402&	0.361&	0.294&	0.974 \\
+		XLP&	0.414&	1.043&	0.000&	1.241&	0.617&	NA&	0.000&	0.000&	0.000 \\
+		XLU&	0.374&	0.656&	0.445&	0.000&	1.302&	0.000&	NA&	0.462&	1.139 \\
+		XLV&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	NA&	0.000 \\
+		XLY&	0.360&	0.000&	0.324&	0.000&	0.000&	0.000&	0.000&	0.000&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		$QVJS3$ &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.451&	0.875&	0.918&	0.665&	0.797&	0.654&	0.716&	1.377 \\
+		XLE&	0.378&	NA&	0.000&	0.468&	0.942&	0.000&	0.000&	0.000&	0.000 \\
+		XLF&	0.408&	0.360&	NA&	0.887&	0.334&	0.434&	1.284&	0.000&	0.752 \\
+		XLI&	2.109&	0.743&	0.660&	NA&	1.563&	0.825&	1.303&	0.353&	0.302 \\
+		XLK&	0.531&	0.000&	0.456&	0.000&	NA&	0.000&	0.000&	0.000&	0.413 \\
+		XLP&	0.426&	1.114&	1.363&	0.000&	0.000&	NA&	0.560&	1.791&	0.865 \\
+		XLU&	0.494&	0.432&	0.462&	0.489&	0.312&	0.998&	NA&	0.495&	0.399 \\
+		XLV&	0.000&	0.469&	0.358&	1.333&	0.000&	2.151&	0.383&	NA&	0.366 \\
+		XLY&	0.440&	0.000&	0.000&	0.000&	1.391&	0.000&	0.517&	0.386&	NA \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+	$^{\ast}$ \footnotesize Notes: See notes to Table 3a.
+	\end{minipage}
+	\pagebreak		
+	\captionof{subtable}{Results Based on Analysis of 2009 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\	
+		$QVJ$ &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	1.112&	0.000&	0.000&	0.000&	0.000&	0.000&	0.684&	0.419 \\
+		XLE&	0.726&	NA&	0.000&	0.545&	0.000&	0.900&	0.474&	0.830&	0.697 \\
+		XLF&	1.000&	0.000&	NA&	0.000&	0.000&	0.471&	0.896&	1.565&	0.521 \\
+		XLI&	0.355&	0.557&	0.000&	NA&	0.000&	0.000&	0.920&	0.442&	1.173 \\
+		XLK&	0.000&	0.703&	0.801&	0.000&	NA&	0.000&	0.000&	0.357&	0.000 \\
+		XLP&	0.819&	0.377&	0.653&	0.291&	0.000&	NA&	1.095&	0.418&	0.000 \\
+		XLU&	0.370&	0.400&	1.139&	0.367&	1.035&	0.347&	NA&	0.398&	1.048 \\
+		XLV&	0.331&	0.375&	1.125&	0.409&	0.000&	0.000&	0.482&	NA&	0.963 \\
+		XLY&	0.762&	0.000&	0.384&	0.705&	0.000&	0.000&	0.000&	0.331&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		$QVJL3$&	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	NA&	2.769&	4.471&	1.648&	2.612&	0.819&	0.418&	1.719&	1.762 \\
+		XLE&	0.716&	NA&	0.340&	0.365&	0.501&	0.283&	1.406&	0.642&	1.471 \\
+		XLF&	0.000&	0.529&	NA&	0.436&	0.000&	0.000&	0.000&	1.451&	1.459 \\
+		XLI&	0.905&	0.431&	0.861&	NA&	1.092&	0.396&	0.000&	0.539&	0.526 \\
+		XLK&	0.344&	0.440&	0.389&	0.431&	NA&	0.000&	0.000&	0.387&	0.000 \\
+		XLP&	0.000&	0.969&	0.997&	1.038&	1.226&	NA&	0.000&	0.000&	0.484 \\
+		XLU&	0.000&	0.000&	1.048&	0.000&	0.000&	0.000&	NA&	0.429&	1.423 \\
+		XLV&	0.548&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	NA&	0.000 \\
+		XLY&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		$QVJS3$ &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.000&	0.000&	0.463&	0.000&	0.000&	0.000&	0.000&	0.439  \\
+		XLE&	0.426&	NA&	0.387&	0.000&	0.371&	0.456&	0.506&	0.881&	0.506 \\
+		XLF&	0.587&	0.267&	NA&	0.801&	0.328&	0.000&	0.694&	0.323&	0.000 \\
+		XLI&	0.000&	0.000&	0.845&	NA&	0.791&	0.000&	0.000&	0.000&	0.421 \\
+		XLK&	0.419&	0.000&	0.000&	0.000&	NA&	0.000&	0.000&	0.000&	0.000 \\
+		XLP&	0.000&	0.000&	0.000&	0.000&	0.000&	NA&	0.000&	0.000&	0.000 \\
+		XLU&	0.000&	1.039&	0.436&	0.000&	0.000&	1.265&	NA&	0.000&	0.904 \\
+		XLV&	3.408&	1.108&	1.112&	2.649&	0.000&	2.390&	0.830&	NA&	3.510 \\
+		XLY&	0.967&	0.000&	0.000&	0.332&	0.000&	0.517&	0.313&	0.431&	NA \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+	$^{\ast}$ \footnotesize Notes: See notes to Table 3a.
+	\end{minipage}
+	\pagebreak		
+	\captionof{subtable}{Results Based on Analysis of 2010 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\	
+		$QVJ$ &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.000&	0.384&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLE&	0.000&	NA&	0.000&	0.405&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLF&	0.415&	0.000&	NA&	0.397&	0.485&	0.000&	0.000&	0.399&	0.488 \\
+		XLI&	0.347&	0.000&	0.667&	NA&	0.338&	1.189&	0.389&	0.000&	0.000 \\
+		XLK&	0.000&	0.388&	0.430&	0.733&	NA&	0.895&	1.513&	0.000&	0.450 \\
+		XLP&	1.426&	0.000&	0.833&	1.080&	0.000&	NA&	1.531&	1.418&	2.240 \\
+		XLU&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	NA&	0.000&	0.000 \\
+		XLV&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	NA&	0.000 \\
+		XLY&	0.000&	0.000&	0.000&	0.000&	0.841&	0.000&	0.571&	0.469&	NA \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		$QVJL3$&	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	NA&	0.353&	0.000&	0.433&	0.854&	0.000&	0.334&	0.000&	0.000  \\
+		XLE&	0.000&	NA&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLF&	0.336&	1.118&	NA&	0.513&	0.000&	0.528&	0.000&	0.420&	1.288  \\
+		XLI&	0.000&	0.000&	0.368&	NA&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLK&	0.000&	0.562&	0.569&	0.640&	NA&	1.688&	0.000&	2.114&	0.600  \\
+		XLP&	1.029&	0.848&	0.704&	0.953&	0.904&	NA&	0.549&	2.129&	0.831  \\
+		XLU&	0.000&	0.597&	0.000&	0.000&	0.000&	0.000&	NA&	0.000&	0.000  \\
+		XLV&	0.822&	0.708&	0.310&	0.482&	0.000&	1.328&	0.000&	NA&	0.486  \\
+		XLY&	0.434&	0.945&	1.108&	0.559&	1.554&	0.994&	0.425&	0.351&	NA  \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		$QVJS3$ &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	NA&	0.356&	0.000&	0.000&	0.399&	0.377&	0.000&	0.333&	0.000  \\
+		XLE&	0.379&	NA&	1.239&	1.103&	1.152&	0.665&	0.722&	0.430&	1.142  \\
+		XLF&	0.000&	0.382&	NA&	0.526&	1.342&	0.928&	1.056&	0.335&	1.048  \\
+		XLI&	0.485&	0.634&	0.632&	NA&	0.359&	1.503&	1.419&	1.211&	0.981  \\
+		XLK&	0.388&	0.896&	0.538&	0.588&	NA&	0.000&	0.409&	0.393&	0.000  \\
+		XLP&	0.750&	0.000&	0.000&	0.000&	0.000&	NA&	0.282&	0.293&	0.000  \\
+		XLU&	0.440&	0.000&	0.468&	0.442&	0.000&	0.583&	NA&	0.339&	0.402  \\
+		XLV&	1.878&	2.021&	0.951&	0.784&	0.666&	1.386&	0.747&	NA&	0.000  \\
+		XLY&	0.420&	0.000&	0.451&	0.000&	0.486&	0.000&	0.745&	0.000&	NA  \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+	$^{\ast}$ \footnotesize Notes: See notes to Table 3a.
+	\end{minipage}
+	\pagebreak
+	\captionof{table}{\textbf{Jump Contribution to Excess Returns For Nine SPDR Sector ETFs}}
+	\captionof{subtable}{Results Based on Analysis of 2005 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\		
+		Excess Returns of &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	0.000&	0.000&	0.000&	1.255&	0.000&	2.858&	0.000&	0.000&	1.360 \\
+		XLE&	0.000&	1.949&	0.996&	0.860&	0.883&	1.332&	0.000&	1.502&	0.792 \\
+		XLF&	0.000&	0.000&	0.000&	0.000&	0.000&	0.211&	0.000&	0.000&	0.000 \\
+		XLI&	0.000&	0.000&	0.000&	0.000&	0.000&	0.371&	0.000&	0.000&	0.139 \\
+		XLK&	0.000&	0.000&	0.000&	3.164&	6.182&	2.348&	2.458&	0.000&	0.000 \\
+		XLP&	0.000&	0.241&	0.141&	0.000&	0.181&	0.324&	0.000&	0.000&	0.305 \\
+		XLU&	0.000&	0.000&	0.000&	0.786&	0.816&	0.748&	0.328&	0.000&	0.000 \\
+		XLV&	0.000&	0.000&	0.000&	0.308&	0.000&	0.243&	0.000&	0.000&	0.000 \\
+		XLY&	0.000&	0.000&	0.000&	0.000&	0.308&	0.000&	0.000&	0.000&	0.000 \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	1.062&	1.382&	1.244&	0.000&	0.000&	1.169&	0.000&	1.020&	0.000 \\
+		XLE&	1.099&	1.558&	0.000&	0.554&	0.721&	0.000&	0.000&	0.518&	0.000 \\
+		XLF&	0.187&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLI&	0.126&	0.267&	0.129&	0.081&	0.264&	0.348&	0.000&	0.198&	0.105 \\
+		XLK&	0.000&	7.106&	4.254&	2.618&	3.642&	5.234&	2.180&	1.807&	0.000 \\
+		XLP&	0.000&	0.000&	0.000&	0.000&	0.000&	0.118&	0.000&	0.000&	0.000 \\
+		XLU&	0.643&	0.511&	0.000&	0.000&	0.000&	0.637&	0.000&	0.000&	0.000 \\
+		XLV&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.167&	0.000 \\
+		XLY&	0.203&	0.235&	0.000&	0.000&	0.000&	0.251&	0.000&	0.000&	0.000 \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	0.000&	0.000&	0.000&	0.000&	1.505&	0.000&	1.790&	2.064&	5.254 \\
+		XLE&	0.000&	0.000&	0.000&	0.979&	0.000&	0.000&	0.000&	1.056&	1.364 \\
+		XLF&	0.000&	0.000&	0.000&	0.368&	0.000&	0.000&	0.000&	0.000&  0.409 \\
+		XLI&	0.000&	0.332&	0.000&	0.192&	0.000&	0.000&	0.000&	0.000&	0.259 \\
+		XLK&	0.000&	0.000&	0.000&	0.000&	3.122&	0.000&	3.696&	0.000&	9.986 \\
+		XLP&	0.000&	0.567&	0.000&	0.246&	0.153&	0.000&	0.625&	0.214&	0.790 \\
+		XLU&	0.000&	0.717&	0.000&	0.000&	0.394&	0.000&	0.579&	0.599&	1.278 \\
+		XLV&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.410 \\
+		XLY&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.464 \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+		$^{\ast}$ \footnotesize Notes: Entries are ``aggregate jump effects on excess returns" of lagged jumps from a given sector (see first row of entries) on the excess return for each of the sectors listed in the first column of the table. Aggregate jump effects on excess returns are aggregated absolute coefficient magnitudes, summed for statistically significant (at a 5\% level, based on application of $t$-statistics) coefficients on the lags in the VAR associated with the regression pertaining to each sector listed in the first column of the table, for all lags in the regression pertaining to the sector listed in the first row of entries in the table. For further details refer to Section 3.
+	\end{minipage}
+	\pagebreak		
+	\captionof{subtable}{Results Based on Analysis of 2006 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\	
+		Excess Returns of &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	0.000&	1.523&	0.000&	0.000&	0.000&	0.000&	0.955&	1.458&	0.000 \\
+		XLE&	0.000&	1.653&	1.611&	1.189&	0.000&	0.000&	1.239&	1.530&	1.063 \\
+		XLF&	0.000&	0.575&	0.218&	0.000&	0.000&	0.000&	0.214&	0.308&	0.227 \\
+		XLI&	0.000&	0.703&	0.000&	0.621&	0.274&	0.000&	0.249&	0.648&	0.644 \\
+		XLK&	0.468&	1.203&	0.728&	0.447&	0.390&	0.000&	0.782&	2.108&	0.385 \\
+		XLP&	0.871&	2.522&	0.000&	0.769&	0.000&	0.000&	0.924&	1.287&	0.930 \\
+		XLU&	0.000&	0.938&	0.509&	0.000&	0.000&	0.000&	0.328&	0.000&	0.000 \\
+		XLV&	1.025&	2.615&	1.225&	2.476&	0.000&	1.209&	0.816&	2.492&	1.836 \\
+		XLY&	0.000&	1.308&	0.000&	0.000&	0.000&	0.000&	0.459&	0.847&	0.000 \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.763&	0.000  \\
+		XLE&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLF&	0.000&	0.000&	0.226&	0.227&	0.000&	0.192&	0.000&	0.160&	0.000  \\
+		XLI&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLK&	0.000&	0.000&	0.000&	0.369&	0.000&	0.373&	0.000&	0.000&	0.000  \\
+		XLP&	0.000&	0.000&	0.000&	0.952&	0.000&	0.847&	0.000&	0.000&	0.000  \\
+		XLU&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.268&	0.000  \\
+		XLV&	0.000&	0.000&	0.000&	0.972&	0.000&	0.931&	0.000&	0.000&	0.000  \\
+		XLY&	0.000&	0.000&	0.000&	0.544&	0.000&	0.515&	0.000&	0.346&	0.000  \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	3.959&	0.000&	1.660&	1.620&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLE&	2.108&	0.000&	1.954&	0.000&	0.000&	0.000&	1.588&	0.000&	0.000 \\
+		XLF&	0.421&	0.000&	0.402&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLI&	0.503&	0.000&	0.000&	0.000&	0.000&	0.000&	0.419&	0.000&	0.540 \\
+		XLK&	0.000&	0.000&	0.742&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLP&	0.000&	0.000&	2.825&	1.580&	0.000&	1.526&	1.160&	1.290&	0.000 \\
+		XLU&	0.615&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLV&	1.973&	0.000&	1.581&	1.263&	0.000&	0.000&	0.000&	0.000&	1.695 \\
+		XLY&	1.026&	0.000&	0.981&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+	$^{\ast}$ \footnotesize Notes: See notes to Table 4a.
+	\end{minipage}
+	\pagebreak		
+	\captionof{subtable}{Results Based on Analysis of 2007 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\	
+		Excess Returns of &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	0.000&	0.000&	0.000&	1.107&	1.732&	1.317&	0.000&	0.000&	1.737 \\
+		XLE&	2.423&	0.000&	0.000&	1.226&	1.969&	1.218&	0.949&	0.988&	0.000 \\
+		XLF&	0.000&	0.000&	0.000&	0.850&	1.432&	1.046&	0.000&	0.000&	0.000 \\
+		XLI&	0.630&	0.433&	0.154&	0.184&	1.084&	0.696&	0.312&	0.126&	0.285 \\
+		XLK&	0.220&	0.447&	0.405&	0.337&	1.100&	0.747&	0.241&	0.522&	0.588 \\
+		XLP&	0.000&	0.000&	0.000&	0.281&	0.528&	0.346&	0.000&	0.000&	0.000 \\
+		XLU&	0.000&	0.000&	0.299&	0.207&	0.000&	0.229&	0.000&	0.000&	0.000 \\
+		XLV&	0.000&	0.000&	0.000&	0.407&	0.716&	0.474&	0.000&	0.000&	0.000 \\
+		XLY&	0.227&	0.000&	0.000&	0.000&	0.195&	0.365&	0.000&	0.229&	0.000 \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	0.000&	0.000&	1.431&	0.000&	0.000&	0.000&	1.954&	0.000&	0.000  \\
+		XLE&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	1.575&	0.000&	0.000  \\
+		XLF&	0.000&	0.000&	1.228&	1.041&	0.000&	0.000&	1.567&	0.000&	1.063  \\
+		XLI&	0.000&	0.830&	0.246&	0.204&	0.462&	0.279&	0.553&	0.203&	0.263  \\
+		XLK&	0.000&	0.647&	0.274&	0.454&	0.466&	0.274&	0.688&	1.003&	0.312  \\
+		XLP&	0.000&	0.000&	0.412&	0.405&	0.000&	0.000&	0.936&	0.372&	0.000  \\
+		XLU&	0.000&	0.338&	0.727&	0.000&	0.353&	0.000&	0.311&	0.000&	0.000  \\
+		XLV&	0.000&	0.000&	0.582&	0.000&	0.000&	0.000&	0.670&	0.000&	0.000  \\
+		XLY&	0.299&	0.000&	0.000&	0.287&	0.000&	0.215&	0.271&	0.000&	0.000  \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	7.860&	1.975&	0.000&	0.000&	1.544&	0.000&	0.000&	1.717&	1.509 \\
+		XLE&	6.079&	1.941&	1.503&	0.000&	2.799&	3.131&	1.891&	1.348&	3.072 \\
+		XLF&	10.805&	1.864&	1.592&	0.968&	2.285&	2.943&	2.824&	1.563&	2.512 \\
+		XLI&	0.364&	0.245&	0.000&	0.221&	0.252&	0.516&	0.191&	0.456&	1.001 \\
+		XLK&	1.757&	0.000&	0.638&	0.554&	0.614&	0.864&	0.257&	0.350&	0.263 \\
+		XLP&	1.816&	0.459&	0.000&	0.684&	0.767&	0.488&	0.000&	0.371&	0.387 \\
+		XLU&	1.251&	0.920&	0.902&	0.698&	0.000&	0.296&	0.617&	0.297&	1.007 \\
+		XLV&	3.968&	0.732&	0.000&	0.992&	1.569&	1.312&	1.214&	0.779&	0.708 \\
+		XLY&	1.530&	0.328&	0.916&	0.602&	0.937&	0.463&	1.036&	0.680&	1.175 \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+	$^{\ast}$ \footnotesize Notes: See notes to Table 4a.
+	\end{minipage}
+	\pagebreak		
+	\captionof{subtable}{Results Based on Analysis of 2008 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\	
+		Excess Returns of  &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	0.000&	0.000&	5.318&	0.000&	4.341&	3.399&	0.000&	1.608&	1.908 \\
+		XLE&	0.180&	0.181&	0.000&	0.000&	0.238&	0.439&	0.506&	0.232&	0.562 \\
+		XLF&	0.000&	0.000&	1.027&	1.727&	2.185&	1.332&	0.000&	1.506&	1.655 \\
+		XLI&	0.000&	0.000&	2.541&	0.000&	3.953&	2.262&	0.000&	1.251&	1.302 \\
+		XLK&	0.000&	0.000&	0.000&	0.000&	2.929&	1.719&	0.883&	0.905&	0.921 \\
+		XLP&	0.000&	0.000&	1.543&	0.000&	2.607&	1.926&	0.000&	1.040&	1.178 \\
+		XLU&	0.000&	0.000&	2.030&	2.575&	4.329&	2.347&	0.000&	1.414&	1.269 \\
+		XLV&	0.475&	0.000&	1.311&	2.587&	0.690&	0.632&	0.000&	0.617&	0.514 \\
+		XLY&	0.236&	0.000&	0.213&	0.000&	0.000&	0.000&	0.264&	0.614&	0.242 \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	5.715&	0.000&	2.583&	3.032&	5.530&	4.535&	1.943&	1.743&	0.000  \\
+		XLE&	1.281&	1.313&	0.859&	0.579&	1.000&	1.406&	1.444&	1.091&	2.059  \\
+		XLF&	4.947&	0.000&	2.197&	0.000&	5.508&	4.302&	1.937&	4.035&	2.151  \\
+		XLI&	3.733&	0.000&	3.287&	1.878&	3.944&	3.163&	1.281&	2.695&	1.432  \\
+		XLK&	3.010&	0.000&	2.435&	1.422&	4.264&	2.420&	0.998&	2.035&	0.000  \\
+		XLP&	4.862&	0.000&	2.879&	2.745&	5.331&	2.809&	1.325&	3.687&	1.220  \\
+		XLU&	11.193&	6.285&	12.577&	6.376&	12.264&	9.282&	3.588&	7.181&	6.544  \\
+		XLV&	2.184&	0.000&	1.688&	1.000&	2.170&	0.867&	0.658&	1.655&	0.736  \\
+		XLY&	1.857&	0.930&	1.460&	0.525&	1.752&	1.698&	1.173&	1.053&	2.737  \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	3.633&	10.667&	0.000&	0.000&	3.759&	0.000&	2.744&	0.000&	0.000 \\
+		XLE&	0.000&	0.000&	0.000&	0.000&	0.708&	0.000&	0.413&	0.000&	0.000 \\
+		XLF&	6.898&	12.000&	6.824&	3.493&	8.858&	0.000&	9.562&	0.000&	0.000 \\
+		XLI&	4.361&	7.352&	0.000&	0.000&	2.854&	0.000&	0.000&	0.000&	0.000 \\
+		XLK&	1.699&	5.255&	0.000&	0.000&	1.884&	0.000&	1.311&	0.000&	0.000 \\
+		XLP&	6.263&	7.300&	0.000&	2.283&	2.396&	0.000&	3.993&	0.000&	1.487 \\
+		XLU&	4.972&	8.400&	0.000&	0.000&	2.950&	0.000&	2.149&	0.000&	0.000 \\
+		XLV&	0.000&	4.595&	0.000&	1.529&	0.000&	0.000&	2.839&	0.000&	2.124 \\
+		XLY&	0.000&	0.000&	0.000&	0.000&	0.433&	0.462&	0.000&	0.524&	0.000 \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+	$^{\ast}$ \footnotesize Notes: See notes to Table 4a.
+	\end{minipage}
+	\pagebreak		
+	\captionof{subtable}{Results Based on Analysis of 2009 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\	
+		Excess Returns of &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	3.134&	2.922&	4.434&	0.885&	4.933&	0.000&	5.807&	5.157&	3.197 \\
+		XLE&	4.841&	8.950&	8.662&	2.693&	4.988&	2.398&	7.035&	8.543&	6.908 \\
+		XLF&	6.728&	11.083&	13.736&	2.934&	19.275&	0.000&	22.079&	13.582&	4.253 \\
+		XLI&	0.498&	0.596&	1.025&	0.186&	1.079&	0.207&	0.781&	0.521&	0.326 \\
+		XLK&	1.820&	2.210&	3.418&	0.607&	3.155&	0.000&	4.279&	2.682&	1.731 \\
+		XLP&	3.794&	4.623&	6.767&	1.311&	7.525&	0.000&	8.664&	4.891&	4.562 \\
+		XLU&	5.691&	6.468&	8.408&	1.749&	11.409&	0.000&	13.116&	8.053&	0.000 \\
+		XLV&	2.246&	3.715&	4.685&	2.274&	5.347&	0.000&	6.222&	2.176&	3.128 \\
+		XLY&	2.803&	2.517&	3.111&	0.616&	3.735&	0.000&	4.903&	2.843&	0.924 \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB &	0.000&	1.485&	3.585&	1.735&	1.946&	0.000&	1.316&	0.892&	5.074  \\
+		XLE &	2.131&	1.387&	5.301&	4.211&	3.337&	0.000&	3.726&	0.000&	3.405  \\
+		XLF &	9.185&	18.613&	19.640&	21.273&	21.665&	4.287&	11.449&	0.000&	27.862  \\
+		XLI &	0.370&	0.000&	0.839&	0.543&	0.000&	0.398&	0.680&	0.235&	0.000  \\
+		XLK &	1.816&	1.208&	2.630&	2.423&	1.658&	0.000&	1.120&	0.000&	1.670  \\
+		XLP &	1.784&	2.315&	4.898&	2.714&	3.328&	0.000&	4.365&	0.000&	5.484  \\
+		XLU &	5.593&	3.598&	11.883&	11.540&	8.914&	2.704&	9.382&	0.000&	9.509  \\
+		XLV &	1.545&	2.170&	6.682&	4.529&	4.627&	0.000&	3.995&	0.000&	7.153  \\
+		XLY &	2.169&	1.350&	5.418&	4.540&	1.795&	2.110&	2.493&	0.720&	3.666  \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		Excess Returns of  &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	0.000&	2.242&	2.132&	0.000&	1.925&	0.000&	0.000&	4.873&	4.227 \\
+		XLE&	0.000&	1.936&	1.638&	0.000&	1.724&	3.211&	0.000&	3.033&	5.869 \\
+		XLF&	0.000&	8.467&	0.000&	0.000&	7.602&	0.000&	0.000&	0.000&	7.216 \\
+		XLI&	0.665&	0.555&	2.065&	1.788&	0.946&	1.129&	2.226&	2.216&	1.831 \\
+		XLK&	0.000&	1.664&	0.000&	0.000&  1.426&	2.825&	0.000&	0.000&	1.575 \\
+		XLP&	3.026&	0.000&	0.000&	0.000&	2.583&	0.000&	0.000&	0.000&	5.777 \\
+		XLU&	0.000&	8.165&	8.282&	0.000&	0.000&	8.443&	0.000&	14.484&	15.314 \\
+		XLV&	0.000&	2.357&	3.009&	0.000&	2.489&	0.000&	0.000&	6.500&	2.714 \\
+		XLY&	0.000&	3.119&	0.000&	0.000&	1.368&	3.170&	0.000&	1.556&	5.798 \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+	$^{\ast}$ \footnotesize Notes: See notes to Table 4a.
+	\end{minipage}
+	\pagebreak		
+	\captionof{subtable}{Results Based on Analysis of 2010 Jump Variation Data*}
+	\begin{tabular}{c|ccccccccc}
+		\hline\hline
+		& \multicolumn{9}{c}{Lagged $QVJ$ from} \\	
+		Excess Returns of &XLB	&XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	0.000&	0.000&	0.000&	2.205&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLE&	0.000&	0.000&	3.229&	6.696&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLF&	0.000&	0.000&	1.105&	2.479&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLI&	0.000&	0.000&	1.067&	1.728&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLK&	0.000&	0.000&	1.371&	1.431&	0.000&	0.610&	0.000&	0.000&	0.614 \\
+		XLP&	0.000&	0.000&	0.000&	2.384&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLU&	0.000&	0.000&	0.000&	0.727&	0.000&	0.000&	0.000&	0.000&	0.929 \\
+		XLV&	0.332&	0.000&	0.693&	0.348&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLY&	0.000&	0.000&	3.671&	5.368&	0.000&	2.236&	0.000&	0.000&	0.000 \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJL3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY  \\ \cmidrule{2-10}
+		XLB&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLE&	0.000&	0.000&	0.000&	4.984&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLF&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLI&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLK&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLP&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLU&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		XLV&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.483&	0.000  \\
+		XLY&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000  \\
+		\hline
+		& \multicolumn{9}{c}{Lagged $QVJS3$ from} \\
+		Excess Returns of &	XLB&	XLE&	XLF&	XLI&	XLK&	XLP&	XLU&	XLV&	XLY \\ \cmidrule{2-10}
+		XLB&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.721&	0.000&	0.000 \\
+		XLE&	0.000&	0.000&	0.000&	4.551&	0.000&	4.809&	0.000&	4.007&	0.000 \\
+		XLF&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	1.693&	1.505&	0.000 \\
+		XLI&	0.000&	0.000&	0.000&	0.000&	0.000&	0.819&	0.948&	0.825&	0.811 \\
+		XLK&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLP&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLU&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	1.174&	0.000&	1.087 \\
+		XLV&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000&	0.000 \\
+		XLY&	0.000&	2.272&	12.386&	9.018&	7.471&	8.746&	10.176&	10.696&	3.685 \\
+		\hline\hline
+	\end{tabular}
+	\begin{minipage}{1\columnwidth}
+	$^{\ast}$ \footnotesize Notes: See notes to Table 4a.
+	\end{minipage}
+	
+\begin{landscape}
+	\begin{figure}[htb]
+		\begin{center}
+			\includegraphics[scale=1.35]{1yearlargejump}
+			\caption{Large Jump Spillover Effects by Year*}
+		\end{center}
+	\begin{minipage}{1\columnwidth}
+	$^{\ast}$ \footnotesize Notes: This figure aggregates the large ($QVJL3$) spillover effects by sector and by year based on the results in Table 3. NA is treated as 0. Each color block in the graph represents the spillover effects of sector $j$ in year $h$, and is calculated as  $\sum_{i}\sum_{k=1}^{k=22}|\beta_{i,j,k,h}^{\ast}|$ ($j \ne i$) as discussed in Section 3.1.
+	\end{minipage}
+	\end{figure}
+
+
+	\begin{figure}[htb]
+		\begin{center}
+			\includegraphics[scale=1.35]{2yearsmalljump}
+			\caption{Small Jump Spillover Effects by Year*}
+		\end{center}
+	\begin{minipage}{1\columnwidth}
+		$^{\ast}$ \footnotesize Notes: This figure aggregates the small ($QVJS3$) spillover effects by sector and by year based on the results in Table 3. See notes to Figure 1.
+	\end{minipage}
+	\end{figure}
+	
+	\begin{figure}[htb]
+		\begin{center}
+			\includegraphics[scale=1.35]{3yearjump}
+			\caption{Total Jump Spillover Effects by Year*}
+		\end{center}
+	\begin{minipage}{1\columnwidth}
+		$^{\ast}$ \footnotesize Notes: This figure aggregates the total ($QVJ$) spillover effects by sector and by year based on the results in Table 3. See notes to Figure 1.
+	\end{minipage}
+	\end{figure}
+	
+	\begin{figure}[htb]
+		\begin{center}
+			\includegraphics[scale=1.35]{4yearlargejumpex}
+			\caption{Large Jump Contribution Level to Excess Returns*}
+		\end{center}
+	\begin{minipage}{1\columnwidth}
+		$^{\ast}$ \footnotesize Notes: This figure aggregates large ($QVJL3$) jump contribution level to excess returns by sector and by year based on the results in Table 4. Each color block in the graph represent the contribution level of jumps in sector $j$ in year $h$, and is calculated as $C\sum_{i}\sum_{k=0}^{k=22}|\beta_{i,j,k,h}^{\ast}|$ as seen in Section 3.2.
+	\end{minipage}
+	\end{figure}
+	
+	\begin{figure}[htb]
+		\begin{center}
+			\includegraphics[scale=1.35]{5yearsmalljumpex}
+			\caption{Small Jump Contribution Level to Excess Returns*}
+		\end{center}
+		\begin{minipage}{1\columnwidth}
+		$^{\ast}$ \footnotesize Notes: This figure aggregates the small ($QVJS3$) jump contribution level to excess returns by sector and by year based on the results in Table 4. See notes to Figure 4.
+	\end{minipage}
+	\end{figure}
+	
+	\begin{figure}[htb]
+		\begin{center}
+			\includegraphics[scale=1.35]{6yearjumpex}
+			\caption{Total Jump Contribution Level to Excess Returns*}
+		\end{center}
+		\begin{minipage}{1\columnwidth}
+		$^{\ast}$ \footnotesize Notes: This figure aggregates the total ($QVJ$) jump contribution level to excess returns by sector and by year based on the results in Table 4. See notes to Figure 4.
+	\end{minipage}
+	\end{figure}
+\end{landscape}
+}
+
+\end{document}

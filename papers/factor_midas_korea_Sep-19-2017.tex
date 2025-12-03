@@ -1,0 +1,1909 @@
+%2multibyte Version: 5.50.0.2953 CodePage: 936
+%              Scientific Word   Wrap/Unwrap  Version 2.5             %
+%              Scientific Word   Wrap/Unwrap  Version 3.0             %
+% If you are separating the files in this message by hand, you will   %
+% need to identify the file type and place it in the appropriate      %
+% directory.  The possible types are: Document, DocAssoc, Other,      %
+% Macro, Style, Graphic, PastedPict, and PlotPict. Extract files      %
+% tagged as Document, DocAssoc, or Other into your TeX source file    %
+% directory.  Macro files go into your TeX macros directory. Style    %
+% files are used by Scientific Word and do not need to be extracted.  %
+% Graphic, PastedPict, and PlotPict files should be placed in a       %
+% graphics directory.                                                 %
+% Graphic files need to be converted from the text format (this is    %
+% done for e-mail compatability) to the original 8-bit binary format. %
+% Files included:                                                     %
+% "/document/factor_midas_korea_2015-11-25(1).tex", Document, 181586, 11/26/2015, 16:27:37, ""%
+%%%%%%%%% Start /document/factor_midas_korea_2015-11-25(1).tex %%%%%%%%
+%\geometry{left=1in,right=1in,top=1in,bottom=1in}
+%\pagestyle{fancy}   %to establish a new page style.
+%\fancyhf{}              %to clear the header and footer.
+%\rhead{\thepage}  %to force the page number to the top right of the page.
+%\renewcommand{\headrulewidth}{0pt} %on the next line.
+%\renewcommand{\footrulewidth}{0pt} %on the next line.
+%\pagestyle{fancy}
+%\lhead{Emprical Comparison of Forecasting Method for Factor Model} %Leave the left of the header empty
+%\chead{} %Leave the center of the header empty
+%\rhead{\thepage} %Display this text on the right of the header
+%\lfoot{By Author} %Display this text on the left of the footer
+%\cfoot{} %Leave the center of the footer empty
+%\rfoot{Page:\ \thepage} %Print the page number in the right footer
+%\renewcommand{\headrulewidth}{0pt} %Do not print a rule below the header
+%\renewcommand{\footrulewidth}{0pt} %Do not print a rule above the footer 
+%\usepackage{hyperref}
+%\input{tcilatex}
+%\input{tcilatex}
+%\input{tcilatex}
+
+
+\documentclass[12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage[nomarginpar,ignoremp,noheadfoot]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{fancyhdr}
+\usepackage{lscape}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{leftidx}
+\usepackage{arydshln}
+\usepackage{mathrsfs}
+\usepackage{fixltx2e}
+\usepackage[normalem]{ulem}
+\usepackage[toc,page]{appendix}
+\usepackage[sort&compress,authoryear]{natbib}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2953}
+%TCIDATA{Codepage=936}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=BibTeX}
+%TCIDATA{Created=Thursday, June 19, 2008 15:00:19}
+%TCIDATA{LastRevised=Monday, January 02, 2017 22:03:23}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Standard LaTeX\Blank - Standard LaTeX Article">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=article.cst}
+%TCIDATA{PageSetup=72,72,72,72,0}
+%TCIDATA{EvenPages=
+%H=36
+%F=36
+%}
+
+%TCIDATA{OddPages=
+%H=36
+%F=36
+%}
+
+%TCIDATA{FirstPage=
+%H=36
+%F=36
+%}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newcolumntype{x}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{y}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}{>{\centering\arraybackslash}p{2em}}
+\newcolumntype{D}{>{\centering\arraybackslash}p{3em}}
+\newcolumntype{E}{>{\centering\arraybackslash}p{6em}}
+\newcolumntype{F}{>{\raggedright\arraybackslash}p{2.5em}}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\geometry{headheight=15pt,headsep=1cm,vmargin={3cm,2.5cm},hmargin={2.5cm,2.5cm}}
+\setlength{\footskip}{1.5cm}
+\setlength{\bibsep}{2pt}
+%\input{tcilatex}
+\begin{document}
+
+
+\begin{center}
+{\Large Methods for Backcasting, Nowcasting and Forecasting Using
+Factor-MIDAS: With An Application To Korean GDP*}
+
+\bigskip \bigskip
+
+{\large Hyun Hak Kim$^1$ and Norman R. Swanson$^2$}
+
+{\bigskip {\large $^{1}$Kookmin University and $^{2}$Rutgers University}}
+
+\bigskip
+
+\bigskip
+
+September 2017\bigskip
+
+{\large Abstract}
+\end{center}
+
+\begin{singlespace}
+{\footnotesize We utilize mixed frequency factor-MIDAS models for the purpose
+of carrying out backcasting, nowcasting, and forecasting experiments using real-time data. We also introduce a new real-time 
+Korean GDP dataset, which is the focus of our experiments. The methodology that we utilize
+involves first estimating common latent factors (i.e., diffusion indices)
+from 190 monthly macroeconomic and financial series using various estimation
+strategies. These factors are then included, along with standard variables
+measured at multiple different frequencies, in various factor-MIDAS
+prediction models. Our key empirical findings are that: (i) When using
+real-time data, factor-MIDAS prediction models outperform various linear
+benchmark models. Interestingly, the `MSFE-best' MIDAS models contain no AR
+lag terms when backcasting and nowcasting. AR terms only begin to
+play a role in `true' forecasting contexts. (ii) Models
+that utilize only 1 or 2 factors are `MSFE-best' at all forecasting horizons,
+but not at any backcasting and nowcasting horizons. 
+In these latter contexts, much more heavily parameterized models with many factors are preferred. 
+(iii) Real-time data are crucial for forecasting Korean GDP, and the use of `first
+available' versus `most recent' data `strongly' affects model selection and
+performance. (iv) Recursively estimated models are almost always
+`MSFE-best', and models estimated using autoregressive interpolation dominate
+those estimated using other interpolation methods. (v) Factors estimated
+using recursive principal component estimation methods have more predictive
+content than those estimated using a variety of other (more sophisticated)
+approaches. This result is particularly prevalent for our  `MSFE-best'
+factor-MIDAS models, across virtually all forecast horizons, estimation schemes, and data vintages that
+are analyzed. 
+\smallskip }
+
+
+\bigskip
+
+\noindent \textit{Keywords:}{\normalsize \ nowcasting, forecasting, factor
+model, MIDAS.\bigskip }
+
+\noindent \textit{JEL Classification}{\normalsize : C53, G17.\smallskip
+\smallskip }
+
+\noindent \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+$^{\ast }${\scriptsize \ Hyun Hak Kim (hyunhak.kim@kookmin.ac.kr), Department of Economics, 
+77 Jeongneung-Ro, Seongbuk-Gu, Seoul, 02707, Korea.
+Norman R. Swanson (nswanson@econ.rutgers.edu), Department of Economics, 75 Hamilton Street, New
+Brunswick, NJ, 08901 USA. Much of this paper was written while the first author was a 
+member of staff at the Bank of Korea, and the authors would like to thank the bank for providing a stimulating research environment,
+as well as for financial assistance.
+This paper has benefited from useful comments made by the editor, Massimiliano Marcellino, as well as 2 referees. The authors also owe many thanks to Christian Schumacher for providing his MATLAB code.}
+\end{singlespace}\setcounter{page}{0} \thispagestyle{empty}
+
+\newpage
+
+\section{Introduction}
+
+In this paper, we utilize a combination of real-time data and mixed
+frequency modeling methods together with a variety of principal component analyses, in
+order to provide new evidence on the usefulness of these
+techniques for forecasting. More specifically, we introduce a new real-time
+Korean GDP dataset, which is used together with a large monthly
+dataset including 190 variables\footnote{This large monthly
+Korean macroeconomic dataset, which resembles the well-known U.S. \cite%
+{SW02JASA}' dataset, is introduced in \cite{K13BOK}.}, to backcast,
+nowcast, and forecast Korean GDP. Our prediction models combine the mixed
+data sampling (MIDAS) framework of \cite{GSV04MIDAS}, that allows for the
+incorporation of variables of differing frequencies, with the diffusion
+index framework of \cite{SW02JASA}.
+
+The difference between backcasting, nowcasting, and forecasting can be
+explained as follows. Suppose that the objective is to predict GDP for
+2016:Q2, using a simple autoregressive model of order one, say. In a
+conventional setting where real-time data are not available, it is assumed
+that information up to 2016:Q1 is available at the time the prediction is
+made, so that $\mathrm{\widehat{GDP}}_{\mathrm{2016:Q2}}=\hat{\alpha}+\hat{%
+\beta}\mathrm{GDP}_{\mathrm{2016:Q1}}$, where $\hat{\alpha}$ and $\hat{\beta}
+$ are parameters estimated using maximum likelihood based on recursive or
+rolling data windows. In a real-time context, however, this prediction is
+not feasible. Namely, if the prediction is to be made in April or even May
+of 2016, then $\mathrm{GDP}_{\mathrm{2016:Q1}}$ is not yet available, even
+in preliminary release. This issue leads to the convention of defining three
+different types of predictions, including backcasts (predicting past
+observations, which are not yet available in real-time), nowcasts
+(predicting concurrent observations), and forecasts (see \cite{GRS08JME} for a comprehensive discussion of backcasting and nowcasting). 
+One advantage of carefully analyzing the data structure used in the formulation of prediction
+models is that we are able to simulate real-time decision making processes. 
+In addition to \cite{GRS08JME}, the reader is referred to \cite{GGP2016} for an overview of this literature, within the
+context of nowcasting Euro area GDP in pseudo real-time using dimension
+reduction techniques.
+
+There are several approaches to forecasting lower frequency variables using
+higher frequency variables. The first approach involves use of the so-called
+`bridge' model, which aggregates higher frequency variables with lower
+frequency variables, such as GDP. This aggregation is called a `bridge', and
+this method is commonly used by central banks, since implementation and
+interpretation is straightforward (see e.g., \cite{RS03ECB}, \cite{GP05CEPR}
+and \cite{ZR06BoC}). Indeed, this approach offers a very convenient solution
+for filtering, or aggregating, variables characterized by different
+frequencies. However, aggregation may lead to the loss of useful
+information. This issue has led to the recent development of alternative
+mixed frequency modeling approaches. One important approach, which is
+mentioned above, is called MIDAS. This approach involves the use of a
+regression framework that directly includes variables sampled at different
+frequencies. Broadly speaking, MIDAS regression offers a parsimonious means
+by which lags of explanatory variables of differing frequencies can be
+utilized; and its use for macroeconomic forecasting is succinctly elucidated
+by \cite{CG08JBES}. Additional recent papers in this area of forecasting
+include \cite{KMS11IJF}, who predict Euro area GDP, \cite{FM12AEL} who
+predict French GDP, and \cite{PTV14CEPR}, who discuss Bayesian
+implementation of MIDAS. One interesting feature of MIDAS is that the
+technique readily allows for the inclusion of diffusion indices. For
+discussion of the combination of factor and MIDAS approaches, see \cite%
+{MS10OBES}, and Section 5 of this paper. For an interesting application to
+the prediction of German GDP, see \cite{S07JF}. 
+The reader is additionally referred to \cite{GRS08JME}, \cite{BGR2012Nowcast}, and \cite{BM2014JAE} for interesting discussions on the 
+use of mixed frequeny modeling for nowcasting, and to  
+\cite{KMS2013JAE}, \cite{AGJT2014JBES}, and \cite{MMM2014OBES} for a discussion on forecast combination in the current context.
+
+Our empirical findings can be summarized as follows. First and foremost, real-time
+data makes a difference. The utilization of real-time data in a recursive
+estimation framework, coupled with MIDAS, leads to the `MSFE-best'
+predictions in our experiments. Second, models that utilize only 1 or 2 factors are `MSFE-best' at all
+forecasting horizons, but not at any backcasting and nowcasting horizons. \
+In these latter contexts, much more heavily parameterized models with many
+factors are preferred. In particular, while 1 or 2 factors are selected
+around 1/2 of the time in the cases, 5 or 6 factors are also selected around
+1/2 of the time. Third, the variable being predicted makes a difference. For Korean GDP, the
+use of `first available' versus `most recent' data `strongly' affects model
+selection and performance. One reason for this is that `first available'
+data are never revised, and can thus in many cases be viewed as `noisy'
+versions of later releases of observations for the same calendar date. This
+is particularly true if rationality holds (see, e.g. \cite{VDSwan}).
+Fourth, recursively estimated models are almost always `MSFE-best', and
+models estimated using autoregressive interpolation dominate those estimated
+using other interpolation methods. Fifth, factors constructed using recursive principal component estimation
+methods have more predictive content than those estimated using a variety of
+other (more sophisticated) approaches. This result is particularly prevalent
+for our `MSFE-best' factor-MIDAS models, across virtually all forecast
+horizons, estimation schemes, and data vintages that are analyzed. For a detailed discussion of these findings, refer to Section 5.
+
+In summary, this paper introduces a new real-time dataset, offers a first
+look at the issue of backcasting, nowcasting, and forecasting real-time
+Korean GDP, and is meant to add to the burgeoning literature on the
+usefulness of MIDAS, diffusion indices, and real-time data for prediction.
+Future research questions include the following: Are robust shrinkage
+methods such as the lasso and elastic net useful in the context of real-time
+prediction, and can the methods discussed herein be modified to utilize
+these sorts of machine learning and shrinkage techniques? Can predictions be
+improved by utilizing even higher frequency data than those used here,
+including high frequency financial data? In the context of high frequency
+data, are measures of risk such as so-called realized volatility useful as
+predictors? Finally, are alternative \textquotedblleft
+sparse\textquotedblright\ diffusion index methodologies, such as sparse
+principal components analysis and independent component analysis useful in
+real-time prediction (see, e.g. \cite{KS11WP})? 
+
+The rest of the paper is
+organized as follows. Our real-time Korean GDP dataset is introduced in
+Section 2. Section 3 briefly describes how to estimate common factors using
+recursive and non-recursive PCA methods, and discusses approaches to
+addressing ragged-edge data. The MIDAS framework for backcasting,
+nowcasting, and forecasting is discussed in Section 4. Finally, Section 5
+presents the results of our forecasting experiments, and Section 6 concludes
+the paper.
+
+%-----------------------------------------------------------------------------------------------------------------
+
+\section{Real-Time Korean Data}
+
+\subsection{Notation}
+When constructing real-time datasets, both the data vintage (which `release'
+of data we are referring to, and when it was released) and the calendar date
+(the actual calendar date to which the data pertains) must be delineated.
+Figure \ref{fig03} depicts this relationship for Korean GDP.
+
+%\begin{center}
+%[Insert Figure \ref{fig03} here]
+%\end{center}
+
+Moreover, when constructing growth rates (e.g., log differences), data
+vintage is clearly relevant. It is thus important to carry forward a
+consistent and sensible notation, when using real-time data in model
+specification and estimation. Let $Z$ be the level of a variable and $z$ be
+the log difference thereof. %{\LARGE \textbf{(HERE1)}}
+Define: 
+\begin{equation}
+z_{t}^{(1)}=\ln Z_{t}^{(1)}-\ln Z_{t-d}^{(1)},
+\end{equation}%
+where $Z_{t}^{(1)}$ denotes the first release of $Z_{t},$ for calendar date $%
+t$, and $d$ denotes the difference taken (i.e., $d=1$ for quarterly growth
+rates, and $d=4$ for annual growth rates, when data are measured at a
+quarterly frequency). In practice, $z_{t}^{(1)}$ is not commonly used in
+empirical analysis, since, at calendar date $t$, a more recent release than $%
+1st$ may be available for $Z_{t-d}.$ If $Z_{t-d}$ has already been revised
+once, then use of updated data may be preferred, leading to the following
+definition: 
+\begin{equation}
+z_{t}^{(2)}=\ln Z_{t}^{(1)}-\ln Z_{t-1}^{(2)}.  \label{eq01}
+\end{equation}%
+For annual growth rates based on quarterly data, utilizing the latest
+available revision equates with constructing $z_{t}^{(3)}=\ln
+Z_{t}^{(1)}-\ln Z_{t-4}^{(3)}.$ In summary, when we are at calendar date $t$%
+, the latest observation available for date $t$ is the first release.
+
+%{\LARGE (the following paragraph replaces a paragraph from \textbf{(HERE1).)} Define: }
+%\begin{equation}
+%z_{t}^{(1)}=\ln Z_{t}^{(1)}-\ln Z_{t-d}^{(1)},
+%\end{equation}%
+In subsequent prediction experiments involving GDP, we update our forecasts
+at a monthly frequency, even though raw data are accumulated at only a
+quarterly frequency. It is thus necessary to specify monthly subscripts
+denoting data vintage. In particular, define: 
+\begin{equation}
+{_{t_{m}}}Y_{t_{q}}={_{t_{m}}}\mathbf{Y}_{t_{q}}-{_{t_{m}}}\mathbf{Y}%
+_{t_{q}-d},  \label{eq16}
+\end{equation}%
+where $\mathbf{Y}$ and $Y$ denote the log level and the growth rates of a
+variable, say GDP, respectively. Here, when $d=4,$ ${_{t_{m}}}Y_{t_{q}}$ are
+annual growth rates. Suppose that $t_{m}=$2016:05 and $t_{q}$ is 2016:Q1. 
+%%In practice, we may not know the value of $\mathbf{Y}$ for 2016:Q2, as $t_{m}=$ May 2016 but it is still definable. Accordingly, 
+Then the annual growth rate of GDP for 2016:Q1 in May 2016 is: 
+\begin{equation}
+{_{2016:05}}Y_{2016:Q1}={_{2016:05}}\mathbf{Y}_{2016:Q1}-{_{2016:05}}\mathbf{%
+Y}_{2015:Q1}.  \label{eq17}
+\end{equation}%
+Now, let the data release be denoted by adding a superscript to the above
+expression, as follows: 
+\begin{equation}
+{_{2016:05}}Y_{2016:Q1}^{(3)}={_{2016:05}}\mathbf{Y}_{2016:Q1}^{(1)}-{%
+_{2016:05}}\mathbf{Y}_{2015:Q1}^{(3)},  \label{eq18}
+\end{equation}%
+where the superscript 3 corresponds to a third release or vintage of
+real-time data. Figure \ref{fig00} depicts the construction of real-time GDP
+growth rates.
+%
+%\begin{center}
+%[Insert Figure \ref{fig00} here]
+%\end{center}
+%
+Putting it all together, our real-time nomenclature for is: 
+\begin{equation}
+{_{t_{m}}}Y_{t_{q}-d}^{(v)},  \label{eq18a}
+\end{equation}%
+where the sub- and super-scripts are defined above. Finally, and in order to
+simplify our notation, we redefine the superscript \textquotedblleft $v$" so
+that it corresponds directly to the vintage of the growth rate, rather than
+the vintage of the raw data used in the construction of the growth rate.
+Namely, let ${_{t_{m}}}Y_{t_{q}-d}^{(1)}$ denote the first vintage growth
+rate of GDP, instead of (\ref{eq18a}). Thus, ${_{t_{m}}}Y_{t_{q}-d}^{(1)}$
+is simply the first available growth rate of GDP for a particular calendar
+date, given data reporting agency release lags, $d$. Accordingly, ${_{t_{m}+m}}%
+Y_{t_{q}-d}^{(i)}$ is the $i-$th vintage growth rate for calendar date ${%
+t_{q}}-d,$ at time ${t_{m}}+m,$ where $m$ is the feasible month for which $%
+i- $ th vintage data are available. In the sequel, when the superscript for
+the vintage is omitted, we mean first vintage.
+
+Given the above notation, we can specify forecast models using real-time
+data. Suppose that the objective is to predict $h_{q}$ steps ahead at time $%
+t_{m}$, using an AR(1) model. Then, the prediction model is: 
+\begin{equation}
+{_{t_{m}}}Y_{t_{q}-d+h_{q}}=\alpha +\beta _{h_{q}}\cdot {_{t_{m}}}%
+Y_{t_{q}-d}+\epsilon _{t_{q}},  \label{eq19}
+\end{equation}%
+where $\epsilon _{t_{q}}$ is a stochastic noise term, $\alpha $ and $\beta
+_{h_{q}}$ are coefficients estimated using maximum likelihood, and $Y$ is
+defined as above. Here, vintage notation is omitted for brevity. Note that
+we forecast $h_{q}$ periods ahead at time $t_{m}$ (or $t_{q})$, but we do
+not have real-time information up to $t_{q}$. Therefore, the explanatory
+variable is lagged $d$ quarters. Equation (\ref{eq19}) is one of our
+benchmark forecasting models. Assume that we are at time $t_{m}$ in the
+first month of the quarter, $t_{q}$. If there is a publication lag equal to $%
+1$ (i.e., $d=1$), we `backcast' a value of $Y$, for time period $t_{q}-d$,
+`nowcast' a value of $Y,$ for time period $t_{q}$, and `forecast' a value of 
+$Y,$ for time period $t_{q}+h_{q}$.
+
+\subsection{The dataset}
+We have collected real-time Korean GDP beginning with the vintage available
+in January 2000. The calendar start date of our dataset is 1970:Q1, and data
+are collected through June 2014. As discussed in the introduction, first
+release GDP is announced 28 days after the end of the quarter, second GDP
+release is announced 70 days subsequent to the end of the quarter, and the
+third release is made available 50 days after a calendar year has passed.
+Finally, a fourth release is made available a full year later. These release
+dates have been fixed since 2005. Before then, release dates were relatively
+irregular, although the first release was usually around 60 days after the
+end of the quarter, and the second release was around 90 days after the end
+of the quarter. Even though GDP is finalized after approximately 2 years,
+there are several definitional changes, as well as regular base-year changes
+that subsequently affected our dataset. The revision history for Korean GDP
+is depicted in Figure \ref{fig01}. Panel (a) of the figure shows the growth
+rate of GDP by vintage. The plot denoted as `1st' is first release GDP, and
+so on. In Panel (b), revision errors are depicted. Plots denoted as `2nd',
+`12th' and `24th' all refer to differences relative to the first release.
+Prior to the 1990's, the differences were relatively large; with notable
+narrowing of these `revision errors' more recently. It seems that along with
+the imposition of stricter release and announcement protocol, early releases
+have become more accurate. Panel (c) of Figure \ref{fig01} depicts how GDP
+for certain calendar dates (i.e., 2001:Q1, 2003:Q1 and 2005:Q1) has evolved
+across releases. The GDP release dynamics observable in Panels (a), (b) and
+(c) is indicative of the fact that policy decision-making should carefully
+account for the real-time nature of GDP data. Panel (d) contains a histogram
+of first revision errors, which are the difference between first and second
+releases, over time. Interestingly, the first vintage is biased, as
+indicated by the asymmetric nature of the histogram. This suggests that the
+revision error history may be useful for prediction.
+
+%\begin{center}
+%[Insert Figure \ref{fig01} here]
+%\end{center}
+
+\section{Estimating Diffusion Indexes}
+
+We estimate common latent factors (i.e., diffusion indices) using 190
+monthly macroeconomic and financial variables.\footnote{%
+Our largescale monthly predictor dataset is not measured in real-time, as is
+the case with our real-time Korean GDP, due to data availability. As
+discussed above, the \ predictor dataset is discussed in \cite{K13BOK}.
+These data have been categorized into 12 groups: interest rates,
+imports/exports, prices, money, exchange rates, orders received,
+inventories, housing, retail and manufacturing, employment, industrial
+production, and stocks. We extend this monthly dataset through June 2014 in
+the current paper. All variables are transformed to stationarity, and the
+final dataset closely resembles the well-known Stock and Watson dataset,
+which has been extensively used to estimate common factors for the U.S.
+economy. Note additionally that select monthly indicators in our dataset are seasonally adjusted using the  
+Bank of Korea's X-13 ARIMA filter, and further treatment of potential seasonality in our data is left to future research. For complete details, see \cite{K13BOK}. Note also that cointegration is not accounted for in any of our models, and further exploration of the usefulness of applying cointegration restrictions in our experiments is left to future research. For discussion of cointegration and its usefulness in MIDAS models, see \cite{GOTZ2016}, and the references cited therein.} Thereafter, we utilize
+our estimated factors, along with various additional variables measured at
+multiple different frequencies, in MIDAS prediction regressions (see Section
+5 for complete details). One conventional way to estimate common factors is
+via the use of PCA. In order to avoid potential computational burdens associated with
+matrix inversions, and in order to simulate a `real-time' environment, we
+use a variant thereof, called recursive PCA, following \cite{PERH04IEEE}. In
+this section, we discuss recursive PCA and other key details associated with factor
+estimation, in our context. 
+
+Before continuing our discussion, it is worth noting that many other data dimension reduction, variable selection, machine learning and shrinkage methods, including partial least squares, the elastic net, and bagging, to name only a few, can be applied to the problem of constructing factor-MIDAS models. Theoretical and empirical research in this area, however, is left to future research. For related discussion of some of these methods, see \cite{Cuba2012}.
+
+Since we model real-time GDP, it is critical to match monthly data
+availability with GDP release vintages. In particular, some of our monthly
+variables are not available at certain calendar dates even though new
+vintages of GDP have been released by said calendar dates. For example, the
+consumer price index for the previous month is released early in the current
+month, whereas the producer price index is released in the middle of the
+month. In between these releases, new vintages of GDP are often released.
+This is called a ragged-edge data problem. Denote our $N$-dimensional
+monthly dataset as $X_{t_{m}},$ where time index $t_{m}$ denotes the monthly
+frequency. Assume that the monthly observations have the following factor
+structure: 
+\begin{equation}
+X_{t_{m}}=\Lambda F_{t_{m}}+\xi _{t_{m}},  \label{eq03}
+\end{equation}%
+where the $r$-dimensional factor vector is denoted by $F_{t_{m}}=\left(
+f_{1,t_{m}}^{\prime },\ldots ,f_{r,t_{m}}^{\prime }\right) $, $\Lambda $ is
+an $\left( N\times r\right) $ factor loading matrix, and $r<<N$. Note that
+we do not have monthly indicators in real-time, so that there is no prefix
+subscript in \ref{eq03}. In this formulation, the common components of $%
+X_{t_{m}}$ consist of the diffusion indices, $F_{t_{m}}$. The idiosyncratic
+components, $\xi _{t_{m}},$ are that part of $X_{t_{m}}$ not explained by
+the factors. Let data matrix $X$ be a balanced one with dimension $%
+T_{m}\times N$. The most widely used methods for estimating $F_{t_{m}}$ are
+based on static PCA, as in \cite{SW02JASA}; and dynamic PCA, as in \cite%
+{FHLR05JASA}. However, PCA is based on an eigenvalue/eigenvector
+decomposition of the covariance matrix of $X_{t_{m}},$ which requires
+inversion of this matrix. This means that the dataset must 
+not be ragged. Therefore, we need to resolve the ragged-edge problem prior
+to obtaining diffusion index estimates. In this paper, we use \textit{%
+vertical alignment} and \textit{AR interpolation} for missing values.
+Another convenient way to solve the ragged-edge problem is proposed by \cite%
+{SW02JASA}, who use the EM algorithm together with standard PCA.
+Additionally, one can write the factor model in state-space form in order to
+handle missing values at the end of each variables' sample, following \cite%
+{DGR12RES}.\footnote{\cite{DGR12RES} use the Kalman filter and smoother for
+estimation. \bigskip} Our approaches to the ragged-edge problem are the
+following: \bigskip
+
+\noindent \textit{Vertical alignment (VA) interpolation of missing data:}
+
+The simplest way to solve the ragged-edge problem is to directly balance any
+unbalanced datasets. In particular, assume that variable $i$ is released
+with a $k_{i}$ month publication lag. Thus, given a dataset in period $T_{m}$%
+, the final observation available for variable $i$ is for period $%
+T_{m}-k_{i} $. The realignment proposed by \cite{ACFLV10RES} is: 
+\begin{equation}
+\tilde{X}_{i,t_{m}}=X_{i,t_{m}-k_{i}},\text{ \ for \ \ }%
+t_{m}=k_{i}+1,...,T_{m}.
+\end{equation}
+Applying this procedure for each series, and harmonizing at the beginning of
+the sample, yields a balanced dataset, $\tilde{X}_{t_{m}},$ for $t_{m}=\max
+\left( \{k_{i}\}_{i}=1^{N}\right) +1,...,T_{m}$. Given this new dataset, PCA
+can be immediately implemented. Although easy to use, a disadvantage of this
+method is that the availability of data determines dynamic
+cross-correlations between variables. Furthermore, statistical release dates
+for each variable are not the same over time, for example, due to major
+revisions. \bigskip
+
+\noindent \textit{Autoregressive (AR) interpolation of missing data:}
+
+As an alternative to vertical alignment, we use univariate autoregressive
+models for individual monthly indicators, $X_{i}$. Namely, specify and
+estimate the following models: 
+\begin{equation}
+X_{i,t}=\sum\limits_{s=1}^{p_{i}}\rho _{s}X_{i,t-s}+u_{i,t},\text{ \ \ \ \ \
+\ }i=1,\ldots ,k,
+\end{equation}%
+where $p_{i}$ is the lag length, and is selected using the Schwarz
+Information Criterion (SIC), coefficients $\rho $ are estimated using
+maximum likelihood, and $u_{i,t}~$is a white noise error term. This AR
+method depends only on the univariate characteristics of the variable in
+question, and not on the broader macroeconomic environment from within which
+the data are generated. However, it is very easy to implement and is an
+intuitive approach. \bigskip
+
+The ragged-edge problem essentially concerns estimating missing values. \cite%
+{SW02JASA} propose using the EM algorithm to replace missing values and
+subsequently carry out PCA. The EM algorithm is initialized with an estimate
+of the missing data, which is usually set equal to the unconditional mean
+(this is also the approach that we use). Then, the completed dataset is used
+to estimate factors using PCA. This algorithm is repeated in two steps, the $%
+E$-step and the $M$-step. 
+
+Another popular approach for estimating factors from large datasets is the
+state-space approach based on \cite{DGR12RES} and \cite{GRS08JME}. The
+factor model represented in state-space form is based on the (\ref{eq03}),
+with factors represented using an autoregressive structure. A detailed explanation of the above two methods is given in a supplemental appendix
+available at the authors academic websites.
+
+\bigskip
+\noindent \textit{Recursive and standard principal component analysis (RPCA and OPCA)}
+
+PCA is widely used to estimate factors or diffusion indices in large
+data environments (see \cite{KS11WP} and the references cited
+therein). In this paper, we utilize PCA, called OPCA in our later discussion of our empirical findings to differentiate it from recursive PCA (discussed below). Our implementation follows the approach of Stock and Watson (2002), and is standard to the literature. For a discussion of the generated regressor problem associated with our empirical implementation of factor augmented prediction models, see \cite{baiandng2008}. We conjecture that their results also apply in the context of the MIDAS models considered in this paper, although proof thereof is left to future research.
+
+In general, PCA is quite convenient as it uses standard eigenvalue
+decompositions of data covariance matrices. However, these matrix operations may be time consuming in certain real-time environments. In light of this,
+RPCA has been proposed by \cite{PERH04IEEE}, and is a natural approach to
+use in our context, as new data arrive in real-time and need to be
+incorporated into our prediction models. Details about RPCA is revealed in the Appendix. 
+
+% Also, suppose that $F_{t_{m}}$ is
+%estimated using PCA. Principal components (factors) in this context are
+%linear combinations of variables that maximize the variance of the data, and
+%there is no guarantee that factor loadings are stationary at each point in
+%time, particularly with large datasets. For example, the factor loadings at
+%times $t$ and $t+1$ may have different signs. Recursive PCA attempts to
+%address these issues, in part by not requiring the calculation of the whole
+%covariance matrix of data with the arrival of each new datum. Without loss
+%of generality, consider a standardized random vector at time $t$, say $%
+%x_{t}, $ with dimension $n$. Our aim is to find the principal components of $%
+%x$ at time $t$. To begin, define the covariance (or correlation) matrix of $%
+%x $ as: 
+%\begin{equation}
+%\boldsymbol{R}_{t}=\frac{1}{t}\sum\limits_{i=1}^{t}x_{i}x_{i}^{\prime }=%
+%\frac{t-1}{t}\boldsymbol{R}_{t-1}+\frac{1}{t}x_{t}x_{t}^{\prime }.
+%\label{eq1}
+%\end{equation}%
+%
+%If $\boldsymbol{Q}$ and $\boldsymbol{\Lambda }$ are the orthonormal
+%eigenvector and diagonal eigenvalue matrices of $\boldsymbol{R}$,
+%respectively, then: $\boldsymbol{R}_{t}=\boldsymbol{Q}_{t}\boldsymbol{{%
+%		\Lambda }_{t}}\boldsymbol{Q}_{t}^{\prime }$ and $\boldsymbol{R}_{t-1}=%
+%\boldsymbol{Q}_{t-1}\boldsymbol{\Lambda }_{t-1}\boldsymbol{Q}_{t-1}^{\prime
+%} $. We can rewrite (\ref{eq1}) as: 
+%\begin{equation}
+%\boldsymbol{Q}_{t}\left( t\boldsymbol{\Lambda }_{t}\right) \boldsymbol{Q}%
+%_{t}^{\prime }=x_{t}x_{t}^{\prime }+\left( t-1\right) \boldsymbol{Q}_{t-1}%
+%\boldsymbol{\Lambda }_{t-1}\boldsymbol{Q}_{t-1}^{\prime }.  \label{eq2}
+%\end{equation}%
+%If we let $\alpha _{t}=\boldsymbol{Q}_{t-1}^{\prime }x_{t}$, (\ref{eq2}) can
+%be written as: $\boldsymbol{Q}_{t}\left( t\boldsymbol{\Lambda }_{t}\right) 
+%\boldsymbol{Q}_{t}^{\prime }=\boldsymbol{Q}_{t-1}\left[ \left( t-1\right) 
+%\boldsymbol{\Lambda }_{t-1}+\alpha _{t}\alpha _{t}^{\prime }\right] 
+%\boldsymbol{Q}_{t-1}^{\prime }.$ If $\boldsymbol{V}_{t}$ and $\boldsymbol{D}%
+%_{t}$ are the orthonormal eigenvector and diagonal eigenvalue matrices of $%
+%\left( t-1\right) \boldsymbol{\Lambda }_{t-1}+\alpha _{t}\alpha _{t}^{\prime
+%}$, then: 
+%\begin{equation}
+%\left( t-1\right) \boldsymbol{\Lambda }_{t-1}+\alpha _{t}\alpha _{t}^{\prime
+%}=\boldsymbol{V}_{t}\boldsymbol{D}_{t}\boldsymbol{V}_{t}^{\prime }.
+%\label{eq4}
+%\end{equation}%
+%Therefore, 
+%\begin{equation}
+%\boldsymbol{Q}_{t}\left( t\boldsymbol{\Lambda }_{t}\right) \boldsymbol{Q}%
+%_{t}^{\prime }=\boldsymbol{Q}_{t-1}\boldsymbol{V}_{t}\boldsymbol{D}_{t}%
+%\boldsymbol{V}_{t}\boldsymbol{Q}_{t-1}^{\prime }.  \label{eq5}
+%\end{equation}%
+%By comparing both sides of (\ref{eq5}), the recursive eigenvector and
+%eigenvalue update rules turn out to be $\boldsymbol{Q}_{t}=\boldsymbol{Q}%
+%_{t-1}\boldsymbol{V}_{t}$ and $\boldsymbol{\Lambda }_{t}=\boldsymbol{D}%
+%_{t}/t $. Now,it remains to estimate the eigenvectors and eigenvalues of $%
+%\left( t-1\right) \boldsymbol{\Lambda }_{t-1}+\alpha _{t}\alpha _{t}^{\prime
+%}$, which is equivalent to estimating $\boldsymbol{V}_{t}$ and $\boldsymbol{D%
+%}_{t}$. It is very difficult to analytically solve for $\boldsymbol{V}_{t}$
+%and $\boldsymbol{D}_{t}$, and so \cite{PERH04IEEE} instead use first order
+%perturbation analysis. Consider the following sample perturbation to the
+%eigenvalue matrix, $\left( t-1\right) \boldsymbol{\Lambda }_{t-1}+\alpha
+%_{t}\alpha _{t}^{\prime }$. When $t$ is large, this matrix is essentially a
+%diagonal matrix, which means that $\boldsymbol{D}_{t}$ will be close to $%
+%\left( t-1\right) \boldsymbol{\Lambda }_{t-1}$, and $\boldsymbol{V}_{t}$
+%will be close to the identity matrix, $\boldsymbol{I}$. The matrix $\alpha
+%_{t}\alpha _{t}^{\prime }$ is said to perturb the diagonal matrix $\left(
+%t-1\right) \boldsymbol{\Lambda }_{t-1},$ and as a result, $\boldsymbol{D}%
+%_{t}=\left( t-1\right) \boldsymbol{\Lambda }_{t-1}+\boldsymbol{P}_{\Lambda }$
+%and $\boldsymbol{V}_{t}=\boldsymbol{I}+\boldsymbol{P}_{V}$, where $%
+%\boldsymbol{P}_{\Lambda }$ and $\boldsymbol{P}_{V}$ are small perturbation
+%matrices. Once we find these perturbation matrices, we can solve the
+%problem. Let $\boldsymbol{\Lambda }=\left( t-1\right) \boldsymbol{\Lambda }%
+%_{t-1}$. Then: 
+%\begin{equation}
+%\begin{aligned}
+%\boldsymbol{{V}}_{t}\boldsymbol{{D}}_{t}\boldsymbol{{V}}_{t}' &=
+%\left(\boldsymbol{{I}}+\boldsymbol{{P}}_{V}\right)\left(\boldsymbol{{%
+%		\Lambda}}+\boldsymbol{{P}}_{\Lambda}\right)\left(\boldsymbol{{I}}+%
+%\boldsymbol{{P}}_{V}\right)' \\
+%&=\boldsymbol{{\Lambda}}+\boldsymbol{{\Lambda}}\boldsymbol{{P}}_{V}'+%
+%\boldsymbol{{P}}_{\Lambda}+\boldsymbol{{P}}_{\Lambda}\boldsymbol{{P}}_{V}'+%
+%\boldsymbol{{P}}_{V}\boldsymbol{{\Lambda}}
+%+\boldsymbol{{P}}_{V}\boldsymbol{{\Lambda}}\boldsymbol{{P}}_{V}'+%
+%\boldsymbol{{P}}_{V}\boldsymbol{{P}}_{\Lambda}+\boldsymbol{{P}}_{V}%
+%\boldsymbol{{P}}_{\Lambda}\boldsymbol{{P}}_{V}' \\
+%&=\boldsymbol{{\Lambda}}+\boldsymbol{{P}}_{\Lambda}+\boldsymbol{{D}}%
+%\boldsymbol{{P}}_{V}'+\boldsymbol{{P}}_{V}\boldsymbol{{D}}+%
+%\boldsymbol{{P}}_{V}\boldsymbol{{\Lambda}}\boldsymbol{{P}}_{V}'+%
+%\boldsymbol{{P}}_{V}\boldsymbol{{P}}_{\Lambda}\boldsymbol{{P}}_{V}'
+%\label{eq7} \end{aligned}
+%\end{equation}
+%
+%Substituting this equation into (\ref{eq4}), and assuming that $\boldsymbol{P%
+%}_{V}\boldsymbol{\Lambda }\boldsymbol{P}_{V}^{\prime }$ and $\boldsymbol{P}%
+%_{V}\boldsymbol{P}_{\Lambda }\boldsymbol{P}_{V}^{\prime }$ are negligible,
+%we have that: $\alpha _{t}\alpha _{t}^{\prime }=\boldsymbol{P}_{\Lambda }+%
+%\boldsymbol{D}\boldsymbol{P}_{V}^{\prime }+\boldsymbol{P}_{V}\boldsymbol{D.}$
+%The fact that $\boldsymbol{V}$ is orthonormal yields an additional
+%characterization of $\boldsymbol{P}_{V}$. Substituting $\boldsymbol{V}=%
+%\boldsymbol{I}+\boldsymbol{P}_{V}$ into $\boldsymbol{V}\boldsymbol{V}%
+%^{\prime }=\boldsymbol{I}$, and assuming that $\boldsymbol{P}_{V}\boldsymbol{%
+%	P}_{V}^{\prime }\approx 0$, we have that $\boldsymbol{P}_{V}=-\boldsymbol{P}%
+%_{V}^{\prime }$. Thus, combining the fact that the $\boldsymbol{P}_{V}$ is
+%antisymmetric with the fact that $\boldsymbol{P}_{\Lambda }$, and $%
+%\boldsymbol{D}_{t}$ are diagonal, yields the following solution to our
+%problem: %\begin{equation}
+%\begin{align}
+%\alpha _{i}^{2}& =(i,i)^{th}\space\text{ element of }\boldsymbol{P}_{\Lambda
+%}  \label{eq9} \\
+%\frac{\alpha _{i}\alpha _{j}}{\lambda _{j}+\alpha _{j}^{2}-\lambda
+%	_{i}-\alpha _{i}^{2}}& =(i,j)^{th}\text{ element of }\boldsymbol{P}_{V}\text{%
+%	, }i\neq j\text{, and }0=(i,i)^{th}\text{ element of }\boldsymbol{P}_{V}. 
+%\notag
+%\end{align}%
+%
+%At time $t$, use the covariance matrix, $\mathrm{\mathbf{R}}_{k-1}$%
+%, which is available for period $t-1$, and collect eigenvalues and
+%eigenvectors into $\Lambda _{t-1}$ and $\mathrm{\mathbf{Q}}_{k-1}$,
+%respectively. More specifically,
+%%\begin{enumerate}
+%%\item 
+%with each a new datum, $x_{t}$, calculate $\alpha _{t}=\mathrm{\mathbf{%
+%Q}}_{t-1}^{\prime }x_{t}.$ Next,
+%use (\ref{eq9}), to find the perturbation matrices, $\mathrm{\mathbf{P}%
+%}_{V}$ and $\mathrm{\mathbf{P}}_{\Lambda }.$ 
+%Then, estimate the eigenvector matrix, $\mathrm{\tilde{\mathbf{Q}}}_{t}=%
+%\mathrm{\mathbf{Q}}_{t-1}\left( I+\mathrm{\mathbf{P}}_{\Lambda }\right) .$ 
+%Then, standardize $\mathrm{\tilde{\mathbf{Q}}}_{t}$, using $\mathrm{\hat{%
+%\mathbf{Q}}}_{t}=\mathrm{\tilde{\mathbf{Q}}}_{t}\mathrm{\tilde{\mathbf{S}}}%
+%_{t},$ where $\mathrm{\tilde{\mathbf{S}}}_{t}$ is a diagonal matrix
+%containing the inverse of the norms of each column of $\mathrm{\tilde{%
+%\mathbf{Q}}}_{t}$. Finally,
+%estimate the eigenvalue, $\hat{\Lambda}_{t}=\mathrm{\hat{\mathbf{Q}}}%
+%_{t}^{\prime }\mathrm{{\mathbf{R}}}_{t}\mathrm{\hat{\mathbf{Q}}}_{t}.$ 
+%
+%%-----------------------------------------------------------------------------------------------------------------------
+
+\section{Backcasting, Nowcasting, and Forecasting Using MIDAS}
+
+\subsection{Factor-MIDAS}
+
+The MIDAS approach for forecasting with real-time data was developed by \cite%
+{CG08JBES,CG09JAE}. Building on their work, the factor-MIDAS approach
+utilized in the sequel was developed by \cite{MS10OBES}. Note that
+factor-MIDAS is essentially conventional MIDAS augmented to include
+explanatory variables that are common factors extracted from higher
+frequency variables and datasets. 
+%Starting with a traditional distributed lag model, which was a well-known method for treating mixed frequency data, like the following, 
+%\begin{equation} 
+%y_t = \beta_0 + B \left(L\right) X_t+\varepsilon_t
+%\end{equation}
+%where $B\left(L\right)$ is lag polynomial operator. Simple way to treat mixed frequency is  
+More specifically, suppose that $Y_{t_{q}}$ is sampled at a quarterly
+frequency. Let $X_{t_{m}}$ be sampled at a higher frequency - for example,
+if it is sampled at a monthly frequency, then $m=3.$ The factor-MIDAS model
+for forecasting $h_{q}$ quarters ahead is: 
+\begin{equation}
+Y_{t_{q}+h_{q}}=\beta _{0}+\beta _{1}B\left( L^{1/m},\theta \right) \hat{F}%
+_{t_{m}}^{(3)}+\varepsilon _{t_{q}},  \label{eq23}
+\end{equation}%
+where $B\left( L^{1/m},\theta \right) =\sum\limits_{j=0}^{j^{\max
+}}b(j,\theta )L^{j/m}$ is the exponential Almon lag with 
+\begin{equation}
+b(j,\theta )=\frac{\exp \left( \theta _{1}j+\theta _{2}j^{2}\right) }{%
+\sum_{j=0}^{j^{max}}\exp \left( \theta _{1}j+\theta _{2}j^{2}\right) },
+\label{eq25}
+\end{equation}%
+and with $\theta =\left( \theta _{1},\theta _{2}\right) $. Here, $\hat{F}%
+_{t_{m}}$ is a set of monthly factors estimated using one of the various
+approaches discussed in the previous section, $%
+L^{j/m}X_{t}^{(m)}=X_{t-j/m}^{(m)},$ and $\hat{F}_{t_{m}}^{(3)}$ is skip
+sampled from the monthly factor vector, $\hat{F}_{t_{m}}$. That is, every
+third observation starting from the final one is included in the predictor, $%
+\hat{F}_{t_{m}}^{(3)}$. In this formulation, all monthly factors are in the
+set of predictors, and are appropriately lagged. If we apply our real-time
+dataset structure in this framework, the model in (\ref{eq23}) is: 
+\begin{equation}
+{_{t_{m}}}Y_{t_{q}+h_{q}}=\beta _{0}+\beta _{1}B\left( L^{1/m},\theta
+\right) F_{t_{m}}^{(3)}+\varepsilon _{t_{q}},  \label{eq24}
+\end{equation}%
+and assuming that there are $r$ factors, $%
+F_{t_{m},1},F_{t_{m},2},...,F_{t_{m},r}$ , we have that: 
+\begin{equation}
+{_{t_{m}}}Y_{t_{q}+h_{q}}=\beta _{0}+\sum\limits_{i=1}^{r}\beta
+_{1,i}B_{i}\left( L^{1/m},\theta _{i}\right) F_{t_{m},i}^{(3)}+%
+\varepsilon _{t_{q}+h_{q}}.  \label{eq30}
+\end{equation}
+
+Since we do not have monthly real-time data and we interpolate missing
+values at the end of each monthly indicator, $F_{t_{m}}$ always exists at
+time $t_{m}$. If we are in the first month of the quarter and the dependent
+variable from previous quarter is not available, we `backcast' the previous
+quarter's value, `nowcast' the current quarter, and `forecast' future
+quarters, as discussed above. For example, the backcast of $Y_{t_{q}-1}$ at
+time $t_{m},$ where $t_{m}$ is the first month of the quarter is: 
+\begin{equation}
+{_{t_{m}}}Y_{t_{q}-1}=\beta _{0}+\beta _{1}B\left( L^{1/m},\theta \right) F_{t_{m}-1}^{(3)}+{_{t_{m}}}\varepsilon _{t_{q}-1}.  \label{eq26}
+\end{equation}%
+Note that $t_{q}-1$ denotes the previous quarter and $t_{m}-1$ denotes the
+previous month. The nowcast of $Y_{t_{q}}$ at time $t_{m},$ where $t_{m}$ is
+the first month of the quarter is: 
+\begin{equation}
+{_{t_{m}}}Y_{t_{q}}=\beta _{0}+\beta _{1}B\left( L^{1/m},\theta \right) {%
+_{t_{m}}}F_{t_{m}}^{(3)}+{_{t_{m}}}\varepsilon _{t_{q}},  \label{eq27}
+\end{equation}%
+and for the second month of the quarter, the nowcast is: 
+\begin{equation}
+{_{t_{m}+1}}Y_{t_{q}}=\beta _{0}+\beta _{1}B\left( L^{1/m},\theta \right) {%
+_{t_{m}+1}}F_{t_{m}+1}^{(3)}+{_{t_{m}+1}}\varepsilon _{t_{q}}.  \label{eq28}
+\end{equation}%
+Now, define the $h_{q}$-ahead forecast at time $t_{m}$ as follows: 
+\begin{equation}
+{_{t_{m}}}Y_{t_{q}+h_{q}}=\beta _{0}+\beta _{1}B\left( L^{1/m},\theta
+\right) {_{t_{m}}}F_{t_{m}}^{(3)}+{_{t_{m}}}\varepsilon _{t_{q}+h_{q}}.
+\label{eq29}
+\end{equation}%
+Finally, \cite{CG08JBES} extend MIDAS by adding autoregressive (AR) terms,
+yielding models of the following variety: 
+\begin{equation}
+{_{t_{m}}}Y_{t_{q}+h_{q}}=\beta _{0}+\eth
+Y_{t_{q}}+\sum\limits_{i=1}^{r}\beta _{1,i}B_{i}\left( L^{1/m},\theta
+_{i}\right) F_{t_{m},i}^{(3)}+\varepsilon _{t_{q}+h_{q}}.
+\end{equation}%
+All of the above models are analyzed in our forecasting experiments.
+
+In closing this section, it should be noted that, according to \cite%
+{GSV04MIDAS} and \cite{AGK10}, given $\theta _{1}$ and $\theta _{2}$, the
+exponential lag function, $B(L^{1/m},\theta ),$ provides a parsimonious
+estimate that can proxy for monthly lags of the factors, as long as $j$ is
+sufficiently large. It remains how to estimate $\theta $ and $\beta $. \cite%
+{MS10OBES} suggest using nonlinear least squares (NLS), yielding
+coefficients, $\hat{\theta}$ and $\hat{\beta}$. In our experiments, all
+coefficients are estimated using NLS, except in cases where least squares
+can directly be applied.%
+%Though dynamic factor model is widely used in macroeconomic literature, computational cost is quite large in big data circumstance. Instead, we employ recursive PCA, using \cite{PERH04IEEE}, for estimating factors recursively, reflecting only updated information, which means that it does not require estimate covariance matrix of the data. Therefore, now- and forecasting GDP in Korea is done in two steps. First we estimate factors using recursive PCA as well as a conventional way. Then we apply these factors as monthly indicators in MIDAS regression.
+%We expect that recursive factor estimation methods works well in mixed frequency sampling in now- and forecasting quarterly GDP, It is also expected that factor-MIDAS works better than simple MIDAS-Autoregressive and how useful factor model is under mixed frequency framework in forecasting Korean GDP with simpler way to update monthly information in constructing factors recursively. Finally, the methodology hired in this paper can provide a good information for policymaker to assess current GDP and economic situation before the data is released. 
+
+% --------------------------------------------------------------------------------------
+
+\subsection{Other MIDAS specifications}
+
+\cite{MS10OBES} utilize two different MIDAS specifications, including
+smoothed MIDAS, which is a restricted form of the above MIDAS model with
+different weights on monthly indicators, and unrestricted MIDAS, which
+relaxes restrictions on the lag polynomial used. These MIDAS models are
+explained in the context of the models we implement, as given in equations (%
+\ref{eq27}).\medskip
+
+\noindent \textit{Unrestricted MIDAS}
+\medskip
+
+Another alternative version of MIDAS involves using an unrestricted lag
+polynomial when weighting the explanatory variables (i.e. the factors).
+Namely, let: 
+\begin{equation}
+{_{t_{m}}}Y_{t_{q}+h_{q}}=\beta _{0}+\mathbf{C}\left( L_{m}\right) \hat{F}%
+_{t_{m}}^{(3)}+\varepsilon _{t_{q}+h_{q}},
+\end{equation}%
+where $\mathbf{C}\left( L_{m}\right) =\sum\limits_{j=0}^{j^{max}}\mathbf{C}%
+_{j}L_{m}^{j}$ is an unrestricted lag polynomial of order $j$. \cite%
+{KDP03RES} propose a similar model in the context of forecasting with
+real-time data, but not with factors. \cite{MS10OBES} and \cite{FMS2015JRS} provide a theoretical
+justification for this model and derive MIDAS as an approximation to a
+forecast equation from a high-frequency factor model in the presence of
+mixed sampling frequencies. Here, $\mathbf{C}\left( L_{m}\right) $ and $%
+\beta _{0}$ are estimated using least squares. Lag order specification in
+our forecasting experiments is done in two different ways. When using a
+fixed scheme where $j=0,$ automatic lag length selection is carried out
+using the SIC and our model only uses $t_{m}$ dated factors in forecasting. 
+%\medskip
+\medskip
+\noindent \textit{Smoothed MIDAS} %\subsection{Smoothed MIDAS}
+\medskip
+
+\cite{ACFLV10RES} propose a new Eurocoin Index, an indicator of economic
+activity in real-time. The index is based on a method to obtain a smoothed
+stationary time series from a large data set. Their index and methodology
+builds on that discussed in \cite{MS10OBES}, and is used to nowcast and
+forecast German GDP. In particular, their model can be written as: 
+%\cite{ACFLV10RES} regard GDP as a projection of smoothed GDP on monthly
+%indicators including the New Eurocoin index, a composite indicator of
+%Eurozone economic activity. \cite{MS10OBES} modify their method in order to
+%nowcast and forecast German GDP. In particular, their model can be written
+%as: 
+\begin{eqnarray}
+{_{t_{m}}}Y_{t_{q}+h_{q}} &=&\hat{\mu}_{Y}+{\mathbf{G}\hat{{F}}}_{t_{m}},%
+\text{ \ and}  \label{eq09a} \\
+{\mathbf{G}} &=&\tilde{\Sigma}_{Y,{F}}\left( h_{m}\right) \times \hat{\Sigma}%
+_{F}^{-1},  \label{eq09b}
+\end{eqnarray}%
+where $\hat{\mu}_{Y}$ is the sample mean of GDP, assuming that the factors
+are standardized, and $\mathrm{\mathbf{G}}$ is a projection coefficient
+matrix. Here, $\hat{\Sigma}_{F}$ is the estimated sample covariance of the
+factors, and $\tilde{\Sigma}_{Y,{F}}\left( j\right) $ is a particular
+cross-covariance with $j$ monthly lags between GDP and the factors, defined
+as follows: 
+\begin{equation}
+\tilde{\sum }_{Y,F}(j)=\dfrac{1}{t^{\ast }-1}\sum\limits_{m=M+1}^{t_{m}}{_{m}%
+}Y_{t_{q}}\hat{F}_{m-j}^{(3)^{\prime }},
+\end{equation}%
+where $t^{\ast }=\mathrm{floor}\left[ \left( t_{m}-\left( M+1\right)
+/3\right) \right] $ is the number of observations available to compute the
+cross covariance, for $j=-M,...,M;$ and $M\geq 3h_{q}=h_{m},$ under the
+assumption that both GDP and the factors are demeaned. Note that $%
+h_{m}=3\cdot h_{q}$. Complete computational details are given in \cite%
+{ACFLV10RES} and \cite{MS10OBES}. This so-called `smoothed MIDAS' is a
+restricted form of the MIDAS model given in (\ref{eq23}), with a different
+lag structure. 
+
+Note that the models estimated in this paper are univariate models, and the reader is referred to \cite{G2016JoE} and  \cite{SS2015JBES} for a discussion of the use of multivariate models in the current context. The former authors use a direct generalization of the methods used in this paper, while the latter authors implement their analysis in a Bayesian framework.
+
+\section{Empirical Results}
+
+\subsection{Benchmark models and experimental setup}
+
+In addition to the MIDAS models discussed above, we specify and estimate a
+number of benchmark models, when forecasting real-time Korean GDP. These include:
+
+\begin{itemize}
+\item \textit{Autoregressive Model:} We backcast, nowcast and forecast GDP
+growth rates, ${_{t_{m}}}\hat{Y}_{t_{q}+h_{q}}$, $h_{q}$-steps ahead,
+using autoregressions with $p$ lags, where $p$ is selected using the SIC.
+Note that our AR model does not use monthly indicators; but since lagged
+GDP, as well as revised GDP, are available at various dates throughout the
+quarter, we still update our predictions on a monthly basis. The model is: 
+\begin{equation}
+{_{t_{m}}}\widehat{Y}_{t_{q}+h_{q}}=\hat{\beta}_{0}+\hat{\beta}_{1}\cdot {%
+_{t_{m}}}Y_{t_{q}-1}+\ldots +\hat{\beta}_{p}\cdot {_{t_{m}}}Y_{t_{q}-p} \label{eq50}
+\end{equation}
+Note that although AR forecast are not updated within a given month, the real-time data are revised over time. Hence, we still utilize our earlier monthly ``vintage'' notation in (\ref{eq50})
+
+\item \textit{Random Walk Model:} We implement a standard random walk model,
+in which the growth rate is assumed to be constant, although this constant
+value is re-estimated recursively, at each point in time.
+
+\item \textit{Combined Bivariate Autoregressive Distributed Lag (CBADL)
+Model:} We use the so-called bridge equation, since it is widely used to
+forecast quarterly GDP using monthly data (see, e.g. \cite{BGP04IJF} and 
+\cite{ECB08B}), particularly at central banks. The CBADL model, which is a
+standard bridge equation, uses monthly indicators as regressors to predict
+GDP. Forecasts are constructed using a three step procedure, as follows:
+
+Step 1 - Construct forecasts of all $N$ monthly explanatory variables, where 
+$m$ is selected using the SIC. Namely, specify and estimate: $%
+X_{i,t_{m}}=\rho _{1}X_{i,t_{m}-1}+\cdots \rho _{m}X_{i,t_{m}-m}+\zeta
+_{i,s} $, for all $i=1,...,N.$
+
+Step 2 - Use lagged values of GDP as well as predictions of each individual
+monthly explanatory variable, order to obtain $N$ alternative quarterly
+forecasts of GDP. Namely, specify and estimate:
+
+${_{t_{m}}}Y_{i,t_{q}+h_{q}}=\mu _{Y}+\gamma _{1}Y_{t_{q}-1}+\cdots
++\gamma _{q_{y}}Y_{t_{q}-q}+\beta _{i,0}\widehat{X}_{i,t_m}+\cdots
++\beta _{i,m}\widehat{X}_{i,{t_m}-{m}}+\upsilon _{i,t_{q}+h_{q}}.$
+
+Note that $q$ is also selected by BIC
+
+Step 3 - Construct a weighted average of the above predictions. Namely:
+
+${_{t_{m}}}\hat{Y}_{t_{q}+h_{q}}^{CBADL}=\cfrac{1}{N}\sum\limits_{i=1}^{N}{%
+_{t_{m}}}\hat{Y}_{i,t_{q}+h_{q}}$.\footnote{\cite{SW05WP} and \cite{KS11WP}
+implement a version of this model.}
+
+\item \textit{Bridge Equation with Exogenous Variables (BEX) :} This method
+is identical to the above CBADL model except that the model in Step 2 is
+replaced with: 
+\begin{equation}
+{_{t_{m}}}Y_{i,t_{q}+h_{q}}=\mu _{Y}+\beta _{i,0}\widehat{X}_{i,t_m}+\cdots
++\beta _{i,{m}}\widehat{X}_{i,{t_m}-{m}}+\upsilon _{i,t_{q}+h_{q}}.
+\end{equation}
+
+\item \textit{ Forecast Combination (Mean):} It is well known that forecast combination can be useful for forecasting macroeconomic variables.  \cite{Timm05CEPR}, \cite{KS12WP}, and many others discuss this phenomenon. We consider various forecast combinations made by forming equally weighted averages of the predictions constructed using subsets of our prediction models. See below for further discussion.
+	
+\end{itemize}
+
+Note that the real-time nature of our experiments is carefully maintained
+when specifying and estimating these models. Additionally, in all
+experiments, prediction model estimation is carried out using both recursive
+and rolling data windows, with the rolling window length set equal to 8
+years (i.e., 32 periods of quarterly GDP and 96 monthly observations). All
+recursive estimations begin with 8 years of data, with windows increasing in
+length prior to the construction of each new real-time forecast.
+Out-of-sample forecast performance is evaluated using predictions beginning
+in 2000:Q1 and ending in 2013:Q4, and for each quarter, three monthly
+predictions are made. Figure \ref{Fig_04} depicts the monthly/quarterly
+structure of our prediction experiments.
+
+%\begin{center}
+%[Insert Figure \ref{Fig_04} here]
+%\end{center}
+
+Table 1 summarizes the forecast models and estimation methods used. In this
+table, AR, CBADL, and BEX denote the benchmark models, which do not use any
+factors, and are our alternatives to MIDAS. The two interpolation methods
+discussed above (i.e., AR and VA interpolation) for addressing the
+ragged-edge problem are used when estimating factors via implementation of
+OPCA and RPCA. In addition, the EM algorithm and Kalman Filtering (KF) are
+used to estimate factors, without interpolation. Once factors are estimated,
+they are plugged into five different varieties of MIDAS regression model,
+including: Basic MIDAS w/o AR terms, Basic MIDAS w/ AR terms, Smooth MIDAS,
+Unrestricted MIDAS w/o AR terms, and Unrestricted MIDAS w/ AR terms. This
+setup is summarized in Table 1.
+
+%\bigskip
+
+%\begin{center}
+%[Insert Table \ref{Table01} here]
+%\end{center}
+
+%\bigskip
+
+In order to assess predictive performance, we construct mean square forecast
+errors (MSFEs). In conventional datasets that do not contain real-time data,
+MSFE statistics can be constructed by simply comparing forecasts with actual
+values of GDP. In the current context, we have two issues. First, we can
+estimate our forecasting models, in real-time, using only first available
+data. This is one case considered, and is referred to as our `first
+available' case. In this case, when constructing MSFEs, we compare
+predictions with first available GDP. Second, we can estimate our
+forecasting models using currently available data, at each point in time.
+When using currently available data, the most recent observations in any
+given dataset have undergone the least revision, while the most distant
+observations have potentially been revised \ many times. This is the second
+case considered, and is referred to as our `most recent' case. In the second
+case, when constructing MSFEs, we compare predictions with the most recently
+available (and fully revised or `recent') GDP observations. The second case
+is closest to that implemented by practitioners that wish to use as much
+information as possible when constructing forecasts, and in this case, given
+that Korean GDP is fully revised after 2 years, which corresponds to the $%
+5^{th}$ vintage, we compare forecasts with actual data defined as ${_{t_{m}}}%
+Y_{t_{q}}^{(5)}$. In general, the MSFE of the $i-$th model for $h_{q}-$%
+step ahead forecasts is defined as follows: 
+\begin{equation}
+MSFE_{i,h_{q}}^{(j)}=\overset{T_{q}-h_{q}+1}{\underset{t=R-h_{q}+2}{\sum }}%
+\left( {_{t_{m}+3h_{q}+s}}Y_{t_{q}+h_{q}}^{(j)}-{_{t_{m}}}\hat{Y}%
+_{i,t_{q}+h_{q}}\right) ^{2},\text{ \ \ }j=1,...  \label{eq12}
+\end{equation}%
+where $R-h_{q}+2$ is the in-sample period, $T_{q}-h_{q}+1$ denotes the total
+number of observations, ${_{t_{m}+3h_{q}+s}}Y_{t_{q}+h_{q}}^{(j)}$ is
+the observed value of the GDP growth rate, for calendar date ${t_{q}+h_{q}}
+$ when it is available, so that $s$ denotes the smallest integer value
+needed in order to ensure availability of actual GDP growth rate data, $%
+Y_{t_{q}+h_{q}}^{(j)}$ in real-time, and ${_{t_{m}}}\hat{Y}%
+_{i,t_{q}+h_{q}}$ is the predicted value at $t_{q}+h_{q},$ for the $i-$%
+th model. For example, we forecast the GDP growth rate in 2016:Q1 at
+2015:04, called ${_{2015:04}}\hat{Y}_{2016:Q1},$ and the first calendar date
+at which time we can observe data for 2016:Q1 is May 2016, i.e. ${_{2016:05}}%
+{Y}_{2016:Q1}^{(1)}$. As discussed above, we evaluate model performance
+using `first available', and `most recent' data. In practice, we construct $%
+MSFE_{i,h_{q}}^{(first)}$ and $MSFE_{i,h_{q}}^{(recent)}$, respectively.
+
+Our strawman model for carrying out statistical inference using MSFEs is the
+autoregressive model, and said inference is conducted using the \cite{DM95}
+test (hereafter, the DM test). The null hypothesis of the DM test is that
+two models perform equally, when comparing squared prediction loss. Namely,
+we test: 
+\begin{equation}
+H_{0}:E\left[ l\left( \varepsilon _{t+h|t}^{AR}\right) \right] -E\left[
+l\left( \varepsilon _{t+h|t}^{i}\right) \right] =0,  \label{eq13}
+\end{equation}%
+where $\varepsilon _{t+h|t}^{AR}$ is the prediction error associated with
+the strawman autoregressive model, $\varepsilon _{t+h|t}^{i}$ is the
+prediction error of the $i-$th alternative model, and $l(\cdot )$ is the
+quadratic loss function. If a DM statistic under the null hypothesis is
+positive and significantly different from zero, then we have evidence that
+model $i$ outperforms the strawman model. The DM statistic is $DM=\frac{1}{P}%
+\overset{P}{\underset{i=1}{\sum }}\frac{d_{t}}{\hat{\sigma}_{\bar{d}}},$
+where $d_{t}=\left( \widehat{\varepsilon _{t+h|t}^{AR}}\right) ^{2}-\left( 
+\widehat{\varepsilon _{t+h|t}^{i}}\right) ^{2}$, $\bar{d}$ is the mean of $%
+d_{t}$, $\hat{\sigma}_{\bar{d}}$ is a heteroskedasticity and autocorrelation
+robust estimator of the standard deviation of $\bar{d}$, and $\widehat{%
+\varepsilon _{t+h|t}^{AR}}$ and $\widehat{\varepsilon _{t+h|t}^{i}}$ are the
+estimated prediction errors corresponding to $\varepsilon _{t+h|t}^{AR}$ and 
+$\varepsilon _{t+h|t}^{i}$, respectively.
+
+As pointed out by a referee, one important area of ongoing research in the current context involves the construction of density forecasts. A key paper on this topic is 
+\cite{AFR2016}. Although this topic is left to future research, it is useful to note that many types of density forecasts are available to the practitioner. For example, in the online appendix to this paper we provide selected kernel density plots, for various values of $h=1$, which are simply based on the distribution of all models' predictions from our experiments. Interestingly, at least based on these naive figures, it appears that downside risk is greater than upside risk, prior to the Great Recession around 2008.
+
+\subsection{Experimental findings}
+
+There are a number of methodological as well as empirical conclusions that
+emerge upon examination of the results from our forecasting experiments.
+Prior to listing these findings, however, it is useful to recall the
+structure of our experiments. In particular, recall that we construct
+backcasts, nowcasts, and forecasts. Each of these differ only in the timing of the predictions, relative to currently
+available data. To be specific, recall that in following our above
+notational setup, we construct three types of MSFEs. Consider construction
+of MSFEs using `first available' data as the `actual\ data' against which
+predictions are compared.\footnote{%
+We also use `most recent' data as our actual data, when constructing MSFEs.
+This approach is probably the most consistent with actual practice at
+central banks, for example.}
+
+
+Suppose that we backcast the growth rate for 2010:Q4 in January 2011, which is ${_{2011:01}}\hat{Y}_{2010:Q4}$. Accuracy is then evaluated with `first available' or `most recent' data. The prediction error is then
+\begin{equation}
+\varepsilon^{(first)} ={_{2011:02}}Y_{2010:Q4}^{(first)}-{_{2011:01}}\hat{Y}_{2010:Q4}
+\end{equation}
+Note that in January 2011, $Y_{2010:Q4}$ is not available, and so evaluation is made using actual data from February. Now, assume that we are interested instead with evaluating the accuracy of our prediction in January 2016, with data available at that later date, called $recent$ data, say. This is  typically done in non real-time data contexts. The prediction error is now
+\begin{equation}
+\varepsilon^{(recent)} ={_{2016:01}}Y_{2010:Q4}^{(recent)}-{_{2011:01}}\hat{Y}_{2010:Q4}
+\end{equation}
+With this distinction, we can construct $MSFE_{-1}^{first}$ and $MSFE_{-1}^{recent}$, where $-1$ denotes `backcast'. In same way, we can construct $MSFE_{h}^{vintage}$, where $h$ is forecast horizon and $vintage=1,...,recent$. Here, $h=1,2,3$ denotes current quarter nowcast predictions in the first, second and third months of the quarter. Naturally, once we reach $h=4,...$, forecasts are for the next quarter, etc. In our out-of-sample experiments, we consider many vintages of data, but report only on accuracy using `first' and most `recent' vintages. See \cite{CS01JoE} and \cite{SC2002JME} for a detailed discussion of the different methods available for assessing predictive accuracy in the types of experiments carried out in this paper.
+
+Before turning to a discussion of our main prediction experiment results, we
+summarize three methodological findings that are potentially useful for
+applied practitioners. First, recall that the ragged-edge data problem can
+be addressed in a number of ways. One involves use of either AR or VA
+interpolation of missing data. Another involves directly accounting for this
+data problem via the use of the EM algorithm or Kalman filtering. Table 2
+summarizes the results of a small experiment designed to compare AR and VA
+interpolation (EM and Kalman filtering methods are discussed later). In this
+experiment, both AR and VA interpolation are used to construct missing data,
+and all forecasting models are implemented in order to construct
+predictions, including MIDAS models, as well as benchmark models. Indeed,
+the only models not included in this experiment are MIDAS variants based on
+use of the EM algorithm and Kalman filtering. Entries in the table denote
+the proportion of forecasting models for which VA interpolation yields lower
+MSFEs than AR interpolation. Interestingly, proportions are always less than
+0.5, regardless of whether backcasts, nowcasts, or forecasts are compared,
+and whether `first available' or `most recent' data are used. Indeed, in
+most cases, only approximately 10\% of models or less `prefer' VA
+interpolation. This is taken as strong evidence in favor of using AR
+interpolation, and, thus, the remainder of results presented only
+interpolate data using the AR method. Complete results using both varieties
+of interpolation are available upon request from the authors.
+
+Second, we compare forecasting performance by estimation type in an
+experiment for which results are summarized in Table \ref{Table03}. In particular, we
+are cognizant of the fact that issues relating to structural breaks, model
+stability, and generic misspecification play an important role on the choice
+of using either rolling or recursive data windows when constructing
+real-time forecasting models. In lieu of this fact, we estimated all of our
+models using both recursive and rolling data windows, and entries in the
+table report the proportion of models for which the recursive estimation
+strategy is `MSFE-best'. In the Korean case it turns out that recursive
+estimation yields more precise predictions when $forecasing$, while rolling window estimation yields more precise predictions when $backcasting$ and $nowcasting$, regardless of whether `first
+available' or `most recent' data are used. This result becomes very pronounced as $h$ increases. 
+This finding suggests that 
+further investigation via the use of so-called data rationality tests may be useful.  
+
+Third, a crucial aspect of forecasting models that utilize diffusion indices
+is exactly how many factors to specify. \cite{BN02EMC} and many others
+provide statistics that can be used for selecting the number of factors.
+However, there is no guarantee that the use of any of the exact tests will
+yield the `MSFE-best' forecasting model. In one recent experiment, \cite%
+{K13BOK} uses \cite{BN02EMC}, and finds that five to six factors are
+selected for a large scale Korean dataset. In this paper (see Table 4), we
+directly examine how many factors are used in `MSFE-best' forecasting
+models. In particular, entries in Table 4 denote the proportion of times
+that models with a given fixed number of factors are MSFE-best among all of
+our factor-MIDAS models, including those estimated using the EM\ algorithm,
+the Kalman filter, AR interpolation (with each of OPCA and RPCA), and those
+estimated both with and without autoregressive lags. It is very clear from
+inspection of the results that either 1 or 2 factors, at most, are needed
+when the prediction horizon in more than 1 quarter ahead. On the other hand,
+for horizons -1 to 3 (i.e. all backcasts and nowcasts), the evidence is more
+mixed. While 1 or 2 factors are selected around 1/2 of the time, 5 or 6
+factors are also selected around 1/2 of the time. Interestingly, there is
+little evidence that using an intermediate number of factors is useful. One
+should either specify a very parsimonious 1 or 2 factor models, or one
+should go with our maximum of 5 or 6. It is clear that forecast horizon
+matters; and this is consistent with the mixed evidence on this issue.
+Namely, some authors find that very few factors are useful, while others
+suggest using 5 or more. Both of these results are confirmed in our
+experiment, with forecast horizon being the critical determining
+characteristic. The overall conclusion, thus, appears to be that when
+uncertainty is more prevalent (i.e., longer forecast horizons), then
+parsimony is the key ingredient to factor selection. This conclusion is not
+at all surprising, and is in accord with stylized facts concerning model
+specification when specifying linear models.
+
+We now turn to our forecasting model evaluation. Entries in Tables 5, Panel
+(a) are MSFEs for all models, relative to the strawman AR(SIC) model. Thus,
+entries greater than 1 imply that the corresponding model performs worse
+than the AR(SIC) model. The column headers in the table denote the forecast
+horizon, ranging from `-1' for backcasts to 9 for two quarter ahead
+predictions. In this framework, horizons 1, 2, and 3 are monthly nowcasts
+for the current quarter, and subsequent horizons pertain to monthly
+forecasts made during the subsequent two quarters. Notice that the first
+three rows in the table correspond to our other benchmark models (i.e., the
+RW, CBADL and BEX models). The rest of the rows in the table report findings
+for our MIDAS models, constructed with one factor. Results with 2 through 6 factors are provided in an on-line appendix, although it should be noted that precision of predictions generally decreases as the number of factors is increased.
+Recall that there are 5 different MIDAS specifications: `Basic MIDAS with
+and without AR terms', `Unrestricted MIDAS with and without AR terms', and
+`Smoothed MIDAS'. Estimation is done recursively, the ragged-edge problem is
+solved by AR interpolation, four different factor estimation methods are
+reported on, including OPCA, RPCA, EM and KF, and data utilized in these
+experiments are assumed to be `first available' data, for the purpose of
+both estimation and forecast evaluation. 
+
+Various forecast combinations are also reported on, as discussed above. In particular, `Mean of Benchmarks' is an average based on our AR, RW, CBADL and BEX models. `Mean of MIDAS' is the average forecast of all five MIDAS specifications which are constructed using all of our different factor estimation methods (i.e., 20 models). `Mean of All MIDAS' is the average of the above 20 models, across all factor permutations (i.e., 1 through 6 factors) for a total of 120 models. Finally, `Mean of All' includes all MIDAS models and benchmark models (i.e. 124 models).
+Table 5, Panel (b) is the same as
+Panel (a), except that `most recent' instead of `first available' data are
+used in all experiments reported on. Complete results pertaining to other
+permutations such as the use of alternative interpolation methods,
+estimation strategies, and numbers of factors are collected in the aforementioned online appendix.
+
+Digging a bit further into the layout of this table, note that bold entries
+denote models that are `MSFE-better' than the AR(SIC) model, entries with
+superscript `FB' are `MSFE-best' for a given forecast horizon and number of
+factors, and entries with the superscript `GB' denote models that are
+`MSFE-best' across all model permutations, including those reported on in the online appendix.
+
+When forecast experiments are carried out using `first available' data (see
+Panel (a) of Table 5), it turns out that for backcasting and nowcasting,
+factor-MIDAS models without AR terms as well as other benchmark models do
+not work well, regardless of the number of factors specified. This suggests that for
+short forecast horizons, the persistence of GDP growth is strong, and well
+modeled using linear AR components. As the forecast horizon gets longer,
+models without AR terms benefit from substantial performance improvement of
+the other components of the models, such as the MIDAS component. Indeed, in
+some cases, models without AR terms outperform models with AR terms. This is
+interesting, as it suggests that uncertainty in autoregressive parameters
+does not carry over as much to other model parameters, as the horizon
+increases, and the role for MIDAS thus increases in importance.
+
+Evidently, upon inspection of MSFEs in Panel (a) of Table 5, there is little
+to choose between OPCA and RPCA estimation methods. Thus, given computing
+considerations\footnote{%
+Computation when using RPCA is\ around 10\% faster that when using OPCA,
+based on a run using an Intel i7-3700 processor with 16GB of RAM.}, RPCA is
+preferred when analyzing large datasets. Among the other factor estimation
+methods, the KF and EM algorithms perform well for longer forecast horizons,
+but KF outperforms EM for shorter horizons. 
+For our Korean GDP data, forecast combination does not result in improved predictive accuracy, as can be seen upon inspection of the findings of the table. However, it is certainly possible that more sophisticated combination methods may yield better results, although investigation of this is left to future research.
+
+Panel (b) of Table 5 contains MSFEs that are based on the use of `most
+recent' data. In most practical settings, forecasters assess predictive
+accuracy using this variety of data. Interestingly, in this set of results,
+we immediately observe that the `MSFE-best' model is almost never the
+AR(SIC) model, although AR terms do enter into preferred (more complicated) models in most cases. Additionally, overall overall performance of our different models is similar to that reported in Panel (a) of the table.
+
+In Table 6 the `GB' models that are `MSFE-best' across all permutations (including those reported in the online appendix), 
+for a particular forecast
+horizon, are given in the rows labeled `All'. The remainder of the table
+summarizes associated `MSFE-best' models (and corresponding factor
+estimation schemes) for a given number of factors, for the cases where both
+`first available' and `most recent' data are used, and for a variety of
+forecast horizons. Finally, bold entries denote the best performer among all models, for a given forecast horizon. 
+The results summarized in our discussion of Table 5 are
+made even more clear in this summary table. Namely, factor-MIDAS models are
+almost everywhere `MSFE-best', with the exception of backcasts and nowcasts.
+Finally, PCA factor estimation methods are almost always
+preferred, and smoothed MIDAS type models are only useful if including many
+factors when predicting at the longest horizons. Of course, we do not
+recommend this, as using many factors for long horizon forecasting has been
+shown to yield more imprecise predictions than when fewer factors are used. 
+
+Figure \ref{fig05} plots MSFE values that are not relative to the strawman
+AR(SIC) model, for various prediction models. In the figure, `Basic' and
+`Unrestricted' denote factor-MIDAS models with two factors (refer to above
+discussion, and to Table 5, for further discussion of this terminology), and
+AR interpolation with OPCA estimation is used throughout. Panels (a) and (b)
+correspond to recursively estimated models using `first available' and `most
+recent' data, respectively. Panels (c) and (d) are same, but use rolling
+estimation. In this figure, $h=-1$ corresponds to backcasts, $h=1,2,3$ correspond to nowcasts, and $h=4,...,9$ correspond to
+forecasts. As discussed above, in conventional forecasting experiments, most
+forecasters use fully revised data for forecasting evaluation. With these
+data, factor-MIDAS dominates all other benchmark models, at all horizons, as
+seen in Panel (b); and RW and CBADL perform poorly at all horizons. Also,
+among the factor-MIDAS models, `Basic' factor-MIDAS dominates. If we instead
+use `first available' data, factor-MIDAS models as well as BEX models
+dominate the AR(SIC) model, particularly at long forecast horizons (see
+Panel (a)). However, as the forecast horizon gets shorter (i.e., we move
+from forecast$\rightarrow $ nowcast$\rightarrow $backcast), AR(SIC) and RW
+models perform better than other models, as confirmed in our discussion of
+the results presented in Table 5. 
+
+For the rolling estimation scheme, the forecast performance of factor-MIDAS
+models and AR(SIC) models are similar for all horizons. Moreover, we see that that rolling estimation performs slightly `better' when 'most recent' data are used.
+
+In Figure \ref{fig04_2}, MSFE values are plotted for the same set of models
+as in Figure \ref{fig05}. However, in this figure, Panels (a)-(d) contain
+plots based on the use of different factor estimation methods when
+specifying the models (i.e., OPCA, RPCA, EM and KF), only first available
+data are used for MSFE construction, all models are specified with one
+factor, and AR interpolation is implemented. In light of this, Panel (a) in
+Figures \ref{fig05} and \ref{fig04_2} is the same. A number of conclusions
+emerge upon inspection of this figure. First, the pattern of increasing MSFE
+as forecast horizon increases is observed for all factor estimation methods
+(compare all 4 panels in the figure), as expected. Also, all estimation
+methods appear to be rather similar, when faced with `first available' data.
+However, even though MSFEs are similar across factor estimation methods, the
+MSFE magnitudes are slightly higher when using EM and KF, than when using
+OPCA and RPCA are used for estimation. Interestingly, only our top two MIDAS
+models (that include AR terms) outperform the benchmark AR(SIC) model at all
+forecast horizons, as can also be seen by inspection of the results in Table
+5. 
+
+Finally, Figures \ref{fig04_4} plots MSFEs of selected
+MIDAS models, with one factor. In these figures, MIDAS results are
+presented with factors estimated using OPCA, RPCA, EM, and KF. Additionally,
+various benchmark models are included (i.e., AR(SIC), RW, CBADL, and BEX).
+Using these figures, we can compare the performance of factor estimation
+methods for a given MIDAS model and value of $r$. Analogous figures reporting results for models with more than one factor are provided in the online appendix. Based on all of these figures, we find that for $r=1$, RPCA or OPCA
+are clearly preferred. However, when $r=2$, Kalman filtering also works well
+at many forecast horizons. Finally, as previously observed, when the number
+of factors is increased, forecast performance worsens substantially for
+`Basic MIDAS' and `Unrestricted MIDAS', as seen in Figure \ref{fig04_2}.
+Interestingly, `Smoothed MIDAS' continues to perform well, even when $r=6.$
+This again points to the importance of smoothing when the number of factors
+is large.
+
+\section{Concluding Remarks}
+
+We introduce a real-time dataset for Korean GDP, and analyze the usefulness
+of the dataset for forecasting, using a large variety of factor-MIDAS
+models, as well as linear benchmark models. Various factor
+estimation schemes, data interpolation approaches, and data windowing
+methods are analyzed, and methodological recommendations made. For example,
+we find that only approximately 10\% of the forecasting models examined are
+`MSFE-best' when using VA interpolation instead of AR interpolation.
+Additionally, models estimated using rolling data windows are only
+`MSFE-best' at 3 forecast horizons, when comparing real-time predictions to
+`first available' data, and are never `MSFE-best' when comparing predictions
+to `most recent' data. Given the usual preference amongst empirical
+researchers to use `most recent' data in predictive accuracy analyses, it is
+clear that, at least in the case of Korean GDP, recursive estimation is
+preferred. With regard to the number of factors to specify in prediction models, either
+1 or 2 factors, at most, are needed when the prediction horizon is more than
+3 months ahead. On the other hand, for horizons -1 to 3 (i.e. all backcasts
+and nowcasts), the evidence is more mixed, and 5 or 6 factors are also
+selected around 1/2 of the time. Interestingly, there is little evidence
+that an intermediate number of factors is useful. One should either
+specify a very parsimonious 1 or 2 factor models, or one should go with our
+maximum of 5 or 6. In summary, forecast horizon matters, in the sense that
+when uncertainty is more prevalent (i.e., longer forecast horizons), then
+parsimony is the key ingredient to factor selection, and more than 1 or 2
+factors leads to worsening predictive performance. This is consistent with
+the stylized notion that prediction multiple periods ahead becomes very
+uncertain when forecasting macroeconomic aggregates. Most importantly, we find that MIDAS models dominate at all forecast horizons.
+
+\newpage 
+\bibliographystyle{apalike}
+\bibliography{KimHyunHak_Bib}
+
+\newpage 
+\begin{table}[t]
+\caption{Summary of Models and Estimation Methods*}
+\label{Table01}\centering
+{\footnotesize \centering
+\begin{tabular}{c|c|c|c}
+\hline
+Estimation Scheme & MIDAS & Factor Estimation & Interpolation \\ \hline
+\multirow{9}{*}{\begin{tabular}[c]{@{}c@{}}Recursive \\ \\
+Rolling\end{tabular}} & Basic w/o AR term & \multirow{3}{*}{%
+\begin{tabular}[c]{@{}c@{}}OPCA\\ \\ RPCA\end{tabular}} & %
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}AR\\ \\ VA\end{tabular}} \\ 
+& Basic w/ AR term &  &  \\ 
+&  &  &  \\ \cline{3-4}
+& Unrestricted w/o AR term & \multicolumn{2}{c}{\multirow{3}{*}{%
+\begin{tabular}[c]{@{}c@{}}EM algorithm\\ \\ Kalman Filtering\end{tabular}}}
+\\ 
+& Unrestricted w/ AR term & \multicolumn{2}{c}{} \\ 
+& Smoothed & \multicolumn{2}{c}{} \\ \cline{2-4}
+& \multicolumn{3}{c}{AR} \\ 
+& \multicolumn{3}{c}{CBADL} \\ 
+& \multicolumn{3}{c}{BEX} \\ \hline
+\end{tabular}
+\begin{tabular}{cl}
+\multicolumn{2}{c}{} \\ \hline
+\multicolumn{1}{c|}{Model} & \multicolumn{1}{c}{Description} \\ \hline
+\multicolumn{1}{c|}{AR(SIC)} & \multicolumn{1}{l}{Autoregressive model with
+length of lags determined by SIC} \\ 
+\multicolumn{1}{c|}{RW} & \multicolumn{1}{l}{Random Walk} \\ 
+\multicolumn{1}{c|}{CBADL} & \multicolumn{1}{l}{Combined Bivariate
+Autoregressive Distributed Lag model} \\ 
+\multicolumn{1}{c|}{BEX} & \multicolumn{1}{l}{Bridge Equation with Exogenous
+Variable} \\ 
+\multicolumn{1}{c|}{Basic w/o AR} & \multicolumn{1}{l}{Basic MIDAS model
+without AR terms} \\ 
+\multicolumn{1}{c|}{Basic w/ AR} & \multicolumn{1}{l}{Basic MIDAS model with
+AR terms} \\ 
+\multicolumn{1}{c|}{Unrestricted w/o AR} & \multicolumn{1}{l}{Unrestricted
+MIDAS model without AR terms} \\ 
+\multicolumn{1}{c|}{Unrestricted w/ AR} & \multicolumn{1}{l}{Unrestricted
+MIDAS model with AR terms} \\ 
+\multicolumn{1}{c|}{Smoothed} & \multicolumn{1}{l}{Smoothed MIDAS model} \\ 
+\hline
+\end{tabular}
+} 
+\begin{minipage}{0.9\textwidth}
+\medskip{\footnotesize * Notes: Non-factor-MIDAS type models include AR(SIC), RW, CBADL and BEX. Three types of factor-MIDAS models are 
+specified (`Basic', `Unrestricted', and 'Smoothed'), and each of these are estimated using 
+each factor estimation method (OPCA and RPCA), interpolation method (AR and VA), and factor-MIDAS estimation method (EM algorithm and Kalman filter). Finally, all of these 
+permutations are implemented using each of recursive and rolling data windowing strategies. For complete details see Section 5.}
+\end{minipage}
+\end{table}
+
+% TABLE 2 ------------------------------------------------------------------------
+\begin{table}[]
+\caption{Comparison of Forecasting Performance with AR and VA Interpolation*}
+\label{Table02}\centering
+{\footnotesize \centering
+\resizebox{0.9\textwidth}{!}{\begin{tabular}{c|CCCCCCCCCC}
+\hline
+\multicolumn{1}{l|}{} & Backcast & \multicolumn{3}{c}{Nowcast} & \multicolumn{6}{c}{Forecast} \\
+\multicolumn{1}{l|}{} & prev. qtr. & \multicolumn{3}{c}{current quarter} & \multicolumn{3}{c}{1 quarter ahead} & \multicolumn{3}{c}{2 quarter ahead} \\
+Horizon & -1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
+First available	&0.285	&0.337	&0.110	&0.145	&0.151	&0.134	&0.105	&0.134	&0.093	&0.186	\\
+Most Recent	&0.081	&0.163	&0.064	&0.122	&0.134	&0.105	&0.105	&0.128	&0.081	&0.186	\\
+\hline
+\end{tabular}
+} 
+\begin{minipage}{0.9\textwidth}
+\medskip{\footnotesize * Notes: See notes to Table 1. Forecasting performance is evaluated by comparing MSFEs across all models which use interpolated 
+missing values, including CBADL, BEX and factor-MIDAS models with OPCA and RPCA. Entries in the table report the proportion of times that the MSFE of 
+models with AR interpolation is greater than `like' models with VA interpolation. 
+Thus, entries less than 0.5 indicate that AR interpolation performs better 
+than VA, on average, across all model permutations.
+Prediction models are estimated in real-time using either `first available' or `most recent' historical data, and MSFEs are constructed by
+comparing these predictions with actual `first available' or `most recent' data, corresponding to the type of data used in estimation.
+}
+\end{minipage}
+}
+\end{table}
+
+% TABLE 3 ----------------------------------------------------------------------
+\begin{table}[]
+\caption{Comparison of Forecasting Performance by Estimation Type*}
+\label{Table03}\centering
+{\footnotesize \centering
+\resizebox{0.9\textwidth}{!}{\begin{tabular}{c|CCCCCCCCCC}
+\hline
+\multicolumn{1}{l|}{} & Backcast & \multicolumn{3}{c}{Nowcast} & \multicolumn{6}{c}{Forecast} \\
+\multicolumn{1}{l|}{} & prev. qtr. & \multicolumn{3}{c}{current quarter} & \multicolumn{3}{c}{1 quarter ahead} & \multicolumn{3}{c}{2 quarter ahead} \\
+Horizon & -1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
+First available	&0.747	&0.782	&0.653	&0.465	&0.400	&0.147	&0.059	&0.018	&0.029	&0.082	\\
+Most Recent	&0.771	&0.759	&0.618	&0.518	&0.424	&0.247	&0.059	&0.018	&0.029	&0.059	\\
+\hline
+\end{tabular}
+} 
+\begin{minipage}{0.9\textwidth}
+\medskip{\footnotesize * Notes: See notes to Table 2. Forecasting performance is evaluated by comparing MSFEs across all models, with MSFEs calculated 
+by estimating prediction models using either `first available' or `most recent' actual data, as discussed in the footnote to Table 2.
+In this table, entries report the proportion of times that the MSFEs of models estimated recursively are greater than when `like' models are estimated using
+rolling data windows. Thus, entries less than 0.5 indicate that recursive estimation yields lower MSFEs.}
+\end{minipage}
+}
+\end{table}
+
+% TABLE 4 ----------------------------------------------------------------------
+\begin{table}[]
+\caption{Comparison of Forecasting Performance Using Differing Numbers of
+Factors *}
+\label{Table04}\centering
+{\footnotesize \centering
+\resizebox{0.9\textwidth}{!}{\begin{tabular}{cc|CCCCCCCCCC}
+\hline
+ &  & Backcast & \multicolumn{3}{c}{Nowcast} & \multicolumn{6}{c}{Forecast} \\
+ &  & prev. qtr. & \multicolumn{3}{c}{current quarter} & \multicolumn{3}{c}{1 quarter ahead} & \multicolumn{3}{c}{2 quarter ahead} \\
+ & Factor \# & -1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
+\multirow{6}{*}{First available} & 1 & 0.20 & 0.25 & 0.20 & - & - & 0.20 & - & 0.20 & - & - \\
+ & 2 & 0.20 & - & 0.20 & - & 0.60 & 0.60 & 1.00 & 0.60 & 1.00 & 1.00 \\
+ & 3 & - & 0.15 & - & 0.20 & 0.20 & 0.20 & - & 0.20 & - & - \\
+ & 4 & - & - & 0.20 & 0.40 & - & - & - & - & - & - \\
+ & 5 & 0.20 & 0.20 & - & - & 0.20 & - & - & - & - & - \\
+ & 6 & 0.40 & 0.40 & 0.40 & 0.40 & - & - & - & - & - & - \\ \hline
+\multirow{6}{*}{Most Recent}	&1	&-	&0.05	&0.05	&-	&-	&0.20	&-	&0.20	&0.20	&-	\\
+&2	&0.20	&0.20	&0.15	&0.20	&1.00	&0.60	&1.00	&0.80	&0.80	&1.00	\\
+&3	&0.20	&0.15	&-	&-	&-	&0.20	&-	&-	&-	&-	\\
+&4	&-	&-	&0.40	&0.40	&-	&-	&-	&-	&-	&-	\\
+&5	&0.35	&0.40	&-	&0.20	&-	&-	&-	&-	&-	&-	\\
+&6	&0.25	&0.20	&0.40	&0.20	&-	&-	&-	&-	&-	&-	\\ \hline
+\end{tabular}
+} 
+\begin{minipage}{0.9\textwidth}
+\medskip{\footnotesize * Notes: See notes to Table 3. The proportion of factor-MIDAS `MSFE-best' models, when comparing `like' models 
+with the number of factors varying from 1 to 6, is reported in this table. This using 
+either `first available' or `most recent' data (as discussed in the footnote to Table 2), 
+as well as for a number of backcast, nowcast, and forecast horizons. See Section 6 for a detailed discussion
+of the different horizons reported on. All results are based on 
+OPCA and RPCA using AR interpolation, under a recursive estimation scheme.}
+\end{minipage}
+}
+\end{table}
+
+% TABLE 5 5 5 5 5 5 5 5 5 5 5 5 5 5 --------------------------------------------------
+\newpage
+
+\newgeometry{left=1cm, right=1cm ,bottom=2.5cm, top=2.5cm}
+
+\renewcommand{\arraystretch}{0.755}
+
+\LTcapwidth=\textwidth
+\centering
+%\begin{longtable}{y{0.5cm}y{1.2cm}D|FFFFFFFFFF}									
+\begin{longtable}{y{1.2cm}D|FFFFFFFFFF}													
+
+\caption{Relative MSFEs When Backcasting, Nowcasting,  and Forecasting Korean GDP*}
+\label{Table05a}\\														
+\multicolumn{12}{c}{{\footnotesize {Panel (a): First Available}}} \\ \multicolumn{12}{c}{} \\ \hline
+	&	&	\multicolumn{1}{c}{\scriptsize{Backcast}}&	\multicolumn{3}{c}{\scriptsize{Nowcast}}&			\multicolumn{6}{c}{\scriptsize{Forecast}} \\						
+	&	&	\multicolumn{1}{c}{\scriptsize{prev. qtr.}}&	\multicolumn{3}{c}{\scriptsize{current quarter}}&			\multicolumn{3}{c}{\scriptsize{1 quarter ahead}}&			\multicolumn{3}{c}{\scriptsize{2 quarter ahead}} \\			
+%\scriptsize{Factors} &	
+\multicolumn{2}{c|}{\scriptsize{Recursive}} &	\multicolumn{1}{c}{\scriptsize{-1}} &	\multicolumn{1}{c}{\scriptsize{1}} &	\multicolumn{1}{c}{\scriptsize{2}} &	\multicolumn{1}{c}{\scriptsize{3}} &	\multicolumn{1}{c}{\scriptsize{4}} &	\multicolumn{1}{c}{\scriptsize{5}} &	\multicolumn{1}{c}{\scriptsize{6}} &	\multicolumn{1}{c}{\scriptsize{7}} &	\multicolumn{1}{c}{\scriptsize{8}} &	\multicolumn{1}{c}{\scriptsize{9}}	\\ \hline
+% Benchmarks
+\multicolumn{2}{c|}{\scriptsize{RW}} &			{\scriptsize{1.45}  }&	{\scriptsize{1.35}  }&	{\scriptsize{1.12}  }&	{\scriptsize{\textbf{0.94}}  }&	{\scriptsize{\textbf{0.94}}  }&	{\scriptsize{1.01}  }&	{\scriptsize{1.14}  }&	{\scriptsize{1.13}  }&	{\scriptsize{1.20}  }&	{\scriptsize{1.68}  }	\\
+\multicolumn{2}{c|}{\scriptsize{CBADL}} &			{\scriptsize{5.49$^{\text{*}}$} }&	{\scriptsize{4.67$^{\text{*}}$} }&	{\scriptsize{3.28$^{\text{*}}$} }&	{\scriptsize{1.73}  }&	{\scriptsize{1.63}  }&	{\scriptsize{1.63}  }&	{\scriptsize{1.36}  }&	{\scriptsize{1.32}  }&	{\scriptsize{1.37}  }&	{\scriptsize{1.46}  }	\\
+\multicolumn{2}{c|}{\scriptsize{BEX}} &			{\scriptsize{3.48$^{\text{*}}$} }&	{\scriptsize{3.25$^{\text{*}}$} }&	{\scriptsize{2.16}  }&	{\scriptsize{\textbf{0.89}}  }&	{\scriptsize{\textbf{0.87}}  }&	{\scriptsize{\textbf{0.85}}  }&	{\scriptsize{\textbf{0.64$^{\text{*}}$}} }&	{\scriptsize{\textbf{0.62$^{\text{**}}$}}}&	{\scriptsize{\textbf{0.64$^{\text{*}}$}} }&	{\scriptsize{\textbf{0.71$^{\text{**}}$}}}	\\ \cdashline{1-12}
+\multicolumn{2}{c|}{\scriptsize{Mean of Benchmarks}} & {\scriptsize{4.38}  }&	{\scriptsize{3.85}  }&	{\scriptsize{2.73}  }&	{\scriptsize{1.55}  }&	{\scriptsize{1.47}  }&	{\scriptsize{1.42}  }&	{\scriptsize{\textbf{0.92}}  }&	{\scriptsize{\textbf{0.89}}  }&	{\scriptsize{\textbf{0.93}}  }&	{\scriptsize{1.10}  } \\
+\hline
+% MIDAS
+%\multirow{20}{*}{2} &	
+	\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}} \scriptsize{Basic} \\ \scriptsize{w/o AR} \end{tabular}} &	\scriptsize{OPCA} &	{\scriptsize{3.01}  } &	{\scriptsize{2.46}  } &	{\scriptsize{1.70}  } &	{\scriptsize{\textbf{0.80$^{*}$}} } &	{\scriptsize{\textbf{0.77$^{*}$}} } &	{\scriptsize{\textbf{0.84$^{*}$}} } &	{\scriptsize{\textbf{0.72$^{*}$}} } &	{\scriptsize{\textbf{0.69$^{*}$}} } &	{\scriptsize{\textbf{0.73$^{*}$}} } &	{\scriptsize{\textbf{0.87}}  }	\\
+	&	\scriptsize{RPCA} &	{\scriptsize{3.01}  } &	{\scriptsize{2.46}  } &	{\scriptsize{1.70}  } &	{\scriptsize{\textbf{0.80$^{*}$}} } &	{\scriptsize{\textbf{0.77$^{*}$}} } &	{\scriptsize{\textbf{0.84$^{*}$}} } &	{\scriptsize{\textbf{0.72$^{*}$}} } &	{\scriptsize{\textbf{0.69$^{*}$}} } &	{\scriptsize{\textbf{0.73$^{*}$}} } &	{\scriptsize{\textbf{0.87}}  }	\\
+	&	\scriptsize{EM} &	{\scriptsize{3.25}  } &	{\scriptsize{2.96$^{**}$}} &	{\scriptsize{2.00$^{**}$}} &	{\scriptsize{1.07}  } &	{\scriptsize{1.08}  } &	{\scriptsize{1.09}  } &	{\scriptsize{\textbf{0.88}}  } &	{\scriptsize{\textbf{0.82}}  } &	{\scriptsize{\textbf{0.81}}  } &	{\scriptsize{\textbf{0.86$^{*}$}} }	\\
+	&	\scriptsize{KF } &	{\scriptsize{2.72}  } &	{\scriptsize{2.32$^{**}$}} &	{\scriptsize{1.73$^{**}$}} &	{\scriptsize{\textbf{0.91}}  } &	{\scriptsize{\textbf{0.90}}  } &	{\scriptsize{\textbf{0.98}}  } &	{\scriptsize{\textbf{0.82}}  } &	{\scriptsize{\textbf{0.77}}  } &	{\scriptsize{\textbf{0.80}}  } &	{\scriptsize{\textbf{0.90}}  }	\\ \cline{1-12}
+	\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}} \scriptsize{Basic} \\ \scriptsize{w/ AR} \end{tabular}} &	\scriptsize{OPCA} &	{\scriptsize{\textbf{0.70$_\text{GB}$}}  } &	{\scriptsize{\textbf{0.83$_\text{FB}$}}  } &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.49$^{**}$}}} &	{\scriptsize{\textbf{0.57$^{**}$}}} &	{\scriptsize{\textbf{0.66$^{*}$}} } &	{\scriptsize{\textbf{0.75$^{*}$}} } &	{\scriptsize{\textbf{0.75$^{*}$}} } &	{\scriptsize{\textbf{0.80$^{*}$}} } &	{\scriptsize{\textbf{0.97}}  }	\\
+	&	\scriptsize{RPCA} &	{\scriptsize{\textbf{0.70}}  } &	{\scriptsize{\textbf{0.83}}  } &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.49$^{**}$}}} &	{\scriptsize{\textbf{0.57$^{**}$}}} &	{\scriptsize{\textbf{0.66$^{*}$}} } &	{\scriptsize{\textbf{0.75$^{*}$}} } &	{\scriptsize{\textbf{0.75$^{*}$}} } &	{\scriptsize{\textbf{0.80$^{*}$}} } &	{\scriptsize{\textbf{0.97}}  }	\\
+	&	\scriptsize{EM} &	{\scriptsize{1.18}  } &	{\scriptsize{1.45$^{*}$} } &	{\scriptsize{1.12}  } &	{\scriptsize{1.00}  } &	{\scriptsize{1.09}  } &	{\scriptsize{1.07}  } &	{\scriptsize{1.05}  } &	{\scriptsize{\textbf{0.95}}  } &	{\scriptsize{\textbf{0.97}}  } &	{\scriptsize{1.12}  }	\\
+	&	\scriptsize{KF } &	{\scriptsize{\textbf{0.90}}  } &	{\scriptsize{\textbf{0.99}}  } &	{\scriptsize{\textbf{0.93}}  } &	{\scriptsize{\textbf{0.71}}  } &	{\scriptsize{\textbf{0.78}}  } &	{\scriptsize{1.06}  } &	{\scriptsize{1.02}  } &	{\scriptsize{\textbf{0.98}}  } &	{\scriptsize{\textbf{0.98}}  } &	{\scriptsize{1.21}  }	\\ \cline{1-12}
+	\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}} \scriptsize{Unrestricted} \\ \scriptsize{w/o AR} \end{tabular}} &	\scriptsize{OPCA} &	{\scriptsize{3.10}  } &	{\scriptsize{2.63}  } &	{\scriptsize{1.82}  } &	{\scriptsize{\textbf{0.83$^{*}$}} } &	{\scriptsize{\textbf{0.75$^{**}$}}} &	{\scriptsize{\textbf{0.75$^{*}$}} } &	{\scriptsize{\textbf{0.61$^{**}$}}} &	{\scriptsize{\textbf{0.58$^{**}$}}} &	{\scriptsize{\textbf{0.62$^{*}$}} } &	{\scriptsize{\textbf{0.74$^{*}$}} }	\\
+	&	\scriptsize{RPCA} &	{\scriptsize{3.10}  } &	{\scriptsize{2.63}  } &	{\scriptsize{1.82}  } &	{\scriptsize{\textbf{0.83$^{*}$}} } &	{\scriptsize{\textbf{0.75$^{**}$}}} &	{\scriptsize{\textbf{0.75$^{*}$}} } &	{\scriptsize{\textbf{0.61$^{**}$}}} &	{\scriptsize{\textbf{0.58$^{**}$}}} &	{\scriptsize{\textbf{0.62$^{*}$}} } &	{\scriptsize{\textbf{0.74$^{*}$}} }	\\
+	&	\scriptsize{EM} &	{\scriptsize{3.33}  } &	{\scriptsize{3.10$^{**}$}} &	{\scriptsize{2.14$^{**}$}} &	{\scriptsize{1.13}  } &	{\scriptsize{\textbf{0.98}}  } &	{\scriptsize{1.05}  } &	{\scriptsize{\textbf{0.78}}  } &	{\scriptsize{\textbf{0.69}}  } &	{\scriptsize{\textbf{0.78}}  } &	{\scriptsize{\textbf{0.80$^{*}$}} }	\\
+	&	\scriptsize{KF } &	{\scriptsize{2.81}  } &	{\scriptsize{2.45$^{**}$}} &	{\scriptsize{1.80$^{**}$}} &	{\scriptsize{\textbf{0.90$^{*}$}} } &	{\scriptsize{\textbf{0.75$^{**}$}}} &	{\scriptsize{\textbf{0.80$^{**}$}}} &	{\scriptsize{\textbf{0.72$^{*}$}} } &	{\scriptsize{\textbf{0.57$^{*}$}} } &	{\scriptsize{\textbf{0.62$^{*}$}} } &	{\scriptsize{\textbf{0.79}}  }	\\ \cline{1-12}
+	\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}} \scriptsize{Unrestricted} \\ \scriptsize{w/o AR} \end{tabular}} &	\scriptsize{OPCA} &	{\scriptsize{\textbf{0.76}}  } &	{\scriptsize{\textbf{0.88}}  } &	{\scriptsize{\textbf{0.68$^{*}_\text{FB}$}} } &	{\scriptsize{\textbf{0.47$^{**}_\text{FB}$}}} &	{\scriptsize{\textbf{0.49$^{**}$}}} &	{\scriptsize{\textbf{0.59$^{*}_\text{FB}$}} } &	{\scriptsize{\textbf{0.49$^{**}_\text{FB}$}}} &	{\scriptsize{\textbf{0.53$^{**}$}}} &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.73$^{*}_\text{FB}$}} }	\\
+	&	\scriptsize{RPCA} &	{\scriptsize{\textbf{0.76}}  } &	{\scriptsize{\textbf{0.88}}  } &	{\scriptsize{\textbf{0.68$^{*}$}} } &	{\scriptsize{\textbf{0.47$^{**}$}}} &	{\scriptsize{\textbf{0.49$^{**}_\text{FB}$}}} &	{\scriptsize{\textbf{0.59$^{*}$}} } &	{\scriptsize{\textbf{0.49$^{**}$}}} &	{\scriptsize{\textbf{0.53$^{**}$}}} &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.73$^{*}_\text{FB}$}} }	\\
+	&	\scriptsize{EM} &	{\scriptsize{1.33}  } &	{\scriptsize{1.39}  } &	{\scriptsize{1.03}  } &	{\scriptsize{\textbf{0.80}}  } &	{\scriptsize{\textbf{0.75}}  } &	{\scriptsize{\textbf{0.85}}  } &	{\scriptsize{\textbf{0.75}}  } &	{\scriptsize{\textbf{0.82}}  } &	{\scriptsize{\textbf{0.73}}  } &	{\scriptsize{1.09}  }	\\
+	&	\scriptsize{KF } &	{\scriptsize{\textbf{0.91}}  } &	{\scriptsize{\textbf{0.99}}  } &	{\scriptsize{\textbf{0.76}}  } &	{\scriptsize{\textbf{0.57$^{**}$}}} &	{\scriptsize{\textbf{0.50$^{**}$}}} &	{\scriptsize{\textbf{0.66}}  } &	{\scriptsize{\textbf{0.58$^{**}$}}} &	{\scriptsize{\textbf{0.48$^{**}_\text{FB}$}}} &	{\scriptsize{\textbf{0.55$^{*}_\text{FB}$}} } &	{\scriptsize{1.07}  }	\\ \cline{1-12}
+	\multirow{4}{*}{\scriptsize{Smoothed}} &	\scriptsize{OPCA} &	{\scriptsize{2.47}  } &	{\scriptsize{2.16}  } &	{\scriptsize{1.51}  } &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.71$^{**}$}}} &	{\scriptsize{\textbf{0.77$^{**}$}}} &	{\scriptsize{\textbf{0.64$^{**}$}}} &	{\scriptsize{\textbf{0.65$^{*}$}} } &	{\scriptsize{\textbf{0.69$^{*}$}} } &	{\scriptsize{\textbf{0.81$^{*}$}} }	\\
+	&	\scriptsize{RPCA} &	{\scriptsize{2.47}  } &	{\scriptsize{2.16}  } &	{\scriptsize{1.51}  } &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.71$^{**}$}}} &	{\scriptsize{\textbf{0.77$^{**}$}}} &	{\scriptsize{\textbf{0.64$^{**}$}}} &	{\scriptsize{\textbf{0.65$^{*}$}} } &	{\scriptsize{\textbf{0.69$^{*}$}} } &	{\scriptsize{\textbf{0.81$^{*}$}} }	\\
+	&	\scriptsize{EM} &	{\scriptsize{2.44}  } &	{\scriptsize{2.43$^{**}$}} &	{\scriptsize{1.75$^{*}$} } &	{\scriptsize{\textbf{0.84$^{*}$}} } &	{\scriptsize{\textbf{0.92}}  } &	{\scriptsize{\textbf{0.95}}  } &	{\scriptsize{\textbf{0.75}}  } &	{\scriptsize{\textbf{0.75}}  } &	{\scriptsize{\textbf{0.74}}  } &	{\scriptsize{\textbf{0.83$^{*}$}} }	\\
+	&	\scriptsize{KF } &	{\scriptsize{2.32}  } &	{\scriptsize{2.11$^{**}$}} &	{\scriptsize{1.58$^{*}$} } &	{\scriptsize{\textbf{0.78$^{**}$}}} &	{\scriptsize{\textbf{0.81}}  } &	{\scriptsize{\textbf{0.89}}  } &	{\scriptsize{\textbf{0.72$^{*}$}} } &	{\scriptsize{\textbf{0.72}}  } &	{\scriptsize{\textbf{0.74}}  } &	{\scriptsize{\textbf{0.84$^{*}$}} }	\\ \cdashline{1-12}
+	\multicolumn{2}{c|}{\scriptsize{Mean with 1 factor}} &		{\scriptsize{1.43}  } &	{\scriptsize{1.42}  } &	{\scriptsize{1.08}  } &	{\scriptsize{\textbf{0.62$^{**}$}}} &	{\scriptsize{\textbf{0.62$^{**}$}}} &	{\scriptsize{\textbf{0.72$^{**}$}}} &	{\scriptsize{\textbf{0.67$^{*}$}} } &	{\scriptsize{\textbf{0.65$^{*}$}} } &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.84}}  }	\\ \hline
+	\multicolumn{2}{c|}{\scriptsize{Mean of All MIDAS}} &			{\scriptsize{1.16}  }&	{\scriptsize{1.25}  }&	{\scriptsize{\textbf{0.86}}  }&	{\scriptsize{\textbf{0.45\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.50\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.52\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.47\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.61\textsuperscript{*}}} }&	{\scriptsize{\textbf{0.77}}  }&	{\scriptsize{1.12}  }	\\
+	\multicolumn{2}{c|}{\scriptsize{Mean of All}} &			{\scriptsize{1.19}  }&	{\scriptsize{1.26}  }&	{\scriptsize{\textbf{0.93}}  }&	{\scriptsize{\textbf{0.53\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.58\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.61\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.53\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.60\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.70\textsuperscript{*}}} }&	{\scriptsize{\textbf{0.86}}  }	\\ \hline
+
+\pagebreak
+
+\\
+\\
+
+\multicolumn{12}{c}{{\footnotesize {Panel (b): Most Recent}}} \\ \multicolumn{12}{c}{} \\ \hline
+	&	&	\multicolumn{1}{c}{\scriptsize{Backcast}}&	\multicolumn{3}{c}{\scriptsize{Nowcast}}&			\multicolumn{6}{c}{\scriptsize{Forecast}} \\						
+	&	&	\multicolumn{1}{c}{\scriptsize{prev. qtr.}}&	\multicolumn{3}{c}{\scriptsize{current quarter}}&			\multicolumn{3}{c}{\scriptsize{1 quarter ahead}}&			\multicolumn{3}{c}{\scriptsize{2 quarter ahead}} \\			
+	%\scriptsize{Factors} &	
+	\multicolumn{2}{c|}{\scriptsize{Recursive}} &		\multicolumn{1}{c}{\scriptsize{-1}} &	\multicolumn{1}{c}{\scriptsize{1}} &	\multicolumn{1}{c}{\scriptsize{2}} &	\multicolumn{1}{c}{\scriptsize{3}} &	\multicolumn{1}{c}{\scriptsize{4}} &	\multicolumn{1}{c}{\scriptsize{5}} &	\multicolumn{1}{c}{\scriptsize{6}} &	\multicolumn{1}{c}{\scriptsize{7}} &	\multicolumn{1}{c}{\scriptsize{8}} &	\multicolumn{1}{c}{\scriptsize{9}}	\\ \hline
+%Benchmarks
+ \multicolumn{2}{c|}{\scriptsize{RW}} &			{\scriptsize{1.07}  }&	{\scriptsize{1.11}  }&	{\scriptsize{1.15}  }&	{\scriptsize{1.25$^{\text{**}}$}}&	{\scriptsize{1.29$^{\text{**}}$}}&	{\scriptsize{1.27$^{\text{**}}$}}&	{\scriptsize{1.41$^{\text{**}}$}}&	{\scriptsize{1.49$^{\text{**}}$}}&	{\scriptsize{1.49$^{\text{**}}$}}&	{\scriptsize{1.60$^{\text{**}}$}}	\\
+  \multicolumn{2}{c|}{\scriptsize{CBADL}} &			{\scriptsize{\textbf{0.97}}  }&	{\scriptsize{\textbf{0.97}}  }&	{\scriptsize{1.10}  }&	{\scriptsize{1.16}  }&	{\scriptsize{1.12}  }&	{\scriptsize{1.21$^{\text{*}}$} }&	{\scriptsize{1.33$^{\text{**}}$}}&	{\scriptsize{1.29$^{\text{**}}$}}&	{\scriptsize{1.38$^{\text{**}}$}}&	{\scriptsize{1.51$^{\text{**}}$}}	\\
+ \multicolumn{2}{c|}{\scriptsize{BEX}} &			{\scriptsize{\textbf{0.65$^{\text{**}}$}}}&	{\scriptsize{\textbf{0.67$^{\text{**}}$}}}&	{\scriptsize{\textbf{0.74$^{\text{**}}$}}}&	{\scriptsize{\textbf{0.80}}  }&	{\scriptsize{\textbf{0.82}}  }&	{\scriptsize{\textbf{0.85}}  }&	{\scriptsize{\textbf{0.96}}  }&	{\scriptsize{\textbf{0.98}}  }&	{\scriptsize{1.02}  }&	{\scriptsize{1.11}  }	\\ \cdashline{1-12}
+ \multicolumn{2}{c|}{\scriptsize{Mean of Benchmarks}} & {\scriptsize{3.22\textsuperscript{*}} }&	{\scriptsize{2.69\textsuperscript{*}} }&	{\scriptsize{2.01\textsuperscript{*}} }&	{\scriptsize{1.62}  }&	{\scriptsize{1.54}  }&	{\scriptsize{1.44}  }&	{\scriptsize{\textbf{0.96}}  }&	{\scriptsize{\textbf{0.89}}  }&	{\scriptsize{\textbf{0.94}}  }&	{\scriptsize{1.25}  } \\
+ \hline
+% MIDAS
+%\multirow{20}{*}{1} &	
+	\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}} \scriptsize{Basic} \\ \scriptsize{w/o AR} \end{tabular}} &	\scriptsize{OPCA} &	{\scriptsize{2.26}  } &	{\scriptsize{1.78}  } &	{\scriptsize{1.17}  } &	{\scriptsize{\textbf{0.76$^{*}$}} } &	{\scriptsize{\textbf{0.73$^{*}$}} } &	{\scriptsize{\textbf{0.76$^{**}$}}} &	{\scriptsize{\textbf{0.67$^{*}$}} } &	{\scriptsize{\textbf{0.63$^{*}$}} } &	{\scriptsize{\textbf{0.69$^{*}$}} } &	{\scriptsize{\textbf{0.83$^{*}$}} }	\\
+	&	\scriptsize{RPCA} &	{\scriptsize{2.26}  } &	{\scriptsize{1.78}  } &	{\scriptsize{1.17}  } &	{\scriptsize{\textbf{0.76$^{*}$}} } &	{\scriptsize{\textbf{0.73$^{*}$}} } &	{\scriptsize{\textbf{0.76$^{**}$}}} &	{\scriptsize{\textbf{0.67$^{*}$}} } &	{\scriptsize{\textbf{0.63$^{*}$}} } &	{\scriptsize{\textbf{0.69$^{*}$}} } &	{\scriptsize{\textbf{0.83$^{*}$}} }	\\
+	&	\scriptsize{EM} &	{\scriptsize{2.71$^{**}$}} &	{\scriptsize{2.38$^{**}$}} &	{\scriptsize{1.40}  } &	{\scriptsize{1.06}  } &	{\scriptsize{1.07}  } &	{\scriptsize{\textbf{1.00}}  } &	{\scriptsize{\textbf{0.83}}  } &	{\scriptsize{\textbf{0.76}}  } &	{\scriptsize{\textbf{0.77}}  } &	{\scriptsize{\textbf{0.82$^{**}$}}}	\\
+	&	\scriptsize{KF } &	{\scriptsize{2.04}  } &	{\scriptsize{1.69}  } &	{\scriptsize{1.16}  } &	{\scriptsize{\textbf{0.86$^{*}$}} } &	{\scriptsize{\textbf{0.85}}  } &	{\scriptsize{\textbf{0.89}}  } &	{\scriptsize{\textbf{0.77}}  } &	{\scriptsize{\textbf{0.71}}  } &	{\scriptsize{\textbf{0.76}}  } &	{\scriptsize{\textbf{0.86$^{*}$}} }	\\ \cline{1-12}
+	\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}} \scriptsize{Basic} \\ \scriptsize{w/ AR} \end{tabular}} &	\scriptsize{OPCA} &	{\scriptsize{\textbf{0.75$_\text{FB}$}}  } &	{\scriptsize{\textbf{0.81$^{*}_\text{GB}$}} } &	{\scriptsize{\textbf{0.61$^{**}$}}} &	{\scriptsize{\textbf{0.51$^{**}$}}} &	{\scriptsize{\textbf{0.59$^{**}$}}} &	{\scriptsize{\textbf{0.67$^{*}$}} } &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.76$^{*}$}} } &	{\scriptsize{\textbf{0.94}}  }	\\
+	&	\scriptsize{RPCA} &	{\scriptsize{\textbf{0.75}}  } &	{\scriptsize{\textbf{0.86$^{*}$}} } &	{\scriptsize{\textbf{0.61$^{**}$}}} &	{\scriptsize{\textbf{0.51$^{**}$}}} &	{\scriptsize{\textbf{0.59$^{**}$}}} &	{\scriptsize{\textbf{0.67$^{*}$}} } &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.70$^{*}$}} } &	{\scriptsize{\textbf{0.76$^{*}$}} } &	{\scriptsize{\textbf{0.94}}  }	\\
+	&	\scriptsize{EM} &	{\scriptsize{1.17}  } &	{\scriptsize{1.31}  } &	{\scriptsize{\textbf{0.83}}  } &	{\scriptsize{\textbf{0.99}}  } &	{\scriptsize{1.21}  } &	{\scriptsize{1.00}  } &	{\scriptsize{1.01}  } &	{\scriptsize{\textbf{0.90}}  } &	{\scriptsize{\textbf{0.94}}  } &	{\scriptsize{1.11}  }	\\
+	&	\scriptsize{KF } &	{\scriptsize{\textbf{0.84}}  } &	{\scriptsize{\textbf{0.84}}  } &	{\scriptsize{\textbf{0.72$^{**}$}}} &	{\scriptsize{\textbf{0.71}}  } &	{\scriptsize{\textbf{0.84}}  } &	{\scriptsize{1.06}  } &	{\scriptsize{\textbf{0.99}}  } &	{\scriptsize{\textbf{0.95}}  } &	{\scriptsize{\textbf{0.97}}  } &	{\scriptsize{1.22}  }	\\ \cline{1-12}
+	\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}} \scriptsize{Unrestricted} \\ \scriptsize{w/o AR} \end{tabular}} &	\scriptsize{OPCA} &	{\scriptsize{2.32}  } &	{\scriptsize{1.88}  } &	{\scriptsize{1.25}  } &	{\scriptsize{\textbf{0.79$^{*}$}} } &	{\scriptsize{\textbf{0.70$^{**}$}}} &	{\scriptsize{\textbf{0.66$^{**}$}}} &	{\scriptsize{\textbf{0.56$^{**}$}}} &	{\scriptsize{\textbf{0.51$^{**}$}}} &	{\scriptsize{\textbf{0.56$^{*}$}} } &	{\scriptsize{\textbf{0.68$^{**}$}}}	\\
+	&	\scriptsize{RPCA} &	{\scriptsize{2.32}  } &	{\scriptsize{1.88}  } &	{\scriptsize{1.25}  } &	{\scriptsize{\textbf{0.79$^{*}$}} } &	{\scriptsize{\textbf{0.70$^{**}$}}} &	{\scriptsize{\textbf{0.66$^{**}$}}} &	{\scriptsize{\textbf{0.56$^{**}$}}} &	{\scriptsize{\textbf{0.51$^{**}$}}} &	{\scriptsize{\textbf{0.56$^{*}$}} } &	{\scriptsize{\textbf{0.68$^{**}$}}}	\\
+	&	\scriptsize{EM} &	{\scriptsize{2.74$^{*}$} } &	{\scriptsize{2.48$^{**}$}} &	{\scriptsize{1.50}  } &	{\scriptsize{1.10}  } &	{\scriptsize{\textbf{0.94}}  } &	{\scriptsize{\textbf{0.93}}  } &	{\scriptsize{\textbf{0.74}}  } &	{\scriptsize{\textbf{0.60}}  } &	{\scriptsize{\textbf{0.72}}  } &	{\scriptsize{\textbf{0.76$^{**}$}}}	\\
+	&	\scriptsize{KF } &	{\scriptsize{2.10}  } &	{\scriptsize{1.79}  } &	{\scriptsize{1.19}  } &	{\scriptsize{\textbf{0.82$^{**}$}}} &	{\scriptsize{\textbf{0.68$^{**}$}}} &	{\scriptsize{\textbf{0.67$^{**}$}}} &	{\scriptsize{\textbf{0.64$^{*}$}} } &	{\scriptsize{\textbf{0.48$^{**}$}}} &	{\scriptsize{\textbf{0.54$^{*}$}} } &	{\scriptsize{\textbf{0.71$^{**}$}}}	\\ \cline{1-12}
+	\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}} \scriptsize{Unrestricted} \\ \scriptsize{w/o AR} \end{tabular}} &	\scriptsize{OPCA} &	{\scriptsize{\textbf{0.84}}  } &	{\scriptsize{\textbf{0.89$^{*}$}} } &	{\scriptsize{\textbf{0.57$^{**}$}}} &	{\scriptsize{\textbf{0.46$^{**}_\text{FB}$}}} &	{\scriptsize{\textbf{0.46$^{**}$}}} &	{\scriptsize{\textbf{0.54$^{**}_\text{FB}$}}} &	{\scriptsize{\textbf{0.44$^{**}_\text{FB}$}}} &	{\scriptsize{\textbf{0.46$^{**}$}}} &	{\scriptsize{\textbf{0.67}}  } &	{\scriptsize{\textbf{0.68$^{**}_\text{FB}$}}}	\\
+	&	\scriptsize{RPCA} &	{\scriptsize{\textbf{0.84}}  } &	{\scriptsize{\textbf{0.89$^{*}$}} } &	{\scriptsize{\textbf{0.57$^{**}$}}} &	{\scriptsize{\textbf{0.46$^{**}$}}} &	{\scriptsize{\textbf{0.46$^{**}_\text{FB}$}}} &	{\scriptsize{\textbf{0.54$^{**}$}}} &	{\scriptsize{\textbf{0.44$^{**}$}}} &	{\scriptsize{\textbf{0.46$^{**}$}}} &	{\scriptsize{\textbf{0.67}}  } &	{\scriptsize{\textbf{0.68$^{**}_\text{FB}$}}}	\\
+	&	\scriptsize{EM} &	{\scriptsize{1.23}  } &	{\scriptsize{1.18}  } &	{\scriptsize{\textbf{0.76}}  } &	{\scriptsize{\textbf{0.82}}  } &	{\scriptsize{\textbf{0.77}}  } &	{\scriptsize{\textbf{0.85}}  } &	{\scriptsize{\textbf{0.74}}  } &	{\scriptsize{\textbf{0.79}}  } &	{\scriptsize{\textbf{0.69}}  } &	{\scriptsize{1.08}  }	\\
+	&	\scriptsize{KF } &	{\scriptsize{\textbf{0.85}}  } &	{\scriptsize{\textbf{0.86}}  } &	{\scriptsize{\textbf{0.55$^{**}_\text{FB}$}}} &	{\scriptsize{\textbf{0.54$^{**}$}}} &	{\scriptsize{\textbf{0.46$^{**}$}}} &	{\scriptsize{\textbf{0.59$^{*}$}} } &	{\scriptsize{\textbf{0.52$^{**}$}}} &	{\scriptsize{\textbf{0.40$^{**}_\text{FB}$}}} &	{\scriptsize{\textbf{0.49$^{**}_\text{FB}$}}} &	{\scriptsize{1.06}  }	\\ \cline{1-12}
+	&	\scriptsize{OPCA} &	{\scriptsize{1.65}  } &	{\scriptsize{1.45}  } &	{\scriptsize{\textbf{0.99}}  } &	{\scriptsize{\textbf{0.63$^{**}$}}} &	{\scriptsize{\textbf{0.64$^{**}$}}} &	{\scriptsize{\textbf{0.68$^{**}$}}} &	{\scriptsize{\textbf{0.58$^{**}$}}} &	{\scriptsize{\textbf{0.59$^{**}$}}} &	{\scriptsize{\textbf{0.64$^{*}$}} } &	{\scriptsize{\textbf{0.76$^{**}$}}}	\\
+	\multirow{4}{*}{\begin{tabular}[c]{@{}c@{}} \scriptsize{Basic} \\ \scriptsize{w/ AR} \end{tabular}} &	\scriptsize{RPCA} &	{\scriptsize{1.65}  } &	{\scriptsize{1.45}  } &	{\scriptsize{\textbf{0.99}}  } &	{\scriptsize{\textbf{0.63$^{**}$}}} &	{\scriptsize{\textbf{0.64$^{**}$}}} &	{\scriptsize{\textbf{0.68$^{**}$}}} &	{\scriptsize{\textbf{0.58$^{**}$}}} &	{\scriptsize{\textbf{0.59$^{**}$}}} &	{\scriptsize{\textbf{0.64$^{*}$}} } &	{\scriptsize{\textbf{0.76$^{**}$}}}	\\
+	&	\scriptsize{EM} &	{\scriptsize{1.74}  } &	{\scriptsize{1.78}  } &	{\scriptsize{1.15}  } &	{\scriptsize{\textbf{0.75$^{**}$}}} &	{\scriptsize{\textbf{0.86}}  } &	{\scriptsize{\textbf{0.84}}  } &	{\scriptsize{\textbf{0.69}}  } &	{\scriptsize{\textbf{0.68}}  } &	{\scriptsize{\textbf{0.70}}  } &	{\scriptsize{\textbf{0.79$^{**}$}}}	\\
+	&	\scriptsize{KF } &	{\scriptsize{1.53}  } &	{\scriptsize{1.43}  } &	{\scriptsize{1.00}  } &	{\scriptsize{\textbf{0.69$^{**}$}}} &	{\scriptsize{\textbf{0.74}}  } &	{\scriptsize{\textbf{0.78}}  } &	{\scriptsize{\textbf{0.66}}  } &	{\scriptsize{\textbf{0.66}}  } &	{\scriptsize{\textbf{0.70}}  } &	{\scriptsize{\textbf{0.80$^{**}$}}}	\\ \cdashline{1-12}
+	\multicolumn{2}{c|}{\scriptsize{Mean of MIDAS}} &		{\scriptsize{1.03}  } &	{\scriptsize{1.02}  } &	{\scriptsize{\textbf{0.69$^{**}$}}} &	{\scriptsize{\textbf{0.54$^{**}$}}} &	{\scriptsize{\textbf{0.56$^{**}$}}} &	{\scriptsize{\textbf{0.62$^{**}$}}} &	{\scriptsize{\textbf{0.61$^{*}$}} } &	{\scriptsize{\textbf{0.57$^{*}$}} } &	{\scriptsize{\textbf{0.64$^{*}$}} } &	{\scriptsize{\textbf{0.78$^{**}$}}}	\\ \hline
+	\multicolumn{2}{c|}{\scriptsize{Mean of All MIDAS}} &			{\scriptsize{\textbf{0.84}}  }&	{\scriptsize{\textbf{0.89}}  }&	{\scriptsize{\textbf{0.52\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.40\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.49\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.47\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.45\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.63}}  }&	{\scriptsize{\textbf{0.86}}  }&	{\scriptsize{1.27}  }	\\
+	\multicolumn{2}{c|}{\scriptsize{Mean of All}} &			{\scriptsize{\textbf{0.76}}  }&	{\scriptsize{\textbf{0.82}}  }&	{\scriptsize{\textbf{0.58\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.46\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.54\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.56\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.50\textsuperscript{**}}}}&	{\scriptsize{\textbf{0.58\textsuperscript{*}}} }&	{\scriptsize{\textbf{0.72}}  }&	{\scriptsize{\textbf{0.91}}  }	\\ \hline
+
+		
+\begin{minipage}{0.95\textwidth}
+\medskip{ \begin{singlespace} 
+\footnotesize * Notes: See notes to Tables 1-4. Entries in this table are ratios of point MSFEs of our benchmark or `strawman' AR(SIC) model to each other model, 
+for various estimation methods and horizons. Panel (a) 
+reports MSFEs based on experiments using `first available' real-time quarterly historical data, and Panel (b) reports 
+results based on the use of `most recent' real-time quarterly historical data. All results are based on recursively estimated models. 
+The column denoted by `Backcast' contains MSFEs for quarterly forecasts of GDP made 1-month prior to the calendar date of the quarterly GDP datum being predicted, 
+and the columns denoted by `Nowcast' contain MSFEs 
+for forecasts of the first, second and third months of each quarterly calendar dated GDP observation. Finally, the columns denoted by `Forecast' contain MSFEs
+based on 
+1-quarter ahead predictions made from 1 month after the end of the quarter (called month 4) to 3 month ahead (called month 6). 
+Months 7-9 correspondingly refer to 2-quarter ahead predictions. 
+Bold entires denote cases for which the point MSFE of a given model is lower than the point MSFE of the AR(SIC) model. Entries superscripted by a ** (5\% level) and a 
+* (10\% level) are significantly better than the AR(SIC) model, based on application of the DM predictive accuracy test.
+Finally, entries subscripted with `FB' denote the MSFE-best models for a given number of estimated factors and for each horizon, while
+entries subscripted with `GB' denote MSFE-best models across all specification permutations, for a given horizon. See Section 5 for complete details.
+\end{singlespace}}
+\end{minipage}													
+\end{longtable}		
+
+% TABLE 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
+\newpage %
+\newgeometry{headheight=15pt,headsep=1cm,vmargin={3cm,2.5cm},hmargin={1.5cm,1.5cm}}
+\renewcommand{\arraystretch}{1.0}
+
+%\begin{landscape}												
+\begin{table}[]												
+\scriptsize												
+\centering												
+\caption{Summary of MSFE-Best Models Across All Modelling Permutations*}				        								
+\label{Table06a}												
+\resizebox{\linewidth}{!}{%												
+\begin{tabular}{cc|EEEEEEEEEE}												
+&  	&  	Backcast&	 \multicolumn{3}{c}{Nowcast}& 			 \multicolumn{6}{c}{Forecast} \\						
+&	& 	prev. qtr.&	 \multicolumn{3}{c}{current quarter} &			\multicolumn{3}{c}{1 quarter ahead} &			     \multicolumn{3}{c}{2 quarter ahead} 			\\
+&	\begin{tabular}[c]{@{}c@{}}Fac.\\ No.\end{tabular}& 	-1 &	1 &	2 &	 3 &	 4 &	5 &	6 &	7 &	8 &	9	\\ \hline
+% Input
+\multirow{12}{*}{\begin{tabular}[c]{@{}c@{}}First\\ Available\end{tabular}}	& \multirow{2}{*}{1}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+	} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	
+\\												
+&	&	\textbf{OPCA} &	OPCA &	OPCA &	OPCA &	RPCA &	OPCA &	OPCA &	KF &	KF &	Both PCAs	\\ \cdashline{2-12}
+& \multirow{2}{*}{2}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+	} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic \\     w/o AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic } \\     \textbf{w/o AR} \end{tabular}	
+\\												
+&	&	OPCA &	RPCA &	KF &	OPCA &	\textbf{OPCA} &	\textbf{KF} &	RPCA &	\textbf{OPCA} &	\textbf{KF} &	\textbf{OPCA}	\\ \cdashline{2-12}
+& \multirow{2}{*}{3}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+	} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Smoothed} \\     \textbf{} \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	
+\\												
+&	&	RPCA &	\textbf{RPCA} &	\textbf{KF} &	\textbf{KF} &	KF &	KF &	\textbf{KF} &	Both PCAs &	KF &	Both PCAs	\\ \cdashline{2-12}
+& \multirow{2}{*}{4}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}AR\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Mean\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	
+\\												
+&	&	OPCA &	- &	RPCA &	RPCA &	KF &	- &	KF &	KF &	KF &	RPCA	\\ \cdashline{2-12}
+& \multirow{2}{*}{5}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}AR\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic \\     w/o AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	
+\\												
+&	&	OPCA &	- &	EM &	KF &	OPCA &	KF &	KF &	KF &	KF &	Both PCAs	\\ \cdashline{2-12}
+& \multirow{2}{*}{6}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}AR\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic \\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Mean\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	
+\\												
+&	&	OPCA &	- &	KF &	- &	Both PCAs &	Both PCAs &	Both PCAs &	Both PCAs &	Both PCAs &	Both PCAs	\\ \hline
+
+% Most Recent 
+\multirow{13}{*}{\begin{tabular}[c]{@{}c@{}}Most\\ Recent\end{tabular}}	& \multirow{2}{*}{1}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+	} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	
+\\												
+&	&	OPCA &	\textbf{OPCA} &	KF &	OPCA &	RPCA &	OPCA &	OPCA &	KF &	KF &	Both PCAs	\\ \cdashline{2-12}
+& \multirow{2}{*}{2}	& \begin{tabular}[c]{@{}c@{}} \textbf{Unrestricted 
+	} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+	} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+} \\     \textbf{w/ AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+} \\     \textbf{w/ AR} \end{tabular}	
+\\												
+&	&	\textbf{OPCA} &	KF &	KF &	\textbf{KF} &	\textbf{OPCA} &	KF &	OPCA &	\textbf{OPCA} &	\textbf{KF} &	\textbf{RPCA} 	\\ \cdashline{2-12}
+& \multirow{2}{*}{3}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Mean\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	
+\\												
+&	&	RPCA &	KF &	KF &	KF &	- &	KF &	KF &	KF &	KF &	Both PCAs	\\ \cdashline{2-12}
+& \multirow{2}{*}{4}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Unrestricted 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Mean} \\     \textbf{} \end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Smoothed} \\     \textbf{} \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	
+\\												
+&	&	OPCA &	KF &	RPCA &	KF &	KF &	\textbf{-} &	\textbf{KF} &	KF &	KF &	KF	\\ \cdashline{2-12}
+& \multirow{2}{*}{5}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}} \textbf{Basic 
+	} \\     \textbf{w/o AR} \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	
+\\												
+&	&	OPCA &	KF &	\textbf{KF} &	KF &	KF &	KF &	KF &	KF &	KF &	OPCA	\\ \cdashline{2-12}
+& \multirow{2}{*}{6}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/ AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Mean\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Basic 
+	\\     w/o AR\end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	& \begin{tabular}[c]{@{}c@{}}Smoothed\\     \end{tabular}	
+\\												
+&	&	OPCA &	- &	KF &	Both PCAs &	RPCA &	RPCA &	Both PCAs &	KF &	Both PCAs &	RPCA	\\ \hline
+
+\end{tabular}												
+}											
+\begin{minipage}{1.0\linewidth}												
+\medskip{\footnotesize * Notes: See notes to Table 5. Entries indicate the model and estimation methods 
+for all `MSFE-best' specifications, by historical data type, number of factors used, and horizon. 
+Entries in the row labeled `All' are the `MSFE-best' models across all factor specifications, for a given historical data type. 
+All model estimation is done recursively and AR interpolation is used for missing value construction. 
+For example, for the `Backcast' horizon, the `Basic factor-MIDAS' model with AR terms and with factors estimated using OPCA is the `globally best' performer
+when experiments are conducted using `first available' real-time historical data. When MSFEs based on the use of OPCA and RPCA are the same up to three decimal places, 
+the PCA method is denoted by `both PCA'. Bold entries denote `MSFE-best' models across all different models, including those with 1-6 factors (for complete tabulated results, see the online appendix).}												
+\end{minipage}												
+\end{table}												
+%\end{landscape}												
+
+% FIGURES FIGURES FIGURES FIGURES FIGURES FIGURES FIGURES FIGURES FIGURES FIGURES
+\graphicspath{{E:/GoogleDrive/106_Research/13_Real-Time/}}
+
+\newpage 
+
+\begin{figure}[]
+\caption{Release Dates for Real-Time Korean GDP*}
+\label{fig03}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Fig00_201509.png} 
+\begin{minipage}{0.8\textwidth} % choose width suitably
+			\medskip
+			{\footnotesize * Notes: See Sections 2 and 3 for complete details.}
+		\end{minipage}
+\end{center}
+\end{figure}
+
+\begin{figure}[]
+\caption{Depiction of Annualized GDP Growth Rates Based on Real-Time Data*}
+\label{fig00}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Fig03_201509} 
+\begin{minipage}{0.8\textwidth} % choose width suitably
+			\medskip
+			{\footnotesize * Notes: See Section 2 for a detailed discussion of the dating conventions used in this diagram. }
+		\end{minipage}
+\end{center}
+\end{figure}
+
+\begin{figure}[]
+\caption{Historical Real-Time Data Releases for Korean GDP*}
+\label{fig01}
+\begin{center}
+\centerline{\includegraphics[width=1.1%
+\textwidth]{Fig03_new}} 
+%\begin{subfigure}[b]{0.49\textwidth}
+%		\includegraphics[width=\textwidth]{C:/Users/Hyunhak/Google µå¶óÀÌºê/BOK/Real-Time/Fig01_release} \label{fig01a} \caption{GDP Releases}
+%		\end{subfigure}
+%\begin{subfigure}[b]{0.49\textwidth}
+%			\includegraphics[width=\textwidth]{C:/Users/Hyunhak/Google µå¶óÀÌºê/BOK/Real-Time/Fig01_cum_errors} \label{fig01b} \caption{Cumulative Revision Errors}
+%		\end{subfigure}		% Check out how to assign panels in the figure.
+%\begin{subfigure}[b]{0.49\textwidth}
+%		\includegraphics[width=\textwidth]{C:/Users/Hyunhak/Google µå¶óÀÌºê/BOK/Real-Time/Fig01_cal_date} \label{fig01c} \caption{Calendar Data For Different Vintages}
+%		\end{subfigure}
+%\begin{subfigure}[b]{0.49\textwidth}
+%			\includegraphics[width=\textwidth]{C:/Users/Hyunhak/Google µå¶óÀÌºê/BOK/Real-Time/Fig01_first_rev_error} \label{fig01d} \caption{First Revision Errors}
+%		\end{subfigure}		% Check out how to assign panels in the figure.
+\begin{minipage}{0.9\textwidth} % choose width suitably
+			\medskip
+			{\footnotesize * Notes: In Figure (a), the solid line depicts 1st release GDP, the dotted line depicts 2nd release data, and the dot-dash line 
+depicts final release data. Figure (b) depicts cumulative revision errors between the 1st and either the 2nd, 12th, or 24th releases.
+Figure (c) shows how the growth rate of 2001:1, 2003:1 and 2005:1 calendar dated GDP evolves as 
+the series is revised. Figure (d) plots the distribution of first revision errors (i.e., the differences between 1st and 2nd data releases).}
+		\end{minipage}
+\end{center}
+\end{figure}
+
+% Forecasting Experiment Example
+\begin{figure}[]
+\caption{Structure of Monthly/Quarterly Prediction Experiments*}
+\label{Fig_04}
+\begin{center}
+\centerline{\includegraphics[width=0.9%
+\textwidth]{Fig_Table_201509}} 
+\begin{minipage}{0.9\textwidth} % choose width suitably
+			\medskip
+			{\footnotesize * Notes: This table describes the timing of monthly backcasts, nowcasts, and forecasts of quarterly GDP.
+For example, in 2010:01, we backcast the GDP growth of 2009:Q4, since its value is not available yet in 2009:Q4; and we nowcast all three months in 2010:Q1. Finally, at the same point in time, we
+also create monthly forecasts of GDP at 2010:Q2 and 2010:Q3. In the next month, 2010:02, we do not backcast 2009:Q4, since its value is now available. For complete details, refer to Section 5.}
+		\end{minipage}
+\end{center}
+\end{figure}
+
+% Real-time vs. Most-recent ----------------------------------------------------
+\begin{figure}[]
+\caption{Forecasting Using `First Available vs. `Most Recent' Real-Time
+Data* }
+\label{fig05}
+\begin{center}
+\centerline{\includegraphics[width=1.2%
+\textwidth]{Fig05_201707}} 
+\begin{minipage}{0.9\textwidth} % choose width suitably
+			\medskip
+			{\footnotesize * Notes: This figure plots MSFEs for various models estimated using recursive and rolling data windows, based on either 
+`first available' or `most recent' real-time historical data. 
+Factor-MIDAS models are estimated using OPCA and AR interpolation, and
+horizons (depicted on the horizontal axes of the graphs) range from nine months ahead (forecasts) to a negative month ahead (backcasts). 
+See Section 5 for complete details.}
+		\end{minipage}
+\end{center}
+\end{figure}
+
+% Rationality Test Figures ---------------------------------------------------
+\newpage 
+
+\begin{figure}[]
+\caption{MSFEs of Forecasting Models Constructed Using One Factor ($r=1$)*}
+\label{fig04_2}
+\begin{center}
+\centerline{\includegraphics[width=1.2%
+\textwidth]{ByFactor_r1v1}} 
+\begin{minipage}{0.9\textwidth} % choose width suitably
+			\medskip
+			{\footnotesize * Notes: Notes: See notes to Figure \ref{fig05}. Each panel plots the MSFEs of various models for a different estimation method. 
+				Benchmark models, including AR, CBADL and BEX, are redundantly included in all panels of this figure, for comparability. 
+				`Basic w/o AR' and `Basic w/ AR' are the basic factor-MIDAS models with and without AR terms. `Unrest' and `Smooth' denote alternative factor-MIDAS specifications (see Section 4).
+				OPCA and RPCA are implemented with AR interpolation, and all forecasts are based on recursively estimated models. See Section 5 for complete details. }
+		\end{minipage}
+\end{center}
+\end{figure}
+
+%\begin{figure}[]
+%\caption{MSFEs of Forecasting Models Constructed Using Six Factors ($r=6$)*}
+%\label{fig04sub_2}
+%\begin{center}
+%\centerline{\includegraphics[width=1.2%
+%\textwidth]{Fig06sub_201511}} 
+%\begin{minipage}{0.9\textwidth} % choose width suitably
+%			\medskip
+%			{\footnotesize * Notes: See the Notes to Figure \ref{fig04_1}. }
+%		\end{minipage}
+%\end{center}
+%\end{figure}
+%
+
+%\begin{figure}[]
+%\caption{MSFEs of Factor-MIDAS Models with One Factor ($r=1$)*}
+%\label{fig04_3}
+%\begin{center}
+%\centerline{\includegraphics[width=1.2%
+%\textwidth]{ByMidas_r1v1}} 
+%\begin{minipage}{0.9\textwidth} % choose width suitably
+%			\medskip
+%			{\footnotesize * Notes: See the Notes to \ref{fig04_1}.}
+%		\end{minipage}
+%\end{center}
+%\end{figure}
+
+\begin{figure}[]
+\caption{MSFEs of Factor-MIDAS Models with with One Factor ($r=1$)*}
+\label{fig04_4}
+\begin{center}
+\centerline{\includegraphics[width=1.2%
+\textwidth]{ByMidas_r1v1}} 
+\begin{minipage}{0.9\textwidth} % choose width suitably
+			\medskip
+			{\footnotesize * Notes: See the Notes to Figure \ref{fig04_2}. }
+		\end{minipage}
+\end{center}
+\end{figure}
+
+%\begin{figure}[]
+%\caption{MSFEs of Factor-MIDAS Models with with Six Factors, ($r=6$)*}
+%\label{fig04sub_4}
+%\begin{center}
+%\centerline{\includegraphics[width=1.2%
+%\textwidth]{Fig08sub_201511}} 
+%\begin{minipage}{0.9\textwidth} % choose width suitably
+%			\medskip
+%			{\footnotesize *Notes: See the Notes to \ref{fig04_1}. }
+%		\end{minipage}
+%\end{center}
+%\end{figure}
+
+%----------------------------------------------------------------- 
+%\begin{table}[t]
+%	\caption{List of Forecasting Strategy}
+%	\label{tb11}
+%	\begin{center}
+%		{\footnotesize 
+%		\begin{tabular}{c|ccccc}
+%		Month & Backcast & Nowcast & \multicolumn{3}{c}{Forecast} \\ \hline
+%		2010:01 & ${_{2010:01}}\widehat{Y}_{2009:Q4}$ & ${_{2010:01}}\widehat{Y}%
+%		_{2010:Q1}$ & ${_{2010:01}}\widehat{Y}_{2010:Q2}$ & ${_{2010:01}}\widehat{Y}%
+%		_{2010:Q3}$ & ${_{2010:01}}\widehat{Y}_{2010:Q4}$ \\ 
+%		2010:02 &  & ${_{2010:02}}\widehat{Y}_{2010:Q1}$ & ${_{2010:02}}\widehat{Y}%
+%		_{2010:Q2}$ & ${_{2010:02}}\widehat{Y}_{2010:Q3}$ & ${_{2010:02}}\widehat{Y}%
+%		_{2010:Q4}$ \\ 
+%		2010:03 &  & ${_{2010:03}}\widehat{Y}_{2010:Q1}$ & ${_{2010:03}}\widehat{Y}%
+%		_{2010:Q2}$ & ${_{2010:03}}\widehat{Y}_{2010:Q3}$ & ${_{2010:03}}\widehat{Y}%
+%		_{2010:Q4}$ \\ 
+%		2010:04 & ${_{2010:04}}\widehat{Y}_{2010:Q1}$ & ${_{2010:04}}\widehat{Y}%
+%		_{2010:Q1}$ & ${_{2010:04}}\widehat{Y}_{2010:Q3}$ & ${_{2010:04}}\widehat{Y}%
+%		_{2010:Q4}$ & ${_{2010:04}}\widehat{Y}_{2011:Q1}$ \\ 
+%		2010:05 &  & ${_{2010:05}}\widehat{Y}_{2010:Q1}$ & ${_{2010:05}}\widehat{Y}%
+%		_{2010:Q3}$ & ${_{2010:05}}\widehat{Y}_{2010:Q4}$ & ${_{2010:05}}\widehat{Y}%
+%		_{2011:Q1}$ \\ 
+%		2010:06 &  & ${_{2010:06}}\widehat{Y}_{2010:Q1}$ & ${_{2010:06}}\widehat{Y}%
+%		_{2010:Q3}$ & ${_{2010:06}}\widehat{Y}_{2010:Q4}$ & ${_{2010:06}}\widehat{Y}%
+%		_{2011:Q1}$ \\ 
+%		2010:07 & ... & ... & ... & ... & ...\\ \bottomrule
+%		\end{tabular}
+%		} {\footnotesize 
+%		\begin{minipage}{1\columnwidth} \smallskip \footnotesize * Notes: See notes to Table XX. 
+%		\end{minipage}}
+%	\end{center}
+%\end{table}									
+
+\end{document}

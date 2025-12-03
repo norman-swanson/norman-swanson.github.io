@@ -1,0 +1,2850 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 936
+%% This document created by Scientific Word (R) Version 3.5
+
+\documentclass[a4paper,amstex,11pt]{article}%
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{verbatim}
+\usepackage{bm}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{amsmath,amsthm,amsfonts,natbib,bm,latexsym,enumerate,url}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{setspace}
+\usepackage{amssymb}%
+\setcounter{MaxMatrixCols}{30}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{Codepage=936}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+%TCIDATA{Created=Tue Nov 04 20:07:01 2003}
+%TCIDATA{LastRevised=Saturday, September 16, 2017 08:22:03}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\providecommand{\U}[1]{\protect \rule{.1in}{.1in}}
+\providecommand{\U}[1]{\protect \rule{.1in}{.1in}}
+\providecommand{\U}[1]{\protect \rule{.1in}{.1in}}
+\renewcommand{\baselinestretch}{0.9}
+\textwidth=6.5in \textheight=9in \oddsidemargin=0in
+\evensidemargin=0in \topmargin=-0.25in
+\renewcommand {\baselinestretch}{1.3}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{assumption}{Assumption}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\begin{document}
+\bigskip\bigskip\bigskip
+
+\begin{center}
+\bigskip\bigskip{\LARGE Testing for Jumps and Jump Intensity Path
+Dependence*}\bigskip
+
+{\Large Valentina Corradi}$^{1}${\Large , Mervyn J. Silvapulle}$^{2}%
+${\Large \ and Norman R. Swanson}$^{3}$
+
+$^{1}${\Large University of Surrey,\ }$^{2}${\Large Monash University\ and
+}$^{3}${\Large Rutgers University}{\large \bigskip\bigskip}
+
+{\large September 2017}
+
+\bigskip Abstract
+\end{center}
+
+{\small In this paper, we develop a \textquotedblleft jump
+test\textquotedblright\ for the null hypothesis that the probability of a jump
+is zero, building on earlier work by A\"{\i}t-Sahalia (2002). The test is
+based on realized third moments, and uses observations over an increasing time
+span. The test offers an alternative to standard finite time span tests, and
+is designed to detect jumps in the data generating process rather than
+detecting realized jumps over a fixed time span. More specifically, we make
+two contributions. First, we introduce our largely model free jump\ test\ for
+the null hypothesis of zero jump intensity. Second, under the maintained
+assumption of strictly positive jump intensity, we introduce a
+\textquotedblleft self-excitement\ test\textquotedblright\ for the null of
+constant jump intensity against the alternative of path dependent intensity.
+The latter test has power against autocorrelation in the jump component, and
+is a direct test for Hawkes diffusions (see, e.g. A\"{\i}t-Sahalia, Cacho-Diaz
+and Laeven (2015)). The limiting distributions of the proposed statistics are
+analyzed via use of a double asymptotic scheme, wherein the time span goes to
+infinity and the discrete interval approaches zero; and the distributions of
+the tests are normal and half normal, respectively. The results from a Monte
+Carlo study indicate that the tests have reasonable finite sample properties.
+An empirical illustration is provided.}
+
+\bigskip
+
+\noindent\textit{Keywords}: diffusion model, jump intensity, jump size
+density, tricity.
+
+\noindent\textit{JEL classification}: C12, C22, C52, C55.
+
+\renewcommand {\baselinestretch}{1.0}
+
+\_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_
+
+{\small \renewcommand {\baselinestretch}{1.0} }
+
+\begin{spacing}{1.0}
+{\small $^{\ast}$ }{\footnotesize Valentina Corradi, School of Economics,
+University of Surrey, Guildford, Surrey, GU2 7XH, UK, v.corradi@surrey.ac.uk.\ Mervyn
+Silvapulle, Department of Econometrics and Business Statistics, Monash
+University Caulfield, Caulfield East, Victoria 3145,
+Australia, mervyn.silvapulle@monash.edu. Norman Swanson, Department of
+Economics, Rutgers University, New Brunswick, NJ 08901,
+USA, nswanson@econ.rutgers.edu. We are grateful to the editor, Yacine Aït-Sahalia for useful comments on earlier versions of this paper.
+We also benefited from the comments made by two anonymous referees, Brendan Beare, Francesco Bravo,
+Bertrand Candelon, Laura
+Coroneo, Prosper Dovonon, Domenico Giannone, Rustam Ibragimov, Tatsushi Oka, Barbara Rossi, Peter Spencer, and
+seminar participants at the National University of Singapore, Notre Dame Univeristy, the University of York, Pompeo Fabra University,
+the 2013 Computational and Financial Econometrics Conference in London,
+the 2014 CIREQ Time Series and Financial Econometrics conference in Montreal,
+the 2014 UK Econometric Study Group in Bristol,
+and the 2015 ESRC conference on Financial Contagion in Nice
+for useful comments
+and suggestions.}
+\end{spacing}
+
+
+\renewcommand {\baselinestretch}{1.3}
+
+\newpage
+
+\clearpage
+
+
+\allowdisplaybreaks
+
+
+\section{Introduction}
+
+Jump diffusions are widely used in the financial econometrics literature when
+analyzing returns or exchange rates, as discussed in Duffie, Pan and Singleton
+(2000), Singleton (2001), Anderson, Benzoni and Lund (2002), Jiang and Knight
+(2002), Chacko and Viceira (2003) and Eraker, Johannes and Polson (2003),
+among others. In this context, various estimation techniques have been
+developed, and the common practice is to jointly estimate the parameters of
+both the continuous time and the jump components of models. Thus, parameters
+characterizing the drift, variance, jump intensity, and jump size probability
+density are jointly estimated. However, an obvious non-standard feature of
+this class of models is that the parameters characterizing the jump size
+density are not identified when the jump intensity is identically zero. This
+is an issue both when the intensity parameter is constant, as in standard
+stochastic volatility models with jumps (see, e.g. Andersen, Benzoni and Lund
+(2002)) as well as when the intensity follows a diffusion process, as in the
+important case of the Hawkes diffusion models analyzed by A\"{\i}t-Sahalia,
+Cacho-Diaz and Laeven (2015). If one estimates a jump diffusion model that
+contains a jump intensity parameter and if the population jump intensity
+happens to be zero, then a subset of the parameters in the model is not
+identified, which in turn precludes consistent estimation of other parameters
+(see Andrews and Cheng (2012)).
+
+The above estimation problem serves to underscore the importance of pretesting
+for jumps. The first paper addressing the issue of discrimination between
+diffusion processes and jump processes was A\"{\i}t-Sahalia (2002). He derived
+a set of necessary and sufficient conditions, based on the properties of the
+transition density, which have to be satisfied by any diffusion sampled at
+discrete times. Hence, he provided a criterion for checking whether there are
+jumps in the data generating process. Since then, there have been a large
+variety of tests for the null of no jumps versus the alternative of jumps.
+Tests include those based on the comparison of two realized volatility
+measures, one which is robust, and the other which is not robust to the
+presence of jumps (see, e.g. Barndorff-Nielsen, Shephard and Winkel (2006) and
+Podolskji and Vetter (2009a)), tests based on a thresholding approach (see,
+e.g. Corsi, Pirino, and Ren\`{o} (2010), Lee and Mykland (2008), and Lee,
+Loretan and Ploberger (2013)), and tests based on power variation, as
+discussed in A\"{\i}t-Sahalia and Jacod (2009). Such tests are consistent
+against realized\ jumps. One feature of these tests is that they are based on
+observations drawn on a given finite time span, and they can thus only detect
+whether jumps occurred during this given time span. While this is hardly a
+weakness of the existing tests, there are clearly situations for which
+interest lies in testing for the existence of jumps in the data generating
+process, or within a class of models. For example, this is the case if one is
+interested in using (transformations of) jump diffusion processes in a variety
+of valuation problems, such as option pricing and default modelling (see, e.g.
+Duffie, Pan and Singleton (2000)).
+
+In this paper we make two contributions to the literature on jumps. First, we
+develop a \textquotedblleft jump test\textquotedblright\ for the null
+hypothesis that the probability of a jump is zero, building on earlier work of
+A\"{\i}t-Sahalia (2002). Second, under the maintained assumption of strictly
+positive jump intensity, we introduce a \textquotedblleft
+self-excitement\ test\textquotedblright\ for the null of constant jump
+intensity against the alternative of path dependent intensity. This test has
+power against autocorrelation in the jump component, and is a direct test for
+Hawkes diffusions (see A\"{\i}t-Sahalia, Cacho-Diaz and Laeven 2015), in which
+jump intensity is modeled as a mean-reverting diffusion process. When the
+proposed tests are implemented prior to model specification, standard
+estimation of jump diffusions can be subsequently carried out, avoiding the
+identification problems discussed above. Recently, Boswijk, Laeven and Yang
+(2017) and Dungey, Erdemlioglu, Matei and Yang (2017) have suggested tests for
+self-excitation and mutual excitation in realized jumps. Our tests instead
+detect jump self-excitation in the data generating process.
+
+Our jump test is based on realized third moments, or so-called tricity.
+Various realized tricity-type statistics over a finite time span have already
+been examined in the literature in order to: detect realized jumps, as in
+Jacod (2012); study the contribution of realized skewness when predicting the
+cross-section of equity returns, as in Amaya, Christoffersen, Jacobs and
+Vasquez (2015); and to test for the endogeneity of sampling times, as in Li,
+Mykland, Renault, Zhang and Zheng (2014). What distinguishes our tricity-type
+test from these is that it is analyzed using both in-fill and long-span
+asymptotics. The use of long-span asymptotics ensures that the suggested
+statistic has power against jump intensity rather than against realized jumps.
+Importantly, our test is also robust to the presence of leverage. The limiting
+behavior of the proposed statistic is readily analyzed via use of a double
+asymptotic scheme wherein the time span goes to infinity and the discrete
+interval approaches zero. Under the null hypothesis of zero intensity, the
+statistic has a normal limiting distribution. Under the alternative, it is
+necessary to distinguish between jumps with zero or non-zero third moment. In
+the latter case, the proposed test has a well defined Pitman drift and has
+power against $\sqrt{T}-$local alternatives, where $T$ is the time span, in
+days. In the former case, the sample third moment approaches zero, but the
+probability order of the statistic is larger than that which obtains under the
+null, since the jump component does not contribute to the mean, while it does
+contribute to the variance. As the order of magnitude of the variance depends
+on whether the null hypothesis is true or not, we introduce a threshold
+estimator for the variance, which is consistent under the null of zero
+intensity, and bounded in probability under the alternative. Thus, inference
+can be performed via use of a simple $t$-statistic.
+
+We suggest two versions of our self-excitement test, one is based on the
+autocorrelation function of returns, the other on the autocorrelation of
+squared returns. The advantage of the latter over the former is that it does
+not require non-zero mean jump size.
+
+In principle, one might consider testing for the null of zero intensity using
+a score, Wald or likelihood ratio test, based on discrete observations (see,
+e.g. Andrews (2001)). This approach requires treating jump size density
+parameters as nuisance parameters unidentified under the null, and requires
+correct specification of both the continuous and the jump components of the
+diffusion. Misspecification of one or both components will invalidate the
+test. Additionally, the likelihood function of a jump diffusion is not
+generally known in closed form, and therefore estimation (which is needed for
+test statistic construction) is usually based on either simulated GMM (see
+Duffie and Singleton (1993) and Anderson, Benzoni and Lund (2002)), indirect
+inference (see Gourieroux and Monfort (1993) and Gallant and Tauchen (1996)),
+or nonparametric simulated maximum likelihood (see Fermanian and Salani\'{e}
+(2004) and Corradi and Swanson (2011)). However, it goes without saying that
+one cannot simulate a diffusion with a negative intensity parameter. This, in
+turn, precludes the existence of a quadratic approximation around the null
+parameters of the criterion function to be maximized (minimized). Given that
+the existence of such quadratic approximations is a necessary condition for
+estimation and inference about parameters on the boundary (see Andrews (1999,
+2001), Beg, Silvapulle and Silvapulle (2001), and Chapter 4 in Silvapulle and
+Sen (2005)), we cannot rely on simulation-based estimators when testing using
+standard score, Wald or likelihood ratio tests.
+
+The finite sample behavior of the tests is studied in a series of Monte Carlo
+experiments. Since the tests are not robust to microstructure noise, one needs
+to choose a frequency for which the noise is not too binding. For this reason,
+in our Monte Carlo exercise, we set the discretization interval $\Delta=1/78$
+and $\Delta=1/156,$ corresponding to moderate frequencies. We also study test
+sensitivity to the presence of non-zero microstructure noise. The empirical
+size of the jump test is sensitive to the smallest values of $T$ and
+$\Delta^{-1}$, but performance is markedly better as the magnitude of these
+parameters is increased. Moreover, the power is quite good across all
+parameterizations, even in the case of jumps with zero third moment. We then
+assess and compare the finite sample properties of the two self-excitation
+tests. Overall, we find that the test based on returns behaves better than
+that based on squared returns, in the sense of suffering from less size
+distortion. As expected, both tests have good power as the level of path
+dependence increases.
+
+We also discuss a small empirical illustration in which 11 stocks are
+examined. In the illustration, strong evidence of jumps is found, regardless
+of $T$, and moderate evidence of self-excitement is found.
+
+The rest of the paper is organized as follows. Section 2 describes the set-up.
+Section 3 and Section 4 discuss the jump intensity and self-excitement tests,
+and derive their asymptotic properties, respectively. Section 5 reports the
+findings of a Monte Carlo study designed to examine the finite sample
+properties of the tests, Section 6 contains the results of an empirical
+illustration, and concluding remarks are gathered in Section 7. All proofs are
+collected in an Appendix.
+
+\section{Set-Up}
+
+\noindent We consider stochastic volatility jump diffusions, with either
+constant or path dependent intensity. For $t\in\mathbb{R}^{+},$ consider%
+\begin{equation}
+\mathrm{d\ln}X_{t}=\mu\mathrm{d}t+V_{t}^{1/2}\sqrt{1-\rho^{2}}\mathrm{d}%
+W_{1,t}+V_{t}^{1/2}\rho\mathrm{d}W_{2,t}+Z_{t}\mathrm{d}N_{t}, \label{X}%
+\end{equation}
+and%
+\begin{equation}
+\mathrm{d}V_{t}=\mu(V_{t},\theta)\mathrm{d}t+g\left(  V_{t},\theta\right)
+\mathrm{d}W_{2,t}, \label{vc}%
+\end{equation}
+with $-1\leq\rho\leq1.$ Here, $W_{1,t}$ and $W_{2,t}$ are independent standard
+Brownian motions. From (\ref{X}) and (\ref{vc}), it is immediate to see that
+the specification of the volatility process is rather general, as the drift
+and variance terms in (\ref{vc}) need only ensure the existence of a strong
+solution, $V_{t}>0.$ For example, $V_{t}$ can be generated by a square root
+process, which is the case considered in the Monte Carlo study.
+
+In the sequel, we assume that the jump process, $N_{t},$ is a finite activity
+process. Namely, we focus on the case of a small number of large jumps. More
+precisely,
+\begin{equation}
+\Pr\left(  N_{t+\Delta}-N_{t}=1|\mathcal{F}_{t}\right)  =\lambda_{t}%
+\Delta+o\left(  \Delta\right)  , \label{J1}%
+\end{equation}%
+\begin{equation}
+\Pr\left(  N_{t+\Delta}-N_{t}=0|\mathcal{F}_{t}\right)  =1-\lambda_{t}%
+\Delta+o\left(  \Delta\right)  , \label{J2}%
+\end{equation}
+and%
+\begin{equation}
+\Pr\left(  N_{t+\Delta}-N_{t}>1|\mathcal{F}_{t}\right)  =o\left(
+\Delta\right)  , \label{J3}%
+\end{equation}
+where $\mathcal{F}_{t}=\sigma\left(  N_{s},\text{ }0\leq s\leq t\right)  .$
+Additionally, in the sequel $1_{\Delta_{N_{(k+1)\Delta}}}=1$ if a jump occurs
+between time $k\Delta$ and $(k+1)\Delta$, and the associated jump size,
+$Z_{k},$ is identically and independently distributed with density
+$f(z;\gamma)$.
+
+We consider two general cases. The first is that of Poisson jumps, in which
+$\lambda_{t}=\lambda,$ for all $t.$ The second is that of a Hawkes diffusion,
+in which the intensity is an increasing function of past jumps (see Bowsher
+(2007) and A\"{\i}t-Sahalia, Cacho-Diaz and Laeven (2015)). In this case,%
+
+\[
+\lambda_{t}=\lambda_{\infty}+\beta\int_{0}^{t}\exp\left(  -a\left(
+t-s\right)  \right)  \mathrm{d}N_{s},
+\]
+with $\lambda_{\infty}\geq0,$ $\beta\geq0,$ $a>0,$ and $a>\beta$ (in order to
+ensure intensity mean reversion). Thus,%
+\begin{equation}
+\mathrm{d}\lambda_{t}=a\left(  \lambda_{\infty}-\lambda_{t}\right)
+\mathrm{d}t+\beta\mathrm{d}N_{s} \label{lambda}%
+\end{equation}
+and
+\[
+\mathrm{E}\left(  \lambda_{t}\right)  =\frac{a\lambda_{\infty}}{a-\beta
+}=\lambda.
+\]
+If $\lambda_{\infty}=0,$ then \textrm{E}$\left(  \lambda_{t}\right)  =0;$ and
+since $\lambda_{t}$ can never be negative, this in turn implies that
+$\lambda_{t}=0$ a.s., for all $t$ (i.e., $N_{t}=0$ a.s., for all $t).$ But, if
+$N_{t}=0$ a.s., for all $t,$ then $\beta$ cannot be identified, and
+consequently $a$ is not identified. Furthermore, if $N_{t}=0$ a.s., for all
+$t,$ then $\gamma$ cannot be identified.
+
+In summary, if $\lambda_{\infty}=0,$ then $\beta,\alpha,$and $\gamma$ are not
+identified. By contrast, if $\lambda_{\infty}>0,$ then $\gamma$ and $\beta$
+are identified. However, if $\lambda_{\infty}>0$ but $\beta=0,$ then $a$ is
+not identified.
+
+These observations highlight the importance of being very clear as to which of
+the two assumptions, $\lambda_{\infty}=0$ or $\lambda_{\infty}>0,$ is made for
+statistical inference in the foregoing Hawkes diffusion model. In practice,
+thus, we are concerned with the following jump test hypotheses: $H_{0}%
+:\lambda=0$ versus $H_{A}:\lambda>0,$ where hereafter $\lambda$ denotes
+expected intensity (i.e. $\lambda=\mathrm{E}\left(  \lambda_{t}\right)
+).$\footnote{Note that testing for $\lambda=0$ $(>0)$ implies and is implied
+by $\lambda_{\infty}=0$ $(>0).$ Also, if $\beta=0,$ $\lambda=\lambda_{\infty
+}.$} This is a nonstandard inference problem because, under $H_{0},$ some
+parameters are not identified and a parameter lies on the boundary of the null
+parameter space. Additionally, depending upon the outcome of tests of the
+above hypotheses, we are also interested in the following self-excitement test
+hypotheses: $H_{0}:\beta=0$ versus $H_{A}:\beta>0.$
+
+Another important class of jump diffusions is the affine jump diffusion, in
+which intensity is an affine function of a state variable (see, e.g. Duffie,
+Pan and Singleton (2000) and Singleton (2001)). For example, in our set-up one
+can define intensity to be an affine function of the volatility process,%
+\begin{equation}
+\lambda_{t}=\lambda_{0}+\lambda_{1}V_{t},\text{ }\lambda_{0},\lambda_{1}\geq0,
+\label{aff}%
+\end{equation}
+so that the probability of a jump is positively correlated with the volatility
+level. The main similarity between (\ref{lambda}) and (\ref{aff}) is that both
+models generate clusters of jumps, inducing periods of positive correlation.
+The main difference between (\ref{lambda}) and (\ref{aff}) is that there is no
+jump feedback in the latter model. Our self-excitation tests have power
+against positive correlation in (squared) returns.
+
+If we are willing to parametrically specify the continuous and the jump
+components of the model, and most importantly if the transition density is
+known in closed form, then it is easy to construct a consistent test for
+jumps, based only on a long time span of discrete observations. In particular
+one can easily test $H_{0}:\lambda=0$ versus $H_{A}:\lambda>0$. This fact can
+be illustrated by considering a score test. Suppose that the skeleton of the
+process, $\ln X_{t}$ in (\ref{X}) is observed. Namely, $\ln X_{1},\ln
+X_{2},...,\ln X_{T},$ is observed. Now, using the notation in (\ref{X}%
+)-(\ref{J3}), let $\delta=\left(  \theta,\mu,\rho,\lambda,\gamma\right)
+=\left(  \vartheta,\gamma\right)  .$ It follows immediately that, provided the
+transition density is known in closed form, the likelihood can be written as%
+\[
+l_{T}(\vartheta,\gamma)=\frac{1}{T}\sum_{t=1}^{T-1}l_{t}(\vartheta
+,\gamma)=\frac{1}{T}\sum_{t=1}^{T-1}\ln f_{t+1|t}\left(  Y_{t+1}%
+|Y_{t},\vartheta,\gamma\right)  .
+\]
+The score statistic for testing $H_{0}$ is thus\footnote{If $\lambda$ is not
+scalar (for example, consider allowing for different up and down jump
+intensities, as in Chacko and Viceira (2003)), then the score statistic can be
+written as:%
+\begin{align*}
+K_{T}\left(  \gamma\right)   &  =U_{T}\left(  \gamma\right)  ^{\prime}\left(
+R\widehat{\mathcal{I}}_{T}(\gamma)^{-1}\widehat{V}_{T}(\gamma
+)\widehat{\mathcal{I}}_{T}(\gamma)^{-1}R^{\prime}\right)  ^{-1}U_{T}\left(
+\gamma\right) \\
+&  -\inf_{\lambda\geq0}\left(  U_{T}\left(  \gamma\right)  -\lambda\right)
+^{\prime}\left(  R\widehat{\mathcal{I}}_{T}(\gamma)^{-1}\widehat{V}_{T}%
+(\gamma)\widehat{\mathcal{I}}_{T}(\gamma)^{-1}R^{\prime}\right)  ^{-1}\left(
+U_{T}\left(  \gamma\right)  -\lambda\right)
+\end{align*}
+\par
+{}}%
+\[
+K_{T}\left(  \gamma\right)  =\max\left\{  0,\left(  R\widehat{\mathcal{I}}%
+_{T}(\gamma)^{-1}\widehat{V}_{T}(\gamma)\widehat{\mathcal{I}}_{T}(\gamma
+)^{-1}R^{\prime}\right)  ^{-1/2}U_{T}\left(  \gamma\right)  \right\}  ,
+\]
+where $R$ is a $1\times p$ matrix, with $p$ denoting the dimension of
+$\vartheta$, and where%
+
+\[
+U_{T}\left(  \gamma\right)  =\sqrt{T}\left(  R\widehat{\mathcal{I}}_{T}%
+(\gamma)^{-1}\nabla_{\vartheta}l_{T}\left(  \widehat{\vartheta}_{T}%
+,\gamma\right)  \right)  ,
+\]%
+\begin{equation}
+\widehat{\mathcal{I}}_{T}(\gamma)=\frac{1}{T}\sum_{t=1}^{T}\nabla
+_{\vartheta\vartheta}l_{t}\left(  \widehat{\vartheta}_{T},\gamma\right)  ,
+\label{HAT-HES}%
+\end{equation}%
+\[
+\widehat{\vartheta}_{T}=\arg\max_{\vartheta}l_{T}\left(  \vartheta
+,\gamma\right)  \text{ s.t. }R\vartheta=\lambda_{\infty}=0,
+\]
+and%
+\begin{equation}
+\widehat{V}_{T}(\gamma)=\frac{1}{T}\sum_{j=-\tau_{T}}^{\tau_{T}}\sum
+_{t=\tau_{T}}^{T-\tau_{T}}\omega_{j}\nabla_{\vartheta}l_{t}\left(
+\widehat{\vartheta}_{T},\gamma\right)  \nabla_{\vartheta}l_{t+j}\left(
+\widehat{\vartheta}_{T},\gamma\right)  ^{\prime},\text{ }\omega_{j}=1-\frac
+{j}{1+\tau_{T}}. \label{HAT-HAC}%
+\end{equation}
+Now, given mild regularity assumptions controlling the smoothness of the
+likelihood, under the null of $\lambda=0,$%
+\[
+\sup_{\gamma\in\Gamma}K_{T}\left(  \gamma\right)  \overset{d}{\rightarrow}%
+\sup_{\gamma\in\Gamma}\max\left\{  0,\left(  R\mathcal{I}(\gamma)^{-1}%
+V(\gamma)\mathcal{I}(\gamma)^{-1}R^{\prime}\right)  ^{-1/2}G\left(
+\gamma\right)  \right\}  ,
+\]
+where $\sup_{\gamma\in\Gamma}\left\vert \widehat{\mathcal{I}}_{T}%
+(\gamma)-\mathcal{I}(\gamma)\right\vert =o_{p}(1),$ $\sup_{\gamma\in\Gamma
+}\left\vert \widehat{V}_{T}(\gamma)-V(\gamma)\right\vert =o_{p}(1),$
+$\mathcal{I}$ is the Hessian and $V$ the variance of the score, and $G(\cdot)$
+is a Gaussian process with covariance kernel given by
+\[
+C(\gamma_{1},\gamma_{2})=\left(
+\begin{array}
+[c]{cc}%
+R\mathcal{I}(\gamma_{1})^{-1}V(\gamma_{1},\gamma_{1})\mathcal{I}(\gamma
+_{1})^{-1}R^{\prime} & R\mathcal{I}(\gamma_{1})^{-1}V(\gamma_{1},\gamma
+_{2})\mathcal{I}(\gamma_{2})^{-1}R^{\prime}\\
+R\mathcal{I}(\gamma_{2})^{-1}V(\gamma_{1},\gamma_{2})\mathcal{I}(\gamma
+_{1})^{-1}R^{\prime} & R\mathcal{I}(\gamma_{2})^{-1}V(\gamma_{2},\gamma
+_{2})\mathcal{I}(\gamma_{2})^{-1}R^{\prime}%
+\end{array}
+\right)  ,
+\]
+where $V(\gamma_{1},\gamma_{2})=\mathrm{p\lim_{T\rightarrow\infty}}%
+\widehat{V}_{T}(\gamma_{1},\gamma_{2}).$
+
+Note also that $\sup_{\gamma\in\Gamma}K_{T}\left(  \gamma\right)  $ diverges
+to infinity under the alternative$.$ This test has power against $\sqrt{T}%
+-$local alternatives. Additionally, the limiting behavior of the test depends
+on the quadratic approximation of the likelihood around $\lambda=0$ (see
+Andrews (2001)). Hence, if the likelihood is known in closed form, and if both
+the continuous and the jump components of the model, including the density of
+the jumps size, are correctly specified, then inference can be easily carried
+out using this score test, or using analogous Wald or likelihood ratio tests.
+However, it is well known that for most empirically relevant models the
+likelihood is not known in closed form. In such cases, as discussed in the
+introduction, one often relies on simulation based estimation techniques such
+as simulated GMM, indirect inference, or nonparametric simulated maximum
+likelihood. However, as one cannot simulate observations with negative
+intensity, a quadratic approximation of the criterion function cannot be
+constructed, and these sorts of tests are not applicable. It is for this
+reason that we instead focus on simple moment based jump and self-excitement
+tests in the sequel.
+
+\section{Test of $\lambda=0$ (Jump Test)}
+
+As mentioned in the introduction, tests based on high frequency observations
+over a finite time span are model free, but have power only against realized
+jumps, and thus cannot be consistent against the alternative $\lambda>0$. On
+the other hand, tests based on discrete observations over a long time span are
+consistent against $\lambda>0,$ but require correct specification of both the
+continuous and jump components, as well as knowledge of the transition
+density. In order to have tests that are consistent against $\lambda>0,$ but
+are still to a large extent model free, we use functions of sample moments and
+rely on double in-fill and long-time span asymptotic approximations.
+
+In the sequel, assume the existence of a sample of $n^{+}$ observations over
+an increasing time span $T^{+}$ and a shrinking discrete interval $\Delta,$ so
+that $n^{+}=\frac{T^{+}}{\Delta},$ with $T^{+}\rightarrow\infty$ and
+$\Delta\rightarrow0.$ Define $n=\frac{T}{\Delta}=n^{+}-\frac{T^{+}-T}{\Delta
+},$ with $T^{+}>T,$ and $T^{+}/T\rightarrow\infty.$ We first test for zero
+jump intensity ($\lambda=0)$. The hypotheses of interest are%
+\[
+H_{0}^{\lambda}:\lambda=0
+\]
+versus%
+\[
+H_{A}^{\lambda}:\lambda>0,
+\]
+where%
+\[
+H_{A}^{\lambda}=H_{A}^{\lambda(1)}\cup H_{A}^{\lambda(2)}:\left(
+\lambda>0\text{ and \textrm{E}}\left(  Z_{k}^{3}\right)  \neq0\right)
+\cup\left(  \lambda>0\text{ and \textrm{E}}\left(  Z_{k}^{3}\right)
+=0\right)  .
+\]
+Notice that the alternative hypothesis is the union of two different
+alternatives, depending on whether \textrm{E}$\left(  Z_{k}^{3}\right)  \neq0$
+or \textrm{E}$\left(  Z_{k}^{3}\right)  =0.$ Let%
+\begin{align}
+\widehat{\mu}_{3,T,\Delta}  &  =\frac{1}{T}\sum_{k=1}^{n}\left(  \ln
+X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}%
+{n}\right)  ^{3}\nonumber\\
+&  -\frac{1}{T^{+}}\sum_{k=1}^{n^{+}}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}-\frac{\ln X_{n^{+}\Delta}-\ln X_{\Delta}}{n^{+}}\right)
+^{3}1\left\{  \left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta}\right\vert
+\leq\tau\left(  \Delta\right)  \right\}  , \label{mu3}%
+\end{align}
+with $T^{+}/T\rightarrow\infty,$ $\tau\left(  \Delta\right)  \rightarrow0,$
+and $\tau\left(  \Delta\right)  /\Delta^{1/2}\rightarrow\infty,$ and define
+the statistic\footnote{The first term on the RHS of $\widehat{\mu}%
+_{3,T,\Delta}$ can also be expressed as $\frac{1}{T}\sum_{k=n^{+}-n+1}^{n^{+}%
+}\left(  \ln X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{n\Delta}-\ln
+X_{\Delta}}{n}\right)  ^{3}.$ However, it is necessary to use a longer sample
+size for the second term.}%
+\begin{equation}
+S_{T,\Delta}=\frac{T^{1/2}}{\Delta}\widehat{\mu}_{3,T,\Delta}. \label{St}%
+\end{equation}
+
+
+\noindent The logic underlying the suggested statistic is the following. As
+outlined in the proof of Theorem 1,%
+\begin{align*}
+&  \frac{1}{T}\sum_{k=1}^{n}\left(  \ln X_{k\Delta}-\ln X_{(k-1)\Delta}%
+-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}{n}\right)  ^{3}\\
+&  =\mathrm{E}\left(  Z_{k}1_{\Delta_{N_{(k+1)\Delta}}}\right)  ^{3}+\frac
+{3}{2}\Delta\rho^{3}\mathrm{E}\left(  V_{k\Delta}^{1/2}g\left(  V_{k\Delta
+},\theta\right)  \right)  +o_{p}\left(  \frac{\Delta}{T^{1/2}}\right)  ,
+\end{align*}
+so that $\left\vert \frac{1}{\sqrt{T}\Delta}\sum_{k=1}^{n}\left(  \ln
+X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}%
+{n}\right)  ^{3}\right\vert $ may diverge to infinity in probability either
+because of the presence of jumps or because of the presence of leverage, or
+both. Hence, we need to correct for skewness due to the presence of leverage.
+This is the role played by the second term on the RHS of (\ref{mu3}). In fact,
+regardless of the presence of jumps, provided that $\tau\left(  \Delta\right)
+\rightarrow0$ at an appropriate rate,%
+\begin{align*}
+&  \frac{1}{T^{+}}\sum_{k=1}^{n^{+}}\left(  \ln X_{k\Delta}-\ln X_{(k-1)\Delta
+}-\frac{\ln X_{n^{+}\Delta}-\ln X_{\Delta}}{n^{+}}\right)  ^{3}1\left\{
+\left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta}\right\vert \leq\tau\left(
+\Delta\right)  \right\} \\
+&  =\frac{3}{2}\Delta\rho^{3}\mathrm{E}\left(  V_{k\Delta}^{1/2}g\left(
+V_{k\Delta},\theta\right)  \right)  +o_{p}\left(  \frac{\Delta}{T^{+1/2}%
+}\right)  .
+\end{align*}
+The requirement of $T^{+}/T\rightarrow\infty$ ensures that the contribution of
+leverage estimation error is negligible.
+
+Furthermore, as shown in a number of lemmata in the Appendix, the thresholding
+effect is asymptotically negligible under the null, and thus for $T=T^{+}$ the
+statistic is degenerate under $H_{0}^{\lambda}.$ On the other hand, if
+$T^{+}/T\rightarrow0,$ the limiting behavior is driven by the threshold term,
+and the statistic lacks power against jumps.
+
+With regard to the $\tau\left(  \Delta\right)  $ term in (\ref{mu3}), note
+that thresholding is a well established technique for disentangling the jump
+component from the continuous component in various estimation and testing
+frameworks (see Mancini (2009) and Mancini and Ren\`{o} (2011)). In these
+papers the threshold sequence, $\tau\left(  \Delta\right)  ,$ is selected so
+that $\tau\left(  \Delta\right)  \rightarrow0$ and $\frac{\tau\left(
+\Delta\right)  }{\sqrt{\Delta\log\left(  1/\Delta\right)  }}\rightarrow0,$
+which is dictated by the law of the iterated logarithm of the Brownian
+component of the model. In the theorems below we require mildly stronger
+conditions on $\tau\left(  \Delta\right)  $ because the time span is growing.
+
+Before establishing the asymptotic properties of $S_{T,\Delta},$ it should be
+pointed out that a central limit theorem for realized third moments has been
+proved in Li, Mykland, Renault, Zhang and Zheng (2014). Their Theorem 2
+establishes asymptotic mixed normality for tricity in the case of unequal
+random times and finite time spans. Namely, they show that $\frac{1}{\Delta
+}\sum_{t_{k}\leq1}\left(  \ln X_{t_{k+1}}-\ln X_{t_{k}}\right)  ^{3}$ has a
+mixed normal limiting distribution under the null of exogenous sampling time,
+and diverges otherwise. Here, we have assumed equal spacing. We could allow
+for irregular, possibly random spacing, provided the latter is independent of
+the return process. In this case, we simply need to express our rate
+conditions in terms of the largest or smallest time interval, e.g. $\sqrt
+{T}\Delta\rightarrow0,$ should be replaced by $\sqrt{T}\max_{k\leq n}\left(
+t_{k}-t_{k-1}\right)  \rightarrow0,$ and $T\Delta\rightarrow\infty$ by
+$T\min_{k\leq n}\left(  t_{k}-t_{k-1}\right)  \rightarrow\infty.$
+Heuristically, in this case we can condition on the observed sampling
+intervals, as they are independent of the return process. On the other hand,
+if the sampling interval is random and endogenous, then tricity does not
+converge to zero, even in the absence of leverage (see Li, Mykland, Renault,
+Zhang and Zheng (2014)). Here, the \textquotedblleft
+endogeneity\textquotedblright\ bias is of smaller order than the jump
+contribution, so that power is not affected, but size is. Indeed, such
+randomness leads to severely oversized jump tests, resulting in spurious rejections.
+
+In the sequel, we need the following assumption.
+
+\noindent\textbf{Assumption A: (i)} $\ln X_{t}$ and $V_{t}$ are generated as
+in (\ref{X}) and (\ref{vc}), with $\mu(v,\theta)$ and $g\left(  v,\theta
+\right)  $ twice continuously differentiable, satisfying local Lipschitz and
+growth conditions, for all $\theta\in\Theta,$\thinspace\textbf{(ii)} $V_{t}$
+is geometrically ergodic, \textbf{(iii)} \textrm{E}$\left(  V_{t}^{\frac{m}%
+{2}}\right)  <\infty$ and \textrm{E}$\left(  g(V_{t})^{2}\right)  <\infty,$
+for even integer $m>6,$ (\textbf{iv}) $N_{t}$ satisfies (\ref{J1})-(\ref{J3}),
+and $\lambda_{t}$ is either constant, or satisfies (\ref{lambda}), with
+$\lambda_{\infty}\geq0,$ $\beta\geq0,$ $a>0,$ and $a>\beta$, and (\textbf{v})
+the jump size, $Z_{k},$ is independently and identically distributed, with
+density $f(z;\gamma),$ and $\mathrm{E}\left(  \left\vert Z_{k}\right\vert
+^{\kappa}\right)  <\infty,$ for $\kappa\geq6.$
+
+Assumption A requires constant drift and one-factor stochastic volatility.
+However, as discussed in Remark 4 below, the assumption can be readily
+modified to allow for multi-factor stochastic volatility processes. On the
+other hand, as discussed in Remark 5 below, the constancy of the drift is
+important for the self-excitation test.
+
+\noindent\textbf{Theorem 1:}\textit{ Let Assumption}\textbf{ A}\textit{ hold.
+Also, assume that as }$T\rightarrow\infty,$ $\Delta\rightarrow0,$
+$T\Delta\rightarrow\infty,$ $\sqrt{T}\Delta\rightarrow0,$ and $\frac
+{\Delta^{\frac{1}{2}-\frac{3}{m}}}{\tau\left(  \Delta\right)  }\rightarrow0,$
+\textit{for even }$m>6,$\textit{ and }$T^{+}/T\rightarrow\infty.$\textit{
+Then,}
+
+\noindent\textit{(i) Under }$H_{0}^{\lambda}:$%
+\[
+S_{T,\Delta}\overset{d}{\rightarrow}N\left(  0,\omega_{0}\right)  ,
+\]
+\textit{where}%
+\[
+\omega_{0}=\left(  15\left(  1-\rho^{2}\right)  ^{3}+15\rho^{6}+45\left(
+1-\rho^{2}\right)  ^{2}\rho^{2}+45\left(  1-\rho^{2}\right)  \rho^{4}\right)
+\mathrm{E}\left(  V_{k\Delta}^{3}\right)  .
+\]
+\textit{ }\noindent\textit{(ii) Under }$H_{A}^{\lambda(1)},$\textit{ there
+exists an }$\varepsilon>0,$\textit{ such that:}%
+\[
+\lim_{T\rightarrow\infty,\Delta\rightarrow0}\Pr\left(  \frac{\Delta}{\sqrt{T}%
+}\left\vert S_{T,\Delta}\right\vert >\varepsilon\right)  =1.
+\]
+\noindent\textit{(iii) Under }$H_{A}^{\lambda(2)}$\textit{, there exists an
+}$\varepsilon>0,$\textit{ such that:}%
+\[
+\lim_{T\rightarrow\infty,\Delta\rightarrow0}\Pr\left(  \Delta\left\vert
+S_{T,\Delta}\right\vert >\varepsilon\right)  =1.
+\]
+
+
+It follows immediately that $S_{T,\Delta}$ converges to a normal random
+variable under the null hypothesis, diverges at rate $\frac{\sqrt{T}}{\Delta}$
+under the alternative of jumps with non-zero third moment, and diverges at the
+slower rate of $\frac{1}{\Delta}$ under the alternative of jumps that are
+symmetric around zero. As shown in the Appendix (see equation (\ref{Z3})), as
+$\Delta\rightarrow0$ and $T\rightarrow\infty,$ we have that $\widehat{\mu
+}_{3,T,\Delta}=\lambda\mathrm{E}\left(  Z^{3}\right)  +2\lambda^{2}%
+\Delta\mathrm{E}\left(  Z\right)  \mathrm{E}\left(  Z^{2}\right)
++o_{p}\left(  \Delta\right)  .$ Now, if $\mathrm{E}\left(  Z_{k}^{3}\right)
+\neq0,$ (i.e., under $H_{A}^{\lambda(1)}),$ the test has a well defined Pitman
+drift against $\sqrt{T}-$alternatives. On the other hand, if jumps are
+symmetric around zero (i.e., $\mathrm{E}\left(  Z_{k}^{3}\right)
+=\mathrm{E}\left(  Z_{k}\right)  =0),$ then $\lambda\mathrm{E}\left(
+Z_{k}^{3}\right)  $ is not identified, and under $H_{A}^{\lambda(2)}$ the
+Pitman drift is zero. Indeed, $\widehat{\mu}_{3,T,\Delta}%
+\overset{p}{\rightarrow}0$ regardless of whether $\lambda=0$ or $\lambda>0$ in
+this case$.$ Although it is not possible to distinguish between $H_{0}%
+^{\lambda}$ and $H_{A}^{\lambda(2)}$ on the basis of the different locations
+of the limiting distribution (i.e., the Pitman drift), it is possible to
+distinguish between them on the basis of different scales of the limiting
+distribution of $\frac{T^{1/2}}{\Delta}\widehat{\mu}_{3,T,\Delta}.$ This is
+because the order of magnitude of the variance of $\frac{T^{1/2}}{\Delta
+}\widehat{\mu}_{3,T,\Delta}$ is larger when $\lambda>0$ and $\mathrm{E}\left(
+Z_{k}^{3}\right)  =\mathrm{E}\left(  Z_{k}\right)  =0$ than when $\lambda=0.$
+Broadly speaking, under $H_{0}^{\lambda},$ $S_{T,\Delta}%
+\overset{d}{\rightarrow}N\left(  0,\omega_{0}\right)  ,$ while under
+$H_{A}^{\lambda(2)},$ $\Delta S_{T,\Delta}\overset{d}{\rightarrow}N\left(
+0,\omega_{1}\right)  ,$ with $\omega_{1}\neq\omega_{0}$. This is what allows
+one to distinguish between $H_{0}^{\lambda}$ and $H_{A}^{\lambda(2)}.$
+
+The test has power not only against constant and self-exciting intensity, but
+also against affine jump diffusions where the intensity is an affine function
+of volatility, for example.
+
+As the variance of the statistic is of larger order under the alternative of
+positive jump intensity, we cannot construct a variance estimator which is
+consistent under all hypotheses. Thus, our aim is to construct an estimator
+for the variance of $S_{T,\Delta}$ which is consistent under the null and
+bounded in probability under the (union of) alternatives. This is done by
+using a threshold variance estimator, which filters out the contribution of
+the jump component. In particular, define:%
+\begin{align}
+&  \widehat{\sigma}_{\lambda,T,\Delta}^{2}\nonumber\\
+&  =\frac{1}{T\Delta^{2}}\sum_{k=1}^{n}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}{n}\right)  ^{6}1\left\{
+\left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta}\right\vert \leq\tau\left(
+\Delta\right)  \right\}  . \label{jsig2}%
+\end{align}
+It follows that the t-statistic version of the jump test is,
+\[
+t_{\lambda,T,\Delta}=\frac{S_{T,\Delta}}{\widehat{\sigma}_{\lambda,T,\Delta}%
+}.
+\]
+The following corollary summarizes the limiting behavior of $t_{\lambda
+,T,\Delta}.$
+
+\noindent\textbf{Corollary 2: }\textit{Let Assumption\textbf{ A} hold. Also,
+assume that as }$T\rightarrow\infty,$ $\Delta\rightarrow0,$ $T\Delta
+\rightarrow\infty,$ $\sqrt{T}\Delta\rightarrow0,$ $T^{+}/T\rightarrow\infty,$
+$\frac{\Delta^{\frac{1}{2}-\frac{3}{m}}}{\tau\left(  \Delta\right)
+}\rightarrow0,$ \textit{for even} $m>6,$ \textit{and} $\tau^{7}\left(
+\Delta\right)  \Delta^{-2}\rightarrow0.$ \textit{Then,}
+
+\noindent\textit{(i) Under }$H_{0}^{\lambda}:$%
+\[
+t_{\lambda,T,\Delta}\overset{d}{\rightarrow}N\left(  0,1\right)  .
+\]
+\noindent\textit{(ii) Under }$H_{A}^{\lambda(1)},$\textit{ there exists an
+}$\varepsilon>0,$\textit{ such that:}%
+\[
+\lim_{T\rightarrow\infty,\Delta\rightarrow0}\Pr\left(  \frac{\Delta}{\sqrt{T}%
+}\left\vert t_{\lambda,T,\Delta}\right\vert >\varepsilon\right)  =1.
+\]
+\noindent\textit{(iii) Under }$H_{A}^{\lambda(2)}$\textit{ there exists an
+}$\varepsilon>0,$\textit{ such that:}%
+\[
+\lim_{T\rightarrow\infty,\Delta\rightarrow0}\Pr\left(  \Delta\left\vert
+t_{\lambda,T,\Delta}\right\vert >\varepsilon\right)  =1.
+\]
+
+
+\noindent\textbf{ }Note that the variance estimator in (\ref{jsig2}) can be
+constructed using the entire time span of $T^{+}$ observations, and the
+statement in Corollary 2 still holds, provided that we replace $\sqrt{T}%
+\Delta\rightarrow0$ and $\sqrt{T}\tau^{2}\left(  \Delta\right)  \rightarrow0$
+with $\sqrt{T^{+}}\Delta\rightarrow0$ and $\sqrt{T^{+}}\tau^{2}\left(
+\Delta\right)  \rightarrow0.$ In general, the price of having a statistic
+which allows for possible leverage effects is that we need to use a longer
+time span for estimating the leverage contribution. A possible alternative
+approach would be to pretest for $H_{0}^{\rho}:\rho=0$ vs. $H_{A}^{\rho}%
+:\rho\neq0.$ Here, under $H_{0}^{\rho},$
+\[
+\frac{\Delta}{\sqrt{T^{+}}}\sum_{k=1}^{n^{+}}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}-\frac{\ln X_{n^{+}\Delta}-\ln X_{\Delta}}{n^{+}}\right)
+^{3}1\left\{  \left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta}\right\vert
+\leq\tau\left(  \Delta\right)  \right\}
+\]
+is asymptotically normal, while it diverges to minus infinity under
+$H_{A}^{\rho}.$ This means that if we do not reject the null of no leverage,
+we do not need to recenter the statistic in (\ref{mu3}) and we can use all
+$T^{+}$ observations for tricity estimation.
+
+\noindent\textbf{Remark 1: }Consider selection of the threshold sequence. From
+Corollary 2, it follows that $\tau\left(  \Delta\right)  $ should approach
+zero faster than $T^{-1/4}$ and faster than $\Delta^{2/7},$ but slower than
+$\Delta^{\frac{1}{2}-\frac{3}{m}},$ where $m$ (even) denotes the number of
+finite moments of $V_{t}^{1/2}$ , with $m>6$ by Assumption A(iii). For
+example, if $V_{t}$ follows a square root process, so that all finite moments
+exist, we can set $\tau\left(  \Delta\right)  =c\Delta^{\eta},$ with $\frac
+{2}{7}<\eta<\frac{1}{2}$ and $\Delta=T^{-\delta},$ where $\frac{7}{8}%
+<\delta<1.$ These conditions ensure that $T\Delta\rightarrow\infty,$ $\sqrt
+{T}\Delta\rightarrow0,$ and $\sqrt{T}\tau^{2}\left(  \Delta\right)
+\rightarrow0.$ Additionally, in order to implement the statistic, we choose
+the constant $c$ in a data driven manner. A natural solution is to use
+$\widehat{\sigma}_{\mu_{Z}}$ as defined in (\ref{sigmaz}) below.
+
+\noindent\textbf{Remark 2: }Since the suggested statistic is not robust to the
+presence of microstructure noise, the optimal discrete interval, $\Delta,$ is
+the highest frequency at which microstructure noise doesn't bind. Visual
+inspection of the signature plots of Andersen, Bollerslev and Diebold (2000)
+provides a useful tool for the choice of interval. It should also be noted
+that the statistic is constructed over an increasing time span; and hence it
+is not straightforward to ascertain whether simple pre-averaging will yield a
+statistic that is robust to microstructure noise (as in the case of the
+realized pre-average power variation discussed in Podolskji and Vetter
+(2009b)). According to our simulation results, empirical size is quite robust
+to the presence of microstructure noise. More specifically, the test is only
+slightly oversized under various noise scenarios (see Table 1, Case 3).
+
+\noindent\textbf{Remark 3: }In this paper, we only derive tests for the null
+of zero jump intensity in asset returns. However, the same approach can be
+used for testing equivalent hypotheses for volatility. Such tests would
+require estimators of the spot volatility, say $V_{k\Delta}^{2},$ which can be
+constructed using a finer grid of observations than that used in the above
+tests, such as when there are $M$ observations over each interval of order
+$\Delta.$ The order of magnitude of the error due to the estimation of the
+spot volatility is derived in Bandi and Ren\`{o} (2012), under various settings.
+
+\noindent\textbf{Remark 4: }We can allow for two-factor or general multifactor
+stochastic volatility. Consider the following two-factor stochastic volatility
+model,%
+\[
+\mathrm{d\ln}X_{t}=\mu\mathrm{d}t+V_{1,t}^{1/2}\sqrt{1-\rho_{1}^{2}}%
+\mathrm{d}W_{1,t}+V_{1,t}^{1/2}\rho_{1}\mathrm{d}W_{2,t}+V_{2,t}^{1/2}%
+\sqrt{1-\rho_{2}^{2}}\mathrm{d}W_{3,t}+V_{2,t}^{1/2}\rho_{2}\mathrm{d}%
+W_{4,t}+Z_{t}\mathrm{d}N_{t},
+\]
+where $W_{1,t},W_{2,t},W_{3,t},$and $W_{4,t}$ are independent Brownian
+motions. Also,
+\[
+\mathrm{d}V_{1,t}=\mu_{1}(V_{1,t},\theta_{1})\mathrm{d}t+g_{1}\left(
+V_{1,t},\theta_{1}\right)  \mathrm{d}W_{2,t}%
+\]
+and%
+\[
+\mathrm{d}V_{2,t}=\mu_{2}(V_{2,t},\theta_{2})\mathrm{d}t+g_{2}\left(
+V_{2,t},\theta_{2}\right)  \mathrm{d}W_{4,t}.
+\]
+For this three dimensional diffusion, the multivariate Milstein approximation
+in Eqs. (\ref{DC})-(\ref{XT}) in the Appendix is no longer valid, and the
+leverage contribution to our statistic is different, as it depends on both
+$\rho_{1}$ and $\rho_{2}.$ Nevertheless, the same arguments used in the proof
+of Theorem 1 can be extended to this two-factor volatility case, at the sole
+cost of further notational complication. In particular, the asymptotic
+normality result in Theorem 1 holds, but the statement of the theorem will be
+different, as the variance will depend on both $\rho_{1}$ and $\rho_{2}.$
+Importantly, the statements in Corollary 2 also hold, as the variance
+estimator is consistent, regardless the number of factors.
+
+\noindent\textbf{Remark 5: }Assumption A(i) requires constant drift. However,
+in our Monte Carlo experiments, we consider the case in which $\mu_{t}%
+=\mu-V_{t}/2,$ where $V_{t}$ is the variance. This drift specification is
+quite popular in empirical work. For our jump intensity test based on tricity,
+this results in an extra term, $\frac{1}{\sqrt{T}\Delta}\sum_{k=1}^{n}\left(
+V_{(k-1)\Delta}\Delta-\frac{1}{n}\sum_{k=1}^{n}V_{(k-1)\Delta}\Delta\right)
+^{3}$, as well as additional related cross product terms. This additional
+generality does not affect the limiting distribution in Theorem 1, however.
+This is confirmed in our Monte Carlo findings, which suggest that the size of
+the jump tests is not affected by replacing the constant drift with $\mu_{t}$
+(see Table 1, Case 2).
+
+\section{Testing for Self-Exciting Jumps}
+
+If the null hypothesis of zero jump intensity is rejected, one can proceed to
+test the null of no self-excitation or path dependence. If the drift in
+(\ref{X}) and the intensity are constant, and if the jump size is
+independently distributed, then $\left(  \ln X_{(k+1)\Delta}-\ln X_{k\Delta
+}-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}{n}\right)  $ is a martingale
+difference process and so it is uncorrelated over time. If $\lambda_{t}$ is
+instead generated as in (\ref{lambda}), then it follows from A\"{\i}t-Sahalia,
+Cacho-Diaz and Laeven (2015), that
+\begin{align}
+&  \mathrm{E}\left(  \left(  \ln X_{(k+\tau)\Delta}-\ln X_{(k+\tau-1)\Delta
+}-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}{n}\right)  \left(  X_{k\Delta}-\ln
+X_{(k-1)\Delta}-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}{n}\right)  \right)
+\nonumber\\
+&  =\frac{\beta\lambda_{\infty}\left(  2a-\beta\right)  }{2\left(
+a-\beta\right)  }\exp\left(  -\left(  a-\beta\right)  \tau\right)  \left(
+\mathrm{E}\left(  Z\right)  \right)  ^{2}\Delta^{2}+o\left(  \Delta
+^{2}\right)  . \label{cross}%
+\end{align}
+In this case, it is natural to test the null hypothesis of $\beta=0,$ against
+the alternative that $\beta>0$, in order to test for path dependence$.$
+However, it is immediate to see that in order to identify $\beta,$ we require
+not only $\lambda_{\infty}>0,$ but also $\mathrm{E}\left(  Z_{k}\right)
+\neq0.$ In fact, failure to reject the null may be simply due to the fact that
+$\mathrm{E}\left(  Z_{k}\right)  =0.$ Hence, before testing for jump
+self-excitation, it remains to pretest for the null of $\mathrm{E}\left(
+Z_{k}\right)  =0$ versus $\mathrm{E}\left(  Z_{k}\right)  \neq0.$
+
+\subsection{Test of $\left(  Z_{k}\right)  =0$ (Zero Mean Jump Test)}
+
+We test the null of zero mean jumps, against its negation. The hypotheses of
+interest are:%
+\[
+H_{0}^{\mu_{Z}}:\mathrm{E}\left(  Z_{k}\right)  =0\text{ }%
+\]
+and%
+\[
+H_{A}^{\mu_{Z}}:\mathrm{E}\left(  Z_{k}\right)  \neq0.
+\]
+Let%
+\begin{align}
+\widehat{\mu}_{T,\Delta}^{Z}  &  =\frac{1}{T}\sum_{k=0}^{n}\left(  \ln
+X_{k\Delta}-\ln X_{(k-1)\Delta}\right) \nonumber\\
+&  -\frac{1}{T^{+}}\sum_{k=1}^{n^{+}}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}\right)  1\left\{  \left\vert \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}\right\vert \leq\tau\left(  \Delta\right)  \right\}
+\label{muz}%
+\end{align}
+and
+\begin{equation}
+\widehat{\sigma}_{\mu_{Z}}^{2}=\frac{1}{T}\sum_{k=0}^{n}\left(  \ln
+X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}%
+{n}\right)  ^{2}; \label{sigmaz}%
+\end{equation}
+and define
+\begin{equation}
+t_{\mu_{Z},T,\Delta}=\sqrt{T}\frac{\widehat{\mu}_{T,\Delta}^{Z}}%
+{\widehat{\sigma}_{\mu_{Z}}}. \label{tzero}%
+\end{equation}
+Since \textrm{E}$\left(  \frac{1}{T}\sum_{k=0}^{n}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}\right)  \right)  =\mu+\lambda\mathrm{E}\left(  Z_{k}\right)
++O\left(  \Delta\right)  ,$ from the first term on the RHS of (\ref{muz}), we
+cannot disentangle the contribution to the mean of the continuous and jump
+components. However, due to the thresholding, the second term on the RHS of
+(\ref{muz}) provides a $\sqrt{T^{+}}-$consistent estimator of the drift,
+$\mu;$ and as $T^{+}/T\rightarrow\infty,$ estimation error is negligible. As
+in the case of Theorem 1, if $T=T^{+},$ the statistic is degenerate under the
+null. Note also that the first term on the RHS of (\ref{muz}) is not
+recentered using $\frac{\ln X_{n\Delta}-\ln X_{\Delta}}{n}.$ This is because
+otherwise we would recenter both the continuous as well as the jump
+components, and the statistic would not have power against non-zero jump mean.
+
+\noindent\textbf{Theorem 3: }\textit{Let Assumption\textbf{ A} hold. Also,
+assume that as }$T\rightarrow\infty,$ $\Delta\rightarrow0,$ $T\Delta
+\rightarrow\infty,$ $T^{+}/T\rightarrow\infty,$ $\frac{\Delta^{\frac{1}%
+{2}-\frac{3}{m}}}{\tau\left(  \Delta\right)  }\rightarrow0,$ \textit{for even}
+$m>6,$ \textit{and} $\sqrt{T}\tau^{2}\left(  \Delta\right)  \rightarrow
+0.$\textit{\footnote{Note that $\frac{\Delta^{\frac{1}{2}-\frac{3}{m}}}%
+{\tau\left(  \Delta\right)  }\rightarrow0,$ for even $m>6,$ and $\sqrt{T}%
+\tau^{2}\left(  \Delta\right)  \rightarrow0$ imply $\sqrt{T}\Delta
+\rightarrow0$.}} \textit{Then,}
+
+\noindent\textit{(i) Under }$H_{0}^{\mu_{Z}}:$%
+\[
+t_{\mu_{Z},T,\Delta}\overset{d}{\rightarrow}N\left(  0,1\right)  .
+\]
+\noindent\textit{(ii) Under }$H_{A}^{\mu_{Z}},$ \textit{there exists an
+}$\varepsilon>0,$\textit{ such that: }%
+\[
+\lim_{T\rightarrow\infty,\Delta\rightarrow0}\Pr\left(  \left\vert \frac
+{t_{\mu_{Z},T,\Delta}}{\sqrt{T}}\right\vert >\varepsilon\right)  =1,
+\]
+where $\hat{\mu}_{T,\Delta}^{Z},\hat{\sigma}_{\mu_{Z}}$, and $t_{\mu
+_{Z},T,\Delta}$ are defined as in (\ref{muz}), (\ref{sigmaz}), and
+(\ref{tzero}), respectively.
+
+\noindent Note that $\widehat{\sigma}_{\mu_{Z}}^{2}$ in (\ref{sigmaz}) can be
+constructed using the entire time span, $T^{+}$, provided that we replace
+$\sqrt{T}\Delta\rightarrow0$ and $\sqrt{T}\tau^{2}\left(  \Delta\right)
+\rightarrow0$ with $\sqrt{T^{+}}\Delta\rightarrow0$ and $\sqrt{T^{+}}\tau
+^{2}\left(  \Delta\right)  \rightarrow0$, respectively$.$
+
+\subsection{Test of $\beta=0$ (self-excitement Test)}
+
+Note that for this test, we can use the entire time span, $T^{+},$ as leverage
+plays no role in autocorrelation calculations. Our objective is to test the
+following hypotheses:%
+\[
+H_{0}^{\beta}:\beta=0\text{ }%
+\]
+and%
+\[
+H_{A}^{\beta}:\beta>0,
+\]
+under the maintained assumption that $\mathrm{E}\left(  Z_{k}\right)  \neq0.$
+Define the statistic:%
+\[
+S_{T^{+},\Delta}^{\beta}=\max\left\{  0,t_{\beta,T^{+},\Delta}\right\}  ,
+\]
+where%
+\begin{equation}
+t_{\beta,T^{+},\Delta}=\frac{\sqrt{\frac{T^{+}}{\Delta}}\widehat{\beta}%
+_{T^{+},\Delta}}{\widehat{\sigma}_{\beta,T^{+},\Delta}}, \label{t-beta}%
+\end{equation}
+with%
+\begin{equation}
+\widehat{\beta}_{T^{+},\Delta}=\frac{1}{T^{+}}\sum_{k=2}^{n^{+}-1}\left(  \ln
+X_{(k+1)\Delta}-\ln X_{k\Delta}-\frac{\ln X_{n^{+}\Delta}-\ln X_{\Delta}%
+}{n^{+}}\right)  \left(  \ln X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln
+X_{n^{+}\Delta}-\ln X_{\Delta}}{n^{+}}\right)  \label{beta}%
+\end{equation}
+and%
+\begin{align}
+&  \widehat{\sigma}_{\beta,T^{+},\Delta}^{2}\nonumber\\
+&  =\frac{1}{T^{+}\Delta}\sum_{k=2}^{n^{+}-1}\left(  \ln X_{(k+1)\Delta}-\ln
+X_{k\Delta}-\frac{\ln X_{n^{+}\Delta}-\ln X_{\Delta}}{n^{+}}\right)
+^{2}\left(  \ln X_{(k+1)\Delta}-\ln X_{k\Delta}-\frac{\ln X_{n^{+}\Delta}-\ln
+X_{\Delta}}{n^{+}}\right)  ^{2}. \label{sig2b}%
+\end{align}
+From (\ref{cross}), and recalling that $a>0,$ $\beta\geq0,$ and $a>\beta,$ it
+follows immediately that the autocorrelation can never be negative. This is
+why the test is one-sided. Additionally, recall that $T\Delta\rightarrow
+\infty$ implies that $T^{+}\Delta\rightarrow\infty.$\medskip\ The following
+result thus holds.
+
+\noindent\textbf{Theorem 4: }\textit{Let Assumption\textbf{ A} hold. Also,
+assume that }$E\left(  Z\right)  \neq0,$\textit{ }$\lambda_{\infty}>0,$
+\textit{and as }$n\rightarrow\infty,$\textit{ }$T\rightarrow\infty,$\textit{
+}$\Delta\rightarrow0$ \textit{and} $T\Delta\rightarrow\infty.$ \textit{Then,}
+
+\noindent\textit{(i) Under }$H_{0}:$%
+\[
+S_{T^{+},\Delta}^{\beta}\overset{d}{\rightarrow}\max\left\{  0,\mathcal{Z}%
+\right\}  ,
+\]
+\textit{where }$\mathcal{Z}$\textit{ is a standard normal random variable.}
+
+\noindent\textit{(ii) Under }$H_{A},$\textit{ there exists an }$\varepsilon
+>0$\textit{ such that: }%
+\[
+\lim_{T^{+}\rightarrow\infty,\Delta\rightarrow0}\Pr\left(  \frac{1}%
+{\sqrt{T^{+}\Delta}}S_{T^{+},\Delta}^{\beta}>\varepsilon\right)  =1.
+\]
+
+
+\noindent It follows that $S_{T^{+},\Delta}^{\beta}$ converges to an
+half-normal random variable under the null, and diverges at rate $\sqrt
+{T^{+}\Delta}$ under the alternative.
+
+An obvious limitation of the test outlined above is the requirement of
+asymmetric jumps. This can be overcome by considering a test based on the
+autocorrelation of squared returns.\footnote{We thank an anonymous referee for
+pointing out that by looking at squared returns we no longer require
+pretesting for (non)-zero jump mean.} Consider%
+
+\begin{equation}
+\widetilde{S}_{T^{+},\Delta}^{\beta}=\max\left\{  0,\widetilde{t}_{\beta
+,T^{+},\Delta}\right\}  , \label{test-sq}%
+\end{equation}
+where%
+\begin{equation}
+\widetilde{t}_{\beta,T^{+},\Delta}=\frac{\sqrt{\frac{T^{+}}{\Delta}%
+}\widetilde{\beta}_{T^{+},\Delta}}{\widetilde{\sigma}_{\beta,T^{+},\Delta}},
+\end{equation}
+with%
+\begin{align*}
+\widetilde{\beta}_{T^{+},\Delta}  &  =\frac{1}{T^{+}\Delta}\sum_{k=2}%
+^{n^{+}-1}\left(  \left(  \ln X_{(k+1)\Delta}-\ln X_{k\Delta}\right)
+^{2}-\frac{1}{n^{+}}\sum_{k=2}^{n^{+}-1}\left(  \ln X_{(k+1)\Delta}-\ln
+X_{k\Delta}\right)  ^{2}\right) \\
+&  \times\left(  \left(  \ln X_{k\Delta}-\ln X_{(k-1)\Delta}\right)
+^{2}-\frac{1}{n^{+}}\sum_{k=2}^{n^{+}-1}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}\right)  ^{2}\right)
+\end{align*}
+%
+
+\begin{align*}
+&  \widetilde{\sigma}_{\beta,T^{+},\Delta}^{2}\\
+&  =\frac{1}{T^{+}\Delta^{2}}\sum_{k=2}^{n^{+}-1}\left(  \left(  \ln
+X_{(k+1)\Delta}-\ln X_{k\Delta}\right)  ^{2}-\frac{1}{n^{+}}\sum_{k=2}%
+^{n^{+}-1}\left(  \ln X_{(k+1)\Delta}-\ln X_{k\Delta}\right)  ^{2}\right)
+^{2}\\
+&  \times\left(  \left(  \ln X_{(k+1)\Delta}-\ln X_{k\Delta}\right)
+^{2}-\frac{1}{n^{+}}\sum_{k=2}^{n^{+}-1}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}\right)  ^{2}\right)  ^{2}.
+\end{align*}
+Heuristically, both $S_{T^{+},\Delta}^{\beta}$ and $\widetilde{S}%
+_{T^{+},\Delta}^{\beta}$ have the same limiting distribution, under the null.
+Under the alternative,%
+\[
+\mathrm{p\lim}\text{ }_{T,\Delta^{-1}\rightarrow\infty}\left(  \frac
+{\widehat{\beta}_{T^{+},\Delta}}{\Delta}-\frac{\widetilde{\beta}_{T^{+}%
+,\Delta}}{\Delta}\right)  =\frac{\beta\lambda\left(  2a-\beta\right)
+}{2\left(  a-\beta\right)  }\exp\left(  -\left(  a-\beta\right)  \right)
+\left(  \mathrm{E}\left(  Z_{k}\right)  ^{2}-\mathrm{E}\left(  Z_{k}%
+^{2}\right)  ^{2}\right)  .
+\]
+
+
+In our Monte Carlo experiments, we compare the two alternative tests in
+various scenarios. The test based on squared returns tends to be rather
+oversized in presence of exponentially distributed jumps with large mean. One
+reason may be that in this case the sample mean does not accurately mimic the
+\textquotedblleft true\textquotedblright\ jump mean, thus leading to spurious
+rejections. Interestingly, in our empirical illustration we find substantial
+evidence of jump excitation using the squared return test and very little self
+excitation using the return test. This is explained by the fact that most
+stocks display jumps with mean close to zero, for the time spans that we
+consider. We conclude this section with four remarks.
+
+\noindent\textbf{Remark 6: }We have considered test statistics which are only
+a function of the first autocovariance term. It follows immediately that one
+can construct tests based on an increasing number of autocovariance terms,
+with the number chosen adaptively (see, e.g. Escanciano and Lobato (2009)).
+
+\noindent\textbf{Remark 7: }If the nulls of zero intensity, zero jump mean and
+no self-excitation are all rejected, then one can proceed to estimate the full
+Hawkes diffusion using GMM, as in A\"{\i}t-Sahalia, Cacho-Diaz and Laeven (2015).
+
+\noindent\textbf{Remark 8: }It is immediate to see that the test based on
+returns is not robust to the presence of a mean-reverting drift. This is
+because the autocorrelation in the drift component cannot be disentangled from
+the autocorrelation in the jump component. On the other hand, in the case of
+the self-excitation tests based on squared returns, the autocorrelation in the
+drift component is of smaller order than the autocorrelation in the jump
+component. Nevertheless, our simulation results show that the empirical size
+of this test varies substantially across different values of $T$ and $\Delta.$
+For example, when $T$ is high relative to $\Delta^{-1},$ empirical size is
+close to power.\footnote{The presence of a constant drift is also assumed in
+Ait-Sahalia, Cacho-Chavez and Laeven (2015).}
+
+\noindent\textbf{Remark 9: }In this section, we consider self-exciting
+intensity. However, from an empirical point of view, an interesting case is
+that of financial contagion, where the contagion is due to \textquotedblleft
+common\textquotedblright\ jumps. In this case, the jump intensity is an
+increasing function not only of its own past jumps but also of past jumps in
+other assets. In order to test for (no) cross-excitation, it suffices to
+construct a statistic based on cross correlations instead of autocorrelations
+(see Theorem 4 in A\"{\i}t-Sahalia, Cacho-Diaz and Laeven (2015)). For
+example, let:
+\begin{align*}
+&  \widehat{\beta}_{T^{+},\Delta}^{(I,II)}\\
+&  =\frac{1}{T^{+}}\sum_{k=2}^{n^{+}-1}\left(  \ln X_{(k+1)\Delta}^{(I)}-\ln
+X_{k\Delta}^{(I)}-\frac{\ln X_{n^{+}\Delta}^{(I)}-\ln X_{\Delta}^{(I)}}{n^{+}%
+}\right)  \left(  \ln X_{k\Delta}^{(II)}-\ln X_{(k-1)\Delta}^{(II)}-\frac{\ln
+X_{n^{+}\Delta}^{(II)}-\ln X_{\Delta}^{(II)}}{n^{+}}\right)  ,
+\end{align*}
+and note that if the jump intensity in asset $II$ does not depend on past
+jumps in asset $I$, then $\widehat{\beta}_{T,\Delta}^{(I,II)}%
+\overset{p}{\rightarrow}0.$ On the other hand, if the intensity in asset $II$
+increases when there is a jump in asset $I$, then$\left\vert \widehat{\beta
+}_{T^{+},\Delta}^{(I,II)}\right\vert $ has a strictly positive probability limit.
+
+\section{Monte Carlo Findings}
+
+In this section we present the findings of a series of Monte Carlo experiments
+designed to evaluate the finite sample properties of: (i) the
+\textquotedblleft jump test\textquotedblright\ for the null of zero jump
+intensity, based on $t_{\lambda,T,\Delta}=\frac{S_{T,\Delta}}{\widehat{\sigma
+}_{\lambda,T,\Delta}},$ where $S_{T,\Delta}=\frac{T^{1/2}}{\Delta}%
+\widehat{\mu}_{3,T,\Delta},$ $\widehat{\mu}_{3,T,\Delta}$ is defined in
+(\ref{mu3}), and $\widehat{\sigma}_{\lambda,T,\Delta}^{2}$ is defined in
+(\ref{jsig2}); (ii) the \textquotedblleft zero mean jump
+test\textquotedblright\ for the null of zero mean jumps, based on $t_{\mu
+_{Z},T,\Delta}=\sqrt{T}\frac{\widehat{\mu}_{T,\Delta}^{Z}}{\widehat{\sigma
+}_{\mu_{Z}}}$, where $\widehat{\mu}_{T,\Delta}^{Z}$ is defined in (\ref{muz}),
+and $\widehat{\sigma}_{\mu_{Z}}^{2}$ is defined in (\ref{sigmaz}); and (iii)
+the \textquotedblleft self-excitement test\textquotedblright\ for the null
+of\ no jump-path dependence, based on $S_{T^{+},\Delta}^{\beta}=\max\left\{
+0,t_{\beta,T^{+},\Delta}\right\}  ,$ where $t_{\beta,T^{+},\Delta}=$
+$\frac{\sqrt{\frac{T^{+}}{\Delta}}\widehat{\beta}_{T^{+},\Delta}%
+}{\widehat{\sigma}_{\beta,T^{+},\Delta}},$ $\widehat{\beta}_{T^{+},\Delta}$ is
+defined in (\ref{beta}), and $\widehat{\sigma}_{\beta,T^{+},\Delta}^{2}$ is
+defined in (\ref{sig2b}).
+
+Data used in our experiments are generated according to the following data
+generating processe (DGP):%
+\[
+\mathrm{d\ln}X_{t}=\mu\mathrm{d}t+\sqrt{V_{t}}\mathrm{d}W_{1,t}+Z_{t}%
+\mathrm{d}N_{t},
+\]
+where volatility is modeled as a square-root process:%
+\[
+\mathrm{d}V_{t}=\kappa_{v}(\theta_{v}-V_{t})\mathrm{d}t+\zeta\sqrt{V_{t}%
+}\mathrm{d}W_{2,t},
+\]
+with \textrm{E}$\left(  W_{1,t}W_{2,t}\right)  =\rho.$ We set $\mu=0.1$,
+$\rho=\{0,-0.25,-0.50,-0.75\}$, $\kappa_{v}=5,$ $\theta_{v}=0.16,$ and
+$\zeta=\{0.25,0.50\}.$ Additionally, $N_{t}$ satisfies the conditions in
+(\ref{J1})-(\ref{J3}). The jump size, $Z_{k},$ is identically and
+independently distributed with density $f(z;\gamma).$ We consider three jump
+densities: $f(z;\gamma)=$ $N(0.0,\sigma)$, $f(z;\gamma)=$ $N(0.5,\sigma),$ and
+$f(z;\gamma)=\varsigma e^{-\varsigma z}.$ For the cases where $Z_{k}$ is a
+normal random variable, $\sigma=\{0.1,0.2,0.3,0.4,0.7\}$; and for the case
+where $Z_{t}$ is characterized by the exponential density, $\varsigma
+=\{2,2.5,5,10,20\}.$
+
+The jump intensity evolves according to:%
+\begin{equation}
+\lambda_{t}=\lambda_{\infty}+\beta\int_{0}^{t}\exp\left(  -a\left(
+t-s\right)  \right)  \mathrm{d}N_{s}, \label{lambdaB}%
+\end{equation}
+where $\lambda_{\infty}=\{0.3,0.5,0.7,0.9\}$ and $(a,\beta)=\{(0,0),(3,2),$
+$(5,4),$ $(7,5)\}.$ Note that the case where $(a,\beta)=(0,0)$ is consistent
+with both the case of no jumps (i.e., $\lambda_{\infty}=0)$ and with the case
+of constant jump intensity (i.e., $\lambda_{t}=\lambda_{\infty}>0$, for all
+$t).$ In the constant jump intensity case, we consider Poisson jumps, with
+parameter $\lambda_{\infty}.$
+
+The various above parameterizations were found to adequately describe the
+manner in which finite sample test performance evolves by model specification;
+and, importantly, to fully characterize the regions of the parameter space
+where the tests \textquotedblleft break down\textquotedblright, in the sense
+of deteriorating finite sample test performance. However, all of these
+parameterizations satisfy the assumptions used in our asymptotic analysis of
+the tests. In order to examine test performance in settings not allowable
+under our assumptions, we also considered two \textquotedblleft
+misspecification\textquotedblright\ cases. In the first case, we impose mean
+reversion in the above pricing equation. Namely, we set%
+
+\[
+\mathrm{d\ln}X_{t}=\left(  \mu-V_{t}/2\right)  \mathrm{d}t+\sqrt{V_{t}%
+}\mathrm{d}W_{1,t}+Z_{t}\mathrm{d}N_{t}.
+\]
+In the second case, we introduce market frictions by assuming that the log
+price process is given by:%
+\[
+Y_{t+l/M}=X_{t+j/M}+\epsilon_{t+j/M},\text{ }t=0,...,T\text{ and }j=1,...,M,
+\]
+with $\epsilon_{t+j/M}\sim N(0.0,\omega^{2})$, where $\omega
+=\{0.005,0.007,0.014\}.$
+
+We simulate observations using a Milstein discretization scheme, with discrete
+interval $h=1/312$, and consider two intra-daily sampling frequencies:
+$\Delta=1/78$ and $\Delta=1/156$. In an empirical context, these values are
+consistent with 5-minute and 2.5-minute sampling frequencies, assuming a 6.5
+hour trading day (see e.g., A\"{\i}t-Sahalia and Jacod (2009)). Loosely
+speaking, we view our values of $\Delta$ as associated with noise which is
+either not binding or moderately binding. Recall also that for the
+$t_{\lambda,T,\Delta}$ and $t_{\mu_{Z},T,\Delta}$ tests, a key assumption is
+that $T\Delta\rightarrow\infty$ and $\sqrt{T}\Delta\rightarrow0$, leading to a
+restriction that $1/\Delta<T<1/\Delta^{2}.$ In particular, when $\Delta=1/78$
+we set $T=\{60,70,80,90,100,110,120,130\}$ and when $\Delta=1/156$ we set
+$T=\{160,180,200,220,240,260,280,300\}.$ Notice that all values of $T$ satisfy
+the condition, with the exception of $T=60$ and $T=70.$ These sample sizes are
+included in order to provide some evidence on the performance of the tests
+when the condition is broken. In all experiments, we perform $1000$ Monte
+Carlo replications.
+
+When implementing the jump test, $t_{\lambda,T,\Delta},$ in order to
+disentangle the contribution of jumps from that of leverage, we also need to
+select the thresholding sequence $\tau(\Delta)$ and the \textquotedblleft
+longer\textquotedblright\ time span $T^{+}.$ We set $T^{+}=10T,$ to satisfy
+the requirement that $T^{+}/T\rightarrow\infty,$ which ensures that the
+contribution of leverage estimation error is negligible. Clearly, finite
+sample performance of our test may hinge to some degree on the ration of $T$
+to $T^{+}$. We leave this issue to future research. We then set $\tau\left(
+\Delta\right)  =c\Delta^{\eta},$ with $\frac{2}{7}<\eta<\frac{1}{2},$ and
+given that for most choices of $T,$ $\Delta=T^{-\delta},$ $\frac{7}{8}%
+<\delta<1,$ we have $\tau\left(  \Delta\right)  =cT^{-\delta\eta},$ and for
+$\delta\eta\in(\frac{1}{4},\frac{1}{2}),$ the rate conditions $\frac
+{\Delta^{\frac{1}{2}}}{\tau\left(  \Delta\right)  }\rightarrow0$,
+$\sqrt{\Delta}\tau\left(  \Delta\right)  ^{-1}$ and $\sqrt{T}\tau^{2}\left(
+\Delta\right)  \rightarrow0$ are satisfied.\footnote{Note that the condition
+$\sqrt{T}\tau(\Delta)\rightarrow0$ is required only for Theorem 3.} Finally,
+we set $c=\widehat{\sigma}_{\mu_{Z}}$, where $\widehat{\sigma}_{\mu_{Z}}^{2}$
+is defined in (\ref{sigmaz}). The choice of $\delta\eta$ is also important in
+finite sample applications. Consider the case where there are no jumps, so
+that $\widehat{\sigma}_{\lambda,T,\Delta}^{2}$, which is used in the
+construction of $t_{\lambda,T,\Delta},$ is a consistent variance estimator.
+Recalling (\ref{mu3})-(\ref{jsig2}), it is immediate to see that $\tau\left(
+\Delta\right)  $ plays a role both in the numerator and the denominator of
+$t_{\lambda,T,\Delta}$. In our experimental setup, small thresholds (e.g.
+$\delta\eta=0.4)$ result in a too small variance estimator, leading to an
+oversized test. Not surprisingly, the empirical power is not affected by the
+choice of the threshold parameter. Below, we only report results for the case
+where $\delta\eta=0.251.$
+
+A small subset of our experimental findings are reported in Tables 1-7. These
+findings are chosen to be representative of the patterns observed in all of
+the Monte Carlo experiments that were run. The complete set of Monte Carlo
+results are posted at http://econweb.rutgers.edu/nswanson/comp.htm. In the
+tables, rejection frequencies based on tests implemented at a 10\% nominal
+level are reported.
+
+Tables 1 and 2 contain results for the jump intensity test. Empirical
+rejection frequencies under $H_{0}^{\lambda}:\lambda_{\infty}=0$ are given in
+Table 1. Consider the results reported under Case 1, with $\rho=0$. When
+$\Delta=1/78$, rejection frequencies are very near nominal levels only for $T$
+$=70,$ $80$ and $90$. Indeed, when $T$ is increased to $130$, the empirical
+size deteriorates substantively and is over $20\%$. However, rejection
+frequencies are close to the nominal 10\% level for $T=260,280,$ and $300$
+when $\Delta^{-1}=1/156.$ This finding is quite interesting, and it suggests
+that the range of permissible $T$ and $\Delta$ permutations for which the size
+properties of our jump test are adequate is wide. Of course, for extremely
+large values of $T$, performance should be again expected to deteriorate,
+since we require that $T<1/\Delta^{2}.$ Turning to the case of leverage, the
+test becomes oversized more rapidly as $\rho$ is increased from $0$ to
+$-0.25$, and then to $-0.5$ and $-0.75$, when $T$ increases, for fixed
+$\Delta$. This is not surprising. Still, it is clear that the test performs
+adequately, as long as $T$ and $\Delta$ are carefully monitored, regardless of
+the presence of leverage. Moreover, the above findings hold under mild forms
+of misspecification, such as when there is mean reversion in the pricing
+equation (see Case 2 of Table 1), and when there is microstructure noise (see
+Case 3 of Table 1).\footnote{Our jump test, under the alternative, is
+similarly robust to these forms of misspecification. However, as discussed
+above, our self-excitation test is not robust to the presence of
+mean-reverting drift. Please refer to the full set of experiments posted at
+http://econweb.rutgers.edu/nswanson/comp.htm for further information.}
+
+Empirical rejection frequencies under $H_{A}^{\lambda(1)}:\lambda_{\infty}>0$
+and \textrm{E}$\left(  Z_{k}\right)  \neq0$ are given as entries in Table 1
+for which $\varsigma\neq0$. Recall, that in this case all jump densities have
+non-zero third moment, and the test has well defined Pitman drift against
+$\sqrt{T}-$ alternatives. Not surprisingly, rejection frequencies are thus
+near unit, regardless of jump density specification. The more challenging
+alternative is $H_{A}^{\lambda(2)}:\lambda_{\infty}>0$ and \textrm{E}$\left(
+Z_{k}\right)  =0.$ In this case, the test has zero Pitman drift, and that the
+ability of the test to distinguish between $H_{0}^{\lambda}$ and
+$H_{A}^{\lambda(2)}$ derives solely from the different order of magnitude of
+the variance under the two hypotheses. Results for DGPs generated under
+$H_{A}^{\lambda(2)}$ are also gathered in Table 2, for $\sigma=0.2$ and $0.4,$
+with $\lambda_{\infty}=0.3$ and $0.7$. As might be expected, the power
+increases as $\sigma$ and $\lambda_{\infty}$ increase. However, the value of
+$\sigma$ plays a much bigger role than that of $\lambda_{\infty}.$ This is not
+surprising, given that what drives the power is the order of magnitude of the variance.
+
+Table 3 summarizes experimental findings for the zero mean jump test, based on
+$t_{\mu_{Z},T,\Delta}=\sqrt{T}\frac{\widehat{\mu}_{T,\Delta}^{Z}%
+}{\widehat{\sigma}_{\mu_{Z}}}.$ This test can be thought of as a pre-test,
+prior to testing for self-excitement, and after testing for jumps, say. The
+reason for this is that in order to identify $\beta$ when testing
+$H_{0}^{\beta}:\beta=0$ vs. $H_{A}^{\beta}:\beta>0$, we require not only that
+$\lambda_{\infty}>0$ but also that $E(Z_{k})\neq0.$ Inspection of the
+rejection frequencies reported in the table indicates that the test is well
+sized, for all values of $T$, when $\lambda_{\infty}=0.3$ and $\sigma=0.2.$
+Similar results obtain for other values of $\lambda_{\infty}$ and $\sigma,$
+and are hence not reported. Overall, the power is quite good, except for the
+cases in which $T$ is small, $\lambda_{\infty}$ is small, $\Delta=1/78,$ and
+there is no self-excitation.
+
+Tables 4 (empirical size) and 5 (empirical power) summarize experimental
+findings for our self-excitement test, based on $S_{T^{+},\Delta}^{\beta}%
+=\max\left\{  0,\frac{\sqrt{\frac{T^{+}}{\Delta}}\widehat{\beta}_{T^{+}%
+,\Delta}}{\widehat{\sigma}_{\beta,T^{+},\Delta}}\right\}  $. Although dozens
+of ($\lambda_{\infty}$,$\sigma,\Delta,T)$ permutations are reported in Table
+4, even cursory examination of the table indicates that the test is very well
+sized, with rejection frequencies very close to the nominal 10\% level, in all
+cases. It remains to examine the performance of the self-excitement test,
+under $H_{A}^{\beta}:\beta>0$. These findings are reported in Table 5, where
+empirical power is summarized for various values of $\lambda_{\infty}%
+$,$(a,\beta),\Delta^{-1}$, and $T$.\footnote{As the test is based on the first
+autocovariance term, leverage plays no role in the test statistic. Not
+surprisingly, then, including leverage (or not)\ has no qualitatively
+noteworthy impact on our findings, and only results for the non-zero leverage
+case are reported.} For the case where $Z_{k}$ is a normal random variable, we
+report rejection frequencies for only one value of $\sigma$ (i.e.,
+$\sigma=0.2)$. However, it should be noted that empirical power generally
+declines as $\sigma$ increases from $0.1$ to $0.7$, for fixed values of the
+other parameters. One possible explanation for this finding is that
+\textquotedblleft noisiness\textquotedblright\ is induced when estimating the
+first autocovariance term, when jumps are extremely large. Empirical power
+also declines when the value of $a$ is increased, with $(a-\beta)$ fixed
+(compare rejection frequencies for $(a,\beta)=(3,2)$ with those for
+$(a,\beta)=(5,4)$). The reason for this follows from (\ref{cross}%
+)-(\ref{lambdaB}), where it is immediate to see that the smaller is $a$ and
+the smaller is $(a-\beta),$ the higher is the degree of self-excitation. This
+means that our lowest degree of self-excitation is associated with the case
+where $(a,\beta)=(7,5)$. Empirical power is correspondingly the lowest in this
+case, bottoming out at around $0.30$. When the degree of self-excitation is
+strongest (i.e., $(a,\beta)=(3,2))$ and there are \textquotedblleft
+enough\textquotedblright\ jumps (i.e., $\lambda_{\infty}=0.7)$, rejection
+frequencies are (roughly)\ in the range $0.70$ to $0.80$. Finally, note that
+all of the above results are based on experiments with $\rho=-0.25.$ Results
+are similar for the other values of $\rho$ considered in our experiments.
+
+Tables 6 (empirical size) and 7 (empirical power) summarize experimental
+findings for our alternative self-excitement test, based on $\widetilde{S}%
+_{T^{+},\Delta}^{\beta}=\max\left\{  0,\sqrt{\frac{T^{+}}{\Delta}}%
+\frac{\widetilde{\beta}_{T^{+},\Delta}}{\widetilde{\sigma}_{\beta,T^{+}%
+,\Delta}}\right\}  .$ This test does not require pre-testing $H_{0}:$
+\textrm{E}$\left(  Z_{k}\right)  =0$, and so is of some interest. Due to
+problems with the size of this test, as discussed in Remark 8 above, this test
+is not recommended for use at this time. In order to point out the problems
+with the test, we focus on somewhat different parameterizations than those
+presented in Tables 4 and 5. However, please note that the performance of the
+$S_{T^{+},\Delta}^{\beta}$ test remains unchanged under these alternative
+parameterizations. In particular, cursory inspection of the tables indicates
+that while empirical power remains satisfactory (see Table 7), the test is
+(severely) oversized for many parameter permutations. In particular, when $T$
+is high, relative to $\Delta^{-1},$ size is severely distorted.
+
+In summary, all of our tests perform adequately, with the possible exception
+of our alternative $\widetilde{S}_{T^{+},\Delta}^{\beta}$ self-excitement
+test; and perform as expected, given the asymptotic theory describing their
+large sample behavior. Moreover, the finite sample performance of the tests is
+found to be adequate, with the important obvious caveat that jump process
+characteristics and sampling \ frequencies affect the ability of the tests to
+perform adequately.
+
+\section{Empirical Illustration}
+
+For our empirical illustration, we examine intraday observations on 11 stocks,
+including: 3M Company (3M); Apple Inc. (AAPL); Amazon.com, Inc. (AMZN); Bank
+of America Corporation (BAC); Costco Wholesale Corporation (COST); General
+Electric Company (GE); The Goldman Sachs Group, Inc. (GS); International
+Business Machines Corporation (IBM); Intel Corporation (INTC); Johnson \&
+Johnson (JNJ); and JPMorgan Chase \& Co. (JPM). Our sample period is from
+January 2, 2004 to December 31, 2013, and data are collected from the TAQ
+database. In our empirical implementation of the tests outlined in this paper,
+we considered time spans (in days) of 1 quarter, 2 quarters, and 1 year.
+Results from self-excitation testing based on our entire sample period did not
+differ from results based on these time spans. Thus, the number of days in our
+time span varies from approximately 60 to 250. Two intra-daily data
+frequencies were utilized, including 5-minute and 10-minute data, in order to
+examine the robustness of our findings to the possible presence of
+microstructure noise.
+
+Results for the jump intensity test are gathered in Table 8. As is evident
+upon cursory inspection of the results in this table, we find in favor of the
+presence of jumps in the data generating process, regardless of $T$ and
+$\Delta$.\footnote{Results are only tabulated for seleted values of $T$.
+However, our findings are consistent across all quarterly, semi-annual, and
+annual periods studied.} Results based on the application of our two
+alternative self-excitement tests are not tabulated, for the sake of brevity,
+and are available upon request. However, it is worth noting that application
+of the $\widetilde{S}_{T^{+},\Delta}^{\beta}$ self-excitement test indicates
+that self-excitement characterizes many jump processes for the stocks
+considered. On the other hand, application of the $S_{T^{+},\Delta}^{\beta}$
+self-excitement test indicates that self-excitement characterizes very few
+jump processes for the stocks considered. This finding is likely explained by
+the fact that most of the stocks that we examine display near zero mean jumps
+for the values of $T$ considered. Because of these findings, we conjecture
+that self-excitement is quite prevalent in the data generating processes that
+characterize the stock prices that we study, although the size issues noted
+earlier suggest that this conclusion should be made with caution until further
+empirical research is undertaken.
+
+\section{Concluding Remarks}
+
+If the intensity parameter in a jump diffusion model is identically zero, then
+parameters characterizing the jump size density cannot be identified. In
+general, this lack of identification precludes consistent estimation of
+identified parameters. In the extant literature, there are a large variety of
+tests for the null of no jumps versus the alternative of jumps, including
+tests based on the comparison of two realized volatility measures, one which
+is robust, and the other which is not robust to the presence of jumps (see,
+e.g. Barndorff-Nielsen, Shephard and Winkel (2006) and Podolskji and Vetter
+(2009a)), tests based on a thresholding approach (see, e.g. Corsi, Pirino, and
+Ren\`{o} (2010), Lee and Mykland (2008), and Lee, Loretan and Ploberger
+(2013)), and tests based on power variation (see e.g. A\"{\i}t-Sahalia and
+Jacod (2009)). One feature of these tests is that they are based on
+observations drawn on a given finite time span, and thus they can only detect
+realized jumps. This paper introduces a test which is instead able to detect
+jumps in the data generating process. Our test is based on realized tricity
+and make use of high frequency observations measured over a long time-span.
+Importantly, the test is robust to the presence of leverage. It has a normal
+limiting distribution, and so inference is straightforward. A so-called
+\textquotedblleft self-excitement\textquotedblright\ test is also introduced,
+which is designed to have power against path dependent intensity, thus
+providing a direct test for the Hawkes diffusion model of A\"{\i}t-Sahalia,
+Cacho-Diaz and Laeven (2015). The finite sample behavior of the suggested
+statistics is studied via Monte Carlo experimentation, and is found to be
+adequate under a variety of realistic data generating processes.\pagebreak%
+\ Finally, strong evidence of jumps, and moderate evidence of self-excitement
+is found in an empirical illustration.
+
+\section{Appendix}
+
+In the sequel with $C$ we denote a positive constant that may change from line
+to line.
+
+\noindent\textbf{Lemma 1: }Let Assumptions \textbf{A(i)-(iii)} hold. Also, as
+$T\rightarrow\infty,$ $T\Delta^{2}\rightarrow0,$ $\tau\left(  \Delta\right)
+\rightarrow0$ and $\frac{\Delta^{\frac{1}{2}-\frac{3}{m}}}{\tau\left(
+\Delta\right)  }\rightarrow0,$ with $m>6$ and even. Then if $\lambda=0,$%
+\[
+P\left(  \max_{k\leq n}\left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta
+}\right\vert >\varepsilon\tau\left(  \Delta\right)  \right)  \rightarrow0.
+\]
+
+
+\noindent\textbf{Proof of Lemma 1: }Recalling that $T\Delta^{2}\rightarrow0,$%
+\begin{align*}
+&  P\left(  \max_{k\leq n}\left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta
+}\right\vert >\varepsilon\tau\left(  \Delta\right)  \right) \\
+&  \leq\sum_{k=1}^{n}P\left(  \left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta
+}\right\vert >\varepsilon\tau\left(  \Delta\right)  \right) \\
+&  =\sum_{k=1}^{n}P\left(  \left\vert \mu\Delta+V_{k\Delta}^{1/2}\sqrt
+{1-\rho^{2}}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta}\right)
++V_{k\Delta}^{1/2}\rho\left(  W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta
+}\right)  \right\vert >\varepsilon\tau\left(  \Delta\right)  \right) \\
+&  \leq\frac{T}{\Delta}\frac{1}{\varepsilon^{m}\tau\left(  \Delta\right)
+^{m}}\mathrm{E}\left(  \left\vert \mu\Delta+V_{k\Delta}^{1/2}\sqrt{1-\rho^{2}%
+}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta}\right)  +V_{k\Delta
+}^{1/2}\rho\left(  W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta}\right)
+\right\vert ^{m}\right) \\
+&  \leq C\mathrm{E}\left(  V_{k\Delta}^{m/2}\right)  \Delta^{\frac{m}{2}%
+-3}\tau\left(  \Delta\right)  ^{-m}\rightarrow0\text{,}%
+\end{align*}
+for $\frac{\Delta^{\frac{1}{2}-\frac{3}{m}}}{\tau\left(  \Delta\right)
+}\rightarrow0$ and $m>6,$ as $\mathrm{E}\left(  V_{k\Delta}^{m/2}\right)  $ is
+finite, by A(iii).\medskip
+
+\noindent\textbf{Lemma 2: }Let Assumptions \textbf{A(iv)-(v)} hold. Then, for
+all $l\geq2$ even,%
+\[
+\mathrm{E}\left(  \frac{1}{T}\sum_{k=1}^{n}\left(  Z_{k}1_{\Delta
+_{N_{(k+1)\Delta}}}-\Delta\mathrm{E}\left(  Z_{k}\right)  \lambda\right)
+^{l}1\left\{  \left\vert Z_{k}1_{\Delta_{N_{(k+1)\Delta}}}\right\vert \leq
+\tau\left(  \Delta\right)  \right\}  \right)  \leq C\tau\left(  \Delta\right)
+^{l+1}.
+\]
+
+
+\noindent\textbf{Proof of Lemma 2: }For $l$ even, and for $c_{l-k,k}>0,$
+whenever $l$ and $k$ are even,%
+\begin{align*}
+&  \mathrm{E}\left(  \frac{1}{T}\sum_{k=1}^{n}\left(  Z_{k}1_{\Delta
+_{N_{(k+1)\Delta}}}-\Delta\mathrm{E}\left(  Z_{k}\right)  \lambda\right)
+^{l}1\left\{  \left\vert Z_{k}1_{\Delta_{N_{(k+1)\Delta}}}\right\vert \leq
+\tau\left(  \Delta\right)  \right\}  \right) \\
+&  =\frac{1}{\Delta}\int_{-\tau\left(  \Delta\right)  }^{\tau\left(
+\Delta\right)  }\left(  \left(  z-\Delta\mathrm{E}\left(  Z\right)
+\lambda\right)  \right)  ^{l}\mathrm{E}\left(  1_{\Delta_{N_{(k+1)\Delta}}%
+}\right)  f_{Z}(z)\mathrm{d}z\\
+&  =\lambda\int_{-\tau\left(  \Delta\right)  }^{\tau\left(  \Delta\right)
+}\left(  z-\Delta\mathrm{E}\left(  Z_{k}\right)  \lambda\right)  ^{l}%
+f_{Z}(z)\mathrm{d}z\\
+&  =\lambda\sum_{k=0}^{l}c_{l-k,k}\int_{-\tau\left(  \Delta\right)  }%
+^{\tau\left(  \Delta\right)  }Z^{l-k}\left(  \Delta\mathrm{E}\left(
+Z_{k}\right)  \lambda\right)  ^{k}f_{Z}(z)\mathrm{d}z\left(  1+o(\Delta
+)\right) \\
+&  =\lambda c_{l,0}\int_{-\tau\left(  \Delta\right)  }^{\tau\left(
+\Delta\right)  }Z^{l}f_{Z}(z)\mathrm{d}z\left(  1+o(\Delta)\right) \\
+&  \leq C\tau\left(  \Delta\right)  ^{l+1}.
+\end{align*}
+\medskip\noindent\textbf{Lemma 3: }Let Assumptions \textbf{A(i)-(v)} hold. If
+as $T,\Delta^{-1}\rightarrow\infty,$ $T^{+}/T\rightarrow\infty,$ $\frac
+{\Delta^{\frac{1}{2}-\frac{3}{m}}}{\tau\left(  \Delta\right)  }\rightarrow0,$
+with $m>6$ even and $\sqrt{T}\tau^{2}\left(  \Delta\right)  \rightarrow0,$
+then,%
+\[
+\sqrt{T}\left(  \frac{1}{T^{+}}\sum_{k=1}^{n^{+}}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}\right)  1\left\{  \left\vert \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}\right\vert \leq\tau\left(  \Delta\right)  \right\}
+-\mu\right)  =o_{p}(1).
+\]
+\smallskip\noindent\textbf{Proof of Lemma 3: } Note that $\sqrt{T}\tau\left(
+\Delta\right)  \rightarrow0$ implies that $T\Delta^{2}\rightarrow0,$ and so by
+Lemma 1,%
+\begin{align*}
+&  \frac{\sqrt{T}}{T^{+}}\sum_{k=1}^{n^{+}}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}\right)  1\left\{  \left\vert \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}\right\vert \leq\tau\left(  \Delta\right)  \right\} \\
+&  =\frac{\sqrt{T}}{T^{+}}\sum_{k=1}^{n^{+}}\left(  \mu\Delta+V_{k\Delta
+}^{1/2}\sqrt{1-\rho^{2}}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta
+}\right)  +V_{k\Delta}^{1/2}\rho\left(  W_{2,\left(  k+1\right)  \Delta
+}-W_{2,k\Delta}\right)  \right)  \left(  1-1_{\Delta_{N_{(k+1)\Delta}}}\right)
+\\
+&  +\frac{\sqrt{T}}{T^{+}}\sum_{k=1}^{n^{+}}\left(  \mu\Delta+V_{k\Delta
+}^{1/2}\sqrt{1-\rho^{2}}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta
+}\right)  +V_{k\Delta}^{1/2}\rho\left(  W_{2,\left(  k+1\right)  \Delta
+}-W_{2,k\Delta}\right)  +Z_{k}\right) \\
+&  \times1\left\{  \left\vert Z_{k}1_{\Delta_{N_{(k+1)\Delta}}}\right\vert
+\leq\tau\left(  \Delta\right)  \right\}  +o_{p}(1)\\
+&  =I_{T,\Delta}+II_{T,\Delta}.
+\end{align*}
+We need to show that: (i) $I_{T,\Delta}=\sqrt{T}\mu+o_{p}(1);$ and (ii)
+$II_{T,\Delta}=o_{p}(1).$
+
+For $T^{+}/T\rightarrow\infty,$%
+\[
+\frac{\sqrt{T}}{T^{+}}\sum_{k=1}^{n^{+}}\left(  V_{k\Delta}^{1/2}\sqrt
+{1-\rho^{2}}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta}\right)
++V_{k\Delta}^{1/2}\rho\left(  W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta
+}\right)  \right)  \left(  1-1_{\Delta_{N_{(k+1)\Delta}}}\right)  =o_{p}(1)
+\]
+and
+\[
+\frac{\sqrt{T}}{T^{+}}\sum_{k=1}^{n^{+}}1_{\Delta_{N_{(k+1)\Delta}}}=o_{p}(1)
+\]
+as $\mathrm{var}\left(  1_{\Delta_{N_{(k+1)\Delta}}}\right)  =O\left(
+\Delta\right)  $ and $T/T^{+}\rightarrow0.$ Thus, (i) is established. With
+regard to (ii), as
+\begin{align*}
+\mathrm{E}\left(  1\left\{  \left\vert Z_{k}1_{\Delta_{N_{(k+1)\Delta}}%
+}\right\vert \leq\tau\left(  \Delta\right)  \right\}  \right)   &
+=\mathrm{E}\left(  1\left\{  \left\vert Z_{k}\right\vert \leq\tau\left(
+\Delta\right)  \right\}  \right)  \mathrm{E}\left(  1_{\Delta_{N_{(k+1)\Delta
+}}}\right) \\
+&  \leq O\left(  \tau\left(  \Delta\right)  \Delta\right)
+\end{align*}
+it follows that%
+\begin{align*}
+&  \frac{\sqrt{T}}{T^{+}}\sum_{k=1}^{n^{+}}\left(  \mu\Delta+V_{k\Delta}%
+^{1/2}\sqrt{1-\rho^{2}}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta
+}\right)  +V_{k\Delta}^{1/2}\rho\left(  W_{2,\left(  k+1\right)  \Delta
+}-W_{2,k\Delta}\right)  \right) \\
+&  \times1\left\{  \left\vert Z_{k}1_{\Delta_{N_{(k+1)\Delta}}}\right\vert
+\leq\tau\left(  \Delta\right)  \right\}  =o_{p}(1).
+\end{align*}
+Finally,%
+\begin{align*}
+&  \frac{\sqrt{T}}{T^{+}}\sum_{k=1}^{n^{+}}\mathrm{E}\left(  \left\vert
+Z_{k}\right\vert \right)  1\left\{  \left\vert Z_{k}1_{\Delta_{N_{(k+1)\Delta
+}}}\right\vert \leq\tau\left(  \Delta\right)  \right\} \\
+&  =\frac{\sqrt{T}}{\Delta}\int_{-\tau\left(  \Delta\right)  }^{\tau\left(
+\Delta\right)  }|z|f_{Z}(z)\mathrm{d}z\mathrm{E}\left(  1_{\Delta
+_{N_{(k+1)\Delta}}}\right) \\
+&  \leq C\sqrt{T}\tau^{2}\left(  \Delta\right)  =o(1).
+\end{align*}
+Then (ii) follows by a straightforward application of the Markov
+inequality.\medskip
+
+\noindent\textbf{Proof of Theorem 1:}
+
+\noindent Part (i): From the multivariate Milstein formula (see Kloeden and
+Platen (1999), Section 10.3), we have that:%
+\begin{align}
+&  \ln X_{\left(  k+1\right)  \Delta}-\ln X_{k\Delta}\nonumber\\
+&  =\left(  \mu\Delta+V_{k\Delta}^{1/2}\sqrt{1-\rho^{2}}\left(  W_{1,\left(
+k+1\right)  \Delta}-W_{1,k\Delta}\right)  +V_{k\Delta}^{1/2}\rho\left(
+W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta}\right)  \right. \nonumber\\
+&  +\frac{1}{4}\rho V_{(k-1)\Delta}^{-1/2}g\left(  V_{(k-1)\Delta}%
+,\theta\right)  \left(  \left(  W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta
+}\right)  ^{2}-\Delta\right) \nonumber\\
+&  \left.  +\frac{1}{4}\sqrt{1-\rho^{2}}V_{(k-1)\Delta}^{-1/2}g\left(
+V_{k\Delta},\theta\right)  \int_{k\Delta}^{(k+1)\Delta}\int_{k\Delta}^{s_{2}%
+}\mathrm{d}W_{2,s_{1}}\mathrm{d}W_{1,s_{2}}\right)  \left(  1+o_{p}(1)\right)
+\label{DC}%
+\end{align}
+Also,%
+\begin{equation}
+\frac{\ln X_{T}}{n}=\left(  \mu\Delta+\sqrt{1-\rho^{2}}\frac{\Delta}{T}%
+\int_{0}^{T}V_{s}^{1/2}\mathrm{d}W_{1,s}+\rho\frac{\Delta}{T}\int_{0}^{T}%
+V_{s}^{1/2}\mathrm{d}W_{2,s}\right)  \left(  1+o_{p}(1)\right)  \label{XT}%
+\end{equation}
+and%
+\[
+\frac{\ln X_{\Delta}}{n}=\left(  \mu\frac{\Delta^{2}}{T}+\sqrt{1-\rho^{2}%
+}\frac{\Delta}{T}\int_{0}^{\Delta}V_{s}^{1/2}\mathrm{d}W_{1,s}+\rho
+\frac{\Delta}{T}\int_{0}^{\Delta}V_{s}^{1/2}\mathrm{d}W_{2,s}\right)  \left(
+1+o_{p}(1)\right)  .
+\]
+Thus, $\frac{\ln X_{\Delta}}{n}=O_{p}\left(  \frac{\Delta^{3/2}}{T}\right)  $
+and $\frac{\ln X_{\Delta}}{n^{+}}=O_{p}\left(  \frac{\Delta^{3/2}}{T^{+}%
+}\right)  .$ These terms can thus be ignored given that they are $o_{p}\left(
+\Delta\right)  .$ Now,%
+
+\begin{align*}
+&  \left(  \ln X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{T}}{n}\right)
+^{3}\\
+&  =\left(  \sqrt{1-\rho^{2}}V_{k\Delta}^{1/2}\left(  W_{1,\left(  k+1\right)
+\Delta}-W_{1,k\Delta}\right)  +\rho V_{k\Delta}^{1/2}\left(  W_{2,\left(
+k+1\right)  \Delta}-W_{2,k\Delta}\right)  \right. \\
+&  +\frac{1}{4}\rho V_{k\Delta}^{-1/2}g\left(  V_{k\Delta},\theta\right)
+\left(  \left(  W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta}\right)
+^{2}-\Delta\right)  +\\
+&  \left.  +\frac{1}{4}\sqrt{1-\rho^{2}}V_{(k-1)\Delta}^{-1/2}g\left(
+V_{k\Delta},\theta\right)  \int_{k\Delta}^{(k+1)\Delta}\int_{k\Delta}^{s_{2}%
+}\mathrm{d}W_{2,s_{1}}\mathrm{d}W_{1,s_{2}}\right)  ^{3}\left(  1+o_{p}%
+(1)\right)  .
+\end{align*}
+Straightforward but tedious algebra shows that%
+\begin{align*}
+&  \mathrm{E}\left(  \ln X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{T}}%
+{n}\right)  ^{3}\\
+&  =\frac{3}{2}\rho^{3}\mathrm{E}\left(  V_{k\Delta}^{1/2}g\left(  V_{k\Delta
+},\theta\right)  \right)  \Delta^{2}.
+\end{align*}
+Because of Lemma 1,%
+\begin{align*}
+\widehat{\mu}_{3,T,\Delta}  &  =\frac{1}{T}\sum_{k=1}^{n}\left(  \ln
+X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{T}}{n}\right)  ^{3}\\
+&  -\frac{1}{T^{+}}\sum_{k=1}^{n^{+}}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}-\frac{\ln X_{T}}{n^{+}}\right)  ^{3}\left(  1+o_{p}(1)\right)
+.
+\end{align*}
+Now, write%
+\begin{align*}
+&  \frac{\sqrt{T}}{\Delta}\widehat{\mu}_{3,T,\Delta}\\
+&  =\frac{\Delta}{\sqrt{T}}\sum_{k=1}^{n}\left(  \frac{1}{\Delta^{2}}\left(
+\ln X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}%
+{n}\right)  ^{3}-\frac{3}{2}\rho^{3}\mathrm{E}\left(  V_{k\Delta}%
+^{1/2}g\left(  V_{k\Delta},\theta\right)  \right)  \right) \\
+&  -\frac{\sqrt{T}}{T^{+}}\Delta\sum_{k=1}^{n^{+}}\left(  \frac{1}{\Delta^{2}%
+}\left(  \ln X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{n^{+}\Delta}-\ln
+X_{\Delta}}{n^{+}}\right)  ^{3}-\frac{3}{2}\rho^{3}\mathrm{E}\left(
+V_{k\Delta}^{1/2}g\left(  V_{k\Delta},\theta\right)  \right)  \right)  \left(
+1+o_{p}(1)\right) \\
+&  =\left(  I_{T,\Delta}+II_{T,T^{+},\Delta}\right)  \left(  1+o_{p}%
+(1)\right)  .
+\end{align*}
+It is immediate to see that \textrm{E}$\left(  I_{T,\Delta}\right)  =0.$ Also,
+recalling that for $m$ even, the $m-$th central moment of a standard normal is
+equal to $\frac{m!}{2^{m/2}(m/2)!},$%
+\begin{align*}
+&  \omega_{0}=\mathrm{var}\left(  I_{T,\Delta}\right) \\
+&  =\mathrm{var}\left(  \frac{1}{\sqrt{T}\Delta}\sum_{k=1}^{n}\left(  \left(
+1-\rho^{2}\right)  ^{1/2}V_{k\Delta}^{1/2}\left(  W_{1,\left(  k+1\right)
+\Delta}-W_{1,k\Delta}\right)  +\rho V_{k\Delta}^{1/2}\left(  W_{2,\left(
+k+1\right)  \Delta}-W_{2,k\Delta}\right)  \right)  ^{3}\right)  +o(1)\\
+&  =\mathrm{E}\left(  \left(  \left(  1-\rho^{2}\right)  ^{1/2}V_{k\Delta
+}^{1/2}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta}\right)  +\rho
+V_{k\Delta}^{1/2}\left(  W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta
+}\right)  \right)  ^{6}\right) \\
+&  =15\left(  1-\rho^{2}\right)  ^{3}\mathrm{E}\left(  V_{k\Delta}^{3}\right)
++15\rho^{6}\mathrm{E}\left(  V_{k\Delta}^{3}\right)  +45\left(  1-\rho
+^{2}\right)  ^{2}\rho^{2}\mathrm{E}\left(  V_{k\Delta}^{3}\right)  +45\left(
+1-\rho^{2}\right)  \rho^{4}\mathrm{E}\left(  V_{k\Delta}^{3}\right)  .
+\end{align*}
+Hence, by the central limit theorem for martingale differences,%
+\[
+I_{T,\Delta}\overset{d}{\rightarrow}N\left(  0,\omega_{0}\right)  .
+\]
+
+
+\noindent Since $T^{+}/T\rightarrow\infty,$ $II_{T,T^{+},\Delta}$ is of
+smaller probability order than $I_{T,\Delta},$ and thus is $o_{p}(1).$ The
+statement in Part (i) then follows.
+
+\medskip
+
+\noindent Part (ii): Let%
+\[
+\ln X_{\left(  k+1\right)  \Delta}-\ln X_{k\Delta}=\left(  \ln X_{\left(
+k+1\right)  \Delta}^{c}-\ln X_{k\Delta}^{c}\right)  +\left(  \ln X_{\left(
+k+1\right)  \Delta}^{d}-\ln X_{k\Delta}^{d}\right)  ,
+\]
+where $\left(  \ln X_{\left(  k+1\right)  \Delta}^{c}-\ln X_{k\Delta}%
+^{c}\right)  $ is defined as in the RHS of (\ref{DC}), and%
+\[
+\left(  \ln X_{\left(  k+1\right)  \Delta}^{d}-\ln X_{k\Delta}^{d}\right)
+=Z_{k}1_{\Delta N_{(k+1)\Delta}},
+\]
+where $Z_{k}$ denotes a draw from the jump size density, say $f_{Z},$ and
+$1_{\Delta N_{(k+1)\Delta}}=1,$ if $\Delta N_{(k+1)\Delta}=1,$ and equals zero
+otherwise. Also%
+\[
+\frac{\ln X_{T}}{n}=\frac{\ln X_{T}^{c}}{n}+\frac{1}{n}\sum_{i=0}^{N_{T}}%
+Z_{i}=\frac{\ln X_{T}^{c}}{n}+\Delta\lambda\mathrm{E}\left(  Z_{k}\right)
++o_{p}(1),
+\]
+with $\frac{\ln X_{T}^{c}}{n}$ defined as in the RHS of (\ref{XT}). Write,%
+\begin{align*}
+\frac{\sqrt{T}}{\Delta}\widehat{\mu}_{3,T,\Delta}  &  =\left(  \frac{1}%
+{\Delta\sqrt{T}}\sum_{k=1}^{n}\left(  \ln X_{k\Delta}-\ln X_{(k-1)\Delta
+}-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}{n}\right)  ^{3}1\left\{  \left\vert
+\ln X_{k\Delta}-\ln X_{(k-1)\Delta}\right\vert \leq\tau\left(  \Delta\right)
+\right\}  \right. \\
+&  \left.  -\frac{\sqrt{T}}{\Delta T^{+}}\sum_{k=1}^{n^{+}}\left(  \ln
+X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{n^{+}\Delta}-\ln X_{\Delta}%
+}{n^{+}}\right)  ^{3}1\left\{  \left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta
+}\right\vert \leq\tau\left(  \Delta\right)  \right\}  \right) \\
+&  +\frac{1}{\Delta\sqrt{T}}\sum_{k=1}^{n}\left(  \ln X_{k\Delta}-\ln
+X_{(k-1)\Delta}-\frac{\ln X_{n\Delta}-\ln X_{\Delta}}{n}\right)  ^{3}1\left\{
+\left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta}\right\vert >\tau\left(
+\Delta\right)  \right\} \\
+&  =A_{T,T^{+},\Delta}+B_{T,\Delta}.
+\end{align*}
+By Lemma 1,%
+\begin{align*}
+A_{T,T^{+},\Delta}  &  =\frac{1}{\Delta\sqrt{T}}\sum_{k=1}^{n}\left(  \left(
+\ln X_{k\Delta}^{c}-\ln X_{(k-1)\Delta}^{c}-\frac{\ln X_{n\Delta}^{c}}%
+{n}\right)  ^{3}-\frac{3}{2}\rho^{3}\mathrm{E}\left(  V_{k\Delta}%
+^{1/2}g\left(  V_{k\Delta},\theta\right)  \right)  \right) \\
+&  +\left(  \frac{1}{\Delta\sqrt{T}}\sum_{k=1}^{n}\left(  Z_{k}1_{\Delta
+N_{(k+1)\Delta}}-\Delta\lambda\mathrm{E}\left(  Z_{k}\right)  \right)
+^{3}1\left\{  \left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta}\right\vert
+\leq\tau\left(  \Delta\right)  \right\}  \right. \\
+&  \left.  -\frac{\sqrt{T}}{\Delta T^{+}}\sum_{k=1}^{n^{+}}\left(
+Z_{k}1_{\Delta N_{(k+1)\Delta}}-\Delta\lambda\mathrm{E}\left(  Z_{k}\right)
+\right)  ^{3}1\left\{  \left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta
+}\right\vert \leq\tau\left(  \Delta\right)  \right\}  \right) \\
+&  +\mathrm{\ cross}\text{ \textrm{terms}}\\
+&  =A_{1,T,T^{+},\Delta}+A_{2,T,T^{+},\Delta}+\mathrm{\ cross}\text{
+\textrm{terms.}}%
+\end{align*}
+By the same argument as that used in Part (i), $A_{1,T,T^{+},\Delta
+}\overset{d}{\rightarrow}N(0,\omega_{0}),$ while $A_{2,T,T^{+},\Delta
+}+\mathrm{\ cross}$ \textrm{terms} is of a smaller probability order than
+$B_{T,\Delta}.$
+
+\noindent Because of Lemma 1,
+\[
+B_{T,\Delta}=\frac{1}{\sqrt{T}}\sum_{k=1}^{n}\frac{1}{\Delta}\left(
+Z_{k}1_{\Delta N_{(k+1)\Delta}}-\Delta\lambda\mathrm{E}\left(  Z_{k}\right)
+\right)  ^{3}+o_{p}(1).
+\]
+
+
+\noindent Now,%
+\begin{align}
+&  \frac{1}{\sqrt{T}}\sum_{k=1}^{n}\frac{1}{\Delta}\left(  Z_{k}1_{\Delta
+N_{(k+1)\Delta}}-\Delta\lambda\mathrm{E}\left(  Z_{k}\right)  \right)
+^{3}\nonumber\\
+&  =\frac{1}{\sqrt{T}}\sum_{k=1}^{n}\frac{1}{\Delta}Z_{k}^{3}1_{\Delta
+N_{(k+1)\Delta}}-2\lambda\mathrm{E}\left(  Z_{k}\right)  \frac{\Delta}%
+{\sqrt{T}}\sum_{k=1}^{n}\frac{1}{\Delta}Z_{k}^{2}1_{\Delta N_{(k+1)\Delta}%
+}\nonumber\\
+&  +2\lambda^{2}\mathrm{E}\left(  Z_{k}\right)  ^{2}\frac{\Delta^{2}}{\sqrt
+{T}}\sum_{k=1}^{n}\frac{1}{\Delta}Z_{k}1_{\Delta N_{(k+1)\Delta}}-\sqrt
+{T}\Delta\lambda^{3}\mathrm{E}\left(  Z_{k}\right)  ^{3}\nonumber\\
+&  =\frac{1}{\sqrt{T}}\sum_{k=1}^{n}\left(  \frac{1}{\Delta}Z_{k}^{3}1_{\Delta
+N_{(k+1)\Delta}}-\lambda\mathrm{E}\left(  Z_{k}^{3}\right)  \right)
++\frac{\sqrt{T}}{\Delta}\lambda\mathrm{E}\left(  Z_{k}^{3}\right) \nonumber\\
+&  -2\lambda\mathrm{E}\left(  Z_{k}\right)  \frac{\Delta}{\sqrt{T}}\sum
+_{k=1}^{n}\left(  \frac{1}{\Delta}Z_{k}^{2}1_{\Delta N_{(k+1)\Delta}}%
+-\lambda\mathrm{E}\left(  Z_{k}^{2}\right)  \right)  -\sqrt{T}2\lambda
+^{2}\mathrm{E}\left(  Z_{k}\right)  \mathrm{E}\left(  Z_{k}^{2}\right)
++o_{p}(1), \label{Z3}%
+\end{align}
+since $\sqrt{T}\Delta\lambda^{3}\mathrm{E}\left(  Z_{k}\right)  ^{3}=o(1)$ and
+$\frac{\Delta^{2}}{\sqrt{T}}\sum_{k=1}^{n}\frac{1}{\Delta}Z_{k}1_{\Delta
+N_{(k+1)\Delta}}=o_{p}(1),$ for $\sqrt{T}\Delta\rightarrow0.$
+
+\noindent From (\ref{Z3}), we see that the statistic has $\frac{\sqrt{T}%
+}{\Delta}$ Pitman drift, whenever $\mathrm{E}\left(  Z_{k}^{3}\right)  \neq0.$
+The statement in Part (ii) then follows.
+
+\medskip
+
+\noindent Part (iii): When $\mathrm{E}\left(  Z_{k}^{3}\right)  =\mathrm{E}%
+\left(  Z_{k}\right)  =0,$%
+\begin{align*}
+&  \frac{1}{\sqrt{T}}\sum_{k=1}^{n}\frac{1}{\Delta}\left(  Z_{k}1_{\Delta
+N_{(k+1)\Delta}}-\Delta\lambda\mathrm{E}\left(  Z_{k}\right)  \right)  ^{3}\\
+&  =\frac{1}{\sqrt{T}}\sum_{k=1}^{n}\frac{1}{\Delta}Z_{k}^{3}1_{\Delta
+N_{(k+1)\Delta}}+o_{p}(1).
+\end{align*}
+We now show that $\mathrm{var}\left(  S_{T,\Delta}\right)  =O\left(  \frac
+{1}{\Delta^{2}}\right)  ,$ regardless of whether the jump intensity is
+constant or path dependent.
+
+\noindent If $\beta=0$ (no path dependent intensity), then:%
+\begin{align*}
+&  \mathrm{var}\left(  S_{T,\Delta}\right) \\
+&  =\mathrm{var}\left(  \frac{1}{\sqrt{T}\Delta}\sum_{k=1}^{n}Z_{k}%
+^{3}1_{\Delta N_{(k+1)\Delta}}\right)  \left(  1+o(1)\right) \\
+&  =\frac{1}{T\Delta^{2}}\sum_{k=1}^{n}\mathrm{var}\left(  Z_{k}^{3}1_{\Delta
+N_{(k+1)\Delta}}\right)  \left(  1+o(1)\right) \\
+&  =\frac{1}{\Delta^{3}}\mathrm{var}\left(  Z_{k}^{3}1_{\Delta N_{(k+1)\Delta
+}}\right)  \left(  1+o(1)\right)  =O\left(  \frac{1}{\Delta^{2}}\right)  .
+\end{align*}
+Alternatively, if $\beta>0,$ one must take autocovariance terms into account
+when carrying out similar calculations. However, given A(iv), the order of
+magnitude of the variance is still $O\left(  \frac{1}{\Delta^{2}}\right)  $.
+Given that $\sqrt{T}\Delta\rightarrow0,$ $S_{T,\Delta}$ is of probability
+order $\Delta^{-1}$, and the statement in Part (iii) follows.
+
+\bigskip
+
+\noindent\textbf{Proof of Corollary 2:}
+
+\noindent Part (i). We need to show that $\widehat{\sigma}_{\lambda,T,\Delta
+}^{2}-\omega_{0}=o_{p}(1),$ with $\omega_{0}$ defined as in the statement of
+Theorem 1. By Lemma 1,%
+\[
+\widehat{\sigma}_{\lambda,T,\Delta}^{2}=\frac{1}{T\Delta^{2}}\sum_{k=1}%
+^{n}\left(  \ln X_{k\Delta}-\ln X_{(k-1)\Delta}-\frac{\ln X_{n\Delta}-\ln
+X_{\Delta}}{n}\right)  ^{6}+o_{p}(1).
+\]
+The statement of Part (i) follows directly by the law of large numbers (for
+iid processes if $\beta=0$ and for ergodic mixing processes if $\beta>0).$
+
+\noindent Parts (ii)-(iii): We need to show that $\widehat{\sigma}%
+_{\lambda,T,\Delta}^{2}=O_{p}(1).$ Now, note that:%
+\begin{align}
+\widehat{\sigma}_{\lambda,T,\Delta}^{2}  &  =\frac{1}{T\Delta^{2}}\sum
+_{k=1}^{n}\left(  \ln X_{k\Delta}^{c}-\ln X_{(k-1)\Delta}^{c}-\frac{\ln
+X_{n\Delta}^{c}-\ln X_{\Delta}^{c}}{n}\right)  ^{6}\nonumber\\
+&  +\frac{1}{T\Delta^{2}}\sum_{k=1}^{n}\left(  Z_{k}1_{\Delta N_{(k+1)\Delta}%
+}-\Delta\lambda\mathrm{E}\left(  Z\right)  \right)  ^{6}1\left\{  \left\vert
+\ln X_{k\Delta}-\ln X_{(k-1)\Delta}\right\vert \leq\tau\left(  \Delta\right)
+\right\} \nonumber\\
+&  +\mathrm{\ cross}\text{ }\mathrm{terms}\text{ }+o_{p}(1). \label{sigma-l}%
+\end{align}
+The first term on the RHS of (\ref{sigma-l}) is a consistent estimator of
+$\omega_{0}$. It suffices to show that the second term on the RHS of
+(\ref{sigma-l}) is $O_{p}(1).$ This follows because the cross term cannot be
+of a larger order than the second term. Given Lemma 1,%
+\begin{align*}
+&  \frac{1}{T\Delta^{2}}\sum_{k=1}^{n}\left(  Z_{k}1_{\Delta N_{(k+1)\Delta}%
+}-\Delta\lambda\mathrm{E}\left(  Z_{k}\right)  \right)  ^{6}1\left\{
+\left\vert \ln X_{k\Delta}-\ln X_{(k-1)\Delta}\right\vert \leq\tau\left(
+\Delta\right)  \right\} \\
+&  =O_{p}(1)\left(  \frac{1}{T\Delta^{2}}\sum_{k=1}^{n}\left(  Z_{k}1_{\Delta
+N_{(k+1)\Delta}}-\Delta\lambda\mathrm{E}\left(  Z_{k}\right)  \right)
+^{6}1\left\{  \left\vert Z_{k}1_{\Delta_{N_{(k+1)\Delta}}}\right\vert \leq
+\tau\left(  \Delta\right)  \right\}  \right)  ,
+\end{align*}
+and by Lemma 2,%
+
+\begin{align*}
+&  P\left(  \frac{1}{T\Delta^{2}}\sum_{k=1}^{n}\left(  Z_{k}1_{\Delta
+_{N_{(k+1)\Delta}}}-\mathrm{E}\left(  Z_{k}1_{\Delta_{N_{(k+1)\Delta}}%
+}\right)  \right)  ^{6}1\left\{  \left\vert Z_{k}1_{\Delta_{N_{(k+1)\Delta}}%
+}\right\vert \leq\tau\left(  \Delta\right)  \right\}  >\varepsilon\right) \\
+&  \leq\frac{1}{\Delta^{2}\varepsilon}\mathrm{E}\left(  \frac{1}{T}\sum
+_{k=1}^{n}\left(  Z_{k}1_{\Delta_{N_{(k+1)\Delta}}}-\mathrm{E}\left(
+Z_{k}1_{\Delta_{N_{(k+1)\Delta}}}\right)  \right)  ^{6}1\left\{  \left\vert
+Z_{k}1_{\Delta_{N_{(k+1)\Delta}}}\right\vert \leq\tau\left(  \Delta\right)
+\right\}  \right) \\
+&  \rightarrow0,
+\end{align*}
+provided that $\tau\left(  \Delta\right)  ^{7}\Delta^{-2}\rightarrow0.$
+
+\medskip
+
+\noindent\textbf{Proof of Theorem 3:}
+
+\noindent Part (i): By Lemma 3,%
+\begin{align*}
+&  \sqrt{T}\widehat{\mu}_{T,\Delta}^{Z}\\
+&  =\frac{1}{\sqrt{T}}\sum_{k=0}^{n}\left(  \sqrt{1-\rho^{2}}V_{k\Delta}%
+^{1/2}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta}\right)  +\rho
+V_{k\Delta}^{1/2}\left(  W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta
+}\right)  \right. \\
+&  \left.  +\mu\Delta+Z_{k}1_{\Delta N_{(k+1)\Delta}}\right)  -\sqrt{T}%
+\mu+o_{p}(1).
+\end{align*}
+Thus,%
+\begin{align*}
+&  \sqrt{T}\widehat{\mu}_{T,\Delta}^{Z}\\
+&  =\frac{1}{\sqrt{T}}\sum_{k=0}^{n}\left(  \sqrt{1-\rho^{2}}V_{k\Delta}%
+^{1/2}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta}\right)  +\rho
+V_{k\Delta}^{1/2}\left(  W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta
+}\right)  +Z_{k}1_{\Delta N_{(k+1)\Delta}}\right)  +o_{p}(1)\\
+&  \overset{d}{\rightarrow}N\left(  0,\sigma_{\mu_{Z}}^{2}\right)  ,
+\end{align*}
+with $\sigma_{\mu_{Z}}^{2}=\mathrm{E}\left(  V_{k\Delta}\right)
++\lambda\mathrm{E}\left(  Z_{k}^{2}\right)  .$ As $\widehat{\sigma}_{\mu_{Z}%
+}^{2}=\sigma_{\mu_{Z}}^{2}+o_{p}(1),$ the statement in Part (i) follows
+directly.\medskip
+
+\noindent(ii) The proof is immediate, as%
+\begin{align*}
+&  \sqrt{T}\widehat{\mu}_{T,\Delta}^{Z}\\
+&  =\frac{1}{\sqrt{T}}\sum_{k=0}^{n}\left(  \sqrt{1-\rho^{2}}V_{k\Delta}%
+^{1/2}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta}\right)  +\rho
+V_{k\Delta}^{1/2}\left(  W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta
+}\right)  +Z_{k}1_{\Delta N_{(k+1)\Delta}}\right) \\
+&  +\lambda\sqrt{T}\mathrm{E}\left(  Z_{k}\right)  +o_{p}(1)
+\end{align*}
+
+
+\medskip
+
+\noindent\textbf{Proof of Theorem 4:}
+
+\noindent Part (i): Note that,%
+\begin{align}
+&  \sqrt{\frac{T^{+}}{\Delta}}\widehat{\beta}_{T,\Delta}\nonumber\\
+&  =\frac{1}{\sqrt{T^{+}\Delta}}\sum_{k=1}^{n^{+}-1}\left(  \left(
+\sqrt{1-\rho^{2}}V_{k\Delta}^{1/2}\left(  W_{1,\left(  k+1\right)  \Delta
+}-W_{1,k\Delta}\right)  +\rho V_{k\Delta}^{1/2}\left(  W_{2,\left(
+k+1\right)  \Delta}-W_{2,k\Delta}\right)  \right.  \right. \nonumber\\
+&  \left.  +Z_{k}1_{\Delta N_{(k+1)\Delta}}-\Delta\lambda\mathrm{E}\left(
+Z\right)  \right)  \left(  \sqrt{1-\rho^{2}}V_{k\Delta}^{1/2}\left(
+W_{1,k\Delta}-W_{1,(k-1)\Delta}\right)  \right. \nonumber\\
+&  \left.  \left.  \rho V_{k\Delta}^{1/2}\left(  W_{2,k\Delta}%
+-W_{2,(k-1)\Delta}\right)  +Z_{k-1}1_{\Delta N_{k\Delta}}-\Delta
+\lambda\mathrm{E}\left(  Z\right)  \right)  \right)  +o_{p}\left(  1\right)
+\nonumber\\
+&  =\frac{1}{\sqrt{T^{+}\Delta}}\sum_{k=1}^{n^{+}-1}\left(  1-\rho^{2}\right)
+V_{k\Delta}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta}\right)
+\left(  W_{1,k\Delta}-W_{1,(k-1)\Delta}\right) \nonumber\\
+&  +\frac{2}{\sqrt{T^{+}\Delta}}\sum_{k=1}^{n^{+}-1}\sqrt{1-\rho^{2}}\rho
+V_{k\Delta}\left(  W_{1,\left(  k+1\right)  \Delta}-W_{1,k\Delta}\right)
+\left(  W_{2,k\Delta}-W_{2,(k-1)\Delta}\right) \nonumber\\
+&  +\frac{1}{\sqrt{T^{+}\Delta}}\sum_{k=1}^{n^{+}-1}\rho^{2}V_{k\Delta}\left(
+W_{2,\left(  k+1\right)  \Delta}-W_{2,k\Delta}\right)  \left(  W_{2,k\Delta
+}-W_{2,(k-1)\Delta}\right) \nonumber\\
+&  +\frac{1}{\sqrt{T^{+}\Delta}}\sum_{k=1}^{n^{+}-1}\left(  Z_{k}%
+Z_{k-1}1_{\Delta N_{(k+1)\Delta}}1_{\Delta N_{k\Delta}}-\Delta^{2}\lambda
+^{2}\mathrm{E}\left(  Z\right)  ^{2}\right)  +o_{p}\left(  1\right)  .
+\label{tau}%
+\end{align}
+Under the null of $\beta=0,$%
+\begin{align*}
+&  \mathrm{E}\left(  Z_{k}Z_{k-1}1_{\Delta N_{(k+1)\Delta}}1_{\Delta
+N_{(k+1)\Delta}}\right) \\
+&  =\mathrm{E}\left(  Z_{k}\right)  ^{2}\mathrm{E}\left(  1_{\Delta
+N_{(k+1)\Delta}}\right)  \mathrm{E}\left(  1_{\Delta N_{k\Delta}}\right)
+=\Delta^{2}\lambda^{2}\mathrm{E}\left(  Z_{k}\right)  ^{2}.
+\end{align*}
+Thus, under $H_{0},$ all of the terms on the RHS of (\ref{tau}) have zero
+mean. Also,%
+\begin{align*}
+\sigma_{\beta}^{2}  &  =\mathrm{var}\left(  \sqrt{\frac{T^{+}}{\Delta}%
+}\widehat{\tau}_{T,\Delta}\right) \\
+&  =\left(  \left(  1-\rho^{2}\right)  ^{2}+4\rho\left(  1-\rho^{2}\right)
++\rho^{4}\right)  \mathrm{E}\left(  V_{k\Delta}^{2}\right)  +\lambda
+^{2}\left(  \mathrm{E}\left(  Z_{k}^{2}\right)  \right)  ^{2},
+\end{align*}
+and since $\widehat{\sigma}_{\beta,T,\Delta}^{2}=\sigma_{\beta,T,\Delta}%
+^{2}+o_{p}(1),$ by the central limit theorem for martingale differences,%
+\[
+\sqrt{\frac{T^{+}}{\Delta}}t_{\beta,T^{+},\Delta}\rightarrow N\left(
+0,\sigma_{\beta}^{2}\right)  .
+\]
+The statement in Part (i) follows from the continuous mapping theorem.
+
+\medskip
+
+\noindent Part (ii): The first three terms on the RHS of (\ref{tau}) are
+asymptotically normal, under both hypotheses. With regard to the fourth term,
+note that, under the alternative, from Hawkes (1971),%
+\begin{align*}
+&  \mathrm{E}\left(  Z_{k}Z_{k-1}1_{\Delta N_{(k+1)\Delta}}1_{\Delta
+N_{k\Delta}}-\Delta^{2}\lambda^{2}\mathrm{E}\left(  Z_{k}\right)  ^{2}\right)
+\\
+&  =\Delta^{2}\frac{\beta\lambda\left(  2a-\beta\right)  }{2\left(
+a-\beta\right)  }\exp\left(  -\left(  a-\beta\right)  \right)  \mathrm{E}%
+\left(  Z_{k}\right)  ^{2},
+\end{align*}
+and so the fourth term on the RHS of (\ref{tau}) can be written as:%
+\begin{align*}
+&  \frac{1}{\sqrt{T^{+}\Delta}}\sum_{k=1}^{n^{+}-1}\left(  \left(
+Z_{k}Z_{k-1}1_{\Delta N_{(k+1)\Delta}}1_{\Delta N_{k\Delta}}-\Delta^{2}%
+\lambda^{2}\mathrm{E}\left(  Z_{k}\right)  ^{2}\right)  \right. \\
+&  \left.  -\Delta^{2}\frac{\beta\lambda\left(  2a-\beta\right)  }{2\left(
+a-\beta\right)  }\exp\left(  -\left(  a-\beta\right)  \right)  \mathrm{E}%
+\left(  Z_{k}\right)  ^{2}\right) \\
+&  +\sqrt{T^{+}\Delta}\frac{\beta\lambda\left(  2a-\beta\right)  }{2\left(
+a-\beta\right)  }\exp\left(  -\left(  a-\beta\right)  \right)  \mathrm{E}%
+\left(  Z_{k}\right)  ^{2}\\
+&  =O_{p}(1)+\sqrt{T^{+}\Delta}\frac{\beta\lambda\left(  2a-\beta\right)
+}{2\left(  a-\beta\right)  }\exp\left(  -\left(  a-\beta\right)  \right)
+\mathrm{E}\left(  Z_{k}\right)  ^{2}.
+\end{align*}
+
+
+\pagebreak
+
+\section{Reference}
+
+\noindent A\"{\i}t-Sahalia, Y. (2002) Telling from Discrete Data Whether the
+Underlying Continuous Process is a Diffusion. \textit{Journal of Finance, }57,
+2075-2112.\smallskip
+
+\noindent A\"{\i}t-Sahalia, Y., J. Cacho-Diaz and R. Laeven (2015). Modeling
+Financial Contagion Using Mutually Exciting Jump Processes. \textit{Journal of
+Financial Economics, }117, 585-606.\smallskip
+
+\noindent A\"{\i}t-Sahalia, Y., J. Jacod (2009). Testing for Jumps in a
+Discretely Observed Process. \textit{Annals of Statistics, }37,
+2202-2244.\smallskip
+
+\noindent A\"{\i}t-Sahalia, Y., J. Jacod and J. Li (2012). Testing for Jumps
+in Noisy High Frequency Data. \textit{Journal of Econometrics, }168,
+207-222.\smallskip
+
+\noindent Andersen, T.G., T. Bollerslev and F.X. Diebold (2000). Great
+Realizations. \textit{Risk, }105-108.\smallskip
+
+\noindent Amaya, D., P. Christoffersen, K. Jacobs and A. Vasquez (2015). Does
+Realized Skewness Predict the Cross-Section of Equity Returns? \textit{Journal
+of Financial Economics, }118, 135-167.\smallskip
+
+\noindent Andersen, Benzoni and Lund (2002). An Empirical Investigation of
+Continuous Time Equity Return Models. \textit{Journal of Finance, }62,
+1239-1283\smallskip.
+
+\noindent Andrews, D.W.K. (1999). Estimation When a Parameter is on the
+Boundary. \textit{Econometrica, }67, 1341-1383.\smallskip
+
+\noindent Andrews, D.W.K. (2001). Testing When a Parameter is on the Boundary
+of the Maintained Hypothesis. \textit{Econometrica, }69, 683-734.\smallskip
+
+\noindent Andrews, D.W.K. and X. Cheng (2012). Estimation and Inference with
+Weak, Semi-strong and Strong Identification. \textit{Econometrica, }80,
+2153-2211.\smallskip
+
+\noindent Bandi, F.M. and R. Ren\`{o} (2012). Time Varying Leverage Effects.
+\textit{Journal of Econometrics, }169, 94-113.\smallskip
+
+\noindent Barndorff-Nielsen, O.E. and N. Shephard (2004). Power and Bipower
+Variation with Stochastic Volatility and Jumps. \textit{Journal of Financial
+Econometrics, }2, 1-48.\smallskip
+
+\noindent Barndorff-Nielsen, O.E., N. Shephard and M. Winkel (2006). Limit
+Theorem for Multipower Variation in the Presence of Jumps. \textit{Stochastic
+Processes and Their Applications, }116, 796-806.\smallskip
+
+\noindent Beg, A.B.M.R.A., M.J. Silvapulle and P. Silvapulle (2001). Testing
+Against Inequality Constraints When Some Nuisance Parameters are Present Only
+Under the Alternative: Test of ARCH in ARCH-M Models. \textit{Journal of
+Business and Economic Statistics, }19, 245-253.\smallskip
+
+\noindent Benjamini, Y., and Y. Hochberg (1995). Controlling the False
+Discovery Rate: A Practical and Powerful Approach to Multiple Testing.
+\textit{Journal of the Royal Statistical Society, B}, 57, 289-300.\smallskip
+
+\noindent Bowsher, C.G. (2007). Modeling Security Market Event in Continuous
+Time: Intensity-Based Multivariate, Point Process Models. \textit{Journal of
+Econometrics, }141, 876-912.\smallskip
+
+\noindent Boswijk, H.P., R.J.A Laeven and X. Yang (2017). Testing for
+Self-Excitation in Jumps. Working Paper, Rutgers University\smallskip.
+
+\noindent Chacko, G., and L.M. Viceira (2003). Spectral GMM\ estimation of
+continuous-time Processes. \textit{Journal of Econometrics,} 116,
+259-292.\smallskip
+
+\noindent Corradi, V. and N.R. Swanson (2011). Predictive Density Construction
+and Testing with Multiple Possibly Misspecified Diffusion Models.
+\textit{Journal of Econometrics, }161, 304-324.\smallskip
+
+\noindent Corsi, F., D. Pirino and R. Ren\`{o} (2010). Threshold Bipower
+Variation and the Impact of Jumps on Volatility Forecasting. \textit{Journal
+of Econometrics,} 159, 276-288.\smallskip
+
+\noindent Duffie, D. and K. Singleton (1993). Simulated Moment Estimation of
+Markov Models of Asset Prices.\textit{\ Econometrica,} 61, 929-952.\smallskip
+
+\noindent Duffie, D., J. Pan and K. Singleton (2000). Transform Analysis and
+Asset Pricing for Affine Jump Diffusion. \textit{Econometrica, }68,
+1343-1376.\smallskip\smallskip
+
+\noindent Dungey, N., D. Erdemlioglu, M. Matei and X. Yang (2017). Flights to
+quality, flights to safety, market linkages and jump excitation dynamics.
+\smallskip\textit{Journal of Econometrics, }forthcoming.
+
+\noindent Fermanian, J.-D. and B. Salani\'{e} (2004). A Nonparametric
+Simulated Maximum Likelihood Estimation Method. \textit{Econometric Theory,}
+20, 701-734.\smallskip
+
+\noindent Eraker, B., M. Johannes, and N. Polson (2003). The Impact of Jumps
+in Volatility and Returns. \textit{Journal of Finance} 58,
+1269-1300.\smallskip
+
+\noindent Escanciano, J.C. and I.N. Lobato (2009). An Automatic Data-Driven
+Portmanteau Test for Testing Serial Autocorrelation. \textit{Journal of
+Econometrics, }151, 140-149.\smallskip
+
+\noindent Gallant, A.R. and G. Tauchen (1996). Which Moments to Match.
+\textit{Econometric Theory,} 12, 657-681.\smallskip
+
+\noindent Gourieroux, C., A. Monfort, and E. Renault (1993). Indirect
+Inference. \textit{Journal of Applied Econometrics,} 8, 203-227.\smallskip
+
+\noindent Hawkes, A.G. (1971). Spectra of Some Self-Exciting and Mutually
+Exciting Point Processes. \textit{Biometrika, }58, 83-90.\smallskip
+
+\noindent Holm, S. (1979). A Simple Sequentially Rejective Multiple Test
+Procedure. \textit{Scandinavian Journal of Statistics}, 6, 65--70.\smallskip
+
+\noindent Huang, X. and G.E. Tauchen (2005). The Relative Contribution of
+Jumps to Total Price Variance. \textit{Journal of Financial Econometrics, }3,
+456-499.\smallskip
+
+\noindent Jacod, J. (2012). Statistics and High Frequency Data, in
+\textit{Statistical Methods for Stochastic Differential Equations, }M.
+Kessler, A. Limdner and M. Sorensen Eds, Chapman \& Hall, Monographs on
+Statistics and Probability, v. 124.\smallskip
+
+\noindent Jiang, G.J. and J.L. Knight (2002). Estimation of Continuous-time
+Processes via the Empirical Characteristic Function. \textit{Journal of
+Business and Economic Statistics,} 20, 198-212.\smallskip
+
+\noindent Kloeden, P.E. and E. Platen (1999). \textit{Numerical Solutions of
+Stochastic Differential Equations}. Springer Verlag.\smallskip
+
+\noindent Li, Y., P.A. Mykland, E. Renault, L. Zhang, Z. Zheng (2014).
+Realized Volatility when Sampling Times are Possibly Endogenous.
+\textit{Econometric Theory, }30, 580-05.\smallskip
+
+\noindent Lee, S. and P.A. Mykland (2008). Jumps in Financial Markets: A New
+Nonparametric Test and Jump Dynamics. \textit{Review of Financial Studies,
+}21, 2535-2563.\smallskip
+
+\noindent Lee, T., M. Loretan and W. Ploberger (2013). Rate-Optimal Tests for
+Jumps in Diffusion Processes. \textit{Statistical Papers. }54,
+1009-1041.\smallskip
+
+\noindent Mancini, C. (2009). Nonparametric Threshold Estimation for Models
+with Stochastic Diffusion Coefficient and Jumps. \textit{Scandinavian Journal
+of Statistics, }36, 270-296.\smallskip
+
+\noindent Mancini, C. and R. Ren\`{o} (2011). Threshold Estimation of Markov
+Models with Jumps and Interest Rate Modelling. \textit{Journal of
+Econometrics, }160, 77-92.
+
+\noindent Podolskij, M. and M. Vetter (2009a). Bipower Type Estimation in a
+Noisy Diffusion Setting. \textit{Stochastic Processes and Their Applications.
+}119, 2803-2832.\smallskip
+
+\noindent Podolskij, M. and M. Vetter (2009b). Estimation of Volatility
+Functionals in the Simultaneous Presence of Microstructure Noise and Jumps.
+\textit{Bernoulli, }15, 634-658.\smallskip
+
+\noindent Romano, J.P. and M. Wolf (2005). Stepwise Multiple Testing as
+Formalized Data Snooping. \textit{Econometrica}, 73, 1237-1282.\smallskip
+
+\noindent Silvapulle, M.J. and P.K. Sen (2004). \textit{Constrained
+Statistical Inference: Order, Inequality, and Shape Restrictions. }Wiley
+Series in Probability and Statistics. Wiley.\smallskip
+
+\noindent Singleton, K.J. (2001). Estimation of Affine Asset Pricing Models
+Using Empirical Characteristic Function. \textit{Journal of Econometrics,}
+102, 111-141.\smallskip
+
+\noindent Storey, J.D. (2003). The Positive False Discovery Rate: a Bayesian
+Interpretation and the $q$-value. \textit{Annals of Statistics}, 31,
+2013-2035.\smallskip
+
+\noindent White, H. (2000). A Reality Check For Data Snooping.
+\textit{Econometrica}, 68, 1097-1127.
+
+\clearpage
+\allowdisplaybreaks
+
+
+%% tables
+
+
+\textwidth=6.5in \textheight=9.5in \topmargin=-1.2in \baselineskip=1pt \renewcommand{\baselinestretch}{1.2}
+
+\newpage
+
+%TABLE 1 Jump Intensity Test %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ptb]
+\caption{\textbf{Monte Carlo Experiments - Jump Test (Empirical Size)} *}%
+\label{tb1}%
+\begin{tabular}
+[c]{llllllllllll}%
+\vspace{0.02in} &  &  &  &  &  &  &  &  &  &  & \\
+\vspace{0.02in} &  &  &  &  &  &  &  &  &  &  & \\\hline\hline
+$\zeta$ & $\Delta$ & $\rho$ & $\omega$ & $T1$ & $T2$ & $T3$ & $T4$ & $T5$ &
+$T6$ & $T7$ & $T8$\\\hline
+\multicolumn{12}{c}{\textbf{\emph{Case 1: No Misspecification}}}\\\hline
+0.5 & 1/78 & 0 &  & 0.092 & 0.102 & 0.124 & 0.146 & 0.168 & 0.182 & 0.188 &
+0.224\\
+&  & -0.25 &  & 0.090 & 0.116 & 0.144 & 0.158 & 0.170 & 0.184 & 0.20 & 0.218\\
+&  & -0.5 &  & 0.134 & 0.178 & 0.238 & 0.272 & 0.342 & 0.410 & 0.470 & 0.534\\
+0.25 &  & -0.5 &  & 0.038 & 0.052 & 0.068 & 0.092 & 0.114 & 0.122 & 0.160 &
+0.166\\
+&  & -0.75 &  & 0.034 & 0.064 & 0.108 & 0.138 & 0.206 & 0.258 & 0.336 &
+0.412\\
+0.5 & 1/156 & 0 &  & 0.064 & 0.058 & 0.066 & 0.076 & 0.070 & 0.106 & 0.112 &
+0.124\\
+&  & -0.25 &  & 0.064 & 0.064 & 0.074 & 0.080 & 0.072 & 0.078 & 0.096 &
+0.100\\
+&  & -0.5 &  & 0.086 & 0.100 & 0.152 & 0.176 & 0.216 & 0.268 & 0.308 & 0.370\\
+0.25 &  & -0.5 &  & 0.010 & 0.018 & 0.024 & 0.024 & 0.038 & 0.044 & 0.054 &
+0.072\\
+&  & -0.75 &  & 0.030 & 0.040 & 0.060 & 0.074 & 0.108 & 0.130 & 0.188 &
+0.226\\\hline
+\multicolumn{12}{c}{\textbf{\emph{Case 2: Mean Reversion in Pricing Equation}%
+}}\\\hline
+0.5 & 1/78 & 0 &  & 0.056 & 0.064 & 0.066 & 0.076 & 0.100 & 0.142 & 0.154 &
+0.154\\
+&  & -0.25 &  & 0.092 & 0.126 & 0.172 & 0.228 & 0.298 & 0.336 & 0.394 &
+0.440\\
+0.25 &  & 0 &  & 0.022 & 0.026 & 0.034 & 0.046 & 0.056 & 0.056 & 0.064 &
+0.062\\
+&  & -0.25 &  & 0.034 & 0.040 & 0.046 & 0.064 & 0.080 & 0.104 & 0.122 &
+0.128\\
+0.5 & 1/156 & 0 &  & 0.038 & 0.050 & 0.050 & 0.068 & 0.070 & 0.084 & 0.094 &
+0.106\\
+&  & -0.25 &  & 0.064 & 0.064 & 0.094 & 0.120 & 0.156 & 0.164 & 0.200 &
+0.226\\
+0.25 &  & 0 &  & 0.012 & 0.010 & 0.020 & 0.028 & 0.024 & 0.034 & 0.028 &
+0.032\\
+&  & -0.25 &  & 0.022 & 0.028 & 0.024 & 0.038 & 0.036 & 0.044 & 0.048 &
+0.050\\
+0.25 &  & -0.5 &  & 0.010 & 0.018 & 0.024 & 0.024 & 0.038 & 0.044 & 0.054 &
+0.072\\\hline
+\multicolumn{12}{c}{\textbf{\emph{Case 3: Microstructure Noise Added to Data
+Generating Process}}}\\\hline
+0.5 & 1/78 & 0 & 0.007 & 0.078 & 0.104 & 0.118 & 0.138 & 0.146 & 0.162 &
+0.176 & 0.204\\
+&  & 0 & 0.014 & 0.064 & 0.068 & 0.084 & 0.100 & 0.128 & 0.150 & 0.152 &
+0.174\\
+&  & -0.25 & 0.007 & 0.068 & 0.072 & 0.092 & 0.100 & 0.126 & 0.166 & 0.176 &
+0.208\\
+&  & -0.25 & 0.014 & 0.064 & 0.074 & 0.102 & 0.110 & 0.114 & 0.142 & 0.150 &
+0.162\\
+& 1/156 & 0 & 0.007 & 0.054 & 0.076 & 0.086 & 0.086 & 0.084 & 0.122 & 0.116 &
+0.118\\
+&  & 0 & 0.014 & 0.030 & 0.032 & 0.034 & 0.048 & 0.052 & 0.062 & 0.064 &
+0.082\\
+&  & -0.25 & 0.007 & 0.044 & 0.044 & 0.070 & 0.064 & 0.098 & 0.100 & 0.094 &
+0.102\\
+&  & -0.25 & 0.014 & 0.020 & 0.028 & 0.028 & 0.026 & 0.030 & 0.056 & 0.046 &
+0.060\\\hline\hline
+\vspace{0.02in} &  &  &  &  &  &  &  &  &  &  &
+\end{tabular}
+{\footnotesize \begin{minipage}{1\columnwidth} \footnotesize * Entries in the table are rejection frequencies for the \textquotedblleft jump
+test\textquotedblright\, based on
+$t_{\lambda,T,\Delta}$. Results are tabulated
+for the following sample size ($T$) and discretization ($\Delta$)
+permutations: $\Delta$ = 1/78 -- $T1$%
+:$T$=60, $T2$:$T$=70, $T3$:$T$=80, $T4$:$T$=90, $T5$:$T$=100, $T6$:$T$=110,
+$T7$:$T$=120, $T8$:$T$=130. For $\Delta$ =
+1/156 -- $T1$:$T$=160, $T2$:$T$=180, $T3$:$T$=200, $T4$:$T$=220, $T5$:$T$=240,
+$T6$:$T$=260, $T7$:$T$=280, $T8$:$T$=300. In our Monte Carlo experiments, $\zeta$ is the parameter controlling the strength of the diffusion term in the volatility equation of
+our DGP, $\Delta$ denotes the discretization interval, $\rho$ measures the leverage effect, and $\omega$ measures the magnitude of the
+square root of the noise variance in experiments with microstructure noise. In experiments reported in subsequent tables, additional parameters include:
+$\lambda_{\infty}$, which is the intensity, $(a, \beta)$, which are parameters controlling the Hawkes diffusion, $\varsigma$, which is the paremeter of the exponential jump density, and $\sigma$, which is the square root
+of the variance of the normal jump density.
+In all experiments, we perform $1000$ Monte Carlo replications. For
+complete details, refer to Section 5 of the paper.
+\end{minipage}}\end{table}
+
+\newpage
+
+%TABLE 2 Jump Intensity Test %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ptb]
+\caption{\textbf{Monte Carlo Experiments - Jump Test (Empirical Power)*}}%
+\label{tb2}%
+\begin{tabular}
+[c]{lllllllllllll}
+&  &  &  &  &  &  &  &  &  &  &  & \\
+&  &  &  &  &  &  &  &  &  &  &  & \\\hline\hline
+$\lambda_{\infty}$ & $(a, \beta)$ & $\varsigma$ & $\sigma$ & $\rho$ & $T1$ &
+$T2$ & $T3$ & $T4$ & $T5$ & $T6$ & $T7$ & $T8$\\\hline
+0.3 & (0,0) & 2.5 &  & 0 & 0.998 & 0.998 & 0.998 & 1.000 & 1.000 & 1.000 &
+1.000 & 1.000\\
+&  & 5 &  &  & 0.906 & 0.930 & 0.954 & 0.968 & 0.982 & 0.988 & 0.988 & 0.992\\
+&  &  & 0.2 &  & 0.560 & 0.580 & 0.642 & 0.672 & 0.666 & 0.696 & 0.686 &
+0.712\\
+&  &  & 0.4 &  & 0.920 & 0.938 & 0.948 & 0.948 & 0.938 & 0.946 & 0.952 &
+0.966\\
+& (3,2) & 2.5 &  &  & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\
+&  & 5 &  &  & 0.994 & 0.996 & 0.996 & 0.996 & 1.000 & 1.000 & 1.000 & 1.000\\
+&  &  & 0.2 &  & 0.758 & 0.774 & 0.810 & 0.818 & 0.804 & 0.794 & 0.816 &
+0.844\\
+&  &  & 0.4 &  & 0.956 & 0.972 & 0.962 & 0.970 & 0.966 & 0.962 & 0.956 &
+0.958\\\hline
+0.7 & (0,0) & 2.5 &  & 0 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000 & 1.000\\
+&  & 5 &  &  & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000\\
+&  &  & 0.2 &  & 0.764 & 0.778 & 0.804 & 0.802 & 0.788 & 0.818 & 0.804 &
+0.816\\
+&  &  & 0.4 &  & 0.960 & 0.956 & 0.936 & 0.960 & 0.966 & 0.972 & 0.968 &
+0.974\\
+& (3,2) & 2.5 &  &  & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\
+&  & 5 &  &  & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000\\
+&  &  & 0.2 &  & 0.824 & 0.826 & 0.854 & 0.874 & 0.900 & 0.902 & 0.900 &
+0.892\\
+&  &  & 0.4 &  & 0.964 & 0.972 & 0.984 & 0.986 & 0.982 & 0.988 & 0.982 &
+0.988\\\hline
+0.3 & (3,2) & 2.5 &  & -0.5 & 0.988 & 0.988 & 0.994 & 0.998 & 1.000 & 1.000 &
+1.000 & 1.000\\
+&  & 5 &  &  & 0.878 & 0.900 & 0.930 & 0.934 & 0.956 & 0.970 & 0.982 & 0.982\\
+&  &  & 0.2 &  & 0.734 & 0.772 & 0.762 & 0.782 & 0.792 & 0.804 & 0.808 &
+0.822\\
+&  &  & 0.4 &  & 0.964 & 0.962 & 0.970 & 0.964 & 0.964 & 0.966 & 0.966 &
+0.982\\
+&  & 2.5 &  & -0.75 & 0.998 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\
+&  & 5 &  &  & 0.976 & 0.984 & 0.996 & 0.998 & 1.000 & 1.000 & 1.000 & 1.000\\
+&  &  & 0.2 &  & 0.714 & 0.752 & 0.800 & 0.812 & 0.830 & 0.840 & 0.844 &
+0.860\\
+&  &  & 0.4 &  & 0.966 & 0.970 & 0.968 & 0.968 & 0.976 & 0.972 & 0.968 &
+0.970\\\hline
+0.7 & (3,2) & 2.5 &  & -0.5 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000 & 1.000\\
+&  & 5 &  &  & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000\\
+&  &  & 0.2 &  & 0.852 & 0.868 & 0.866 & 0.878 & 0.874 & 0.870 & 0.864 &
+0.872\\
+&  &  & 0.4 &  & 0.986 & 0.974 & 0.970 & 0.968 & 0.982 & 0.974 & 0.980 &
+0.970\\
+&  & 2.5 &  & -0.75 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\
+&  & 5 &  &  & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000\\
+&  &  & 0.2 &  & 0.842 & 0.850 & 0.876 & 0.872 & 0.876 & 0.852 & 0.870 &
+0.886\\
+&  &  & 0.4 &  & 0.968 & 0.966 & 0.974 & 0.984 & 0.984 & 0.974 & 0.962 &
+0.968\\\hline\hline
+\vspace{0.02in} &  &  &  &  &  &  &  &  &  &  &  &
+\end{tabular}
+{\footnotesize \begin{minipage}{1\columnwidth} \footnotesize * See notes to Table 1. In this table, jumps are generated as follows: Either $Z_k$ is $Exp(\varsigma )$ or $Z_k$ is $N(0.0, \sigma ^ 2 )$ Additionally, $\Delta$=1/78 and $\zeta =0.5$.
+\end{minipage}}\end{table}
+
+\newpage
+
+%TABLE 3 Test of $E(Z)=0$ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ptb]
+\caption{\textbf{Monte Carlo Experiments - Test of $E(Z_{k})=0$ *}}%
+\label{tb3}%
+\begin{tabular}
+[c]{lllllllllllll}
+&  &  &  &  &  &  &  &  &  &  &  & \\
+&  &  &  &  &  &  &  &  &  &  &  & \\\hline\hline
+$\lambda_{\infty}$ & $(a, \beta)$ & $\varsigma$ & $\sigma$ & $\Delta$ & $T1$ &
+$T2$ & $T3$ & $T4$ & $T5$ & $T6$ & $T7$ & $T8$\\\hline
+\multicolumn{13}{c}{\textbf{\emph{EMPIRICAL SIZE}}}\\\hline
+\multicolumn{13}{c}{\textbf{\emph{Constant Intensity, $Z_{k}$ is $N(0.0,
+\sigma^{2} )$}}}\\\hline
+0.3 & (0,0) &  & 0.2 & 1/78 & 0.070 & 0.062 & 0.062 & 0.078 & 0.082 & 0.082 &
+0.086 & 0.100\\
+&  &  &  & 1/156 & 0.082 & 0.086 & 0.076 & 0.066 & 0.070 & 0.068 & 0.092 &
+0.090\\\hline
+\multicolumn{13}{c}{\textbf{\emph{Self Excitement, $Z_{k}$ is $N(0.0,
+\sigma^{2} )$}}}\\\hline
+0.3 & (5,4) &  & 0.2 & 1/78 & 0.060 & 0.056 & 0.068 & 0.080 & 0.060 & 0.078 &
+0.080 & 0.082\\
+&  &  &  & 1/156 & 0.088 & 0.088 & 0.090 & 0.094 & 0.094 & 0.078 & 0.094 &
+0.082\\\hline
+\multicolumn{13}{c}{\textbf{\emph{EMPIRICAL POWER}}}\\\hline
+\multicolumn{13}{c}{\textbf{\emph{Constant Intensity, $Z_{k}$ is
+$Exp$($\varsigma$)}}}\\\hline
+0.3 & (0,0) & 5 &  & 1/78 & 0.182 & 0.236 & 0.264 & 0.272 & 0.320 & 0.324 &
+0.334 & 0.366\\
+&  &  &  & 1/156 & 0.858 & 0.880 & 0.928 & 0.934 & 0.964 & 0.972 & 0.970 &
+0.982\\
+0.5 &  &  &  & 1/78 & 0.414 & 0.458 & 0.480 & 0.508 & 0.562 & 0.584 & 0.616 &
+0.650\\
+&  &  &  & 1/156 & 0.998 & 0.998 & 0.998 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\
+0.7 &  &  &  & 1/78 & 0.580 & 0.652 & 0.716 & 0.742 & 0.784 & 0.814 & 0.836 &
+0.870\\
+&  &  &  & 1/156 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\\hline
+\multicolumn{13}{c}{\textbf{\emph{Constant Intensity, $Z_{k}$ is $N(0.5,
+\sigma^{2} )$}}}\\\hline
+0.3 & (0,0) &  & 0.2 & 1/78 & 0.138 & 0.174 & 0.170 & 0.190 & 0.208 & 0.220 &
+0.208 & 0.226\\
+&  &  &  & 1/156 & 0.676 & 0.718 & 0.728 & 0.778 & 0.810 & 0.868 & 0.872 &
+0.886\\
+0.5 &  &  &  & 1/78 & 0.274 & 0.310 & 0.324 & 0.352 & 0.394 & 0.428 & 0.428 &
+0.454\\
+&  &  &  & 1/156 & 0.954 & 0.966 & 0.978 & 0.986 & 0.996 & 0.998 & 0.998 &
+1.000\\
+0.7 &  &  &  & 1/78 & 0.396 & 0.450 & 0.502 & 0.552 & 0.596 & 0.624 & 0.642 &
+0.694\\
+&  &  &  & 1/156 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\\hline
+\multicolumn{13}{c}{\textbf{\emph{Self Excitement, $Z_{k}$ is $Exp$%
+($\varsigma$)}}}\\\hline
+0.3 & (5,4) & 5 &  & 1/78 & 0.650 & 0.664 & 0.674 & 0.690 & 0.694 & 0.704 &
+0.708 & 0.716\\
+&  &  &  & 1/156 & 0.928 & 0.946 & 0.968 & 0.972 & 0.982 & 0.990 & 0.994 &
+0.994\\
+0.5 &  &  &  & 1/78 & 0.836 & 0.846 & 0.854 & 0.872 & 0.872 & 0.874 & 0.894 &
+0.904\\
+&  &  &  & 1/156 & 0.998 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\
+0.7 &  &  &  & 1/78 & 0.950 & 0.954 & 0.964 & 0.970 & 0.972 & 0.978 & 0.976 &
+0.980\\
+&  &  &  & 1/156 & 0.998 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\\hline
+\multicolumn{13}{c}{\textbf{\emph{Self Excitement, $Z_{k}$ is $N(0.5,
+\sigma^{2} )$}}}\\\hline
+0.3 & (5,4) &  & 0.2 & 1/78 & 0.602 & 0.624 & 0.628 & 0.624 & 0.644 & 0.638 &
+0.642 & 0.658\\
+&  &  &  & 1/156 & 0.852 & 0.870 & 0.878 & 0.886 & 0.906 & 0.940 & 0.944 &
+0.958\\
+0.5 &  &  &  & 1/78 & 0.784 & 0.804 & 0.812 & 0.820 & 0.810 & 0.828 & 0.828 &
+0.844\\
+&  &  &  & 1/156 & 0.980 & 0.988 & 0.992 & 0.998 & 1.000 & 1.000 & 1.000 &
+1.000\\
+0.7 &  &  &  & 1/78 & 0.916 & 0.928 & 0.922 & 0.936 & 0.942 & 0.946 & 0.960 &
+0.956\\
+&  &  & 0.2 & 1/156 & 0.996 & 0.994 & 0.998 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\\hline\hline
+\vspace{0.02in} &  &  &  &  &  &  &  &  &  &  &  &
+\end{tabular}
+{\footnotesize \begin{minipage}{1\columnwidth} \footnotesize * See notes to Table 1.
+Entries in the table are rejection frequencies for the
+zero mean jump test, based on $t_{\mu_{Z},T,\Delta}=\sqrt{T}\frac
+{\widehat{\mu}_{T,\Delta}^{Z}}{\widehat{\sigma}_{\mu_{Z}}}$.
+In the experiments reported on in this table, $\rho=-0.25$. Results are similar for other values of $\rho$.
+\end{minipage}}\end{table}
+
+\newpage
+
+%TABLE 4 Self Excitement Test %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ptb]
+\caption{\textbf{Monte Carlo Experiments - $S_{T^{+},\Delta}^{\beta}$ Self
+Excitement Test (Empirical Size) *} }%
+\label{tb4}%
+\begin{tabular}
+[c]{lllllllllllll}
+&  &  &  &  &  &  &  &  &  &  &  & \\
+&  &  &  &  &  &  &  &  &  &  &  & \\\hline\hline
+$\lambda_{\infty}$ & $(a, \beta)$ & $\varsigma$ & $\sigma$ & $\Delta$ & $T1$ &
+$T2$ & $T3$ & $T4$ & $T5$ & $T6$ & $T7$ & $T8$\\\hline
+\multicolumn{13}{c}{\textbf{\emph{$Z_{k}$ is $Exp$($\varsigma$)}}}\\\hline
+0.3 & (0,0) & 5 &  & 1/78 & 0.114 & 0.108 & 0.120 & 0.138 & 0.124 & 0.146 &
+0.126 & 0.130\\
+&  &  &  & 1/156 & 0.092 & 0.094 & 0.080 & 0.090 & 0.082 & 0.092 & 0.080 &
+0.076\\
+0.5 &  &  &  & 1/78 & 0.088 & 0.088 & 0.096 & 0.098 & 0.108 & 0.118 & 0.122 &
+0.114\\
+&  &  &  & 1/156 & 0.070 & 0.076 & 0.068 & 0.070 & 0.088 & 0.078 & 0.076 &
+0.068\\
+0.7 &  &  &  & 1/78 & 0.088 & 0.098 & 0.122 & 0.128 & 0.108 & 0.124 & 0.118 &
+0.122\\
+&  &  &  & 1/156 & 0.076 & 0.076 & 0.084 & 0.074 & 0.090 & 0.078 & 0.082 &
+0.086\\\hline
+\multicolumn{13}{c}{\textbf{\emph{$Z_{k}$ is $N(0.5, \sigma^{2} )$}}}\\\hline
+0.3 & (0,0) &  & 0.1 & 1/78 & 0.116 & 0.124 & 0.126 & 0.124 & 0.136 & 0.144 &
+0.138 & 0.146\\
+&  &  &  & 1/156 & 0.084 & 0.106 & 0.094 & 0.092 & 0.094 & 0.086 & 0.078 &
+0.070\\
+&  &  & 0.2 & 1/78 & 0.118 & 0.122 & 0.136 & 0.142 & 0.136 & 0.150 & 0.146 &
+0.134\\
+&  &  &  & 1/156 & 0.102 & 0.098 & 0.086 & 0.088 & 0.094 & 0.092 & 0.084 &
+0.080\\
+&  &  & 0.4 & 1/78 & 0.120 & 0.116 & 0.132 & 0.140 & 0.130 & 0.146 & 0.150 &
+0.132\\
+&  &  &  & 1/156 & 0.082 & 0.098 & 0.086 & 0.094 & 0.088 & 0.088 & 0.076 &
+0.084\\
+0.5 &  &  & 0.1 & 1/78 & 0.094 & 0.098 & 0.116 & 0.132 & 0.134 & 0.134 &
+0.142 & 0.136\\
+&  &  &  & 1/156 & 0.082 & 0.084 & 0.078 & 0.090 & 0.100 & 0.086 & 0.088 &
+0.074\\
+&  &  & 0.2 & 1/78 & 0.094 & 0.094 & 0.102 & 0.122 & 0.116 & 0.126 & 0.122 &
+0.124\\
+&  &  &  & 1/156 & 0.086 & 0.086 & 0.088 & 0.088 & 0.092 & 0.080 & 0.076 &
+0.066\\
+&  &  & 0.4 & 1/78 & 0.110 & 0.096 & 0.120 & 0.116 & 0.118 & 0.134 & 0.124 &
+0.122\\
+&  &  &  & 1/156 & 0.096 & 0.090 & 0.078 & 0.092 & 0.092 & 0.088 & 0.090 &
+0.084\\
+0.7 &  &  & 0.1 & 1/78 & 0.104 & 0.112 & 0.128 & 0.132 & 0.130 & 0.132 &
+0.104 & 0.112\\
+&  &  &  & 1/156 & 0.086 & 0.086 & 0.078 & 0.082 & 0.094 & 0.084 & 0.094 &
+0.098\\
+&  &  & 0.2 & 1/78 & 0.092 & 0.102 & 0.116 & 0.132 & 0.118 & 0.126 & 0.120 &
+0.126\\
+&  &  &  & 1/156 & 0.072 & 0.078 & 0.074 & 0.084 & 0.084 & 0.082 & 0.092 &
+0.086\\
+&  &  & 0.4 & 1/78 & 0.076 & 0.094 & 0.092 & 0.104 & 0.110 & 0.122 & 0.104 &
+0.098\\
+&  &  &  & 1/156 & 0.078 & 0.068 & 0.086 & 0.072 & 0.092 & 0.092 & 0.098 &
+0.084\\\hline\hline
+\vspace{0.02in} &  &  &  &  &  &  &  &  &  &  &  &
+\end{tabular}
+{\footnotesize \begin{minipage}{1\columnwidth} \footnotesize * See notes to Table 1. Numerical entries are rejection frequencies for the
+\textquotedblleft self excitement test\textquotedblright\ of the null of\ no
+jump path dependence, based on
+$S_{T^{+},\Delta}^{\beta}%
+=\max\left\{  0,\frac{\sqrt{\frac{T^{+}}{\Delta}}\widehat{\beta}_{T^{+}%
+,\Delta}}{\widehat{\sigma}_{\beta,T^{+},\Delta}}\right\}  $.
+\end{minipage}}\end{table}
+
+\newpage
+
+%TABLE 5 Self Excitement Test %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ptb]
+\caption{\textbf{Monte Carlo Experiments - $S_{T^{+},\Delta}^{\beta}$ Self
+Excitement Test (Empirical Power) *}}%
+\label{tb5}%
+\begin{tabular}
+[c]{lllllllllllll}
+&  &  &  &  &  &  &  &  &  &  &  & \\
+&  &  &  &  &  &  &  &  &  &  &  & \\\hline\hline
+$\lambda_{\infty}$ & $(a, \beta)$ & $\varsigma$ & $\sigma$ & $\Delta$ & $T1$ &
+$T2$ & $T3$ & $T4$ & $T5$ & $T6$ & $T7$ & $T8$\\\hline
+\multicolumn{13}{c}{\textbf{\emph{$Z_{k}$ is $Exp$($\varsigma$)}}}\\\hline
+0.3 & (3,2) & 5 &  & 1/78 & 0.570 & 0.568 & 0.564 & 0.560 & 0.558 & 0.572 &
+0.560 & 0.554\\
+&  &  &  & 1/156 & 0.566 & 0.558 & 0.556 & 0.552 & 0.554 & 0.558 & 0.548 &
+0.554\\
+& (5,4) &  &  & 1/78 & 0.418 & 0.414 & 0.426 & 0.420 & 0.424 & 0.430 & 0.420 &
+0.422\\
+&  &  &  & 1/156 & 0.430 & 0.432 & 0.422 & 0.428 & 0.436 & 0.430 & 0.428 &
+0.424\\
+& (7,5) &  &  & 1/78 & 0.332 & 0.324 & 0.338 & 0.342 & 0.322 & 0.336 & 0.316 &
+0.324\\
+&  &  &  & 1/156 & 0.318 & 0.320 & 0.324 & 0.314 & 0.324 & 0.318 & 0.300 &
+0.310\\
+0.5 & (3,2) &  &  & 1/78 & 0.704 & 0.708 & 0.704 & 0.706 & 0.706 & 0.696 &
+0.700 & 0.700\\
+&  &  &  & 1/156 & 0.704 & 0.704 & 0.706 & 0.708 & 0.700 & 0.710 & 0.710 &
+0.704\\
+& (5,4) &  &  & 1/78 & 0.550 & 0.548 & 0.544 & 0.534 & 0.540 & 0.536 & 0.520 &
+0.524\\
+&  &  &  & 1/156 & 0.520 & 0.520 & 0.516 & 0.516 & 0.530 & 0.530 & 0.526 &
+0.524\\
+& (7,5) &  &  & 1/78 & 0.446 & 0.424 & 0.438 & 0.444 & 0.434 & 0.434 & 0.430 &
+0.436\\
+&  &  &  & 1/156 & 0.430 & 0.432 & 0.452 & 0.436 & 0.432 & 0.432 & 0.412 &
+0.410\\
+0.7 & (3,2) &  &  & 1/78 & 0.788 & 0.782 & 0.780 & 0.770 & 0.776 & 0.772 &
+0.768 & 0.772\\
+&  &  &  & 1/156 & 0.780 & 0.780 & 0.772 & 0.770 & 0.762 & 0.752 & 0.760 &
+0.750\\
+& (5,4) &  &  & 1/78 & 0.644 & 0.636 & 0.648 & 0.636 & 0.620 & 0.616 & 0.622 &
+0.604\\
+&  &  &  & 1/156 & 0.618 & 0.612 & 0.614 & 0.626 & 0.616 & 0.606 & 0.608 &
+0.620\\
+& (7,5) &  &  & 1/78 & 0.510 & 0.522 & 0.500 & 0.498 & 0.492 & 0.500 & 0.486 &
+0.492\\
+&  &  &  & 1/156 & 0.486 & 0.474 & 0.468 & 0.456 & 0.446 & 0.438 & 0.446 &
+0.444\\\hline
+\multicolumn{13}{c}{\textbf{\emph{$Z_{k}$ is $N(0.5, \sigma^{2} )$}}}\\\hline
+0.3 & (3,2) & 0.2 &  & 1/78 & 0.560 & 0.568 & 0.566 & 0.560 & 0.552 & 0.562 &
+0.548 & 0.548\\
+&  &  &  & 1/156 & 0.534 & 0.540 & 0.534 & 0.542 & 0.540 & 0.544 & 0.540 &
+0.542\\
+& (5,4) &  &  & 1/78 & 0.388 & 0.394 & 0.398 & 0.382 & 0.388 & 0.392 & 0.378 &
+0.372\\
+&  &  &  & 1/156 & 0.396 & 0.378 & 0.382 & 0.384 & 0.402 & 0.384 & 0.380 &
+0.380\\
+& (7,5) &  &  & 1/78 & 0.292 & 0.308 & 0.302 & 0.304 & 0.286 & 0.292 & 0.284 &
+0.284\\
+&  &  &  & 1/156 & 0.284 & 0.278 & 0.272 & 0.278 & 0.268 & 0.274 & 0.268 &
+0.262\\
+0.5 & (3,2) &  &  & 1/78 & 0.676 & 0.686 & 0.666 & 0.674 & 0.668 & 0.658 &
+0.642 & 0.640\\
+&  &  &  & 1/156 & 0.654 & 0.652 & 0.638 & 0.632 & 0.630 & 0.624 & 0.634 &
+0.626\\
+& (5,4) &  &  & 1/78 & 0.506 & 0.510 & 0.502 & 0.480 & 0.464 & 0.462 & 0.460 &
+0.442\\
+&  &  &  & 1/156 & 0.476 & 0.464 & 0.458 & 0.450 & 0.450 & 0.452 & 0.454 &
+0.442\\
+& (7,5) &  &  & 1/78 & 0.386 & 0.388 & 0.380 & 0.372 & 0.362 & 0.356 & 0.346 &
+0.344\\
+&  &  &  & 1/156 & 0.380 & 0.390 & 0.384 & 0.386 & 0.390 & 0.364 & 0.358 &
+0.356\\
+0.7 & (3,2) &  &  & 1/78 & 0.706 & 0.692 & 0.692 & 0.686 & 0.688 & 0.694 &
+0.682 & 0.668\\
+&  &  &  & 1/156 & 0.708 & 0.696 & 0.694 & 0.668 & 0.674 & 0.662 & 0.654 &
+0.654\\
+& (5,4) &  &  & 1/78 & 0.586 & 0.576 & 0.566 & 0.572 & 0.560 & 0.556 & 0.538 &
+0.530\\
+&  &  &  & 1/156 & 0.560 & 0.562 & 0.562 & 0.556 & 0.544 & 0.532 & 0.530 &
+0.522\\
+& (7,5) &  &  & 1/78 & 0.428 & 0.432 & 0.428 & 0.416 & 0.406 & 0.402 & 0.402 &
+0.396\\
+&  & 0.2 &  & 1/156 & 0.420 & 0.418 & 0.416 & 0.420 & 0.410 & 0.404 & 0.390 &
+0.384\\\hline\hline
+\vspace{0.02in} &  &  &  &  &  &  &  &  &  &  &  &
+\end{tabular}
+{\footnotesize \begin{minipage}{1\columnwidth} \footnotesize * See notes to Table 4.\end{minipage}}%
+\end{table}
+
+\newpage
+
+%TABLE 6 Self Excitement Test (Empirical Size - Alternative Squared Test Statistic) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ptb]
+\caption{\textbf{Monte Carlo Experiments - $\protect\widetilde{S}%
+_{T^{+},\Delta}^{\beta}$ Self Excitement Test (Empirical Size) *} }%
+\label{tb6}%
+\begin{tabular}
+[c]{lllllllllllll}
+&  &  &  &  &  &  &  &  &  &  &  & \\
+&  &  &  &  &  &  &  &  &  &  &  & \\\hline\hline
+$\lambda_{\infty}$ & $\varsigma$ & $\sigma$ & $\rho$ & $T1$ & $T2$ & $T3$ &
+$T4$ & $T5$ & $T6$ & $T7$ & $T8$ & \\\hline
+0.3 & 2.5 &  & 0 & 0.170 & 0.170 & 0.160 & 0.156 & 0.166 & 0.176 & 0.160 &
+0.170 & \\
+& 5 &  &  & 0.670 & 0.698 & 0.698 & 0.716 & 0.750 & 0.768 & 0.784 & 0.798 & \\
+&  & 0.2 &  & 0.146 & 0.142 & 0.150 & 0.142 & 0.144 & 0.150 & 0.166 & 0.174 &
+\\
+&  & 0.4 &  & 0.082 & 0.084 & 0.084 & 0.088 & 0.072 & 0.082 & 0.080 & 0.088 &
+\\
+& 2.5 &  & -0.5 & 0.248 & 0.220 & 0.208 & 0.214 & 0.202 & 0.192 & 0.200 &
+0.200 & \\
+& 5 &  &  & 0.694 & 0.718 & 0.742 & 0.734 & 0.738 & 0.764 & 0.764 & 0.786 & \\
+&  & 0.2 &  & 0.176 & 0.182 & 0.198 & 0.190 & 0.192 & 0.204 & 0.194 & 0.188 &
+\\
+&  & 0.4 &  & 0.116 & 0.108 & 0.102 & 0.098 & 0.086 & 0.096 & 0.096 & 0.082 &
+\\\hline
+0.7 & 2.5 &  & 0 & 0.026 & 0.032 & 0.020 & 0.020 & 0.012 & 0.014 & 0.012 &
+0.012 & \\
+& 5 &  &  & 0.350 & 0.370 & 0.354 & 0.368 & 0.378 & 0.392 & 0.414 & 0.422 & \\
+&  & 0.2 &  & 0.016 & 0.016 & 0.018 & 0.012 & 0.016 & 0.012 & 0.008 & 0.010 &
+\\
+&  & 0.4 &  & 0.006 & 0.002 & 0.002 & 0.004 & 0.002 & 0.004 & 0.004 & 0.006 &
+\\
+& 2.5 &  & -0.5 & 0.050 & 0.038 & 0.034 & 0.034 & 0.030 & 0.028 & 0.024 &
+0.022 & \\
+& 5 &  &  & 0.342 & 0.364 & 0.364 & 0.380 & 0.400 & 0.422 & 0.402 & 0.396 & \\
+&  & 0.2 &  & 0.026 & 0.024 & 0.026 & 0.030 & 0.020 & 0.016 & 0.018 & 0.018 &
+\\
+&  & 0.4 &  & 0.012 & 0.010 & 0.014 & 0.012 & 0.008 & 0.006 & 0.004 & 0.004 &
+\\\hline\hline
+\vspace{0.02in} &  &  &  &  &  &  &  &  &  &  &  &
+\end{tabular}
+{\footnotesize \begin{minipage}{1\columnwidth} \footnotesize * See notes to Table 1. In this table, jumps are generated as follows: Either $Z_k$ is exp$(\varsigma )$ or $Z_k$ is $N(0.5, \sigma ^ 2 )$.
+Numerical entries are rejection frequencies for the
+\textquotedblleft self excitement test\textquotedblright\ of the null of\ no
+jump path dependence, based on $\widetilde{S}%
+_{T^{+},\Delta}^{\beta}=\max\left\{  0,\sqrt{\frac{T^{+}}{\Delta}}\frac
+{\widetilde{\beta}_{T^{+},\Delta}}{\widetilde{\sigma}_{\beta,T^{+},\Delta}%
+}\right\}  .$
+Also, $(a, \beta )=(0,0)$.
+\end{minipage}}\end{table}
+
+%TABLE 7 Self Excitement Test Squared Version%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ptb]
+\caption{\textbf{Monte Carlo Experiments - $\protect\widetilde{S}%
+_{T^{+},\Delta}^{\beta}$ Self Excitement Test (Empirical Power) *}}%
+\label{tb7}%
+\begin{tabular}
+[c]{llllllllllllll}
+&  &  &  &  &  &  &  &  &  &  &  &  & \\
+&  &  &  &  &  &  &  &  &  &  &  &  & \\\hline\hline
+$\lambda_{\infty}$ & $(a, \beta)$ & $\varsigma$ & $\sigma$ & $\Delta$ & $\rho$
+& $T1$ & $T2$ & $T3$ & $T4$ & $T5$ & $T6$ & $T7$ & $T8$\\\hline
+0.3 & (3,2) & 5 &  & 1/78 & 0 & 0.360 & 0.346 & 0.390 & 0.392 & 0.422 &
+0.434 & 0.448 & 0.454\\
+&  &  & 0.2 &  &  & 0.216 & 0.246 & 0.284 & 0.322 & 0.348 & 0.386 & 0.412 &
+0.436\\
+&  & 5 &  & 1/156 &  & 0.218 & 0.242 & 0.250 & 0.270 & 0.298 & 0.308 & 0.336 &
+0.330\\
+&  &  & 0.2 &  &  & 0.432 & 0.482 & 0.538 & 0.578 & 0.604 & 0.652 & 0.684 &
+0.724\\
+& (7,5) & 5 &  & 1/78 &  & 0.440 & 0.478 & 0.494 & 0.504 & 0.546 & 0.574 &
+0.592 & 0.616\\
+&  &  & 0.2 &  &  & 0.530 & 0.590 & 0.634 & 0.668 & 0.726 & 0.780 & 0.808 &
+0.832\\
+&  & 5 &  & 1/156 &  & 0.508 & 0.540 & 0.576 & 0.604 & 0.632 & 0.682 & 0.710 &
+0.742\\
+&  &  & 0.2 &  &  & 0.938 & 0.956 & 0.970 & 0.982 & 0.984 & 0.988 & 0.992 &
+0.992\\\hline
+0.7 & (3,2) & 5 &  & 1/78 &  & 0.148 & 0.166 & 0.170 & 0.208 & 0.220 & 0.220 &
+0.238 & 0.256\\
+&  &  & 0.2 &  &  & 0.366 & 0.430 & 0.468 & 0.536 & 0.582 & 0.630 & 0.686 &
+0.698\\
+&  & 5 &  & 1/156 &  & 0.100 & 0.124 & 0.124 & 0.132 & 0.150 & 0.160 & 0.196 &
+0.214\\
+&  &  & 0.2 &  &  & 0.626 & 0.680 & 0.722 & 0.762 & 0.816 & 0.840 & 0.880 &
+0.898\\
+& (7,5) & 5 &  & 1/78 &  & 0.338 & 0.384 & 0.434 & 0.474 & 0.502 & 0.510 &
+0.576 & 0.630\\
+&  &  & 0.2 &  &  & 0.810 & 0.858 & 0.906 & 0.930 & 0.938 & 0.964 & 0.976 &
+0.982\\
+&  & 5 &  & 1/156 &  & 0.592 & 0.648 & 0.688 & 0.714 & 0.770 & 0.786 & 0.812 &
+0.838\\
+&  &  & 0.2 &  &  & 0.990 & 0.998 & 0.998 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\\hline
+0.3 & (3,2) & 5 &  & 1/78 & -0.5 & 0.368 & 0.360 & 0.388 & 0.396 & 0.412 &
+0.416 & 0.442 & 0.450\\
+&  &  & 0.2 &  &  & 0.210 & 0.236 & 0.262 & 0.304 & 0.324 & 0.370 & 0.384 &
+0.420\\
+&  & 5 &  & 1/156 &  & 0.208 & 0.220 & 0.246 & 0.256 & 0.280 & 0.300 & 0.334 &
+0.344\\
+&  &  & 0.2 &  &  & 0.422 & 0.472 & 0.516 & 0.568 & 0.608 & 0.648 & 0.690 &
+0.712\\
+& (7,5) & 5 &  & 1/78 &  & 0.444 & 0.458 & 0.478 & 0.504 & 0.526 & 0.556 &
+0.582 & 0.582\\
+&  &  & 0.2 &  &  & 0.526 & 0.600 & 0.650 & 0.706 & 0.748 & 0.784 & 0.810 &
+0.838\\
+&  & 5 &  & 1/156 &  & 0.480 & 0.536 & 0.576 & 0.608 & 0.646 & 0.670 & 0.712 &
+0.740\\
+&  &  & 0.2 &  &  & 0.924 & 0.950 & 0.958 & 0.966 & 0.978 & 0.988 & 0.994 &
+0.998\\\hline
+0.7 & (3,2) & 5 &  & 1/78 &  & 0.146 & 0.156 & 0.174 & 0.182 & 0.204 & 0.220 &
+0.212 & 0.222\\
+&  &  & 0.2 &  &  & 0.338 & 0.386 & 0.412 & 0.448 & 0.494 & 0.542 & 0.582 &
+0.630\\
+&  & 5 &  & 1/156 &  & 0.114 & 0.132 & 0.150 & 0.158 & 0.166 & 0.174 & 0.188 &
+0.204\\
+&  &  & 0.2 &  &  & 0.662 & 0.726 & 0.764 & 0.788 & 0.816 & 0.836 & 0.862 &
+0.894\\
+& (7,5) & 5 &  & 1/78 &  & 0.362 & 0.380 & 0.448 & 0.488 & 0.528 & 0.564 &
+0.598 & 0.636\\
+&  &  & 0.2 &  &  & 0.776 & 0.836 & 0.900 & 0.928 & 0.940 & 0.960 & 0.972 &
+0.980\\
+&  & 5 &  & 1/156 &  & 0.532 & 0.602 & 0.668 & 0.692 & 0.732 & 0.756 & 0.776 &
+0.812\\
+&  &  & 0.2 &  &  & 0.994 & 0.998 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 &
+1.000\\\hline\hline
+\vspace{0.02in} &  &  &  &  &  &  &  &  &  &  &  &  &
+\end{tabular}
+{\footnotesize \begin{minipage}{1\columnwidth} \footnotesize * See notes to Table 6.\end{minipage}}%
+\end{table}
+
+\newpage
+
+%TABLE 8 Empirical Jump Test %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[ptb]
+\caption{\textbf{Jump Test Statistics for Various Stocks and Time Spans *}}%
+\label{JI-Stats}%
+\begin{tabular}
+[c]{llllllllllll}
+&  &  &  &  &  &  &  &  &  &  & \\
+&  &  &  &  &  &  &  &  &  &  & \\\hline\hline
+Time Span & 3M & AAPL & AMZN & BAC & COST & GE & GS & IBM & INTC & JNJ &
+JPM\\\hline
+\multicolumn{12}{c}{\textbf{Time Span = 1 Quarter; 5-Minute Frequency Data}%
+}\\\hline
+2004-Q1 & -4.03* & 16.3* & -0.361 & -3.89* & -0.436 & -5.74* & -2.17* &
+-1.47 & -2.39* & -7.17* & -2.11*\\
+2004-Q2 & -3.99* & 0.700 & 6.87* & -5.34* & 1.21 & 35.1* & 3.07* & 2.75* &
+-1.20 & 37.6* & -5.98*\\
+2004-Q3 & -5.21* & 6.35* & -0.23 & 0.938 & 14.4* & -25.0* & 1.30 & 3.59* &
+-2.25* & 9.63* & 6.97*\\
+2004-Q4 & -0.172 & 6.97* & 3.31* & 10.8* & 13.0* & 7.74* & 4.72* & 10.9* &
+0.652 & 0.250 & -0.455\\
+2013-Q1 & 3.99* & 7.68* & -3.31* & -5.01* & -0.848 & -3.71* & 1.36 & 15.0* &
+0.194 & -9.63* & -1.54\\
+2013-Q2 & -1.46 & 3.77* & -3.61* & -4.25* & 0.390 & -7.63* & -0.513 & -22.3* &
+11.6* & -1.10 & -0.671\\
+2013-Q3 & 11.8* & 6.07* & -2.11* & 0.853 & -3.90* & 5.25* & -0.270 & 5.45* &
+-1.01 & -0.866 & 4.57*\\
+2013-Q4 & 19.4* & -11.2* & 2.70* & 8.20* & -2.59* & 4.85* & 19.5* & 3.49* &
+4.53* & -0.418 & 11.2*\\\hline
+\multicolumn{12}{c}{\textbf{Time Span = 2 Quarters; 5-Minute Frequency Data}%
+}\\\hline
+2004-H1 & -7.59* & 19.3* & 5.39* & -11.4* & 0.580 & 24.6* & 1.06 & 1.44 &
+-3.79* & 31.8* & -8.39*\\
+2004-H2 & -4.28* & 13.0* & 1.96* & 13.9* & 26.3* & -16.8* & 5.09* & 13.1* &
+-2.28* & 9.93* & 6.62*\\
+2013-H1 & -1.01 & 10.3* & -5.50* & -8.67* & -0.564 & -10.6* & -0.693 &
+-20.5* & 14.7* & -5.55* & -2.42*\\
+2013-H2 & 29.9* & -1.22 & 2.93* & 10.4* & -6.86* & 11.3* & 15.6* & 7.43* &
+2.05* & -1.56 & 14.3*\\\hline
+\multicolumn{12}{c}{\textbf{Time Span = 4 Quarters; 5-Minute Frequency Data}%
+}\\\hline
+2004 & -12.3* & 34.0* & 6.44* & 2.30* & 25.6* & 15.4* & 5.05* & 12.1* &
+-5.99* & 42.5* & -3.88*\\
+2013 & 27.2* & 13.6* & -4.05* & -8.72* & -6.37* & -2.44* & 11.1* & -12.7* &
+18.7* & -7.17* & 7.38*\\\hline
+\multicolumn{12}{c}{\textbf{Time Span = 1 Quarter; 10-Minute Frequency Data}%
+}\\\hline
+2004-Q1 & -8.88* & 17.3* & -8.04* & -20.8* & 2.73* & -5.44* & -4.98* & 0.228 &
+-6.13* & -6.76* & -4.46*\\
+2004-Q2 & -0.773 & 3.03* & 15.5* & -15.4* & 0.41 & 45.6* & 0.85 & 0.208 &
+-0.219 & 43.0* & -7.78*\\
+2004-Q3 & -19.2* & 15.4* & -4.76* & 0.046 & 7.27* & -20.5* & 1.81* & 1.63 &
+1.62 & -0.707 & 0.909\\
+2004-Q4 & 9.10* & 13.1* & 2.49* & 6.03* & 22.4* & 8.86* & 2.42* & 17.0* &
+2.71* & 6.98* & -3.71*\\
+2013-Q1 & 7.51* & 9.35* & 9.97* & -4.39* & -2.65* & -21.0* & 2.30* & 26.5* &
+4.00* & 5.08* & -8.71*\\
+2013-Q2 & 0.365 & 17.9* & -2.77* & -7.86* & -2.93* & -25.5* & -14.2* &
+-19.5* & 13.6* & -9.32* & 0.463\\
+2013-Q3 & 7.14* & 11.6* & 3.19* & 2.87* & -1.28 & 16.9* & 4.48* & 42.2* &
+2.37* & 1.37 & 10.4*\\
+2013-Q4 & 40.0* & -7.10* & 4.97* & 16.5* & 11.4* & 9.47* & 29.4* & 11.3* &
+8.24* & 15.0* & 12.1*\\\hline
+\multicolumn{12}{c}{\textbf{Time Span = 2 Quarters; 10-Minute Frequency Data}%
+}\\\hline
+2004-H1 & -11.8* & 21.5* & 6.37* & -35.9* & 2.84* & 34.0* & -4.80* & 0.646 &
+-7.90* & 43.2* & -13.7*\\
+2004-H2 & -7.74* & 31.5* & -4.79* & 7.18* & 28.2* & -14.3* & 4.08* & 18.1* &
+3.43* & 6.32* & -2.81*\\
+2013-H1 & 4.19* & 25.7* & 9.28* & -11.1* & -5.48* & -50.6* & -19.5* & -13.8* &
+22.2* & -16.5* & -5.23*\\
+2013-H2 & 52.5* & 8.24* & 8.82* & 22.0* & 11.2* & 25.7* & 31.5* & 54.7* &
+8.92* & 15.2* & 20.9*\\\hline
+\multicolumn{12}{c}{\textbf{Time Span = 4 Quarters; 10-Minute Frequency Data}%
+}\\\hline
+2004 & -19.4* & 56.4* & 0.233 & -33.9* & 30.7* & 34.2* & -4.11* & 17.5* &
+-3.99* & 57.8* & -19.7*\\
+2013 & 52.6* & 46.4* & 16.7* & -8.08* & 0.661 & -36.6* & -4.65* & 39.5* &
+36.9* & -1.31 & 9.34*\\\hline\hline
+\vspace{0.02in} &  &  &  &  &  &  &  &  &  &  &
+\end{tabular}
+{\footnotesize \begin{minipage}{1\columnwidth} \footnotesize * See notes to Table 1. Test implemented is the jump intensity test. Statistics superscripted with a * indicate rejections at a 10\% level. Time span ranges from one quarter to one half of a year. Data are sampled at 5-minute frequency.
+Companies for which statistics are reported include 3M - 3M Company;
+AAPL - Apple Inc.;
+AMZN - Amazon.com, Inc.;
+BAC - Bank of America Corporation;
+COST - Costco Wholesale Corporation;
+GE - General Electric Company;
+GS - The Goldman Sachs Group, Inc.;
+IBM - International Business Machines Corporation;
+INTC - Intel Corporation;
+JNJ - Johnson \& Johnson; and
+JPM - JPMorgan Chase \& Co. \end{minipage}}\end{table}
+
+
+\end{document}

@@ -1,0 +1,1266 @@
+\documentclass[a4paper,amstex,11pt]{article}%
+\usepackage{multirow}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{verbatim}
+\usepackage[font=footnotesize]{caption}
+\usepackage{subcaption}
+\usepackage{adjustbox}
+\usepackage{booktabs, dcolumn}
+\usepackage{fancybox}
+\usepackage{natbib}
+\usepackage{threeparttable}
+\usepackage{amsmath,amsthm,amsfonts,bm,latexsym,enumerate,url}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{amssymb}%
+\usepackage{hyperref}
+\hypersetup{
+	bookmarks=true,         % show bookmarks bar?
+	unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+	pdftoolbar=true,        % show Acrobat’s toolbar?
+	pdfmenubar=true,        % show Acrobat’s menu?
+	pdffitwindow=false,     % window fit to page when opened
+	pdfstartview={FitH},    % fits the width of the page to the window
+	pdftitle={My title},    % title
+	pdfauthor={Author},     % author
+	pdfsubject={Subject},   % subject of the document
+	pdfcreator={Creator},   % creator of the document
+	pdfproducer={Producer}, % producer of the document
+	pdfkeywords={keyword1, key2, key3}, % list of keywords
+	pdfnewwindow=true,      % links in new PDF window
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,      % color of file links
+	urlcolor=cyan           % color of external links
+}
+\setcounter{MaxMatrixCols}{30} 
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{Codepage=936}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+%TCIDATA{Created=Tue Nov 04 20:07:01 2003}
+%TCIDATA{LastRevised=Monday, October 09, 2017 12:31:07}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\providecommand{\U}[1]{\protect \rule{.1in}{.1in}}
+\providecommand{\U}[1]{\protect \rule{.1in}{.1in}}
+\providecommand{\U}[1]{\protect \rule{.1in}{.1in}}
+\renewcommand{\baselinestretch}{0.9}
+\textwidth=6.5in \textheight=9in \oddsidemargin=0in
+\evensidemargin=0in \topmargin=-0.25in
+\renewcommand {\baselinestretch}{1.3}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{assumption}{Assumption}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\begin{document}
+	
+\begin{center}
+	{\Large A Comparison of Fixed and Long Time Span Jump Tests: Are We Finding Too Many Jumps?\footnote[1]%
+		{{\footnotesize Mingmian Cheng, Lingnan (University) College, Sun Yat-sen University, No. 135, Xingang Xi Road, Guangzhou, 510275, China, chengmingmian@gmail.com. Norman R. Swanson, Rutgers University, 75 Hamilton Street, New Brunswick, NJ 08901, USA, nswanson@economics.rutgers.edu. We are grateful to Valentina Corradi, Mervyn Silvapulle, George Tauchen, and Xiye Yang for useful comments. We have also benefited from comments made at various seminars, including ones given at the National University of Singapore, Notre Dame University, the University of York, and Pompeo Fabra University.}}
+	}\bigskip
+	
+	{\Large Mingmian Cheng}$^{1}$ {\Large and Norman R. Swanson}$^{2}$
+	
+	$^{1}${\Large Sun Yat-sen University\bigskip\bigskip\ and }$^{2}%
+	${\Large Rutgers University}
+	
+	{\large April 2018}
+	
+	\bigskip Abstract
+\end{center}
+
+{\small Numerous tests designed to detect realized jumps over a fixed time span have been proposed and extensively studied in the financial econometrics literature. These tests differ from ``long time span tests'' that detect jumps by examining the magnitude of the intensity parameter in the data generating process, and which are consistent. In this paper, long span tests, including the tests of \cite{corradi2018testing} (called \textit{CSS} tests), are compared and contrasted with a variety of fixed span tests, including the \textit{ASJ} test of \cite{ait2009testing}, the \textit{BNS} test of \cite{barndorff2006econometrics}, and the \textit{PZ} test of \cite{podolskij2010new}, in an extensive series of Monte Carlo experiments. The long span tests that we examine are consistent against the null hypothesis of zero jump intensity, while the fixed span tests are not designed to detect jumps in the data generating process, and instead detect realized jumps over a fixed time span. It is found that both the \textit{ASJ} and \textit{CSS} tests exhibit reasonably good finite sample properties, for time spans both short and long. The other tests suffer from finite sample distortions, both under sequential testing (as is well known) and under long time spans. The latter finding is new, and confirms the ``pitfall'' discussed in \cite{huang2005relative}, of using asymptotic approximations associated with finite time span tests in order to study long time spans of data. An extensive empirical analysis is carried out to investigate the implications of these findings. In particular, when applied to stock price and stock index data, ``time-span robust'' tests indicate that the prevalence of jumps is not as universal as might be expected. Various sector ETFs and individual stocks, for example, appear to exhibit no jumping behavior during a number of quarterly and annual periods.}
+
+\bigskip 
+
+\noindent\textit{Keywords}: Jump test, Jump intensity, Sequential testing
+bias, Fixed time span, Long time span, High-frequency data
+
+\bigskip
+
+\noindent\textit{JEL classification}: C12, C22, C52, C58 
+
+\bigskip
+
+{\small \renewcommand {\baselinestretch}{1.0} }
+
+\renewcommand {\baselinestretch}{1.3}
+
+\newpage
+
+\clearpage
+
+\allowdisplaybreaks
+
+\renewcommand*{\thefootnote}{\arabic{footnote}}
+	
+\section{Introduction}\label{sec:intro}
+  
+In risk management and financial engineering, investors and researchers often require knowledge of the data generating process (\textit{DGP}) that governs asset price movements. For example, asset prices are frequently modeled as continuous-time processes, such as (It\^{o}-)semimartingales (see, e.g. \cite{ait2002maximum, ait2002telling}, \cite{chernov2003alternative}, and \cite{andersen2007no}). At the same time, investors and researchers are also interested in nonparametrically estimable quantities such as spot/integrated volatility (see, e.g. \cite{barndorff2002econometric}, \cite{barndorff2003realised}, \cite{todorov2011volatility}, and \cite{patton2015good}), jump variation (see, e.g. \cite{barndorff2004power}, \cite{andersen2007roughing}, and \cite{corsi2009volatility}), leverage effects (see, e.g. \cite{kalnina2014nonparametric} and \cite{ait2016estimation}), and jump activity (see e.g. \cite{ait2011testing} and \cite{todorov2015jump}). In this paper, we add to the jump testing literature by carrying out an extensive Monte Carlo and empirical analysis of jump detection using so-called \textquotedblleft fixed time span\textquotedblright\ jump tests (see, e.g. \cite{barndorff2006econometrics}, \cite{lee2008jumps}, \cite{ait2009testing}, \cite{corsi2010threshold}, and \cite{podolskij2010new}) and \textquotedblleft long time span\textquotedblright\ jump tests (e.g., the so-called \textit{CSS} test in \cite{corradi2018testing}).\footnote{In this paper, we also investigate a related test, called the \textit{CSS1} test, which is developed in \cite{corradi2014consistent}.} The reason why a \textquotedblleft horse-race\textquotedblright\ between alternative jump tests of these varieties is of interest is because it is well known that tests constructed using observed sample paths of asset returns on a \textquotedblleft fixed time span\textquotedblright, such as a day or a week, are not consistent, and are sensitive to sequential testing bias. On the other hand, the \textit{CSS }type\textit{ }tests that we examine, which is based on direct evaluation of the data generating process, is consistent and asymptotically correctly sized when the time span, $T\rightarrow\infty,$ and the sampling interval, $\Delta\rightarrow0.$ A further motivation for our examination of the above tests is that a detailed comparison of the finite sample properties of these different types of tests under long time spans, in cases where sequential testing bias is not an issue, has not been previously done.\footnote{In an interesting paper, \cite{huang2005relative} discuss issues associated with applying asymptotic approximations used in fixed time span jump tests over an (long time span) entire sample. The arguments made in their paper serve as key motivation for \cite{corradi2018testing}, and for the current paper.}
+
+One reason why detecting jumps using long time span tests is of potential interest is that empirical researchers often estimate \textit{DGPs} after testing for jumps using fixed time span tests. However, when estimating jump diffusions, drift, volatility, jump intensity and jump size parameters are usually jointly estimated. This is problematic if the jump intensity is identically zero, since parameters characterizing jump size are unidentified, and consistent estimation of the rest of the parameters is thus no longer feasible (see \cite{andrews2012estimation}). As a result, testing for jumps via pretesting for zero jump intensity is a natural alternative to the use of nonparametric fixed time span jump tests. In addition to the issue of identification, if researchers detect jumps in a particular sample path, they might conclude that the jump intensity is non-zero. However, if no jumps are found in a sample path, this does not mean there are no jumps in other sample paths, and hence that a \textit{DGP} should be estimated with no jump component.
+
+The \textit{CSS} and \textit{CSS1} tests examined in this paper are based on realized third moments, or tricity, and as discussed above, utilize observations over an increasing time span. Although various tricity-type tests have already been examined in the literature, it is worth noting that only the \textit{CSS} and \textit{CSS1} tests are developed using both in-fill and long-span asymptotics. As discussed above, the use of long-span asymptotics ensures that these tests have power against non-zero intensity in the \textit{DGP} rather than against realized jumps. A key difference between the \textit{CSS} and \textit{CSS1} tests is that the latter test sacrifices power by using a rescaled bootstrap to ensure robustness against leverage, while the former test uses thresholding and requires the use of time span, $T^{+}$, where $T^{+}/T\rightarrow\infty.$ In our experiments, we consider two types of the \textit{CSS1} jump test (i.e. \textit{CSS1} and $\widetilde{\textit{CSS1}}$ tests. Both of these build on earlier work of \cite{ait2002maximum, ait2002telling}, and are special cases of the \textit{CSS} test introduced in \cite{corradi2018testing}. One test assumes no leverage. The other test is robust to leverage, and is a rescaled version of the no leverage test. Both tests are derived under the assumption that \textrm{E}$\left(  \left(  Y_{k\Delta}-Y_{(k-1)\Delta}\right)  ^{3}\right) =0,$ whenever there are no jumps, where $Y_{k\Delta}=\ln X_{k\Delta} -\frac{\Delta}{T}\sum_{k=2}^{n}\ln X_{k\Delta}$ and $Y_{(k-1)\Delta}=\ln X_{(k-1)\Delta}-\frac{\Delta}{T}\sum_{k=2}^{n}\ln X_{(k-1)\Delta}$, and where the $X$ are asset prices.\footnote{The \textit{CSS} test is robust to leverage.}
+
+In the Monte Carlo and empirical analyses discussed in the sequel, the finite sample properties of three fixed time span tests, as well as the three \textit{CSS} type tests (i.e. \textit{CSS1}, $\widetilde{\textit{CSS1}}$ and \textit{CSS} tests) are investigated. The three \textquotedblleft fixed-span tests include the higher order power variation test of \cite{ait2009testing} (\textit{ASJ}), the classic bipower variation test of \cite{barndorff2006econometrics} (\textit{BNS}), and the truncated power variation test of \cite{podolskij2010new} (\textit{PZ}). These tests are chosen to be representative of three broader classes of fixed-span tests that utilize multipower variation, higher order power variation, and truncation. For a detailed comparison of more fixed-span tests, refer to \cite{theodosiou2009comprehensive} and \cite{dumitru2012identifying}. These authors concisely summarize and compare a large group of existing jump tests via extensive Monte Carlo experiments. However, as noted above, few researchers examine the performance of fixed-span tests on a long-span data set. A key exception is \cite{huang2005relative}, who examine a \textquotedblleft long time span\textquotedblright\ \textit{BNS} type test. In this interesting paper, the authors find that the empirical size of the \textit{BNS} test deviates from the nominal size more significantly as the time span increases; and that size distortion becomes even more substantial if the sample path is more volatile but still continuous. As a consequence, a null of zero jump intensity is more likely to be over-rejected and it is possible to falsely identify a jump diffusion process when it is purely continuous. They suggest that an appropriate way to solve both inconsistency and size distortion problems involves using test statistics that are asymptotically valid under a double asymptotic scheme where both $T\rightarrow\infty$ and $\Delta\rightarrow0,$ such as that used in \cite{corradi2018testing}.
+
+Our findings can be summarized as follows. First, we show that the finite sample power of daily jump tests against non-zero jump intensity is low, particularly when jumps are infrequent or jump magnitudes are \textquotedblleft weak\textquotedblright. For instance, when the jump intensity is 0.4 and the jump size parameter is our largest, rejection rates of the \textit{ASJ}, \textit{BNS} and \textit{PZ} tests at a 0.05 significance level are only around 0.26, 0.38, and 0.36, respectively. Second, sequential testing bias grows rapidly as the time span increases. The size of a joint test based on the strategy of sequentially performing many fixed-$T$ daily tests approaches unity very quickly. Even for the most conservative test (i.e., the \textit{ASJ} test), empirical size is over 0.95 after 50 days. Importantly, we also show that the empirical sizes of fixed-$T$ jump tests over samples with growing time spans also increase in $T$. Specifically, the size of the \textit{PZ} test over a sample of 300 days is close to one. The empirical size of the \textit{BNS} test is twice as large as the nominal size, when the sample is over 300 days. For the \textit{ASJ} test, empirical size also increases as the time span increases. However, as long as the sample is not too long, say more than 150 days, the \textit{ASJ} test is surprisingly well sized. More generally, size distortion accumulates much more slowly when using the \textit{ASJ} test than when using the \textit{BNS} and \textit{PZ} tests. Moreover, the power of \textit{ASJ} test is very good for all long time spans, as long as jumps are not too rare and too weak. When the sample is over 50 days, the \textit{ASJ} test is powerful even for infrequent and weak jumps. Fourth, the \textit{CSS1} test which is not robust to leverage has good size properties, even when the sample is very long, such as 500 days, if there is no leverage in the \textit{DGP}, while empirical size increases in $T$ when the \textit{DGP} is characterized by the presence of leverage, as expected. On the other hand, the \textquotedblleft leverage-robust\textquotedblright\ \textit{CSS1} test (i.e. $\widetilde{\textit{CSS1}}$ test) is conservatively sized. This is not surprising, since the test has zero asymptotic size.\footnote{The long span test in \cite{corradi2018testing} is robust to leverage and is correctly asymptotically sized. They achieve this by introducing a threshold variance estimator with which to scale their test, rather than relying on the bootstrap, as is done in the variant of their test examined in this paper.} Also, the power of the \textquotedblleft leverage robust test\textquotedblright, while not as good as that of the \textquotedblleft non leverage-robust\textquotedblright\ test, is found to be good when a simple rule-of-thumb is used to specify coarser $\Delta,$ say $\widetilde{\Delta},$ as $T$ is grows, when constructing bootstrap critical values, in order to mitigate the effect on finite sample power of the use of adjustment term accounting for leverage. Fifth, the \textit{CSS} test is adequately sized, as long as $T$ and $\Delta$ are carefully chosen, regardless of the presence of leverage. The power is reasonably good, even when jumps are infrequent and weak, and increases with an increasing time span, $T$, for fixed $\Delta$.
+
+In our empirical analysis, we examine 5-minute intraday observations between 2006 and 2013 on twelve individual stocks, nine sector ETFs, and the market (SPDR S\&P500) ETF. Our main empirical findings are summarized as follows. First, using daily \textit{ASJ}, \textit{BNS} and \textit{PZ} tests, jumps are widely detected in asset prices over almost all time periods considered. Moreover, in some cases, the annual percentage of jump days seems inconceivably large. For instance, all three tests detect jumps on around 35\%-40\% of the days in 2006 for two of the ETFs that we examine. Second, these jump percentages have diminished over time. Third, long span jump tests tell a different story. Namely, the \textit{ASJ} test, the $\widetilde{\textit{CSS1}}$ test, and the \textit{CSS} test indicate far fewer jumps than are found when using daily tests. This finding has important implications for both specification and estimation of asset price models.
+
+The rest of the paper is organized as follows. Section 2 outlines the theoretical framework and introduces notation. Section 3 discusses statistical issues associated with testing for jumps. Section 4 discusses the long time span jump tests that we examine, and Section 5 briefly discusses the extant fixed time span tests examined in the sequel. Section 6 reports results from our Monte Carlo experiments. Section 7 presents the results of our empirical analysis of various stock price and price index data. Finally, Section 8 contains concluding remarks.
+
+\section{Setup}\label{sec:set}
+
+We use the setup of \cite{corradi2018testing}. Namely, assume that (log-)asset prices are recorded at an equally spaced discrete interval, $\Delta=\frac{1}{m}$, where $m$ is the total number of observations on each trading day. In our model, we assume that $\Delta\rightarrow0;$ or equivalently that $m\rightarrow\infty$. Log-prices follow a jump diffusion model defined on some filtered probability space $(\Omega,\mathbb{F},(\mathcal{F}_{t})_{t\geq0},\mathbb{P})$, with
+\begin{equation}
+	\mathrm{d\ln}X_{t}=\mu\mathrm{d}t+\sqrt{V_{t}}\mathrm{d}W_{1,t}+Z_{t}
+	\mathrm{d}N_{t}, \label{X}
+\end{equation}
+where $\mu$ is the drift term, $\sqrt{V_{t}}$ is the spot volatility, and $W_{1,t}$ is an adapted standard Brownian motion (i.e., it is $\mathcal{F}_{t}$-measurable for each $t\geq0$). Here, $V_{t}$ is defined according to either (i), (ii), (iii), or (iv), as follows:
+
+(i) a constant:
+\begin{equation}
+	V_{t}=v\text{ for all }t; \label{va}
+\end{equation}
+
+(ii) a measurable function of the state variable:
+\begin{equation}
+	V_{t}\text{ is }X_{t}\text{-measurable}; \label{vb}
+\end{equation}
+
+(iii) a stochastic volatility process without leverage:
+\begin{equation}
+	\mathrm{d}V_{t}=\mu_{V,t}(\theta)\mathrm{d}t+g\left(  V_{t},\theta\right)
+	\mathrm{d}W_{2,t},\text{ \textrm{E}}\left(  W_{1,t}W_{2,t}\right)  =0;
+	\label{vc}
+\end{equation}
+
+(iv) a stochastic volatility process with leverage:
+\begin{equation}
+	\mathrm{d}V_{t}=\mu_{V,t}(\theta)\mathrm{d}t+g\left(  V_{t},\theta\right)
+	\mathrm{d}W_{2,t},\text{ \textrm{E}}\left(  W_{1,t}W_{2,t}\right)  =\rho\neq0.
+	\label{vd}
+\end{equation}
+Evidently, the volatility process is quite general, although we do not consider jumps in volatility.
+
+Now, define,
+\begin{equation}
+	\Pr\left(  N_{t+\Delta}-N_{t}=1|\mathcal{F}_{t}\right)  =\lambda_{t}
+	\Delta+o\left(  \Delta\right)  , \label{J1} 
+\end{equation}
+\begin{equation}
+	\Pr\left(  N_{t+\Delta}-N_{t}=0|\mathcal{F}_{t}\right)  =1-\lambda_{t}
+	\Delta+o\left(  \Delta\right)  , \label{J2} 
+\end{equation}
+and
+\begin{equation}
+	\Pr\left(  N_{t+\Delta}-N_{t}>1|\mathcal{F}_{t}\right)  =o\left(
+	\Delta\right)  , \label{J3} 
+\end{equation}
+where $\lambda_{t}$ characterizes the jump intensity. The jump size, $Z_{t},$
+is identically and independently distributed with density $f(z;\gamma).$ Equation (\ref{J3}) implies that we rule out infinite-activity jumps.
+
+When constructing the fixed time span realized jump tests discussed in the
+sequel, we remain agnostic about the jump generating process. However, for the case of our long time span jump intensity tests, we must provide a moderate amount of additional structure. This is one of the key trade-offs associated with using either variant of test. In particular, following \cite{corradi2018testing}, we consider two cases. First, $N_{t}$, which is the number of jump arrivals up to $t$, follows a counting process, such as the widely used Poisson process. In this case, $\lambda_{t}=\lambda,$ for all $t$. Second, jumps may be \textquotedblleft self-exciting\textquotedblright, in the sense that the jump intensity follows Hawkes diffusion (see \cite{bowsher2007modelling} and \cite{ait2015modeling}), with
+\begin{equation}
+	\mathrm{d}\lambda_{t}=a\left(  \lambda_{\infty}-\lambda_{t}\right)
+	\mathrm{d}t+\beta\mathrm{d}N_{s}, \label{lambda}%
+\end{equation}
+where $\lambda_{\infty}\geq0,$ $\beta\geq0,$ $a>0,$ and $a>\beta$, so that the process is mean reverting with \textrm{E}$\left(  \lambda_{t}\right)
+=\frac{a\lambda_{\infty}}{a-\beta}.$ As noted in \cite{corradi2018testing}, if $\lambda_{\infty}$ = 0, then \textrm{E}$\left(  \lambda_{t}\right)  $ = 0,
+which implies that $\lambda_{t}$ = 0, a.s. for all $t$. This implies that
+$N_{t}$ = 0, a.s., for all $t$. As a result, $\beta$, $a$ and $\gamma$ in this case are all unidentified. On the other hand, if $\lambda_{\infty}$ $>$ 0, then $\beta$ and $\gamma$ are identified. But if $\beta$ = 0, $a$ is not identified. These observations highlight the importance of pretesting for
+$\lambda_{\infty}=0$ against $\lambda_{\infty}>0$, in order to obtain consistent estimation of parameters in the case of Hawkes diffusions.
+
+In light of the above discussion, we are interested in testing
+\[
+H_{0}:\lambda=0
+\]
+versus
+\[
+H_{A}:\lambda>0,
+\]
+where $\lambda$ is the constant jump intensity, in the case of Poisson-type
+jumps; and is the expectation of the stochastic jump intensity (i.e. $\lambda$ = \textrm{E}$\left(  \lambda_{t}\right)  $), in the case of self-exciting jumps.\footnote{Note that $\lambda_{\infty}=(>)$ $0$ if and only if \textrm{E}$\left(  \lambda_{t}\right)  =(>)$ $0$.} This is a nonstandard inference problem because, under $H_{0},$ some parameters are not identified, and a parameter lies on the boundary of the null parameter space.
+
+Before discussing the tests that are compared in our Monte Carlo experiments, we first provide some heuristic motivation for long time span jump testing. This discussion follows \cite{corradi2014consistent}, who also provide complete details on the \textit{CSS1} type tests that we consider in the sequel.
+	
+\section{Heuristic Discussion}\label{sec:hd}
+
+In recent years, a large variety of tests for realized jumps have been proposed and studied. One common feature of the preponderance of these tests is that they are all carried out using high-frequency observations over a fixed time span and justified by in-fill asymptotic theorems. Therefore, they
+have power against realized jumps over fixed time spans; and none are
+consistent against the alternative of $\lambda>0.$ Many of the tests can be
+considered as Hausman-type tests in which a comparison of two realized measures of the integrated volatility is made, where one is robust to jumps, and one is not. Under the null of no jumps, both consistently estimate the integrated volatility. Under the alternative of jumps, however, the consistency of the non-robust realized measure fails. Instead, it estimates the total quadratic variation that contains the contribution from jump components. As a result, these two realized measures differ in the presence of jumps. In general, Hausman-type tests are designed to detect whether
+$\sum_{j=N_{t}}^{N_{t+1}}c_{j}^{2}=0$ or $\sum_{j=N_{t}}^{N_{t+1}}c_{j}^{2}>0,$ where $N_{t}$ denotes the number of jumps up to time $t,$ and $c_{j}$ is the (random) size of the jumps. However, $\lambda>0$ does not imply that $\sum_{j=N_{t}}^{N_{t+1}}c_{j}^{2}>0,$ given that $\Pr\left(  N_{t+1} -N_{t}>0\right)  <1$. Therefore, such tests have power against realized jumps, but not necessarily against positive jump intensity.
+
+Two techniques are often employed in practice to construct the jump-robust
+realized measures. The first uses multipower variations, such as bipower
+variation or tripower variation. Under these measures, the effect of jumps is
+asymptotically \textquotedblleft removed\textquotedblright\ by using the
+product of consecutive high-frequency observations. The second uses jump
+thresholding that allows for the separation of jump and continuous components, based on the difference between their orders of magnitude. (see, e.g. \cite{mancini2009non} and \cite{corsi2010threshold}). Recent higher order power variation tests are motivated by the fact that for $p>2,$ $\sum
+_{i=1}^{n-1}\left\vert \ln X_{(t+(i+1)\Delta}-\ln X_{t+i\Delta}\right\vert
+^{p}$ converges to $\sum_{t\leq s\leq t+1}\left\vert \ln X_{s}-\ln
+X_{s-}\right\vert ^{p},$ where $\sum_{t\leq s\leq t+1}\left\vert \ln X_{s}-\ln X_{s-}\right\vert ^{p}$ is strictly positive if there are jumps, and zero otherwise (see, e.g. \cite{ait2009testing} and \cite{ait2012testing}). In this case, however, test power obtains still because of realized jumps, and not because of positive jump probability.
+
+Additionally, other recent tests related to those discussed above have been
+proposed that are based on comparisons using pre-averaged volatility measures, in order to obtain tests that are robust to microstructure noise (see, e.g. \cite{podolskij2009bipower, podolskij2009estimation} and \cite{ait2012testing}).
+
+In the Monte Carlo and empirical experiments reported in this paper, we consider three fixed time span tests based on multipower variation, jump thresholding and higher order power variation, respectively.
+
+Generally, jump tests performed over a fixed time span are designed to
+distinguish between:\footnote{Jump test inconsistency has been pointed out by \cite{huang2005relative} and \cite{ait2009testing}, among others.}
+\[%
+\begin{array}
+[c]{c}%
+\Omega_{t,l}^{C}=\left\{  \omega:s\rightarrow\ln X_{s}(\omega)\mid\Delta\ln
+X_{s}=\ln X_{s}(\omega)-\ln X_{s-}(\omega)=0,~\forall s\in\lbrack
+t,t+l)\right\} \\
+\mathrm{and}\\
+\Omega_{t,l}^{J}=\left\{  \omega:s\rightarrow\ln X_{s}(\omega)\mid\Delta\ln
+X_{s}=\ln X_{s}(\omega)-\ln X_{s-}(\omega)\neq0,~\forall s\in\lbrack
+t,t+l)\right\}  ,
+\end{array}
+\]
+where $l$ indicates a fixed time span. Hence, all of the tests discussed above are dependent upon pathwise behavior. Clearly, one might decide in favor of $\Omega_{t,l}^{C}$, even if $\lambda>0,$ simply because jumps are by coincidence absent over the interval $[t,t+l).$ Now, in order to carry out a consistent test against positive jump intensity, two approaches may be used. First, one may consider the following joint hypothesis:
+\[
+\Omega_{T}^{C}=\cap_{t=0}^{T-1}\Omega_{t,l}^{C},~~\text{as }T\rightarrow
+\infty,
+\]
+versus its negation. Here, the objective is to test the joint null hypothesis
+that none of the fixed-span sample paths contain jumps. In fact, under mild
+conditions on the degree of heterogeneity of the process, failure to reject
+$\Omega_{\infty}^{C}=\lim_{T\rightarrow\infty}\cap_{t=1}^{T-1}\Omega_{t,l}%
+^{C}$ implies failure to reject $\lambda=0.$ The difficulty lies in how to
+implement a test for $\Omega_{T}^{C},$ when $T$ gets large. Needless to say,
+sequential application of fixed time span jump tests leads to sequential test
+bias, and for $T$ large, $\Omega_{T}^{C}$ is rejected with probability
+approaching unity. This is because the empirical size of the joint hypothesis
+test based on the sequential strategy is $\hat{\alpha}_{T}=1-\prod_{i=1}^{T}(1-\hat{\alpha}_{i})$, where $\hat{\alpha}_{i}$ is the empirical size of the $i^{th}$ individual fixed time span test. As a result,
+\[%
+\begin{split}
+\lim_{T\rightarrow\infty}\hat{\alpha}_{T}  &  =\lim_{T\rightarrow\infty
+}1-\prod_{i=1}^{T}(1-\hat{\alpha}_{i})\\
+&  =1-\lim_{T\rightarrow\infty}\prod_{i=1}^{T}(1-\hat{\alpha}_{i})\\
+&  =1.
+\end{split}
+\]
+In our Monte Carlo simulations, we illustrate this issue under a set of experiments conducted with an increasing time span. One common approach to this problem is based on controlling the overall Family-Wise Error-Rate (FWER), which ensures that no single hypothesis is rejected at a level larger than a fixed value, say $\alpha$. This is typically accomplished by sorting individual $p$-values, and using a rejection rule which depends on the overall number of hypotheses. For further discussion, see \cite{holm1979simple}, who develops modified Bonferroni bounds, \cite{white2000reality}, who develops the so-called \textquotedblleft reality check\textquotedblright, and \cite{romano2005stepwise}, who provide a refinement of the reality check. However, when the number of hypotheses in the composite grows with the sample size, the null will (almost) never be rejected. In other words, approaches based on the FWER are quite conservative.
+
+An alternative approach, which allows for the number of hypotheses in the
+composite to grow to infinity, is based on the Expected False Discovery Rate
+(E-FDR). When using this approach, one controls the expected number of false
+discoveries (rejections). For further discussion, see \cite{benjamini1995controlling} and \cite{storey2003positive}. Although the E-FDR approach applies to the case of a growing number of hypotheses, it is very hard to implement in the presence of generic dependence across $p$-values, as in our context.
+
+The above discussion, when coupled with issues of identification and test
+consistency, provides ample impetus for using long time span jump tests of the variety discussed in the sequel. Still, it should be noted that researchers have shown good performance of fixed time span tests over a day or a week, and we provide further evidence on this front in our Monte Carlo experiments. However, almost no one considers performing the tests over a year or even a decade. The only exception that we are aware of is \cite{huang2005relative}. They propose using \textquotedblleft full-sample statistics\textquotedblright\ based on \textit{BNS} test statistics. They show that when the time span is long, the \textit{BNS} test over-rejects the null of no realized jumps, since the approximation error on a short interval accumulates as the time span increases. Consequently, the empirical size is biased upwards.
+
+\section{Long Time Span Jump Intensity Test}\label{sec:ltsjit}
+
+Assume the existence of a sample of $n$ observations over an increasing time span, $T,$ and a shrinking discrete interval $\Delta,$ so that $n=\frac {T}{\Delta},$ with $T\rightarrow\infty$ and $\Delta\rightarrow0.$ Our interest lies in the following hypotheses:
+\[
+H_{0}:\lambda=0
+\]
+versus
+\begin{align*}
+	H_{A}  &  =H_{A}^{(1)}\cup H_{A}^{(2)}:\left(  \lambda>0\text{ and \textrm{E}%
+	}\left(  \left(  Z_{t}-\mathrm{E}\left(  Z_{t}\right)  \right)  ^{3}\right)
+	\neq0\right) \\
+	&  \cup\left(  \lambda>0\text{ and \textrm{E}}\left(  \left(  Z_{t}%
+	-\mathrm{E}\left(  Z_{t}\right)  \right)  ^{3}\right)  =0\right)  .
+\end{align*}
+Notice that the alternative hypothesis is the union of two different
+alternatives, designed to allow for both symmetric and asymmetric jump size
+density. This property also characterizes the closely related jump test
+discussed in \cite{corradi2018testing}, although their test differs in a key
+respect. Namely, their test is dependent on jump thresholding.
+
+Let $Y_{k\Delta}=\ln X_{k\Delta}-\frac{\Delta}{T}\sum_{k=2}^{n}\ln X_{k\Delta
+},$ and $Y_{(k-1)\Delta}=\ln X_{(k-1)\Delta}-\frac{\Delta}{T}\sum_{k=2}^{n}\ln
+X_{(k-1)\Delta}.$ Also, let%
+\[
+\widehat{\lambda}_{T,\Delta}=\frac{1}{T}\sum_{k=2}^{n}\left(  Y_{k\Delta
+}-Y_{(k-1)\Delta}\right)  ^{3}.
+\]
+Here, $\widehat{\lambda}_{T,\Delta}$ is the demeaned sample third moment. Consider the statistic
+\begin{equation}
+	\textit{CSS1}_{T,\Delta}=\frac{\sqrt{T}}{\Delta}\widehat{\lambda}_{T,\Delta}. \label{St}%
+\end{equation}
+
+\noindent The asymptotic behavior of $\textit{CSS1}_{T,\Delta}$ can be analyzed under
+the following assumption.\\
+
+\noindent\textit{Assumption A: (i) }$\ln X_{t}$\textit{ is generated by equation (\ref{X}) and }$V_{t}$\textit{ is defined in equations (\ref{va}), (\ref{vb}), or (\ref{vc}). (ii) }$\ln X_{t}$\textit{ is generated by equation (\ref{X}) and }$V_{t}$\textit{ is defined in equation (\ref{vd}). For }$C$\textit{ a generic constant, (iii) E}$\left(  \left\vert V_{t}\right\vert^{k}\right)  \leq C$\textit{, }$k\geq3,$\textit{ (iv)}$N_{t}$ \textit{satisfies equations (\ref{J1})-(\ref{J3}), and} $\lambda_{t}$\textit{ is either constant, or satisfies equation (\ref{lambda}). (v) The jump size,} $Z_{t},$\textit{ is independently and identically distributed, and }$E\left(\left\vert Z_{t}\right\vert^{k}\right)  \leq C,$\textit{ for }$k\geq 6.$\\
+
+\cite{corradi2014consistent} show that under assumptions A(i) and A(iii)-(v),
+assuming that as $n\rightarrow\infty,$ $T\rightarrow\infty$\ and
+$\Delta\rightarrow0$, then under\textit{ }$H_{0}:\textit{CSS1}_{T,\Delta}%
+\overset{d}{\rightarrow}N\left(  0,\omega_{0}\right)  , $with\textit{ }%
+$\omega_{0}=15E\left(  V_{k\Delta}^{3}\right)  +4\left(  \mathrm{E}\left(
+V_{k,\Delta}\right)  \right)  ^{3}-12E\left(  V_{k,\Delta}\right)  E\left(
+V_{k,\Delta}^{2}\right)  $\textit{. }Also, they prove that under $H_{A}%
+^{(1)},$ there exists an $\varepsilon>0,$ such that: $\lim_{T\rightarrow\infty,\Delta\rightarrow0}\Pr\left(  \frac{\Delta}{\sqrt{T}}\left\vert \textit{CSS1}_{T,\Delta}\right\vert >\varepsilon\right)  =1;$ and under $H_{A}^{(2)},$ there exists an $\varepsilon>0,$ such that: $\lim_{T\rightarrow\infty,\Delta\rightarrow0}\Pr\left(  \Delta\left\vert \textit{CSS1}_{T,\Delta}\right\vert
+>\varepsilon\right)  =1.$
+
+It follows immediately that $\textit{CSS1}_{T,\Delta}$ converges to a normal random variable under the null hypothesis, diverges at rate $\frac{\sqrt{T}}{\Delta}$ under the alternative of asymmetric jumps, and diverges at the slower rate of $\frac{1}{\Delta}$ under the alternative of symmetric jumps.
+
+Given that the variance is of a different order of magnitude under the null
+and under each alternative, the \textquotedblleft standard\textquotedblright\ nonparametric bootstrap is not asymptotically valid. This issue arises because the variance of the bootstrap statistic mimics the sample variance. This implies that the bootstrap statistic is of order $\Delta^{-1}$ under the alternative. This is not be a problem under $H_{A}^{(1)},$ since the statistic is of order $\sqrt{T}\Delta^{-1},$ but is a problem under $H_{A}^{(2)}$, since the actual and bootstrap statistics would be of the same order. To ensure power against $H_{A}^{(2)},$ it suffices to ensure that the bootstrap statistic is of a smaller order than the actual statistic. This can be accomplished by resampling observations over a rougher grid, $\widetilde{\Delta}$, using the same time span, $T.$
+
+Set the new discrete interval to be $\widetilde{\Delta},$ such that
+$\Delta/\widetilde{\Delta}\rightarrow0,$ and resample, with replacement,
+
+\noindent$\left(  Y_{k\widetilde{\Delta}}^{\ast}-Y_{(k-1)\widetilde{\Delta}%
+}^{\ast},...,Y_{\widetilde{n}\widetilde{\Delta}}^{\ast}-Y_{(\widetilde{n}%
+	-1)\widetilde{\Delta}}^{\ast}\right)  $ from $\left(  Y_{k\widetilde{\Delta}%
+}-Y_{(k-1)\widetilde{\Delta}},...,Y_{\widetilde{n}\widetilde{\Delta}%
+}-Y_{(\widetilde{n}-1)\widetilde{\Delta}}\right)  $, where $\widetilde{n} = T/\widetilde{\Delta}$. Now, let
+\[
+\widetilde{\lambda}_{T,\widetilde{\Delta}}=\frac{1}{T}\sum_{k=2}%
+^{\widetilde{n}}\left(  Y_{k\widetilde{\Delta}}-Y_{(k-1)\widetilde{\Delta}%
+}\right)  ^{3},
+\]
+and%
+\[
+\widetilde{\lambda}_{T,\widetilde{\Delta}}^{\ast}=\frac{1}{T}\sum
+_{k=2}^{\widetilde{n}}\left(  Y_{k\widetilde{\Delta}}^{\ast}%
+-Y_{(k-1)\widetilde{\Delta}}^{\ast}\right)  ^{3}.
+\]
+Further, define the bootstrap statistic as%
+\[
+\textit{CSS1}_{T,\widetilde{\Delta}}^{\ast}=\frac{\sqrt{T}}{\widetilde{\Delta}}\left(
+\widetilde{\lambda}_{T,\widetilde{\Delta}}^{\ast}-\widetilde{\lambda
+}_{T,\widetilde{\Delta}}\right)  .
+\]
+Finally, let $c_{\alpha,B,\Delta,\widetilde{\Delta}}^{\ast}$ and
+$c_{(1-\alpha),B,\Delta,\widetilde{\Delta}}^{\ast}$ be the ($\alpha/2)^{th}$
+and $(1-\alpha/2)^{th}$ critical values of the empirical distribution of
+$\textit{CSS1}_{T,\widetilde{\Delta}}^{\ast},$ constructed using $B$ bootstrap replications.\medskip\ \cite{corradi2014consistent} show that under
+assumptions A(i) and A(iii)-(v), and assuming that as $n\rightarrow\infty,$
+$B\rightarrow\infty,$ $T\rightarrow\infty,$ $\Delta\rightarrow0$,
+$\widetilde{\Delta}\rightarrow0$ and $\Delta/\widetilde{\Delta}\rightarrow
+0,$then under $H_{0}:$%
+\[
+\lim_{T,B\rightarrow\infty,\Delta,\widetilde{\Delta}\rightarrow0}\Pr\left(
+c_{\alpha/2,B,\Delta,\widetilde{\Delta}}^{\ast}\leq \textit{CSS1}_{T,\Delta}\leq
+c_{(1-\alpha/2),B,\Delta,\widetilde{\Delta}}^{\ast}\right)  =1-\alpha;
+\]
+\noindent and under $H_{A}^{(1)}\cup H_{A}^{(2)}:$%
+\[
+\lim_{T,B\rightarrow\infty,\Delta,\widetilde{\Delta}\rightarrow0}\Pr\left(
+c_{\alpha/2,B,\Delta,\widetilde{\Delta}}^{\ast}\leq \textit{CSS1}_{T,\Delta}\leq
+c_{(1-\alpha/2),B,\Delta,\widetilde{\Delta}}^{\ast}\right)  =0.
+\]
+
+It is immediate to see that rejecting the null whenever $\frac{\sqrt{T}%
+}{\Delta}\widehat{\lambda}_{T,\Delta}<c_{\alpha/2,B,\Delta,\widetilde{\Delta}}^{\ast}$ or $\frac{\sqrt{T}}{\Delta}\widehat{\lambda}_{T,\Delta}>c_{(1-\alpha/2),B,\Delta,\widetilde{\Delta}}^{\ast}$ , and otherwise failing to reject, delivers a test with asymptotic size equal to $\alpha$ and asymptotic power equal to unity. Note that the bootstrap statistic is of $P^{\ast}-$probability order $\frac{1}{\widetilde{\Delta}}$ under both $H_{A}^{(1)}$ and $H_{A}^{(2)},$ while the actual statistic is of $P-$probability order $\frac{\sqrt{T}}{\Delta}$ under $H_{A}^{(1)}$ and $\frac{1}{\Delta}$ under $H_{A}^{(2)}.$ Hence, the condition that $\Delta/\widetilde{\Delta}\rightarrow0$ ensures unit asymptotic power under $H_{A}^{(2)}.$
+
+The \textit{CSS1} test is not robust to leverage. In particular, the
+results presented above rely on the fact that under the null of no jumps,
+returns are symmetrically distributed. More precisely, all results are derived under the assumption that \textrm{E}$\left(  \left(  Y_{k\Delta}%
+-Y_{(k-1)\Delta}\right)  ^{3}\right)  =0,$ whenever there are no jumps.
+However, in the presence of leverage, (i.e. $V_{t}$ is generated as in
+(\ref{vd})), \textrm{E}$\left(  \left(  \int_{(k-1)\Delta}^{k\Delta}%
+V_{s}^{1/2}\mathrm{d}W_{1,s}\right)  ^{3}\right)  \neq0,$ and is instead of
+order $\Delta^{2}.$ For example, if $V_{t}$ is generated by a square root
+process (i.e., $\mathrm{d}V_{t}=\kappa\left(  \theta-V_{t}\right)
+\mathrm{d}t+\eta V_{t}^{1/2}\mathrm{d}W_{2,t}),$ then \\ \textrm{E}$\left(
+\left(  Y_{k\Delta}-Y_{(k-1)\Delta}\right)  ^{3}\right) = \lambda \mathrm{E}\left(  Z_{t}-\mathrm{E}\left(  Z_{t}\right)  \right)  ^{3} \Delta+\frac{\eta\theta\rho}{2\kappa}\Delta^{2}$ (see \cite{ait2015modeling}). Although, the contribution to the third moment of the asymmetric jump component is of a larger order than that of the leverage component, inference based on the comparison of $\textit{CSS1}_{T,\Delta}$ with the bootstrap critical values $c_{\alpha,B,\Delta,\widetilde{\Delta}}^{\ast}$ and $c_{(1-\alpha),B,\Delta,\widetilde{\Delta}}^{\ast}$ will lead to the rejection of the null of no jumps, even if the null is true. To avoid spurious rejection due to the presence of leverage, use the following modified statistic:
+\begin{equation}
+	\widetilde{\textit{CSS1}}_{T,\Delta}=\frac{1}{T^{1/2+\varepsilon}}\textit{CSS1}_{T,\Delta},
+	\label{Stl}%
+\end{equation}
+with $\varepsilon>0,$ arbitrarily small. For this test statistic,
+\cite{corradi2014consistent} show that under assumptions A(ii)-(v) hold, and
+assuming that as $n\rightarrow\infty,$ $T\rightarrow\infty,$ $\Delta
+\rightarrow0$, $\widetilde{\Delta}\rightarrow0,$ and $(T^{1/2+\varepsilon
+}\Delta)/\widetilde{\Delta}\rightarrow0$, then under $H_{0}:$%
+
+\[
+\lim_{T,B\rightarrow\infty,\Delta,\widetilde{\Delta}\rightarrow0}\Pr\left(
+c_{\alpha/2,B,\Delta,\widetilde{\Delta}}^{\ast}\leq\widetilde{\textit{CSS1}}_{T,\Delta
+}\leq c_{(1-\alpha/2),B,\Delta,\widetilde{\Delta}}^{\ast}\right)  =1;
+\]
+\textit{\noindent}and under $H_{A}^{(1)}\cup H_{A}^{(2)}:$%
+\[
+\lim_{T,B\rightarrow\infty,\Delta,\widetilde{\Delta}\rightarrow0}\Pr\left(
+c_{\alpha/2,B,\Delta,\widetilde{\Delta}}^{\ast}\leq\widetilde{\textit{CSS1}}_{T,\Delta
+}\leq c_{(1-\alpha/2),B,\Delta,\widetilde{\Delta}}^{\ast}\right)  =0.
+\]
+\medskip
+
+It follows that inference based on the comparison of $\widetilde{\textit{CSS1}}%
+_{T,\Delta}$ with the bootstrap critical values $c_{\alpha,B,\Delta,\widetilde{\Delta}}^{\ast}$ and $c_{(1-\alpha),B,\Delta,\widetilde{\Delta}}^{\ast}$ delivers a test with zero asymptotic size and unit asymptotic power.
+
+\section{Fixed Time Span Realized Jump Tests}\label{sec:ftsrjt}
+
+\label{sec:Test-Methods} In this section, we briefly review three fixed time
+span realized jump tests that are evaluated in our Monte Carlo and empirical
+experiments. These tests are the \textit{ASJ}, \textit{BNS} and \textit{PZ}
+tests discussed above.
+
+\subsection{A\"{\i}t-Sahalia and Jacod (\textit{ASJ}: 2009) Test}
+
+\cite{ait2009testing} propose a jump test based on calculating the ratio
+between two realized higher order power variations with different sampling
+intervals $\Delta$ and $k\Delta$, respectively, where $k$ is an integer chosen prior to test construction. The $p^{th}$ order realized higher order power variation is defined as follows,
+\begin{equation}
+	\widehat{B}(p,\Delta)=\sum_{k=2}^{[1/\Delta]}|\ln X_{k\Delta}-\ln
+	X_{(k-1)\Delta}|^{p}%
+\end{equation}
+The ratio between two realized power variations with different sampling
+intervals is then,
+\begin{equation}
+	\widehat{S}(p,k,\Delta)=\frac{\widehat{B}(p,k\Delta)}{\widehat{B}(p,\Delta)}.
+\end{equation}
+The test statistic is defined as,
+\begin{equation}
+	ASJ=\frac{k^{\frac{p}{2}-1}-\widehat{S}(p,k,\Delta)}{\sqrt{V_{n}^{c}}},
+\end{equation}
+where in the denominator, $V_{n}^{c},$ can be estimated either using a
+truncated estimator,
+\begin{equation}
+	\widehat{V}_{n}^{c}=\Delta\frac{\widehat{A}(2p,\Delta)M(p,k)}{\widehat{A}
+		(p,\Delta)^{2}},
+\end{equation}
+where $\widehat{A}(p,\Delta)$ is defined as follows,
+\begin{equation}
+	\widehat{A}(p,\Delta)=\frac{\Delta^{1-p/2}}{\mu_{p}}\sum_{k=2}^{[1/\Delta
+		]}|\ln X_{k\Delta}-\ln X_{(k-1)\Delta}|^{p}\mathbf{1}_{\{|\ln X_{k\Delta}-\ln
+		X_{(k-1)\Delta}|\leq\alpha\Delta^{\varpi}\}}, \label{eq: truncation}%
+\end{equation}
+or using a multipower variation estimator,
+\begin{equation}
+	\widetilde{V}_{n}^{c}=\Delta\frac{M(p,k)\widetilde{A}(p/([p]+1),2[p]+2,\Delta
+		)}{\widetilde{A}(p/([p]+1),[p]+1,\Delta)^{2}},
+\end{equation}
+where
+\begin{equation}
+	\widetilde{A}(r,q,\Delta)=\frac{\Delta^{1-qr/2}}{\mu_{r}^{q}}\sum
+	_{k=q}^{[1/\Delta]-q+1}\prod_{j=0}^{q-1}|\ln X_{(k+j)\Delta}-\ln
+	X_{(k+j-1)\Delta}|^{r},
+\end{equation}%
+\[
+M(p,k)=\frac{1}{\mu_{p}^{2}}(k^{p-2}(1+k)\mu_{2p}+k^{p-2}(k-1)\mu_{p}%
+^{2}-2k^{p/2-1}\mu_{k,p}),
+\]
+and
+\[
+\mu_{r}=\mathbb{E}(|U|^{r})~~and~~\mu_{k,p}=\mathbb{E}(|U|^{p}|U+\sqrt
+{k-1}V|^{p}),
+\]
+for $U,V\overset{\text{i.i.d}}{\sim}{N}(0,1)$.
+
+In practice, for any significance level $\alpha$, if $ASJ>Z_{\alpha}$, where
+$Z_{\alpha}$ is the $(1-\alpha)^{th}$ quantile of the standard normal distribution, one rejects the null of no jumps on the fixed interval [0, 1].
+
+\subsection{Barndorff-Nielsen and Shephard (\textit{BNS}: 2006) Test}
+
+The \cite{barndorff2006econometrics} test compares the difference between two estimators of integrated volatility; one which is robust to jumps and the other which is not, to test for jumps in a particular sample path. \cite{barndorff2004power} introduce the realized bipower variation (\textit{BPV}) which is a robust estimator of the integrated volatility. Namely, they consider
+\begin{equation}
+	BPV=\frac{\pi}{2}(\frac{m}{m-1})\sum_{k=2}^{[1/\Delta]}|\ln X_{(k+1)\Delta
+	}-\ln X_{k\Delta}||\ln X_{k\Delta}-\ln X_{(k-1)\Delta}|,
+\end{equation}
+where $m=$ $[1/\Delta]$. Realized \textit{BPV} is a special case of the
+following realized multipower variation with $p=2$,
+\begin{equation}
+	MPV(p)=\mu_{\frac{2}{p}}^{-p}(\frac{m}{m-p+1})\sum_{k=p}^{[1/\Delta]-p+1}%
+	\prod_{j=0}^{p-1}|\ln X_{(k+j)\Delta}-\ln X_{(k+j-1)\Delta}|^{\frac{2}{p}}.
+\end{equation}
+
+In this paper, we analyze the following version of their test statistic:
+\begin{equation}
+	BNS=\Delta^{-\frac{1}{2}}\frac{1-\frac{BPV}{RV}}{\sqrt{((\frac{\pi} {2}%
+			)^{2}+\pi-5)max(1,\frac{TPV}{(BPV)^{2}})}},
+\end{equation}
+where \textit{RV} is the realized volatility (i.e., the sum of squared
+high-frequency returns), and \textit{TPV} is tripower variation (i.e.,
+\textit{MPV}(3)).
+
+The authors prove that under the null, $BNS \xrightarrow{d} {N}(0,1)$. As a
+result, one rejects the null of no jumps on some fixed interval $[0,1]$, if
+the test statistic $BNS>Z_{\alpha}$.
+
+\subsection{Podolskij and Ziggel (\textit{PZ}: 2010) Test}
+
+\cite{podolskij2010new} modify the original truncated power variation statistic proposed in \cite{mancini2009non} by introducing a sequence of positive $i.i.d.$ random variables $\{\eta_{i}\}_{i\in\lbrack1,[1/\Delta]]},$ with expectation one and finite variance. Namely, they consider
+\begin{equation}
+	T(\ln X, p)=\Delta^{\frac{1-p}{2}}\sum_{k=2}^{[1/\Delta_{n}]}|\ln X_{k\Delta
+	}-\ln X_{(k-1)\Delta}|^{p}(1-\eta_{i}\mathbf{1}_{\{|\ln X_{k\Delta}-\ln
+		X_{(k-1)\Delta}|\leq\alpha\Delta_{n}^{\varpi}\}}).
+\end{equation}
+The test statistic that they propose has the following form,
+\begin{equation}
+	PZ=\frac{T(\ln X,p)}{Var^{\ast}(\eta)\widehat{A}(2p,\Delta)},
+\end{equation}
+where $\widehat{A}(2p,\Delta)$ is the original truncated power variation in equation (\ref{eq: truncation}). The authors prove that under the null of no jumps, $PZ \xrightarrow{d} {N}(0,1),$ and explodes under the alternative. As a result, one rejects the null if $PZ >Z_{\alpha}$.
+	
+\section{Monte Carlo Simulations}\label{sec: mcs}
+
+In this section, we report the results of Monte Carlo experiments used to analyze the finite sample properties of the tests introduced above. The simulations are designed to show: (i) the relevance of inconsistency of the fixed time span tests, when tested against non-zero jump intensity in the underlying \textit{DGP}; (ii) the relevance (or lack thereof) of sequential testing bias when performing daily jump tests, sequentially, along sample paths with a long time span; (iii) the empirical size and power of fixed time span jump tests when applied directly to samples with long time spans; and (iv) the finite sample properties of the $\textit{CSS1}$, $\widetilde{\textit{CSS1}}$ and \textit{CSS} tests.
+
+The \textit{DGP} under the null hypothesis in all simulations is the following stochastic volatility model,
+\begin{equation}
+	\label{eq: svm}%
+	\begin{split}
+		\ln X_{t}  &  =\ln X_{0}+\int_{0}^{t}\bar{\mu}ds+\int_{0}^{t}\sigma_{s}%
+		dW_{s},\\
+		\sigma_{t}^{2}  &  =\sigma_{0}^{2}+\kappa_{\sigma}\int_{0}^{t}(\bar{\sigma
+		}^{2}-\sigma_{s}^{2})ds+\zeta\int_{0}^{t}\sqrt{\sigma_{s}^{2}}dB_{s},
+	\end{split}
+\end{equation}
+where the stochastic volatility follows a square root process. Leverage effects are characterized by $\text{corr}(dW_{s},dB_{s})=\rho$, where $\rho$=\{0, -0.5\}. Under the alternative, we simulate jumps as a compound Poisson process. Namely, we add $\sum_{i=1}^{N_{t}}J_{i}$ to the null \textit{DGP}, where $N_{t}$ is a Poisson process characterized by intensity parameter $\lambda$, which determines the frequency of jump arrivals, and $J_{i}$ is independently and identically drawn from a normal distribution, which characterizes the jump size. All parameter values for various \textit{DGP} permutations considered are given in Table \ref{tab:Design}. Of note is that the parameter values used in our experiments are chosen to regions of the parameter space where the tests shift from having strong finite sample properties to having weaker finite sample properties. Thus, for example, while we broadly mimic the parameterizations used in the extant literature (see e.g., \cite{huang2005relative} and \cite{ait2009testing}, in some cases, our parameters are slightly smaller. For example, \cite{huang2005relative} have jump magnitude standard deviation parameters ranging from 0.5 to 2.0, while ours range from 0.25 to 1.25. The sampling frequency in our simulations is 5-minute (i.e., 78 observations per day). Using the Milstein discretization scheme, we simulate log-price sample paths over $T$ = 500 days, so that there are 39000 observations in total, for each sample path. Simulation results are calculated based on 1000 replications, and tests are implemented using 0.05 and 0.10 significance levels.
+
+Table \ref{tab:Daily-size} reports empirical size of daily fixed time span
+jump tests. In this table, however, the test is applied in two different ways. For entries under the \textquotedblleft Jump Days\textquotedblright\ header, the empirical size of the daily tests are reported. One can think of these experiments as reporting rejection frequencies of 500,000 tests (since $T=500$ and there are 1000 Monte Carlo replications). For entries under the
+\textquotedblleft Sequential Testing Bias\textquotedblright\ header, sequences of $T$ tests (corresponding the the length of our daily samples) are run, and overall rejection frequencies across all $T$ tests are reported, where $T$ ranges from 1 to 500 days. Thus, these entries indicate the accumulation of sequential testing bias associated with repeated application of the tests across multiple days. Turning first to the \textquotedblleft Jump Days\textquotedblright\ empirical size results, it is evident that the \textit{BNS} test is least favorably sized, as expected, while the \textit{ASJ} test is very accurately sized, across all $DGP$s; and is not consistently undersized at 0.05 significance level, like the \textit{PZ} test. Now, consider the \textquotedblleft Sequential Testing Bias\textquotedblright\ results in the table. As expected, sequential testing bias leads to a 1.000 rejection rate as $T$ increases beyond 50 days, and these rejections rates are achieved surprisingly quickly, as $T$ increases, although it is interesting to note that the \textit{PZ} test suffers from slightly less bias, for smaller values of $T$.
+
+Table \ref{tab:Daily-power} reports empirical power of daily fixed time span
+jump tests, defined as the rejection rate of daily jump tests across each
+individual day in each sample path, averaged across all 1000 replications. As
+in Table \ref{tab:Daily-size}, one can think of these experiments as reporting rejection frequencies of 500,000 tests. Interestingly, power is often small, even when $\lambda=0.4$, which is a relatively large value, for
+finite-activity jumps. Among the three jump tests, the \textit{ASJ} test has
+the lowest power, while \textit{BNS} and \textit{PZ} test are somewhat better. In interpreting these results, note that, intuitively speaking, the empirical power of daily jump tests against non-zero jump intensity is largely determined by the magnitude of the jump intensity, since this parameter determines the frequency or probability of jump arrivals. Even if these tests have good power against jumps when they occur, for daily intervals without any jumps, it is not surprising to observe that these tests do not reject the null in favor of non-zero jump intensity. Therefore, as long as the intensity is finite, the probability of jumps not occurring on a particular fixed interval is positive, which in turn affects the empirical power of all fixed time span jump tests. However, the tests are also clearly impacted by jump size magnitude. For example, when $\sigma$ increase from $0.25$ to $1.25$ (compare $DGPs$ 3 and 4 with $DGPs$ 5 and 6 - symmetric jumps, or compare $DGPs$ 7 and 8 with $DGPs$ 9 and 10 - asymmetric jumps), in which cases, empirical power increases by around $30\%$ under symmetric jumps. The exception is the \textit{BNS} and \textit{PZ} tests, which show little power improvement, under the asymmetric jump case. However, there is still a trade-off between the three tests, as the \textit{ASJ} test has overall less power for the case of symmetric jumps.
+
+Tables \ref{tab:Mutiday-size}-\ref{tab:MultiPZ-power} report findings from
+experiments where the \textquotedblleft entire\textquotedblright\ sample of
+$T$ days was used in a single application of the fixed time span tests. This
+testing strategy is of interest, because there is no reason that fixed time
+span tests need be implemented using only one day worth of data; and when they are implemented in this manner, they constitute a direct alternative to the use of our long time span tests. First, turn to Table \ref{tab:Mutiday-size}, where empirical size is reported. Among the three tests, \textit{ASJ} is the clear winner, with size remaining stable even when $T=500$. This is an interesting and surprising result, suggesting the broad usefulness of the \textit{ASJ} test. The \textit{BNS} and \textit{PZ} tests perform as expected, on the other hand. For example, the empirical size of the \textit{PZ} test approached unity very quickly, and is already approximately 0.5, even for $T=50$, the empirical size is other tests indicating the ability of this test to control size. As expected, and as can be seen upon inspection of Table \ref{tab:MultiASJ-power}-\ref{tab:MultiPZ-power}, the empirical power of all three tests approaches unity quickly as $T$ increases. For example, the empirical power of the \textit{ASJ} test are over 0.9 for almost all \textit{DGPs}, when $T=50$. In summary, the \textit{ASJ} test is well sized and has great power under long time span testing. This test, thus, is a clear alternative to the long time span tests discussed in the sequel.
+
+Tables \ref{tab:CSS1-size}-\ref{tab:CSS-Power} contain the results of
+our experiments run using long time span jump tests (i.e. the \textit{CSS1}, $\widetilde{\textit{CSS1}}$ and \textit{CSS} tests). As discussed above, the leverage-robust \textit{CSS1} test (i.e., $\widetilde{\textit{CSS1}}$) sacrifices power in order to ensure robustness against leverage effects. Specifically, in equation (\ref{Stl}), due to the extra term, $\frac{1}{T^{1/2+\epsilon}}$, the leverage-robust test statistic diverges at rate $\frac{1}{T^{\epsilon}\Delta}$ and$\frac{1}{T^{1/2+\epsilon}\Delta},$ under the alternatives of asymmetric and symmetric jumps, respectively. In practice, the sampling interval, $\Delta,$ is usually small and fixed, and the test statistic under the alternatives shrinks with an increasing time span, particularly when jumps are symmetric, while the bootstrapped critical values are of order $1/\widetilde{\Delta}$. As a result, when constructing the leverage-robust test, we propose a rule-of-thumb called our \textquotedblleft $T$-varying\textquotedblright\ strategy, in order to choose the subsampling
+interval, $\widetilde{\Delta},$ used in bootstrapping (see notes to Table
+\ref{tab:CSS1-size} for details). This rule-of-thumb results in improved power in our experiments. However, it is an ad-hoc data driven method, and further research into its properties remains to be done. Summarizing, we utilize coarser $\widetilde{\Delta},$ as $T$ grows. Since a coarser $\widetilde{\Delta}$ (i.e., a larger subsampling interval), diminishes the magnitude bootstrap critical values, this strategy (partially) offsets decreases in power that are due to the adjustment term being inversely proportional to $T$. Size trade-offs associated with using this method are found to be small, and hence the method is utilized in all of our leverage-robust testing experiments, and later in our empirical analysis. 
+
+Turning to the results of these tables, first consider the empirical size of the \textit{CSS1} and $\widetilde{\textit{CSS1}}$ (see Table \ref{tab:CSS1-size}). It is immediately apparent that the \textit{CSS1} test has good empirical size for \textit{DGP 1} (i.e., the \textquotedblleft no leverage\textquotedblright\ case). However, and as expected, size diverges when there is leverage. Again as expected, $\widetilde{\textit{CSS1}}$ has zero empirical size, regardless of the presence of leverage, for values of $T$ greater than 5. Interestingly, though when $T=5$, the test is approximately correctly sized; thus indicating that our long time span test is an alternative to the short time span tests discussed earlier for small values of $T$. Of course, $T$ should clearly not be equal to one for the application of the long time span tests. In Table \ref{tab:CSS-size}, we report the empirical size of the \textit{CSS} test, for different permutations of $T$ and $\Delta$. We find several interesting results. First, rejection frequencies are lower when $\kappa = T^+/T$ is closer to unity, especially for shorter $T$, given $\Delta$.\footnote{We assume that the sample over an increasing time span, $T^+$ used in the construction of the test, is observed and we examine a subsample with time span, $T$. For more details, see \cite{corradi2018testing}.} This is not surprising because for $T^+ = T$ the test statistic is degenerate under the null (see \cite{corradi2018testing}). Thus, it is advisable to use a reasonably large value for $\kappa$, such as $\kappa = 10$, given the assumption that $T^+/T \to \infty$. Next, consider the results for the case where $\rho = 0$. The \textit{CSS} test is correctly sized for $T$ = 60, 70, 80, when $\Delta = 1/78$, and is slightly undersized even for $T$ = 220, when $\Delta = 1/156$. This finding suggests that the ratio of $T$ to $\Delta$ is extremely crucial to the finite sample performance of the $\textit{CSS}$ test. Again, this is not surprising given the key assumption that 1/$\Delta<T<1/\Delta^2$. Finally, we observe that the test becomes oversized even faster when there is leverage (i.e. the case with $\rho = -0.5$). However, as long as $T$ and $\Delta$ are carefully chosen, the finite sample performance of the \textit{CSS} test is adequate. 
+
+ Next, notice in Table \ref{tab:OrigCSS-power} that the empirical power of the \textit{CSS1} is good across all cases, including the case where jumps are symmetric with small magnitudes of $\sigma=0.25$ (i.e., $DGPs$ 3 and 4). Turning to Table \ref{tab:LevRobustCSS-power}, where empirical power of the $\widetilde{\textit{CSS1}}$ is reported. As expected, empirical power is sacrificed, particularly when jumps are symmetric and $\sigma=0.25$ (i.e., $DGPs$ 3 and 4). However, when $\sigma=1.25$ (i.e., $DGPs$ 5 and 6), this sacrifice is substantially reduced, and power is quite good in all cases, even when $\lambda$ is small. Finally, the empirical power of the \textit{CSS} test is reported in Table \ref{tab:CSS-Power}.\footnote{We only report results associated with less frequent and weak jumps (i.e. $\lambda$ = 0.1 and 0.4) and for jump sizes that are \textit{i.i.d} normally distributed with $\mu$ = 0, $\sigma_J$ = 0.25 and 1.25 (i.e., small and symmetric jumps, corresponding to the ``worst'' alterantives considered). Complete results are available upon request.} The \textit{CSS} test is much more powerful than the $\widetilde{\textit{CSS1}}$ test for all cases. For example, when jumps are less frequent and are symmetric and very weak (i.e. \textit{DGPs} 3 and 4 with $\lambda$ = 0.1), the power of \textit{CSS} test is over 47\%, when $T$ = 50 and $\Delta$ = 1/78, at a 10\% nominal level, while the power of the $\widetilde{\textit{CSS1}}$ test is less than 20\%. Furthermore, the power of the \textit{CSS} test increases as $T$ grows, for a fixed $\Delta$. In contrast, as discussed above, the power of the $\widetilde{\textit{CSS1}}$ test decreases as $T$ grows, for fixed $\Delta$. Coupled with our earlier findings concerning size, we thus have strong evidence that the $\widetilde{\textit{CSS1}}$ and the \textit{CSS} tests are adequate tests for evaluating the presence of jumps in long time spans.
+
+\section{Empirical Examination of Stock Market Data}\label{sec:emp}
+
+\subsection{Data}
+
+\label{subsec:data} We analyze intraday TAQ stock price data sampled at a
+5-minute frequency, for the period including observations from the beginning
+of 2006 through 2013. In particular, we examine: (i) twelve individual stocks
+including American Express Company (AXP), Bank of America Corporation (BAC),
+Cisco Systems, Inc. (CSCO), Citigroup Inc. (C), The Coca-Cola Company (KO),
+Intel Corporation (INTC), JPMorgan Chase \& Co. (JPM), Merck \& Co., Inc.
+(MRK), Microsoft Corporation (MSFT), The Procter \& Gamble Company (PG),
+Pfizer Inc. (PFE) and Wal-Mart Stores, Inc. (WMT)); nine sector ETFs including Materials Select Sector SPDR ETF (XLB), Energy Select Sector SPDR ETF (XLE), Financial Select Sector SPDR ETF (XLF), Industrial Select Sector SPDR ETF (XLI), Technology Select Sector SPDR ETF (XLK), Consumer Staples Select Sector SPDR ETF (XLP), Utilities Select Sector SPDR ETF (XLU), Health Care Select Sector SPDR ETF (XLV) and Consumer Discretionary Select Sector SPDR ETF (XLY); and (iii) the SPDR S\&P 500 ETF (SPY). Overnight returns are excluded from our data set.
+
+\subsection{Empirical Findings}\label{subsec:empres}
+
+Turning our discussion first to Figures \ref{fig:JDs-ETFs}--\ref{fig:JDs-IndStocks}, note that the bar charts in these figures depict annual ratios of jump days for all of our stocks and ETFs, based on application of the \textit{ASJ}, \textit{BNS}, and \textit{PZ} tests (see legend to Figure \ref{fig:JDs-ETFs}). For example, 0.2 indicates that there were jumps founds on 20\% of the trading days in a given year. As expected, jumps are widely detected in asset prices and indexes over almost any year. Sometimes, the annual percentage of jump days even appears to be inconceivably large, at near 50\%. Additionally, while the alternative tests often perform similarly (e.g. all three testing methods find jumps during around 40\% of the days in 2006 for XLU and XLP), there are substantial differences for some stocks (e.g. in 2013 the \textit{PZ} tests detects jumps twice as frequently as the other fixed time span tests).
+
+As expected, the \textit{ASJ} test is the most conservative among the three tests. In almost all cases, the \textit{ASJ} test detects the fewest number of \textquotedblleft jump days\textquotedblright. For instance, in 2008, \textit{ASJ} test only finds 7.5\% jump-days for XLK, while the \textit{PZ} and \textit{BNS} tests find jumps on 17.4\% and 22.5\% of days, respectively. For SPY, the \textit{ASJ} test finds around 1/3 as many jumps as the other tests, in 2009. This finding is consistent with evidence from our Monte Carlo experiments (see Table \ref{tab:Daily-power}). However, even with the most conservative test, we regularly detect over 15\% jump days for many assets, including XLV for 2006 through 2010, XLB and XLY in 2006, and XLF and XLI for 2006 and 2007. Additionally, jump-day percentages are generally larger for our ETFs than for individual stocks, as should be expected. Still, it is also apparent, upon inspection of the figures, that the percentage of jumps detected in our ETFs is declining over time, on an annual basis. This pattern does not characterize individual stocks, however. We conjecture that a possible reason for this is that ETFs where not as frequently traded in the early years of our sample. For instance, typical daily trading volume for XLP or XLY was around 1 million, including pre-market trading and after-hours trading volumes, between 2006 and 2008. This volume is around 1\% to 10\% of the trading volume of BAC, and 0.15\% to 2.5\% of the trading volume of SPY, over the same period.
+
+We now turn to a discussion of the results tabulated in Tables \ref{ASJ-ETFs}--\ref{CSS-Assets}. In these tables, jump tests results based on the examination of long time spans are reported for the \textit{ASJ}, \textit{CSS1}, $\widetilde{\textit{CSS1}}$ and \textit{CSS} tests. In these tables, tabulated entries are test statistics, and those entries with *, **, and *** indicate rejections of the \textquotedblleft no-jump\textquotedblright\ null at 0.10, 0.05, and 0.01 significance levels, respectively. In these tables, the \textquotedblleft long span\textquotedblright\ considered is one year for the \textit{ASJ}, \textit{CSS1} and $\widetilde{\textit{CSS1}}$, corresponding to the period of time for which annual jump-day rations were reported in Figures \ref{fig:JDs-ETFs}--\ref{fig:JDs-IndStocks}, and is one quarter for the \textit{CSS} test. Consider first the results of the \textit{ASJ} test reported in Table \ref{ASJ-ETFs} for our ETFs. Interestingly, there are various ETFs for which no jumps are found. For example, for XLE, no jumps are found in 2006, 2008, 2010, and 2011. In 2011, no jumps are found for 7 of 10 ETFs. Still, in 2007, jumps are found for all 9 ETFs, and in 2008, jumps are found for 7 ETFs. Thus, the evidence concerning jumps appears much more nuanced when the \textit{ASJ} tests is utilized using long time spans. Of course, of discussion above concerning
+trading volume effects during the early years of our sample still applies,
+however. Thus, it is difficult to be sure whether the increase in the frequency of jumps found in earlier years for our ETFs is an indicator of the
+ensuing financial collapse of 2008, or whether this finding is simply an artifact of the data. We leave further investigation of this issue to future research.
+
+Turning to Tables \ref{OrigCSS-ETFs} and \ref{LevRobust-CSS-ETFs}, which again report on ETFs, note that these tables include results for the \textit{CSS1} (Table \ref{OrigCSS-ETFs}) and $\widetilde{\textit{CSS1}}$ (Table \ref{LevRobust-CSS-ETFs}) tests. As expected, given our Monte Carlo findings, and assuming the presence of leverage, rejections based on the \textit{CSS1} test are not only frequent, but are actually more frequent than rejections based on the \textit{ASJ} test. Indeed, given the presence of leverage, these results carry little weight. However, we know that the $\widetilde{\textit{CSS1}}$ performs adequately, given the presence of leverage. It is perhaps not surprising, then, that the number of years for which jumps are found decreases substantially when $\widetilde{\textit{CSS1}}$ is used, relative to when testing using \textit{CSS1}. Indeed, in Table \ref{LevRobust-CSS-ETFs}, note that there are many ETFs for which no jumps are found across multiple different years. Still, it should be stressed that while $\widetilde{\textit{CSS1}}$ is robust to the presence of leverage, the cost of making it thus is a reduction in power, as discussed in the previous sections of this paper. Thus, our conjecture is that the \textquotedblleft truth\textquotedblright\ likely lies somewhere between the results reported based on application of the \textit{ASJ} and the $\widetilde{\textit{CSS1}}$ tests. Still, either way, it is clear that application of long time span tests results in fewer findings of jumps. It is this feature of the tests that is most intriguing, given its implications on the specification and estimation of diffusion models.
+
+Tables \ref{ASJ-Year-IndStock}-\ref{LevRobust-CSS-IndStocks} contain
+results that are analogous to those reported in Tables \ref{ASJ-ETFs}-\ref{LevRobust-CSS-ETFs}, except that individual stocks are analyzed. Interestingly, the test rejection patterns that appear upon inspection of the entire in these tables confirms our above discussion based on ETF analysis. Namely, there are various years for which no jumps are found based on application of the \textit{ASJ} test, and this incidence of \textquotedblleft non-rejections\textquotedblright\ increases when one utilizes the $\widetilde{\textit{CSS1}}$ test.
+
+Finally, Table \ref{CSS-Assets} includes results based on the application of the \textit{CSS} test.\footnote{Only a small subset of our empirical findings are included in the table. These findings are illustrative of those based on examination of our complete set of findings, which are available upon request.} We observe more rejections in this table, which is not surprising, given the results of our Monte Carlo experiments, which indicate that the \textit{CSS} test is much more powerful than the $\widetilde{\textit{CSS1}}$ test, even when jumps are infrequent and weak. However, there is a possibility that some of these rejections are spurious, due to the fact that when there is leverage, the test bias associated with the \textit{CSS} test increases with $T$, for a fixed sampling frequency, at a faster rate than does the bias associated with the $\widetilde{\textit{CSS1}}$ test. Regardless, when the \textit{CSS} is used, we once again find multiple quarters that exhibit no evidence of jumps.
+
+In summary, we conclude that the usual \textquotedblleft
+toolbox\textquotedblright\ used by financial econometricians might be usefully augmented by including in it long time span jump tests. If application of the $\widetilde{\textit{CSS1}}$ test results in rejection of the no-jumps null hypothesis, then we have very strong evidence of jumps in the \textit{DGPs}. If application of the $\widetilde{\textit{CSS1}}$ does not result in rejection, then it is advisable to check this result by applying the \textit{ASJ} test and \textit{CSS} tests, which are more powerful.
+
+\section{Concluding Remarks}
+
+In this paper, we carry out a Monte Carlo investigation of long
+time span jump tests, which are designed to indicate whether the jump intensity in the underlying \textit{DGP} is identically zero. The finite sample performance of these tests is compared with that of various fixed time span jump tests. We find that the long time span tests have good finite sample properties. However, we also find that fixed time span tests suffer not only from sequential bias (as is well documented), but are also severely over-sized when they are directly used to test for jumps with long time spans of data. These results confirm the findings of \cite{huang2005relative} that using asymptotic approximations associated with finite time span tests in order to study long time spans of data can lead to test failure. The exception to these findings is the \textit{ASJ} of \cite{ait2009testing}, which performs favorably, when compared with \cite{corradi2014consistent, corradi2018testing} type long time span jump tests. In an empirical illustration, we show that all of the jump tests that are designed to be consistent, for $T \to \infty$, find less prevalence of jumps that when fixed time span jump tests are applied using daily data.
+ 
+\newpage
+  
+\bibliographystyle{cbe}
+\bibliography{ref_jumptests}
+ 
+\newpage
+ 
+\begin{table}[htb!]
+	\caption{Data Generating Processes (\textit{DGPs}) Used in Monte Carlo Experiments}
+	\label{tab:Design}
+	\subcaption*{\footnotesize Panel A: Parameter Values}
+	\begin{center}
+		\begin{tabular}{llr}
+			\toprule
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$\kappa_{\sigma},\bar{\sigma}, \zeta$ = \{5, 0.12, 0.5\} \\
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$\mu$ = 0.05 \\
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$\Delta$ = 1/78 \\
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ $\rho$ = \{0, -0.5\} \\
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$\lambda$ = \{0.1, 0.4, 0.8\} \\
+			$J_i$ $\overset{\text{i.i.d}}{\sim}$ $\mathcal{N}(\mu_J, \sigma_J^2)$, ~~ \{$\mu_J$, $\sigma_J$\} = \{0, 0.25\}, ~~~~ \{$\mu_J$, $\sigma_J$\} = \{0, $5\times0.25$\} \\ ~~~~~~~~~~~~~~~~~~~~~~~~~~ \{$\mu_J$, $\sigma_J$\} = \{$\sqrt{0.5}$, 0.25\},  \{$\mu_J$, $\sigma_J$\} = \{$2.5\times \sqrt{0.5}$, $5\times0.25$\} \\		
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\subcaption*{\footnotesize Panel B: Data Generating Processes (\textit{DGPs})}
+	\begin{center}
+		\begin{tabular}{llr}
+			\toprule
+			~~~~~~~~~~\textit{DGP} 1: Eq. (\ref{eq: svm}) with $\mu$ = 0.05, $\rho$ = 0, $\kappa_{\sigma}$ = 5, $\bar{\sigma}$ = 0.12, $\zeta$ = 0.5 \\
+			~~~~~~~~~~\textit{DGP} 2: Eq. (\ref{eq: svm}) with $\mu$ = 0.05, $\rho$ = -0.5, $\kappa_{\sigma}$ = 5, $\bar{\sigma}$ = 0.12, $\zeta$ = 0.5 \\ 
+			~~~~~~~~~~\textit{DGP} 3: \textit{DGP} 1 + $J_i$ $\overset{\text{i.i.d}}{\sim}$ $\mathcal{N}(0, 0.25^2)$ \\
+			~~~~~~~~~~\textit{DGP} 4: \textit{DGP} 2 + $J_i$ $\overset{\text{i.i.d}}{\sim}$ $\mathcal{N}(0, 0.25^2)$ \\
+			~~~~~~~~~~\textit{DGP} 5: \textit{DGP} 1 + $J_i$ $\overset{\text{i.i.d}}{\sim}$ $\mathcal{N}(0, (5\times0.25)^2)$ \\
+			~~~~~~~~~~\textit{DGP} 6: \textit{DGP} 2 + $J_i$ $\overset{\text{i.i.d}}{\sim}$ $\mathcal{N}(0, (5\times0.25)^2)$ \\
+			~~~~~~~~~~\textit{DGP} 7: \textit{DGP} 1 + $J_i$ $\overset{\text{i.i.d}}{\sim}$ $\mathcal{N}(\sqrt{0.5}, 0.25^2)$ \\
+			~~~~~~~~~~\textit{DGP} 8: \textit{DGP} 2 + $J_i$ $\overset{\text{i.i.d}}{\sim}$ $\mathcal{N}(\sqrt{0.5}, 0.25^2)$ \\    	
+			~~~~~~~~~~\textit{DGP} 9: \textit{DGP} 1 + $J_i$ $\overset{\text{i.i.d}}{\sim}$ $\mathcal{N}(2.5\times\sqrt{0.5}, (5\times0.25)^2)$ \\
+			~~~~~~~~~~\textit{DGP} 10: \textit{DGP} 2 + $J_i$ $\overset{\text{i.i.d}}{\sim}$ $\mathcal{N}(2.5\times\sqrt{0.5}, (5\times0.25)^2)$ \\		
+			\bottomrule
+		\end{tabular}
+	\end{center}    
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: \textit{DGP} 1 is a continuous process without leverage effect and \textit{DGP} 2 is a continuous process with leverage effect. \textit{DGPs} 3-10 are continuous processes with or without leverage effect plus jumps characterized by various jump size densities. See Section \ref{sec: mcs} for complete details.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}
+	\caption{Empirical Size of Daily Fixed Time Span Tests and Sequential Testing}
+	\label{tab:Daily-size}
+	\begin{center}
+		\begin{tabular}{ccccccccccccccc}
+			\toprule
+			\hline
+			Test                                                               &  & Subject                                                             &  & T = 1                                                 &  & T = 5                                                  &  & T = 50                                                 &  & T = 150                                               &  & T = 300                                               &  & T = 500                                               \\ \hline
+			&  &                                                                    &  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 1}                                                                                           &  &                                                        &  &                                                        \\ \cline{3-15} 
+			&  & Jump Days                                                          &  & \begin{tabular}[c]{@{}c@{}}0.112\\ 0.058\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.115\\ 0.058\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.118\\ 0.059\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.120\\ 0.059\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.119\\ 0.059\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.120\\ 0.060\end{tabular} \\ \cline{3-15} 
+			\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}\textit{ASJ}\end{tabular}} &  & \begin{tabular}[c]{@{}c@{}}Sequential \\ Testing Bias\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.112\\ 0.058\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.458\\ 0.256\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.953\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  \\ \cline{3-15} 
+			&  &                                                                    &  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 2}                                                                                           &  &                                                        &  &                                                        \\ \cline{3-15} 
+			&  & Jump Days                                                          &  & \begin{tabular}[c]{@{}c@{}}0.100\\ 0.052\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.116\\ 0.057\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.121\\ 0.059\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.120\\ 0.059\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.120\\ 0.059\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.120\\ 0.059\end{tabular} \\ \cline{3-15} 
+			&  & \begin{tabular}[c]{@{}c@{}}Sequential \\ Testing Bias\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.100\\ 0.052\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.458\\ 0.256\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.950\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  \\ \hline
+			&  &                                                                    &  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 1}                                                                                           &  &                                                        &  &                                                        \\ \cline{3-15} 
+			&  & Jump Days                                                          &  & \begin{tabular}[c]{@{}c@{}}0.122\\ 0.071\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.150\\ 0.094\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.155\\ 0.095\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.152\\ 0.093\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.153\\ 0.094\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.153\\ 0.095\end{tabular} \\ \cline{3-15} 
+			\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}\textit{BNS}\end{tabular}} &  & \begin{tabular}[c]{@{}c@{}}Sequential\\ Testing Bias\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.122\\ 0.071\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.557\\ 0.380\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 0.992\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  \\ \cline{3-15} 
+			&  &                                                                    &  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 2}                                                                                           &  &                                                        &  &                                                        \\ \cline{3-15} 
+			&  & Jump Days                                                          &  & \begin{tabular}[c]{@{}c@{}}0.141\\ 0.098\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.153\\ 0.094\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.156\\ 0.096\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.154\\ 0.095\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.154\\ 0.095\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.154\\ 0.095\end{tabular} \\ \cline{3-15} 
+			&  & \begin{tabular}[c]{@{}c@{}}Sequential\\ Testing Bias\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.141\\ 0.098\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.571\\ 0.398\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 0.993\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  \\ \hline
+			&  &                                                                    &  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 1}                                                                                           &  &                                                        &  &                                                        \\ \cline{3-15} 
+			&  & Jump Days                                                          &  & \begin{tabular}[c]{@{}c@{}}0.120\\ 0.043\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.081\\ 0.031\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.123\\ 0.050\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.113\\ 0.049\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.110\\ 0.046\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.108\\ 0.045\end{tabular} \\ \cline{3-15} 
+			\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}\textit{PZ}\end{tabular}}     &  & \begin{tabular}[c]{@{}c@{}}Sequential\\ Testing Bias\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.120\\ 0.043\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.347\\ 0.146\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.921\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 0.999\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  \\ \cline{3-15} 
+			&  &                                                                    &  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 2}                                                                                           &  &                                                        &  &                                                        \\ \cline{3-15} 
+			&  & Jump Days                                                          &  & \begin{tabular}[c]{@{}c@{}}0.105\\ 0.046\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.075\\ 0.029\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.122\\ 0.048\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.113\\ 0.049\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.110\\ 0.046\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.108\\ 0.045\end{tabular} \\ \cline{3-15} 
+			&  & \begin{tabular}[c]{@{}c@{}}Sequential\\ Testing Bias\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.105\\ 0.046\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.331\\ 0.140\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.916\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 0.999\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  \\ \hline
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: Entries in this table denote rejection frequencies based on applications of \textit{ASJ}, \textit{BNS} and \textit{PZ} daily fixed time span jump tests. Results for 0.1 (row 1) and 0.05 (row 2) significance levels are reported. $T$ denotes the number of days for which daily fixed time span jump tests are applied. ``Jump Days'' shows the average percentage of detected jump days at 0.1 and 0.05 significance levels, respectively. ``Sequential Testing Bias'' shows probability of finding at least one jump at 0.1 and 0.05 significance levels, respectively. See Sections \ref{sec:ftsrjt} and \ref{sec: mcs} for complete details.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}[htb!]
+	\caption{Empirical Power of Daily Fixed Time Span Tests}
+	\label{tab:Daily-power}
+	\begin{center}
+		\begin{tabular}{cccccccccc}
+			\toprule
+			\hline
+			Jump Intensity &  & \textit{DGP} 3                                                   & \textit{DGP} 4                                                   & \textit{DGP} 5                                                   & \textit{DGP} 6                                                   & \textit{DGP} 7                                                   & \textit{DGP} 8                                                   & \textit{DGP} 9                                                   & \textit{DGP} 10                                                  \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{\textit{ASJ}}                                                                                           &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1  &  & \begin{tabular}[c]{@{}c@{}}0.127\\ 0.068\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.124\\ 0.067\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.143\\ 0.077\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.135\\ 0.077\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.160\\ 0.093\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.160\\ 0.093\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.186\\ 0.118\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.185\\ 0.125\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4  &  & \begin{tabular}[c]{@{}c@{}}0.183\\ 0.104\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.170\\ 0.103\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.244\\ 0.150\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.232\\ 0.143\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.285\\ 0.167\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.284\\ 0.172\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.353\\ 0.262\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.353\\ 0.262\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8  &  & \begin{tabular}[c]{@{}c@{}}0.232\\ 0.137\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.242\\ 0.138\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.345\\ 0.210\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.356\\ 0.219\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.415\\ 0.240\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.431\\ 0.252\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.548\\ 0.411\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.533\\ 0.425\end{tabular} \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{\textit{BNS}}                                                                                           &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda = 0.1$  &  & \begin{tabular}[c]{@{}c@{}}0.201\\ 0.154\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.185\\ 0.124\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.222\\ 0.179\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.208\\ 0.150\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.247\\ 0.208\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.230\\ 0.177\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.250\\ 0.211\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.232\\ 0.179\end{tabular} \\ \cline{3-10} 
+			$\lambda = 0.4$  &  & \begin{tabular}[c]{@{}c@{}}0.315\\ 0.264\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.274\\ 0.225\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.379\\ 0.339\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.359\\ 0.313\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.432\\ 0.403\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.404\\ 0.371\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.441\\ 0.413\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.411\\ 0.378\end{tabular} \\ \cline{3-10} 
+			$\lambda = 0.8$  &  & \begin{tabular}[c]{@{}c@{}}0.427\\ 0.377\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.392\\ 0.336\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.560\\ 0.526\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.534\\ 0.499\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.625\\ 0.600\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.611\\ 0.583\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.633\\ 0.612\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.615\\ 0.588\end{tabular} \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{\textit{PZ}}                                                                                            &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1  &  & \begin{tabular}[c]{@{}c@{}}0.191\\ 0.107\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.182\\ 0.101\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.218\\ 0.136\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.211\\ 0.131\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.239\\ 0.159\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.234\\ 0.157\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.241\\ 0.163\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.235\\ 0.158\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4  &  & \begin{tabular}[c]{@{}c@{}}0.295\\ 0.217\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.287\\ 0.210\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.377\\ 0.311\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.369\\ 0.298\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.425\\ 0.366\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.416\\ 0.352\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.431\\ 0.372\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.424\\ 0.360\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8  &  & \begin{tabular}[c]{@{}c@{}}0.424\\ 0.357\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.397\\ 0.339\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.560\\ 0.510\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.548\\ 0.498\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.634\\ 0.589\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.624\\ 0.587\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.640\\ 0.595\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.628\\ 0.591\end{tabular} \\ \hline
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Table \ref{tab:Daily-size}. Rejection frequencies are given based on repeated daily applications of jump tests across $T$ = 500 days, for each Monte Carlo replication. Thus, one can think of these experiments as reporting rejection frequencies of 500,000 tests (since $T$ = 500 and there are 1000 Monte Carlo replications).
+	\end{tablenotes}
+\end{table}
+
+\begin{table}
+	\caption{Empirical Size of Fixed Time Span Tests When Utilized Using Long Samples}
+	\label{tab:Mutiday-size}
+	\begin{adjustbox}{width=1\textwidth, height = 0.30\textwidth, center}
+		\begin{tabular}{ccccccccccccc}
+			\toprule
+			\hline
+			Test                 &  & $T$ = 5                                                  &  & $T$ = 25                                                  &  & $T$ = 50                                                  &  & $T$ = 150                                                 &  & $T$ = 300                                                 &  & $T$ = 500                                                \\  \hline
+			&  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 1}                                                                                            &  &                                                         &  &                                                         \\ \cline{3-13} 
+			\multirow{2}{*}{\textit{ASJ}} &  & \begin{tabular}[c]{@{}c@{}}0.113\\ 0.051\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.109\\ 0.057\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.119\\ 0.067\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.114\\ 0.066\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.135\\ 0.072\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.147\\ 0.072\end{tabular}  \\ \cline{3-13} 
+			&  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 2}                                                                                            &  &                                                         &  &                                                         \\ \cline{3-13} 
+			&  & \begin{tabular}[c]{@{}c@{}}0.106\\ 0.045\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.131\\ 0.075\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.148\\ 0.069\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.136\\ 0.065\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.132\\ 0.072\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.145\\ 0.080\end{tabular}  \\ \hline
+			&  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 1}                                                                                            &  &                                                         &  &                                                         \\ \cline{3-13} 
+			\multirow{2}{*}{\textit{BNS}} &  & \begin{tabular}[c]{@{}c@{}}0.132\\ 0.070\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.136\\ 0.071\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.142\\ 0.075\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.150\\ 0.081\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.194\\ 0.109\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.215\\ 0.127\end{tabular} \\ \cline{3-13} 
+			&  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 2}                                                                                            &  &                                                         &  &                                                         \\ \cline{3-13} 
+			&  & \begin{tabular}[c]{@{}c@{}}0.127\\ 0.081\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.122\\ 0.065\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.142\\ 0.080\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.162\\ 0.095\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.192\\ 0.104\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.227\\ 0.132\end{tabular} \\ \hline
+			&  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 1}                                                                                            &  &                                                         &  &                                                         \\ \cline{3-13} 
+			\multirow{2}{*}{\textit{PZ}}  &  & \begin{tabular}[c]{@{}c@{}}0.116\\ 0.069\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.288\\ 0.279\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.504\\ 0.484\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.849\\ 0.846\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.962\\ 0.950\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.994\\ 0.993\end{tabular} \\ \cline{3-13} 
+			&  &                                                        &  &                                                         &  & \multicolumn{3}{c}{\textit{DGP} 2}                                                                                            &  &                                                         &  &                                                         \\ \cline{3-13} 
+			&  & \begin{tabular}[c]{@{}c@{}}0.119\\ 0.071\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.290\\ 0.265\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.504\\ 0.482\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.869\\ 0.856\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.974\\ 0.964\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.995\\ 0.995\end{tabular} \\ \hline 
+			\bottomrule
+		\end{tabular}
+	\end{adjustbox} 
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Table \ref{tab:Daily-size}. Entries are rejection frequencies based on a single application of the \textit{ASJ}, \textit{BNS} and \textit{PZ} tests using long time span samples with $T$ days, for each Monte Carlo replication. For all values of $T$, 1000 replications are run. 
+	\end{tablenotes}
+\end{table}
+
+\begin{table}
+	\caption{Empirical Power of the \textit{ASJ} Jump Test When Utilized Using Long Samples}
+	\label{tab:MultiASJ-power}
+	\begin{center}
+		\begin{tabular}{cccccccccc}
+			\toprule
+			\hline
+			Jump Intensity  &  & \textit{DGP} 3                                                   & \textit{DGP} 4                                                   & \textit{DGP} 5                                                   & \textit{DGP} 6                                                   & \textit{DGP} 7                                                   & \textit{DGP} 8                                                   & \textit{DGP} 9                                                   & \textit{DGP} 10                                                  \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 5}                                                                                         &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.214\\ 0.151\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.227\\ 0.169\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.341\\ 0.285\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.352\\ 0.286\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.409\\ 0.345\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.408\\ 0.351\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.436\\ 0.395\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.447\\ 0.405\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.498\\ 0.401\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.482\\ 0.400\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.750\\ 0.678\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.731\\ 0.668\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.838\\ 0.769\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.846\\ 0.784\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.876\\ 0.856\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.872\\ 0.854\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.670\\ 0.565\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.653\\ 0.563\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.901\\ 0.839\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.899\\ 0.833\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.941\\ 0.897\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.936\\ 0.895\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.947\\ 0.934\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.939\\ 0.923\end{tabular} \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 25}                                                                                        &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.544\\ 0.480\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.510\\ 0.454\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.835\\ 0.812\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.803\\ 0.779\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.913\\ 0.907\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.913\\ 0.900\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.924\\ 0.921\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.924\\ 0.918\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.908\\ 0.872\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.898\\ 0.870\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.993\\ 0.993\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.994\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.992\\ 0.991\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.991\\ 0.991\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.986\\ 0.986\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.984\\ 0.984\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.988\\ 0.985\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.988\\ 0.977\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.995\\ 0.995\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.995\\ 0.994\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.979\\ 0.978\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.984\\ 0.980\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.989\\ 0.986\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.985\\ 0.978\end{tabular} \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 50}                                                                                        &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1  &  & \begin{tabular}[c]{@{}c@{}}0.711\\ 0.663\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.714\\ 0.655\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.960\\ 0.954\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.956\\ 0.949\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.989\\ 0.985\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.986\\ 0.985\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.991\\ 0.990\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.990\\ 0.990\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.987\\ 0.979\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.989\\ 0.983\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.997\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.997\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.992\\ 0.992\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.994\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.993\\ 0.993\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.994\\ 0.992\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.995\\ 0.995\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.994\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.995\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.995\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.990\\ 0.989\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.990\\ 0.988\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.995\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.994\end{tabular} \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 150}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1  &  & \begin{tabular}[c]{@{}c@{}}0.965\\ 0.954\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.961\\ 0.947\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.997\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.997\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.996\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.996\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4  &  & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 0.999\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8  &  & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 300}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1  &  & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.995\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.995\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 500}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1  &  & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8  &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item
+		*Notes: See notes to Tables \ref{tab:Daily-power} and \ref{tab:Mutiday-size}.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}
+	\caption{Empirical Power of the \textit{BNS} Jump Test When Utilized Using Long Samples}
+	\label{tab:MultiBNS-power}
+	\begin{center}
+		\begin{tabular}{cccccccccc}
+			\toprule
+			\hline
+			Jump Intensity  &  & \textit{DGP} 3                                                   & \textit{DGP} 4                                                   & \textit{DGP} 5                                                   & \textit{DGP} 6                                                   & \textit{DGP} 7                                                   & \textit{DGP} 8                                                   & \textit{DGP} 9                                                   & \textit{DGP} 10                                                  \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 5}                                                                                         &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.264\\ 0.197\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.270\\ 0.207\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.396\\ 0.340\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.390\\ 0.344\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.452\\ 0.408\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.446\\ 0.410\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.464\\ 0.423\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.458\\ 0.423\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.588\\ 0.533\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.599\\ 0.540\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.802\\ 0.771\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.798\\ 0.768\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.885\\ 0.871\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.883\\ 0.872\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.889\\ 0.880\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.887\\ 0.878\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.817\\ 0.768\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.815\\ 0.776\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.948\\ 0.942\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.961\\ 0.953\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.983\\ 0.979\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.981\\ 0.978\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.986\\ 0.984\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.984\\ 0.981\end{tabular} \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 25}                                                                                        &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.537\\ 0.471\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.550\\ 0.476\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.824\\ 0.796\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.833\\ 0.804\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.915\\ 0.906\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.917\\ 0.907\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.928\\ 0.923\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.930\\ 0.923\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.945\\ 0.923\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.943\\ 0.928\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.997\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 50}                                                                                        &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.707\\ 0.625\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.720\\ 0.650\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.950\\ 0.946\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.958\\ 0.944\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.987\\ 0.983\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.988\\ 0.985\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.993\\ 0.993\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.995\\ 0.994\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.994\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.995\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 150}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.947\\ 0.917\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.958\\ 0.934\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 0.999\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 300}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.994\\ 0.993\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.994\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 500}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:Daily-power} and \ref{tab:Mutiday-size}.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}
+	\caption{Empirical Power of the \textit{PZ} Jump Test When Utilized Using Long Samples}
+	\label{tab:MultiPZ-power}
+	\begin{center}
+		\begin{tabular}{cccccccccc}
+			\toprule
+			\hline
+			Jump Intensity  &  & \textit{DGP} 3                                                   & \textit{DGP} 4                                                   & \textit{DGP} 5                                                   & \textit{DGP} 6                                                   & \textit{DGP} 7                                                   & \textit{DGP} 8                                                   & \textit{DGP} 9                                                   & \textit{DGP} 10                                                  \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 5}                                                                                         &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.316\\ 0.277\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.317\\ 0.284\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.418\\ 0.385\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.413\\ 0.387\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.465\\ 0.433\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.456\\ 0.433\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.471\\ 0.439\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.464\\ 0.441\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.682\\ 0.656\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.661\\ 0.645\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.829\\ 0.818\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.810\\ 0.801\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.888\\ 0.881\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.879\\ 0.874\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.890\\ 0.883\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.880\\ 0.875\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.874\\ 0.864\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.865\\ 0.851\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.962\\ 0.960\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.965\\ 0.960\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.981\\ 0.979\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.984\\ 0.980\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.982\\ 0.980\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.985\\ 0.981\end{tabular} \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 25}                                                                                        &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.788\\ 0.780\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.777\\ 0.766\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.911\\ 0.907\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.900\\ 0.896\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.936\\ 0.934\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.935\\ 0.933\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.939\\ 0.937\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.939\\ 0.937\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.993\\ 0.993\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.992\\ 0.992\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 50}                                                                                        &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.960\\ 0.956\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.954\\ 0.950\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.991\\ 0.991\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.987\\ 0.987\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.997\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.993\\ 0.993\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.994\\ 0.994\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 150}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 300}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 500}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:Daily-power} and \ref{tab:Mutiday-size}.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}
+	\caption{Empirical Size of the \textit{CSS1} and $\widetilde{\textit{CSS1}}$ Jump Tests}
+	\label{tab:CSS1-size}
+	\begin{adjustbox}{width=1\textwidth, height = 0.16\textwidth, center}
+		\begin{tabular}{ccccccccccccccc}
+			\toprule
+			\hline
+			Test Statistic                                                                       &  & Leverage &  & $T$ = 5                                                   &  & $T$ = 25                                                  &  & $T$ =50                                                   &  & $T$ = 150                                                 &  & $T$ = 300                                                 &  & $T$ = 500                                                 \\ \hline
+			\multirow{2}{*}{\textit{CSS1}}                                                  &  & $\varnothing$      &  & \begin{tabular}[c]{@{}c@{}}0.202\\ 0.145\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.151\\ 0.094\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.129\\ 0.072\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.123\\ 0.076\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.106\\ 0.055\end{tabular}  &  & \begin{tabular}[c]{@{}c@{}}0.112\\ 0.057\end{tabular}  \\ \cline{3-15} 
+			&  & $\surd$    &  & \begin{tabular}[c]{@{}c@{}}0.264\\ 0.185\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.316\\ 0.221\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.461\\ 0.341\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.858\\ 0.775\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.987\\ 0.968\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.997\end{tabular} \\ \hline
+			\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}$\widetilde{\textit{CSS1}}$\end{tabular}} &  & $\varnothing$      &  & \begin{tabular}[c]{@{}c@{}}0.075\\ 0.048\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.007\\ 0.003\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.001\\ 0.000\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.000\\ 0.000\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.000\\ 0.000\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.000\\ 0.000\end{tabular}   \\ \cline{3-15} 
+			&  & $\surd$    &  & \begin{tabular}[c]{@{}c@{}}0.089\\ 0.053\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.002\\ 0.001\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.000\\ 0.000\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.000\\ 0.000\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.000\\ 0.000\end{tabular}   &  & \begin{tabular}[c]{@{}c@{}}0.000\\ 0.000\end{tabular}   \\ \hline
+			\bottomrule		
+		\end{tabular}
+	\end{adjustbox}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: As in Tables \ref{tab:Daily-size}-\ref{tab:MultiPZ-power}, jump test rejection frequencies are reported. As discussed in Section \ref{sec: mcs}, the subsampling interval, $\widetilde{\Delta}$, used in constructing critical values for the tests has been selected using a simple rule. Namely, \{$T$=25 and 50, $\widetilde{\Delta}^{1}_n$=1/3, $\widetilde{\Delta}^{2}_n$=1/26\}; \{$T$=150, $\widetilde{\Delta}^{1}_n$=1, $\widetilde{\Delta}^{2}_n$=1/13\}; \{$T$=300, $\widetilde{\Delta}^{1}_n$=2, $\widetilde{\Delta}^{2}_n$=1/13\}; \{$T$=500, $\widetilde{\Delta}^{1}_n$=3.2, $\widetilde{\Delta}^{2}_n$=1/10\}, where $\widetilde{\Delta}^{1}_n$ is the subsampling interval used in bootstrapping critical values for $\widetilde{\textit{CSS1}}$ and $\widetilde{\Delta}^{2}_n$ is the subsampling interval used in bootstrapping critical values for \textit{CSS1}.
+	\end{tablenotes}
+\end{table}
+
+
+\begin{table}
+	\caption{Empirical Size of the $CSS$ Jump Test}
+	\label{tab:CSS-size}
+	\begin{adjustbox}{width=1\textwidth, height = 0.37\textwidth, center}
+\begin{tabular}{c|ccccccc}
+	\toprule
+	\hline
+	&        & $T$ = 40                                                & $T$ = 50                                                & $T$ = 60                                                & $T$ = 70                                                & $T$ = 80                                                & $T$ = 90                                                \\ \cline{2-8} 
+	&        & \multicolumn{6}{c}{No Leverage}                                                                                                                                                                                                                                                                                                               \\ \cline{2-8} 
+	 & $\kappa$ = 2  & \begin{tabular}[c]{@{}c@{}}0.049\\ 0.019\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.057\\ 0.032\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.114\\ 0.057\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.105\\ 0.060\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.147\\ 0.079\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.169\\ 0.103\end{tabular} \\ \cline{3-8} 
+	\multirow{7}{*}{$\Delta$ } & $\kappa$ = 5  & \begin{tabular}[c]{@{}c@{}}0.055\\ 0.025\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.078\\ 0.042\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.089\\ 0.048\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.117\\ 0.053\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.111\\ 0.059\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.153\\ 0.097\end{tabular} \\ \cline{3-8} 
+	& $\kappa$ = 10 & \begin{tabular}[c]{@{}c@{}}0.061\\ 0.021\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.076\\ 0.033\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.091\\ 0.042\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.113\\ 0.067\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.123\\ 0.067\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.152\\ 0.089\end{tabular} \\ \cline{2-8} 
+	&        & \multicolumn{6}{c}{Leverage}                                                                                                                                                                                                                                                                                                                  \\ \cline{2-8} 
+	& $\kappa$ = 2  & \begin{tabular}[c]{@{}c@{}}0.047\\ 0.021\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.117\\ 0.059\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.176\\ 0.099\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.269\\ 0.189\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.341\\ 0.242\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.459\\ 0.361\end{tabular} \\ \cline{3-8} 
+	& $\kappa$ = 5  & \begin{tabular}[c]{@{}c@{}}0.085\\ 0.046\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.136\\ 0.077\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.203\\ 0.128\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.275\\ 0.182\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.350\\ 0.249\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.437\\ 0.330\end{tabular} \\ \cline{3-8} 
+	& $\kappa$ = 10 & \begin{tabular}[c]{@{}c@{}}0.085\\ 0.046\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.128\\ 0.062\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.180\\ 0.116\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.284\\ 0.171\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.386\\ 0.253\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.436\\ 0.332\end{tabular} \\ \hline
+	&        & $T$ = 120                                               & $T$ = 140                                               & $T$ = 160                                               & $T$ = 180                                               & $T$ = 200                                               & $T$ = 220                                               \\ \cline{2-8} 
+	& \multicolumn{7}{c}{~~~~~~~~~~~~No Leverage}                                                                                                                                                                                                                                                                                                                        \\ \cline{2-8} 
+	& $\kappa$ = 2  & \begin{tabular}[c]{@{}c@{}}0.030\\ 0.008\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.024\\ 0.004\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.046\\ 0.015\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.057\\ 0.020\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.068\\ 0.033\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.083\\ 0.045\end{tabular} \\ \cline{3-8} 
+	& $\kappa$ = 5  & \begin{tabular}[c]{@{}c@{}}0.033\\ 0.015\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.047\\ 0.020\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.038\\ 0.021\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.068\\ 0.029\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.070\\ 0.037\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.083\\ 0.040\end{tabular} \\ \cline{3-8} 
+	& $\kappa$ = 10 & \begin{tabular}[c]{@{}c@{}}0.046\\ 0.015\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.056\\ 0.022\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.067\\ 0.028\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.075\\ 0.032\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.079\\ 0.038\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.089\\ 0.048\end{tabular} \\ \cline{2-8} 
+	$\Delta/2$      & \multicolumn{7}{c}{~~~~~~~~~~~~Leverage}                                                                                                                                                                                                                                                                                                                           \\ \cline{2-8} 
+	& $\kappa$ = 2  & \begin{tabular}[c]{@{}c@{}}0.041\\ 0.017\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.075\\ 0.042\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.123\\ 0.066\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.160\\ 0.086\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.234\\ 0.151\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.270\\ 0.174\end{tabular} \\ \cline{3-8} 
+	& $\kappa$ = 5  & \begin{tabular}[c]{@{}c@{}}0.062\\ 0.032\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.087\\ 0.043\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.127\\ 0.064\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.170\\ 0.086\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.227\\ 0.139\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.290\\ 0.185\end{tabular} \\ \cline{3-8} 
+	& $\kappa$ = 10 & \begin{tabular}[c]{@{}c@{}}0.071\\ 0.027\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.101\\ 0.050\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.156\\ 0.091\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.167\\ 0.084\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.246\\ 0.138\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.283\\ 0.187\end{tabular} \\ \hline
+	\bottomrule	
+\end{tabular}	
+    \end{adjustbox}
+	\begin{tablenotes}[flushleft]
+	\footnotesize
+	\item *Notes: Rejection frequencies are reported based on application of \textit{CSS} test. Sampling intervals are either $\Delta$ = 1/78 or $\Delta/2$ = 1/156. $\kappa$ = $T^+$/$T$, where $T^+$ is the longer time span. For complete details, see Section \ref{sec: mcs}.
+\end{tablenotes}
+\end{table}	
+	
+	
+\begin{table}\renewcommand{\arraystretch}{0.8}
+	\caption{Empirical Power of \textit{CSS1} Jump Test}
+	\label{tab:OrigCSS-power}
+	\begin{center}
+		\begin{tabular}{cccccccccc}
+			\toprule
+			\hline
+			Jump Intensity  &  & \textit{DGP} 3                                                   & \textit{DGP} 4                                                   & \textit{DGP} 5                                                   & \textit{DGP} 6                                                   & \textit{DGP} 7                                                   & \textit{DGP} 8                                                   & \textit{DGP} 9                                                   & \textit{DGP} 10                                                  \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 5}                                                                                         &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.346\\ 0.274\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.361\\ 0.291\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.435\\ 0.374\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.463\\ 0.396\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.487\\ 0.436\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.517\\ 0.463\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.507\\ 0.461\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.540\\ 49.1\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.572\\ 0.498\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.585\\ 0.514\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.717\\ 0.665\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.712\\ 0.650\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.895\\ 0.879\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.883\\ 0.865\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.901\\ 0.890\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.895\\ 0.887\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.664\\ 0.600\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.677\\ 0.615\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.790\\ 0.752\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.784\\ 0.737\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.968\\ 0.962\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.973\\ 0.964\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.969\\ 0.964\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.976\\ 0.970\end{tabular} \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 25}                                                                                        &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.472\\ 0.400\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.535\\ 0.447\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.713\\ 0.656\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.733\\ 0.670\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.913\\ 0.895\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.921\\ 0.896\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.926\\ 0.917\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.941\\ 0.928\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.630\\ 0.560\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.634\\ 0.537\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.690\\ 0.604\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.676\\ 0.598\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.996\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.997\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 0.998\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.650\\ 0.583\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.645\\ 0.569\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.647\\ 0.580\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.650\\ 0.572\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 50}                                                                                        &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.559\\ 0.459\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.587\\ 0.492\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.719\\ 0.644\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.736\\ 0.657\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.982\\ 0.977\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.981\\ 0.975\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.990\\ 0.989\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.990\\ 0.988\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.641\\ 0.557\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.656\\ 0.561\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.642\\ 0.548\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.628\\ 0.559\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.623\\ 0.534\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.604\\ 0.527\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.628\\ 0.531\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.627\\ 0.539\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 150}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.763\\ 0.722\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.786\\ 0.732\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.847\\ 0.804\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.828\\ 0.788\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 0.999\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.762\\ 0.716\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.768\\ 0.717\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.807\\ 0.759\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.802\\ 0.764\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.761\\ 0.715\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.750\\ 0.704\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.805\\ 0.756\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.795\\ 0.751\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 300}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.766\\ 0.709\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.784\\ 0.738\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.819\\ 0.784\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.825\\ 0.786\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.789\\ 0.742\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.768\\ 0.713\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.780\\ 0.733\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.791\\ 0.755\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.759\\ 0.711\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.756\\ 0.702\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.808\\ 0.764\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.802\\ 0.757\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 500}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.791\\ 0.755\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.819\\ 0.790\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.865\\ 0.833\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.855\\ 0.825\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.819\\ 0.771\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.808\\ 0.774\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.838\\ 0.804\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.827\\ 0.795\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.786\\ 0.753\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.776\\ 0.739\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.823\\ 0.784\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.836\\ 0.795\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:Daily-power}, \ref{tab:Mutiday-size} and \ref{tab:CSS1-size}.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}
+	\caption{Empirical Power of $\widetilde{\textit{CSS1}}$ Jump Test}
+	\label{tab:LevRobustCSS-power}
+	\begin{center}
+		\begin{tabular}{cccccccccc}
+			\toprule
+			\hline
+			Jump Intensity  &  & \textit{DGP} 3                                                   & \textit{DGP} 4                                                   & \textit{DGP} 5                                                   & \textit{DGP} 6                                                   & \textit{DGP} 7                                                   & \textit{DGP} 8                                                   & \textit{DGP} 9                                                   & \textit{DGP} 10                                                  \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 5}                                                                                         &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.181\\ 0.145\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.221\\ 0.162\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.300\\ 0.272\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.337\\ 0.287\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.374\\ 0.348\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.401\\ 0.355\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.406\\ 0.390\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.438\\ 0.407\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.428\\ 0.371\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.443\\ 0.388\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.651\\ 0.597\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.642\\ 0.585\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.856\\ 0.835\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.837\\ 0.819\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.871\\ 0.865\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.866\\ 0.863\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.596\\ 0.515\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.586\\ 0.513\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.761\\ 0.717\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.738\\ 0.710\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.950\\ 0.943\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.951\\ 0.944\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.951\\ 0.948\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.952\\ 0.948\end{tabular} \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 25}                                                                                        &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.262\\ 0.228\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.278\\ 0.233\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.670\\ 0.644\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.680\\ 0.656\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.887\\ 0.875\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.879\\ 0.863\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.915\\ 0.915\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.918\\ 0.915\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.567\\ 0.505\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.565\\ 0.492\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.824\\ 0.798\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.811\\ 0.783\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.996\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.998\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.646\\ 0.602\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.643\\ 0.579\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.793\\ 0.766\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.801\\ 0.766\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.997\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.996\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 50}                                                                                        &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.169\\ 0.129\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.192\\ 0.149\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.694\\ 0.630\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.687\\ 0.624\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.946\\ 0.933\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.959\\ 0.947\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.983\\ 0.978\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.983\\ 0.978\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.436\\ 0.349\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.416\\ 0.342\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.708\\ 0.632\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.696\\ 0.634\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.997\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998\\ 0.995\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.996\end{tabular} \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.489\\ 0.411\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.469\\ 0.386\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.654\\ 0.584\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.635\\ 0.586\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.995\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.993\\ 0.990\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.997\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.997\end{tabular} \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 150}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.163\\ 0.120\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.149\\ 0.099\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.766\\ 0.726\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.740\\ 0.695\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.996\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 0.998\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.320\\ 0.245\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.307\\ 0.215\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.743\\ 0.701\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.742\\ 0.709\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.390\\ 0.311\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.353\\ 0.286\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.709\\ 0.659\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.712\\ 0.657\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 300}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.090\\ 0.058\end{tabular}   & \begin{tabular}[c]{@{}c@{}}0.093\\ 0.064\end{tabular}   & \begin{tabular}[c]{@{}c@{}}0.769\\ 0.728\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.753\\ 0.719\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.223\\ 0.158\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.216\\ 0.154\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.733\\ 0.696\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.744\\ 0.708\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.274\\ 0.199\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.248\\ 0.188\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.702\\ 0.659\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.708\\ 0.646\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			&  &                                                         &                                                         &                                                         & \multicolumn{2}{c}{$T$ = 500}                                                                                       &                                                         &                                                         &                                                         \\ \cline{3-10} 
+			$\lambda$ = 0.1 &  & \begin{tabular}[c]{@{}c@{}}0.054\\ 0.026\end{tabular}   & \begin{tabular}[c]{@{}c@{}}0.063\\ 0.038\end{tabular}   & \begin{tabular}[c]{@{}c@{}}0.757\\ 0.710\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.751\\ 0.700\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.4 &  & \begin{tabular}[c]{@{}c@{}}0.153\\ 0.091\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.158\\ 0.106\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.717\\ 0.650\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.700\\ 0.651\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \cline{3-10} 
+			$\lambda$ = 0.8 &  & \begin{tabular}[c]{@{}c@{}}0.188\\ 0.126\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.171\\ 0.129\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.667\\ 0.607\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.649\\ 0.585\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}   \\ \hline
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:Daily-power}, \ref{tab:Mutiday-size} and \ref{tab:CSS1-size}.
+	\end{tablenotes}
+\end{table}
+
+
+\begin{table}
+	\caption{Empirical Power of the $CSS$ Jump Test}
+	\label{tab:CSS-Power}
+	\begin{adjustbox}{width=1\textwidth, height = 0.55\textwidth, center}
+\begin{tabular}{cccccccc}
+	\toprule
+	\hline
+	&       & $T$ = 40                                                 & $T$ = 50                                                 & $T$ = 60                                                 & $T$ = 70                                                 & $T$ = 80                                                 & $T$ = 90                                                 \\ \hline
+	\multicolumn{1}{c|}{}   &       & \multicolumn{6}{c}{$\lambda$ = 0.1}                                                                                                                                                                                                                                                                                                                    \\ \cline{2-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 3 & \begin{tabular}[c]{@{}c@{}}0.450\\ 0.411\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.473\\ 0.429\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.514\\ 0.455\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.571\\ 0.513\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.633\\ 0.565\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.617\\ 0.559\end{tabular}  \\ \cline{3-8} 
+	\multicolumn{1}{c|}{\multirow{10}{*}{$\Delta$}}                             & \textit{DGP} 4 & \begin{tabular}[c]{@{}c@{}}0.465\\ 0.412\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.485\\ 0.438\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.550\\ 0.499\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.647\\ 0.594\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.652\\ 0.593\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.702\\ 0.642\end{tabular}  \\ \cline{3-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 5 & \begin{tabular}[c]{@{}c@{}}0.821\\ 0.810\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.872\\ 0.863\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.922\\ 0.917\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.952\\ 0.947\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.965\\ 0.964\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.975\\ 0.968\end{tabular}  \\ \cline{3-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 6 & \begin{tabular}[c]{@{}c@{}}0.829\\ 0.817\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.876\\ 0.867\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.928\\ 0.918\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.953\\ 0.948\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.974\\ 0.968\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.978\\ 0.972\end{tabular}  \\ \cline{2-8} 
+	\multicolumn{1}{c|}{}                             &       & \multicolumn{6}{c}{$\lambda$ = 0.4}                                                                                                                                                                                                                                                                                                                    \\ \cline{2-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 3 & \begin{tabular}[c]{@{}c@{}}0.806 \\ 0.762\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.835 \\ 0.812\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.843 \\ 0.822\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.847 \\ 0.819\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.868 \\ 0.846\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.872 \\ 0.859\end{tabular} \\ \cline{3-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 4 & \begin{tabular}[c]{@{}c@{}}0.792\\ 0.753\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.831\\ 0.807\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.828\\ 0.804\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.862\\ 0.829\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.866 \\ 0.831\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.887 \\ 0.865\end{tabular} \\ \cline{3-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 5 & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.996\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000 \\ 1.000\end{tabular} \\ \cline{3-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 6 & \begin{tabular}[c]{@{}c@{}}0.996\\ 0.994\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.997\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.997\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000 \\ 1.000\end{tabular} \\ \hline \hline
+	&       & $T$ = 120                                                & $T$ = 140                                                & $T$ = 160                                                & $T$ = 180                                                & $T$ = 200                                                & $T$ = 220                                                \\ \hline
+	\multicolumn{1}{c|}{} &       & \multicolumn{6}{c}{$\lambda$ = 0.1}                                                                                                                                                                                                                                                                                                                    \\ \cline{2-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 3 & \begin{tabular}[c]{@{}c@{}}0.863\\ 0.838\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.890\\ 0.872\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.884\\ 0.862\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.899\\ 0.889\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.919\\ 0.905\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.917\\ 0.894\end{tabular}  \\ \cline{3-8} 
+	\multicolumn{1}{c|}{\multirow{10}{*}{$\Delta$/2}}                             & DGP 4 & \begin{tabular}[c]{@{}c@{}}0.865\\ 0.835\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.892\\ 0.869\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.907\\ 0.895\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.903\\ 0.885\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.913\\ 0.898\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.918\\ 0.903\end{tabular}  \\ \cline{3-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 5 & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000 \\ 1.000\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000 \\ 1.000\end{tabular} & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  \\ \cline{3-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 6 & \begin{tabular}[c]{@{}c@{}}0.997\\ 0.997\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.999 \\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998 \\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.998 \\ 0.998\end{tabular} & \begin{tabular}[c]{@{}c@{}}0.999 \\ 0.999\end{tabular} \\ \cline{2-8} 
+	\multicolumn{1}{c|}{}                             &       & \multicolumn{6}{c}{$\lambda$ = 0.4}                                                                                                                                                                                                                                                                                                                    \\ \cline{2-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 3 & \begin{tabular}[c]{@{}c@{}}0.946\\ 0.939\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.943\\ 0.938\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.944\\ 0.938\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.958\\ 0.950\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.962\\ 0.954\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.965\\ 0.959\end{tabular}  \\ \cline{3-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 4 & \begin{tabular}[c]{@{}c@{}}0.964\\ 0.958\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.954\\ 0.949\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.961\\ 0.952\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.957\\ 0.949\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.959\\ 0.948\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.967\\ 0.958\end{tabular}  \\ \cline{3-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 5 & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  \\ \cline{3-8} 
+	\multicolumn{1}{c|}{}                             & \textit{DGP} 6 & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}0.999\\ 0.999\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  & \begin{tabular}[c]{@{}c@{}}1.000\\ 1.000\end{tabular}  \\ \hline
+	\bottomrule
+\end{tabular}	
+	\end{adjustbox}
+	\begin{tablenotes}[flushleft]
+	\footnotesize
+	\item *Notes: See notes to Table \ref{tab:CSS-size}.
+\end{tablenotes}
+\end{table}	
+
+
+\begin{table}[htb!]
+	\caption{\textit{ASJ} Jump Test Results for ETFs}
+	\label{ASJ-ETFs}
+	\begin{adjustbox}{width=1\textwidth, height = 0.2\textwidth, center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			& 2006  & 2007  & 2008  & 2009  & 2010  & 2011  & 2012  & 2013  \\ \hline
+			SPY & 3.264 (***) & 1.694 (**) & 0.002 & 2.579 (***) & 5.213 (***) & 0.745 & 0.874 & 1.745 (**) \\
+			XLB & 5.011 (***) & 2.528 (***) & 1.941 (**) & 3.207 (***) & 4.161 (***) & 0.870 & 2.682 (***) & 0.986 \\
+			XLE & 0.952 & 4.862 (***) & 0.019 & 7.023 (***) & 1.061 & 0.058 & 5.665 (***) & 1.772 (**) \\
+			XLF & 3.207 (***) & 4.128 (***) & 1.825 (**) & 1.774 (**) & 0.843 & 0.822 & 1.286 (*) & 1.663 (**) \\
+			XLI & 4.233 (***) & 5.903 (***) & 1.625 (*) & 1.827 (**) & 7.367 (***) & 1.486 (*) & 0.951 & 1.813 (**) \\
+			XLK & 7.909 (***) & 4.214 (***) & 0.991 & 1.766 (**) & 1.384 (*) & 0.759 & 0.922 & 2.492 (***) \\
+			XLP & 3.180 (***) & 8.996 (***) & 7.979 (***) & 4.212 (***) & 0.373 & 1.493 (*) & 6.078 (***) & 1.565 (*) \\
+			XLU & 7.066 (***) & 2.730 (***) & 1.481 (*) & 10.000 (***) & 0.528 & 0.642 & 2.769 (***) & 3.324 (***) \\
+			XLV & 7.030 (***) & 6.084 (***) & 1.828 (**) & 2.386 (***) & 2.352 (***) & 1.729 (**) & 0.866 & 2.530 (***) \\
+			XLY & 3.368 (***) & 1.845 (**) & 3.279 (***) & 4.399 (***) & 0.457 & 0.735 & 0.022 & 2.721 (***) \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:Mutiday-size} and \ref{tab:MultiASJ-power}. Entries are jump test statistics, and (***), (**), and (*) indicate rejections of the ``no jump'' null hypothesis at 0.01, 0.05 and 0.1 significance levels, respectively.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}[htb!]
+	\caption{\textit{CSS1} Jump Test Results for ETFs}
+	\label{OrigCSS-ETFs}
+	\begin{adjustbox}{width=1\textwidth, height = 0.2\textwidth, center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			& 2006      & 2007      & 2008      & 2009      & 2010      & 2011      & 2012      & 2013      \\ \hline
+			SPY & 2.04E-07  & -3.88E-06 & 4.87E-04 (***)  & 2.65E-05  & 1.65E-06  & -1.19E-05 & -3.15E-07 & -2.90E-06 (**) \\
+			XLB & -1.40E-05 & -8.45E-05 (***) & 1.35E-03 (***)  & -1.90E-04 (***) & -9.21E-05 (***) & 9.39E-06  & -1.33E-06 & 1.87E-06  \\
+			XLE & 2.38E-05 (***)  & -2.43E-05 (**) & 1.07E-03 (**)  & -9.77E-05 (**) & 4.74E-05 (***)  & -4.76E-05 & -6.35E-06 (**) & -4.45E-06 \\
+			XLF & -1.11E-05 (***) & -2.58E-04 (***) & 2.00E-03 (***)  & -2.26E-05 & -5.04E-05 (**) & -3.69E-05 & 3.76E-06  & -6.79E-06 (**) \\
+			XLI & -2.03E-05 (***) & 9.96E-05 (***)  & 7.23E-04 (***)  & -9.39E-05 (**) & 3.24E-04 (***)  & 9.48E-06  & 1.98E-06  & -2.93E-06 (**) \\
+			XLK & -1.99E-04 (***) & -6.68E-05 (***) & 1.86E-03 (***)  & -2.68E-05 & -1.45E-04 (***) & -9.44E-06 & -2.63E-06 & -3.39E-06 (***) \\
+			XLP & 5.92E-06 (***)  & 1.83E-05 (***)  & -2.02E-03 (***) & -5.91E-05 (***) & -2.19E-05 (**) & -4.69E-06 & -4.30E-05 (***) & 8.25E-07  \\
+			XLU & -9.42E-05 (***) & 1.67E-04 (***)  & -8.17E-05 & -1.04E-01 (***) & 1.75E-04 (***)  & -1.91E-05 & 7.89E-06 (***)  & -7.47E-06 \\
+			XLV & -1.17E-04 (***) & 9.52E-05 (***)  & 4.08E-04 (***) & -4.11E-05 (***) & -1.71E-04 (***) & 1.24E-05  & -8.03E-07 & -2.53E-06 \\
+			XLY & -8.05E-05 (***) & -1.06E-04 (***) & -2.97E-03 (***) & -2.72E-04 (***) & 1.62E-05  & -1.56E-05 & -5.33E-06 (**) & 2.57E-07  \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:CSS1-size} and \ref{ASJ-ETFs}.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}[htb!]
+	\caption{$\widetilde{\textit{CSS1}}$ Jump Test Results for ETFs}
+	\label{LevRobust-CSS-ETFs}
+	\begin{adjustbox}{width=1\textwidth, height = 0.2\textwidth, center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			& 2006      & 2007      & 2008      & 2009      & 2010      & 2011      & 2012      & 2013      \\ \hline
+			SPY & 1.28E-08  & -2.43E-07 (*) & 3.05E-05  & 1.66E-06  & 1.03E-07  & -7.46E-07 & -1.98E-08 (*) & -1.82E-07 \\
+			XLB & -8.78E-07 (*) & -5.31E-06 (**) & 8.41E-05  & -1.19E-05 & -5.77E-06 & 5.88E-07  & -8.38E-08 (*) & 1.17E-07  \\
+			XLE & 1.49E-06  & -1.53E-06 & 6.71E-05  & -6.12E-06 & 2.97E-06  & -2.98E-06 & -3.99E-07 & -2.79E-07 \\
+			XLF & -6.97E-07 & -1.62E-05 (**) & 1.25E-04  & -1.42E-06 & -3.16E-06 & -2.31E-06 & 2.36E-07 (*)  & -4.26E-07 \\
+			XLI & -1.27E-06 & 6.25E-06  & 4.52E-05  & -5.88E-06 & 2.03E-05 (***)  & 5.94E-07  & 1.24E-07 (*)  & -1.83E-07 \\
+			XLK & -1.25E-05 (***) & -4.19E-06 (**) & 1.16E-04  & -1.68E-06 & -9.06E-06 (**) & -5.91E-07 & -1.66E-07 & -2.12E-07 \\
+			XLP & 3.71E-07 (*)  & 1.15E-06  & -1.26E-04 (***) & -3.70E-06 (**) & -1.37E-06 (*) & -2.94E-07 & -2.70E-06 (***) & 5.17E-08  \\
+			XLU & -5.92E-06 & 1.05E-05 (***)  & -5.11E-06 (*) & -6.49E-03 (***) & 1.10E-05 (***)  & -1.19E-06 & 4.96E-07  & -4.68E-07 \\
+			XLV & -7.37E-06 (***) & 5.98E-06  & 2.55E-05  & -2.57E-06 & -1.07E-05 (***) & 7.76E-07  & -5.05E-08 (*) & -1.58E-07 \\
+			XLY & -5.05E-06 & -6.68E-06 (**) & -1.86E-04 (**) & -1.71E-05 & 1.01E-06  & -9.79E-07 & -3.35E-07 (*) & 1.61E-08  \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:CSS1-size} and \ref{ASJ-ETFs}.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}[htb!]
+	\caption{\textit{ASJ} Jump Test Results for Individual Stocks}
+	\label{ASJ-Year-IndStock}
+	\begin{adjustbox}{width=1\textwidth, height = 0.23\textwidth, center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			& 2006  & 2007  & 2008  & 2009  & 2010  & 2011  & 2012  & 2013  \\ \hline
+			American Express  & 3.115 (***) & 4.248 (***) & 2.044 (**) & 2.672 (***) & 0.996 & 2.343 (***) & 3.555 (***) & 2.464 (***) \\
+			Bank of America   & 2.914 (***) & 3.014 (***) & 1.529 (*) & 3.576 (***) & 0.819 & 3.171 (***) & 1.784 (**) & 0.803 \\
+			Cisco             & 3.811 (***) & 5.997 (***) & 0.180 & 1.818 (**) & 2.865 (***) & 1.665 (**) & 2.581 (***) & 0.922 \\
+			Citigroup         & 3.215 (***) & 0.802 & 0.520 & 3.302 (***) & 6.023 (***) & 0.752 & 0.197 & 0.895 \\
+			Coca-Cola         & 8.039 (***) & 10.005 (***) & 6.134 (***) & 4.563 (***) & 0.826 & 1.774 (**) & 2.551 (***) & 3.476 (***) \\
+			Intel             & 2.632 (***) & 4.142 (***) & 3.332 (***) & 0.914 & 5.627 (***) & 6.425 (***) & 1.821 (**) & 1.772 (**) \\
+			JPMorgan          & 3.446 (***) & 2.532 (***) & 3.232 (***) & 0.962 & 1.733 (**) & 3.461 (***) & 0.987 & 0.983 \\
+			Merck \& Co.      & 5.700 (***) & 8.016 (***) & 1.909 (**) & 3.184 (***) & 0.051 & 1.559 (*) & 2.648 (***) & 0.246 \\
+			Microsoft         & 2.982 (***) & 6.997 (***) & 0.909 & 0.811 & 0.652 & 3.434 (***) & 4.579 (***) & 0.370 \\
+			Procter \& Gamble & 3.285 (***) & 4.933 (***) & 1.814 (**) & 9.998 (***) & 2.387 (***) & 3.218 (***) & 9.003 (***) & 1.745 (**) \\
+			Pfizer            & 2.356 (***) & 4.024 (***) & 0.845 & 0.890 & 7.436 (***) & 1.960 (**) & 1.740 (**) & 2.516 (***) \\
+			Wal-Mart          & 0.823 & 4.011 (***) & 1.187 & 1.730 (**) & 0.799 & 2.439 (***) & 0.131 & 3.461 (***) \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:CSS1-size} and \ref{ASJ-ETFs}.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}[htb!]
+	\caption{\textit{CSS1} Jump Test Results for Individual Stocks}
+	\label{OrigCSS-IndStocks}
+	\begin{adjustbox}{width=1\textwidth, height = 0.23\textwidth, center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			& 2006      & 2007      & 2008      & 2009      & 2010      & 2011      & 2012      & 2013      \\ \hline
+			American Express  & 1.45E-04 (***)  & -8.03E-05 (***) & 4.57E-03 (***)  & 1.30E-03 (**)  & -7.80E-05 & -1.34E-04 (**) & -6.61E-05 (***) & 6.24E-05 (***)  \\
+			Bank of America   & -8.20E-04 (***) & -1.58E-04 (***) & 4.16E-03 (***)  & -2.26E-02 (**) & -1.29E-04 & -1.39E-03 (***) & 4.47E-05  & -3.16E-05 \\
+			Cisco             & 6.94E-05 (***)  & -7.64E+02 (***) & 9.32E-04 (***)  & 9.61E-05  & -2.02E-04 (***) & 1.31E-04 (***)  & -1.85E-05 & 8.56E-06  \\
+			Citigroup         & -3.93E-05 (***) & -7.93E-05 & -1.13E-02 & -1.60E-02 & -1.64E-03 (***) & -2.61E-04 & 6.52E-05 (**)  & -2.26E-05 \\
+			Coca-Cola         & 8.49E-05 (***)  & 5.56E-05 (***)  & -2.05E-03 (***) & 1.06E-04 (***)  & -3.79E-05 & -5.11E-06 & -2.31E-05 (***) & -1.46E-05 (***) \\
+			Intel             & 5.55E-05 (***)  & -1.49E-04 (***) & 1.57E-03 (***)  & 2.10E-04 (**)  & 1.72E-04 (***)  & -3.69E-05 & -1.74E-05 & 4.64E-05 (***)  \\
+			JPMorgan          & 4.15E-05  & -1.83E-04 (***) & 1.98E-03  & -2.43E-04 & 3.88E-05  & 3.54E-04 (***)  & 7.16E-05  & 1.96E-05  \\
+			Merck \& Co.      & 1.39E-04 (***)  & 2.12E-04 (***)  & -6.85E-03 (***) & -5.17E-04 (***) & 3.81E-04 (***)  & 4.54E-06  & 2.80E-05 (***)  & 6.49E-06  \\
+			Microsoft         & 9.93E-06 (**)  & -7.46E+02 (***) & 1.76E-04  & 6.35E-05  & -4.09E-05 & -1.23E-05 & -6.93E-05 (***) & 1.34E-05  \\
+			Procter \& Gamble & 2.76E-05 (***)  & 8.05E-05 (***)  & 1.37E-04  & -1.29E-03 (***) & 2.33E-03 (***)  & -2.88E-05 (***) & 2.47E-05 (***)  & 5.72E-06  \\
+			Pfizer            & 2.08E-04 (***)  & -2.74E-03 (***) & 1.11E-04  & 6.97E-05  & 3.96E-06  & 8.69E-05 (**)  & 9.01E-06  & 1.78E-05 (***)  \\
+			Wal-Mart          & 6.75E-05  & 8.67E-05 (***)  & 8.60E-04 (***)  & 5.27E-05 (***)  & -9.57E-06 & 3.19E-05 (**)  & 6.87E-06  & -9.51E-06 \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:CSS1-size} and \ref{ASJ-ETFs}.
+	\end{tablenotes}
+\end{table}
+
+\begin{table}[htb!]
+	\caption{$\widetilde{\textit{CSS1}}$ Jump Test Results for Individual Stocks}
+	\label{LevRobust-CSS-IndStocks}
+	\begin{adjustbox}{width=1\textwidth, height = 0.23\textwidth, center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			& 2006      & 2007      & 2008      & 2009      & 2010      & 2011      & 2012      & 2013      \\ \hline
+			American Express  & 9.09E-06 (***)  & -5.04E-06 (*) & 2.86E-04  & 8.13E-05  & -4.88E-06 & -8.42E-06 & -4.16E-06 & 3.91E-06 (**)  \\
+			Bank of America   & -5.15E-05 (***) & -9.94E-06 (**) & 2.60E-04 (*)  & -1.42E-03 & -8.10E-06 & -8.69E-05 & 2.81E-06 (**)  & -1.98E-06 \\
+			Cisco             & 4.36E-06 (*)  & -4.79E+01 (***) & 5.82E-05  & 6.02E-06  & -1.27E-05 (*) & 8.23E-06  & -1.17E-06 & 5.36E-07  \\
+			Citigroup         & -2.47E-06 & -4.98E-06 (*) & -7.08E-04 (**) & -1.00E-03 & -1.03E-04 (***) & -1.64E-05 & 4.10E-06 (*)  & -1.42E-06 \\
+			Coca-Cola         & 5.33E-06 (***)  & 3.49E-06 (**)  & -1.28E-04 (**) & 6.64E-06  & -2.37E-06 (**) & -3.20E-07 & -1.45E-06 (**) & -9.15E-07 \\
+			Intel             & 3.48E-06 (*)  & -9.33E-06 & 9.83E-05 (**)  & 1.32E-05  & 1.08E-05 (*)  & -2.31E-06 & -1.10E-06 & 2.91E-06  \\
+			JPMorgan          & 2.61E-06 (*)  & -1.15E-05 (**) & 1.24E-04  & -1.52E-05 & 2.43E-06  & 2.22E-05 (*)  & 4.50E-06 (*)  & 1.23E-06  \\
+			Merck \& Co.      & 8.72E-06 (*)  & 1.33E-05 (***)  & -4.28E-04 (***) & -3.24E-05 & 2.39E-05 (***)  & 2.84E-07  & 1.76E-06 (**)  & 4.07E-07  \\
+			Microsoft         & 6.23E-07 (*)  & -4.68E+01 (***) & 1.10E-05 (*)  & 3.98E-06  & -2.56E-06 & -7.71E-07 & -4.36E-06 (**) & 8.42E-07  \\
+			Procter \& Gamble & 1.73E-06 (*)  & 5.05E-06 (*)  & 8.58E-06  & -8.06E-05 (***) & 1.46E-04 (***)  & -1.81E-06 & 1.55E-06 (**)  & 3.58E-07  \\
+			Pfizer            & 1.30E-05 (**)  & -1.72E-04 (***) & 6.94E-06 (*) & 4.37E-06  & 2.48E-07  & 5.44E-06  & 5.67E-07 (*)  & 1.11E-06  \\
+			Wal-Mart          & 4.24E-06 (**)  & 5.44E-06  & 5.38E-05 (***)  & 3.30E-06  & -6.00E-07 & 2.00E-06  & 4.32E-07 (*)  & -5.96E-07 \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:CSS1-size} and \ref{ASJ-ETFs}.
+	\end{tablenotes}
+\end{table}
+
+
+\begin{table}[htb!]
+	\caption{\textit{CSS} Jump Test Results for Individual Stocks and The Market ETF}
+	\label{CSS-Assets}
+	\begin{adjustbox}{width=1\textwidth, height = 0.30\textwidth, center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+	\hline
+	& Bank of America & Coca-Cola   & Intel     & JPMorgan  & Merck \& Co. & Pfizer      & Wal-Mart   & SPY       \\ \hline
+	2007-Q1 & 10.877***       & 23.301***   & 3.148***  & -2.86***  & 26.875***    & -831.206*** & 16.069***  & 1.169     \\
+	2007-Q2 & -14.713***      & 79.895***   & -1.112    & -6.327*** & 17.705***    & 0.065       & 33.324***  & -2.671*** \\
+	2007-Q3 & 14.278***       & -12.575***  & 9.296***  & 2.648***  & -5.986***    & -2.877***   & 5.97***    & 5.733***  \\
+	2007-Q4 & -7.383***       & -6.614***   & 10.763*** & -7.326*** & 14.327***    & 2.291**     & 4.186***   & -7.235*** \\
+	2008-Q1 & 11.617***       & -7.086***   & 4.034***  & 5.499***  & -279.804***  & 8.011***    & 9.386***   & 3.354***  \\
+	2008-Q2 & 0.412           & -65.435***  & -0.965    & 1.722*    & -3.815***    & -11.948***  & 4.083***   & -0.623    \\
+	2008-Q3 & 3.122***        & -171.387*** & 2.249**   & 1.184     & -41.319***   & 1.016       & 0.694      & -2.105**  \\
+	2008-Q4 & 5.546***        & -15.662***  & -2.057**  & 4.072***  & 11.769***    & 1.692*      & 11.442***  & 8.688***  \\
+	2012-Q1 & 1.875*          & -6.077***   & -2.785*** & 8.731***  & -9.687***    & -0.516      & -1.131     & -2.851*** \\
+	2012-Q2 & -2.154**        & -10.595***  & -4.255*** & 1.547     & 8.977***     & 8.513***    & 19.704***  & 0.5       \\
+	2012-Q3 & 2.442**         & -7.287***   & 6.378***  & 6.126***  & 26.943***    & 3.99***     & 6.503***   & 2.551**   \\
+	2012-Q4 & 3.051***        & -6.527***   & -7.281*** & -2.976*** & -0.216       & -7.034***   & -13.85***  & -0.427    \\
+	2013-Q1 & -5.007***       & -2.223**    & 0.194     & -1.537    & -24.992***   & 5.515***    & -11.386*** & -3.096*** \\
+	2013-Q2 & -4.247***       & -0.084      & 11.553*** & -0.671    & 4.179***     & 0.318       & -3.669***  & -6.975*** \\
+	2013-Q3 & 0.853           & -1.13       & -1.009    & 4.574***  & 17.83***     & 1.873*      & 3.665***   & 0.826     \\
+	2013-Q4 & 8.199***        & -12.131***  & 4.526***  & 11.233*** & -0.141       & 10.736***   & 8.329***   & 6.538***  \\ \hline
+\end{tabular}
+	\end{adjustbox}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Tables \ref{tab:CSS-size} and \ref{ASJ-ETFs}.
+	\end{tablenotes}
+\end{table}
+
+
+
+
+\newpage
+
+\begin{figure}[h]
+	\caption{Annual Ratios of Jump Days for ETFs}
+	\label{fig:JDs-ETFs}
+	\includegraphics[width=1\textwidth, height=0.9\textwidth]{ETFs.png}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: Entries in the above charts denote annual ratios of detected jump days, based on daily applications of \textit{ASJ}, \textit{BNS} and \textit{PZ} fixed time span jump tests. See Sections \ref{sec:ftsrjt} and \ref{sec:emp} for complete details.
+	\end{tablenotes}
+\end{figure}
+  
+\begin{figure}[h]
+	\caption{Annual Ratios of Jump Days for Individual Stocks}
+	\label{fig:JDs-IndStocks}
+	\includegraphics[width=1\textwidth, height=0.9\textwidth]{Ind_Stocks_final.png}
+	\begin{tablenotes}[flushleft]
+		\footnotesize
+		\item *Notes: See notes to Figure \ref{fig:JDs-ETFs}.
+	\end{tablenotes}	
+\end{figure}
+ 
+  
+\end{document}
