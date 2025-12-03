@@ -1,0 +1,2931 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 936
+
+
+\documentclass[12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{setspace}
+\usepackage{graphics}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2606}
+%TCIDATA{Codepage=936}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Sunday, July 18, 2004 16:10:34}
+%TCIDATA{LastRevised=Monday, October 23, 2023 17:02:36}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=article.cst}
+%TCIDATA{PageSetup=72,72,72,72,0}
+%TCIDATA{AllPages=
+%F=36,\PARA{038<p type="texpara" tag="Body Text" >\hfill \thepage}
+%}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand{\baselinestretch}{1.0} 
+\textwidth=6.8in
+\textheight=8.7in
+\oddsidemargin=0in
+\evensidemargin=0in
+\topmargin=0in
+\baselineskip=10pt
+\linespread{1.5}
+\input{tcilatex}
+\geometry{left=1.25in,right=1.25in,top=1.25in,bottom=1.25in}
+
+\begin{document}
+
+
+\begin{center}
+{\Large {Selecting the Relevant Variables for Factor Estimation }}
+
+{\Large {in FAVAR Models$^{\ast }$}}
+
+John C. Chao$^{1}$, Yang Liu${^2}$ and Norman R. Swanson$^{2}$
+
+$^{1}$University of Maryland and $^{2}$Rutgers University
+
+October 23, 2023
+
+Abstract
+\end{center}
+
+\begin{spacing}{1.01}
+{\linespread{1.1}
+\noindent {\footnotesize {In this paper, we propose a new variable selection method that allows researchers to distinguish 
+between variables that are relevant in the sense that they provide useful information for estimating underlying
+latent factors and variables that are irrelevant in the sense that they do not load on underlying factors, in an FAVAR model. 
+In our context, variable selection methods are needed because using too many irrelevant variables could lead to inconsistency
+in factor estimation. Our procedure is designed to facilitate consistent factor estimation and can be viewed as the factor 
+model analog of the type of multiple hypothesis testing or 
+variable selection procedures that people use to select regressors when specifying linear regression. 
+One key difference between our method and the typical multiple hypothesis testing procedure is that 
+rather than controlling the overall Type I error at some fixed non-zero level, our procedure is completely 
+consistent in the sense that the probability of both Type I and Type II errors go to zero asymptotically as 
+sample sizes approach infinity.  Monte Carlo evidence indicates that our method has very good finite 
+sample properties. Additionally, we analyze a real-time macroeconomic dataset, where it is 
+shown that our method delivers factors that result in improved marginal predictive content, relative to 
+cases where standard principal components as well as hard-thresholding methods are used in factor estimation.}}
+}
+
+\bigskip
+
+\noindent \textit{Keywords: }Factor analysis, factor augmented vector
+autoregression, forecasting, moderate deviation, principal components,
+self-normalization, variable selection.
+
+\noindent \textit{JEL Classification: }C32, C33, C38, C52, C53, C55.
+
+\bigskip
+
+{\scriptsize 
+
+\noindent $^{\ast }$\textit{Corresponding Author:} Norman R. Swanson, Department of Economics, Rutgers University,
+nswanson@econ.
+
+\noindent John C. Chao, Department of Economics, University of Maryland, jcchao@umd.edu. Yang Liu, Department of Economics, Rutgers University,
+yl1241@scarletmail.rutgers.edu. The authors are grateful to Matteo Barigozzi, Bin Chen, Rong Chen, Simon Freyaldenhoven, Domenico Giannone,
+Yuan Liao, Esther Ruiz, Minchul Shin, Jim Stock, Timothy Vogelsang, Endong Wang, Xiye Yang, Peter Zadrozny, Bo Zhou and seminar participants at the University of Glasgow, 
+the University of California Riverside, the Federal
+Reserve Bank of Philadelphia, the 2022 North America Summer Meeting of the Econometric Society, the 2022 International Association of Applied Econometrics Association meetings, 
+the DC-MD-VA Economtrics Workshop, the 2022 NBER-NSF Time Series Conference, 
+the Spring 2023 Rochester Conference in Econometrics, and the 8th Annual Conference of the Society for Economic Measurement for useful comments. Chao thanks the University of Maryland for research support.}
+\end{spacing}
+
+\newpage
+
+\noindent \noindent \setcounter{page}{2}
+
+\section{Introduction}
+
+\noindent \qquad As a result of the astounding rate at which raw information
+is currently being accumulated, there is a clear need for variable
+selection, dimension reduction and shrinkage techniques when analyzing big
+data using machine learning methodologies. This has led to a profusion of
+novel research in areas ranging from the analysis of high dimensional and/or
+high frequency datasets to the development of new statistical learning
+methods. Needless to say, there are many critical unanswered questions in
+this burgeoning literature. One such question, which we address in this
+paper stems from the work of Bai and Ng (2002), Stock and Watson (2002a,b),
+and Forni, Hallin, Lippi, and Reichlin (2005). In these papers, the authors
+develop methods for constructing forecasts based on factor-augmented
+regression models. An obvious appeal of using factor analytical methods for
+this problem is the capacity for dimension reduction, so that in terms of
+the specification of the forecasting equation, employment of a factor
+structure allows the parsimonious representation of information embedded in
+a possibly high-dimensional vector of predictor variables\footnote{%
+In addition to the greater variety of data that are being collected now, an
+important source of high dimensionality in economic datasets is the use of
+disaggregate, as opposed to aggregate data (see e.g. Qiu and Qu (2021)).
+Disaggregate data may be more informative than aggregate data in situations
+where there is information loss in the process of aggregation.}.
+
+Within this context, we note that a key assumption commonly used in the
+literature to obtain consistent factor estimation is the so-called factor
+pervasiveness assumption, which requires that $\Gamma ^{\prime }\Gamma /N$\
+converges to a positive definite matrix as the number of time series
+variables, $N\rightarrow \infty $, where $\Gamma $\ denotes the loading
+matrix of the factor model. Since this assumption imposes certain conditions
+on how the variables in a given dataset load on the underlying latent
+factors, it is of interest to have econometric tools which allow researchers
+to check the empirical content of this assumption for the particular
+datasets they are using. Along these lines, our paper explores situations
+where the pervasiveness assumption may not hold because one is working with
+a dataset where some of the variables are irrelevant, in the sense that they
+do not load on the underlying latent factors. If a sufficient number of such
+irrelevant variables exist, inconsistency in factor estimation may result if
+one naively includes all available variables when estimating the underlying
+factors, without regard to whether they are relevant or not. See Chao, Qiu,
+and Swanson (2023), for a particularly pathological example where an
+estimated factor, $\widehat{f}_{t},$\ approaches $0$\ in probability,
+regardless of what the true value of $f_{t}$\ happens to be - a situation
+which can arise when the underlying factors are nonpervasive. Not being able
+to obtain consistent estimates of the underlying factors will clearly cause
+problems for empirical researchers, such as when the objective is to
+estimate forecast functions that incorporate estimated factors. On the other
+hand, if one pre-screens the variables and successfully prunes out the
+irrelevant ones, then consistent estimation can be achieved, under
+appropriate conditions. For this reason, a main contribution of this paper
+is to introduce a novel variable selection procedure which allows empirical
+researchers to correctly distinguish the relevant from the irrelevant
+variables prior to factor estimation, with probability approaching one. We
+study this problem within a factor-augmented VAR (FAVAR) framework - a setup
+which has the advantage that it allows time series forecasts to be made
+using information sets much richer than those used in traditional VAR
+models. While the present paper focuses on the development of a variable
+selection procedure and the analysis of its asymptotic properties, we show
+in Chao, Qiu, and Swanson (2023) that the use of our methodology will allow
+the conditional mean function of a factor-augmented forecast equation to be
+consistently estimated in a wide range of situations, including cases where
+violation of factor pervasiveness is such that consistent estimation is
+precluded in the absence of variable pre-screening.\footnote{%
+See Theorem 4.2 of Chao, Qiu, and Swanson (2023). A proof of Theorem 4.2 can
+be found in Appendix A of that paper.} Monte Carlo experiments indicate that
+our procedure has very good finite sample properties, in the sense that when
+sample sizes are large, such as the case where the number of observations, $%
+T=600$ and $N=1000$, then both Type I and II error rates are very close to
+zero. Moreover, even in the smaller sample case where $T=100,$ and $N=100$,
+Type I\ and II error rates are usually less than 0.05, and are often much
+smaller than that. In order to illustrate the empirical relevance of our
+procedure, we also carry out real-time forecasting experiments using a
+variety of macroeconomic variables from the well-known FRED-MD database. In
+the illustration, we compare our method for pre-selecting variables prior to
+factor estimation with two alternative methods for factor construction:
+standard PCA, which does not pre-screen the variables, and a hard
+thresholding method that is used in the empirical literaure. We find that
+our method leads to appreciably more precise predictions when forecasting
+using factor-augmented autoregressions than when forecasting with factors
+constructed using the other two methods. Overall, we feel that the
+theoretical and experimental results detailed in this paper add to the
+nascent literature that considers the problem of factor estimation under
+various relaxations of the conventional factor pervasiveness assumption
+(see, for example, the interesting papers by Giglio, Xiu, and Zhang (2021),
+Freyaldenhoven (2021a,b), and Bai and Ng (2021)).
+
+The variable selection procedure reported here is related to the well-known
+supervised principal components method proposed by Bair, Hastie, Paul, and
+Tibshirani (2006) \textbf{(}henceforth,\textbf{\ }Bair et al. (2006)\textbf{)%
+}. Additionally, our procedure is related to recent work by Giglio, Xiu, and
+Zhang (2021), who propose a method for selecting test assets, with the
+objective of estimating risk premia in a Fama-MacBeth type framework. A
+crucial difference between the variable selection method proposed in our
+paper and those proposed in these papers is that we use a score statistic
+that is self-nomalized, whereas the aforementioned papers do not make use of
+statistics that involve self-normalization. An important advantage of
+self-normalized statistics is their ability to accommodate a much wider
+range of possible tail behavior in the underlying distributions, relative to
+their non-self-normalized counterparts. In addition, the type of models
+studied in Bair et al. (2006) and Giglio, Xiu, and Zhang (2021) differ
+significantly from the FAVAR model studied here. In particular, Bair et al.
+(2006) study a one-factor model in an $i.i.d.$ Gaussian framework, thus,
+precluding complications associated with the introduction of dependence and
+non-normality. Giglio, Xiu, and Zhang (2021), on the other hand, make
+certain high-level assumptions which can accommodate some dependence both
+cross-sectionally and intertemporally, but the model that they consider is
+very different from the dynamic vector time series model studied in the
+sequel.\footnote{%
+Another interesting recent paper on factor estimation is Ahn and Bae (2022).
+This paper uses partial least squares instead of principal component methods
+to estimate a factor-based forecasting equation, and thus utilizes an
+approach that differs from the one taken in this paper. In addition, Ahn and
+Bae (2022) assume factor pervasiveness so that issues of variable selection,
+which are the main focus of this paper, do not arise in their paper.}
+
+Before continuing, it should be noted that although our self-normalized
+statistics can be viewed as generalizations of the score statistic
+introduced in Bair et al. (2006), our use and interpretation of these
+statistics differ from that given in their paper. While these authors viewed
+the primary function of this type of statistic as providing a method for
+picking variables which have predictive content for the target variable of
+interest, we view these statistics as being primarily useful for determining
+which variables are relevant for factor estimation in the sense that they
+load on the underlying factors. Although we agree that these statistics do
+provide information about the predictive content of variables; it is
+important to note that in the context of the FAVAR model studied here, they
+do not allow one to construct a variable selection procedure which, with
+probability approaching one, correctly classifies variables on the basis of
+their predictive content. On the other hand, as mentioned previously, the
+use of these statistics does allow one to correctly identify variables which
+are relevant for the purpose of consistent factor estimation. The intuition
+behind why this is so is illustrated in an example, which we give as Remark
+2.2(a) in Section 2 of the paper. In the example, we elucidate why we feel
+that it is important to first try to identify all relevant variables and use
+them to get as precise of an estimate of the latent factors as possible,
+prior to the use of said factors in forecasting models. Any questions about
+predictability can subsequently be addressed via specification testing or
+variable selection performed directly on the factor-augmented forecasting
+equation, after one plugs in the estimated factors.
+
+Our variable selection procedure also differs substantially from the
+approach to multiple hypothesis testing taken in much of the traditional
+econometrics/statistics literature. In particular, we show that important
+moderate deviation results obtained recently by Chen, Shao, Wu, and Xu
+(2016) can be used to help control the probability of a Type I error, i.e.,
+the error that an irrelevant variable which is not informative about the
+underlying factors is falsely selected as a relevant variable. This is so
+even in situations where the number of irrelevant variables may be very
+large. Hence, we are able to design a variable selection procedure where the
+probability of a Type I error goes to zero, as the sample sizes grow to
+infinity. This fact, taken together with the fact that the probability of a
+Type II error for our procedure also goes to zero asymptotically, allows us
+to establish that our variable selection procedure is completely consistent,
+in the sense that the probabilities of both Type I and Type II errors go to
+zero in the limit. This property of complete consistency is important
+because if we try simply to control the probability of a Type I error at
+some predetermined non-zero level, which is the typical approach in multiple
+hypothesis testing, then we will not in general be able to estimate the
+factors consistently, even up to an invertible matrix transformation, and in
+consequence, we will have fallen short of our ultimate goal of obtaining a
+consistent estimate of the conditional mean function of the factor-augmented
+forecasting equation.
+
+The rest of the paper is organized as follows. In Section 2, we discuss the
+FAVAR model and the assumptions that we impose on this model. We also
+describe our variable selection procedure and provide theoretical results
+establishing the complete consistency of this procedure. Section 3 presents
+the results of a promising Monte Carlo study on the finite sample
+performance of our variable selection method. Section 4 offers some
+concluding remarks. Proofs of the main theorems and of two key supporting
+lemmas are provided in the Appendix to this paper. In addition, some further
+technical results are reported in an Online Appendix, Chao, Liu and Swanson
+(2023).
+
+Before proceeding, we first say a few words about some of the frequently
+used notation in this paper. Throughout, let $\lambda _{\left( j\right)
+}\left( A\right) $, $\lambda _{\max }\left( A\right) $, and $\lambda _{\min
+}\left( A\right) $ denote, respectively, the $j^{th}$ largest eigenvalue,
+the maximal eigenvalue, and the minimal eigenvalue of a square matrix $A$.
+Similarly, let $\sigma _{\left( j\right) }\left( B\right) $, $\sigma _{\max
+}\left( B\right) $, and $\sigma _{\min }\left( B\right) $ denote,
+respectively, the $j^{th}$ largest singular value, the maximal singular
+value, and the minimal singular value of a matrix $B$, which is not
+restricted to be a square matrix. In addition, let $\left\Vert a\right\Vert
+_{2}$ denote the usual Euclidean norm when applied to a (finite-dimensional)
+vector $a$. Also, for a matrix $A$, $\left\Vert A\right\Vert _{2}\equiv \max
+\left\{ \sqrt{\lambda \left( A^{\prime }A\right) }:\lambda \left( A^{\prime
+}A\right) \text{ is an eigenvalue of }A^{\prime }A\right\} $ denotes the
+matrix spectral norm. For two sequences, $\left\{ x_{T}\right\} $ and $%
+\left\{ y_{T}\right\} $, write $x_{T}\sim y_{T}$ if $x_{T}/y_{T}=O\left(
+1\right) $ and $y_{T}/x_{T}=O\left( 1\right) $, as $T\rightarrow \infty $.
+Furthermore, let $\left\vert z\right\vert $ denote the absolute value or the
+modulus of the number $z$; let $\left\lfloor \cdot \right\rfloor $ denote
+the floor function, so that $\left\lfloor x\right\rfloor $ gives the integer
+part of the real number $x$, and let $\iota _{p}=\left( 1,1,...,1\right)
+^{\prime }$ denote a $p\times 1$ vector of ones. Finally, for a sequence of
+random variables $u_{i,t+m},u_{i,t+m+1},u_{i,t+m+2},....$; we let $\sigma
+\left( u_{i,t+m},u_{i,t+m+1},u_{i,t+m+2},....\right) $ denote the $\sigma $%
+-field generated by this sequence of random variables.
+
+\section{\noindent Model, Assumptions, and Variable Selection in High
+Dimensions}
+
+\noindent \qquad Consider the following $p^{th}$-order factor-augmented
+vector autoregression (FAVAR):%
+\begin{equation}
+W_{t+1}=\mu +A_{1}W_{t}+\cdot \cdot \cdot +A_{p}W_{t-p+1}+\varepsilon _{t+1}%
+\text{,}  \label{FAVAR}
+\end{equation}%
+where%
+\begin{eqnarray*}
+\underset{\left( d+K\right) \times 1}{W_{t+1}} &=&\left( 
+\begin{array}{c}
+\underset{d\times 1}{Y_{t+1}} \\ 
+\underset{K\times 1}{F_{t+1}}%
+\end{array}%
+\right) \text{, }\underset{\left( d+K\right) \times 1}{\varepsilon _{t+1}}%
+=\left( 
+\begin{array}{c}
+\underset{d\times 1}{\varepsilon _{t+1}^{Y}} \\ 
+\underset{K\times 1}{\varepsilon _{t+1}^{F}}%
+\end{array}%
+\right) \text{, }\underset{\left( d+K\right) \times 1}{\mu }=\left( 
+\begin{array}{c}
+\underset{d\times 1}{\mu _{Y}} \\ 
+\underset{K\times 1}{\mu _{F}}%
+\end{array}%
+\right) ,\text{ and} \\
+\text{ }\underset{\left( d+K\right) \times \left( d+K\right) }{A_{g}}
+&=&\left( 
+\begin{array}{cc}
+\underset{d\times d}{A_{YY,g}} & \underset{d\times K}{A_{YF,g}} \\ 
+\underset{K\times d}{A_{FY,g}} & \underset{K\times K}{A_{FF,g}}%
+\end{array}%
+\right) ,\text{ for }g=1,...,p.
+\end{eqnarray*}%
+Here, $Y_{t}$ denotes the vector of observable economic variables, and $%
+F_{t} $ is a vector of unobserved (latent) factors. In our analysis of this
+model, it will often be convenient to rewrite the FAVAR in several
+alternative forms, which will facilitate writing down assumptions and
+conditions used in the sequel. We thus briefly outline two alternative
+representations of the above model. First, it is easy to see that the system
+of equations given in (\ref{FAVAR}) can be written in the form:%
+\begin{eqnarray}
+Y_{t+1} &=&\mu _{Y}+A_{YY}\underline{Y}_{t}+A_{YF}\underline{F}%
+_{t}+\varepsilon _{t+1}^{Y},  \label{Y component FAVAR} \\
+F_{t+1} &=&\mu _{F}+A_{FY}\underline{Y}_{t}+A_{FF}\underline{F}%
+_{t}+\varepsilon _{t+1}^{F},  \label{F component FAVAR}
+\end{eqnarray}%
+where $\underset{d\times dp}{A_{YY}}=\left( 
+\begin{array}{cccc}
+A_{YY,1} & A_{YY,2} & \cdots & A_{YY,p}%
+\end{array}%
+\right) $, $\underset{d\times Kp}{A_{YF}}=\left( 
+\begin{array}{cccc}
+A_{YF,1} & A_{YF,2} & \cdots & A_{YF,p}%
+\end{array}%
+\right) $, $\underset{K\times dp}{A_{FY}}=\left( 
+\begin{array}{cccc}
+A_{FY,1} & A_{FY,2} & \cdots & A_{FY,p}%
+\end{array}%
+\right) $, $\underset{K\times Kp}{A_{FF}}=\left( 
+\begin{array}{cccc}
+A_{FF,1} & A_{FF,2} & \cdots & A_{FF,p}%
+\end{array}%
+\right) $, $\underset{dp\times 1}{\underline{Y}_{t}}=\left( 
+\begin{array}{cccc}
+Y_{t}^{\prime } & Y_{t-1}^{\prime } & \cdots & Y_{t-p{\LARGE +}1}^{\prime }%
+\end{array}%
+\right) ^{\prime }$, and $\underset{Kp\times 1}{\underline{F}_{t}}=\left( 
+\begin{array}{cccc}
+F_{t}^{\prime } & F_{t-1}^{\prime } & \cdots & F_{t-p{\LARGE +}1}^{\prime }%
+\end{array}%
+\right) ^{\prime }$. Another useful representation of the FAVAR model is the
+so-called companion form, wherein the $p^{th}$-order model given in
+expression (\ref{FAVAR}) is written in terms of a first-order model:%
+\begin{equation*}
+\underset{\left( d+K\right) p\times 1}{\underline{W}_{t}}=\alpha +A%
+\underline{W}_{t-1}+E_{t}\text{,}
+\end{equation*}%
+where $\underline{W}_{t}=\left( 
+\begin{array}{ccccc}
+W_{t}^{\prime } & W_{t-1}^{\prime } & \cdots & W_{t-p{\LARGE +}2}^{\prime }
+& W_{t-p{\LARGE +}1}^{\prime }%
+\end{array}%
+\right) ^{\prime }$ and where%
+\begin{equation}
+\alpha =\left( 
+\begin{array}{c}
+\mu \\ 
+0 \\ 
+\vdots \\ 
+0 \\ 
+0%
+\end{array}%
+\right) \text{, }A=\left( 
+\begin{array}{ccccc}
+A_{1} & A_{2} & \cdots & A_{p-1} & A_{p} \\ 
+I_{d+K} & 0 & \cdots & 0 & 0 \\ 
+0 & I_{d+K} & \ddots & \vdots & 0 \\ 
+\vdots & \ddots & \ddots & 0 & \vdots \\ 
+0 & \cdots & 0 & I_{d+K} & 0%
+\end{array}%
+\right) \text{, and }E_{t}=\left( 
+\begin{array}{c}
+\varepsilon _{t} \\ 
+0 \\ 
+\vdots \\ 
+0 \\ 
+0%
+\end{array}%
+\right) \text{.}  \label{companion form notations}
+\end{equation}
+
+In addition to the observations on $Y_{t}$, suppose that the data set
+available to researchers includes a vector of time series variables which
+are related to the unobserved factors in the following manner:%
+\begin{equation}
+Z_{t}=\text{ }\Gamma \underline{F}_{t}+u_{t}\text{,}
+\label{overspecified factor model}
+\end{equation}%
+where $\underset{N\times 1}{Z_{t}}=\left( Z_{1t},Z_{2t},...,Z_{Nt}\right)
+^{\prime }$. Assume, however, that not all components of $Z_{t}$ provide
+useful information for estimating the unobserved vector $\underline{F}_{t}$,
+so that the $N\times Kp$ parameter matrix $\Gamma $ may have some rows whose
+elements are all zero. More precisely, let the $1\times Kp$ vector $\gamma
+_{i}^{\prime }$ denote the $i^{th}$ row of $\Gamma $, and assume that the
+rows of the matrix $\Gamma $ can be divided into two classes:%
+\begin{eqnarray}
+H &=&\left\{ k\in \left\{ 1,....,N\right\} :\gamma _{k}=0\right\} \text{ and}
+\label{H} \\
+H^{c} &=&\left\{ k\in \left\{ 1,....,N\right\} :\gamma _{k}\neq 0\right\} 
+\text{.}  \label{Hc}
+\end{eqnarray}%
+Now, let $\mathcal{P}$ be a permutation matrix which reorders the components
+of $Z_{t}$ such that $\mathcal{P}Z_{t}=\left( 
+\begin{array}{cc}
+Z_{t}^{\left( 1\right) \prime } & Z_{t}^{\left( 2\right) \prime }%
+\end{array}%
+\right) ^{\prime }$, where%
+\begin{eqnarray}
+\underset{N_{1}\times 1}{Z_{t}^{\left( 1\right) }} &=&\Gamma _{1}\underline{F%
+}_{t}+u_{t}^{\left( 1\right) }  \label{Z(1)} \\
+\underset{N_{2}\times 1}{Z_{t}^{\left( 2\right) }} &=&u_{t}^{\left( 2\right)
+}\text{.}  \label{Z(2)}
+\end{eqnarray}%
+The above representation suggests that the components of $Z_{t}^{\left(
+1\right) }$ can be interpreted as the relevant variables for the purpose of
+factor estimation, as the information that they supply will be helpful in
+estimating $\underline{F}_{t}$. On the other hand, the components of the
+subvector $Z_{t}^{\left( 2\right) }$ are irrelevant variables (or pure
+\textquotedblleft noise\textquotedblright\ variables), as they do not load
+on the underlying factors and only add noise if they are included in the
+factor estimation process. Given that an empirical researcher will typically
+not have prior knowledge as to which variables are elements of $%
+Z_{t}^{\left( 1\right) }$ and which are elements of $Z_{t}^{\left( 2\right)
+} $, it will be nice to have a variable selection procedure which will allow
+us to properly identify the components of $Z_{t}^{\left( 1\right) }$ and to
+use only these variables when we try to estimate $\underline{F}_{t}$. On the
+other hand, if we unknowingly include too many components of $Z_{t}^{\left(
+2\right) }$ in the estimation process, then inconsistent factor estimation
+can arise. This is demonstrated in an example analyzed recently in Chao, Qiu
+and Swanson (2023a) which considers a setting similar to the specification
+given in expressions (\ref{overspecified factor model})-(\ref{Z(2)}) above,
+but for the case of a simple one-factor model. More precisely, Chao, Qiu,
+and Swanson (2023) give an example which shows that, in this situation
+without variable pre-screening, the usual principal-component-based factor
+estimator $\widehat{f}_{t}\overset{p}{\rightarrow }$ $0$ regardless of the
+true value $f_{t}$ under the additional rate condition that $N/\left(
+TN_{1}^{\left( 1+\kappa \right) }\right) =c+o\left( N_{1}^{-1}\right) $,
+where $c$ and $\kappa $ are constants such that $0<c<\infty $ and $0<\kappa
+<1$ and where $N_{1}$ is the number of relevant variables, $N_{2}$ is the
+number of irrelevant variables, and $N=N_{1}+N_{2}$. This example shows the
+kind of severe inconsistency in factor estimation that could result if the
+commonly assumed condition of factor pervasiveness (which essentially
+requires that $N_{1}\sim N$) does not hold\footnote{%
+The reason why we refer to the result given in Chao, Qiu, and Swanson (2023)
+as a severe form of inconsistency in factor estimation is because
+inconsistency of this type will preclude the consistent estimation of the
+conditional mean function of a factor-augmented forecast equation. This is
+different from the case where the factors may be estimated consistently up
+to a non-zero scalar multiplication or, more generally, up to an invertible
+matrix transformation. In the latter case, consistent estimation of the
+conditional mean function of a factor-augmented forecast equation can still
+be attained.}.
+
+It should be noted that, in a recent paper, Bai and Ng (2021) provide
+results which show that factors can still be estimated consistently in
+certain situations where factor loadings are weaker than implied by the
+conventional pervasiveness assumption; although, as might be expected, in
+such cases the rate of convergence of the factor estimator is slower and
+additional assumptions are needed. To understand the relationship between
+their results and our setup, note that a key condition for the consistency
+result given in their paper, when expressed in terms of our setup, is the
+assumption that $N/\left( TN_{1}\right) \rightarrow 0$. When violation of
+the factor pervasiveness condition is more severe than that characterized by
+this rate condition (i.e., if $N/\left( TN_{1}\right) \rightarrow c_{1},$
+for some positive constant $c_{1}$ or if $N/\left( TN_{1}\right) \rightarrow
+\infty )$, then factors will be estimated inconsistently unless there is
+some method which can correctly identify the relevant variables, and only
+these variables are used to estimate the factors. Indeed, in Chao, Qiu, and
+Swanson (2023), we add to the results given in Bai and Ng (2021) by giving a
+result (Theorem 2.1 of Chao, Qiu, and Swanson (2023)) which shows that if
+one pre-screens variables using the variable selection method proposed
+below, then consistent factor estimation can be achieved, even if the rate
+condition that $N/\left( TN_{1}\right) \rightarrow 0$ is not satisfied. In
+general, knowledge about the severity with which the conventional factor
+pervasiveness assumption may be violated must ultimately be gathered on a
+case-by-case basis, and depends on the dataset used for a particular study.
+Along these lines, various authors have already documented cases where the
+empirical evidence shows that the underlying factors are quite weak,
+suggesting that there may be rather severe violation of the assumption of
+factor pervasiveness. For example, see Jagannathan and Wang (1998), Kan and
+Zhang (1999), Harding (2008), Kleibergen (2009), Onatski (2012), Bryzgalova
+(2016), Burnside (2016), Gospodinov, Kan, and Robotti (2017), Anatolyev and
+Mikusheva (2021), and Freyaldenhoven (2021a,b). In such cases, it is of
+interest to explore the possibility that weakness in loadings is not uniform
+across all variables, but rather is due to the fact that only a fraction of
+the $Z_{it}$ variables loads significantly on the underlying factors.
+Furthermore, even if the empirical situation of interest is one where,
+strictly speaking, the condition $N/\left( TN_{1}\right) \rightarrow 0$ does
+hold, it may still be beneficial in some such instances to do variable
+pre-screening. This is particularly true in situations where the condition $%
+N/\left( TN_{1}\right) \rightarrow 0$ is \textquotedblleft
+barely\textquotedblright\ satisfied, in which case one would expect to pay a
+rather hefty finite sample price for not pruning out variables that do not
+load significantly on the underlying factors, since these variables may add
+unwanted noise to the estimation process. For these reasons, we believe that
+there is a need to develop methods which will enable empirical researchers
+to pre-screen the components of $Z_{t},$ so that variables which are
+informative and helpful to the estimation process can be properly
+identified. In summary, our paper aims to build on the results developed by
+Bai and Ng (2021) and others by introducing additional tools for situations
+where factor estimator properties may be impacted by failure of the
+conventional pervasiveness assumption.
+
+To provide a variable selection procedure with provable guarantees, we must
+first specify a number of conditions on the FAVAR model defined above.
+
+\noindent \textbf{Assumption 2-1: }Suppose that:%
+\begin{equation}
+\det \left\{ I_{\left( d+K\right) }-A_{1}z-\cdot \cdot \cdot
+-A_{p}z^{p}\right\} =0,\text{ implies that }\left\vert z\right\vert >1\text{.%
+}  \label{stability cond}
+\end{equation}
+
+\noindent \textbf{Assumption 2-2: }Let $\varepsilon _{t}$ satisfy the
+following set of conditions: (a) $\left\{ \varepsilon _{t}\right\} $ is an
+independent sequence of random vectors with $E\left[ \varepsilon _{t}\right]
+=0$ $\forall t$; (b) there exists a positive constant $C$ such that $%
+\sup_{t}E\left\Vert \varepsilon _{t}\right\Vert _{2}^{6}\leq C<\infty $; and
+(c) $\varepsilon _{t}$ admits a density $g_{\varepsilon _{t}}$ such that,
+for some positive constant $M<\infty $, $\sup_{t}\dint \left\vert
+g_{\varepsilon _{t}}\left( \upsilon -u\right) -g_{\varepsilon _{t}}\left(
+\upsilon \right) \right\vert d\upsilon \leq M\left\Vert u\right\Vert $,
+whenever $\left\Vert u\right\Vert \leq \overline{\kappa }$ for some constant 
+$\overline{\kappa }>0$.
+
+\noindent \textbf{Assumption 2-3: }Let $u_{i,t}$ be the $i^{th}$ element of
+the error vector $u_{t}$ in expression (\ref{overspecified factor model}),
+and we assume that it satisfies the following conditions: (a) $E\left[
+u_{i,t}\right] =0$ for all $i$ and $t$; (b) there exists a positive constant 
+$\overline{C}$ such that $\sup_{i,t}E\left\vert u_{i,t}\right\vert ^{7}\leq 
+\overline{C}<\infty $, and there exists a constant $\underline{C}>0$ such
+that $\inf_{i,t}E\left[ u_{i,t}^{2}\right] \geq \underline{C}$; and (c)
+define $\mathcal{F}_{i,-\infty }^{t}=\sigma \left(
+....,u_{i,t-2},u_{i,t-1},u_{t}\right) $, $\mathcal{F}_{i,t+m}^{\infty
+}=\sigma \left( u_{i,t+m},u_{i,t+m+1},u_{i,t+m+2},....\right) $, and $\beta
+_{i}\left( m\right) =\sup_{t}E\left[ \sup \left\{ \left\vert P\left( B|%
+\mathcal{F}_{i,-\infty }^{t}\right) -P\left( B\right) \right\vert :B\in 
+\mathcal{F}_{i,t+m}^{\infty }\right\} \right] $. Assume that there exist
+constants $a_{1}>0$ and $a_{2}>0$ such that%
+\begin{equation*}
+\beta _{i}\left( m\right) \leq a_{1}\exp \left\{ -a_{2}m\right\} ,\text{ for
+all }i\text{.}
+\end{equation*}
+
+\noindent \textbf{Assumption 2-4: }$\varepsilon _{t}$ and $u_{i,s}$ are
+independent, for all $i,t,$ and $s$.
+
+\noindent \textbf{Assumption 2-5: }There exists a positive constant $%
+\overline{C},$ such that $\sup_{i\in H^{{\large c}}}\left\Vert \gamma
+_{i}\right\Vert _{2}\leq \overline{C}<\infty $ and $\left\Vert \mu
+\right\Vert _{2}\leq \overline{C}<\infty $, where $\mu =\left( \mu
+_{Y}^{\prime },\mu _{F}^{\prime }\right) ^{\prime }$.
+
+\noindent \textbf{Assumption 2-6: }Let $A$ be as defined in expression (\ref%
+{companion form notations}) above, and let the modulus of the eigenvalues of
+the matrix $I_{\left( d+K\right) p}-A$ be sorted so that:%
+\begin{equation*}
+\left\vert \lambda ^{\left( 1\right) }\left( I_{\left( d+K\right)
+p}-A\right) \right\vert \geq \left\vert \lambda ^{\left( 2\right) }\left(
+I_{\left( d+K\right) p}-A\right) \right\vert \geq \cdot \cdot \cdot \geq
+\left\vert \lambda ^{\left( \left( d+K\right) p\right) }\left( I_{\left(
+d+K\right) p}-A\right) \right\vert =\overline{\phi }_{\min }\text{.}
+\end{equation*}%
+Suppose that there is a constant $\underline{C}>0$ such that%
+\begin{equation}
+\sigma _{\min }\left( I_{\left( d+K\right) p}-A\right) \geq \underline{C}%
+\overline{\phi }_{\min }  \label{lower bd I-A}
+\end{equation}%
+In addition, there exists a positive constant $\overline{C}<\infty $ such
+that, for all positive integer $j$, 
+\begin{equation}
+\sigma _{\max }\left( A^{j}\right) \leq \overline{C}\max \left\{ \left\vert
+\lambda _{\max }\left( A^{j}\right) \right\vert ,\left\vert \lambda _{\min
+}\left( A^{j}\right) \right\vert \right\} .  \label{upper bd A}
+\end{equation}
+
+\noindent \textbf{Remark 2.1:}
+
+\noindent \textbf{(a)} Note that Assumption 2-1 is the stability condition
+that one typically assumes for a stationary VAR process. One difference is
+that we allow for possible heterogeneity in the distribution of $\varepsilon
+_{t}$ across time, so that our FAVAR process is not necessarily a strictly
+stationary process. Under Assumption 2-1, there exists a vector moving
+average representation for the FAVAR process.
+
+\noindent \textbf{(b) }It is well known that $\det \left\{ I_{\left(
+d+K\right) }-Az\right\} =\det \left\{ I_{\left( d+K\right) }-A_{1}z-\cdot
+\cdot \cdot -A_{p}z^{p}\right\} ,$ where $A$ is the coefficient matrix of
+the companion form given in expression (\ref{companion form notations}). It
+follows that Assumption 2-1 is equivalent to the condition that $\det
+\left\{ I_{\left( d+K\right) }-Az\right\} =0$ implies that $\left\vert
+z\right\vert >1$. In addition, Assumption 2-1 is also, of course, equivalent
+to the assumption that all eigenvalues of $A$ have modulus less than $1$.
+
+\noindent \textbf{(c)} Assumption 2-6 imposes a condition whereby the
+extreme singular values of the matrices $A^{j}$ and $I_{\left( d+K\right)
+p}-A$ have bounds that depend on the extreme eigenvalues of these matrices.
+More primitive conditions for such a relationship between the singular
+values and the eigenvalues of a (not necessarily symmetric) matrix have been
+studied in the linear algebra literature. In fact, it is easy to show that
+Assumption 2-6 holds automatically if the matrix $A$ is diagonalizable, even
+if it is not symmetric. Assumptions 2-6, on the other hand, takes into
+account other situations where expressions (\ref{lower bd I-A}) and (\ref%
+{upper bd A}) are valid even though the matrix $A$ is not diagonalizable.
+
+\noindent \textbf{(d)} Note that Assumptions 2-1, 2-2, and 2-6 together
+imply that the process $\left\{ W_{t}\right\} $ generated by the FAVAR model
+given in expression (\ref{FAVAR}) is a $\beta $-mixing process with $\beta $%
+-mixing coefficient satisfying $\beta _{W}\left( m\right) \leq a_{1}\exp
+\left\{ -a_{2}m\right\} $, for some positive constants $a_{1}$ and $a_{2}$,
+with $\beta _{W}\left( m\right) =\sup_{t}E\left[ \sup \left\{ \left\vert
+P\left( B|\mathcal{A}_{-\infty }^{t}\right) -P(B)\right\vert :B\in \mathcal{A%
+}_{t+m}^{\infty }\right\} \right] $, and with
+
+\noindent $\mathcal{A}_{-\infty }^{t}=\sigma \left(
+...,W_{t-2},W_{t-1},W_{t}\right) $ and $\mathcal{A}_{t+m}^{\infty }=\sigma
+\left( W_{t+m},W_{t+m+1},W_{t+m+2},....\right) $\footnote{%
+This can be shown by applying Theorem 2.1 of Pham and Tran (1985). A proof
+of this result is also given in Chao, Liu, and Swanson (2023). See, in
+particular, Lemma OA-11 and its proof in Chao, Liu, and Swanson (2023).}.
+Note, in addition, that Assumption 2-2 (c) rules out situations such as that
+given in the famous counterexample presented by Andrews (1984) which shows
+that a first-order autoregression with errors having a discrete Bernoulli
+distribution is not $\alpha $-mixing, even if it satisfies the stability
+condition. Conditions similar to Assumption 2-2(c) have also appeared in
+previous papers, such as Gorodetskii (1977) and Pham and Tran (1985), which
+seek to provide sufficient conditions for establishing the $\alpha $ or $%
+\beta $ mixing properties of linear time series processes.
+
+\medskip
+
+Our variable selection procedure is based on a self-normalized statistic and
+makes use of some pathbreaking moderate deviation results for weakly
+dependent processes recently obtained by Chen, Shao, Wu, and Xu (2016). An
+advantage of using a self-normalized statistic, as discussed in Remark
+2.2(b) below, is that it allows the range of the moderate deviation
+approximation to be wider relative to their non-self-normalized counterparts%
+\textbf{.} To accommodate data dependence, we consider self-nomalized
+statistics that are constructed from observations which are first split into
+blocks in a manner similar to the kind of construction one would employ in
+implementing a block bootstrap or in proving a central limit theorem using
+the blocking technique. Two such statistics are proposed in this paper. The
+first of these statistics has the form of an $\ell _{\infty }$ norm and is
+given by: 
+\begin{equation}
+\max_{1\leq \ell \leq d}\left\vert S_{i,\ell ,T}\right\vert =\max_{1\leq
+\ell \leq d}\left\vert \frac{\overline{S}_{i,\ell ,T}}{\sqrt{\overline{V}%
+_{i,\ell ,T}}}\right\vert ,  \label{max statistic}
+\end{equation}%
+where 
+\begin{equation}
+\overline{S}_{i,\ell ,T}=\dsum\limits_{r=1}^{q}\dsum\limits_{t=\left(
+r-1\right) \tau +p}^{\left( r-1\right) \tau +\tau _{1}+p-1}Z_{it}y_{\ell ,t%
+{\LARGE +}1}\text{ and }\overline{V}_{i,\ell ,T}=\dsum\limits_{r=1}^{q}\left[
+\dsum\limits_{t=\left( r-1\right) \tau +p}^{\left( r-1\right) \tau +\tau
+_{1}+p-1}Z_{it}y_{\ell ,t{\LARGE +}1}\right] ^{2}\text{.}
+\label{num and denom max stat}
+\end{equation}%
+Here, $Z_{it}$ denotes the $i^{th}$ component of $Z_{t}$ , $y_{\ell ,t+1}$
+denotes the $\ell ^{th}$ component of $Y_{t+1}$, $\tau _{1}=\left\lfloor
+T_{0}^{\alpha _{{\large 1}}}\right\rfloor $, and $\tau _{2}=\left\lfloor
+T_{0}^{\alpha _{{\large 2}}}\right\rfloor $, where $1>\alpha _{1}\geq \alpha
+_{2}>0$, $\tau =\tau _{1}+\tau _{2}$, $q=\left\lfloor T_{0}/\tau
+\right\rfloor $, and $T_{0}=T-p+1$. Note that the statistic given in
+expression (\ref{max statistic}) can be interpreted as the maximum of the
+(self-normalized) sample covariances between the $i^{th}$ component of $%
+Z_{t} $ and the components of $Y_{t+1}$. Our second statistic has the form
+of a pseudo-$L_{1}$ norm and is given by: 
+\begin{equation*}
+\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell ,T}\right\vert
+=\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert \frac{\overline{S}%
+_{i,\ell ,T}}{\sqrt{\overline{V}_{i,\ell ,T}}}\right\vert ,
+\end{equation*}%
+where $\overline{S}_{i,\ell ,T}$ and $\overline{V}_{i,\ell ,T}$ are as
+defined in (\ref{num and denom max stat}) above and where $\left\{ \varpi
+_{\ell }:\ell =1,..,d\right\} $ denotes pre-specified weights, such that $%
+\varpi _{\ell }\geq 0,$ for every $\ell \in \left\{ 1,...,d\right\} $ and $%
+\dsum\nolimits_{\ell =1}^{d}\varpi _{\ell }=1$. Both of these statistics
+employ a blocking scheme similar to that proposed in Chen, Shao, Wu, and Xu
+(2016), where, in order to keep the effects of dependence under control, the
+construction of these statistics is based only on observations in every
+other block. To see this, note that if we write out the \textquotedblleft
+numerator\textquotedblright\ term $\overline{S}_{i,\ell ,T}$ in greater
+detail, we have that:%
+\begin{eqnarray}
+\overline{S}_{i,\ell ,T} &=&\dsum\limits_{t=p}^{\tau _{1}+p-1}Z_{it}y_{\ell
+,t{\LARGE +}1}+\dsum\limits_{t=\tau +p}^{\tau +\tau _{1}+p-1}Z_{it}y_{\ell ,t%
+{\LARGE +}1}  \notag \\
+&&+\dsum\limits_{t=2\tau +p}^{2\tau +\tau _{1}+p-1}Z_{it}y_{\ell ,t{\LARGE +}%
+1}+\cdot \cdot \cdot +\dsum\limits_{t=\left( q-1\right) \tau +p}^{\left(
+q-1\right) \tau +\tau _{1}+p-1}Z_{it}y_{\ell ,t{\LARGE +}1}
+\label{sum of Z times y}
+\end{eqnarray}%
+Comparing the first term and the second term on the right-hand side of
+expression (\ref{sum of Z times y}), we see that the observations $%
+Z_{it}y_{\ell ,t{\LARGE +}1}$, for $t=\tau _{1}+p,...,\tau +p-1$, have not
+been included in the construction of the sum. Similar observations hold when
+comparing the second and the third terms, and so on.
+
+It should also be pointed out that although we make use of some of their
+fundamental results on moderate deviation, both the model studied in our
+paper and the objective of our paper are very different from that of Chen,
+Shao, Wu, and Xu (2016). Whereas Chen, Shao, Wu, and Xu \textbf{(}2016%
+\textbf{)} focus their analysis on problems of testing and inference for the
+mean of a scalar weakly dependent time series using self-normalized
+Student-type test statistics, our paper applies the self-normalization
+approach to a variable selection problem in a FAVAR setting. Indeed, the
+problem which we study is in some sense more akin to a model selection
+problem rather than a multiple hypothesis testing problem. In order to
+consistently estimate the factors (at least up to an invertible matrix
+transformation), we need to develop a variable selection procedure whereby
+both the probability of a false positive and the probability of a false
+negative converge to zero as $N_{1}$, $N_{2}$, $T\rightarrow \infty $%
+\footnote{%
+Here, a false positive refers to mis-classifying a variable, $Z_{it},$ as a
+relevant variable for the purpose of factor estimation when its factor
+loading $\gamma _{i}^{\prime }=0$, whereas a false negative refers to the
+opposite case, where $\gamma _{i}^{\prime }\neq 0,$ but the variable $Z_{it}$
+is mistakenly classified as irrelevant.}. This is different from the typical
+multiple hypothesis testing approach whereby one tries to control the
+familywise error rate (or, alternatively, the false discovery rate), so that
+it is no greater than $0.05,$ say, but does not try to ensure that this
+probability goes to zero as the sample size grows.
+
+To determine whether the $i^{th}$ component of $Z_{t}$ is a relevant
+variable for the purpose of factor estimation, we propose the following
+procedure. Define $i\in \widehat{H}^{c}$ to indicate that the procedure has
+classified $Z_{it}$ to be a relevant variable for the purpose of factor
+estimation. Similarly\textbf{,} define $i\in \widehat{H}$ to indicate that
+the procedure has classified $Z_{it}$ to be an irrelevant variable. Now, let 
+$\mathbb{S}_{i,T}^{+}$ denote either the statistic $\max_{1\leq \ell \leq
+d}\left\vert S_{i,\ell ,T}\right\vert $ or the statistic $%
+\dsum\nolimits_{\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell
+,T}\right\vert .$\footnote{%
+It should be noted that the denominator of the statistic $S_{i,\ell ,T}=%
+\overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell ,T}}$ does not
+correspond to the use of an HAR standard error constructed using the fixed $%
+b $ (or fixed smoothing) approach pioneered by Kiefer and Vogelsang (2002a,
+2002b), even in the case without any truncation. Hence, our statistic
+differs from the usual Studentized statistic that is normalized by an HAR
+estimator. This can be shown by straightforward calculations for the case of
+the Bartlett kernel, for example. For interesting discussions of different
+approaches to self-normalization in the statistics and probability
+literature, refer to Z. Zhou and X. Shao (2013), X. Chen, Q-M. Shao, W.B.
+Wu, and L. Xu (2016), and the references cited therein.} Our variable
+selection procedure is based on the decision rule: 
+\begin{equation}
+i\in \left\{ 
+\begin{array}{cc}
+\widehat{H}^{c} & \text{ if }\mathbb{S}_{i,T}^{+}\geq \Phi ^{-1}\left( 1-%
+\frac{\varphi }{2N}\right) \\ 
+\widehat{H} & \text{if }\mathbb{S}_{i,T}^{+}<\Phi ^{-1}\left( 1-\frac{%
+\varphi }{2N}\right)%
+\end{array}%
+\right. ,  \label{var selection decision rule}
+\end{equation}%
+where $\Phi ^{-1}\left( \cdot \right) $ denotes the quantile function or the
+inverse of the cumulative distribution function of the standard normal
+random variable, and where $\varphi $ is a tuning parameter which may depend
+on $N$. Some conditions on $\varphi $ will be given in Assumption 2-10 below.
+
+\noindent \textbf{Remark 2.2:}
+
+\noindent \textbf{(a) }As noted in the introduction, the statistics proposed
+in this paper can be viewed as self-normalized versions of the score
+statistic introduced in Bair et al. (2006), where to accommodate for time
+series dependence in the data, we make the additional modification of
+constructing these statistics using block sums. However, our use of these
+statistics here differs from how Bair et al. (2006) apply and interpret
+their score statistic. In particular, within the FAVAR framework studied
+here, we view these self-normalized score statistics as being primarily
+useful for identifying variables that are relevant for factor estimation and
+not so much for identifying variables which have predictive content for the
+target variable of interest. The following example illustrates this and
+provides some intuition. Consider the following two-factor FAVAR model:%
+\begin{eqnarray}
+y_{t{\LARGE +}1} &=&a_{YY}y_{t}+\alpha _{YF,1}f_{1,t}+\varepsilon _{t{\LARGE %
++}1}^{Y}  \notag \\
+f_{1,t{\LARGE +}1}
+&=&a_{FY,1}y_{t}+a_{FF,11}f_{1,t}+a_{FF,12}f_{2,t}+\varepsilon _{1,t{\LARGE +%
+}1}^{F}  \notag \\
+f_{2,t{\LARGE +}1}
+&=&a_{FY,2}y_{t}+a_{FF,21}f_{1,t}+a_{FF,22}f_{2,t}+\varepsilon _{2,t{\LARGE +%
+}1}^{F}\text{,}  \label{FAVAR Example}
+\end{eqnarray}%
+with factor equation having the form 
+\begin{equation}
+Z_{t}=\Gamma F_{t}+u_{t},  \label{factor eqn Example}
+\end{equation}%
+where $F_{t}=\left( 
+\begin{array}{cc}
+f_{1,t} & f_{2,t}%
+\end{array}%
+\right) ^{{\Large \prime }}$. Note that, under the specification given by
+expressions (\ref{FAVAR Example}) and (\ref{factor eqn Example}), the factor 
+$f_{2,t}$ has no predictive content for future values of $y_{t},$ whereas
+the factor $f_{1,t}$ does have predictive content. Now, write the companion
+form:%
+\begin{equation*}
+W_{t{\LARGE +}1}=AW_{t}+\varepsilon _{t{\LARGE +}1},
+\end{equation*}%
+where%
+\begin{equation*}
+W_{t}=\left( 
+\begin{array}{c}
+y_{t} \\ 
+f_{1,t} \\ 
+f_{2,t}%
+\end{array}%
+\right) \text{, }\varepsilon _{t}=\left( 
+\begin{array}{c}
+\varepsilon _{t{\LARGE +}1}^{Y} \\ 
+\varepsilon _{1,t{\LARGE +}1}^{F} \\ 
+\varepsilon _{2,t{\LARGE +}1}^{F}%
+\end{array}%
+\right) \text{, and }A=\left( 
+\begin{array}{ccc}
+a_{YY} & \alpha _{YF,1} & 0 \\ 
+a_{FY,1} & a_{FF,11} & a_{FF,12} \\ 
+a_{FY,2} & a_{FF,21} & a_{FF,22}%
+\end{array}%
+\right) ,
+\end{equation*}%
+Here, under Assumption 2-1, we have the vector moving-average representation:%
+\begin{equation*}
+W_{t{\LARGE +}1}=\dsum\limits_{j=0}^{\infty }A^{j}\varepsilon _{t{\LARGE +}%
+1},
+\end{equation*}%
+It follows that the components of $W_{t{\LARGE +}1}$ have the univariate MA
+representations: 
+\begin{equation*}
+y_{t{\LARGE +}1}=\dsum\limits_{j=0}^{\infty }e_{1}^{{\Large \prime }%
+}A^{j}\varepsilon _{t{\LARGE +}1-j}\text{, }f_{1,t}=\dsum\limits_{k=0}^{%
+\infty }e_{2}^{{\Large \prime }}A^{k}\varepsilon _{t-k}\text{, and }%
+f_{2,t}=\dsum\limits_{k=0}^{\infty }e_{3}^{{\Large \prime }}A^{k}\varepsilon
+_{t-k},
+\end{equation*}%
+with $e_{1}=\left( 
+\begin{array}{ccc}
+1 & 0 & 0%
+\end{array}%
+\right) ^{{\Large \prime }}$, $e_{2}=\left( 
+\begin{array}{ccc}
+0 & 1 & 0%
+\end{array}%
+\right) ^{{\Large \prime }}$, and $e_{3}=\left( 
+\begin{array}{ccc}
+0 & 0 & 1%
+\end{array}%
+\right) ^{{\Large \prime }}$. Let $Z_{it}$ and $Z_{jt}$ be, respectively,
+the $i^{th}$ and the $j^{th}$ components of $Z_{t}$ (with $i\neq j$).
+Suppose that $Z_{it}$ loads only on the second factor but not the first, so
+that $\gamma _{i}^{{\large \prime }}=\left( 
+\begin{array}{cc}
+0 & \gamma _{i2}%
+\end{array}%
+\right) $, where $\gamma _{i2}\neq 0$;\ and suppose that $Z_{jt}$ loads only
+on the first factor but not the second, so that $\gamma _{j}^{{\large \prime 
+}}=\left( 
+\begin{array}{cc}
+\gamma _{j1} & 0%
+\end{array}%
+\right) $, where $\gamma _{j1}\neq 0.$ Hence, both $Z_{it}$ and $Z_{jt}$ are
+relevant variables for factor estimation, but $Z_{jt}$ has predictive
+content for $y_{t{\LARGE +}1}$ whereas $Z_{it}$ does not. Consider the score
+statistics associated with $Z_{it}$ and $Z_{jt}:$ 
+\begin{eqnarray*}
+S_{i} &=&\dsum\limits_{t=1}^{T-1}Z_{it}y_{t{\LARGE +}1}=\dsum%
+\limits_{t=1}^{T-1}\left( \gamma _{i}^{{\large \prime }}F_{t}+u_{it}\right)
+y_{t{\LARGE +}1}=\dsum\limits_{t=1}^{T-1}\gamma _{i2}f_{2,t}y_{t{\LARGE +}%
+1}+\dsum\limits_{t=1}^{T-1}u_{it}y_{t{\LARGE +}1}\text{ and} \\
+S_{j} &=&\dsum\limits_{t=1}^{T-1}Z_{jt}y_{t{\LARGE +}1}=\dsum%
+\limits_{t=1}^{T-1}\left( \gamma _{j}^{{\large \prime }}F_{t}+u_{jt}\right)
+y_{t{\LARGE +}1}=\dsum\limits_{t=1}^{T-1}\gamma _{j1}f_{1,t}y_{t{\LARGE +}%
+1}+\dsum\limits_{t=1}^{T-1}u_{jt}y_{t{\LARGE +}1}.
+\end{eqnarray*}%
+Note that, when both $\sigma _{21}\neq 0$ and $\sigma _{31}\neq 0$, where $%
+\sigma _{21}$ and $\sigma _{31}$ are, respectively, the $\left( 2,1\right)
+^{th}$ and the $\left( 3,1\right) ^{th}$ elements of the error covariance
+matrix $\Sigma _{\varepsilon }$, the expected values of $S_{i}$ and $S_{j}$
+will not, in general, be properly centered at zero, i.e., 
+\begin{eqnarray*}
+E\left[ S_{i}\right] &=&\dsum\limits_{t=1}^{T-1}E\left[ Z_{it}y_{t{\LARGE +}%
+1}\right] \\
+&=&\gamma _{i2}\dsum\limits_{t=1}^{T-1}E\left[ f_{2,t}y_{t{\LARGE +}1}\right]
++\dsum\limits_{t=1}^{T-1}E\left[ u_{it}y_{t{\LARGE +}1}\right] \\
+&=&\gamma _{i2}\dsum\limits_{t=1}^{T-1}\dsum\limits_{k=0}^{\infty
+}\dsum\limits_{\ell =0}^{\infty }e_{3}^{{\Large \prime }}A^{k}E\left[
+\varepsilon _{t-k}\varepsilon _{t{\LARGE +}1-\ell }^{{\Large \prime }}\right]
+\left( A^{{\Large \prime }}\right) ^{\ell }e_{1} \\
+&=&\gamma _{i2}\dsum\limits_{t=1}^{T-1}\dsum\limits_{k=0}^{\infty }e_{3}^{%
+{\Large \prime }}A^{k}\Sigma _{\varepsilon }\left( A^{{\Large \prime }%
+}\right) ^{k{\LARGE +}1}e_{1} \\
+&\neq &0
+\end{eqnarray*}%
+and%
+\begin{eqnarray*}
+E\left[ S_{j}\right] &=&\dsum\limits_{t=1}^{T-1}E\left[ Z_{jt}y_{t{\LARGE +}%
+1}\right] \\
+&=&\gamma _{j1}\dsum\limits_{t=1}^{T-1}E\left[ f_{1,t}y_{t{\LARGE +}1}\right]
++\dsum\limits_{t=1}^{T-1}E\left[ u_{jt}y_{t{\LARGE +}1}\right] \\
+&=&\gamma _{j1}\dsum\limits_{t=1}^{T-1}\dsum\limits_{k=0}^{\infty
+}\dsum\limits_{\ell =0}^{\infty }e_{2}^{{\Large \prime }}A^{k}E\left[
+\varepsilon _{t-k}\varepsilon _{t{\LARGE +}1-\ell }^{{\Large \prime }}\right]
+\left( A^{{\Large \prime }}\right) ^{\ell }e_{1} \\
+&=&\gamma _{j1}\dsum\limits_{t=1}^{T-1}\dsum\limits_{k=0}^{\infty }e_{2}^{%
+{\Large \prime }}A^{k}\Sigma _{\varepsilon }\left( A^{{\Large \prime }%
+}\right) ^{k{\LARGE +}1}e_{1} \\
+&\neq &0
+\end{eqnarray*}%
+Hence, both statistics, when appropriately normalized, will diverge with
+probability approaching one, as $T\rightarrow \infty .$ This makes the right
+inference about the relevance of both of these variables, since the
+divergence of these statistics implies that the null hypothesis $%
+H_{0}:\gamma _{i}=0$ (i.e., $Z_{it}$ is irrelevant) as well as the null
+hypothesis $H_{0}:\gamma _{j}=0$ (i.e., $Z_{jt}$ is irrelevant) will both be
+rejected with probability approaching one. However, if we were to interpret
+these statistics as providing inference about the predictive content of the
+variables $Z_{it}$ and $Z_{jt}$; then, we would have made the wrong
+inference about $Z_{it}$, since it loads only on $f_{2,t}$ which is not
+helpful in predicting $y_{t{\LARGE +}1}$. On the other hand, suppose instead
+that $\gamma _{i2}=0$ and $\gamma _{j1}=0$ so that $\gamma _{i}^{{\large %
+\prime }}=\left( 
+\begin{array}{cc}
+0 & \gamma _{i2}%
+\end{array}%
+\right) =\left( 
+\begin{array}{cc}
+0 & 0%
+\end{array}%
+\right) $ and $\gamma _{j}^{{\large \prime }}=\left( 
+\begin{array}{cc}
+\gamma _{j1} & 0%
+\end{array}%
+\right) =\left( 
+\begin{array}{cc}
+0 & 0%
+\end{array}%
+\right) $, and, thus, both $Z_{it}$ and $Z_{jt}$ are now irrelevant
+variables. Then, under this alternative scenario, we would have%
+\begin{eqnarray*}
+E\left[ S_{i}\right] &=&\gamma
+_{i2}\dsum\limits_{t=1}^{T-1}\dsum\limits_{j=1}^{\infty }e_{3}^{{\Large %
+\prime }}A^{j-1}\Sigma _{\varepsilon }\left( A^{{\Large \prime }}\right)
+^{j}e_{1}=0 \\
+E\left[ S_{j}\right] &=&\gamma
+_{j1}\dsum\limits_{t=1}^{T-1}\dsum\limits_{j=1}^{\infty }e_{2}^{{\Large %
+\prime }}A^{j-1}\Sigma _{\varepsilon }\left( A^{{\Large \prime }}\right)
+^{j}e_{1}=0
+\end{eqnarray*}%
+so that both statistics are now properly centered at zero, and neither will
+diverge, when appropriately normalized, as $T\rightarrow \infty $. Hence,
+under this alternative scenario, given an appropriate threshold or critical
+value, we will also make the correct inference asymptotically about the fact
+that both $Z_{it}$ and $Z_{jt}$ are irrelevant variables in this case.
+
+Note that, for ease of presentation, we have constructed this example based
+on a simple score statistic for which construction does not involve a
+blocking scheme or self-normalization. Of course, the same story holds for
+the more complicated score statistics discussed in this paper. Formal
+results showing that our self-normalized statistics correctly identify the
+relevant variables with probability approaching one are given below in
+Theorems 1 and 2.
+
+\noindent \textbf{(b) }To understand why using the quantile function of the
+standard normal as the threshold function for our procedure is a natural
+choice, note first that, by a slight modification of the arguments given in
+the proof of Lemma A2\footnote{%
+The statement and proof of Lemma A2 are provided below in the Appendix to
+this paper.}, we can show that, as $T\rightarrow \infty $%
+\begin{equation}
+P\left( \left\vert S_{i,\ell ,T}\right\vert \geq z\right) =2\left[ 1-\Phi
+\left( z\right) \right] \left( 1+o\left( 1\right) \right) ,
+\label{moderate dev result}
+\end{equation}%
+which holds for all $i$ and $\ell $ and for all $z$ such that
+
+\noindent $0\leq z\leq c_{0}\min \left\{ T^{\left( 1-{\large \alpha }%
+_{1}\right) /6}/L\left( T\right) ,T^{\alpha _{2}/2}\right\} $, where $%
+L\left( T\right) $ denotes a slowly varying function such that $L\left(
+T\right) \rightarrow \infty $ but $L\left( T\right) /T^{\left( 1-{\large %
+\alpha }_{1}\right) /6}\rightarrow 0$ as $T\rightarrow \infty $. In view of
+expression (\ref{moderate dev result}), we can interpret moderate deviation
+as providing an asymptotic approximation of the (two-sided) tail behavior of
+the self-normalized statistic, $S_{i,\ell ,T},$ based on the tails of the
+standard normal distribution. An important advantage of using
+self-normalized statistics in this context is that the range for which this
+standard normal approximation is valid (i.e., the range $0\leq z\leq
+c_{0}\min \left\{ T^{\left( 1-{\large \alpha }_{1}\right) /6}/L\left(
+T\right) ,T^{\alpha _{2}/2}\right\} $) is wider for self-normalized
+statistics relative to their non-self-normalized counterparts. Now, suppose
+initially that we wish simply to control the probability of a Type I error
+for testing the null hypothesis $H_{0}:\gamma _{i}=0$ (i.e., the $i^{th}$
+variable does not load on the underlying factors) at some fixed significance
+level $\alpha $. Then, expression (\ref{moderate dev result}) suggests that
+a natural way to do this is to set $z=\Phi ^{-1}\left( 1-\alpha /2\right) $.
+This is because, given that the quantile function $\Phi ^{-1}\left( \cdot
+\right) $ is, by definition, the inverse function of the cdf $\Phi \left(
+\cdot \right) $, we have that: 
+\begin{equation*}
+P\left( \left\vert S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-\alpha
+/2\right) \right) =2\left[ 1-\Phi \left( \Phi ^{-1}\left( 1-\alpha /2\right)
+\right) \right] \left( 1+o\left( 1\right) \right) =\alpha \left( 1+o\left(
+1\right) \right) ,
+\end{equation*}%
+so that the probability of a Type I error is controlled at the desired level 
+$\alpha $ asymptotically. Note also that an advantage of moderate deviation
+theory is that it gives a characterization of the relative approximation
+error, as opposed to the absolute approximation error. As a result, the
+approximation given is useful and meaningful even when $\alpha $ is very
+small, which is of importance to us since we are interested in situations
+where we might want to let $\alpha $ go to zero, as sample size approaches
+infinity.
+
+We give the above example to provide some intuition concerning the form of
+the threshold function that we have specified. The variable selection
+problem that we actually consider is more complicated than what is
+illustrated by this example, since we need to control the probability of a
+Type I error (or of a false positive) not just for a single test involving
+the $i^{th}$ variable but for all variables simultaneously. Moreover, as
+noted previously, we also need the probability of a false positive to go to
+zero asymptotically, if we want to be able to estimate the factors
+consistently, even up to an invertible matrix transformation. We show in
+Theorem 1 below that these objectives can all be accomplished using the
+threshold function specified in expression (\ref{var selection decision rule}%
+), since a threshold function of this form makes it easy for us to properly
+control the probability of a false positive in large samples.
+
+\noindent \textbf{(c)} The threshold function used here is reminiscent of
+the one employed in Belloni, Chen, Chernozhukov, and Hansen (2012) and
+further studied in Belloni, Chernozhukov, and Hansen (2014). The latter
+paper focuses on developing a variable screening methodology for a partially
+linear treatment effects model. In that paper, a threshold function that is
+similar to ours is used to set the penalty level for a lasso-based procedure
+for selecting the terms in a series expansion of the nonlinear component of
+their model under conditions of sparsity. In spite of the similarity in the
+form of the threshold function used, the nature of the variable selection
+problem studied in the two above papers is quite different from that
+investigated in our paper. In particular, Belloni, Chenozhukov, and Hansen
+(2014) do not require their variable selection procedure to be completely
+consistent, nor do they provide a result showing that the probability of
+both Type I and Type II error vanishes asymptotically as sample sizes
+approach infinity. As noted in Belloni, Chernozhukov, and Hansen (2014),
+perfect variable selection is not needed in the type of regression settings
+considered in their paper if the goal is to approximate the nonlinear
+functions in their model sufficiently well so that the post-selection
+estimators of the treatment effect parameter will have good asymptotic
+properties. Here, we instead argue that having a variable selection
+procedure that is completely consistent is quite useful given our objective
+of ensuring that good factor estimates can be obtained in a high-dimensional
+latent factor model. This is because, as noted earlier, if the probability
+of a Type I error is only controlled at some fixed nonzero level
+asymptotically, then consistent factor estimation may not be possible. In
+addition, the precision with which the latent factors are estimated will be
+reduced if we have a variable selection procedure where the probability of a
+Type II error does not go to zero. As a result of these differences in setup
+and objectives, the conditions that we specify for setting the tuning
+parameter $\varphi $\ will also be quite different from those in Belloni,
+Chen, Chernozhukov, and Hansen (2012) and Belloni, Chernozhukov, and Hansen
+(2014).
+
+Under appropriate conditions, the variable selection procedure described
+above can be shown to be consistent, in the sense that both the probability
+of a false positive, i.e. $P\left( i\in \widehat{H}^{c}|i\in H\right) $, and
+the probability of a false negative, i.e., $P\left( i\in \widehat{H}|i\in
+H^{c}\right) $, approach zero as $N_{1},N_{2},T\rightarrow \infty $. To show
+this result, we must first state a number of additional assumptions.
+
+\noindent \textbf{Assumption 2-7: }There exists a positive constant $%
+\underline{c}$ such that for all $\tau \geq 1$ and $\tau _{1}\geq 1$: 
+\begin{equation*}
+\min_{1\leq \ell \leq d}\min_{i\in H}\min_{r\in \left\{ 1,...,q\right\}
+}E\left\{ \left[ \frac{1}{\sqrt{\tau _{1}}}\dsum\limits_{t=\left( r-1\right)
+\tau +p}^{\left( r-1\right) \tau +\tau _{1}+p-1}y_{\ell ,t{\LARGE +}1}u_{it}%
+\right] ^{2}\right\} \geq \underline{c},
+\end{equation*}%
+where, as defined earlier, $\tau _{1}=\left\lfloor T_{0}^{\alpha _{{\large 1}%
+}}\right\rfloor $, $\tau _{2}=\left\lfloor T_{0}^{\alpha _{{\large 2}%
+}}\right\rfloor $ for $1>\alpha _{1}\geq \alpha _{2}>0$ and $q=\left\lfloor 
+\frac{T_{0}}{\tau _{1}+\tau _{2}}\right\rfloor $, and $T_{0}=T-p+1$.
+
+\noindent \textbf{Assumption 2-8: }Let $i\in H^{c}=\left\{ k\in \left\{
+1,....,N\right\} :\gamma _{k}\neq 0\right\} $. Suppose that there exists a
+positive constant, $\underline{c},$ such that, for all $N_{1},N_{2},$and $T$
+sufficiently large:%
+\begin{eqnarray*}
+&&\min_{1\leq \ell \leq d}\min_{{\large i\in }H^{{\large c}}}\left\vert 
+\frac{\mu _{i,\ell ,T}}{q\tau _{1}}\right\vert \\
+&=&\min_{1\leq \ell \leq d}\min_{{\large i\in }H^{{\large c}}}\left\vert 
+\frac{1}{q}\dsum\limits_{r=1}^{q}\frac{1}{\tau _{1}}\dsum\limits_{t=\left(
+r-1\right) \tau +p}^{\left( r-1\right) \tau +\tau _{1}+p-1}\gamma
+_{i}^{\prime }\left\{ E\left[ \underline{F}_{t}\right] \mu _{Y,\ell }+E\left[
+\underline{F}_{t}\underline{Y}_{t}^{\prime }\right] \alpha _{YY,\ell }+E%
+\left[ \underline{F}_{t}\underline{F}_{t}^{\prime }\right] \alpha _{YF,\ell
+}\right\} \right\vert \\
+&\geq &\underline{c}>0,
+\end{eqnarray*}%
+where $\mu _{Y,\ell }=e_{\ell ,d}^{\prime }\mu _{Y}$, $\alpha _{YY,\ell
+}=A_{YY}^{\prime }e_{\ell ,d}$, and $\alpha _{YF,\ell }=A_{YF}^{\prime
+}e_{\ell ,d}.$ Here, $e_{\ell ,d}$ is a $d\times 1$ elementary vector whose $%
+\ell ^{th}$ component is $1$ and all other components are $0$.
+
+\noindent \textbf{Assumption 2-9: }Suppose that, as $N_{1}$, $N_{2}$, and $%
+T\rightarrow \infty $, the following rate conditions hold:
+
+\begin{enumerate}
+\item[(a)] $\sqrt{\ln N}/\min \left\{ T^{\left( 1-{\large \alpha }%
+_{1}\right) /6},T^{\alpha _{2}/2}\right\} \rightarrow 0$, where $1>\alpha
+_{1}\geq \alpha _{2}>0$ and $N=N_{1}+N_{2}$.
+
+\item[(b)] $N_{1}/T^{3\alpha _{{\large 1}}}\rightarrow 0$ where $\alpha _{1}$
+is as defined in part (a) above.
+\end{enumerate}
+
+\noindent \textbf{Assumption 2-10: }Let $\varphi $ satisfy the following two
+conditions: (a) $\varphi \rightarrow 0$ as $N_{1},N_{2}\rightarrow \infty $,
+and (b) there exists some constant $a>0,$ such that $\varphi \geq 1/N^{a},$
+for all $N_{1},N_{2}$ sufficiently large.
+
+\smallskip
+
+\noindent \textbf{Remark 2.3: }Assumption 2-8 imposes the condition that
+there exists a positive constant, $\underline{c},$ such that, for all $%
+N_{1},N_{2},$ and $T$ sufficiently large: 
+\begin{eqnarray*}
+&&\min_{1\leq \ell \leq d}\min_{{\large i\in }H^{{\large c}}}\left\vert 
+\frac{1}{q}\dsum\limits_{r=1}^{q}\frac{1}{\tau _{1}}\dsum\limits_{t=\left(
+r-1\right) \tau +p}^{\left( r-1\right) \tau +\tau _{1}+p-1}\gamma
+_{i}^{\prime }\left\{ E\left[ \underline{F}_{t}\right] \mu _{Y,\ell }+E\left[
+\underline{F}_{t}\underline{Y}_{t}^{\prime }\right] \alpha _{YY,\ell }+E%
+\left[ \underline{F}_{t}\underline{F}_{t}^{\prime }\right] \alpha _{YF,\ell
+}\right\} \right\vert \\
+&\geq &\underline{c}>0\text{.}
+\end{eqnarray*}%
+This is a fairly mild condition which allows us to differentiate the
+alternative hypothesis, $i\in H^{c},$ from the null hypothesis, $i\in H,$
+since if $i\in H$, then it is clear that:%
+\begin{equation*}
+\frac{\mu _{i,\ell ,T}}{q\tau _{1}}=\frac{1}{q}\dsum\limits_{r=1}^{q}\frac{1%
+}{\tau _{1}}\dsum\limits_{t=\left( r-1\right) \tau +p}^{\left( r-1\right)
+\tau +\tau _{1}+p-1}\gamma _{i}^{\prime }\left\{ E\left[ \underline{F}_{t}%
+\right] \mu _{Y,\ell }+E\left[ \underline{F}_{t}\underline{Y}_{t}^{\prime }%
+\right] \alpha _{YY,\ell }+E\left[ \underline{F}_{t}\underline{F}%
+_{t}^{\prime }\right] \alpha _{YF,\ell }\right\} =0,
+\end{equation*}%
+given that $\gamma _{i}=0$. Note that this assumption does rule out certain
+specialized situations, such as the case when $\mu _{Y,\ell }=0$, $\alpha
+_{YY,\ell }=0$, and $\alpha _{YF,\ell }=0,$ for some $\ell \in \left\{
+1,...,d\right\} $. However, we do not consider such cases to be of much
+practical interest since, for example, if $\mu _{Y,\ell }=0$, $\alpha
+_{YY,\ell }=0$, and $\alpha _{YF,\ell }=0$ for some $\ell $ then expression (%
+\ref{Y component FAVAR}) above implies that the $\ell ^{th}$ component of $%
+Y_{t{\LARGE +}1}$ will have the representation $y_{\ell ,t{\LARGE +}1}=\mu
+_{Y,\ell }+\underline{Y}_{t}^{\prime }\alpha _{YY,\ell }+\underline{F}%
+_{t}^{\prime }\alpha _{YF,\ell }+\varepsilon _{\ell ,t{\LARGE +}%
+1}^{Y}=\varepsilon _{\ell ,t{\LARGE +}1}^{Y}$, so that, in this case, $%
+y_{\ell ,t{\LARGE +}1}$ depends neither on $\underline{Y}_{t}=\left(
+Y_{t}^{\prime },Y_{t-1}^{\prime },...,Y_{t-p{\LARGE +}1}^{\prime }\right)
+^{\prime }$ nor on $\underline{F}_{t}=\left( F_{t}^{\prime },F_{t-1}^{\prime
+},...,F_{t-p{\LARGE +}1}^{\prime }\right) $. This is, of course, an
+unrealistic model for $y_{\ell ,t{\LARGE +}1}$ since it would not even be a
+dependent process in this case.
+
+\medskip
+
+The following two theorems give our main theoretical results on the variable
+selection procedure described above.
+
+\noindent \textbf{Theorem 1: }\textit{Let\ }$H=\left\{ k\in \left\{
+1,....,N\right\} :\gamma _{k}=0\right\} $\textit{. Suppose that Assumptions
+2-1, 2-2, 2-3, 2-4, 2-5, 2-6, 2-7, 2-9 (a) and 2-10 hold. Let }$\Phi
+^{-1}\left( \cdot \right) $\textit{\ denote the inverse of the cumulative
+distribution function of the standard normal random variable, or,
+alternatively, the quantile function of the standard normal distribution.
+Then the following statements are true:}
+
+\begin{enumerate}
+\item[(a)] \textit{Let }$\left\{ \varpi _{\ell }:\ell =1,..,d\right\} $%
+\textit{\ be pre-specified weights such that }$\varpi _{\ell }\geq 0$\textit{%
+\ for every }$\ell \in \left\{ 1,...,d\right\} $\textit{\ and }$%
+\dsum\nolimits_{\ell =1}^{d}\varpi _{\ell }=1$\textit{, then:}%
+\begin{equation*}
+P\left( \max_{{\large i\in }H}\dsum\limits_{\ell =1}^{d}\varpi _{\ell
+}\left\vert S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi }{%
+2N}\right) \right) =O\left( \frac{N_{2}\varphi }{N}\right) =o\left( 1\right) 
+\text{,}
+\end{equation*}%
+\textit{where }$N=N_{1}+N_{2}$\textit{.}
+
+\item[(b)] 
+\begin{equation*}
+P\left( \max_{{\large i\in }H}\max_{1\leq \ell \leq d}\left\vert S_{i,\ell
+,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right)
+=O\left( \frac{N_{2}\varphi }{N}\right) =o\left( 1\right) \text{. }
+\end{equation*}
+\end{enumerate}
+
+\noindent \textbf{Theorem 2: }\textit{Let }$H^{c}=\left\{ k\in \left\{
+1,....,N\right\} :\gamma _{k}\neq 0\right\} $\textit{. Suppose that
+Assumptions 2-1, 2-2, 2-3, 2-5, 2-6, 2-8, 2-9, and 2-10 hold. Then the
+following statements are true.}
+
+\begin{enumerate}
+\item[(a)] \textit{Let }$\left\{ \varpi _{\ell }:\ell =1,..,d\right\} $%
+\textit{\ be pre-specified weights such that }$\varpi _{\ell }\geq 0$\textit{%
+\ for every }$\ell \in \left\{ 1,...,d\right\} $\textit{\ and }$%
+\dsum\nolimits_{\ell =1}^{d}\varpi _{\ell }=1$\textit{, then: }%
+\begin{equation*}
+P\left( \min_{{\large i\in }H^{{\large c}}}\dsum\limits_{\ell =1}^{d}\varpi
+_{\ell }\left\vert S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) \right) \rightarrow 1\text{.}
+\end{equation*}
+
+\item[(b)] 
+\begin{equation*}
+P\left( \min_{{\large i\in }H^{{\large c}}}\max_{1\leq \ell \leq
+d}\left\vert S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi 
+}{2N}\right) \right) \rightarrow 1\text{.}
+\end{equation*}
+\end{enumerate}
+
+\noindent \textbf{Remark 2.4:}\noindent \noindent
+
+\noindent \textbf{(a)} Theorem 1 shows that, for both of our statistics, the
+probability of a false positive approaches zero uniformly over all ${\large %
+i\in }$ $H$ as $N_{1},N_{2},T\rightarrow \infty $. The results of Theorem 2
+further imply that, for both of our statistics, the probability of a false
+negative also approaches zero, uniformly over all ${\large i\in }$ $H^{%
+{\large c}}$ as $N_{1},N_{2},T\rightarrow \infty $. Together, these two
+theorems show that our procedure is (completely) consistent in the sense
+that the probability of committing a misclassification error vanishes as $%
+N_{1},N_{2},T\rightarrow \infty $.
+
+\noindent \textbf{(b) }Note that our variable selection procedure also
+delivers a consistent estimate of $N_{1}$ (i.e., $\widehat{N}_{1})$; this is
+shown in Lemma D-15 part (a) of Chao, Qiu, and Swanson (2023), where we
+establish that $\widehat{N}_{1}/N_{1}\overset{p}{\rightarrow }1$. The
+estimator $\widehat{N}_{1}$ is useful to applied researchers implementing
+the methodology developed in this paper, and also to empiricists interested
+in assessing the rate condition for consistent factor estimation, given in
+Assumption A4 of Bai and Ng (2021). This is another way in which the methods
+developed in this paper built upon the work of Bai and Ng (2021).
+
+\noindent \textbf{(c) }In addition, note that knowledge of the number of
+factors is not needed to implement our variable selection procedure. In the
+case where the number of factors needs to be determined empirically, an
+applied researcher can first use our procedure to select the relevant
+variables and then apply an information criterion such as that proposed in
+Bai and Ng (2002) to estimate the number of factors.
+
+\section{\noindent Monte Carlo Study}
+
+In this section, we report some simulation results on the finite sample
+performance of our variable selection procedure. The model used in the Monte
+Carlo study is the following tri-variate FAVAR(1) process: 
+\begin{eqnarray}
+W_{t} &=&\mu +AW_{t-1}+\varepsilon _{t},  \label{W eqn} \\
+Z_{t} &=&\gamma F_{t}+u_{t}\text{,}  \label{Z eqn}
+\end{eqnarray}%
+where%
+\begin{equation*}
+W_{t}=\left( 
+\begin{array}{c}
+Y_{1t} \\ 
+Y_{2t} \\ 
+F_{t}%
+\end{array}%
+\right) \text{, }\mu =\left( 
+\begin{array}{c}
+2 \\ 
+1 \\ 
+2%
+\end{array}%
+\right) \text{, }A=\left( 
+\begin{array}{ccc}
+0.9 & 0.3 & 0.5 \\ 
+0 & 0.7 & 0.1 \\ 
+0 & 0.6 & 0.7%
+\end{array}%
+\right) \text{, and }\gamma =\left( 
+\begin{array}{c}
+\iota _{N_{1}} \\ 
+\underset{N_{2}\times 1}{0}%
+\end{array}%
+\right) ,
+\end{equation*}%
+with $\iota _{N_{1}}$ denoting an $N_{1}\times 1$ vector of ones. We
+consider different configurations of $N$, $N_{1}$, and $T,$ as given below.
+For the error process in equation (\ref{W eqn}), we take $\left\{
+\varepsilon _{t}\right\} \equiv i.i.d.N\left( 0,\Sigma _{\varepsilon
+}\right) $, where: 
+\begin{equation*}
+\Sigma _{\varepsilon }=\left( 
+\begin{array}{ccc}
+1.3 & 0.99 & 0.641 \\ 
+0.99 & 0.81 & 0.009 \\ 
+0.641 & 0.009 & 5.85%
+\end{array}%
+\right) \text{.}
+\end{equation*}%
+The error process, $\left\{ u_{it}\right\} ,$ in equation (\ref{Z eqn}) is
+allowed to exhibit both temporal and cross-sectional dependence and also
+conditional heteroskedasticity. More specifically, we let $%
+u_{it}=0.8u_{it-1}+\zeta _{it}$, and following the approach for modeling
+cross-sectional dependence given in the Monte Carlo design of Stock and
+Watson (2002a), we specify: $\zeta _{it}=\left( 1+b^{2}\right) \eta
+_{it}+b\eta _{i+1,t}+b\eta _{i-1,t}$, and set $b=1$. In addition, $\eta
+_{it}=\omega _{it}\xi _{it},$ with $\left\{ \xi _{it}\right\} \equiv
+i.i.d.N\left( 0,1\right) $ independent of $\left\{ \varepsilon _{t}\right\} $%
+, and $\omega _{it}$ follows a GARCH(1,1) process given by: $\omega
+_{it}^{2}=1+0.9\omega _{it-1}^{2}+0.05\eta _{it-1}^{2}$. To study the
+effects of varying the tuning parameter, we consider specifications where $%
+\varphi =\left( \ln \ln N\right) ^{-\vartheta }$ for $\vartheta =0.1,0.5,1$
+and also $\varphi =N^{-\vartheta }$ for $\vartheta =0.2,0.4,0.6$.\footnote{%
+We have also obtained simulation results for the cases where $\varphi
+=\left( \ln N\right) ^{-\vartheta }$ for $\vartheta =0.1,0.5,1$ and where $%
+\varphi =N^{-\vartheta }$ for $\vartheta =0.3,0.5,0.7$. The results obtained
+for these cases are qualitatively similar to the results reported in this
+paper. Hence, due to space considerations, we do not report these results
+here, but they are available from the authors upon request.} We also attempt
+to shed light on the effects of using blocks of different sizes on the
+performance of our procedure. To do this, for $T=100$, we set $\tau _{1}=2$, 
+$3$, $4$, and $5$; for $T=200$, we set $\tau _{1}=5$, $6$, $8$, and $10$;
+and for $T=600$, we set $\tau _{1}=6$, $8$, $10$, and $12$. Due to space
+considerations, we only report Monte Carlo results for the statistic $%
+\dsum\nolimits_{\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell
+,T}\right\vert $. Simulation results for the statistic $\max_{1\leq \ell
+\leq d}\left\vert S_{i,\ell ,T}\right\vert $ have also been obtained by the
+authors and are qualitatively similar to the results reported here for $%
+\dsum\nolimits_{\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell
+,T}\right\vert $. The results for $\max_{1\leq \ell \leq d}\left\vert
+S_{i,\ell ,T}\right\vert $ are available from the authors upon request. In
+addition, since $d=2$ in our Monte Carlo setup, we set $\varpi _{1}=\varpi
+_{2}=1/2$. Results are gathered in Table 1, where FPR denotes the
+\textquotedblleft False Positive Rate\textquotedblright\ or the
+\textquotedblleft Type I\textquotedblright\ error rate, i.e., the proportion
+of cases where an irrelevant variable $Z_{it}$, with associated coefficient $%
+\gamma _{i}=0$ is erroneously selected as a relevant variable. FNR denotes
+the \textquotedblleft False Negative Rate\textquotedblright\ or the
+\textquotedblleft Type II\textquotedblright\ error rate, i.e., the
+proportion of cases where a relevant variable is erroneously identified as
+being irrelevant.
+
+Looking across each row of the table, note that FPRs decrease when moving
+from left to right, whereas FNRs increase. This is not surprising, because
+moving from $\varphi =\left( \ln \ln N\right) ^{-0.1}$ to $\varphi =N^{-0.6}$
+for a given $N$ results in smaller values of the tuning parameter $\varphi $%
+, and the specified threshold $\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) 
+$ thus becomes larger. Overall, these results indicate that choosing $%
+\varphi $ in the range between $\left( \ln \ln N\right) ^{-0.1}$ and $%
+N^{-0.4}$\ leads to very good performance, since within this range, neither
+FPR nor FNR exceeds $0.1$ in any of the cases studied here. In fact, both
+are smaller than $0.05$ in a vast majority of the cases. In contrast,
+choosing $\varphi =N^{-0.6}$ can lead to high FNRs, as such a choice of $%
+\varphi $ can set our threshold at such a high level that our procedure ends
+up having very little power.
+
+Looking down the columns of the table, note that FPR tends to increase as $%
+\tau _{1}$ increases, whereas FNR tends to decrease as $\tau _{1}$
+increases. As an explanation for this result, note first that the smaller is 
+$\tau _{1}$ relative to $\tau $, the larger is $\tau _{2}$ (since $\tau
+=\tau _{1}+\tau _{2}$), and thus the larger is the number of observations
+removed when constructing the self-normalized block sums. Intuitively, this
+can lead to better accommodation of the effects of dependence and better
+moderate deviation approximations under the null hypothesis, resulting in a
+lower FPR. However, removal of a larger number of observations can also lead
+to a reduction in power, when the alternative hypothesis is correct, so that
+a negative consequence of having a smaller $\tau _{1}$ relative to $\tau $
+is that FNR will tend to be higher in this case. The opposite, of course,
+occurs when we try to specify a larger $\tau _{1}$ relative to $\tau $.
+\begin{table}[tbp]
+{{\textbf{Table 1: Monte Carlo Results for $\mathbb{S}_{i,T}^{+}=\dsum%
+\nolimits_{\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell ,T}\right\vert $}}
+\newline
+\newline
+\newline
+\hspace{0.75in}} \vspace{0.5in} {\small 
+\begin{tabular}{|l|l|c|c|c|c|c|c|}
+\hline
+&  & $N=100$ & $N_{1}=50$ & $T=100$ & $\tau =5$ &  &  \\ \hline
+&  & \multicolumn{1}{|l|}{{\scriptsize {$\varphi =\left( \ln \ln N\right)
+^{-0.1}$}}} & \multicolumn{1}{|l|}{{\scriptsize {$\varphi =\left( \ln \ln
+N\right) ^{-0.5}$}}} & \multicolumn{1}{|l|}{{\scriptsize {$\varphi =\left(
+\ln \ln N\right) ^{-1}$}}} & \multicolumn{1}{|l|}{$\varphi =N^{-0.2}$} & $%
+\varphi =N^{-0.4}$ & $\varphi =N^{-0.6}$ \\ \hline\hline
+$\tau _{1}=2$ & FPR & 0.03916 & 0.03350 & 0.02678 & 0.01460 & 0.00382 & 
+0.00076 \\ \hline
+& FNR & 0.00046 & 0.00068 & 0.00104 & 0.00284 & 0.01674 & 0.09412 \\ \hline
+$\tau _{1}=3$ & FPR & 0.04544 & 0.03902 & 0.03110 & 0.01810 & 0.00526 & 
+0.00092 \\ \hline
+& FNR & 0.00022 & 0.00032 & 0.00052 & 0.00172 & 0.01100 & 0.06942 \\ \hline
+$\tau _{1}=4$ & FPR & 0.05408 & 0.04650 & 0.03756 & 0.02224 & 0.00702 & 
+0.00162 \\ \hline
+& FNR & 0.00016 & 0.00024 & 0.00034 & 0.00118 & 0.00828 & 0.05194 \\ \hline
+$\tau _{1}=5$ & FPR & 0.06332 & 0.05462 & 0.04558 & 0.02796 & 0.00924 & 
+0.00232 \\ \hline
+& FNR & 0.00014 & 0.00018 & 0.00034 & 0.00084 & 0.00574 & 0.03948 \\ \hline
+&  & $N=200$ & $N_{1}=100$ & $T=100$ & $\tau =5$ &  &  \\ \hline
+$\tau _{1}=2$ & FPR & 0.01913 & 0.01470 & 0.01068 & 0.00486 & 0.00064 & 
+0.00002 \\ \hline
+& FNR & 0.00206 & 0.00282 & 0.00449 & 0.01415 & 0.09966 & 0.48356 \\ \hline
+$\tau _{1}=3$ & FPR & 0.02341 & 0.01842 & 0.01365 & 0.00657 & 0.00098 & 
+0.00005 \\ \hline
+& FNR & 0.00143 & 0.00190 & 0.00315 & 0.00921 & 0.07372 & 0.40894 \\ \hline
+$\tau _{1}=4$ & FPR & 0.02869 & 0.02306 & 0.01733 & 0.00841 & 0.00133 & 
+0.00004 \\ \hline
+& FNR & 0.00111 & 0.00145 & 0.00224 & 0.00661 & 0.05564 & 0.34279 \\ \hline
+$\tau _{1}=5$ & FPR & 0.03506 & 0.02903 & 0.02194 & 0.01124 & 0.00213 & 
+0.00017 \\ \hline
+& FNR & 0.00086 & 0.00112 & 0.00172 & 0.00477 & 0.04258 & 0.28620 \\ \hline
+&  & $N=400$ & $N_{1}=200$ & $T=200$ & $\tau =10$ &  &  \\ \hline
+\multicolumn{1}{|c|}{$\tau _{1}=5$} & FPR & 0.00214 & 0.00148 & 0.00090 & 
+0.00030 & 2.5$\times $10$^{-5}$ & 0.00000 \\ \hline
+\multicolumn{1}{|c|}{} & FNR & 7.5$\times $10$^{-5}$ & 0.00016 & 0.00040 & 
+0.00231 & 0.06894 & 0.67266 \\ \hline
+\multicolumn{1}{|c|}{$\tau _{1}=6$} & FPR & 0.00249 & 0.00166 & 0.00104 & 
+0.00034 & 0.00002 & 0.00000 \\ \hline
+\multicolumn{1}{|c|}{} & FNR & 0.00004 & 0.00009 & 0.00025 & 0.00148 & 
+0.05058 & 0.60968 \\ \hline
+\multicolumn{1}{|c|}{$\tau _{1}=8$} & FPR & 0.00337 & 0.00235 & 0.00142 & 
+0.00046 & 0.00004 & 0.00000 \\ \hline
+\multicolumn{1}{|c|}{} & FNR & 0.00001 & 0.00002 & 0.00008 & 0.00068 & 
+0.02712 & 0.48133 \\ \hline
+\multicolumn{1}{|c|}{$\tau _{1}=10$} & FPR & 0.00484 & 0.00350 & 0.00220 & 
+0.00079 & 7.5$\times $10$^{-5}$ & 5.0$\times $10$^{-6}$ \\ \hline
+\multicolumn{1}{|c|}{} & FNR & 0.00001 & 0.00001 & 0.00002 & 0.00034 & 
+0.01535 & 0.36382 \\ \hline
+&  & $N=1000$ & $N_{1}=500$ & $T=600$ & $\tau =12$ &  &  \\ \hline
+\multicolumn{1}{|c|}{$\tau _{1}=6$} & FPR & 0.00155 & 0.00121 & 0.00086 & 
+0.00038 & 0.00006 & 0.00001 \\ \hline
+\multicolumn{1}{|c|}{} & FNR & 0.00000 & 0.00000 & 0.00000 & 0.00000 & 
+0.00000 & 0.00000 \\ \hline
+\multicolumn{1}{|c|}{$\tau _{1}=8$} & FPR & 0.00201 & 0.00153 & 0.00106 & 
+0.00049 & 8.2$\times $10$^{-5}$ & 1.4$\times $10$^{-5}$ \\ \hline
+\multicolumn{1}{|c|}{} & FNR & 0.00000 & 0.00000 & 0.00000 & 0.00000 & 
+0.00000 & 0.00000 \\ \hline
+\multicolumn{1}{|c|}{$\tau _{1}=10$} & FPR & 0.00274 & 0.00216 & 0.00155 & 
+0.00072 & 0.00016 & 3.2$\times $10$^{-5}$ \\ \hline
+\multicolumn{1}{|c|}{} & FNR & 0.00000 & 0.00000 & 0.00000 & 0.00000 & 
+0.00000 & 0.00000 \\ \hline
+\multicolumn{1}{|c|}{$\tau _{1}=12$} & FPR & 0.00421 & 0.00332 & 0.00242 & 
+0.00115 & 0.00028 & 6.0$\times $10$^{-5}$ \\ \hline
+\multicolumn{1}{|c|}{} & FNR & 0.00000 & 0.00000 & 0.00000 & 0.00000 & 
+0.00000 & 0.00000 \\ \hline
+\end{tabular}%
+} {\footnotesize 
+\begin{minipage}{1\columnwidth}
+{\noindent Notes: False positive and negative rates are reported for various values of 
+$N, N_1,$ and $T$. Results are based on 1000 simulations. See Section 3 for complete details.}
+\end{minipage}
+}
+\end{table}
+
+Our results also show that when the sample sizes are large enough such as
+the cases presented in the last panel of the table, where $T=600$ and $N=1000
+$, then both FPR and FNR are very close to zero for all of the cases that we
+consider. Moreover, even in the extreme case where $T=100$ and $N=100$, FPR
+and NPR rates are usually less than 0.05, and are often much smaller than
+that. This is in accord with the results of our theoretical analysis, which
+shows that our variable selection procedure is completely consistent in the
+sense that both the probability of a false positive and the probability of a
+false negative approach zero, as the sample sizes go to infinity. 
+
+\noindent \newpage 
+
+\section{\noindent Empirical Illustration}
+
+In this illustration, we forecast eight target variables from the monthly
+real-time macroeconomic FRED-MD dataset maintained by St. Louis Federal
+Reserve Bank. We follow the data cleaning methods outlined on the FRED-MD
+data website, as well as removing all discontinued series, when
+pre-processing the data, yielding a dataset, $\mathbf{X}$, containing $N=97$
+variables for the period 1973:3 to 2022:9. The full list of all
+macroeconomic variables and their transformations is available upon request
+from the authors.
+
+Of note is that the dataset used here is \textquotedblleft
+truly\textquotedblright\ real-time, in the sense that a \textquotedblleft
+vintage\textquotedblright\ of data is available at calendar date in our
+sample period. Consider the value of industrial production for January 2020.
+In February 2020, the government reported a \textquotedblleft first
+release\textquotedblright\ value for January. In March 2020, however, they
+further updated their \textquotedblleft estimate\textquotedblright\ of
+industrial production for January. Namely, they reported a \textquotedblleft
+second release\textquotedblright\ for January. This process of revision
+continues indefinitely. Namely, as the government changes data collection
+and processing methodology, collects new data and/or revises definitions of
+variables, new releases are reported. A \textquotedblleft
+vintage\textquotedblright\ of data is a date, say February 2020. For
+industrial production, there is a whole vector of truly real-time data that
+includes different releases, all available in February 2020. For example,
+this vintage includes a 1st release value for January 2020, a 2nd release
+value for December 2019 is included in this vintage, a 3rd release value for
+November 2019, etc. In this sense, there is an entirely unique vintage of
+industrial production available each month, and the values of the calendar
+dated observations in each vintage change because the government updates
+historical values of the variable every month. Using this type of data
+allows the practitioner to truly simulate a forecasting environment in which
+models are updated at each point in time using data that were actually
+available at that time. If we were to simply collect industrial production
+data from a website today, calendar dated observations in our dataset from
+2020 would reflect revisions that occurred after 2020. For variables that
+are subject to revision, this means that forecasting experiments of the type
+carried out in this paper would be invalid, in the sense that they would be
+utilizing \textquotedblleft future data\textquotedblright\ as explanatory
+variables when estimating forecasting model regressions, if it were the case
+that the correct vintage of data was not used at each point in time when
+estimating models and constructing forecasts. For further discussion of the
+structure of real-time datasets, as well as methods for real-time
+forecasting, refer to Swanson (1996), Swanson and van Dijk (2006), and Kim
+and Swanson (2018).
+
+The eight target variables for which we construct predictions are:
+Industrial Production (INDPRO), Civilian Unemployment Rate (UNRATE), Housing
+Starts: new, privately owned (HOUST), Housing Permits: new, privately owned
+(PERMIT), Real M2 Money Stock (M2REAL), 10-Year Government Treasury Bond
+Rate (R10), CPI - All Items (CPI), S\&P Common Stock Price Index - Composite
+(S\&P 500). Our experiments compare variable selection and dimension
+reduction methods when used to estimate and/or select factors and observable
+variables for inclusion in forecasting models of the form: 
+\begin{equation}
+y_{t+h}={\alpha }+{\beta _{h}}(L)y_{t}+{\gamma _{h}}(L)\boldsymbol{F_{t}}%
++\epsilon _{t+h},
+\end{equation}%
+where $y_{t}$ is a scalar target variable to be predicted, ${\beta _{h}}(L)$
+and ${\gamma _{h}}(L)$ are finite order lag polynomials and where $\epsilon
+_{t}$ is a stochastic disturbance term. Lags in this model are selected
+using the Schwarz Information Criterion (SIC), and our benchmark model sets
+the coefficients in $\gamma _{h}(L)=0$. In the sequel, we carry out variable
+selection and dimension reduction using seven different methods.
+
+\begin{table}[h]
+{\small \noindent \textbf{Table 2: }Empirical Illustration - Target Forecast
+Variables{$^{\ast }$} }
+\par
+{\scriptsize \ 
+\begin{tabular}{p{6cm}p{2cm}p{3cm}}
+\hline\hline
+Target Variable & Abbreviation & Data Transformation \\ \hline
+Industrial Production & INDPRO & $\Delta log(y_t)$ \\ 
+Civilian Unemployment Rate & UNRATE & $y_t$ \\ 
+Housing Starts (new, privately owned) & HOUST & $log(y_t)$ \\ 
+Housing Permits (new, privately owned) & PERMIT & $log(y_t)$ \\ 
+Real M2 Money Stock & M2REAL & $\Delta log(y_t)$ \\ 
+10-Year Government Treasury Bond Rate & R10 & $y_t$ \\ 
+CPI (all items) & CPI & $\Delta log(y_t)$ \\ 
+S\&P Common Stock Price Index (composite) & S\&P500 & $\Delta log(y_t)$ \\ 
+\hline\hline
+\end{tabular}
+}
+\par
+{\scriptsize \vspace{0.5cm} }
+\par
+{\scriptsize \noindent $^*$ Notes: This table lists the target forecast
+variables that are predicted in our empirical illustration, \noindent and
+associated data transformations. }
+\end{table}
+
+\noindent \textit{Principal Components Analysis (PCA):} Excluding the target
+variable, apply PCA to $\mathbf{X}$ and estimate latent factors, $%
+\boldsymbol{F_t}$, with the number of factors determined using the $PC_{p2}$
+criterion in Bai and Ng (2002). The maximum number of the factors is set
+equal to eight, following the findings of McCracken and Ng (2016), who
+introduce and examine the dataset that we utilize in our experiments.
+
+\noindent \textit{Hard Thresholding:} For each variable in $\mathbf{X}$, and
+forecast horizon, $h$, perform a regression of $y_{t+h}$ on lags of $y_{t}$
+and on $X_{i,t}$, where $X_{i,t}$ is a scalar variable in $\mathbf{X}$, for $%
+i=1,...,N$, and lags of $y_{t}$ are selected using the SIC. Let $t_{i}$
+denote the $t$ statistic associated with $X_{it-h}$ in the regression, and
+select variables, $X_{it}$ if $|t_{i}|$ $>1.28$. If the number of selected
+variables is greater than 20, utilize PCA to estimate factors for inclusion
+in the above forecasting equation, otherwise use the AR(SIC) model. As
+models are re-estimated at each point in time, this approach is a hybrid, in
+the sense that some models may include factors as regressors, while others
+may be simple AR(SIC) models. Note that in our experiments, less than 10\%
+of the total number of forecasting periods involved replacing the
+thresholding model with our AR(SIC) benchmark.
+
+\noindent \textit{Chao-Swanson Variable Selection}: Use the variable
+selection method introduced in this paper to select variables. Then, use PCA
+to estimate factors for inclusion in the forecasting equation. There are
+three tuning parameters in the CS method, including: $\tau ,\tau _{1}$, and $%
+\varphi $. We set $\{\tau =5,\tau _{1}=3,5\}$ and $\{\tau =10,\tau
+_{1}=6,8\} $ and consider the following values for $\varphi $: 
+\begin{equation*}
+\varphi =\left\{ 
+\begin{array}{rclrcl}
+(lnlnN)^{-0.1} & (lnlnN)^{-0.6} & (lnN)^{-0.1} & (lnN)^{-0.6} & N^{-0.1} & 
+N^{-0.6} \\ 
+(lnlnN)^{-0.2} & (lnlnN)^{-0.7} & (lnN)^{-0.2} & (lnN)^{-0.7} & N^{-0.2} & 
+N^{-0.7} \\ 
+(lnlnN)^{-0.3} & (lnlnN)^{-0.8} & (lnN)^{-0.3} & (lnN)^{-0.8} & N^{-0.3} & 
+N^{-0.8} \\ 
+(lnlnN)^{-0.4} & (lnlnN)^{-0.9} & (lnN)^{-0.4} & (lnN)^{-0.9} & N^{-0.4} & 
+N^{-0.9} \\ 
+(lnlnN)^{-0.5} & (lnlnN)^{-1} & (lnN)^{-0.5} & (lnN)^{-1} & N^{-0.5} & N^{-1}
+\\ 
+&  &  &  &  & 
+\end{array}%
+\right.
+\end{equation*}%
+Different tuning parameters select different numbers of variables and we
+exclude tuning parameter permutations that select less than 25 variables for
+use in factor construction. In this method, the tuning parameter used for
+each value of $h$ and target variable is selected by partitioning a
+\textquotedblleft training dataset\textquotedblright\ consisting of the
+first 10 years on data in our sample into an in-sample period of 7 years and
+an out-of-sample period of 3 years. The tuning parameter is set equal to
+that yielding the smallest mean square forecast error (MSFE) after
+constructing real-time predictions based on models estimated at each point
+in time prior to the construction of each new prediction for the
+out-of-sample period. Note that in our experiments, less than 10\% of the
+total number of forecasting periods involved replacing the selected
+variables with those from the previous period.
+
+In summary, we carry out truly real-time $h$-month ahead predictions using
+monthly data, with $h=$1, 3, 6, and 12. Our \textquotedblleft full sample
+forecasting period\textquotedblright\ is 2000:1-2022:9 (when reporting
+results for this period, we omit predictions for 2008:1-2008:12 and
+2020:1-2020:12, in order to mitigate the influence of predictions made
+during the 2008 Financial Crisis and the Covid-19 period). However, even
+though some predictions are omitted in our \textquotedblleft
+full-sample\textquotedblright , data from these extraordinary periods in
+history still affect the estimated models used when predicting other
+periods. For this reason, this first set of results, where it is clearly
+seen that the impact of these periods on estimated models is severe, is not
+included here, but is available upon request from the authors. In the
+sequel, we report results for the out-of-sample period 2000:1-2007:12. All
+factors and forecasting equations are re-estimated at each point in time,
+prior to the construction of each new forecast, using rolling windows of
+length 120 observations. Additionally, in-sample estimation periods used
+when constructing our $h=$3, 6, and 12-step ahead forecasts are adjusted so
+that the forecast period remains the same regardless of forecast horizon.
+
+Forecasting performance is evaluated using point mean squared forecast
+errors (MSFEs), where MSFE=$\frac{1}{P} \sum_{t=1}^T(y_{j,t}-\hat{y}%
+_{j,t})^2 $, and $\hat{y}_{j,t}$ denotes the prediction for target variable $%
+y_j$ that is made using data that are truly available in real-time at period 
+$t$. In our tabulated results, MSFEs, relative to that of the benchmark
+AR(SIC) model are reported. Additionally, we report the results of Giacomini
+and White (GW) tests (see Giacomini and White (2006)), which can be viewed
+as conditional Diebold-Mariano (DM) predictive accuracy tests (see Diebold
+and Mariano (1995)). Recall that the null hypothesis of the DM test when
+formulated using the conditioning approach of Giacomini and White is: $%
+H_{0}: \text{E}[L(\hat{\epsilon}_{t+h}^{(1)}) | G_t ] - \text{E}[L(\hat{%
+\epsilon}_{t+h}^{(2)}) | G_t ] = 0 $, where the $\hat{\epsilon}_{t+h}^{(i)}$
+are prediction errors associated with model $i$, for $i=1,2$, and $G_t$
+denotes the conditioning set, which includes the model and estimated
+parameters. Here, $L(\cdot)$ is a quadratic loss function, and the test
+statistic is $\text{DM}_{P} = P^{-1} \sum\limits_{t=1}^P \frac{d_{t+h}}{\hat{%
+\sigma}_{\bar{d}}}$, where $d_{t+h} = [\hat{\epsilon}_{t+h}^{(1)}]^{2} - [%
+\hat{\epsilon}_{t+h}^{(2)}]^{2}$, $\bar{d}$ denotes the mean of $d_{t+h}$, $%
+\hat{\sigma}_{\bar{d}}$ is a heteroskedasticity and autocorrelation
+consistent estimate of the standard deviation of $\bar{d}$, and $P$ denotes
+the number of ex-ante predictions used to construct the test statistic.%
+\footnote{%
+In this paper, we report test results for the Wald version of this test
+statistic (see Giacomini and White (2006) for further details).} If the
+statistic is ``significantly negative'', then Model 1 is preferred to Model
+2, and in our context, where we report relative MSFEs, rejection indicates
+that the benchmark AR(SIC) model is preferred if the relative MSFE is
+greater than one, and the converse if it is less than one.
+
+Turning to our empirical findings, note first that a summary of the target
+variables in our experiments is contained in Table 2. Table 3 contains
+results for our full sample forecasting period. In this table, all entries
+are relative MSFEs, as discussed above. Additionally, bolded entries
+indicate the \textquotedblleft MSFE-best" method for a particular target
+variable and forecast horizon. Since relative MSFEs are reported, however,
+if the lowest relative MSFE is greater than 1, it is not bolded, as this
+means that the AR(SIC) benchmark yields the MSFE-best predictions. Starred
+entries denote rejection of the null hypothesis of equal forecast accuracy
+when comparing the model associated with a given method against the AR(SIC)
+benchmark. Turning to the results in this table, a number of conclusions can
+be made.
+
+\begin{table}[h!]
+{\small \noindent \textbf{Table 3: }Empirical Illustration - Real-Time
+Predictive Accuracy Experiments{$^{\ast }$} }
+\par
+{\scriptsize 
+\begin{tabular}{llccc}
+\hline\hline
+&  & \multicolumn{3}{c}{{\textbf{Factor Estimation Method}}} \\ \hline
+& \multicolumn{1}{c}{Target Variable} & Principal Components Analysis & Hard
+Thresholding & CS Variable Selection \\ \hline
+& INDPRO & \textbf{0.971} & 1.025 & 1.092 \\ 
+& UNRATE & 1.098 & \textbf{0.966} & 0.984 \\ 
+& HOUST & 1.000 & 0.882 ** & \textbf{0.877} \\ 
+h=1 & PERMIT & 1.009 & 1.005 & 1.042 \\ 
+& M2REAL & 1.06 & 1.052 * & 1.19 * \\ 
+& R10 & 1.086 & 1.107 & 1.051 \\ 
+& CPI & 1.08 & 1.125 & 1.161 \\ 
+& S\&P500 & 1.142 & 1.104 & 1.118 \\ \hline
+& INDPRO & 1.042 & 1.042 & 1.083 \\ 
+& UNRATE & 0.839 & \textbf{0.691 **} & 0.785 * \\ 
+& HOUST & 0.979 & 0.777 & \textbf{0.766} ** \\ 
+h=3 & PERMIT & 1.021 & 0.971 & \textbf{0.895} \\ 
+& M2REAL & 0.979 & \textbf{0.907} & 1.035 \\ 
+& R10 & 1.187 & 1.225 & \textbf{1.109} \\ 
+& CPI & 1.022 & 1.048 * & \textbf{0.993} \\ 
+& S\&P500 & 1.186 & 1.213 & 1.055 \\ \hline
+& INDPRO & 1.145 & 1.043 & \textbf{0.965 *} \\ 
+& UNRATE & 0.561 * & \textbf{0.518 **} & 0.617 * \\ 
+& HOUST & 0.818 & 0.696 * & \textbf{0.665 *} \\ 
+h=6 & PERMIT & 0.855 & 0.825 & \textbf{0.744} \\ 
+& M2REAL & 1.031 & 1.049 & \textbf{0.994} \\ 
+& R10 & 1.513 & 1.046 & 1.064 ** \\ 
+& CPI & 1.034 & 1.05 & 1.081 * \\ 
+& S\&P500 & 1.126 * & 1.276 ** & 1.166 \\ \hline
+& INDPRO & 1.251 * & 1.096 * & 1.004 \\ 
+& UNRATE & 0.632 & 0.489 & \textbf{0.471} \\ 
+& HOUST & 0.693 & 0.605 & \textbf{0.605} \\ 
+h=12 & PERMIT & 0.681 & 0.650 & \textbf{0.621} \\ 
+& M2REAL & 1.087 & 1.036 & \textbf{0.984} \\ 
+& R10 & 0.992 & 0.641 & \textbf{0.638 *} \\ 
+& CPI & 1.024 & 1.131 & 1.064 ** \\ 
+& S\&P500 & 1.188 & 1.311 * & 1.046 \\ \hline\hline
+\end{tabular}
+}
+\par
+{\scriptsize \vspace{0.5cm} }
+\par
+{\scriptsize \noindent $^{\ast }$ Notes: See notes to Table 2. Tabulated
+entries are relative mean squared forecast error (MSFEs) for our 8 target
+variables, for forecast horizons of h=1,3,6, and 12 months ahead. The
+AR(SIC) benchmark model is in the denominator of the reported MSFEs, so that
+entries that are less than unity indicate that our factor and variable
+augmented forecast regressions yield lower MSFEs than those associated with
+the AR(SIC) benchmark. The forecast period is 2000:1-2007:12, and all models
+are estimated prior to the construction of each monthly forecast. In cases
+where at least one big data method outperfroms the AR(SIC) benchmark model,
+entries in bold denote the big data method yielding the lowest relative MSFE
+for a given target variable and forecast horizon. Starred entries indicate
+rejection of the null hypothesis of equal conditional predictive ability, at
+significance levels $p=0.01$ ($\ast \ast \ast $), $p=0.05$, ($\ast \ast $),
+and $p=0.10$ ($\ast $). See Section 4 for complete details. }
+\end{table}
+
+First, comparing the standard PCA method, which does not involve variable
+pre-selection, with our method (called CS hereafter), CS beats the PCA in
+terms of relative MSFE in 22 out of 32 cases across all forecast horizons
+and all target variables examined here. Moreover, for the longer forecast
+horizons of $h=6$ and $h=12$, CS beats PCA in 12 out of 16 cases. Second,
+comparing the CS method with the hard thresholding method for variable
+selection (called THRESH hereafter), we see that CS wins in 19 out of 32
+overall cases, and, for the longer horizons of $h=6$ and $h=12$, CS wins in
+12 out of 16 cases. In addition, it should be noted that there is one tie
+between CS and THRESH, so that overall CS performed as least as well if not
+better than THRESH in 20 out of 32 overall cases and in 13 out of the 16
+longer horizon cases. Finally, it should be noted that the CS method beats
+the AR(SIC) benchmark model in 16 out of 32 overall cases, but if we focus
+just on the longer horizons of $h=6$ and $h=12$, we see that our method
+outperforms the benchmark model in 10 out of the 16 cases. In summary, our
+method performs well overall, and performs particularly well relative to the
+other two methods (and also the benchmark method) in the longer horizon
+cases.
+
+\section{\noindent Conclusion}
+
+In this paper, we propose a new variable selection procedure based on two
+alternative self-normalized score statistics and provide asymptotic analyses
+showing that our procedure, based on either of these statistics, correctly
+identify the set of variables which load significantly on the underlying
+factors, with probability approaching one as the sample sizes go to
+infinity. Our research is motivated by the observation that inconsistency in
+factor estimation could result in high dimensional settings when the
+conventional assumption of factor pervasiveness does not hold. Hence, in
+such settings, it is particularly important to pre-screen the variables in
+terms of their association with the underlying factors prior to estimation.
+We conduct a small Monte Carlo study which yields encouraging evidence about
+the finite sample properties of our variable selection procedure. Moreover,
+we present empirical evidence suggesting that use of our procedure yields
+factors that improve the forecasting performance of factor augmented
+regressions, relative to the case when principal component analysis or hard
+thresholding methods are used to construct factors. It is also worth noting
+that in a companion paper (Chao, Qiu, and Swanson, 2023) we prove that
+consistent estimation of factors (up to an invertible matrix transformation)
+can be achieved by estimating factors using only those variables selected by
+our method, and this is so even in situations where the standard
+pervasiveness assumption does not hold. In addition, in the same paper, we
+further show that by plugging factors estimated in such a manner into the
+factor-augmented forecasting equation implied by the FAVAR model, the
+conditional mean function of the forecasting equation can be consistently
+estimated, even for the case of multi-step ahead forecasts. In sum, the
+collective body of results discussed in this paper indicates that the
+variable selection methodology introduced in this paper can be useful to
+empirical researchers as they engage in the important tasks of factor
+estimation and the construction of point forecasts based on factor-augmented
+forecasting equations.
+
+\section{\noindent Appendix: Proofs of Theorems}
+
+\noindent \qquad This appendix contains the proofs of the main results of
+the paper: Theorems 1 and 2. In addition, two key supporting lemmas, Lemmas
+A1and A2, along with their proofs are also given here. Additional technical
+results are available in an Online Appendix, Chao, Liu, and Swanson (2023).
+
+\noindent
+
+\noindent \textbf{Proof of Theorem 1: }To show part (a), first set $z=\Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) $, where $N=N_{1}+N_{2}$. Note
+that, under Assumption 2-10, we can easily show that
+
+\noindent $\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \leq \sqrt{2\left(
+1+a\right) }\sqrt{\ln N}$, for all $N_{1},N_{2}$ sufficiently large.%
+\footnote{%
+An explicit proof of this result is given in Chao, Liu, and Swanson (2023).
+In particular, this inequality is shown in part (b) of Lemma OA-15 in Chao,
+Liu, and Swanson (2023).} By part (a) of Assumption 2-9, $\sqrt{\ln N}/\min
+\left\{ T^{\left( 1-{\large \alpha }_{1}\right) /6},T^{\alpha
+_{2}/2}\right\} \rightarrow 0$ as $N_{1},N_{2},T\rightarrow \infty $; this,
+in turn, implies that, for some positive constant $c_{0}$, $\Phi ^{-1}\left(
+1-\frac{\varphi }{2N}\right) $ satisfies the inequality constraint $0\leq
+\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \leq c_{0}\min \left\{
+T^{\left( 1-{\large \alpha }_{1}\right) /6},T^{\alpha _{2}/2}\right\} $ for
+all $N_{1},N_{2},T$ sufficiently large, so that $\Phi ^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) $ lies within the range of values of $z$ for which the
+moderate deviation inequality given in Lemma A2 holds. Thus, plugging $\Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) $ into the moderate deviation
+inequality (\ref{moderate deviation bd}) given in Lemma A2 below, we see
+that there exists a positive constant $A$ such that:
+
+\noindent ${\small P}\left( \left\vert S_{i,\ell ,T}\right\vert \geq \Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small \leq 2}\left[ 1-\Phi \left( \Phi ^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) \right) \right] \left\{ 1+A\left[ 1+\Phi ^{-1}\left( 1-%
+\frac{\varphi }{2N}\right) \right] ^{3}T^{-\frac{{\large 1-\alpha }_{{\large %
+1}}}{{\large 2}}}\right\} $
+
+\noindent ${\small =2}\left[ 1-\left( 1-\frac{\varphi }{2N}\right) \right]
+\left\{ 1+A\left[ 1+\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right]
+^{3}T^{-\frac{{\large 1-\alpha }_{{\large 1}}}{{\large 2}}}\right\} $
+
+\noindent ${\small =}\frac{\varphi }{N}\left\{ 1+A\left[ 1+\Phi ^{-1}\left(
+1-\frac{\varphi }{2N}\right) \right] ^{3}T^{-\frac{{\large 1-\alpha }_{%
+{\large 1}}}{{\large 2}}}\right\} ,$
+
+\noindent for $\ell \in \left\{ 1,...,d\right\} $, for $i\in H=\left\{ k\in
+\left\{ 1,....,N\right\} :\gamma _{k}=0\right\} $, and for all $%
+N_{1},N_{2},T $ sufficiently large. Next, note that:
+
+\noindent ${\small P}\left( \max_{i\in H}\dsum\limits_{\ell =1}^{d}\varpi
+_{\ell }\left\vert S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) \right) $
+
+\noindent ${\small \leq P}\left( \dbigcup\limits_{i\in
+H}\dbigcup\limits_{1\leq \ell \leq d}\left\{ \left\vert S_{i,\ell
+,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right\}
+\right) \text{ }\left( \text{since }0\leq \varpi _{\ell }\leq 1\text{ and }%
+\dsum\limits_{\ell =1}^{d}\varpi _{\ell }=1\right) $
+
+\noindent ${\small \leq }\dsum\limits_{i\in H}\dsum\limits_{\ell =1}^{d}%
+{\small P}\left( \left\vert S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-%
+\frac{\varphi }{2N}\right) \right) \text{ }\left( \text{by union bound}%
+\right) $
+
+\noindent ${\small \leq }\dsum\limits_{i\in H}\dsum\limits_{\ell =1}^{d}%
+\frac{\varphi }{N}\left\{ 1+A\left[ 1+\Phi ^{-1}\left( 1-\frac{\varphi }{2N}%
+\right) \right] ^{3}T^{-\left( 1-\alpha _{{\large 1}}\right) \frac{{\large 1}%
+}{{\large 2}}}\right\} $
+
+\noindent ${\small =d}\frac{N_{2}\varphi }{N}\left\{ 1+A\left[ 1+\Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) \right] ^{3}T^{-\left( 1-\alpha _{%
+{\large 1}}\right) \frac{{\large 1}}{{\large 2}}}\right\} $
+
+\noindent Using the inequality $\Phi ^{-1}\left( 1-\frac{\varphi }{2N}%
+\right) \leq \sqrt{2\left( 1+a\right) }\sqrt{\ln N}$ discussed above, we
+further obtain, for all $N_{1},N_{2},T$ sufficiently large:
+
+\noindent ${\small P}\left( \max_{i\in H}\dsum\limits_{\ell =1}^{d}\varpi
+_{\ell }\left\vert S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) \right) {\small \leq }\frac{dN_{2}\varphi }{N}\left\{ 1+%
+\frac{A}{T^{\left( {\large 1-\alpha }_{{\large 1}}\right) {\large /2}}}\left[
+1+\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right] ^{3}\right\} $
+
+\noindent ${\small \leq }\frac{dN_{2}\varphi }{N}\left\{ 1+2^{2}AT^{-\frac{%
+\left( {\large 1-\alpha }_{{\large 1}}\right) }{{\large 2}}}+2^{2}A\left[
+\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right] ^{3}T^{-\frac{\left( 
+{\large 1-\alpha }_{{\large 1}}\right) }{{\large 2}}}\right\} $
+
+\noindent $\left( \text{by the inequality }\left\vert
+\dsum\limits_{i=1}^{m}a_{i}\right\vert ^{r}\leq
+c_{r}\dsum\limits_{i=1}^{m}\left\vert a_{i}\right\vert ^{r}\text{ where }%
+c_{r}=m^{r-1}\text{ for }r\geq 1\right) $
+
+\noindent ${\small \leq }\frac{dN_{2}\varphi }{N}\left\{ 1+4AT^{-\frac{%
+\left( {\large 1-\alpha }_{{\large 1}}\right) }{{\large 2}}}+4A\left[ \sqrt{%
+2\left( 1+a\right) }\sqrt{\ln N}\right] ^{3}T^{-\frac{\left( {\large %
+1-\alpha }_{{\large 1}}\right) }{{\large 2}}}\right\} $
+
+\noindent ${\small =}\frac{dN_{2}\varphi }{N}\left\{ 1+4AT^{-\frac{\left( 
+{\large 1-\alpha }_{{\large 1}}\right) }{{\large 2}}}+2^{\frac{{\large 7}}{%
+{\large 2}}}A\left( 1+a\right) ^{\frac{{\large 3}}{{\large 2}}}\frac{\left(
+\ln N\right) ^{\frac{{\Large 3}}{{\large 2}}}}{T^{\frac{{\large 1-\alpha }_{%
+{\large 1}}}{{\large 2}}}}\right\} .$
+
+\noindent Finally, note that the rate condition given in part (a) of
+Assumption 2-9
+
+\noindent (i.e., $\sqrt{\ln N}/\min \left\{ T^{\left( 1-{\large \alpha }%
+_{1}\right) /6},T^{\alpha _{2}/2}\right\} \rightarrow 0$ as $%
+N_{1},N_{2},T\rightarrow \infty $) implies that
+
+\noindent $\left( \ln N\right) ^{\frac{{\Large 3}}{{\large 2}}}/T^{\frac{%
+{\large 1-\alpha }_{{\large 1}}}{{\large 2}}}\rightarrow 0$ as $%
+N_{1},N_{2},T\rightarrow \infty $, from which it follows that:
+
+\noindent ${\small P}\left( \max_{i\in H}\dsum\limits_{\ell =1}^{d}\varpi
+_{\ell }\left\vert S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) \right) $
+
+\noindent ${\small \leq }\frac{dN_{2}\varphi }{N}\left\{ 1+4AT^{-\frac{%
+\left( {\large 1-\alpha }_{{\large 1}}\right) }{{\large 2}}}+2^{\frac{%
+{\large 7}}{{\large 2}}}A\left( 1+a\right) ^{\frac{{\large 3}}{{\large 2}}}%
+\frac{\left( \ln N\right) ^{\frac{{\Large 3}}{{\large 2}}}}{T^{\frac{{\large %
+1-\alpha }_{{\large 1}}}{{\large 2}}}}\right\} =\frac{dN_{2}\varphi }{N}%
+\left[ 1+o\left( 1\right) \right] =O\left( \frac{N_{2}\varphi }{N}\right)
+=o\left( 1\right) $.
+
+Next, to show part (b), note that, by a similar argument as that given for
+part (a) above, we have:
+
+\noindent $P\left( \max_{{\large i\in }H}\max_{1\leq \ell \leq d}\left\vert
+S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right)
+\right) $
+
+\noindent $=P\left( \dbigcup\limits_{i\in H}\dbigcup\limits_{1\leq \ell \leq
+d}\left\{ \left\vert S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) \right\} \right) $
+
+\noindent $\leq \frac{dN_{2}\varphi }{N}\left\{ 1+\frac{4A}{T^{\left( 
+{\large 1-\alpha }_{{\large 1}}\right) /{\large 2}}}+\frac{2^{\frac{{\large 7%
+}}{{\large 2}}}A\left( 1+a\right) ^{\frac{{\large 3}}{{\large 2}}}\left( \ln
+N\right) ^{\frac{{\Large 3}}{{\large 2}}}}{T^{\left( {\large 1-\alpha }_{%
+{\large 1}}\right) /{\large 2}}}\right\} =\frac{dN_{2}\varphi }{N}\left[
+1+o\left( 1\right) \right] =O\left( \frac{N_{2}\varphi }{N}\right) =o\left(
+1\right) ${\small . }$\square $
+
+\noindent \textbf{Proof of Theorem 2: }To show part (a), let $\overline{S}%
+_{i,\ell ,T}$ and $\overline{V}_{i,\ell ,T}$ be as defined in expression (%
+\ref{num and denom max stat}), and note that:
+
+\noindent ${\small P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell
+,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small =P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert \frac{\overline{S}%
+_{i,,\ell ,T}-\mu _{i,\ell ,T}}{\sqrt{\overline{V}_{i,\ell ,T}}}+\frac{\mu
+_{i,,\ell ,T}}{\sqrt{\overline{V}_{i,\ell ,T}}}\right\vert \geq \Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small \geq P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\{ \left\vert \frac{\mu
+_{i,\ell ,T}}{\sqrt{\overline{V}_{i,\ell ,T}}}\right\vert -\left\vert \frac{%
+\overline{S}_{i,\ell ,T}-\mu _{i,\ell ,T}}{\sqrt{\overline{V}_{i,\ell ,T}}}%
+\right\vert \right\} \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right)
+\right) $
+
+\noindent ${\small =P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\{ \left\vert \frac{\mu
+_{i,\ell ,T}}{\sqrt{\overline{V}_{i,\ell ,T}}}\right\vert \left[
+1-\left\vert \frac{\sqrt{\overline{V}_{i,\ell ,T}}}{\mu _{i,\ell ,T}}%
+\right\vert \left\vert \frac{\overline{S}_{i,\ell ,T}-\mu _{i,\ell ,T}}{%
+\sqrt{\overline{V}_{i,\ell ,T}}}\right\vert \right] \right\} \geq \Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small =P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\{ \left\vert \frac{\mu
+_{i,\ell ,T}}{\sqrt{\overline{V}_{i,\ell ,T}}}\right\vert \left[
+1-\left\vert \frac{\overline{S}_{i,\ell ,T}-\mu _{i,\ell ,T}}{\mu _{i,\ell
+,T}}\right\vert \right] \right\} \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}%
+\right) \right) {\small ,}$
+
+\noindent where ${\small \mu }_{i,\ell ,T}{\small =}\dsum\nolimits_{r=1}^{q}%
+\dsum\nolimits_{t=b_{1}\left( r\right) }^{b_{2}\left( r\right) }{\small %
+\gamma }_{i}^{\prime }\left\{ E\left[ \underline{F}_{t}\right] \mu _{Y,\ell
+}+E\left[ \underline{F}_{t}\underline{Y}_{t}^{\prime }\right] \alpha
+_{YY,\ell }+E\left[ \underline{F}_{t}\underline{F}_{t}^{\prime }\right]
+\alpha _{YF,\ell }\right\} ,$for
+
+\noindent $b_{1}\left( r\right) =\left( r-1\right) \tau +p$ and $b_{2}\left(
+r\right) =b_{1}\left( r\right) +\tau _{1}-1${\small . }Next, let
+
+\noindent ${\small \pi }_{i,\ell ,T}{\small =}\dsum\nolimits_{r=1}^{q}\left(
+\dsum\nolimits_{t=b_{1}\left( r\right) }^{b_{2}\left( r\right) }\left\{
+\gamma _{i}^{\prime }E\left[ \underline{F}_{t}\right] \mu _{Y,\ell }+\gamma
+_{i}^{\prime }E\left[ \underline{F}_{t}\underline{Y}_{t}^{\prime }\right]
+\alpha _{YY,\ell }+\gamma _{i}^{\prime }E\left[ \underline{F}_{t}\underline{F%
+}_{t}^{\prime }\right] \alpha _{YF,\ell }\right\} \right) ^{2}$, and we see
+that, under Assumption 2-8, there exists a positive constant $\underline{c}$
+such that for every $\ell \in \left\{ 1,...,d\right\} $ and for all $%
+N_{1},N_{2},$ and $T$ sufficiently large:
+
+$\min_{{\large i\in }H^{{\large c}}}\left\{ \pi _{i,\ell ,T}/\left( q\tau
+_{1}^{2}\right) \right\} $
+
+\noindent ${\small =}\min_{{\large i\in }H^{{\large c}}}\frac{1}{q}%
+\dsum\limits_{r=1}^{q}\left( \frac{1}{\tau _{1}}\dsum\limits_{t=b_{1}\left(
+r\right) }^{b_{2}\left( r\right) }\left\{ \gamma _{i}^{\prime }E\left[ 
+\underline{F}_{t}\right] \mu _{Y,\ell }+\gamma _{i}^{\prime }E\left[ 
+\underline{F}_{t}\underline{Y}_{t}^{\prime }\right] \alpha _{YY,\ell
+}+\gamma _{i}^{\prime }E\left[ \underline{F}_{t}\underline{F}_{t}^{\prime }%
+\right] \alpha _{YF,\ell }\right\} \right) ^{2}$
+
+\noindent ${\small =}\min_{{\large i\in }H^{{\large c}}}\frac{1}{q}%
+\dsum\limits_{r=1}^{q}\left( \frac{1}{\tau _{1}}\dsum\limits_{t=b_{1}\left(
+r\right) }^{b_{2}\left( r\right) }E\left[ \gamma _{i}^{\prime }\underline{F}%
+_{t}y_{\ell ,t{\LARGE +}1}\right] \right) ^{2}$
+
+\noindent $\geq \min_{{\large i\in }H^{{\large c}}}\left( \frac{1}{q}%
+\dsum\limits_{r=1}^{q}\frac{1}{\tau _{1}}\dsum\limits_{t=b_{1}\left(
+r\right) }^{b_{2}\left( r\right) }E\left[ \gamma _{i}^{\prime }\underline{F}%
+_{t}y_{\ell ,t{\LARGE +}1}\right] \right) ^{2}${\small \ \ }$\left( \text{by
+Jensen's inequality}\right) $
+
+\noindent ${\small =}\min_{{\large i\in }H^{{\large c}}}\left\vert \frac{1}{q%
+}\dsum\limits_{r=1}^{q}\frac{1}{\tau _{1}}\dsum\limits_{t=b_{1}\left(
+r\right) }^{b_{2}\left( r\right) }\left\{ \gamma _{i}^{\prime }E\left[ 
+\underline{F}_{t}\right] \mu _{Y,\ell }+\gamma _{i}^{\prime }E\left[ 
+\underline{F}_{t}\underline{Y}_{t}^{\prime }\right] \alpha _{YY,\ell
+}+\gamma _{i}^{\prime }E\left[ \underline{F}_{t}\underline{F}_{t}^{\prime }%
+\right] \alpha _{YF,\ell }\right\} \right\vert ^{2}$
+
+\noindent ${\small \geq }$ $\underline{c}^{2}{\small >0}$ \ $\left( \text{in
+light of Assumption 2-8}\right) .$
+
+\noindent It follows that for all $N_{1},N_{2},$ and $T$ sufficiently large:
+
+\noindent ${\small P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell
+,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small \geq P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\{ \left\vert \frac{\mu
+_{i,\ell ,T}}{\sqrt{\overline{V}_{i,\ell ,T}}}\right\vert \left[
+1-\left\vert \frac{\overline{S}_{i,\ell ,T}-\mu _{i,\ell ,T}}{\mu _{i,\ell
+,T}}\right\vert \right] \right\} \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}%
+\right) \right) $
+
+\noindent ${\small =P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\{ \left\vert \frac{\sqrt{q}%
+\left[ \mu _{i,\ell ,T}/\left( q\tau _{1}\right) \right] }{\sqrt{\pi
+_{i,\ell ,T}/\left( q\tau _{1}^{2}\right) }}\right\vert \left\vert \frac{%
+\sqrt{\pi _{i,\ell ,T}/\left( q\tau _{1}^{2}\right) }}{\sqrt{\pi _{i,\ell
+,T}/\left( q\tau _{1}^{2}\right) }+\sqrt{\overline{V}_{i,\ell ,T}/\left(
+q\tau _{1}^{2}\right) }-\sqrt{\pi _{i,\ell ,T}/\left( q\tau _{1}^{2}\right) }%
+}\right\vert \right. \right. $
+
+\bigskip\ {\small \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ }$\left. \left. \times \left[ 1-\left\vert \frac{\overline{S}_{i,\ell
+,T}-\mu _{i,\ell ,T}}{\mu _{i,\ell ,T}}\right\vert \right] \right\} \geq
+\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small =P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\{ \left\vert \frac{\sqrt{q}%
+\left[ \mu _{i,\ell ,T}/\left( q\tau _{1}\right) \right] }{\sqrt{\pi
+_{i,\ell ,T}/\left( q\tau _{1}^{2}\right) }}\right\vert \left\vert \frac{1}{%
+1+\left( \sqrt{\overline{V}_{i,\ell ,T}}-\sqrt{\pi _{i,\ell ,T}}\right) /%
+\sqrt{\pi _{i,\ell ,T}}}\right\vert \right. \right. $
+
+{\small \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }$%
+\left. \left. \times \left[ 1-\left\vert \frac{\overline{S}_{i,\ell ,T}-\mu
+_{i,\ell ,T}}{\mu _{i,\ell ,T}}\right\vert \right] \right\} \geq \Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small \geq P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\{ \left\vert \frac{\sqrt{q}%
+\left( \mu _{i,\ell ,T}/\left( q\tau _{1}\right) \right) }{\sqrt{\pi
+_{i,\ell ,T}/\left( q\tau _{1}^{2}\right) }}\right\vert \frac{1}{1+\max_{k%
+{\large \in }H^{{\large c}}}\left\vert \sqrt{\overline{V}_{k,\ell ,T}}-\sqrt{%
+\pi _{k,\ell ,T}}\right\vert /\sqrt{\pi _{k,\ell ,T}}}\right. \right. $
+
+$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left. \left. \times \left[
+1-\max_{k{\large \in }H^{{\large c}}}\left\vert \frac{\overline{S}_{k,\ell
+,T}-\mu _{k,\ell ,T}}{\mu _{k,\ell ,T}}\right\vert \right] \right\} \geq
+\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small \geq P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\{ \left\vert \frac{\sqrt{q}%
+\left[ \mu _{i,\ell ,T}/\left( q\tau _{1}\right) \right] }{\sqrt{\pi
+_{i,\ell ,T}/\left( q\tau _{1}^{2}\right) }}\right\vert \frac{1}{1+\max_{k%
+{\large \in }H^{{\large c}}}\sqrt{\left\vert \overline{V}_{k,\ell ,T}-\pi
+_{k,\ell ,T}\right\vert /\pi _{k,\ell ,T}}}\right. \right. $
+
+\ \ \ \ $\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left. \left. \times \left[
+1-\max_{k{\large \in }H^{{\large c}}}\left\vert \frac{\overline{S}_{k,\ell
+,T}-\mu _{k,\ell ,T}}{\mu _{k,\ell ,T}}\right\vert \right] \right\} \geq
+\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+$\left( \text{making use of the inequality }\left\vert \sqrt{x}-\sqrt{y}%
+\right\vert \leq \sqrt{\left\vert x-y\right\vert }\text{ for }x\geq 0\text{
+and }y\geq 0\text{ }\right) $
+
+\noindent ${\small =P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\{ \left\vert \frac{\sqrt{q}%
+\left[ \mu _{i,\ell ,T}/\left( q\tau _{1}\right) \right] }{\sqrt{\pi
+_{i,\ell ,T}/\left( q\tau _{1}^{2}\right) }}\right\vert \frac{1-\max_{k%
+{\large \in }H^{{\large c}}}\left\vert \mathcal{E}_{k,\ell ,T}\right\vert }{%
+1+\max_{k{\large \in }H^{{\large c}}}\sqrt{\left\vert \mathcal{V}_{k,\ell
+,T}\right\vert }}\right\} {\small \geq \Phi }^{-1}\left( 1-\frac{\varphi }{2N%
+}\right) \right) $,
+
+\noindent where $\mathcal{E}_{k,\ell ,T}=\left( \overline{S}_{k,\ell ,T}-\mu
+_{k,\ell ,T}\right) /\mu _{k,\ell ,T}$ and $\mathcal{V}_{k,\ell ,T}=\left( 
+\overline{V}_{k,\ell ,T}-\pi _{k,\ell ,T}\right) /\pi _{k,\ell ,T}$. By part
+(a) of Lemma QA-16 (given in the Online Appendix, Chao, Liu, and Swanson,
+2023), there exists a sequence of positive numbers $\left\{ \epsilon
+_{T}\right\} $ such that, as $T\rightarrow \infty $, $\epsilon
+_{T}\rightarrow 0$ and $P\left( \max_{1\leq \ell \leq d}\max_{k{\large \in }%
+H^{{\large c}}}\left\vert \mathcal{E}_{k,\ell ,T}\right\vert \geq \epsilon
+_{T}\right) \rightarrow 0$. In addition, by the result of part (b) of Lemma
+QA-16, there exists a sequence of positive numbers $\left\{ \epsilon
+_{T}^{\ast }\right\} $ such that, as $T\rightarrow \infty $, $\epsilon
+_{T}^{\ast }\rightarrow 0$ and $P\left( \max_{1\leq \ell \leq d}\max_{k%
+{\large \in }H^{{\large c}}}\left\vert \mathcal{V}_{k,\ell ,T}\right\vert
+\geq \epsilon _{T}^{\ast }\right) \rightarrow 0$. Further define $\overline{%
+\mathbb{E}}_{T}=\max_{1\leq \ell \leq d}\max_{k{\large \in }H^{{\large c}%
+}}\left\vert \mathcal{E}_{k,\ell ,T}\right\vert $ and $\overline{\mathbb{V}}%
+_{T}=\max_{1\leq \ell \leq d}\max_{k{\large \in }H^{{\large c}}}\left\vert 
+\mathcal{V}_{k,\ell ,T}\right\vert $; and note that, for all $N_{1},N_{2}$,
+and $T$ sufficiently large,
+
+\noindent ${\small P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell
+,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small \geq P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\{ \left\vert \frac{\sqrt{q}%
+\left[ \mu _{i,\ell ,T}/\left( q\tau _{1}\right) \right] }{\sqrt{\pi
+_{i,\ell ,T}/\left( q\tau _{1}^{2}\right) }}\right\vert \frac{1-\max_{k%
+{\large \in }H^{{\large c}}}\left\vert \mathcal{E}_{k,\ell ,T}\right\vert }{%
+1+\max_{k{\large \in }H^{{\large c}}}\sqrt{\left\vert \mathcal{V}_{k,\ell
+,T}\right\vert }}\right\} {\small \geq \Phi }^{-1}\left( 1-\frac{\varphi }{2N%
+}\right) \right) $
+
+\noindent ${\small \geq P}\left( \frac{1-\max_{1\leq \ell \leq d}\max_{k%
+{\large \in }H^{{\large c}}}\left\vert \mathcal{E}_{k,\ell ,T}\right\vert }{%
+1+\max_{1\leq \ell \leq d}\max_{k{\large \in }H^{{\large c}}}\sqrt{%
+\left\vert \mathcal{V}_{k,\ell ,T}\right\vert }}\min_{{\large i\in }H^{%
+{\large c}}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert \frac{\sqrt{q%
+}\left[ \mu _{i,\ell ,T}/\left( q\tau _{1}\right) \right] }{\sqrt{\pi
+_{i,\ell ,T}/\left( q\tau _{1}^{2}\right) }}\right\vert \geq {\small \Phi }%
+^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small =P}\left( \frac{1-\overline{\mathbb{E}}_{T}}{1+\sqrt{%
+\overline{\mathbb{V}}_{T}}}\min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert \frac{\mu _{i,\ell ,T}%
+}{\sqrt{\pi _{i,\ell ,T}}}\right\vert \geq {\small \Phi }^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) \right) $
+
+\noindent ${\small \geq P}\left( \left\{ \left\vert \frac{1-\epsilon _{T}}{1+%
+\sqrt{\epsilon _{T}^{\ast }}}\right\vert \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert \frac{\mu _{i,\ell ,T}%
+}{\sqrt{\pi _{i,\ell ,T}}}\right\vert \geq {\small \Phi }^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) \right\} \cap \left\{ \overline{\mathbb{E}}%
+_{T}<\epsilon _{T}\right\} \cap \left\{ \overline{\mathbb{V}}_{T}<\epsilon
+_{T}^{\ast }\right\} \right) $
+
+\noindent ${\small +P}\left( \left\{ \frac{1-\overline{\mathbb{E}}_{T}}{1+%
+\sqrt{\overline{\mathbb{V}}_{T}}}\min_{{\large i\in }H}\dsum\limits_{\ell
+=1}^{d}\varpi _{\ell }\left\vert \frac{\mu _{i,\ell ,T}}{\sqrt{\pi _{i,\ell
+,T}}}\right\vert \geq {\small \Phi }^{-1}\left( 1-\frac{\varphi }{2N}\right)
+\right\} \cap \left\{ \overline{\mathbb{E}}_{T}\geq \epsilon _{T}\cup 
+\overline{\mathbb{V}}_{T}\geq \epsilon _{T}^{\ast }\right\} \right) $
+
+\noindent ${\small \geq P}\left( \left\{ \left\vert \frac{1-\epsilon _{T}}{1+%
+\sqrt{\epsilon _{T}^{\ast }}}\right\vert \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert \frac{\mu _{i,\ell ,T}%
+}{\sqrt{\pi _{i,\ell ,T}}}\right\vert \geq {\small \Phi }^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) \right\} \cap \left\{ \overline{\mathbb{E}}%
+_{T}<\epsilon _{T}\right\} \cap \left\{ \overline{\mathbb{V}}_{T}<\epsilon
+_{T}^{\ast }\right\} \right) $
+
+\noindent ${\small +P}\left( \left\{ \frac{1-\overline{\mathbb{E}}_{T}}{1+%
+\sqrt{\overline{\mathbb{V}}_{T}}}\min_{{\large i\in }H}\dsum\limits_{\ell
+=1}^{d}\varpi _{\ell }\left\vert \frac{\mu _{i,\ell ,T}}{\sqrt{\pi _{i,\ell
+,T}}}\right\vert \geq {\small \Phi }^{-1}\left( 1-\frac{\varphi }{2N}\right)
+\right\} \cap \left\{ \overline{\mathbb{E}}_{T}\geq \epsilon _{T}\right\}
+\right) $
+
+\noindent ${\small =P}\left( \left\{ \left\vert \frac{1-\epsilon _{T}}{1+%
+\sqrt{\epsilon _{T}^{\ast }}}\right\vert \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert \frac{\mu _{i,\ell ,T}%
+}{\sqrt{\pi _{i,\ell ,T}}}\right\vert \geq {\small \Phi }^{-1}\left( 1-\frac{%
+\varphi }{2N}\right) \right\} \cap \left\{ \overline{\mathbb{E}}%
+_{T}<\epsilon _{T}\right\} \cap \left\{ \overline{\mathbb{V}}_{T}<\epsilon
+_{T}^{\ast }\right\} \right) $
+
+${\small +o}\left( 1\right) {\small .}$
+
+\noindent where the last equality above follows from the fact that
+
+\noindent $P\left( \left\{ \frac{1-\overline{\mathbb{E}}_{T}}{1+\sqrt{%
+\overline{\mathbb{V}}_{T}}}\min_{{\large i\in }H}\dsum\limits_{\ell
+=1}^{d}\varpi _{\ell }\left\vert \frac{\mu _{i,\ell ,T}}{\sqrt{\pi _{i,\ell
+,T}}}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right\}
+\cap \left\{ \overline{\mathbb{E}}_{T}\geq \epsilon _{T}\right\} \right) $
+
+\noindent $\leq P\left( \overline{\mathbb{E}}_{T}\geq \epsilon _{T}\right)
+=o\left( 1\right) $
+
+\noindent Moreover, making use of Assumption 2-8, the result given in Lemma
+A1, and the fact that $q=\left\lfloor T_{0}/\tau \right\rfloor \sim
+T^{1-\alpha _{{\large 1}}}$, we see that, there exists positive constants $%
+\underline{c}$ and $\overline{C}$ such that:
+
+\noindent $\min_{{\large i\in }H^{{\large c}}}\dsum\limits_{\ell =1}^{d}%
+{\small \varpi }_{\ell }\left\vert \frac{\mu _{i,\ell ,T}}{\sqrt{\pi
+_{i,\ell ,T}}}\right\vert {\small =}\min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}{\small \varpi }_{\ell }\frac{\sqrt{q}\left\vert
+\mu _{i,\ell ,T}/\left( q\tau _{1}\right) \right\vert }{\sqrt{\pi _{i,\ell
+,T}/\left( q\tau _{1}^{2}\right) }}$
+
+\noindent ${\small \geq }\sqrt{q}\dsum\limits_{\ell =1}^{d}{\small \varpi }%
+_{\ell }\frac{\min_{{\large i\in }H^{{\large c}}}\left\vert \mu _{i,\ell
+,T}/\left( q\tau _{1}\right) \right\vert }{\sqrt[\backslash ]{\max_{{\large %
+i\in }H^{{\large c}}}\pi _{i,\ell ,T}/\left( q\tau _{1}^{2}\right) }}{\small %
+\geq }\sqrt{q}\dsum\limits_{\ell =1}^{d}{\small \varpi }_{\ell }\frac{%
+\underline{c}}{\sqrt{C}}{\small =}\sqrt{q}\frac{\underline{c}}{\sqrt{C}}%
+{\small \sim }\sqrt{q}{\small \sim }\sqrt{\frac{T_{0}}{\tau }}{\small \sim T}%
+^{\left( 1-\alpha _{{\large 1}}\right) /2}$ .
+
+\noindent On the other hand, applying the inequality
+
+\noindent $\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \leq \sqrt{2\left(
+1+a\right) }\sqrt{\ln N}\sim \sqrt{\ln N}$,\footnote{%
+As noted previously, an explicit proof of this result is given in Chao, Liu,
+and Swanson (2023). In particular, this inequality is shown in part (b) of
+Lemma QA-15 in Chao, Liu, and Swanson (2023).} we further deduce that,
+
+\noindent as $N_{1},N_{2},T\rightarrow \infty $,%
+\begin{equation*}
+\frac{1}{\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) }\min_{{\large i\in }%
+H^{{\large c}}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert \frac{\mu
+_{i,\ell ,T}}{\sqrt{\pi _{i,\ell ,T}}}\right\vert \geq \frac{\underline{c}}{%
+\sqrt{C}}\sqrt{\frac{q}{2\left( 1+a\right) \ln N}}\sim \sqrt[\backslash ]{%
+\frac{T^{\left( 1-\alpha _{{\large 1}}\right) }}{\ln N}}\rightarrow \infty 
+\text{.}
+\end{equation*}%
+This is true because the condition $\sqrt{\ln N}/\min \left\{ T^{\left( 1-%
+{\large \alpha }_{1}\right) /6},T^{\alpha _{2}/2}\right\} \rightarrow 0$ as $%
+N_{1},N_{2},T\rightarrow \infty $ \ (as specified in Assumption 2-9 part
+(a)) implies that $\ln N/T^{\left( 1-\alpha _{{\large 1}}\right)
+}\rightarrow 0$ as $N_{1},N_{2},T\rightarrow \infty $. Hence, there exists a
+natural number $M$ such that, for all $N_{1}\geq M,N_{2}\geq M$, and $T\geq
+M $, we have $\left\vert \frac{1-\epsilon _{T}}{1+\sqrt{\epsilon _{T}^{\ast }%
+}}\right\vert \min_{{\large i\in }H^{{\large c}}}\dsum\limits_{\ell =1}^{d}%
+{\small \varpi }_{\ell }\left\vert \frac{\mu _{i,\ell ,T}}{\sqrt{\pi
+_{i,\ell ,T}}}\right\vert {\small \geq \Phi }^{-1}\left( 1-\frac{\varphi }{2N%
+}\right) $ so that:
+
+\noindent ${\small P}\left( \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell
+,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) $
+
+\noindent ${\small \geq P}\left( \left\{ \left\vert \frac{1-\epsilon _{T}}{1+%
+\sqrt{\epsilon _{T}^{\ast }}}\right\vert \min_{{\large i\in }H^{{\large c}%
+}}\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert \frac{\mu _{i,\ell ,T}%
+}{\sqrt{\pi _{i,\ell ,T}}}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi 
+}{2N}\right) \right\} \cap \left\{ \overline{\mathbb{E}}_{T}<\epsilon
+_{T}\right\} \cap \left\{ \overline{\mathbb{V}}_{T}<\epsilon _{T}^{\ast
+}\right\} \right) $
+
+$+o\left( 1\right) $
+
+\noindent ${\small =P}\left( \left\{ \overline{\mathbb{E}}_{T}<\epsilon
+_{T}\right\} \cap \left\{ \overline{\mathbb{V}}_{T}<\epsilon _{T}^{\ast
+}\right\} \right) {\small +o}\left( 1\right) $
+
+$\left( \text{for all }N_{1}\geq M,N_{2}\geq M,\text{and }T\geq M\right) $
+
+\noindent ${\small \geq P}\left( \overline{\mathbb{E}}_{T}<\epsilon
+_{T}\right) {\small +P}\left( \overline{\mathbb{V}}_{T}<\epsilon _{T}^{\ast
+}\right) {\small -1+o}\left( 1\right) $ $\left( \text{using the inequality}%
+\right. $
+
+$\left. P\left\{ \dbigcap\limits_{i=1}^{m}A_{i}\right\} \geq
+\dsum\limits_{i=1}^{m}P\left( A_{i}\right) -\left( m-1\right) \text{ in
+Chao, Liu, and Swanson (2023) Lemma OA-14}\right) $
+
+\noindent ${\small =1-P}\left( \overline{\mathbb{E}}_{T}\geq \epsilon
+_{T}\right) {\small +1-P}\left( \overline{\mathbb{V}}_{T}\geq \epsilon
+_{T}^{\ast }\right) {\small -1+o}\left( 1\right) $
+
+\noindent ${\small =1-P}\left( \overline{\mathbb{E}}_{T}\geq \epsilon
+_{T}\right) {\small -P}\left( \overline{\mathbb{V}}_{T}\geq \epsilon
+_{T}^{\ast }\right) {\small +o}\left( 1\right) $
+
+\noindent $=1+o\left( 1\right) ${\small .}
+
+Next, to show part (b), note that, by applying the result in part (a), we
+have that:
+
+\noindent $P\left( \min_{{\large i\in }H^{{\large c}}}\max_{1\leq \ell \leq
+d}\left\vert S_{i,\ell ,T}\right\vert \geq \Phi ^{-1}\left( 1-\frac{\varphi 
+}{2N}\right) \right) $
+
+\noindent $\geq P\left( \min_{{\large i\in }H^{{\large c}}}\dsum\limits_{%
+\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell ,T}\right\vert \geq \Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) =1+o\left( 1\right) $. $%
+\square $
+
+\bigskip
+
+\noindent \textbf{Lemma A1: }Let $\underline{Y}_{t}=\left( 
+\begin{array}{cccc}
+Y_{t}^{\prime } & Y_{t-1}^{\prime } & \cdots & Y_{t-p{\LARGE +}1}^{\prime }%
+\end{array}%
+\right) ^{\prime }$ and $\underline{F}_{t}=\left( 
+\begin{array}{cccc}
+F_{t}^{\prime } & F_{t-1}^{\prime } & \cdots & F_{t-p{\LARGE +}1}^{\prime }%
+\end{array}%
+\right) ^{\prime }$, and define $b_{1}\left( r\right) =\left( r-1\right)
+\tau +p$ and $b_{2}\left( r\right) =b_{1}\left( r\right) +\tau _{1}-1$.
+Under Assumptions 2-1, 2-2, 2-5, 2-6, and 2-9(b); there exists a positive
+constant $C$ such that:
+
+\noindent $\max_{1\leq \ell \leq d,\text{ }i\in H^{{\large c}}}\left( \frac{%
+\pi _{i,\ell ,T}}{q\tau _{1}^{2}}\right) $
+
+\noindent $=\max_{1\leq \ell \leq d,\text{ }i\in H^{{\large c}}}\frac{1}{q}%
+\dsum\limits_{r=1}^{q}\left( \frac{1}{\tau _{1}}\dsum%
+\limits_{t=b_{1}(r)}^{b_{2}(r)}\gamma _{i}^{\prime }\left\{ E\left[ 
+\underline{F}_{t}\right] \mu _{Y,\ell }+E\left[ \underline{F}_{t}\underline{Y%
+}_{t}^{\prime }\right] \alpha _{YY,\ell }+E\left[ \underline{F}_{t}%
+\underline{F}_{t}^{\prime }\right] \alpha _{YF,\ell }\right\} \right) ^{2}$
+
+\noindent $\leq C<\infty ,$ for all $N_{1},N_{2},T$ sufficiently large.
+
+\noindent \textbf{Proof of Lemma A1:} \ To proceed, let $\phi _{\max }=\max
+\left\{ \left\vert \lambda _{\max }\left( A\right) \right\vert ,\left\vert
+\lambda _{\min }\left( A\right) \right\vert \right\} $ and, for $\ell \in
+\left\{ 1,...,d\right\} $, let $e_{\ell ,d}$ denote a $d\times 1$ elementary
+vector whose $\ell ^{th}$ component is $1$ and all other components are $0$.
+Now, note that:
+
+\noindent $\max_{1\leq \ell \leq d,\text{ }i\in H^{{\large c}}}\left\{ \pi
+_{i,\ell ,T}/\left( q\tau _{1}^{2}\right) \right\} $
+
+\noindent $=\max_{1\leq \ell \leq d,\text{ }i\in H^{{\large c}}}\frac{1}{q}%
+\dsum\limits_{r=1}^{q}\left( \frac{1}{\tau _{1}}\dsum\limits_{t=b_{1}\left(
+r\right) }^{b_{2}\left( r\right) }\gamma _{i}^{\prime }\left\{ E\left[ 
+\underline{F}_{t}\right] \mu _{Y,\ell }+E\left[ \underline{F}_{t}\underline{Y%
+}_{t}^{\prime }\right] \alpha _{YY,\ell }+E\left[ \underline{F}_{t}%
+\underline{F}_{t}^{\prime }\right] \alpha _{YF,\ell }\right\} \right) ^{2}$
+
+\noindent $\leq \max_{1\leq \ell \leq d,\text{ }i\in H^{{\large c}}}\frac{1}{%
+q}\dsum\limits_{r=1}^{q}\left( \frac{1}{\tau _{1}}\dsum\limits_{t=b_{1}%
+\left( r\right) }^{b_{2}\left( r\right) }\left\{ E\left[ \left\vert \gamma
+_{i}^{\prime }\underline{F}_{t}\right\vert \right] \left\vert \mu _{Y,\ell
+}\right\vert +E\left[ \left\vert \gamma _{i}^{\prime }\underline{F}_{t}%
+\underline{Y}_{t}^{\prime }A_{YY}^{\prime }e_{\ell ,d}\right\vert \right]
+\right. \right. $
+
+$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left. \left.
++E\left[ \left\vert \gamma _{i}^{\prime }\underline{F}_{t}\underline{F}%
+_{t}^{\prime }A_{YF}^{\prime }e_{\ell ,d}\right\vert \right] \right\}
+\right) ^{2}$ $\left( \text{by triangle and Jensen's inequalities}\right) $
+
+\noindent $\leq \max_{i\in H^{{\large c}}}\frac{1}{q}\dsum\limits_{r=1}^{q}%
+\left( \frac{1}{\tau _{1}}\dsum\limits_{t=b_{1}\left( r\right)
+}^{b_{2}\left( r\right) }\left\{ \sqrt{\left\Vert \gamma _{i}\right\Vert
+_{2}^{2}}\sqrt{E\left\Vert \underline{F}_{t}\right\Vert _{2}^{2}}\max_{1\leq
+\ell \leq d}\left\vert \mu _{Y,\ell }\right\vert \right. \right. $
+
+\noindent\ $\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\sqrt{%
+\gamma _{i}^{\prime }E\left[ \underline{F}_{t}\underline{F}_{t}^{\prime }%
+\right] \gamma _{i}}\sqrt{\max_{1\leq \ell \leq d}e_{\ell ,d}^{\prime
+}A_{YY}E\left[ \underline{Y}_{t}\underline{Y}_{t}^{\prime }\right]
+A_{YY}^{\prime }e_{\ell ,d}}$
+
+$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $\ $\ \left. \left. +\sqrt{\gamma
+_{i}^{\prime }E\left[ \underline{F}_{t}\underline{F}_{t}^{\prime }\right]
+\gamma _{i}}\sqrt{\max_{1\leq \ell \leq d}e_{\ell ,d}^{\prime }A_{YF}E\left[ 
+\underline{F}_{t}\underline{F}_{t}^{\prime }\right] A_{YF}^{\prime }e_{\ell
+,d}}\right\} \right) ^{2}$
+
+\noindent $\leq \left( \max_{i\in H^{{\large c}}}\left\Vert \gamma
+_{i}\right\Vert _{2}^{2}\right) \frac{1}{q}\dsum\limits_{r=1}^{q}\left( 
+\frac{1}{\tau _{1}}\dsum\limits_{t=b_{1}\left( r\right) }^{b_{2}\left(
+r\right) }\left\{ \sqrt{E\left\Vert \underline{F}_{t}\right\Vert _{2}^{2}}%
+\max_{1\leq \ell \leq d}\left\vert \mu _{Y,\ell }\right\vert \right. \right. 
+$
+
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $+\sqrt{%
+E\left\Vert \underline{F}_{t}\right\Vert _{2}^{2}}\sqrt{E\left\Vert 
+\underline{Y}_{t}\right\Vert _{2}^{2}}\sqrt{\max_{1\leq \ell \leq d}e_{\ell
+,d}^{\prime }A_{YY}A_{YY}^{\prime }e_{\ell ,d}}$
+
+$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $\ $\ \left. \left.
++E\left\Vert \underline{F}_{t}\right\Vert _{2}^{2}\sqrt{\max_{1\leq \ell
+\leq d}e_{\ell ,d}^{\prime }A_{YF}A_{YF}^{\prime }e_{\ell ,d}}\right\}
+\right) ^{2}$
+
+\noindent $\leq \left( \max_{i\in H^{{\large c}}}\left\Vert \gamma
+_{i}\right\Vert _{2}^{2}\right) \frac{1}{q}\dsum\limits_{r=1}^{q}\left( 
+\frac{1}{\tau _{1}}\dsum\limits_{t=b_{1}\left( r\right) }^{b_{2}\left(
+r\right) }\left\{ \sqrt{E\left\Vert \underline{F}_{t}\right\Vert _{2}^{2}}%
+\max_{1\leq \ell \leq d}\left\vert \mu _{Y,\ell }\right\vert \right. \right. 
+$
+
+$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left. \left. +\sqrt{E\left\Vert 
+\underline{F}_{t}\right\Vert _{2}^{2}}\sqrt{E\left\Vert \underline{Y}%
+_{t}\right\Vert _{2}^{2}}C^{\dagger }\phi _{\max }+E\left\Vert \underline{F}%
+_{t}\right\Vert _{2}^{2}C^{\dagger }\phi _{\max }\right\} \right) ^{2},$
+
+\noindent where the last inequality follows from the fact that, by making
+use of Assumption 2-6, it is easy to show that there exists a constant $%
+C^{\dagger }>0$ such that
+
+\noindent $\sqrt{\max_{1\leq \ell \leq d}e_{\ell ,d}^{\prime
+}A_{YY}A_{YY}^{\prime }e_{\ell ,d}}\leq \left\Vert A_{YY}\right\Vert _{2}%
+\sqrt{\max_{1\leq \ell \leq d}e_{\ell ,d}^{\prime }e_{\ell ,d}}=\left\Vert
+A_{YY}\right\Vert _{2}\leq C^{\dagger }\phi _{\max }$ and,
+
+\noindent similarly, $\sqrt{\max_{1\leq \ell \leq d}e_{\ell ,d}^{\prime
+}A_{YF}A_{YF}^{\prime }e_{\ell ,d}}\leq \left\Vert A_{YF}\right\Vert
+_{2}\leq C^{\dagger }\phi _{\max }$.\footnote{%
+Explicit proofs of these two inequalities are given in Chao, Liu, and
+Swanson (2023). In particular, these inequalities are shown in parts (a) and
+(b) of Lemma OA-7 in Chao, Liu, and Swanson (2023).} Hence,
+
+\medskip
+
+\noindent\ $\ \ \ \ \max_{1\leq \ell \leq d}\max_{k{\large \in }H^{{\large c}%
+}}\left\{ \pi _{i,\ell ,T}/\left( q\tau _{1}^{2}\right) \right\} $
+
+\noindent \noindent ${\small \leq }$ $\left( \max_{i\in H^{{\large c}%
+}}\left\Vert \gamma _{i}\right\Vert _{2}^{2}\right) \frac{1}{q}%
+\dsum\limits_{r=1}^{q}\left( \frac{1}{\tau _{1}}\dsum\limits_{t=b_{1}\left(
+r\right) }^{b_{2}\left( r\right) }\left\{ \sqrt{E\left\Vert \underline{F}%
+_{t}\right\Vert _{2}^{2}}\max_{1\leq \ell \leq d}\left\vert \mu _{Y,\ell
+}\right\vert \right. \right. $
+
+$\left. \left. +\sqrt{E\left\Vert \underline{F}_{t}\right\Vert _{2}^{2}}%
+\sqrt{E\left\Vert \underline{Y}_{t}\right\Vert _{2}^{2}}C^{\dagger }\phi
+_{\max }+E\left\Vert \underline{F}_{t}\right\Vert _{2}^{2}C^{\dagger }\phi
+_{\max }\right\} \right) ^{2}$
+
+\noindent ${\small \leq }\left( \max_{i\in H^{{\large c}}}\left\Vert \gamma
+_{i}\right\Vert _{2}^{2}\right) \frac{1}{q}\dsum\limits_{r=1}^{q}\frac{1}{%
+\tau _{1}}\dsum\limits_{t=b_{1}\left( r\right) }^{b_{2}\left( r\right) }%
+{\small E}\left\Vert \underline{F}_{t}\right\Vert _{2}^{2}\left( \left\Vert
+\mu _{Y}\right\Vert _{2}^{2}+\left[ \sqrt{E\left\Vert \underline{Y}%
+_{t}\right\Vert _{2}^{2}}+\sqrt{E\left\Vert \underline{F}_{t}\right\Vert
+_{2}^{2}}\right] C^{\dagger }\phi _{\max }\right) ^{2}$
+
+\noindent \noindent $\leq C<\infty $,
+
+\noindent for some positive constant $C$ such that
+
+\noindent $C\geq \left( \max_{i\in H^{{\large c}}}\left\Vert \gamma
+_{i}\right\Vert _{2}^{2}\right) E\left\Vert \underline{F}_{t}\right\Vert
+_{2}^{2}\left( \left\Vert \mu _{Y}\right\Vert _{2}^{2}+\left[ \sqrt{%
+E\left\Vert \underline{Y}_{t}\right\Vert _{2}^{2}}+\sqrt{E\left\Vert 
+\underline{F}_{t}\right\Vert _{2}^{2}}\right] C^{\dagger }\phi _{\max
+}\right) ^{2}$, where such a constant exists because $\max_{i\in H^{{\large c%
+}}}\left\Vert \gamma _{i}\right\Vert _{2}^{2}$ and $\left\Vert \mu
+_{Y}\right\Vert _{2}^{2}$ are both bounded given Assumption 2-5; because $%
+0<\phi _{\max }<1$ given Assumption 2-1; and because, under Assumptions 2-1,
+2-2(a)-(b), 2-5, and 2-6; one can easily show that there exists a constant $%
+C^{\ast }>0$ such that $E\left\Vert \underline{F}_{t}\right\Vert
+_{2}^{2}\leq $ $C^{\ast }$ and $E\left\Vert \underline{Y}_{t}\right\Vert
+_{2}^{2}\leq \left( E\left\Vert \underline{Y}_{t}\right\Vert _{2}^{6}\right)
+^{1/3}\leq $ $C^{\ast }$.\footnote{%
+An explicit proof that, under Assumptions 2-1, 2-2(a)-(b), 2-5, and 2-6;
+there exists some positive constant $C^{\#}$ such that $E\left\Vert 
+\underline{F}_{t}\right\Vert _{2}^{6}\leq $ $C^{\#}$ and $E\left\Vert 
+\underline{Y}_{t}\right\Vert _{2}^{6}\leq $ $C^{\#}$ is given in Chao, Liu,
+and Swanson (2023). See Lemma OA-5 in Chao, Liu, and Swanson (2023).} $%
+\square $
+
+\medskip
+
+\noindent \textbf{Lemma A2: }Suppose that Assumptions 2-1, 2-2, 2-3, 2-4,
+2-5, 2-6, and 2-7 hold. Let $\Phi \left( \cdot \right) $ denote the
+cumulative distribution function of the standard normal random variable.
+Then, there exists a positive constant $A$ such that 
+\begin{equation}
+P\left( \left\vert S_{i,\ell ,T}\right\vert \geq z\right) \leq 2\left[
+1-\Phi \left( z\right) \right] \left\{ 1+A\left( 1+z\right) ^{3}T^{-\left(
+1-\alpha _{{\large 1}}\right) \frac{{\large 1}}{{\large 2}}}\right\}
+\label{moderate deviation bd}
+\end{equation}%
+for $i\in H=\left\{ k\in \left\{ 1,....,N\right\} :\gamma _{k}=0\right\} $,
+for $\ell \in \left\{ 1,...,d\right\} $, for $T$ sufficiently large, and for
+all $z$ such that $0\leq z\leq c_{0}\min \left\{ T^{\left( 1-\alpha _{%
+{\large 1}}\right) {\large /}6},T^{\alpha _{2}/2}\right\} $ with $c_{0}$
+being a positive constant.
+
+\noindent \textbf{Proof of Lemma A2: }Note first that, for any $i$ such that
+
+\noindent $i\in H=\left\{ k\in \left\{ 1,....,N\right\} :\gamma
+_{k}=0\right\} $, the formula for $S_{i,\ell ,T}$ reduces to:
+
+\noindent $S_{i,\ell ,T}=\left( \dsum\nolimits_{r=1}^{q}\left[
+\dsum\nolimits_{t=\left( r-1\right) \tau +p}^{\left( r-1\right) \tau +\tau
+_{1}+p-1}y_{\ell ,t{\LARGE +}1}u_{it}\right] ^{2}\right) ^{-\frac{{\large 1}%
+}{{\large 2}}}\dsum\nolimits_{r=1}^{q}\dsum\nolimits_{t=\left( r-1\right)
+\tau +p}^{\left( r-1\right) \tau +\tau _{1}+p-1}y_{\ell ,t{\LARGE +}1}u_{it}$%
+.
+
+\noindent Hence, to verify the conditions of Theorem 4.1 of Chen, Shao, Wu,
+and Xu (2016), we set $X_{it}=u_{it}y_{\ell ,t{\LARGE +}1}$, and note that $E%
+\left[ X_{it}\right] =E\left[ u_{it}y_{\ell ,t{\LARGE +}1}\right] =E_{Y}%
+\left[ E\left[ u_{it}\right] y_{\ell ,t{\LARGE +}1}\right] =0$ , where the
+second equality follows by the law of iterated expectations given that
+Assumption 2-4 implies the independence of $u_{it}$ and $y_{\ell ,t{\LARGE +}%
+1}$ and where the third equality follows by Assumption \ 2-3(a). Hence, the
+first part of condition (4.1) of Chen, Shao, Wu, and Xu (2016) is fulfilled.
+Moreover, in light of Assumption 2-3(b) and in light of the fact that, under
+Assumptions 2-1, 2-2(a)-(b), 2-5, and 2-6; one can show by straightforward
+calculations that there exists a positive constant $\overline{C}$ such that $%
+E\left\Vert \underline{Y}_{t}\right\Vert _{2}^{6}\leq $ $\overline{C}$; we
+see that there exists some positive constant $c_{1}$ such that, for every $%
+\ell \in \left\{ 1...,d\right\} $,%
+\begin{eqnarray*}
+E\left[ \left\vert X_{it}\right\vert ^{\frac{{\large 31}}{{\large 10}}}%
+\right] &=&E\left[ \left\vert u_{it}y_{\ell ,t+1}\right\vert ^{\frac{{\large %
+31}}{{\large 10}}}\right] \leq \left( E\left\vert u_{it}\right\vert ^{\frac{%
+{\large 186}}{{\large 29}}}\right) ^{\frac{{\large 29}}{{\large 60}}}\left(
+E\left\vert y_{\ell ,t+1}\right\vert ^{6}\right) ^{\frac{{\large 31}}{%
+{\large 60}}} \\
+&\leq &\left[ \left( E\left\vert u_{it}\right\vert ^{\frac{{\large 186}}{%
+{\large 29}}}\right) ^{\frac{{\large 29}}{{\large 186}}}\right] ^{\frac{%
+{\large 31}}{{\large 10}}}\left[ E\left(
+\dsum\limits_{k=1}^{d}\dsum\limits_{j=0}^{p-1}y_{k,t+1-j}^{2}\right) ^{3}%
+\right] ^{\frac{{\large 31}}{{\large 60}}} \\
+&\leq &\left[ \left( E\left\vert u_{it}\right\vert ^{7}\right) ^{\frac{%
+{\large 1}}{{\large 7}}}\right] ^{\frac{{\large 31}}{{\large 10}}}\left[
+\left( E\left\Vert \underline{Y}_{t+1}\right\Vert _{2}^{6}\right) ^{\frac{%
+{\large 1}}{{\large 6}}}\right] ^{\frac{{\large 31}}{{\large 10}}}\leq
+c_{1}^{\frac{{\large 31}}{{\large 10}}}\text{,}
+\end{eqnarray*}%
+where the first and third inequalities above follow, respectively, by H\"{o}%
+lder's and Liapunov's inequalities. Hence, the second part of condition
+(4.1) of Chen, Shao, Wu, and Xu (2016) is also fulfilled with $r=\frac{31}{10%
+}>2$. Moreover, note that, by Assumption 2-7, for all $r\geq 1$ and $\tau
+_{1}\geq 1:$ 
+\begin{equation*}
+E\left\{ \left[ \dsum\limits_{t=\left( r-1\right) \tau +p}^{\left(
+r-1\right) \tau +\tau _{1}+p-1}X_{it}\right] ^{2}\right\} =\tau _{1}E\left\{ %
+\left[ \frac{1}{\sqrt{\tau _{1}}}\dsum\limits_{t=\left( r-1\right) \tau
++p}^{\left( r-1\right) \tau +\tau _{1}+p-1}y_{\ell ,t{\LARGE +}1}u_{it}%
+\right] ^{2}\right\} \geq \tau _{1}\underline{c}\text{,}
+\end{equation*}%
+so that condition (4.2) of Chen, Shao, Wu, and Xu (2016) is satisfied here.
+Now, making use of Assumption 2-3(c) and Assumption 2-4 and applying Theorem
+2.1 of Pham and Tran (1985), it can be shown that $\left\{ \left( y_{\ell ,t%
+{\LARGE +}1},u_{it}\right) ^{\prime }\right\} $ is $\beta $ mixing with $%
+\beta $ mixing coefficient satisfying $\beta \left( m\right) \leq \overline{a%
+}_{1}\exp \left\{ -a_{2}m\right\} $ for some constants $\overline{a}_{1}>0$
+and $a_{2}>0$. Next, define $X_{it}=y_{\ell ,t{\LARGE +}1}u_{it}$, and note
+that $\left\{ X_{it}\right\} $ is a $\beta $-mixing process with $\beta $%
+-mixing coefficient $\beta _{X,m}$ satisfying the condition $\beta
+_{X,m}\leq a_{1}\exp \left\{ -a_{2}m\right\} $ for some constant $a_{1}>0$
+and for all $m$ sufficiently large, given that measurable functions of a
+finite number of $\beta $-mixing random variables are also $\beta $-mixing,
+with $\beta $-mixing coefficients having the same order of magnitude%
+\footnote{%
+For $\alpha $-mixing and $\phi $-mixing, this result is given in Theorem
+14.1 of Davidson (1994). However, using essentially the same argument as
+that given in the proof of Theorem 14.1, one can also prove a similar result
+for $\beta $-mixing. For an explicit proof of this result, see Lemma OA-2
+part (a) in Chao, Liu, and Swanson (2023).}. It follows that $\left\{
+X_{it}\right\} $ satisfies the $\beta $ mixing condition (2.1) stipulated in
+Chen, Shao, Wu, and Xu (2016) for all $i\in H$. Hence, by applying Theorem
+4.1 of Chen, Shao, Wu, and Xu (2016) for the case where $\delta =1$\footnote{%
+Note that Theorem 4.1 of Chen, Shao, Wu and Xu (2016) requires that $%
+0<\delta \leq 1$ and $\delta <r-2$. These conditions are satisfied here
+given that we choose $\delta =1$ and $r=31/10$.}, we obtain the Cram\'{e}%
+r-type moderate deviation result%
+\begin{equation}
+\frac{P\left\{ \overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell ,T}}\geq
+z\right\} }{1-\Phi \left( z\right) }=1+O\left( 1\right) \left( 1+z\right)
+^{3}T^{-\left( 1-\alpha _{{\large 1}}\right) \frac{{\large 1}}{{\large 2}}},
+\label{PSV greater than z}
+\end{equation}%
+which holds for all $0\leq z\leq c_{0}\min \left\{ T^{\left( 1-{\large %
+\alpha }_{1}\right) /6},T^{\alpha _{2}/2}\right\} $ and for $\left\vert
+O\left( 1\right) \right\vert \leq A$, where $A$ is an absolute constant and
+where $\overline{S}_{i,\ell ,T}$ and $\overline{V}_{i,\ell ,T}$ are as
+defined in expression (\ref{num and denom max stat}).
+
+Next, consider obtaining a moderate deviation result for
+
+\noindent $P\left\{ -\overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell ,T}}%
+\geq z\right\} /\left[ 1-\Phi \left( z\right) \right] $. As $\overline{S}%
+_{i,\ell ,T}=\dsum\nolimits_{r=1}^{q}\dsum\nolimits_{t=\left( r-1\right)
+\tau +p}^{\left( r-1\right) \tau +\tau _{1}+p-1}\left( -u_{it}y_{\ell ,t%
+{\LARGE +}1}\right) $, we can take $X_{it}=-u_{it}y_{\ell ,t{\LARGE +}1}$,
+and note that, by calculations similar to those given above, we have $E\left[
+X_{it}\right] =E\left[ -u_{it}y_{\ell ,t{\LARGE +}1}\right] =0$, $E\left[
+\left\vert X_{it}\right\vert ^{\frac{{\large 31}}{{\large 10}}}\right] =E%
+\left[ \left\vert -u_{it}y_{\ell ,t{\LARGE +}1}\right\vert ^{\frac{{\large 31%
+}}{{\large 10}}}\right] =E\left[ \left\vert u_{it}y_{\ell ,t{\LARGE +}%
+1}\right\vert ^{\frac{{\large 31}}{{\large 10}}}\right] \leq c_{1}^{\frac{%
+{\large 31}}{{\large 10}}}$, and 
+\begin{equation*}
+E\left\{ \left[ \dsum\limits_{t=\left( r-1\right) \tau +p}^{\left(
+r-1\right) \tau +\tau _{1}+p-1}X_{it}\right] ^{2}\right\} =E\left\{ \left[
+\dsum\limits_{t=\left( r-1\right) \tau +p}^{\left( r-1\right) \tau +\tau
+_{1}+p-1}\left( -u_{it}y_{\ell ,t{\LARGE +}1}\right) \right] ^{2}\right\}
+\geq \underline{c}\tau _{1}.
+\end{equation*}
+
+\noindent Moreover, it is easily seen that $\left\{ X_{it}\right\} $ (with $%
+X_{it}=-u_{it}y_{\ell ,t{\LARGE +}1}$) also satisfies the $\beta $ mixing
+condition (2.1) stipulated in Chen, Shao, Wu, and Xu (2016) for every $i$.
+Thus, by applying Theorem 4.1 of Chen, Shao, Wu, and Xu (2016), we also
+obtain the Cram\'{e}r-type moderate deviation result%
+\begin{equation}
+\frac{P\left\{ -\overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell ,T}}\geq
+z\right\} }{1-\Phi \left( z\right) }=1+O\left( 1\right) \left( 1+z\right)
+^{3}T^{-\left( 1-\alpha _{{\large 1}}\right) \frac{{\large 1}}{{\large 2}}},
+\label{PSV less than -z}
+\end{equation}%
+which holds for all $0\leq z\leq c_{0}\min \left\{ T^{\left( 1-{\large %
+\alpha }_{1}\right) /6},T^{\alpha _{2}/2}\right\} $ and for $\left\vert
+O\left( 1\right) \right\vert \leq A$ with $A$ being an absolute constant.
+Next, note that:
+
+\noindent $\left\vert \frac{P\left( \left\vert S_{i,\ell ,T}\right\vert \geq
+z\right) }{2\left[ 1-\Phi \left( z\right) \right] }-1\right\vert =\left\vert 
+\frac{P\left( \left\vert \overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell
+,T}}\right\vert \geq z\right) }{2\left[ 1-\Phi \left( z\right) \right] }%
+-1\right\vert $
+
+\noindent\ $\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\left\vert \frac{%
+P\left( \left\{ \overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell ,T}}\geq
+z\right\} \cup \left\{ -\overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell
+,T}}\geq z\right\} \right) }{2\left[ 1-\Phi \left( z\right) \right] }%
+-1\right\vert $
+
+\noindent\ $\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\left\vert \frac{%
+P\left( \overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell ,T}}\geq
+z\right) +P\left( -\overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell ,T}}%
+\geq z\right) }{2\left[ 1-\Phi \left( z\right) \right] }-1\right\vert $
+
+\noindent\ $\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left( \text{%
+since }\left\{ \overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell ,T}}\geq
+z\right\} \cap \left\{ -\overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell
+,T}}\geq z\right\} =\varnothing \text{ w.p.1}\right) $
+
+\noindent\ $\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \leq \frac{1}{2}%
+\left\vert \frac{P\left( \overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell
+,T}}\geq z\right) }{1-\Phi \left( z\right) }-1\right\vert +\frac{1}{2}%
+\left\vert \frac{P\left\{ -\overline{S}_{i,\ell ,T}/\sqrt{\overline{V}%
+_{i,\ell ,T}}\geq z\right\} }{1-\Phi \left( z\right) }-1\right\vert .$
+
+\noindent Thus, in light of expressions (\ref{PSV greater than z}) and (\ref%
+{PSV less than -z}), we have that: 
+\begin{eqnarray*}
+&&\left\vert \frac{P\left( \left\vert S_{i,\ell ,T}\right\vert \geq z\right) 
+}{2\left[ 1-\Phi \left( z\right) \right] }-1\right\vert \\
+&\leq &\frac{1}{2}\left\vert \frac{P\left( \overline{S}_{i,\ell ,T}/\sqrt{%
+\overline{V}_{i,\ell ,T}}\geq z\right) }{1-\Phi \left( z\right) }%
+-1\right\vert +\frac{1}{2}\left\vert \frac{P\left\{ -\overline{S}_{i,\ell
+,T}/\sqrt{\overline{V}_{i,\ell ,T}}\geq z\right\} }{1-\Phi \left( z\right) }%
+-1\right\vert \\
+&\leq &\frac{A}{2}\left( 1+z\right) ^{3}T^{-\left( 1-\alpha _{{\large 1}%
+}\right) \frac{{\large 1}}{{\large 2}}}+\frac{A}{2}\left( 1+z\right)
+^{3}T^{-\left( 1-\alpha _{{\large 1}}\right) \frac{{\large 1}}{{\large 2}}%
+}=A\left( 1+z\right) ^{3}T^{-\left( 1-\alpha _{{\large 1}}\right) \frac{%
+{\large 1}}{{\large 2}}}
+\end{eqnarray*}%
+It then follows that:%
+\begin{equation}
+-A\left( 1+z\right) ^{3}T^{-\left( 1-\alpha _{{\large 1}}\right) \frac{%
+{\large 1}}{{\large 2}}}\leq \frac{P\left( \left\vert S_{i,\ell
+,T}\right\vert \geq z\right) }{2\left[ 1-\Phi \left( z\right) \right] }%
+-1\leq A\left( 1+z\right) ^{3}T^{-\left( 1-\alpha _{{\large 1}}\right) \frac{%
+{\large 1}}{{\large 2}}}  \label{double sided ineq}
+\end{equation}%
+where $S_{i,\ell ,T}=$ $\overline{S}_{i,\ell ,T}/\sqrt{\overline{V}_{i,\ell
+,T}}$. Focusing on the right-hand part of the inequality in (\ref{double
+sided ineq}), we have that:
+
+\noindent $P\left( \left\vert S_{i,\ell ,T}\right\vert \geq z\right) /\left(
+2\left[ 1-\Phi \left( z\right) \right] \right) -1\leq A\left( 1+z\right)
+^{3}T^{-\left( 1-\alpha _{{\large 1}}\right) \frac{{\large 1}}{{\large 2}}}$%
+. Simple rearrangement of this inequality then leads to the desired result:%
+\begin{equation*}
+P\left( \left\vert S_{i,\ell ,T}\right\vert \geq z\right) \leq 2\left[
+1-\Phi \left( z\right) \right] \left\{ 1+A\left( 1+z\right) ^{3}T^{-\left(
+1-\alpha _{{\large 1}}\right) \frac{{\large 1}}{{\large 2}}}\right\} ,
+\end{equation*}
+
+\noindent\ \noindent which holds for all $i\in H=\left\{ k\in \left\{
+1,....,N\right\} :\gamma _{k}=0\right\} $, for every $\ell \in \left\{
+1,...,d\right\} $, for all $T$ sufficiently large, and for all $z$ such that 
+$0\leq z\leq c_{0}\min \left\{ T^{\left( 1-{\large \alpha }_{1}\right)
+/6},T^{\alpha _{2}/2}\right\} $. $\square $
+
+\begin{thebibliography}{99}
+\bibitem{} \noindent Ahn, S. C. and J. Bae (2022): \textquotedblleft
+Forecasting with Partial Least Squares When a Large Number of Predictors Are
+Available,\textquotedblright\ Working Paper, Arizona State University and
+University of Glasgow.
+
+\bibitem{} Anatolyev, S. and A. Mikusheva (2021): \textquotedblleft Factor
+Models with Many Assets: Strong Factors, Weak Factors, and the Two-Pass
+Procedure,\textquotedblright\ \textit{Journal of Econometrics}, forthcoming.
+
+\bibitem{} Andrews, D.W.K. (1984): \textquotedblleft Non-strong Mixing
+Autoregressive Processes,\textquotedblright\ \textit{Journal of Applied
+Probability}, 21, 930-934.
+
+\bibitem{} Bai, J. and S. Ng (2002): \textquotedblleft Determining the
+Number of Factors in Approximate Factor Models,\textquotedblright\ \textit{%
+Econometrica}, 70, 191-221.
+
+\bibitem{} Bai, J. and S. Ng (2008): \textquotedblleft Forecasting Economic
+Time Series Using Targeted Predictors,\textquotedblright\ \textit{Journal of
+Econometrics}, 146, 304-317.
+
+\bibitem{} Bai, J. and S. Ng (2021): \textquotedblleft Approximate Factor
+Models with Weaker Loading,\textquotedblright\ Working Paper, Columbia
+University.
+
+\bibitem{} Bair, E., T. Hastie, D. Paul, and R. Tibshirani (2006):
+\textquotedblleft Prediction by Supervised Principal
+Components,\textquotedblright\ \textit{Journal of the American Statistical
+Association}, 101, 119-137.
+
+\bibitem{} Belloni, A., D. Chen, V. Chernozhukov, and C. Hansen (2012):
+\textquotedblleft Sparse Models and Methods for Optimal Instruments with an
+Application to Eminent Domain,\textquotedblright\ \textit{Econometrica}, 80,
+2369-2429.
+
+\bibitem{} Belloni, A., V. Chernozhukov, and C. Hansen (2014):
+\textquotedblleft Inference on Treatment Effects after Selection among
+High-Dimensional Controls,\textquotedblright\ \textit{Review of Economic
+Studies}, 81, 608-650.
+
+\bibitem{} Bryzgalova, S. (2016): \textquotedblleft Spurious Factors in
+Linear Asset Pricing Models,\textquotedblright\ Working Paper, Stanford
+Graduate School of Business.
+
+\bibitem{} Burnside, C. (2016): \textquotedblleft Identification and
+Inference in Linear Stochastic Discount Factor Models with Excess
+Returns,\textquotedblright\ \textit{Journal of Financial Econometrics}, 14,
+295-330.
+
+\bibitem{} Chao, J. C., Y. Qiu, and N. R. Swanson (2023): \textquotedblleft
+Consistent Factor Estimation and Forecasting in Factor-Augmented VAR
+Models,\textquotedblright\ Working Paper, Rutgers University and University
+of Maryland.
+
+\bibitem{} Chao, J. C., Y. Liu, and N. R. Swanson (2023): Online Appendix to
+\textquotedblleft Selecting the Relevant Variables for Factor Estimation in
+VAR Models,\textquotedblright\ Working Paper, Rutgers University and
+University of Maryland.
+
+\bibitem{} Chen, X., Q. Shao, W. B. Wu, and L. Xu (2016): \textquotedblleft
+Self-normalized Cram\'{e}r-type Moderate Deviations under
+Dependence,\textquotedblright\ \textit{Annals of Statistics}, 44, 1593-1617.
+
+\bibitem{} Davidson. J. (1994): \textit{Stochastic Limit Theory: An
+Introduction for Econometricians}. New York: Oxford University Press.
+
+\bibitem{} Diebold, F.X. and R.S. Mariano (1995): \textquotedblleft
+Comparing Predictive Accuracy,\textquotedblright\ \textit{Journal of
+Business and Economic Statistics}, 20, 134-144.
+
+\bibitem{} Forni, M., M. Hallin, M. Lippi, and L. Reichlin (2005):
+\textquotedblleft The Generalized Dynamic Factor Model, One-Sided Estimation
+and Forecasting,\textquotedblright\ \textit{Journal of the American
+Statistical Association}, 100, 830-840.
+
+\bibitem{} Freyaldenhoven, S. (2021a): \textquotedblleft Factor Models with
+Local Factors - Determining the Number of Relevant
+Factors,\textquotedblright\ \textit{Journal of Econometrics}, forthcoming.
+
+\bibitem{} Freyaldenhoven, S. (2021b): \textquotedblleft Identification
+through Sparsity in Factor Models: The $\ell _{1}$-Rotation
+Criterion,\textquotedblright\ Working Paper, Federal Reserve Bank of
+Philadelphia.
+
+\bibitem{} Giacomini, R. and H. White (2006): \textquotedblleft Tests of
+Conditional Predictive Ability,\textquotedblright\ \textit{Econometrica},
+74, 1545-1578.
+
+\bibitem{} Giglio, S., D. Xiu, and D. Zhang (2021): \textquotedblleft Test
+Assets and Weak Factors,\textquotedblright\ Working Paper, Yale School of
+Management and the Booth School of Business, University of Chicago.
+
+\bibitem{} Goroketskii, V. V. (1977): \textquotedblleft On the Strong Mixing
+Property for Linear Sequences,\textquotedblright\ \textit{Theory of
+Probability and Applications}, 22, 411-413.
+
+\bibitem{} Gospodinov, N., R. Kan, and C. Robotti (2017): \textquotedblleft
+Spurious Inference in Reduced-Rank Asset Pricing Models,\textquotedblright\ 
+\textit{Econometrica}, 85, 1613-1628.
+
+\bibitem{} Harding, M. C. (2008): \textquotedblleft Explaining the Single
+Factor Bias of Arbitrage Pricing Models in Finite
+Samples,\textquotedblright\ \textit{Economics Letters}, 99, 85-88.
+
+\bibitem{} Jagannathan, R. and Z. Wang (1998): \textquotedblleft An
+Asymptotic Theory for Estimating Beta-Pricing Models Using Cross-Sectional
+Regression,\textquotedblright\ \textit{Journal of Finance}, 53, 1285-1309.
+
+\bibitem{} Kan, R. and C. Zhang (1999): \textquotedblleft Two-Pass Tests of
+Asset Pricing Models with Useless Factors,\textquotedblright\ \textit{%
+Journal of Finance}, 54, 203-235.
+
+\bibitem{} Kiefer, N. M. and T. J. Vogelsang (2002a): \textquotedblleft
+Heteroskedasticity-Autocorrelation Robust Standard Errors Using the Bartlett
+Kernel without Truncation,\textquotedblright\ \textit{Econometrica}, 70,
+2093-2095.
+
+\bibitem{} Kiefer, N. M. and T. J. Vogelsang (2002b): \textquotedblleft
+Heteroskedasticity-Autocorrelation Robust Testing Using Bandwidth Equal to
+Sample Size,\textquotedblright\ \textit{Econometric Theory}, 18, 1350-1366.
+
+\bibitem{} Kim, H.-H. and N.R. Swanson (2018): \textquotedblleft Methods for
+Backcasting, Nowcasting and Forecasting Using Factor-MIDAS: With an
+Application to Korean GDP,\textquotedblright\ \textit{Journal of Forecasting}%
+, 37, 281-302.
+
+\bibitem{} Kleibergen, F. (2009): \textquotedblleft Tests of Risk Premia in
+Linear Factor Models,\textquotedblright\ \textit{Journal of Econometrics},
+149, 149-173.
+
+\bibitem{} McCracken, M.W. and S. Ng (2016): \textquotedblleft FRED-MD: A
+Monthly Database for Macroeconomic Research,\textquotedblright\ \textit{%
+Journal of Business and Economic Statistics}, 34, 574-589.
+
+\bibitem{} Onatski, A. (2012): \textquotedblleft Asymptotics of the
+Principal Components Estimator of Large Factor Models with Weakly
+Influential Factors,\textquotedblright\ \textit{Journal of Econometrics},
+168, 244-258.
+
+\bibitem{} Pham, T. D. and L. T. Tran (1985): \textquotedblleft Some Mixing
+Properties of Time Series Models,\textquotedblright\ \textit{Stochastic
+Processes and Their Applications}, 19, 297-303.
+
+\bibitem{} Qiu, A. and Z. Qu (2021): \textquotedblleft Modeling Regime
+Switching in High-Dimensional Data with Applications to U.S. Business
+Cycles,\textquotedblright\ Working Paper, Boston University.
+
+\bibitem{} Stock, J. H. and M. W. Watson (2002a): \textquotedblleft
+Forecasting Using Principal Components from a Large Number of
+Predictors,\textquotedblright\ \textit{Journal of the American Statistical
+Association}, 97, 1167-1179.
+
+\bibitem{} Stock, J. H. and M. W. Watson (2002b): \textquotedblleft
+Macroeconomic Forecasting Using Diffusion Indexes,\textquotedblright\ 
+\textit{Journal of Business and Economic Statistics}, 20, 147-162.
+
+\bibitem{} Swanson, N.R. (1996): \textquotedblleft Forecasting Using
+First-Available Versus Fully Revised Economic Time-Series
+Data,\textquotedblright\ \textit{Studies in Nonlinear Dynamics and
+Econometrics}, 1, 47-64.
+
+\bibitem{} Swanson, N.R. and D. van Dijk (2006): \textquotedblleft Are
+Statistical Reporting Agencies Getting It Right? Data Rationality and
+Business Cycle Asymmetry,\textquotedblright\ \textit{Journal of Business and
+Economic Statistics}, 24, 24-42.
+
+\bibitem{} Zhou, Z. and X. Shao (2013): \textquotedblleft Inference for
+Linear Models with Dependent Errors,\textquotedblright\ \textit{Journal of
+the Royal Statistical Society Series B}, 75, 323-343.
+\end{thebibliography}
+
+\end{document}
