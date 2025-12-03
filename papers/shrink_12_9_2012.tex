@@ -1,0 +1,2143 @@
+%2multibyte Version: 5.50.0.2953 CodePage: 936
+%\geometry{left=1in,right=1in,top=1in,bottom=1in}
+%\pagestyle{fancy}   %to establish a new page style.
+%\fancyhf{}              %to clear the header and footer.
+%\rhead{\thepage}  %to force the page number to the top right of the page.
+%\renewcommand{\headrulewidth}{0pt} %on the next line.
+%\renewcommand{\footrulewidth}{0pt} %on the next line.
+%\pagestyle{fancy}
+%\lhead{Emprical Comparison of Forecasting Method for Factor Model} %Leave the left of the header empty
+%\chead{} %Leave the center of the header empty
+%\rhead{\thepage} %Display this text on the right of the header
+%\lfoot{By Author} %Display this text on the left of the footer
+%\cfoot{} %Leave the center of the footer empty
+%\rfoot{Page:\ \thepage} %Print the page number in the right footer
+%\renewcommand{\headrulewidth}{0pt} %Do not print a rule below the header
+%\renewcommand{\footrulewidth}{0pt} %Do not print a rule above the footer 
+%\usepackage{bm}
+
+
+\documentclass[12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage[nomarginpar,ignoremp,noheadfoot]{geometry}
+\usepackage[singlespacing]{setspace}
+\usepackage{fancyhdr}
+\usepackage{lscape}
+\usepackage{longtable}
+\usepackage[sort&compress]{natbib}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2953}
+%TCIDATA{Codepage=936}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=BibTeX}
+%TCIDATA{Created=Thursday, June 19, 2008 15:00:19}
+%TCIDATA{LastRevised=Sunday, December 09, 2012 10:47:39}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Standard LaTeX\Blank - Standard LaTeX Article">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=article.cst}
+%TCIDATA{PageSetup=72,72,72,72,0}
+%TCIDATA{EvenPages=
+%H=36
+%F=36
+%}
+
+%TCIDATA{OddPages=
+%H=36
+%F=36
+%}
+
+%TCIDATA{FirstPage=
+%H=36
+%F=36
+%}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newcolumntype{x}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{y}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+\geometry{headheight=15pt,headsep=1cm,vmargin={2.3cm,2.3cm},hmargin={2.3cm,2.3cm}}
+\setlength{\footskip}{1cm}
+\setlength{\bibsep}{1.5pt}
+
+\begin{document}
+
+
+\begin{center}
+{\Large Forecasting Financial and Macroeconomic Variables Using Data
+Reduction Methods: New Empirical Evidence}$^{\ast }$
+
+\bigskip
+
+{\large Hyun Hak Kim}$^{1}${\large \ and Norman R. Swanson}$^{2}$
+
+$^{1}${\large Bank of Korea and }$^{2}${\large Rutgers University}
+
+\bigskip
+
+{\large October 2010 (revised December 2012)}
+
+\bigskip
+
+{\large Abstract}
+\end{center}
+
+{\footnotesize In this paper, we empirically assess the predictive accuracy
+of a large group of models that are specified using principle components and
+other shrinkage techniques, including Bayesian model averaging and various
+bagging, boosting, least angle regression and related methods. Our results
+suggest that model averaging does not dominate other well designed
+prediction model specification methods, and that using \textquotedblleft
+hybrid\textquotedblright\ combination factor/shrinkage methods often yields
+superior predictions. More specifically, when using recursive estimation
+windows, which dominate other \textquotedblleft windowing\textquotedblright\
+approaches, \textquotedblleft hybrid\textquotedblright\ models are mean
+square forecast error \textquotedblleft best\textquotedblright\ around 1/3
+of the time, when used to predict 11 key macroeconomic indicators at various
+forecast horizons. Baseline linear (factor) models also \textquotedblleft
+win\textquotedblright\ around 1/3 of the time, as do model averaging
+methods. Interestingly, these broad findings change noticably when
+considering different sub-samples. For example, when used to predict only
+recessionary periods, \textquotedblleft hybrid\textquotedblright\ models
+\textquotedblleft win\textquotedblright\ in 7 of 11 cases, when condensing
+findings across all \textquotedblleft windowing\textquotedblright\
+approaches, estimation methods, and models, while model averaging does not
+\textquotedblleft win\textquotedblright\ in a single case. However, in
+expansions, and during the 1990s, model averaging wins almost 1/2 of the
+time. Overall, combination factor/shrinkage methods \textquotedblleft
+win\textquotedblright\ approximately 1/2 of the time in 4 of 6 different
+sample periods. Ancillary findings based on our forecasting experiments
+underscore the advantages of using recursive estimation strategies, and
+provide new evidence of the usefulness of yield and yield-spread variables
+in nonlinear prediction model specification.}
+
+\setcounter{page}{0} \thispagestyle{empty}
+
+\bigskip
+
+\noindent \textit{Keywords}: bagging, Bayesian model averaging, boosting,
+diffusion index, elastic net, forecasting, least angle regression,
+non-negative garotte, prediction, reality check, ridge regression.
+
+\noindent \textit{JEL Classification:} C1, C22, C52, C58.
+
+\noindent \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+$^{\ast }${\footnotesize \ Hyun Hak Kim (khdouble@bok.or.kr), The Bank of
+Korea, 55 Namdaemunno, Jung-Gu, Seoul 100-794, Korea. Norman R. Swanson \
+(nswanson@econ.rutgers.edu), Department of Economics, Rutgers University, 75
+Hamilton Street, New Brunswick, NJ 08901, USA. This paper was prepared for
+the Sir Clive W.J. Granger Memorial Conference held at Nottingham University
+in May 2010. We are very grateful to the organizers, Rob Taylor and David
+Harvey, for hosting this special event. We have benefited from numerous
+useful comments made on earlier versions of this paper by the editor, Graham
+Elliott, and by an anonymous referee. In addition to thanking the editor and
+referee, the authors wish to thank the seminar participants from the
+conference, as well as at the Bank of Canada and Rutgers University, for
+useful comments. Additional thanks are owed to Nii Armah, Dongjun Chung,
+Valentina Corradi, David Hendry, Gary Koop, John Landon-Lane, Fuchun Li,
+Greg Tkacz, Hiroki Tsurumi, and Hal White for numerous useful suggestions on
+an earlier version of this paper. The views stated herein are those of the
+authors and not necessarily those of the Bank of Korea. }\setlength{%
+\baselineskip}{1.3\baselineskip}
+
+\section{Introduction}
+
+Technological advances over the last five decades have led to impressive
+gains in not only computational power, but also in the quantity of available
+financial and macroeconomic data. Indeed, there has been something of a race
+going on in recent years, as technology, both computational and theoretical,
+has been hard pressed to keep up with the ever increasing mountain of (big)
+data available for empirical use. From a computational perspective, this has
+helped spur the development of data shrinkage techniques, for example. In
+economics, one of the most widely applied of these is diffusion index
+methodology. Diffusion index techniques offer a simple and sensible approach
+for extracting common factors that underlie the dynamic evolution of large
+numbers of variables. To be more specific, let $Y$ be a time series vector
+of dimension $(T\times 1),$ let $X$ be a time-series predictor matrix of
+dimension $\left( T\times N\right) ,$ and define the following factor model,
+where $F_{t}$ denotes a $1\times r$ vector of unobserved common factors that
+can be extracted from $X_{t}.$ Namely, let $X_{t}=F_{t}\Lambda ^{\prime
+}+e_{t},$ where $e_{t}$ is an $1\times N$ vector of disturbances and $%
+\Lambda $ is an $N\times r$ coefficient matrix. Using common factors
+extracted from the above model, Stock and Watson (2002a,b) as well as \cite%
+{BN06EMTR} examine linear autoregressive (AR) forecasting models augmented
+by the inclusion of common factors.
+
+In this paper, we use the forecasting models of Stock and Watson (2002a,b)
+and Bai and Ng (2006a) as a starting point. In particular, we first estimate
+unobserved factors, say $\hat{F}_{t},$ and then forecast a scalar target
+variable, $Y_{t+h},$ using observed variables and $\hat{F}_{t}.$ We then
+draw on the fact that even though factor models are now widely used, several
+issues remain outstanding, such as the determination of the (number of)
+factors to be used in subsequent prediction model specification (see e.g., 
+\cite{BN02EMC, BN06JoE, BN08JEMC}). In light of this, and in order to add
+functional flexibility, we implement prediction models where the numbers and
+functions of factors are selected using a variety of shrinkage methods. In
+this sense, we add to the recent work of \cite{SW05WP} as well as \cite%
+{BN08JEMC,BN08JAE}, who survey several methods for shrinkage in the context
+of factor augmented autoregression\ models. Shrinkage methods considered in
+this paper include bagging, boosting, Bayesian model averaging, simple model
+averaging, ridge regression, least angle regression, elastic net and the
+non-negative garotte. We also evaluate various linear models, and hence also
+add to the recent work of \cite{PPT2010}, who carry out a broad examination
+of factor-augmented vector autoregression models.
+
+In summary, the purpose of this paper is to empirically assess the
+predictive accuracy of various linear models; pure principal component
+models; principal components models where the factors are constructed using
+subsets of variables first selected based on shrinkage techniques; principle
+components models where the factors are first constructed, and are then
+refined using shrinkage methods; models constructed by directly applying
+shrinkage methods (other than principle components) to the data; and a
+number of model averaging methods.\ The \textquotedblleft
+horse-race\textquotedblright\ that we carry out allows us to provide new
+evidence on the usefulness of factors in general as well as on various
+related issues such as whether model averaging \textquotedblleft
+wins\textquotedblright\ as often as is usually found to be the case in
+empirical investigations of this sort.
+
+The variables that we predict include a variety of macroeconomic variables
+that are useful for evaluating the state of the economy. More specifically,
+forecasts are constructed for eleven series, including: the unemployment
+rate, personal income less transfer payments, the 10 year Treasury-bond
+yield, the consumer price index, the producer price index, non-farm payroll
+employment, housing starts, industrial production, M2, the S\&P 500 index,
+and gross domestic product. These variables constitute 11 of the 14
+variables (for which long data samples are available) that the Federal
+Reserve takes into account, when formulating the nation's monetary policy.
+In particular, as has been noted in \cite{ArSwan10} and on the Federal
+Reserve Bank of New York's website: \textit{\textquotedblleft In formulating
+the nation's monetary policy, the Federal Reserve considers a number of
+factors, including the economic and financial indicators which follow, as
+well as the anecdotal reports compiled in the Beige Book. Real Gross
+Domestic Product (GDP); Consumer Price Index (CPI); Nonfarm Payroll
+Employment Housing Starts; Industrial Production/Capacity Utilization;
+Retail Sales; Business Sales and Inventories; Advance Durable Goods
+Shipments, New Orders and Unfilled Orders; Lightweight Vehicle Sales; Yield
+on 10-year Treasury Bond; S\&P 500 Stock Index; M2.\textquotedblright }
+
+Our finding can be summarized as follows. First, for a number of our target
+variables, we find that various sophisticated shrinkage methods, such as
+component-wise boosting, bagging,ridge regression, least angle regression,
+the elastic net, and the non-negative garotte yield predictions with lower
+mean square forecast errors (MSFEs) than a variety of benchmark linear
+autoregressive forecasting models constructed using only observable
+variables. Moreover, these shrinkage methods, when used in conjunction with
+diffusion indexes, yield a surprising number of MSFE \textquotedblleft
+best\textquotedblright\ models, hence suggesting that \textquotedblleft
+hybrid\textquotedblright\ models that combine diffusion index methodology
+with other shrinkage techniques offer a convenient way to filter the
+information contained in large-scale economic datasets, particularly if they
+are specified using sophisticated shrinkage techniques. More specifically,
+when using recursive estimation windows, which dominate other
+\textquotedblleft windowing\textquotedblright\ approaches, \textquotedblleft
+hybrid\textquotedblright\ models are MSFE \textquotedblleft
+best\textquotedblright\ around 1/3 of the time, when used to predict 11 key
+macroeconomic indicators at various forecast horizons. Baseline linear
+(factor) models also \textquotedblleft win\textquotedblright\ around 1/3 of
+the time, as do model averaging methods. Interestingly, these broad findings
+change noticably when considering different sub-samples. For example, when
+used to predict only recessionary periods, \textquotedblleft
+hybrid\textquotedblright\ models \textquotedblleft win\textquotedblright\ in
+7 of 11 cases, when condensing findings across all \textquotedblleft
+windowing\textquotedblright\ approaches, estimation methods, and models,
+while model averaging does not \textquotedblleft win\textquotedblright\ in a
+single case. However, in expansions, and during the 1990s, model averaging
+wins almost 1/2 of the time. Overall, combination factor/shrinkage methods
+\textquotedblleft win\textquotedblright\ approximately 1/2 of the time in 4
+of 6 different sample periods. Ancillary findings based on our forecasting
+experiments underscore the advantages of using recursive estimation
+strategies\footnote{%
+For further discussion of estimation windows and the related issue of
+structural breaks, see \cite{PPT2010}.}, and provide new evidence of the
+usefulness of yield and yield-spread variables in nonlinear prediction model
+specification.
+
+Although we leave many important issues to future research, such as the
+prevalence of structural breaks other than level shifts, and the use of even
+more general nonlinear methods for describing the data series that we
+examine, we believe that results presented in this paper add not only to the
+diffusion index literature, but also to the extraordinary collection of
+papers on forecasting that Clive W.J. Granger wrote during his decades long
+research career. Indeed, as we and others have said many times, we believe
+that Sir Clive W.J. Granger is in many respects the father of time series
+forecasting, and we salute his innumerable contributions in areas from
+predictive accuracy testing, model selection analysis, and forecast
+combination, to forecast loss function analysis, forecasting using
+nonstationary data, and nonlinear forecasting model specification.
+
+The rest of the paper is organized as follows. In the next section we
+provide a brief survey of diffusion index models.\ In Section 3, we briefly
+survey the robust shrinkage estimation methods used in our prediction
+experiments. Data, forecasting methods, and benchmark forecasting models are
+discussed in Sections 4 and 5, while empirical results are presented in
+Section 6. Concluding remarks are gathered in Section 7.
+
+\section{Diffusion Index Models}
+
+Recent forecasting studies using large-scale datasets and pseudo
+out-of-sample forecasting include: \cite{ABM02CEPR}, \cite%
+{BoNg05IJCB,BoNg06JEMC}, \cite{FHLR05JASA}, and \cite%
+{SW99JME,SW02JASA,SW05WP,SW05bNBER,SW2006HEF}. \cite{SW2006HEF} discuss in
+some detail the literature on the use of diffusion indices for forecasting.
+In the following brief discussion of diffusion index methodology, we follow 
+\cite{SW02JASA}.
+
+Let $X_{tj}$\ be the observed datum for the $j-$th cross-sectional unit at
+time $t$, for $t=1,...,T$\ and $j=1,...,N.$\ We begin with the following
+model:%
+\begin{equation}
+X_{tj}=F_{t}\Lambda _{j}^{\prime }+e_{tj},  \label{eq75}
+\end{equation}%
+where $F_{t}$\ is a $1$\ $\times $\ $r$\ vector of common factors, $\Lambda
+_{j}$\ is an $1$\ $\times r$\ vector of factor loadings associated with $%
+F_{t}$, and $e_{tj}$\ is the idiosyncratic component of $X_{tj}$. The
+product $F_{t}\Lambda _{j}^{\prime }$\ is called the common component of $%
+X_{tj}$. This is a useful dimension reducing factor representation of the
+data, particularly when $r<<N$, as is usually assumed to be the case in the
+empirical literature. Following \cite{BN02EMC}, the whole panel of data $%
+X=\left( X_{1},...,X_{N}\right) $, where $X_{i},$ $i=1,...,N,$ is a $T$\ \ $%
+\times $\ $1$\ vector of observations on a single variable, can be
+represented as in (\ref{eq75}). \cite{CK86JFE,CK88JFE,CK93JF} note that the
+factors can be consistently estimated by principal components, as $%
+N\rightarrow \infty ,$\ even if $e_{tj}$\ is weakly cross-sectionally
+correlated. Similarly, \cite{FHLR05JASA} and \cite{SW02JASA} discuss
+consistent estimation of the factors when $N,T\rightarrow \infty .$ We work
+with high-dimensional factor models that allow both $N$\ and $T$\ to tend to
+infinity, and in which $e_{tj}$\ may be serially and cross-sectionally
+correlated, so that the covariance matrix of $e_{t}=\left(
+e_{t1},...,e_{tN}\right) $\ does not have to be a diagonal matrix. We will
+also assume that $\{F_{t}\}$\ and $\{e_{tj}\}$\ are two groups of mutually
+independent stochastic variables. Furthermore, it is well known that if $%
+\Lambda =\left( \Lambda _{1},...,\Lambda _{N}\right) ^{\prime }$\ for $%
+F_{t}\Lambda ^{\prime }$\ $=F_{t}QQ^{-1}\Lambda ^{\prime }$\ , a
+normalization is needed in order to identify the factors, where $Q$\ is a
+nonsingular matrix. Assuming that $(\Lambda ^{\prime }\Lambda /N)\rightarrow
+I_{r}$, we restrict $Q$\ to be orthonormal. This assumption, together with
+others noted in \cite{SW02JASA} and \cite{BN02EMC}, enables us to identify
+the factors up to a change of sign and consistently estimate them up to an
+orthonormal transformation.
+
+With regard to choice of $r$, note that \cite{BN02EMC} provide one solution
+to the problem of choosing the number of factors. They establish convergence
+rates for factor estimates under consistent estimation of the number of
+factors, $r,$ and propose panel criteria to consistently estimate the number
+of factors. Namely, \cite{BN02EMC} define selection criteria of the form $%
+PC\left( r\right) =V\left( r,\hat{F}\right) +rh\left( N,T\right) ,$ where $%
+h\left( \cdot \right) $ is a penalty function. In this paper, the following
+version is used (for discussion, see \cite{BN02EMC} and \cite{ArSwan08}):%
+\begin{equation}
+SIC(r)=V\left( r,\hat{F}\right) +r\hat{\sigma}^{2}\left( \frac{\left(
+N+T-r\right) \ln \left( NT\right) }{NT}\right) .
+\end{equation}%
+A consistent estimate of the true number of factors is $\hat{r}=\arg 
+\underset{0\leq r\leq r_{\max }}{\min }SIC(r).$ In a number of our models,
+we use this criterion for choosing the number of factors. However, as
+discussed above, we also use a variety of shrinkage methods to specify
+numbers and functions of factors to be used in prediction models. In
+addition, shrinkage methods are also directly implemented, yielding
+\textquotedblleft factor-free\textquotedblright\ prediction models. Finally,
+shrinkage methods are used to \textquotedblleft
+pre-select\textquotedblright\ subsets of $X$ for subsequent use in the
+construction of factors.
+
+The basic structure of the forecasting models examined is the same as that
+examined in \cite{ABM02CEPR}, \cite%
+{BN02EMC,BN06JoE,BN06EMTR,BN08JEMC,BN08JAE}, \cite{BoNg05IJCB} and \cite%
+{SW02JASA,SW05WP,SW05bNBER,SW2006HEF}. In particular, we consider models of
+the following generic form:
+
+\begin{equation}
+Y_{t+h}=W_{t}\beta _{W}+F_{t}\beta _{F}+\varepsilon _{t+h},  \label{eq41a}
+\end{equation}%
+where $h$ is the forecast horizon, $Y_{t}$ is the scalar valued
+\textquotedblleft target\textquotedblright\ variable to be forecasted, $%
+W_{t} $ is a $1\times s$ vector of observable variables, including lags of $%
+Y_{t}$, $\varepsilon _{t}$ is a disturbance term, and the $\beta $'s are
+parameters estimated using least squares. Forecasts of $Y_{t+h}$\ based on (%
+\ref{eq41a}) involve a two step procedure because both the regressors and
+coefficients in the forecasting equations are unknown. The data $X_{t}$\ are
+first used to estimate the factors, $\hat{F}_{t},$\ by means of principal
+components. With the estimated factors in hand, we obtain the estimators $%
+\hat{\beta}_{F}$\ and $\hat{\beta}_{W}$\ by regressing $Y_{t+h}$\ on $\hat{F}%
+_{t}$\ and $W_{t}$. Of note is that if $\sqrt{T}/N\rightarrow 0$, then the
+generated regressor problem does not arise, in the sense that least squares
+estimates of $\hat{\beta}_{F}$\ and $\hat{\beta}_{W}$\ are $\sqrt{T}$\
+consistent and asymptotically normal (see \cite{BN08JEMC}). As discussed
+above, one aspect of our empirical analysis is that we use various shrinkage
+methods for estimating $\hat{\beta}_{F}$\ and then compare the predictive
+accuracy of the resulting forecasting models.\footnote{%
+We refer the reader to \cite{SW02JASA,SW05WP,SW05bNBER,SW99JME} and \cite%
+{BN02EMC,BN08JAE,BN08JEMC} for a detailed explanation of this procedure, and
+to \cite{CK86JFE,CK88JFE,CK93JF}, \cite{FHLR05JASA} and \cite{ArSwan08} for
+further detailed discussion of factor augmented autoregression models.
+Finally, note that \cite{DH99JASA} also analyze the properties of forecasts
+constructed using principal components when $N$\ and $T$\ are large,
+although they carry out their analysis under the assumption that the error
+processes $\left\{ e_{tj},\varepsilon _{t+h}\right\} $\ are
+cross-sectionally and serially $iid.$\ }
+
+\section{Robust Estimation Techniques}
+
+We consider a variety of \textquotedblleft robust\textquotedblright\
+estimation techniques including statistical learning algorithms (bagging and
+boosting), as well as various penalized regression methods including ridge
+regression, least angle regression, the elastic net, and the non-negative
+garotte. We also consider forecast combination in the form of Bayesian model
+averaging.
+
+The following sub-sections provide summary details on implementation of the
+above methods in contexts where in a first step we estimate factors using
+principal components analysis, while in a second step we select factor
+weights using shrinkage. Approaches in which we first directly implement
+shrinkage to select an \textquotedblleft informative\textquotedblright\ set
+of variables for: (i) direct use in prediction model construction; or (ii)
+use in a second step where factors are constructed for subsequent use in
+prediction model construction, follow immediately. Note that all variables
+are assumed to be standardized in the sequel. Algorithms for the methods
+outlined below are given in key papers that we cite as well as discussed in
+detail in an earlier working paper version of the current paper (see \cite%
+{KS11WP}).
+
+\subsection{Statistical Learning (Bagging and Boosting)}
+
+\subsubsection{Bagging}
+
+Bagging, which is short for \textquotedblleft bootstrap
+aggregation\textquotedblright , was introduced by \cite{Bre96ML}. Bagging
+involves first drawing bootstrap samples from in-sample \textquotedblleft
+training\textquotedblright\ data, and then constructing predictions, which
+are later combined. If a bootstrap sample based predictor is defined as $%
+\hat{Y}_{b}^{\ast }=\hat{\beta}_{b}^{\ast }X_{b}^{\ast },$ where $b=1,...,B$
+denotes the $b$-th bootstrap sample drawn from the original dataset, then
+the bagging predictor is $\hat{Y}^{Bagging}=\frac{1}{B}\underset{b=1}{%
+\overset{B}{\Sigma }}\hat{Y}_{b}^{\ast }$. In this paper, we follow \cite%
+{BuYu02AnSta} and \cite{SW05WP} who note that, asymptotically, the bagging
+estimator can be represented in shrinkage form. Namely: 
+\begin{equation}
+\hat{Y}_{t+h}^{Bagging}=W_{t}\hat{\beta}_{W}+\underset{j=1}{\overset{r}{%
+\Sigma }}\psi \left( t_{j}\right) \hat{\beta}_{Fj}\hat{F}_{t,j}  \label{eq98}
+\end{equation}%
+where $\hat{Y}_{t+h}^{Bagging}$ is the forecast of $Y_{t+h}$ made using data
+through time $t,$ and $\hat{\beta}_{W}$ is the least squares (LS)$\ $%
+estimator from a regression of $Y_{t+h}$ on $W_{t},$ where $W_{t}$ is a
+vector of lags of $Y_{t}$ as in (\ref{eq41a}) including a vector of ones, $%
+\hat{\beta}_{Fj}$ is a LS estimator from a regression of residuals, $%
+Z_{t}=Y_{t+h}-W_{t}\hat{\beta}_{W}$ on $\hat{F}_{T-h,j}$, and $t_{j}$ is the
+t-statistic associated with\textrm{\ }$\hat{\beta}_{Fj}$, defined as $\sqrt{T%
+}\hat{\beta}_{Fj}/s_{e},$ where $s_{e}$, is a Newey-West standard error, and 
+$\psi $ is a function specific to the forecasting method. In the current
+context we set:%
+\begin{equation}
+\psi \left( t\right) =1-\Phi \left( t+c\right) +\Phi \left( t-c\right)
++t^{-1}[\phi \left( t-c\right) -\phi \left( t+c\right) ],  \label{eq53}
+\end{equation}%
+where $c$ is the pretest critical value, $\phi $ is the standard normal
+density and $\Phi $ is the standard normal CDF. In this paper, we follow 
+\cite{SW05WP}, and set the pretest critical value for bagging, $c$ to be $%
+1.96$.
+
+\subsubsection{Boosting}
+
+Boosting (see e.g., \cite{FrSch97JCSS}) is a procedure that builds on a
+user-determined set of functions (e.g., least square estimators), often
+called \textquotedblleft learners\textquotedblright ,\ and uses the set
+repeatedly on filtered data which are typically outputs from previous
+iterations of the learning algorithm. The output of a boosting algorithm
+generally takes the form:%
+\begin{equation*}
+\hat{Y}^{M}=\underset{m=1}{\overset{M}{\Sigma }}\kappa _{m}f\left( X;\beta
+_{m}\right) ,
+\end{equation*}%
+where the $\kappa _{m}$ can be interpreted as weights, and $f\left( X;\beta
+_{m}\right) $ are functions of the panel dataset, $X.$ \cite{Friedman01AnSta}
+introduce \textquotedblleft $L_{2}$ Boosting\textquotedblright , which takes
+the simple approach of refitting \textquotedblleft base
+learners\textquotedblright\ to residuals from previous iterations.\footnote{%
+Other extensions of the boosting problem discussed by \cite{Friedman01AnSta}
+are given in \cite{RMR99boostingmethodology} and \cite{SS06AdaBoo}.} \cite%
+{BUYU03JASA} develop a boosting algorithm fitting \textquotedblleft
+learners\textquotedblright\ using one predictor at a time, in contexts where
+large numbers of predictors are available, and data are $iid$. \cite{BN08JAE}%
+\ modify this algorithm to handle time-series. We use their
+\textquotedblleft Component-Wise $L_{2}$Boosting\textquotedblright\
+algorithm in the sequel, with least squares \textquotedblleft
+learners\textquotedblright .
+
+As an example, consider the case where boosting is done on the original $%
+W_{t}$ data as well as factors, $\hat{F}_{t},$ constructed using principal
+components analysis, and denote the scalar output of the boosting algorithm
+as $\hat{\mu}^{M}\left( \hat{F}_{t}\right) .$ Then, predictions are
+constructed using the following model:%
+\begin{equation}
+\hat{Y}_{t+h}^{Boosting}=W_{t}\hat{\beta}_{W}+\hat{\mu}^{M}\left( \hat{F}%
+_{t}\right) .  \label{eq104}
+\end{equation}%
+Evidently, when shrinkage is done directly on $X_{t}$, then $\hat{F}_{t}$ in
+the above expression is suitably replaced with $X_{t}$.
+
+\subsection{Penalized Regression (Least Angle Regression, Elastic Net, and
+Non-Negative Garotte)}
+
+Ridge regression, which was introduced by \cite{HE70T}, is likely the most
+well known penalized regression method (see e.g., \cite{KS11WP}) for further
+discussion). Ridge regression is characterized by an $L_{2}$ penalty
+function, while several recent advances in penalized regression have
+centered to some extent on $L_{1}$ penalty functions. For example, there has
+been much recent research examining the properties of $L_{1}$ penalty
+functions, using the so-called \textquotedblleft lasso\textquotedblright\
+(least absolute shrinkage and selection operator) regression method, as
+introduced by \cite{Tib96lasso}, and various hybrids and generalizations
+thereof. Examples of these include least angle regression, the elastic net,
+and the non-negative garotte, all of which are implemented in our prediction
+experiments.
+
+\subsubsection{Least Angle Regression (LAR)}
+
+Least Angle Regression\ (LAR), as introduced by \cite{EHJT04AnSta}, is based
+on a model-selection approach known as forward \ stage-wise regression,
+which has been extensively used to examine cross-sectional data (for further
+details, see \cite{EHJT04AnSta} and \cite{BN08JEMC}). \cite{GC08} extend 
+\cite{BN08JEMC} to time series forecasting with many predictors. We
+implement the algorithm of \cite{GC08}\ when constructing the LAR estimator.
+
+Like many other stage-wise regression approaches, we start with $\hat{\mu}%
+^{0}$ $=\bar{Y},$ the mean of the target variable, use the residuals after
+fitting $W_{t}$ to the target variable, and construct a first estimate, $%
+\hat{\mu}=X_{t}\hat{\beta},$ in stepwise fashion, using standardized data,
+and using $M$ iterations, say. Possible explanatory variables are
+incrementally examined, and they are added to the estimator function, $%
+\widehat{\mu },$ according to their explanatory power. Following the same
+notation as that used above, in the case where shrinkage is done solely on
+common factors, the objective is to construct predictions, 
+\begin{equation*}
+\hat{Y}_{t+h}^{LAR}=W_{t}\hat{\beta}_{W}+\hat{\mu}^{M}(\hat{F}_{t}).
+\end{equation*}
+
+\subsubsection{Elastic Net (EN)}
+
+\cite{ZH05JRSS} point out that the lasso has undesirable properties when $T$
+is greater than $N$ or when there is a group of variables amongst which all
+pairwise correlations are very high. They develop a new regularization
+method that they claim remedies the above problems. The so-called elastic
+net (EN) simultaneously carries out automatic variable selection and
+continuous shrinkage. Its name comes from the notion that it is similar in
+structure to a stretchable fishing net that retains \textquotedblleft all
+the big fish\textquotedblright (see \cite{ZH05JRSS}). In this paper, we use
+the algorithm of \cite{BN08JEMC}, who modify the naive EN to use time series
+rather than cross sectional data. To fix ideas, assume again that we are
+interested in $X$ and $Y,$ and that variables are standardized. For any
+fixed non-negative $\eta _{1}$ and $\eta _{2}$, the elastic net criterion is
+defined as:%
+\begin{equation}
+L\left( \eta _{1},\eta _{2},\beta \right) =\left\vert Y-X\beta \right\vert
+^{2}+\eta _{2}\left\vert \beta \right\vert ^{2}+\eta _{1}\left\vert \beta
+\right\vert _{1},  \label{eq86}
+\end{equation}%
+where $\left\vert \beta \right\vert ^{2}=\overset{N}{\underset{j}{\tsum }}%
+(\beta _{j})^{2}$ and $\left\vert \beta \right\vert _{1}=\overset{N}{%
+\underset{j}{\tsum }}\left\vert \beta _{j}\right\vert $.{\LARGE \ }The
+solution to this problem is the so-called naive elastic net, given as:%
+\begin{equation}
+\hat{\beta}^{NEN}=\frac{\left( \left\vert \hat{\beta}^{LS}\right\vert -\eta
+_{1}/2\right) _{pos}}{1+\eta _{2}}sign\left\{ \hat{\beta}^{LS}\right\} .
+\label{eq91}
+\end{equation}%
+where $\hat{\beta}^{LS}$ is the least square estimator of $\beta $ and $%
+sign\left( \cdot \right) $ equals $\pm 1.$ Here, $``pos"$ denotes the
+positive part of the term in parentheses. \cite{ZH05JRSS}, in the context of
+above naive elastic net, point out that there is double shrinkage in this
+criterion, which does not help to reduce the variance and may lead to
+additional bias; and so that they propose a version of the elastic net in
+which this double shrinkage is corrected. In this context, the elastic net
+estimator, $\hat{\beta}^{EN},$ is defined as:%
+\begin{equation}
+\hat{\beta}^{EN}=\left( 1+\eta _{2}\right) \hat{\beta}^{NEN},  \label{eq96}
+\end{equation}%
+where $\eta _{2}$ is a constant, usually \textquotedblleft
+optimized\textquotedblright\ via cross validation methods. \cite{ZH05JRSS}
+propose an algorithm called \textquotedblleft LAR-EN\textquotedblright\ to
+estimate $\hat{\beta}^{EN}$.\footnote{%
+We use their algorithm, which is discussed in more detail in Kim and Swanson
+(2011).} In the current context, $\hat{\beta}^{EN}$ is either the
+coefficient vector associated with the $\hat{F}_{t}$ in a forecasting model
+of the variety given in (\ref{eq41a}), assuming that $\psi \left( \cdot
+\right) =1$, or is a coefficient vector constructed by operating directly on
+the panel dataset, $X.$
+
+\subsubsection{NON-NEGATIVE GAROTTE (NNG)}
+
+The non-negative garotte\ (NNG), was introduced by \cite{Bre95TMC}. This
+method is a scaled version of the least square estimator with shrinkage
+factors, and is closely related to the EN and LAR. We follow \cite{YL07JRSS}%
+, who develop an efficient garotte algorithm and prove consistency in
+variable selection. As far as we know, this method has previously not been
+used in the time series econometrics literature. As usual, we begin by
+considering standardized $X$\textbf{\ }and\textbf{\ }$Y$. Assume that the
+following shrinkage factor is given: $q\left( \zeta \right) =\left(
+q_{1}\left( \zeta \right) ,q_{2}\left( \zeta \right) ,...,q_{N}\left( \zeta
+\right) \right) ^{\prime },$ where $\zeta >0$ is a tuning parameter$.$ The
+objective is to choose the shrinkage factor in order to minimize: 
+\begin{equation}
+\frac{1}{2}\left\Vert Y-Gq\right\Vert ^{2}+T\zeta \underset{j=1}{\overset{N}{%
+\tsum }}q_{j},\text{ \ \ \ \ \ \ subject to }q_{j}>0,\text{ }j=1,..,N,
+\label{eq10}
+\end{equation}%
+where $G$ $=(G_{1},..,G_{N})^{\prime }$, $G_{j}=X_{j}\widehat{\beta }%
+_{j}^{LS},$ and $\widehat{\beta }^{LS}$ is the least squares estimator. The
+NNG\ estimator of the regression coefficient vector is defined as $\hat{\beta%
+}_{j}^{NNG}=q_{j}\left( \zeta \right) \hat{\beta}_{j}^{LS},$ and the
+estimate of $Y$ is defined as $\widehat{\mu }=X\hat{\beta}^{NNG}\left( \zeta
+\right) $, so that predictions can be formed in a manner that is analogous
+to that discussed in the previous subsections. Assuming, for example, that $%
+X^{\prime }X=I$, the minimizer of expression (\ref{eq10}) has the following
+explicit form: $q_{j}\left( \zeta \right) =\left( 1-\frac{\zeta }{(\hat{\beta%
+}_{j}^{LS})^{2}}\right) _{+},$ \ \ for $j=1,...,N.$ This ensures that the
+shrinking factor may be identically zero for redundant predictors. The
+disadvantage of the NNG is its dependence on the ordinary least squares
+estimator, which can be especially problematic in small samples. However, 
+\cite{Zou06JASA} shows that the NNG with ordinary least squares is
+consistent, if $N\ $is fixed, as $T\rightarrow \infty .$ Our approach is to
+start the algorithm with the least squares estimator, as in \cite{Yuan07JMLR}%
+.
+
+\subsection{Bayesian Model Averaging}
+
+In recent years, Bayesian model averaging (BMA) has been applied to many
+forecasting problems, and has frequently been shown to yield improved
+predictive accuracy, relative to approaches based on the use of individual
+models. For this reason, we include BMA in our prediction experiments; and
+we view it as one of our benchmark modeling approaches. For further
+discussion of BMA in a forecasting context, see \cite{KP04EJ}, \cite%
+{W08JE,W09JF}, and \cite{KS11WP}.
+
+In addition, for a concise discussion of general BMA methodology, see \cite%
+{HMRV99StatSci} and \cite{CGM01}. The basic idea of BMA\ starts with
+supposing interest focuses on $Q$\ possible models, denoted by $%
+M_{1},...,M_{Q}$, say$.$ In forecasting contexts, BMA involves averaging
+target predictions, $Y_{t+h}$ from the candidate models, with weights
+appropriately chosen. In a very real sense, thus, it resembles bagging. The
+key difference is that BMA puts little weight on implausible models, and is
+different from other varieties of shrinkage discussed above that operate
+directly on regressors. The algorithm that we use for implementation of BMA
+follows closely \cite{CGM01}, \cite{FLS01JECM}, and \cite{KP04EJ}. For
+complete details, see \cite{KS11WP}.
+
+\section{Data}
+
+Following a long tradition in the diffusion index literature, we examine
+monthly data observations on 144 U.S.\ macroeconomic time series for the
+period 1960:01 - 2009:5 ($N=144,T=593$)\footnote{%
+This is an updated and expanded version of the Stock and Watson (2005a,b)
+dataset.}. Forecasts are constructed for eleven variables, including: the
+unemployment rate, personal income less transfer payments, the 10 year
+Treasury-bond yield, the consumer price index, the producer price index,
+non-farm payroll employment, housing starts, industrial production, M2, the
+S\&P 500 index, and gross domestic product.\footnote{%
+Note that gross domestic product is reported quaterly. We interpolate these
+data to a monthly frequency following \cite{CL71RES}.} These variables
+constitute 11 of the 14 variables (for which long data samples are
+available) that the Federal Reserve takes into account, when formulating
+monetary policy, as noted in \cite{ArSwan10} and on the Federal Reserve Bank
+of New York's website. Table 1 lists the eleven variables. The third row of
+the table gives the transformation of the variable used in order to induce
+stationarity. In general, logarithms were taken for all nonnegative series
+that were not already in rates (see \cite{SW02JASA,SW05WP} for complete
+details). Note that the full list of predictor variables is provided in the
+appendix to an earlier working paper version of the current paper, and is
+available upon request from the authors.
+
+\section{Forecasting Methodology}
+
+Using the transformed dataset, factors are estimated as discussed in Section
+2. After estimating factors, the alternative methods outlined in the
+previous sections are used to form forecasting models and predictions.
+Summarizing, we consider four \textquotedblleft specification
+types\textquotedblright :
+
+\textit{Specification Type 1 without lags (SP1)}\textbf{:} Principal
+components are first constructed, and then prediction models are formed
+using the shrinkage methods of Section 3 to select functions of and weights
+for the factors to be used in our prediction models of the type given in (%
+\ref{eq41a}).
+
+\textit{Specification Type 1 with lags (SP1L)}\textbf{:} This is the same as
+SP1, except that lags are included in the datasets used to construct
+principal components.
+
+\textit{Specification Type 2 (SP2):} Principal component models of the type
+given in (\ref{eq41a}) are constructed using subsets of variables from the
+largescale dataset that are first selected via application of the shrinkage
+methods of Section 3. This is different from the above approach of
+estimating factors using all of the variables in $X$.
+
+\textit{Specification Type 3 (SP3):} Prediction models are constructed using
+only the shrinkage methods discussed in Section 3, without use of factor
+analysis at any stage.
+
+In our prediction experiments, pseudo out-of-sample forecasts are calculated
+for prediction horizons $h=1,3,$ and $12$. All estimation, including lag
+selection, shrinkage, and factor construction is done anew, at each point in
+time, prior to the construction of each new prediction, using both recursive
+and rolling estimation windows. Note that at each estimation period, the
+number of factors included will be different, following the testing approach
+discussed in Section 2. Note also that lags of the target predictor
+variables are also included in the set of explanatory variables, in all
+cases. Selection of the number of lags to include is done using the SIC.
+Various out-of-sample periods are examined, including periods from
+1992:10-2009:5 (i.e., $P=200),$ 1984:6-2009:5 (i.e., $P=300)$, and
+1972:2-2009:5 $(i.e.,P=400)$, where $P$ denotes the length of the
+out-of-sample period, and in subsequent discussion, $R$ is the in-sample
+estimation period. In-sample estimation periods are adjusted so that $P$
+remains fixed, regardless of forecast horizon. In our rolling estimation
+scheme, the in-sample estimation period used to calibrate our prediction
+models is fixed at length 12 years. The recursive estimation scheme begins
+with the same in-sample period of 12 years, and a new observation is added
+to this sample prior to the re-estimation and construction of each new
+forecast, as we iterate through the ex-ante prediction period. Note that the
+actual observations being predicted as well as the number of predictions in
+our ex-ante prediction period remains fixed, regardless of forecast horizon,
+in order to facilitate comparison across forecast horizons as well as models.
+
+Forecast performance is evaluated using mean square forecast error (MSFE),
+defined as:%
+\begin{equation}
+MSFE_{i,h}=\overset{T-h+1}{\underset{t=R-h+2}{\tsum }}\left( Y_{t+h}-\hat{Y}%
+_{i,t+h}\right) ^{2},  \label{eq68}
+\end{equation}%
+where $\widehat{Y}_{i,t+h}$ is the forecast at horizon $h$ for the $i-$th
+model. Forecast accuracy is evaluated using point MSFEs as well as the
+so-called DM predictive accuracy test of \cite{DM95}, which is implemented
+using quadratic loss, and which has a null hypothesis that the two models
+being compared have equal predictive accuracy. DM\ test statistics have
+asymptotic $N(0,1)$ limiting distributions, under the assumption that
+parameter estimation error vanishes as $T,P,R\rightarrow \infty $, and
+assuming that each pair of models being compared is nonnested$.$ Namely, the
+null hypothesis of the test is $H_{0}:E\left[ l\left( \varepsilon
+_{t+h|t}^{1}\right) \right] -E\left[ l\left( \varepsilon _{t+h|t}^{2}\right) %
+\right] =0,$ where $\varepsilon _{t+h|t}^{i}$ is $i-$th model's prediction
+error and $l\left( \cdot \right) $ is the quadratic loss function. The
+actual statistic in this case is constructed as: $DM=P^{-1}%
+\sum_{i=1}^{P}d_{t}/\hat{\sigma}_{\overline{d}},$ where $d_{t}=\left( 
+\widehat{\varepsilon _{t+h|t}^{1}}\right) ^{2}-\left( \widehat{\varepsilon
+_{t+h|t}^{2}}\right) ^{2},$ $\overline{d}$ is the mean of $d_{t}$, $\hat{%
+\sigma}_{\overline{d}}$ is a heteroskedasticity and autocorrelation robust
+estimator of the standard deviation of $\overline{d}$, and $\widehat{%
+\varepsilon _{t+h|t}^{1}}$and $\widehat{\varepsilon _{t+h|t}^{2}}$ are
+estimates of the true prediction errors $\varepsilon _{t+h|t}^{1}$and $%
+\varepsilon _{t+h|t}^{2}$. Thus, if the statistic is negative and
+significantly different from zero, then Model 1 is preferred over Model 2.
+Related reality check tests due to White (2000) are also constructed (see
+below for further discussion). \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ \ 
+
+In addition to the various forecast model specification approaches discussed
+above, we form predictions using the following \textquotedblleft
+benchmark\textquotedblright\ models, all of which are estimated using least
+squares.
+
+\textbf{Univariate Autoregression: }Forecasts from a univariate AR(p) model
+are computed as $\hat{Y}_{t+h}^{AR}=\hat{\alpha}+\hat{\phi}\left( L\right)
+Y_{t},$ with lags , $p$, selected using the SIC.
+
+\textbf{Multivariate Autoregression: }Forecasts from an ARX(p) model are
+computed as $Y_{t+h}^{ARX}=\hat{\alpha}+\hat{\beta}Z_{t}+\hat{\phi}\left(
+L\right) Y_{t},$ where $Z_{t}$ is a set of lagged predictor variables
+selected using the SIC. Dependent variable lags are also selected using the
+SIC. Selection of the exogenous predictors includes choosing up to six
+variables prior to the construction of each new prediction model.
+
+\textbf{Principal Components Regression: }Forecasts from principal
+components regression are computed as $\hat{Y}_{t+h}^{PCR}=\hat{\alpha}+\hat{%
+\gamma}\hat{F}_{t},$\textbf{\ }where $\hat{F}_{t}$ is estimated via
+principal components using $\left\{ X_{t}\right\} _{t=1}^{T},$ as in
+equation (\ref{eq41a}).
+
+\textbf{Factor Augmented Autoregression}: Based on equation (\ref{eq41a}),
+forecasts are computed as $Y_{t+h}^{h}=\hat{\alpha}+\hat{\beta}_{F}\hat{F}%
+_{t}+\hat{\beta}_{W}\left( L\right) Y_{t}.$ This model combines an AR(p)
+model, with lags selected using the SIC, with the above principal component
+regression model.
+
+\textbf{Combined Bivariate ADL\ Model}: As in \cite{SW05WP},\ we implement a
+combined bivariate autoregressive distributed lag (ADL) model. Forecasts are
+constructed by combining individual forecasts computed from bivariate ADL
+models. The $i$-th ADL model includes $p_{i,x}$ lags of $X_{i,t},$ $\ $and $%
+p_{i,y}$ lags of $Y_{t},$ and has the form $\hat{Y}_{t+h}^{ADL}=\hat{\alpha}+%
+\hat{\beta}_{i}\left( L\right) X_{i,t}+\hat{\phi}_{i}\left( L\right) Y_{t}.$
+The combined forecast is $\hat{Y}_{T+h|T}^{Comb,h}=\underset{t=1}{\overset{n}%
+{\Sigma }}w_{i}\hat{Y}_{T+h|T}^{ADL,h}$. Here, we set $w_{i}=1/N$. There are
+a number of studies that compare the performance of combining methods in
+controlled experiments, including: \cite{C89IJF}, \cite{DL96NBER}, \cite%
+{NH02FC}, and \cite{Timm05CEPR}; and in the literature on factor models, 
+\cite{SW04JF,SW05WP,SW2006HEF}, and the references cited therein. In this
+literature, combination methods typically outperform individual forecasts.
+This stylized fact is sometimes called the \textquotedblleft forecast
+combining puzzle.\textquotedblright
+
+\textbf{Mean Forecast Combination: }To further examine the issue of forecast
+combination, we form forecasts as the simple average of the forecasting
+models summarized in Table 2.
+
+\section{Empirical Results}
+
+In this section, we discuss the results of our prediction experiments. For
+the case where models are estimated using recursive data windows, detailed
+results are gathered in Tables 3-6. Analogous results based on rolling
+estimation are omitted for the sake of brevity, although they are available
+upon request from the authors. Summary results are contained in Tables 7-11.
+
+Tables \ref{tb3}-\ref{tb6} report MSFEs and the results of DM predictive
+accuracy tests for all alternative forecasting models, using Specification
+Type 1 without lags (Table \ref{tb3}), Specification Type 1 with lags (Table %
+\ref{tb4}), Specification Type 2 (Table \ref{tb5}), and Specification Type 3
+(Table \ref{tb6}). Results in these tables are for the out-of-sample period
+1984:6-2009:5 ($P=300$). Other out-of-sample results ($P=200$ and $400$) are
+available upon request from the authors. Panels A-C in these tables contain
+results for $h=1,3$ and $12$ month ahead predictions, respectively. In each
+panel, the first row of entries reports MSFEs for benchmark AR(SIC)\ models,
+and all other rows report MSFEs relative to those of the AR(SIC) model.
+Thus, entries greater than unity imply point MSFEs greater than those of our
+AR(SIC) model. Entries in bold denote MSFE \textquotedblleft
+best\textquotedblright\ models for a given variable, forecast horizon, and
+specification type. For example, in Panel C of Table 3, the MSFE
+\textquotedblleft best\textquotedblright\ model for unemployment (UR), when $%
+h=12$, is principal component regression (PCR), with a relative MSFE of
+0.974. Results from DM predictive accuracy tests, for which the null
+hypothesis is that of equal predictive accuracy between the benchmark model
+(defined to be the AR(SIC) model), and the model listed in the first column
+of the tables, are reported using a single star (denoting rejection at the
+10\% level), and a double star (denoting rejection at the 5\% level).
+
+There are no models that uniformly yield the lowest MSFEs, across both
+forecast horizon and variable. However, various models perform quite well,
+including in particular our benchmark FAAR and PCR models. This supports the
+oft reported result that models that incorporate common factors offer a
+convenient way to filter the information contained in large-scale economic
+datasets. Various other results are also apparent, upon inspection of
+tables. For example, turning to Table 3, which summarizes results for
+Specification Type 1 without lags (SP1), notice that in Panel A, AR(SIC) and
+ARX(SIC) models \textquotedblleft win\textquotedblright\ for only 2 of 11
+variables (SNP and GDP). A similar results holds for $h=3$ and $h=12$ (see
+Panels B and C). Notice also that model averaging (BMA and \textquotedblleft
+Mean\textquotedblright ) wins only 27\% of the time, across all
+variable/horizon permutations.
+
+In Table \ref{tb4}, we report the results for Specification Type 1 with lags
+(SP1L). In Panel A ($h=1)$, benchmark models including AR(SIC), ARX(SIC),
+and CADL\ yields lowest point MSFEs for 7 of 11 variables. This suggests
+that including lags (of factors) does not appreciably improve model forecast
+performance, given that the structure of these benchmark models do not
+change when lags are added to our factor specification methods, and that
+they \textquotedblleft win\textquotedblright\ less frequently under SP1 than
+under SP1L.\footnote{%
+Recall that the addition of lags when moving from SP1 to SP1L only involves
+including lags of explanatory variables used in diffusion index
+construction. As AR, ARX, and CADL models do not include diffusion indexes,
+they are thus unchanged when constructed under either SP1 or SP1L} Indeed,
+comparison of the results in Tables \ref{tb3} and \ref{tb4} suggests that
+there is little advantage to using lags of factors when constructing
+predictions in our context. Instead, it appears that the more important
+determinant of model performance is the type of combination factor/shrinkage
+type model (elsewhere called our \textquotedblleft hybrid\textquotedblright\
+model) employed when constructing forecasts. Note however, that there are
+(possibly) $some$ lagged variables used in the construction of diffusion
+indexes under $all$ specification types, including SP1 and SP1L. In
+particular, all datasets used to construct factors may contain lagged values
+of the $target$ variable. An exception to the above finding concerning the
+usefulness of SP1L as a specification method is as follows. Under SP1L, all
+models (except CADL)\ yield lower MSFEs than AR(SIC), when used to forecast
+GDP, for $h=1$. However, under SP1, few models yield lower MSFEs than
+AR(SIC). This result may be due to the interpolation approach used to
+construct our monthly GDP figures.
+
+For Specification Type 2 (SP2), results are reported in Table 5. In this
+table, FAAR\ and PCR\ models are omitted since all diffusion indexes used in
+the prediction models involve using variables first selected via shrinkage,
+and our benchmark \textquotedblleft pure\textquotedblright\ factor models
+use no shrinkage. In Specification Type 3 (SP3), FAAR\ and PCR\ are also
+omitted (since no SP3 specifications use diffusion indices). In Table \ref%
+{tb5}, our \textquotedblleft hybrid\textquotedblright\ SP2 type models (that
+use bagging, boosting, ridge, LAR, EN, and NNG) are MSFE \textquotedblleft
+best\textquotedblright\ for 3, 3, and 2 out of 11 variables, for $h=1,3$ and 
+$\ 12,$ respectively. On the other hand, linear benchmark models (AR, ARX\
+and CADL) yield the lowest MSFEs for\ 6, 5, 4 out of 11 variables, for $%
+h=1,3 $ and $\ 12,$ respectively. Thus, SP2 type factor models
+\textquotedblleft win\textquotedblright\ roughly 1/3 of the time. In Table
+6, our \textquotedblleft pure shrinkage\textquotedblright\ (SP3) type models
+that use bagging, boosting, ridge, LAR, EN, or NNG are MSFE\
+\textquotedblleft best\textquotedblright\ for 5, 5, 4 out of 11 target
+variables, for $h=1,3$ and $12,$ respectively. Of note is that bagging
+performs very poorly in SP3, so that \textquotedblleft
+Mean\textquotedblright\ does not yield reasonable MSFEs in most cases. We
+also constructed \textquotedblleft Mean\textquotedblright\ predictions
+without bagging, and although results improved, our overall model rankings
+did not change.
+
+Entries in Tables 3-6 only summarize a subset of our experiments results,
+and are hence not as informative as we would like them to be. For this
+reason, we also provide a series of \textquotedblleft
+summary\textquotedblright\ tables, denoted Tables 7-11, from which a number
+of further interesting findings can be drawn.
+
+Table \ref{tb7} summarizes MSFE \textquotedblleft best\textquotedblright\
+forecast models $by$ specification type (Panels A-D), as well as $across$
+all specification types (Panel E). Entries in the Panels A-D correspond to
+entries in bold in Tables 3-6, respectively. For example, when forecasting
+unemployment (UR), FAAR\ under Specification Type 1 without lags yields the
+lowest MSFE, for $h=1$. When comparing results for individual specification
+types, note that benchmark AR and ARX models sometimes \textquotedblleft
+win\textquotedblright . However, when the MSFE \textquotedblleft
+best\textquotedblright\ model across all four specifications is selected,
+these benchmark models never win (see Panel E). This is interesting, as it
+suggests that the oft noted dominance of simple AR type models in
+forecasting experiments may, to some extent, be due to a lack of suitable
+alternative \textquotedblleft model / specification
+method\textquotedblright\ combinations against which to compare the AR
+model. Turning again to Panel E, note that, for $h=1,$ a model that
+incorporates either shrinkage (including bagging, boosting, ridge, LAR, EN,
+NNG, and \textquotedblleft Mean\textquotedblright )\footnote{%
+BMA and simple arithmetic model averaging (collectively called
+\textquotedblleft Mean\textquotedblright ) are included in this subset of
+models because these model averaging methods involve the combination of
+various shrinkage type models.}, or is a \textquotedblleft
+hybrid\textquotedblright\ model, \textquotedblleft wins\textquotedblright\
+for 6 of 11 variables (models not in this subset include FAAR, PCR, and
+CADL). Notice, also, that this number increases from 6 out of 11 to 10 out
+of 11 ($h=3)$ and 9 out of 11 ($h=12),$ when longer forecast horizons are
+used. This is strong evidence in favor of using shrinkage and
+\textquotedblleft hybrid\textquotedblright\ modeling approaches. These
+summary finding remain qualitatively the same for out-of-sample periods not
+reported here (i.e., $P=200$ and $400$).
+
+Table \ref{tb8} (Panel A), summarizes the number of MSFE \textquotedblleft
+wins\textquotedblright\ for each model, across $all$ specification types,
+for two cases. In the first case (\textquotedblleft Recursive Estimation
+Window\textquotedblright ), results are reported only for recursively
+estimated models. In the second case (\textquotedblleft Recursive and
+Rolling Estimation Windows\textquotedblright ), results are summarized $%
+across$ both \textquotedblleft windowing\textquotedblright\ methods. In
+Panel B, the number of \textquotedblleft wins\textquotedblright\ are
+reported for the two windowing approaches (\textquotedblleft Winners by
+Estimation Window\textquotedblright ) and by specification type
+(\textquotedblleft Winners by Specification Type\textquotedblright ). From
+Panel A, we see that our findings based on results reported in Table 7,
+which are based only on recursive estimation, remain essentially the same
+when rolling estimation is also considered (i.e., compare the first 4
+columns of entries in the table with the second 4 columns of entries). This
+is not surprising, given that inspection of Panel B of the table indicates
+that recursive estimation often \textquotedblleft
+dominates\textquotedblright\ rolling estimation. However, it is noteworthy
+that recursive estimation do not $always$ lead to MSFE \textquotedblleft
+best\textquotedblright\ models, particularly for $h=12.$
+
+In Table 8, notice also that SP1 clearly dominates for $h=1$, while SP2
+dominates for $h=12.$ This suggests that longer horizon forecasts, which are
+generally know to be more difficult to accurately construct, are best
+tackled using more parsimonious model specification methods (i.e.,
+pre-select the variables to use in diffusion index construction via
+shrinkage methods, as is done under SP2). Also, note that as the forecast
+horizon increases, model averaging methods \textquotedblleft
+win\textquotedblright\ more frequently; which is, again, not surprising (see
+Panel A).
+
+In order to shed light on the importance of sub-samples in our empirical
+analysis, we report summary results for a variety of NBER business-cycle
+related sample periods in Table 9, for $h=1$. Although conclusions based
+upon inspection of this table are largely in accord with those reported
+above, two additional noteworthy findings are worth stressing. First, in
+Panel A of the table, note that when MSFE \textquotedblleft
+best\textquotedblright\ models are tabulated by specification type, our
+model averaging methods perform quite well, particularly for SP2 and SP3.
+This finding can be confirmed by carefully examining the results reported in
+Tables 3-6 (i.e., compare the MSFE \textquotedblleft best\textquotedblright\
+models, denoted by bold entries). However, notice that when results are
+summarized across $all$ specification types (see Panel B of the table), then
+the model averaging methods yield MSFE \textquotedblleft
+best\textquotedblright\ predictions in far fewer cases.\ This is because
+SP1, where model averaging clearly \textquotedblleft wins\textquotedblright\
+the least, is the predominant winner when comparing results across $all$
+specification types, as mentioned previously. Moreover, it is clear that our
+\textquotedblleft hybrid\textquotedblright\ model building approach whereby
+we first construct factors and thereafter use shrinkage methods to estimate
+functions of and weights for factors to be used in our prediction models
+(i.e., SP1) is the dominant specification type. In summary, when more
+complicated specification methods are used, model averaging methods fare
+worse and \textquotedblleft hybrid\textquotedblright\ methods fare better.
+Still, pure factor type models sometimes perform well, particularly for the
+long expansion period from 1982-1990. Second, careful examination of Panel B
+of this table indicated that our so-called \textquotedblleft Nonlinear
+Factor\textquotedblright\ models (i.e., all shrinkage/factor combination
+models - see footnote to Table 9) exhibit business cycle dependent
+performance. In particular, the \textquotedblleft Nonlinear
+Factor\textquotedblright\ models are MSFE \textquotedblleft
+best\textquotedblright\ for 7 of 11 variables in recessionary periods (in
+recessions, \textquotedblleft Mean\textquotedblright\ - or model averaging -
+\textquotedblleft wins\textquotedblright\ for 0 of 11 variables, while
+\textquotedblright Linear Factor\textquotedblright\ models and simple AR
+type models each win twice). On the other hand, \textquotedblleft Nonlinear
+Factor\textquotedblright\ models \textquotedblleft win\textquotedblright\
+for only 4 of 11 variable (or approximately 1/3 of the time) during
+expansionary periods (in expansions, \textquotedblleft
+Mean\textquotedblright\ models \textquotedblleft win\textquotedblright\ for
+5 of 11 variables, while \textquotedblleft Linear Factor\textquotedblright\
+models and simple AR type models each \textquotedblleft
+win\textquotedblright\ once). Additionally, for all but 1 other sub-sample,
+\textquotedblleft Nonlinear Factor\textquotedblright\ models win for 4 or 5
+of 11 variables. Indeed, it is only during the 01:11-07:11 period that
+\textquotedblleft Nonlinear Factor\textquotedblright\ models do not win more
+than 1/3 of the time, suggesting that during extremely stable periods there
+is less to be gained by using more sophisticated nonlinear models.
+
+Table \ref{tb10} reports reality check statistics based on \cite{W2000} and 
+\cite{CS2007}. In order to facilitate construction of these statistics as
+well as simulation of critical values (following CS (2007)), we re-ran all
+experiments, fixing the number of lags and the number of factors used in our
+recursive and rolling window based forecast model construction. The reality
+check tests the null hypothesis that a given benchmark model, say Model $1$
+yields equal or better predictive performance than all competitors, say
+Models $2,...,n$. The alternative is that at least one models among Models $%
+2,...,n$ outperforms the benchmark. Formally, we test: 
+\begin{eqnarray*}
+H_{0} &:&\underset{i=2,...,n}{\max }E\left( g\left( u_{1,t+1}\right)
+-g\left( u_{i,t+1}\right) \right) \leq 0 \\
+H_{A} &:&\underset{i=2,...,n}{\max }E\left( g\left( u_{1,t+1}\right)
+-g\left( u_{i,t+1}\right) \right) >0,
+\end{eqnarray*}%
+where $u_{i,t+1}=y_{t+1}-\kappa _{i}\left( Z_{t},\theta _{i}\right) $, $%
+\kappa _{i}$ is $i$-th conditional mean function, $\theta _{i}$ are model
+parameters, $Z_{t}$ is the set of predictors, and $g$ is a given loss
+function, here assumed to be quadratic. Following White (2000), define the
+statistic $S_{p}=\max_{i=2,...,n}S_{P}\left( 1,i\right) $ with%
+\begin{equation*}
+S_{P}\left( 1,i\right) =\frac{1}{\sqrt{P}}\underset{t=R}{\overset{T-1}{\sum }%
+}\left( g\left( \hat{u}_{1,t+1}\right) -g\left( \hat{u}_{i,t+1}\right)
+\right) ,i=2,...,n
+\end{equation*}%
+where $\hat{u}_{i,t+1}=y_{t+1}-\kappa _{i}\left( Z_{t},\hat{\theta}%
+_{i,t}\right) $ and $\kappa _{i}\left( Z_{t},\hat{\theta}_{i,t}\right) $ is
+the estimated conditional mean under model $i$. See CS (2007) for technical
+details about computing critical values. We executed all tests using three
+different block lengths ($l=2,5,$ and $10),$ although we report results only
+for $l=5,$ since our findings were not affected by block length. Double and
+single starred entries denote rejection of the null hypothesis at 5\% and
+10\% significance levels, respectively. We consider various test scenarios,
+including: (I) set the AR(SIC) model as the benchmark, and compare this
+model against a variety of alternative models, including, for example, all
+models under SP1, SP2, or SP3; (II) set our factor augmented autoregressive
+model (FAAR) as the benchmark; and (III) set the point MSFE
+\textquotedblleft best\textquotedblright\ model from each specification type
+as the benchmark (see Table \ref{tb7} for summary of \textquotedblleft
+best\textquotedblright\ models).
+
+As evident from inspection of the tabulated results, under scenario (I), the
+null is almost always rejected, particularly under SP1, as expected given
+our findings that are discussed above. Under scenario (II), the null
+hypothesis that the FAAR model is at least as \textquotedblleft
+MSFE-accurate\textquotedblright\ as any other model is rejected for
+approximately 9 out of 11 variables, at all forecast horizons. This supports
+our earlier finding concerning the effectiveness of our \textquotedblleft
+hybrid\textquotedblright\ models. Namely, pure factor models alone do not
+usually \textquotedblleft win\textquotedblright\ when compared with either
+shrinkage and/or \textquotedblleft hybrid\textquotedblright\ models. Indeed,
+when FAAR is compared with pure shrinkage models with no diffusion indices
+(i.e., SP3) the null is rejected for 6 out of 11 variables when $h=1$,
+whereas for $h=12$ the null is rejected for all variables. Thus, pure
+shrinkage models outperform pure linear factor models in many cases.
+However, it is only when \textquotedblleft hybrid\textquotedblright\ models
+are used that pure linear factor models are generally \textquotedblleft
+dominated\textquotedblright . In summary, our reality check results are
+largely in agreement with our point MSFE results.
+
+As a final measure of the relevance of our findings, we constructed a simple
+measure of forecast accuracy \textquotedblleft percentage
+differences\textquotedblright\ between various AR, \textquotedblleft
+Mean\textquotedblright , and MSFE \textquotedblleft best\textquotedblright\
+models discussed above, as reported in Table \ref{tb11}. The
+\textquotedblleft percentage differences\textquotedblright\ were calculated
+using the following formula:%
+\begin{equation*}
+\frac{1}{T}\sum_{t}\left\vert \left\vert \frac{\hat{Y}_{1,t}-Y_{t}}{Y_{t}}%
+\right\vert -\left\vert \frac{\hat{Y}_{2,t}-Y_{t}}{Y_{t}}\right\vert
+\right\vert \times 100\%,
+\end{equation*}%
+where $Y_{t}$ is the actual value of the target variable at time $t.$
+Additionally, $\hat{Y}_{1,t}$ and $\hat{Y}_{2,t}$ are the forecasts from the
+two models being compared. In rare occurrences where $Y_{t}$ is zero, it is
+replaced by $Y_{t-1}.$ Turning to the tabulated results, in the first row of
+entries, \textquotedblleft AR\ vs. SP1Best\textquotedblright\ denotes the
+\textquotedblleft percentage difference\textquotedblright\ between AR(SIC)
+forecasts and those of the MSFE \textquotedblleft best\textquotedblright\
+model under SP1. The value of 11.07\% in the first numerical entry of the
+table (upper left), thus indicates a marked improvement in predictive
+accuracy when using \textquotedblleft SP1best\textquotedblright\ (i.e., FAAR
+- see Table 3) instead of AR(SIC). This \textquotedblleft percentage
+difference\textquotedblright\ might be assumed to have significant impact
+when predictions are used to calibrate macroeconomic policy decisions, for
+example. Although results vary somewhat, it is clear upon inspection of the
+tabulated entries that \textquotedblleft percentage
+differences\textquotedblright\ often range from around 5\% to 15\%, and for
+some variables, such as unemployment, the 10-year Treasury bond rate, CPI,
+PPI, and housing starts, most \textquotedblleft percentage
+differences\textquotedblright\ lie in this range.
+
+Given the importance of factors in our forecasting experiments, it would
+seem worthwhile to examine which variables contribute to the estimated
+factors used in our MSFE \textquotedblleft best\textquotedblright\ models, $%
+across$ all specification and estimation window types. This is done in
+Figure 1, where we report the ten most frequently selected variables for a
+variety of MSFE \textquotedblleft best\textquotedblright\ models and
+forecast horizons. Keeping in mind that factors are re-estimated at each
+point in time, prior to each new prediction being constructed, a 45 degree
+line denotes cases for which a particular variable is selected each time a
+forecast is constructed. For example, in Panel A, note that the BAA Bond
+Yield - Federal Funds Rate spread is always selected as a predictor when
+constructing factors to forecast the Producer Price Index for $h=1$. For
+SP1, variables are selected based on the $A(j)$\ and $M(j)$ statistics of 
+\cite{BN06EMTR} and \cite{ArSwan08}, and for SP2, we directly observe
+variables that are selected via shrinkage, and subsequently used to
+construct diffusion indexes. The list of selected variables does not vary
+much, for SP1. On the other hand, in Panels D\ and F, we see that frequently
+selected variables are not selected all the time. For example, in Panel D,
+CPI:Apparel is selected over all periods and the 3 month Treasury bill yield
+is selected continuously, but only after 1979. Of \ further note is that
+interest-rate related variables (i.e. Treasury bills rates, Treasury bond
+rates, and spreads with Federal Funds Rate) are frequently selected, across
+all specification type, estimation window types, and forecast horizons. This
+confirms that in addition to their well established usefulness in linear
+models, yields and spreads remain important in nonlinear modelling contexts.
+
+\section{Concluding Remarks}
+
+In this paper we empirically examine approaches to combining factor
+modelling methods and robust (shrinkage based) estimation techniques,
+including bagging, boosting, ridge regression, least angle regression, the
+elastic net, and the non-negative garotte. In particular, we present the
+results of a \textquotedblleft horse-race\textquotedblright\ in which
+mean-square-forecast-error (MSFE) \textquotedblleft best\textquotedblright\
+models are found, using reality check and related predictive accuracy
+tests,\ for a variety of forecast horizons, estimation \textquotedblleft
+windowing\textquotedblright\ schemes and sample periods. Our empirical
+models include \textquotedblleft pure\textquotedblright\ common factor
+models, which are estimated using principal components methods, simple
+linear models, and sophisticated \textquotedblleft hybrid\textquotedblright\
+models that combine latent factor modelling approaches with the various
+shrinkage based techniques outlined above. For the majority of the target
+variables that we forecast, we find that \textquotedblleft
+hybrid\textquotedblright\ forecasting models outperform our benchmark and
+pure factor type models. This suggests that diffusion index methodology is
+particularly useful when combined with other shrinkage methods (see also, 
+\cite{BN08JEMC,BN08JAE}, and \cite{SW05WP}). We also find that model
+averaging methods perform surprisingly poorly. Given the rather extensive
+empirical evidence suggesting the usefulness of model averaging when
+specifying linear prediction models, this is taken as further evidence of
+the usefulness of more sophisticated nonlinear modelling approaches.
+Finally, we find that model performance is rather sensitive to the state of
+the business cycle. Our \textquotedblleft hybrid\textquotedblright\ models,
+for example, are most accurate during recessions, while model averaging
+methods are never chosen as \textquotedblleft best\textquotedblright\ during
+these times.
+
+\newpage 
+\bibliographystyle{apalike}
+\bibliography{KimHyunHak_Bib_new}
+\newpage
+
+%TABLE 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+\caption{Target Forecasting Variables *}
+\label{tb1}
+\begin{center}
+\begin{tabular}{ccc}
+\toprule {\footnotesize Series} & {\footnotesize Abbreviation} & $\ \ \ \ \
+\ \ \ \ \ Y_{t+h}${\footnotesize \ \ \ \ \ \ \ \ \ \ \ } \\ \hline
+\multicolumn{1}{l}{\footnotesize Unemployment Rate} & {\footnotesize UR} & $%
+{\footnotesize Z}_{t+1}{\footnotesize -Z}_{t}$ \\ 
+\multicolumn{1}{l}{\footnotesize Personal Income Less transfer payments} & 
+{\footnotesize PI} & $\ln\left( Z_{t+1}/Z_{t}\right) $ \\ 
+\multicolumn{1}{l}{\footnotesize 10-Year Treasury Bond} & {\footnotesize TB}
+& ${\footnotesize Z}_{t+1}{\footnotesize -Z}_{t}$ \\ 
+\multicolumn{1}{l}{\footnotesize Consumer Price Index} & {\footnotesize CPI}
+& $\ln\left( Z_{t+1}/Z_{t}\right) $ \\ 
+\multicolumn{1}{l}{\footnotesize Producer Price Index} & {\footnotesize PPI}
+& $\ln\left( Z_{t+1}/Z_{t}\right) $ \\ 
+\multicolumn{1}{l}{\footnotesize Nonfarm Payroll Employment} & 
+{\footnotesize NPE} & $\ln\left( Z_{t+1}/Z_{t}\right) $ \\ 
+\multicolumn{1}{l}{\footnotesize Housing Starts} & {\footnotesize HS} & $%
+\ln\left( Z_{t}\right) $ \\ 
+\multicolumn{1}{l}{\footnotesize Industrial Production} & {\footnotesize IPX}
+& $\ln\left( Z_{t+1}/Z_{t}\right) $ \\ 
+\multicolumn{1}{l}{\footnotesize M2} & {\footnotesize M2} & $\ln\left(
+Z_{t+1}/Z_{t}\right) $ \\ 
+\multicolumn{1}{l}{\footnotesize S\&P 500 Index} & {\footnotesize SNP} & $%
+\ln\left( Z_{t+1}/Z_{t}\right) $ \\ 
+\multicolumn{1}{l}{\footnotesize Gross Domestic Product} & {\footnotesize GNP%
+} & $\ln\left( Z_{t+1}/Z_{t}\right) $ \\ 
+\bottomrule &  & 
+\end{tabular}
+{\footnotesize 
+\begin{minipage}{1\columnwidth} \footnotesize * Notes: Data used in model estimation and prediction construction are monthly U.S. figures for the period 1960:1-2009:5. Data transformations used in prediction experiments are given in the last column of the table. See Section 4 for further details. 
+\end{minipage}}
+\end{center}
+\end{table}
+
+\newpage 
+% TABLE 2 --------------------------------------------------------------------------------------------------------------------------------
+\begin{table}[htbp]
+\caption{Models and Methods Used In Real-Time Forecasting Experiments*}
+\label{tb2}
+\begin{center}
+{\footnotesize 
+\begin{tabular}{ll}
+\toprule Method & \multicolumn{1}{c}{Description} \\ 
+\midrule AR(SIC) & Autoregressive model with lags selected by the SIC \\ 
+ARX & Autoregressive model with exogenous regressors \\ 
+CADL & Combined autoregressive distributed lag model \\ 
+FAAR & Factor augmented autoregressive model \\ 
+PCR & Principal components regression \\ 
+Bagging & Bagging with shrinkage, $c = 1.96$ \\ 
+Boosting & Component boosting, $M = 50$ \\ 
+BMA1 & Bayesian model averaging with g-prior $= 1/T$ \\ 
+BMA2 & Bayesian model averaging with g-prior $= 1/N^2$ \\ 
+Ridge & Ridge regression \\ 
+LAR & Least angle regression \\ 
+EN & Elastic net \\ 
+NNG & Non-negative garotte \\ 
+Mean & Arithmetic mean \\ 
+\bottomrule & 
+\end{tabular}
+} {\footnotesize 
+\begin{minipage}{1\columnwidth} \footnotesize * Notes: This table summarizes the model specification methods used in the construction of prediction models. In addition to directly estimating the above pure linear and factor models (i.e., AR, ARX, CADL, FAAR, PCR), three different combined factor and shrinkage type prediction ``specification methods'' are used in our forecasting experiments, including: Specification Type 1 - Principal components are first constructed, and then prediction models are formed using the above shrinkage methods (including Bagging, Boosting, Ridge, LAR, EN, and NNG) to select functions of and weights for the factors to be used in our prediction models. Specification Type 2 - Principal component models are constructed using subsets of variables from the large-scale dataset that are first selected via application of the above shrinkage methods (ranging from bagging to NNG). This is different from the above approach of estimating factors using all of the variables. 
+Specification  Type 3 - Prediction models are constructed using only the above shrinkage methods (including Bagging, Boosting, Ridge, LAR, EN, and NNG), without use of factor analysis at any stage. See Sections 3 and 4 for complete details. 
+\end{minipage}}
+\end{center}
+\end{table}
+
+%TABLE 3 Specification Type 1 without lags  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+\caption{Relative Mean Square Forecast Errors of Specification Type 1
+Without Lags*}
+\label{tb3}{\scriptsize 
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{} \\ 
+\multicolumn{12}{c}{{\footnotesize {Panel A: Recursive, $h=1$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 6.257 & 0.007 & 18.650 & 0.002 & 0.010 & 0.000 & 1.316 & 
+0.010 & 0.003 & \textbf{0.400 } & 0.006 \\ 
+ARX(SIC) & 1.011 & 0.941 & 1.136 & 0.966 & 0.992 & 1.347** & 1.088 & 0.913 & 
+1.181 & 1.135 & \textbf{0.836 } \\ 
+CADL & 0.976** & 1.031 & 0.991 & 1.026 & 1.018 & \textbf{0.920* } & 0.988 & 
+0.975 & 1.060 & 1.009 & 1.075 \\ 
+FAAR & \textbf{0.889 } & 0.907 & 1.029 & 0.897 & 0.941 & 1.014 & 1.054 & 
+0.865* & \textbf{0.953 } & 1.046 & 0.964 \\ 
+PCR & 0.935 & \textbf{0.856 } & 1.046 & \textbf{0.858 } & \textbf{0.906 } & 
+1.276** & 2.084** & 0.864* & 1.472** & 1.046 & 0.875 \\ 
+Bagging & 0.917 & 1.039 & 0.962 & 1.129 & 1.039 & 1.373** & 1.147 & 1.126 & 
+0.963 & 1.010 & 1.001 \\ 
+Boosting & 0.972 & 0.994 & 0.929 & 0.961 & 0.990 & 0.965 & 1.003 & 0.882** & 
+0.997 & 1.008 & 1.032 \\ 
+BMA1 & 0.974 & 0.984 & 0.941 & 0.961 & 0.994 & 0.974 & 1.019 & 0.875** & 
+1.014 & 1.027 & 1.047 \\ 
+BMA2 & 0.980 & 0.990 & 0.952 & 0.955 & 0.991 & 1.002 & 1.012 & 0.870** & 
+1.009 & 1.028 & 1.040 \\ 
+Ridge & 0.984 & 0.990 & 0.959 & 0.969 & 0.988 & 1.052 & 1.000 & \textbf{%
+0.864**} & 1.003 & 1.035 & 1.013 \\ 
+LAR & 0.963* & 0.984 & 0.957** & 0.991 & 0.991 & 0.970** & 1.003 & 0.950** & 
+0.987 & 1.005 & 1.021 \\ 
+EN & 0.963* & 0.984 & 0.957** & 0.991 & 0.991 & 0.970** & 1.003 & 0.950** & 
+0.987 & 1.005 & 1.021 \\ 
+NNG & 0.987* & 0.992 & 0.995 & 0.991 & 0.993 & 0.978** & 0.999 & 0.986** & 
+0.995 & 1.003 & 1.005 \\ 
+Mean & 0.924** & 0.952* & \textbf{0.924 } & 0.927 & 0.953 & 0.939 & \textbf{%
+0.974 } & 0.884** & 0.969 & 1.006 & 0.939** \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{{\footnotesize {Panel B: Recursive, $h=3$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 6.288 & 0.006 & 22.471 & 0.002 & 0.011 & 0.000 & 2.540 & 
+0.010 & 0.003 & 0.432 & 0.005 \\ 
+ARX(SIC) & 1.088 & \textbf{0.953 } & 1.039 & 0.976 & 0.945 & 1.149 & 1.144 & 
+1.030 & 1.028 & 1.042 & 1.135** \\ 
+CADL & 0.994 & 0.999 & 0.986** & 1.049 & 1.038 & \textbf{0.873**} & 0.979* & 
+0.960 & 1.066 & 1.014 & 1.019 \\ 
+FAAR & 1.013 & 0.975 & 1.024 & 0.985 & 0.962 & 0.998 & 1.174 & 1.014 & 1.019
+& 1.069** & 1.193** \\ 
+PCR & \textbf{0.975 } & 0.964 & 0.992 & 0.989 & \textbf{0.931 } & 1.107 & 
+1.757** & 1.013 & 1.295** & 1.069 & 1.178** \\ 
+Bagging & 1.129** & 1.144** & \textbf{0.981 } & 1.121 & 0.987 & 1.640** & 
+\textbf{0.905 } & 0.982 & 1.009 & \textbf{0.991 } & 1.056** \\ 
+Boosting & 1.020 & 1.000 & 1.009 & 0.992 & 0.989 & 1.069 & 1.039 & 1.015 & 
+1.010 & 1.014 & 1.042 \\ 
+BMA1 & 1.062 & 1.001 & 1.012 & 1.012 & 0.991 & 1.101 & 1.039 & 1.047 & 1.017
+& 1.013 & 1.074 \\ 
+BMA2 & 1.034 & 0.987 & 1.020 & 1.009 & 0.994 & 1.097 & 1.056 & 1.023 & 1.015
+& 1.021 & 1.080 \\ 
+Ridge & 1.011 & 0.965 & 1.013 & 0.994 & 1.003 & 1.086 & 1.100 & 0.986 & 1.005
+& 1.032 & 1.099** \\ 
+LAR & 1.035 & 1.006 & 1.012 & 0.998 & 0.996 & 1.054 & 1.033 & 1.043 & 1.002
+& 1.005 & 1.012 \\ 
+EN & 1.035 & 1.006 & 1.012 & 0.998 & 0.996 & 1.054 & 1.033 & 1.043 & 1.002 & 
+1.005 & 1.012 \\ 
+NNG & 1.004 & 1.002 & 1.014 & 0.997 & 0.999 & 1.014 & 1.000 & 1.002 & 0.998
+& 1.013 & \textbf{0.998 } \\ 
+Mean & 1.003 & 0.967 & 0.993 & \textbf{0.963 } & 0.956 & 0.992 & 0.990 & 
+\textbf{0.951 } & \textbf{0.988 } & 1.012 & 1.031 \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{{\footnotesize {Panel C: Recursive, $h=12$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 7.579 & \textbf{0.007 } & 21.740 & 0.002 & 0.011 & 0.001
+& 12.047 & 0.012 & 0.004 & 0.437 & 0.005 \\ 
+ARX(SIC) & 1.026 & 1.022 & 1.043 & 0.984 & 1.008 & 0.992 & 0.933 & 1.037 & 
+\textbf{0.927 } & 1.030 & 1.023 \\ 
+CADL & 0.985** & 1.012 & 0.983** & 0.995 & 1.029 & \textbf{0.786**} & 0.964**
+& \textbf{0.973 } & 0.974 & 1.016 & 1.061 \\ 
+FAAR & 0.982 & 1.079** & 0.992 & 0.976 & 1.000 & 1.071 & 0.950 & 1.100** & 
+0.976 & 1.017 & 1.039 \\ 
+PCR & \textbf{0.974 } & 1.052 & \textbf{0.973 } & 1.075 & 1.028 & 1.079 & 
+1.220** & 1.093** & 1.110** & 1.008 & 1.013 \\ 
+Bagging & 1.051 & 1.022 & 1.015 & 0.973 & 1.010 & 1.366** & \textbf{0.843* }
+& 1.016 & 0.983 & 1.024 & 1.010 \\ 
+Boosting & 0.996 & 1.046 & 0.999 & 0.963 & 0.988 & 1.095** & 1.007 & 1.051 & 
+1.011 & 1.004 & 1.002 \\ 
+BMA1 & 1.004 & 1.058** & 0.996 & 0.968 & 0.992 & 1.126** & 1.032 & 1.065 & 
+1.018 & 1.000 & 1.003 \\ 
+BMA2 & 0.997 & 1.060** & 0.993 & 0.969 & 0.992 & 1.120** & 1.033 & 1.066 & 
+1.014 & 0.999 & 1.004 \\ 
+Ridge & 0.975 & 1.058** & 0.985 & 0.966 & 0.990 & 1.079 & 1.039 & 1.070 & 
+1.001 & 1.003 & 1.018 \\ 
+LAR & 0.990 & 1.020 & 0.997 & 0.999 & 0.998 & 1.064** & 0.964 & 1.020 & 1.000
+& 1.001 & 0.999 \\ 
+EN & 0.990 & 1.020 & 0.997 & 0.999 & 0.998 & 1.064** & 0.964 & 1.020 & 1.000
+& 1.001 & 1.000 \\ 
+NNG & 0.990 & 1.004 & 0.995 & 0.999 & 0.998 & 1.006 & 0.993** & 0.998 & 0.999
+& 1.001 & 1.001 \\ 
+Mean & 0.977 & 1.008 & 0.986 & \textbf{0.954 } & \textbf{0.980 } & 0.996 & 
+0.933** & 1.004 & 0.957** & \textbf{0.998 } & \textbf{0.992 } \\ 
+\bottomrule \  &  &  &  &  &  &  &  &  &  &  &  \\ 
+&  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}%
+} 
+\begin{minipage}{1\columnwidth} \scriptsize * Notes: See notes to Tables 1 and 2. Numerical entries in this table are mean square forecast errors (MSFEs) based on the use of various recursively estimated prediction models. Forecasts are monthly, for the period 1984:6-2009:5 ($P=300$). Models and target variables are given in Tables 1 and 2. Forecast horizons reported on include $h=1,3$ and $12$. Entries in the first row, corresponding to our benchmark AR(SIC) model, are actual MSFEs, while all other entries are relative MSFEs, such that numerical values less than unity constitute cases for which the alternative model has lower point MSFE than the AR(SIC) model. Entries in bold denote point MSFE ``best'' models for a given variable and forecast horizon.  The results from Diebold and Mariano (1995) predictive accuracy tests, for which the null hypothesis is that of equal predictive accuracy between the benchmark model (defined to be the AR(SIC) model), and the model listed in the first column of the table, 
+are reported using a single star (denoting rejection at the 10\% level), and a double star (denoting rejection at the 5\% level). See Sections 4 and 5 for complete details.
+\end{minipage}
+\end{table}
+
+%TABLE 4 Specification Type 1 with lags  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+\caption{Relative Mean Square Forecast Errors of Specification Type 1 With
+Lags*}
+\label{tb4}
+\begin{center}
+{\scriptsize 
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{} \\ 
+\multicolumn{12}{c}{{\footnotesize {Panel A: Recursive, $h=1$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 6.257 & 0.007 & 18.650 & 0.002 & 0.010 & 0.000 & 1.316 & 
+0.010 & \textbf{0.003 } & \textbf{0.400 } & 0.006 \\ 
+ARX(SIC) & 1.011 & 0.941 & 1.136 & \textbf{0.966 } & 0.992 & 1.347** & 1.088
+& \textbf{0.913 } & 1.181 & 1.135 & 0.836 \\ 
+CADL & 0.976** & 1.031 & \textbf{0.991 } & 1.026 & 1.018 & \textbf{0.920* }
+& \textbf{0.988 } & 0.975 & 1.060 & 1.009 & 1.075 \\ 
+FAAR & 1.069 & 0.882 & 1.851** & 1.392 & 1.121 & 1.985** & 3.631** & 1.209 & 
+1.454 & 1.390** & 0.799 \\ 
+PCR & 1.013 & 0.881 & 1.676** & 1.359 & 1.120 & 1.837** & 4.869** & 1.163 & 
+1.700** & 1.371 & 0.889 \\ 
+Bagging & 1.310** & 0.984 & 1.762** & 1.477** & 1.120 & 3.494** & 3.905** & 
+1.225 & 1.229 & 1.131 & 0.804 \\ 
+Boosting & 1.038 & 0.897 & 1.465** & 1.310 & 1.101 & 1.758** & 3.714** & 
+1.104 & 1.419 & 1.224** & 0.795 \\ 
+BMA1 & 1.042 & 0.890 & 1.544** & 1.328 & 1.097 & 1.758** & 3.711** & 1.124 & 
+1.446 & 1.253** & 0.802 \\ 
+BMA2 & 1.028 & 0.888 & 1.538** & 1.344 & 1.103 & 1.762** & 3.720** & 1.111 & 
+1.430 & 1.242** & 0.805 \\ 
+Ridge & 1.033 & 0.891 & 1.636** & 1.272 & 1.086 & 1.735** & 3.664** & 1.125
+& 1.478** & 1.270** & 0.784 \\ 
+LAR & 1.068 & 0.901 & 1.395** & 1.276 & 1.094 & 1.782** & 3.823** & 1.072 & 
+1.360 & 1.210** & 0.791 \\ 
+EN & 1.069 & 0.902 & 1.396** & 1.275 & 1.094 & 1.777** & 3.825** & 1.073 & 
+1.360 & 1.210** & 0.788 \\ 
+NNG & 1.070 & 0.907 & 1.408** & 1.275 & 1.097 & 1.779** & 3.844** & 1.072 & 
+1.362 & 1.207** & 0.784 \\ 
+Mean & \textbf{0.966 } & \textbf{0.876 } & 1.259** & 1.046 & \textbf{0.973 }
+& 1.441** & 2.681** & 0.986 & 1.143 & 1.150** & \textbf{0.745**} \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{{\footnotesize {Panel B: Recursive, $h=3$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 6.288 & 0.006 & 22.471 & 0.002 & 0.011 & 0.000 & 2.540 & 
+0.010 & 0.003 & \textbf{0.432 } & \textbf{0.005 } \\ 
+ARX(SIC) & 1.088 & \textbf{0.953 } & 1.039 & 0.976 & 0.945 & 1.149 & 1.144 & 
+1.030 & 1.028 & 1.042 & 1.135** \\ 
+CADL & \textbf{0.994 } & 0.999 & 0.986** & 1.049 & 1.038 & \textbf{0.873**}
+& \textbf{0.979* } & \textbf{0.960 } & 1.066 & 1.014 & 1.019 \\ 
+FAAR & 1.024 & 0.986 & 1.175** & 0.806** & 0.900 & 1.543** & 2.490** & 
+1.228** & 1.170 & 1.115 & 1.170** \\ 
+PCR & 1.021 & 0.974 & 1.151 & 0.822* & 0.906 & 1.456** & 3.539** & 1.201** & 
+1.444** & 1.088 & 1.126 \\ 
+Bagging & 1.122 & 1.061** & 1.102 & 1.041 & 1.034 & 2.088** & 2.465** & 1.146
+
+& 0.989 & 1.031 & 1.101 \\ 
+Boosting & 1.064 & 1.024 & 1.001 & 0.803** & 0.907 & 1.572** & 2.638** & 
+1.148** & 1.065 & 1.023 & 1.131 \\ 
+BMA1 & 1.053 & 1.032 & 1.009 & 0.788** & 0.894 & 1.565** & 2.641** & 1.161**
+& 1.097 & 1.032 & 1.141 \\ 
+BMA2 & 1.059 & 1.028 & 0.990 & 0.790** & 0.900 & 1.570** & 2.647** & 1.173**
+& 1.091 & 1.030 & 1.142 \\ 
+Ridge & 1.035 & 1.010 & 1.094 & 0.788** & 0.886 & 1.518** & 2.617** & 1.154
+& 1.121 & 1.081 & 1.127 \\ 
+LAR & 1.078 & 1.036 & 0.979 & 0.857* & 0.907 & 1.610** & 2.690** & 1.151** & 
+1.007 & 1.024 & 1.104 \\ 
+EN & 1.081 & 1.036 & 0.979 & 0.858* & 0.906 & 1.598** & 2.691** & 1.137 & 
+1.006 & 1.025 & 1.099 \\ 
+NNG & 1.075 & 1.035 & 0.973 & 0.857* & 0.913 & 1.580** & 2.687** & 1.114 & 
+1.003 & 1.019 & 1.093 \\ 
+Mean & 0.998 & 0.974 & \textbf{0.969 } & \textbf{0.786**} & \textbf{0.871**}
+& 1.312** & 1.984** & 1.045 & \textbf{0.983 } & 1.020 & 1.046 \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{{\footnotesize {Panel C: Recursive, $h=12$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 7.579 & 0.007 & 21.740 & 0.002 & 0.011 & 0.001 & 12.047 & 
+0.012 & 0.004 & \textbf{0.437 } & 0.005 \\ 
+ARX(SIC) & 1.026 & 1.022 & 1.043 & 0.984 & 1.008 & 0.992 & \textbf{0.933 } & 
+1.037 & \textbf{0.927 } & 1.030 & 1.023 \\ 
+CADL & 0.985** & 1.012 & \textbf{0.983**} & 0.995 & 1.029 & \textbf{0.786**}
+& 0.964** & \textbf{0.973 } & 0.974 & 1.016 & 1.061 \\ 
+FAAR & 1.155 & 1.083 & 1.148 & 0.956 & 1.025 & 1.115 & 1.135 & 1.204** & 
+1.049 & 1.117 & 1.093 \\ 
+PCR & 1.170** & 1.065 & 1.163 & 0.973 & 1.030 & 1.128 & 1.410** & 1.190** & 
+1.177** & 1.115** & 1.089 \\ 
+Bagging & 1.089 & 1.025 & 1.105 & 1.001 & 0.986 & 1.582** & 1.413** & 1.094**
+& 0.968 & 1.072 & 0.997 \\ 
+Boosting & \textbf{0.963 } & 1.033 & 1.020 & 0.926 & 1.012 & 1.070 & 1.210**
+& 1.063 & 0.992 & 1.011 & 0.987 \\ 
+BMA1 & 0.981 & 1.037 & 1.015 & 0.927 & 1.012 & 1.075 & 1.229** & 1.085** & 
+0.996 & 1.011 & 0.998 \\ 
+BMA2 & 0.979 & 1.034 & 1.021 & 0.924 & 1.012 & 1.067 & 1.231** & 1.088** & 
+0.986 & 1.011 & 0.992 \\ 
+Ridge & 1.057 & 1.038 & 1.090 & 0.925 & 1.009 & 1.055 & 1.205** & 1.122** & 
+1.037 & 1.064 & 1.043 \\ 
+LAR & 0.981 & 1.013 & 1.017 & 0.933 & 0.988 & 1.060** & 1.196** & 1.011 & 
+0.976 & 1.006 & 0.984 \\ 
+EN & 0.982 & 1.012 & 1.016 & 0.934 & 0.987 & 1.052** & 1.199** & 1.009 & 
+0.978 & 1.005 & 0.984 \\ 
+NNG & 0.979 & 1.021 & 1.010 & 0.930 & 0.988 & 1.044** & 1.216** & 1.003 & 
+1.011 & 1.003 & 0.985 \\ 
+Mean & 0.971 & \textbf{0.991 } & 1.007 & \textbf{0.885**} & \textbf{0.963 }
+& 0.977 & 1.052 & 1.013 & 0.940* & 1.011 & \textbf{0.981 } \\ 
+\bottomrule \  &  &  &  &  &  &  &  &  &  &  &  \\ 
+&  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}%
+} 
+\begin{minipage}{1\columnwidth} \scriptsize * Notes: See notes to Table 3. Note that numerical entries for AR(SIC), ARX(SIC) and CADL models are identical to those given for Specification Type 1 without lags (see Table 1), since those benchmark models do not involve factors or shrinkage. See Section 5 for further details. 
+\end{minipage}
+\end{center}
+\end{table}
+
+%TABLE 5 Specification Type 2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+\caption{Relative Mean Square Forecast Errors of Specification Type 2*}
+\label{tb5}\centering
+{\scriptsize 
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{} \\ 
+\multicolumn{12}{c}{{\footnotesize {Panel A: Recursive, $h=1$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 6.257 & 0.007 & 18.650 & 0.002 & 0.010 & 0.000 & 1.316 & 
+0.010 & 0.003 & \textbf{0.400 } & 0.006 \\ 
+ARX(SIC) & 1.011 & 0.941 & 1.136 & \textbf{0.966 } & 0.992 & 1.347** & 1.088
+& \textbf{0.913 } & 1.181 & 1.135 & \textbf{0.836 } \\ 
+CADL & 0.976** & 1.031 & \textbf{0.991 } & 1.026 & 1.018 & 0.920* & \textbf{%
+0.988 } & 0.975 & 1.060 & 1.009 & 1.075 \\ 
+Bagging & 1.492** & 1.194 & 1.282** & 1.266 & \textbf{0.952 } & 1.823** & 
+9.795** & 1.316** & 1.655 & 1.081 & 1.089 \\ 
+Boosting & 1.465** & 0.940 & 1.545** & 1.606 & 1.206 & 1.196 & 1.282 & 1.287
+& 1.157 & 1.119 & 1.257 \\ 
+BMA1 & 1.544** & 1.012 & 1.595** & 1.707 & 1.057 & 2.558** & 1.337** & 
+1.529** & 1.246 & 1.049 & 1.793** \\ 
+BMA2 & 1.021 & 0.934 & 1.603** & 1.416 & 1.444 & 1.219 & 1.229 & 1.570** & 
+1.237 & 1.638 & 1.093 \\ 
+Ridge & 1.089 & 0.996 & 1.654** & 1.447 & 1.477 & 1.329** & 1.206 & 1.363**
+& 1.157 & 1.734 & 1.077 \\ 
+LAR & \textbf{0.891**} & 0.890 & 1.388** & 1.402** & 1.119 & 1.173** & 
+1.368** & 0.961 & 1.108 & 1.083 & 1.332** \\ 
+EN & 0.893** & \textbf{0.885 } & 1.441** & 1.402** & 1.100 & 1.172** & 
+1.367** & 0.961 & 1.115 & 1.123 & 1.289** \\ 
+NNG & 0.959 & 0.925 & 1.394** & 1.404** & 1.118 & 1.114** & 1.383** & 0.943
+& 1.142 & 1.976 & 1.083 \\ 
+Mean & 0.965 & 0.917 & 1.131 & 1.142 & 0.973 & \textbf{0.864**} & 1.229 & 
+1.008 & \textbf{0.996 } & 1.021 & 1.000 \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{{\footnotesize {Panel B: Recursive, $h=3$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 6.288 & 0.006 & 22.471 & 0.002 & 0.011 & 0.000 & 2.540 & 
+0.010 & \textbf{0.003 } & \textbf{0.432 } & \textbf{0.005 } \\ 
+ARX(SIC) & 1.088 & 0.953 & 1.039 & 0.976 & 0.945 & 1.149 & 1.144 & 1.030 & 
+1.028 & 1.042 & 1.135** \\ 
+CADL & 0.994 & 0.999 & 0.986** & 1.049 & 1.038 & \textbf{0.873**} & \textbf{%
+0.979* } & 0.960 & 1.066 & 1.014 & 1.019 \\ 
+Bagging & 1.056 & 1.016 & 1.042 & 1.001 & 0.960 & 1.312** & 2.267** & 1.124
+& 1.369** & 1.086 & 1.164** \\ 
+Boosting & 0.941 & 0.962 & 0.998 & 1.147 & 1.050 & 1.005 & 1.172 & 1.084 & 
+1.157 & 1.019 & 1.153** \\ 
+BMA1 & 0.992 & 0.958 & 0.989 & 1.090 & 1.139 & 1.151 & 1.178 & 0.971 & 1.144
+& 1.010 & 1.168 \\ 
+BMA2 & \textbf{0.937 } & 0.974 & 1.014 & 1.021 & 0.970 & 0.908 & 1.312 & 
+1.013 & 1.199 & 1.051 & 1.223** \\ 
+Ridge & 0.943 & 0.975 & 0.993 & 1.086 & 0.978 & 0.961 & 1.276** & 1.053 & 
+1.183 & 1.055 & 1.216** \\ 
+LAR & 0.980 & 1.016 & 1.009 & 0.938 & 0.934 & 1.179** & 1.371** & 0.958 & 
+1.121 & 1.029 & 1.175** \\ 
+EN & 0.982 & 1.004 & 0.998 & 0.937 & \textbf{0.934 } & 1.201** & 1.379** & 
+0.985 & 1.118 & 1.026 & 1.147 \\ 
+NNG & 1.001 & 0.990 & 1.004 & \textbf{0.936 } & 0.953 & 1.107** & 1.356** & 
+1.054 & 1.174 & 1.019 & 1.111 \\ 
+Mean & 0.949 & \textbf{0.952* } & \textbf{0.970 } & 0.941 & 0.936* & 0.949 & 
+1.106 & \textbf{0.936 } & 1.060 & 1.011 & 1.066 \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{{\footnotesize {Panel C: Recursive, $h=12$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 7.579 & 0.007 & 21.740 & 0.002 & \textbf{0.011 } & 0.001
+& 12.047 & 0.012 & 0.004 & 0.437 & 0.005 \\ 
+ARX(SIC) & 1.026 & 1.022 & 1.043 & \textbf{0.984 } & 1.008 & 0.992 & 0.933 & 
+1.037 & 0.927 & 1.030 & 1.023 \\ 
+CADL & 0.985** & 1.012 & \textbf{0.983**} & 0.995 & 1.029 & \textbf{0.786**}
+& 0.964** & 0.973 & 0.974 & 1.016 & 1.061 \\ 
+Bagging & 0.971 & 1.051 & 1.021 & 2.434** & 1.503** & 1.004 & 1.193** & 1.030
+& 1.151 & 1.010 & 1.049 \\ 
+Boosting & 0.968 & 0.999 & 1.025 & 1.039 & 1.061 & 1.059 & 0.952 & 1.115** & 
+1.006 & 1.002 & 0.994 \\ 
+BMA1 & 1.065 & 0.986 & 0.999 & 1.050 & 1.095 & 1.009 & 1.002 & 1.009 & 0.919
+& \textbf{0.981 } & 0.984 \\ 
+BMA2 & 0.980 & 1.025 & 1.027 & 1.079 & 1.092** & 1.021 & 1.013 & 1.046 & 
+1.055 & 1.007 & 1.026 \\ 
+Ridge & 0.981 & 1.017 & 1.017 & 1.064 & 1.105** & 0.951 & 0.992 & 1.036 & 
+1.041 & 1.009 & 1.019 \\ 
+LAR & 0.984 & 0.997 & 1.011 & 0.995 & 1.007 & 1.083 & 1.005 & \textbf{0.972 }
+& 0.974 & 1.003 & 0.999 \\ 
+EN & 0.985 & 1.000 & 1.010 & 1.023 & 1.006 & 1.083 & 1.002 & 1.014 & 0.977 & 
+1.003 & 1.000 \\ 
+NNG & 0.992 & 1.002 & 1.004 & 1.005 & 1.024 & 1.011 & 1.036 & 0.993 & 1.004
+& 1.004 & 0.988 \\ 
+Mean & \textbf{0.950 } & \textbf{0.976 } & 0.994 & 0.987 & 1.014 & 0.900** & 
+\textbf{0.930**} & 0.974 & \textbf{0.914**} & 0.996 & \textbf{0.970 } \\ 
+\bottomrule \  &  &  &  &  &  &  &  &  &  &  &  \\ 
+&  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}%
+} 
+\begin{minipage}{1\columnwidth} \scriptsize * Notes: See notes to Tables 3-4. Note that FAAR and PCR model results are not included in this table, since these models are not constructed under Specification Type 2.
+\end{minipage}
+\end{table}
+
+%TABLE 6 Specification Type 3  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+\caption{Relative Mean Square Forecast Errors of Specification Type 3*}
+\label{tb6}{\scriptsize 
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{} \\ 
+\multicolumn{12}{c}{{\footnotesize {Panel A: Recursive, $h=1$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 6.257 & 0.007 & 18.650 & 0.002 & 0.010 & 0.000 & 1.316 & 
+0.010 & 0.003 & 0.400 & 0.006 \\ 
+ARX(SIC) & 1.011 & \textbf{0.941 } & 1.136 & 0.966 & 0.992 & 1.347** & 1.088
+& 0.913 & 1.181 & 1.135 & 0.836 \\ 
+CADL & \textbf{0.976**} & 1.031 & 0.991 & 1.026 & 1.018 & \textbf{0.920* } & 
+\textbf{0.988 } & 0.975 & 1.060 & 1.009 & 1.075 \\ 
+Bagging & 6.843** & 1.142 & 5.235** & 5.337 & 2.120 & 13.78** & 10.14** & 
+3.521** & 4.217 & 11.14 & 3.637 \\ 
+Boosting & 1.010** & 0.985 & \textbf{0.991**} & 0.947 & 0.983 & 1.143 & 1.011
+& \textbf{0.893 } & 1.118 & 1.024 & \textbf{0.826 } \\ 
+BMA1 & 1.137** & 1.010 & 1.062** & 0.989 & 1.069 & 2.150** & 1.409** & 
+0.966** & 1.080 & 1.162 & 0.842** \\ 
+BMA2 & 0.980 & 0.998 & 1.081** & 0.996 & 1.027 & 1.440 & 1.301 & 0.905** & 
+1.115 & 1.121 & 0.834 \\ 
+Ridge & 1.564 & 1.274 & 1.354** & 1.051 & 1.186 & 2.258** & 1.231 & 1.322**
+& 1.334 & 1.417 & 1.079 \\ 
+LAR & 0.990** & 0.998 & 1.000** & 1.017** & 1.004 & 0.981** & 1.003** & 1.000
+& \textbf{0.992 } & \textbf{0.998 } & 0.847** \\ 
+EN & 0.990** & 0.996 & 1.000** & 1.016** & 1.004 & 0.982** & 1.001** & 1.000
+& 0.993 & 0.998 & 0.850** \\ 
+NNG & 0.996 & 0.998 & 0.998** & 0.999** & 1.000 & 0.989** & 1.003** & 0.995
+& 1.001 & 1.001 & 1.000 \\ 
+Mean & 1.012 & 0.954 & 1.365 & \textbf{0.928 } & \textbf{0.937 } & 1.822** & 
+1.013 & 0.928 & 1.001 & 1.102 & 0.865 \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{{\footnotesize {Panel B: Recursive, $h=3$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 6.288 & 0.006 & 22.471 & 0.002 & 0.011 & 0.000 & 2.540 & 
+0.010 & 0.003 & 0.432 & 0.005 \\ 
+ARX(SIC) & 1.088 & 0.953 & 1.039 & \textbf{0.976 } & \textbf{0.945 } & 1.149
+& 1.144 & 1.030 & 1.028 & 1.042 & 1.135** \\ 
+CADL & \textbf{0.994 } & 0.999 & \textbf{0.986**} & 1.049 & 1.038 & \textbf{%
+0.873**} & 0.979* & 0.960 & 1.066 & 1.014 & 1.019 \\ 
+Bagging & 13.34 & 2.042 & 5.843 & 7.926 & 3.300 & 19.95** & 12.30** & 3.530
+& 8.547** & 13.84 & 19.75** \\ 
+Boosting & 1.012 & \textbf{0.939 } & 1.023 & 0.991 & 1.061 & 0.966 & \textbf{%
+0.934 } & 0.983 & 1.034 & 1.008 & 1.033** \\ 
+BMA1 & 1.033 & 0.956 & 1.258 & 1.125 & 1.098 & 1.072 & 1.301 & 1.014 & 1.074
+& 1.088 & 1.116 \\ 
+BMA2 & 1.035 & 0.968 & 1.027 & 1.062 & 1.051 & 1.030 & 1.219 & 1.044 & 0.991
+& 1.050 & 1.090** \\ 
+Ridge & 1.471 & 1.239 & 1.974 & 1.261 & 1.350 & 1.647 & 1.148** & 1.460 & 
+1.148 & 1.261 & 1.662** \\ 
+LAR & 0.996 & 0.988 & 1.002 & 1.006 & 1.005 & 0.981** & 0.994** & 0.962 & 
+0.986 & 0.999 & 1.002** \\ 
+EN & 0.994 & 0.988 & 1.002 & 1.006 & 1.005 & 0.982** & 0.995** & \textbf{%
+0.955 } & 0.990 & \textbf{0.999 } & \textbf{0.999 } \\ 
+NNG & 0.999 & 0.998 & 1.000 & 0.999 & 0.999 & 1.001** & 1.006** & 1.000 & 
+1.001 & 1.003 & 1.002 \\ 
+Mean & 1.130 & 0.968* & 1.536 & 1.035 & 1.010* & 2.469 & 1.012 & 1.208 & 
+\textbf{0.936 } & 1.059 & 1.202 \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{llllllllllll}
+\multicolumn{12}{c}{{\footnotesize {Panel C: Recursive, $h=12$}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule Method & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP
+\\ 
+\midrule AR(SIC) & 7.579 & 0.007 & 21.740 & 0.002 & 0.011 & 0.001 & 12.047 & 
+0.012 & 0.004 & 0.437 & 0.005 \\ 
+ARX(SIC) & 1.026 & 1.022 & 1.043 & 0.984 & 1.008 & 0.992 & 0.933 & 1.037 & 
+\textbf{0.927 } & 1.030 & 1.023 \\ 
+CADL & 0.985** & 1.012 & \textbf{0.983**} & 0.995 & 1.029 & \textbf{0.786**}
+& 0.964** & \textbf{0.973 } & 0.974 & 1.016 & 1.061 \\ 
+Bagging & 2.681 & 2.070 & 9.818 & 3.783** & 7.000** & 10.45 & 6.306** & 9.277
+& 9.428 & 12.94 & 8.207 \\ 
+Boosting & \textbf{0.958 } & \textbf{0.998 } & 1.022 & 0.953 & 1.002 & 0.915
+& 0.899 & 1.026** & 0.973 & 1.006 & 1.002 \\ 
+BMA1 & 1.209 & 1.035 & 1.162 & 1.579 & 1.253 & 1.669 & 2.078 & 1.112 & 1.045
+& 1.038 & 1.203 \\ 
+BMA2 & 1.133 & 1.011 & 1.054 & 1.383 & 1.126** & 1.365 & 1.783 & 1.063 & 
+1.004 & 1.021 & 1.036 \\ 
+Ridge & 1.321 & 1.178 & 1.863 & 1.210 & 1.306** & 1.124 & 1.129 & 1.598 & 
+1.083 & 1.358 & 1.692 \\ 
+LAR & 0.983 & 1.002 & 1.001 & 1.004 & 0.997 & 0.968 & 0.928 & 1.006 & 0.983
+& 1.000 & 1.001 \\ 
+EN & 0.985 & 1.002 & 1.001 & 0.992 & \textbf{0.995 } & 0.982 & 0.984 & 0.999
+& 0.981 & \textbf{0.999 } & 1.000 \\ 
+NNG & 0.996 & 1.002 & 1.000 & 0.999 & 1.000 & 0.999 & 0.998 & 1.001 & 1.001
+& 1.001 & \textbf{0.998 } \\ 
+Mean & 1.118 & 1.154 & 1.076 & \textbf{0.950 } & 1.020 & 1.185** & \textbf{%
+0.897**} & 1.526 & 0.996** & 1.062 & 1.080 \\ 
+\bottomrule \  &  &  &  &  &  &  &  &  &  &  &  \\ 
+&  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}%
+} 
+\begin{minipage}{1\columnwidth} \scriptsize * Notes: See notes to Tables 3-5.
+\end{minipage}
+\end{table}
+
+%TABLE 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[tbph]
+\caption{Forecast Experiment Summary Results*}
+\label{tb7}
+{}
+\par
+\begin{center}
+Best Forecasting Methods by Target Variable and Specification Type
+\end{center}
+\par
+\centering{\scriptsize 
+\begin{tabular}{lccccccccccc}
+\multicolumn{12}{c}{} \\ 
+\multicolumn{12}{c}{{\footnotesize {Panel A: Specification Type 1 Without
+Lags}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP \\ 
+\midrule$h=1$ & FAAR & PCR & Mean & PCR & PCR & CADL & Mean & Ridge & FAAR & 
+AR & ARX \\ 
+$h=3$ & PCR & ARX & Bag & Mean & PCR & CADL & Bag & Mean & Mean & Bag & NNG
+\\ 
+$h=1$2 & PCR & AR & PCR & Mean & Mean & CADL & Bag & CADL & ARX & Mean & Mean
+\\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{lccccccccccc}
+\multicolumn{12}{c}{{\footnotesize {Panel B: Specification Type 1 With Lags}}
+} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP \\ 
+\midrule$h=1$ & Mean & Mean & CADL & ARX & Mean & CADL & CADL & ARX & AR & AR
+& Mean \\ 
+$h=3$ & CADL & ARX & Mean & Mean & Mean & CADL & CADL & CADL & Mean & AR & AR
+\\ 
+$h=12$ & Boost & Mean & CADL & Mean & Mean & CADL & ARX & CADL & ARX & AR & 
+Mean \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{lccccccccccc}
+\multicolumn{12}{c}{{\footnotesize {Panel C: Specification Type 2}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP \\ 
+\midrule$h=1$ & LAR & EN & CADL & ARX & Bag & Mean & CADL & ARX & Mean & AR
+& ARX \\ 
+$h=3$ & BMA2 & Mean & Mean & NNG & EN & CADL & CADL & Mean & AR & AR & AR \\ 
+$h=1$2 & Mean & Mean & CADL & ARX & AR & CADL & Mean & LAR & Mean & BMA1 & 
+Mean \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{lccccccccccc}
+\multicolumn{12}{c}{{\footnotesize {Panel D: Specification Type 3}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP \\ 
+\midrule$h=1$ & CADL & ARX & Boost & Mean & Mean & CADL & CADL & Boost & LAR
+& LAR & Boost \\ 
+$h=3$ & CADL & Boost & CADL & ARX & ARX & CADL & Boost & EN & Mean & EN & EN
+\\ 
+$h=12$ & Boost & Boost & CADL & Mean & EN & CADL & Mean & CADL & ARX & EN & 
+NNG \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+\begin{tabular}{lccccccccccc}
+\multicolumn{12}{c}{{\footnotesize {Panel E: All Specification Types}}} \\ 
+\multicolumn{12}{c}{} \\ 
+\toprule & UR & PI & TB & CPI & PPI & NPE & HS & IPX & M2 & SNP & GDP \\ 
+\midrule\multirow{2}{.5in}{$h=1$} & SP1 & SP1 & SP1 & SP1 & SP1 & SP2 & SP1
+& SP1 & SP1 & SP3 & SP1L \\ 
+& FAAR & PCR & Mean & PCR & PCR & Mean & Mean & Ridge & FAAR & LAR & Mean \\ 
+\midrule\multirow{2}{.5in}{$h=3$} & SP2 & SP3 & SP1L & SP1L & SP1L & - & SP1
+& SP2 & SP3 & SP1 & SP1 \\ 
+& BMA2 & Boost & Mean & Mean & Mean & CADL & Bag & Mean & Mean & Bag & NNG
+\\ 
+\midrule\multirow{2}{.5in}{$h=12$} & SP2 & SP2 & SP1 & SP1L & SP1L & - & SP1
+& SP2 & SP2 & SP2 & SP2 \\ 
+& Mean & Mean & PCR & Mean & Mean & CADL & Bag & LAR & Mean & BMA1 & Mean \\ 
+\bottomrule &  &  &  &  &  &  &  &  &  &  & 
+\end{tabular}
+} 
+\begin{minipage}{1\columnwidth} \scriptsize * Notes: See notes to Tables 1-5. Entries in first four panels denote the method yielding the lowest point MSFE for given target variable. These entries correspond to entries in bold in Tables 3-6. Each pair of entries in Panel E  denotes the MSFE ``best'' method and specification type for given target variables and forecast horizon, using recursive estimation. 
+The way to read entries in Panels E is as follows. When forecasting unemployment (UR), the FAAR model under Specification Type 1 without lags yields the lowest MSFE, for $h=1$, across all specification types.  
+\end{minipage}
+\end{table}
+
+%TABLE 8 Forecast Experiment Summary Results %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htbp]
+\caption{Forecast Experiment Summary Results*}
+\label{tb8}\centering
+{\scriptsize %\begin{tabular}{lcccccc}
+\begin{tabular}{lx{1.5cm}x{1.5cm}x{1.5cm}x{1.5cm}x{1.5cm}x{1.5cm}}
+% PANEL A -------------------------------------------------------------------------
+\multicolumn{7}{c}{} \\ 
+\multicolumn{7}{c}{\footnotesize{Panel A: Summary of MSFE ``best'' Models Across All Specification Types}}\\
+\multicolumn{7}{c}{} \\ \toprule
+{} & \multicolumn{3}{x{4.5cm}}{Recursive Estimation Windows} & \multicolumn{3}{x{4.5cm}}{Recursive and Rolling Estimation Windows} \\
+{} & { $h=1$} & { $h=3$} & {$h=12$} & {$h=1$} & {$h=3$} & {$h=12$} \\ \cmidrule(r){2-4} \cmidrule(r){5-7}
+AR(SIC)&	0&	0&	0&	0&	0&	0	\\
+ARX(SIC)&	0&	0&	0&	0&	0&	0	\\
+CADL &	0&	1&	1&	0&	1&	1	\\
+FAAR&	2&	0&	0&	2&	0&	0	\\
+PCR&	3&	0&	1&	3&	0&	1	\\
+Bagging&	0&	2&	1&	0&	2&	0	\\
+Boosting&	0&	1&	0&	0&	1&	1	\\
+BMA1&	0&	0&	1&	0&	0&	3	\\
+BMA2&	0&	1&	0&	0&	1&	0	\\
+Ridge&	1&	0&	0&	1&	0&	0	\\
+LAR&	1&	0&	1&	0&	0&	1	\\
+EN&	0&	0&	0&	0&	0&	0	\\
+NNG&	0&	1&	0&	2&	1&	0	\\
+Mean&	4&	5&	6&	3&	5&	4	\\ \bottomrule
+% PANEL B -------------------------------------------------------------------------
+\multicolumn{7}{c}{} \\ 
+\multicolumn{7}{c}{\footnotesize{Panel B: Summary of MSFE-"best" Models }}\\
+\multicolumn{7}{c}{} \\ \toprule
+{} & \multicolumn{3}{x{4.5cm}}{Winners by Estimation Window Type} & \multicolumn{3}{x{4.5cm}}{Winners by Specification Type} \\
+{} & {$ h=1$} & {$ h=3$} & {$h=12$} & {$ h=1$} & {$ h=3$} & {$h=12$} \\ 
+\cmidrule(r){2-4} \cmidrule(r){5-7}
+Specification Type 1 without lags&	\multicolumn{6}{c}{}						\\
+{             Recursive}&	6&	10&	4&	\multirow{2}{.2in}{8}&	\multirow{2}{.2in}{4}&	\multirow{2}{.2in}{3}	\\
+{             Rolling}&	5&	1&	7&	&	&		\\
+Specification Type 1 with lags&	\multicolumn{6}{c}{}						\\
+{             Recursive}&	8&	10&	7&	\multirow{2}{.2in}{1}&	\multirow{2}{.2in}{3}&	\multirow{2}{.2in}{2}	\\
+{             Rolling}&	3&	1&	4&	&	&		\\
+Specification Type 2&	\multicolumn{6}{c}{}						\\
+{             Recursive}&	7&	7&	6&	\multirow{2}{.2in}{1}&	\multirow{2}{.2in}{2}&	\multirow{2}{.2in}{6}	\\
+{             Rolling}&	4&	4&	5&	&	&		\\
+Specification Type 3&	\multicolumn{6}{c}{}						\\
+{             Recursive}&	6&	10&	7&	\multirow{2}{.2in}{1}&	\multirow{2}{.2in}{2}&	\multirow{2}{.2in}{0}	\\
+{             Rolling}&	5&	1&	4&	&	&		\\ \bottomrule
+\multicolumn{7}{c}{} \\ 
+\end{tabular}} 
+\begin{minipage}{1\columnwidth} \scriptsize * Notes: See notes to Tables 2,3 and 7. Numerical entries in Panel A denote the number of ``wins'' of each forecasting method, at a given forecasting horizon. The lefthand set of 3 columns summarizes results for recursive estimation, and correpond to entries in Panel B of Table 7. The righthand set of 3 columns summarizes results based on both recursive and rolling estimation methods.  
+\end{minipage}
+\end{table}
+
+\newpage 
+%TABLE 9 Forecast Experiment Summary Results %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{landscape}
+\begin{table}[htbp]
+\caption{Forecast Experiment Summary Results*}
+\label{tb9}\centering
+{\scriptsize 
+\begin{tabular}{cx{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}x{.86cm}}
+\multicolumn{17}{c}{} \\ 
+% PANEL A -----------------------------------------------------------------------------------------------------------
+%\multicolumn{13}{c}{\footnotesize{Panel A: MSFE ``Wins'' by Specification Type  $h=1$, Recursive Estimation}}\\
+\multicolumn{5}{c}{} & \multicolumn{7}{x{6.5cm}}{\footnotesize{Panel A: Wins By Specification Types, $h=1$, Recursive Estimation}} & \multicolumn{5}{c}{}\\
+\multicolumn{17}{c}{} \\ \toprule
+ & \multicolumn{4}{c}{Specification  Type 1 Without Lags} & \multicolumn{4}{c}{Specification Type 1 With Lags} & \multicolumn{4}{c}{Specification Type 2} & \multicolumn{4}{c}{Specification Type 3} \\
+\cmidrule(r){2-5} \cmidrule(r){6-9} \cmidrule(r){10-13} \cmidrule(r){14-17}
+Subsample & Mean	& Linear Factor & Nonlinear Factor & Other & Mean	& Linear Factor & Nonlinear Factor & Other & Mean	& Linear Factor & Nonlinear Factor & Other & Mean	& Linear Factor & Nonlinear Factor & Other \\ 
+\cmidrule(r){2-5} \cmidrule(r){6-9} \cmidrule(r){10-13} \cmidrule(r){14-17}
+% DATA INPUT STARTS HERE
+84:06 $\symbol{126}$ 90:06&	3&	3&	4&	1&	4&	0&	1&	6&	0&	0&	5&	6&	4&	1&	4&	2	\\
+91:03 $\symbol{126}$ 01:02&	5&	2&	4&	0&	4&	0&	1&	6&	3&	0&	1&	7&	4&	0&	4&	3	\\
+01:11 $\symbol{126}$ 07:11&	0&	4&	4&	2&	2&	1&	1&	7&	1&	0&	1&	9&	5&	1&	1&	4	\\
+Expansion&	4&	4&	2&	1&	4&	1&	0&	6&	2&	0&	3&	6&	5&	1&	4&	1	\\
+Recession&	1&	4&	2&	4&	1&	1&	2&	7&	0&	2&	3&	6&	0&	2&	7&	2	\\ \bottomrule
+% DATA INPUT ENDS HERE
+%\bottomrule
+\multicolumn{17}{c}{} \\
+% PANEL B -----------------------------------------------------------------------------------------------------------
+%\multicolumn{13}{c}{\footnotesize{Panel B: MSFE ``Wins'' Across All Specification Types  $h=1$, Recursive Estimation}}\\
+\multicolumn{5}{c}{} & \multicolumn{7}{x{7.5cm}}{\footnotesize{Panel B: Wins Across All Specification Types, $h=1$, Recursive Estimation}} & \multicolumn{5}{c}{}\\
+\multicolumn{17}{c}{} \\ \toprule
+  & \multicolumn{4}{c}{Specification Type 1 Without Lags} & \multicolumn{4}{c}{Specification Type 1 With Lags} & \multicolumn{4}{c}{Specification Type 2} & \multicolumn{4}{c}{Specification Type 3} \\
+\cmidrule(r){2-5} \cmidrule(r){6-9} \cmidrule(r){10-13} \cmidrule(r){14-17}
+Subsample & Mean	& Linear Factor & Nonlinear Factor & Other & Mean	& Linear Factor & Nonlinear Factor & Other & Mean	& Linear Factor & Nonlinear Factor & Other & Mean	& Linear Factor & Nonlinear Factor & Other\\ 
+\cmidrule(r){2-5} \cmidrule(r){6-9} \cmidrule(r){10-13} \cmidrule(r){14-17}
+% DATA INPUT STARTS HERE
+84:06 $\symbol{126}$ 90:06&	0&	1&	1&	0&	0&	0&	1&	3&	0&	0&	3&	1&	1&	0&	0&	0	\\
+91:03 $\symbol{126}$ 01:02&	1&	1&	3&	0&	2&	0&	0&	1&	1&	0&	1&	0&	1&	0&	0&	0	\\
+01:11 $\symbol{126}$ 07:11&	0&	2&	1&	1&	0&	1&	0&	1&	0&	0&	0&	3&	2&	0&	0&	0	\\
+Expansion&	1&	0&	1&	0&	0&	0&	3&	1&	2&	1&	0&	0&	2&	0&	0&	0	\\
+Recession&	0&	0&	1&	2&	0&	1&	1&	0&	0&	1&	2&	0&	0&	0&	3&	0	\\ \bottomrule
+% DATA INPUT ENDS HERE
+%\bottomrule
+\multicolumn{17}{c}{} 
+\end{tabular}}
+\begin{minipage}{1\columnwidth} \scriptsize * Notes: See notes to Tables 3 and 8. Entries in Panel A enumerate how many times each ``group'' of forecasting methods yields the lowest MSFE for each target variable and for each specification type. The ``groups'' are defined as follows.
+\textquotedblleft Mean\textquotedblright  includes: BMA, Combined-ADL and Mean. \textquotedblleft Linear Factor\textquotedblright  includes: FAAR and PCR. \textquotedblleft Nonlinear Factor\textquotedblright  includes: all shrinkage/factor combination models (i.e., see Specification Types 1 and 2 in Table 2). Finally, \textquotedblleft Other\textquotedblright  includes our linear AR(SIC) and ARX(SIC) models. 
+See Section 3 for further details. Entries in Panel B enumerate how many times each set of forecasting methods yields lowest MSFE across all specification types. 
+Subsamples follow business cycles dated by the NBER. The first relevant NBER dated expansion started in 82:11, but our forecasting experiments start in 84:6, so that the start date of first subsample is set at 84:6. \textquotedblleft Expansion\textquotedblright  includes all of expansion dates in the forecasting period and \textquotedblleft Recession\textquotedblright  includes all of contraction dates in the forecasting period. 
+\end{minipage}
+\end{table}
+\end{landscape} 
+
+%TABLE 10 Reality Check  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage 
+%\begin{longtable}{y{2cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}}
+\LTcapwidth=\textwidth
+\centering
+\begin{longtable}{y{2cm}lllllllllll}
+\caption{\normalsize {Reality Check Statistics for Various Forecast Experiments*}}\\
+\label{tb10}\\
+%{\scriptsize 
+%\begin{tabular}{lccccccccccc}
+%\begin{tabular}{llllllllllll}
+%\multicolumn{12}{c}{} \\
+\multicolumn{12}{c}{{\footnotesize {Panel A: Recursive Estimation, $h=1$}}} \\ \multicolumn{12}{c}{} \\
+\toprule \multicolumn{1}{c}{{\scriptsize {Models}}} & \multicolumn{1}{c}{{\scriptsize {UR}}} & \multicolumn{1}{c}{{\scriptsize {PI}}} & \multicolumn{1}{c}{{\scriptsize {TB}}} & \multicolumn{1}{c}{{\scriptsize {CPI}}} & \multicolumn{1}{c}{{\scriptsize {PPI}}} & \multicolumn{1}{c}{{\scriptsize {NPE}}} & \multicolumn{1}{c}{{\scriptsize {HS}}}& \multicolumn{1}{c}{{\scriptsize {IPX}}} & \multicolumn{1}{c}{{\scriptsize {M2}}} & \multicolumn{1}{c}{{\scriptsize {SNP}}} & \multicolumn{1}{c}{{\scriptsize {GDP}}} \\ \midrule
+\endfirsthead
+%\multicolumn{12}{c}{} \\
+%\toprule {\scriptsize {Cases}} & {\scriptsize {UR}} & {\scriptsize {PI}} & {\scriptsize {TB}} & {\scriptsize {CPI}} & {\scriptsize {PPI}} & {\scriptsize {NPE}} & {\scriptsize {HS}}& {\scriptsize {IPX}} & {\scriptsize {M2}} & {\scriptsize {SNP}} & {\scriptsize {GDP}} \\ \midrule
+%\multicolumn{12}{c}{{\footnotesize {Continued from previous page}}} \\ 
+%\endhead
+%
+%\multicolumn{12}{c}{{\footnotesize {Continued in next page}}} \\ 
+%\endfoot
+%
+%\\
+%\endlastfoot
+%
+{\scriptsize {AR vs. SP1s}}&	{\scriptsize { 0.402* }}&	{\scriptsize { 5.800**}}&	{\scriptsize { 0.809* }}&	{\scriptsize { 1.550* }}&	{\scriptsize { 5.429* }}&	{\scriptsize { 0.132* }}&	{\scriptsize { 0.019* }}&	{\scriptsize { 0.818* }}&	{\scriptsize { 0.859* }}&	{\scriptsize {-0.069  }}&	{\scriptsize{ 5.982* }}	\\
+{\scriptsize {AR vs. SP1FAARs}}&	{\scriptsize { 0.402* }}&	{\scriptsize { 5.800**}}&	{\scriptsize { 0.809* }}&	{\scriptsize { 1.550* }}&	{\scriptsize { 5.429* }}&	{\scriptsize { 0.101* }}&	{\scriptsize { 0.019* }}&	{\scriptsize { 0.818* }}&	{\scriptsize { 0.859* }}&	{\scriptsize {-0.069  }}&	{\scriptsize{ 4.563* }}	\\
+{\scriptsize {AR vs. SP1LFAARs}}&	{\scriptsize { 0.122* }}&	{\scriptsize { 4.977**}}&	{\scriptsize { 0.096* }}&	{\scriptsize { 0.375* }}&	{\scriptsize { 1.582* }}&	{\scriptsize { 0.132* }}&	{\scriptsize { 0.009* }}&	{\scriptsize { 0.520* }}&	{\scriptsize {-1.090  }}&	{\scriptsize {-0.208  }}&	{\scriptsize{ 9.301* }}	\\
+{\scriptsize {AR vs. SP2s}}&	{\scriptsize { 0.395**}}&	{\scriptsize { 3.986**}}&	{\scriptsize {-1.251  }}&	{\scriptsize {-1.265  }}&	{\scriptsize { 1.845* }}&	{\scriptsize { 0.149* }}&	{\scriptsize {-0.168  }}&	{\scriptsize { 0.345* }}&	{\scriptsize { 1.716* }}&	{\scriptsize {-1.146  }}&	{\scriptsize{ 1.984**}}	\\
+{\scriptsize {AR vs. SP3s}}&	{\scriptsize { 0.168* }}&	{\scriptsize { 2.245**}}&	{\scriptsize { 0.620**}}&	{\scriptsize { 1.072**}}&	{\scriptsize { 4.217* }}&	{\scriptsize { 0.031* }}&	{\scriptsize {-0.001  }}&	{\scriptsize { 0.640**}}&	{\scriptsize { 0.924**}}&	{\scriptsize { 0.048* }}&	{\scriptsize{ 7.098* }}	\\
+{\scriptsize {SP1FAAR vs. SP1Shrinks}}&	{\scriptsize {-1.029  }}&	{\scriptsize { 2.061* }}&	{\scriptsize { 1.126* }}&	{\scriptsize { 0.425* }}&	{\scriptsize { 1.993**}}&	{\scriptsize { 1.246* }}&	{\scriptsize { 0.603* }}&	{\scriptsize { 0.007* }}&	{\scriptsize {-0.189  }}&	{\scriptsize { 0.984* }}&	{\scriptsize{ 3.251* }}	\\
+{\scriptsize {SP1FAAR vs. SP1Ls}}&	{\scriptsize {-0.279  }}&	{\scriptsize { 1.237* }}&	{\scriptsize {-2.469  }}&	{\scriptsize {-1.624  }}&	{\scriptsize {-1.855  }}&	{\scriptsize {-0.705  }}&	{\scriptsize {-1.236  }}&	{\scriptsize {-0.726  }}&	{\scriptsize {-3.463  }}&	{\scriptsize {-1.980  }}&	{\scriptsize{ 7.989* }}	\\
+{\scriptsize {SP1FAAR vs. SP2s}}&	{\scriptsize {-0.006  }}&	{\scriptsize { 0.246* }}&	{\scriptsize {-0.934  }}&	{\scriptsize {-2.390  }}&	{\scriptsize {-1.591  }}&	{\scriptsize { 0.173* }}&	{\scriptsize {-0.126  }}&	{\scriptsize {-0.465  }}&	{\scriptsize { 0.857* }}&	{\scriptsize {-0.093  }}&	{\scriptsize{ 0.673* }}	\\
+{\scriptsize {SP1FAAR vs. SP3s}}&	{\scriptsize {-0.234  }}&	{\scriptsize {-1.495  }}&	{\scriptsize { 0.937* }}&	{\scriptsize {-0.053  }}&	{\scriptsize { 0.780**}}&	{\scriptsize { 0.054* }}&	{\scriptsize { 0.040**}}&	{\scriptsize {-0.170  }}&	{\scriptsize { 0.065**}}&	{\scriptsize { 1.101* }}&	{\scriptsize{ 5.786* }}	\\
+{\scriptsize {SP1Best vs. SP1s}}&	{\scriptsize {-0.103  }}&	{\scriptsize {-2.061  }}&	{\scriptsize {-0.046  }}&	{\scriptsize {-0.425  }}&	{\scriptsize {-1.993  }}&	{\scriptsize {-0.031  }}&	{\scriptsize {-0.010  }}&	{\scriptsize {-0.001  }}&	{\scriptsize {-0.189  }}&	{\scriptsize {-0.069  }}&	{\scriptsize{-1.419  }}	\\
+{\scriptsize {SP1Best vs. SP1Ls}}&	{\scriptsize {-0.279  }}&	{\scriptsize {-0.082  }}&	{\scriptsize {-3.595  }}&	{\scriptsize {-2.049  }}&	{\scriptsize {-0.385  }}&	{\scriptsize {-0.862  }}&	{\scriptsize {-0.130  }}&	{\scriptsize {-0.733  }}&	{\scriptsize {-0.346  }}&	{\scriptsize {-3.033  }}&	{\scriptsize{ 3.319* }}	\\
+{\scriptsize {SP1Best vs. SP2s}}&	{\scriptsize {-0.006  }}&	{\scriptsize {-1.814  }}&	{\scriptsize {-2.060  }}&	{\scriptsize {-2.815  }}&	{\scriptsize {-3.584  }}&	{\scriptsize { 0.016* }}&	{\scriptsize {-0.187  }}&	{\scriptsize {-0.472  }}&	{\scriptsize { 0.857* }}&	{\scriptsize {-1.146  }}&	{\scriptsize{-3.998  }}	\\
+{\scriptsize {SP1Best vs. SP3s}}&	{\scriptsize {-0.234  }}&	{\scriptsize {-3.555  }}&	{\scriptsize {-0.188  }}&	{\scriptsize {-0.478  }}&	{\scriptsize {-1.213  }}&	{\scriptsize {-0.102  }}&	{\scriptsize {-0.020  }}&	{\scriptsize {-0.178  }}&	{\scriptsize { 0.065* }}&	{\scriptsize { 0.048* }}&	{\scriptsize{ 1.116* }}	\\
+{\scriptsize {SP1LBest vs. SP1Ls}}&	{\scriptsize {-0.352  }}&	{\scriptsize {-0.193  }}&	{\scriptsize {-0.096  }}&	{\scriptsize {-0.375  }}&	{\scriptsize {-1.095  }}&	{\scriptsize {-1.323  }}&	{\scriptsize {-0.089  }}&	{\scriptsize {-0.368  }}&	{\scriptsize {-1.090  }}&	{\scriptsize {-0.208  }}&	{\scriptsize{-1.404  }}	\\
+{\scriptsize {SP2Best vs. SP2s}}&	{\scriptsize {0.000  }}&	{\scriptsize {-0.003  }}&	{\scriptsize {-0.096  }}&	{\scriptsize {-0.375  }}&	{\scriptsize {-0.136  }}&	{\scriptsize {-0.016  }}&	{\scriptsize {-0.001  }}&	{\scriptsize {-0.284  }}&	{\scriptsize {-0.172  }}&	{\scriptsize {-0.208  }}&	{\scriptsize{-5.982  }}	\\
+{\scriptsize {SP3Best vs. SP3s}}&	{\scriptsize {-0.081  }}&	{\scriptsize {-0.119  }}&	{\scriptsize {-0.520  }}&	{\scriptsize {-0.496  }}&	{\scriptsize {-3.236  }}&	{\scriptsize {-0.102  }}&	{\scriptsize {-0.009  }}&	{\scriptsize {-0.040  }}&	{\scriptsize {-0.775  }}&	{\scriptsize {-0.009  }}&	{\scriptsize{-0.750  }}	\\
+{\scriptsize {SP3Best vs. SP1s}}&	{\scriptsize { 0.234  }}&	{\scriptsize { 0.344  }}&	{\scriptsize { 0.188  }}&	{\scriptsize { 0.478  }}&	{\scriptsize { 0.121  }}&	{\scriptsize {-0.031  }}&	{\scriptsize { 0.001  }}&	{\scriptsize { 0.178  }}&	{\scriptsize {-0.006  }}&	{\scriptsize {-0.117  }}&	{\scriptsize{-2.535  }}	\\
+{\scriptsize {SP3Best vs. SP1Ls}}&	{\scriptsize {-0.045  }}&	{\scriptsize { 0.261  }}&	{\scriptsize {-3.406  }}&	{\scriptsize {-1.571  }}&	{\scriptsize {-0.263  }}&	{\scriptsize {-0.862  }}&	{\scriptsize {-0.129  }}&	{\scriptsize {-0.555  }}&	{\scriptsize {-0.353  }}&	{\scriptsize {-3.081  }}&	{\scriptsize{ 2.203  }}	\\
+{\scriptsize {SP3Best vs. SP2s}}&	{\scriptsize { 0.227  }}&	{\scriptsize { 0.162  }}&	{\scriptsize {-1.872  }}&	{\scriptsize {-2.337  }}&	{\scriptsize {-0.237  }}&	{\scriptsize { 0.016  }}&	{\scriptsize {-0.018  }}&	{\scriptsize {-0.295  }}&	{\scriptsize { 0.079  }}&	{\scriptsize {-1.194  }}&	{\scriptsize{-5.113  }}	\\ \bottomrule
+%
+\pagebreak
+%\multicolumn{12}{c}{} \\
+\multicolumn{12}{c}{{\footnotesize {Panel B: Recursive Estimation, $h=3$}}} \\ 
+\multicolumn{12}{c}{} \\
+\toprule \multicolumn{1}{c}{{\scriptsize {Models}}} & \multicolumn{1}{c}{{\scriptsize {UR}}} & \multicolumn{1}{c}{{\scriptsize {PI}}} & \multicolumn{1}{c}{{\scriptsize {TB}}} & \multicolumn{1}{c}{{\scriptsize {CPI}}} & \multicolumn{1}{c}{{\scriptsize {PPI}}} & \multicolumn{1}{c}{{\scriptsize {NPE}}} & \multicolumn{1}{c}{{\scriptsize {HS}}}& \multicolumn{1}{c}{{\scriptsize {IPX}}} & \multicolumn{1}{c}{{\scriptsize {M2}}} & \multicolumn{1}{c}{{\scriptsize {SNP}}} & \multicolumn{1}{c}{{\scriptsize {GDP}}} \\ \midrule
+%
+{\scriptsize {AR vs. SP1s}}&	{\scriptsize {  0.092*  }}&	{\scriptsize {  1.723**}}&	{\scriptsize {  0.241*  }}&	{\scriptsize {  0.519*  }}&	{\scriptsize {  4.492*  }}&	{\scriptsize {  0.284*  }}&	{\scriptsize {  0.139*  }}&	{\scriptsize {  0.293*  }}&	{\scriptsize {  0.240*  }}&	{\scriptsize {  0.221**}}&	{\scriptsize {  0.059*  }}	\\
+{\scriptsize {AR vs. SP1FAARs}}&	{\scriptsize {  0.092*  }}&	{\scriptsize {  1.338**}}&	{\scriptsize {  0.241*  }}&	{\scriptsize {  0.519*  }}&	{\scriptsize {  4.492*  }}&	{\scriptsize {  0.017*  }}&	{\scriptsize {  0.139*  }}&	{\scriptsize {  0.293*  }}&	{\scriptsize {  0.240*  }}&	{\scriptsize {  0.221**}}&	{\scriptsize {  0.059*  }}	\\
+{\scriptsize {AR vs. SP1LFAARs}}&	{\scriptsize {  0.023*  }}&	{\scriptsize {  1.723**}}&	{\scriptsize {  0.404**}}&	{\scriptsize {  3.072*  }}&	{\scriptsize {  8.413*  }}&	{\scriptsize {  0.284*  }}&	{\scriptsize {  0.030*  }}&	{\scriptsize {  0.241**}}&	{\scriptsize {  0.345*  }}&	{\scriptsize {-0.340    }}&	{\scriptsize {-0.539    }}	\\
+{\scriptsize {AR vs. SP2s}}&	{\scriptsize {  0.286*  }}&	{\scriptsize {  2.075**}}&	{\scriptsize {  0.301**}}&	{\scriptsize {  1.432**}}&	{\scriptsize {  5.018*  }}&	{\scriptsize {  0.237*  }}&	{\scriptsize {-0.423    }}&	{\scriptsize {  0.410**}}&	{\scriptsize {  0.604*  }}&	{\scriptsize {-0.290    }}&	{\scriptsize {-0.980    }}	\\
+{\scriptsize {AR vs. SP3s}}&	{\scriptsize {  0.063*  }}&	{\scriptsize {  3.273**}}&	{\scriptsize {  0.009*  }}&	{\scriptsize {  1.237**}}&	{\scriptsize {  1.685*  }}&	{\scriptsize {  0.288**}}&	{\scriptsize {  0.096*  }}&	{\scriptsize {  0.417**}}&	{\scriptsize {  2.432**}}&	{\scriptsize {  0.111**}}&	{\scriptsize {  0.037*  }}	\\
+{\scriptsize {SP1FAAR vs. SP1Shrinks}}&	{\scriptsize {  1.407*  }}&	{\scriptsize {  0.415*  }}&	{\scriptsize {  0.546*  }}&	{\scriptsize {  0.310*  }}&	{\scriptsize {  1.986*  }}&	{\scriptsize {  0.114*  }}&	{\scriptsize {  3.936*  }}&	{\scriptsize {  0.377*  }}&	{\scriptsize {  0.622*  }}&	{\scriptsize {  1.954*  }}&	{\scriptsize {  5.530*  }}	\\
+{\scriptsize {SP1FAAR vs. SP1Ls}}&	{\scriptsize {  0.057*  }}&	{\scriptsize {  0.038*  }}&	{\scriptsize {  0.709*  }}&	{\scriptsize {  2.863*  }}&	{\scriptsize {  5.907*  }}&	{\scriptsize {-0.700    }}&	{\scriptsize {-1.188    }}&	{\scriptsize {-0.184    }}&	{\scriptsize {  0.727*  }}&	{\scriptsize {  1.252*  }}&	{\scriptsize {  4.175*  }}	\\
+{\scriptsize {SP1FAAR vs. SP2s}}&	{\scriptsize {  0.335*  }}&	{\scriptsize {  1.151*  }}&	{\scriptsize {  0.606*  }}&	{\scriptsize {  1.222*  }}&	{\scriptsize {  2.512*  }}&	{\scriptsize {  0.231**}}&	{\scriptsize {-0.168    }}&	{\scriptsize {  0.493*  }}&	{\scriptsize {  0.986**}}&	{\scriptsize {  1.442*  }}&	{\scriptsize {  4.491**}}	\\
+{\scriptsize {SP1FAAR vs. SP3s}}&	{\scriptsize {  0.111*  }}&	{\scriptsize {  2.350*  }}&	{\scriptsize {  0.314*  }}&	{\scriptsize {  1.027*  }}&	{\scriptsize {-0.821    }}&	{\scriptsize {  0.282**}}&	{\scriptsize {  0.351*  }}&	{\scriptsize {  0.501*  }}&	{\scriptsize {  2.813**}}&	{\scriptsize {  1.844*  }}&	{\scriptsize {  5.508*  }}	\\
+{\scriptsize {SP1Best vs. SP1s}}&	{\scriptsize {-0.070    }}&	{\scriptsize {-0.385    }}&	{\scriptsize {-0.055    }}&	{\scriptsize {-0.168    }}&	{\scriptsize {-0.889    }}&	{\scriptsize {-0.267    }}&	{\scriptsize {-0.109    }}&	{\scriptsize {-0.052    }}&	{\scriptsize {-0.210    }}&	{\scriptsize {-0.221    }}&	{\scriptsize {-0.059    }}	\\
+{\scriptsize {SP1Best vs. SP1Ls}}&	{\scriptsize {-0.084    }}&	{\scriptsize {-0.076    }}&	{\scriptsize {  0.164*  }}&	{\scriptsize {  2.553*  }}&	{\scriptsize {  0.392*  }}&	{\scriptsize {-0.979    }}&	{\scriptsize {-0.158    }}&	{\scriptsize {-0.561    }}&	{\scriptsize {  0.011*  }}&	{\scriptsize {-0.702    }}&	{\scriptsize {-1.355    }}	\\
+{\scriptsize {SP1Best vs. SP2s}}&	{\scriptsize {  0.194*  }}&	{\scriptsize {  0.352*  }}&	{\scriptsize {  0.060*  }}&	{\scriptsize {  0.913*  }}&	{\scriptsize {  0.526*  }}&	{\scriptsize {-0.047    }}&	{\scriptsize {-0.562    }}&	{\scriptsize {  0.116*  }}&	{\scriptsize {  0.364*  }}&	{\scriptsize {-0.512    }}&	{\scriptsize {-1.039    }}	\\
+{\scriptsize {SP1Best vs. SP3s}}&	{\scriptsize {-0.030    }}&	{\scriptsize {  1.550*  }}&	{\scriptsize {-0.232    }}&	{\scriptsize {  0.717*  }}&	{\scriptsize {-2.807    }}&	{\scriptsize {  0.004*  }}&	{\scriptsize {-0.043    }}&	{\scriptsize {  0.124*  }}&	{\scriptsize {  2.192*  }}&	{\scriptsize {-0.110    }}&	{\scriptsize {-0.022    }}	\\
+{\scriptsize {SP1LBest vs. SP1Ls}}&	{\scriptsize {-0.140    }}&	{\scriptsize {-0.761    }}&	{\scriptsize {-0.061    }}&	{\scriptsize {-0.023    }}&	{\scriptsize {-0.991    }}&	{\scriptsize {-2.838    }}&	{\scriptsize {-0.303    }}&	{\scriptsize {-0.241    }}&	{\scriptsize {-0.134    }}&	{\scriptsize {-0.340    }}&	{\scriptsize {-0.539    }}	\\
+{\scriptsize {SP2Best vs. SP2s}}&	{\scriptsize {-0.008    }}&	{\scriptsize {-0.035    }}&	{\scriptsize {-0.115    }}&	{\scriptsize {-0.437    }}&	{\scriptsize {-0.142    }}&	{\scriptsize {-0.047    }}&	{\scriptsize {-0.003    }}&	{\scriptsize {-0.169    }}&	{\scriptsize {-0.060    }}&	{\scriptsize {-0.340    }}&	{\scriptsize {-0.539    }}	\\
+{\scriptsize {SP3Best vs. SP3s}}&	{\scriptsize {-0.040    }}&	{\scriptsize {-0.892    }}&	{\scriptsize {-0.177    }}&	{\scriptsize {-0.885    }}&	{\scriptsize {-1.918    }}&	{\scriptsize {-0.004    }}&	{\scriptsize {-0.066    }}&	{\scriptsize {-0.147    }}&	{\scriptsize {-2.158    }}&	{\scriptsize {-0.088    }}&	{\scriptsize {-0.037    }}	\\
+{\scriptsize {SP3Best vs. SP1s}}&	{\scriptsize {  0.030    }}&	{\scriptsize {-0.194    }}&	{\scriptsize {  0.055    }}&	{\scriptsize {-0.717    }}&	{\scriptsize {  0.089    }}&	{\scriptsize {-0.271    }}&	{\scriptsize {  0.004    }}&	{\scriptsize {-0.124    }}&	{\scriptsize {-0.219    }}&	{\scriptsize {  0.110    }}&	{\scriptsize {  0.022    }}	\\
+{\scriptsize {SP3Best vs. SP1Ls}}&	{\scriptsize {-0.054    }}&	{\scriptsize {-0.231    }}&	{\scriptsize {  0.219    }}&	{\scriptsize {  1.835    }}&	{\scriptsize {  0.481    }}&	{\scriptsize {-0.983    }}&	{\scriptsize {-0.154    }}&	{\scriptsize {-0.684    }}&	{\scriptsize {-0.209    }}&	{\scriptsize {-0.592    }}&	{\scriptsize {-1.333    }}	\\
+{\scriptsize {SP3Best vs. SP2s}}&	{\scriptsize {  0.224    }}&	{\scriptsize {-0.120    }}&	{\scriptsize {  0.115    }}&	{\scriptsize {  0.195    }}&	{\scriptsize {  0.142    }}&	{\scriptsize {-0.051    }}&	{\scriptsize {-0.052    }}&	{\scriptsize {-0.007    }}&	{\scriptsize {-0.183    }}&	{\scriptsize {-0.402    }}&	{\scriptsize {-1.017    }}	\\ \bottomrule
+
+\pagebreak
+\multicolumn{12}{c}{{\footnotesize {Panel C: Recursive Estimation, $h=12$}}} \\ 
+\multicolumn{12}{c}{} \\
+\toprule \multicolumn{1}{c}{{\scriptsize {Models}}} & \multicolumn{1}{c}{{\scriptsize {UR}}} & \multicolumn{1}{c}{{\scriptsize {PI}}} & \multicolumn{1}{c}{{\scriptsize {TB}}} & \multicolumn{1}{c}{{\scriptsize {CPI}}} & \multicolumn{1}{c}{{\scriptsize {PPI}}} & \multicolumn{1}{c}{{\scriptsize {NPE}}} & \multicolumn{1}{c}{{\scriptsize {HS}}}& \multicolumn{1}{c}{{\scriptsize {IPX}}} & \multicolumn{1}{c}{{\scriptsize {M2}}} & \multicolumn{1}{c}{{\scriptsize {SNP}}} & \multicolumn{1}{c}{{\scriptsize {GDP}}} \\ \midrule
+%
+{\scriptsize {AR vs. SP1s}}&	{\scriptsize {  0.114*  }}&	{\scriptsize {-0.159    }}&	{\scriptsize {  0.344*  }}&	{\scriptsize {  0.663*  }}&	{\scriptsize {  1.242**}}&	{\scriptsize {  1.135*  }}&	{\scriptsize {  1.090*  }}&	{\scriptsize {  0.185**}}&	{\scriptsize {  1.646**}}&	{\scriptsize {  0.040*  }}&	{\scriptsize {  0.236*  }}	\\
+{\scriptsize {AR vs. SP1FAARs}}&	{\scriptsize {  0.114*  }}&	{\scriptsize {-0.159    }}&	{\scriptsize {  0.344*  }}&	{\scriptsize {  0.663*  }}&	{\scriptsize {  1.242**}}&	{\scriptsize {  0.024*  }}&	{\scriptsize {  1.090*  }}&	{\scriptsize {  0.015*  }}&	{\scriptsize {  0.956**}}&	{\scriptsize {  0.040*  }}&	{\scriptsize {  0.236*  }}	\\
+{\scriptsize {AR vs. SP1LFAARs}}&	{\scriptsize {  0.163*  }}&	{\scriptsize {  0.354*  }}&	{\scriptsize {  0.217**}}&	{\scriptsize {  1.641**}}&	{\scriptsize {  2.325**}}&	{\scriptsize {  1.135**}}&	{\scriptsize {  0.469*  }}&	{\scriptsize {  0.185**}}&	{\scriptsize {  1.646*  }}&	{\scriptsize {-0.078    }}&	{\scriptsize {  0.606*  }}	\\
+{\scriptsize {AR vs. SP2s}}&	{\scriptsize {  0.215*  }}&	{\scriptsize {  1.360*  }}&	{\scriptsize {  0.142*  }}&	{\scriptsize {  1.072**}}&	{\scriptsize {  0.906*  }}&	{\scriptsize {  0.915*  }}&	{\scriptsize {  0.202*  }}&	{\scriptsize {  0.324*  }}&	{\scriptsize {  2.350**}}&	{\scriptsize {-0.007    }}&	{\scriptsize {  1.044*  }}	\\
+{\scriptsize {AR vs. SP3s}}&	{\scriptsize {  0.183*  }}&	{\scriptsize {  1.378**}}&	{\scriptsize {  0.007*  }}&	{\scriptsize {  1.423**}}&	{\scriptsize {  2.383**}}&	{\scriptsize {  0.825*  }}&	{\scriptsize {  0.704*  }}&	{\scriptsize {  0.298**}}&	{\scriptsize {  3.192**}}&	{\scriptsize {  0.241*  }}&	{\scriptsize {  0.367*  }}	\\
+{\scriptsize {SP1FAAR vs. SP1Shrinks}}&	{\scriptsize {  0.334*  }}&	{\scriptsize {  2.923*  }}&	{\scriptsize {  0.247*  }}&	{\scriptsize {  0.319*  }}&	{\scriptsize {  1.240*  }}&	{\scriptsize {  4.014*  }}&	{\scriptsize {  7.455*  }}&	{\scriptsize {  0.711*  }}&	{\scriptsize {  0.419*  }}&	{\scriptsize {  0.480*  }}&	{\scriptsize {  1.436*  }}	\\
+{\scriptsize {SP1FAAR vs. SP1Ls}}&	{\scriptsize {  0.082*  }}&	{\scriptsize {  3.436*  }}&	{\scriptsize {-0.183    }}&	{\scriptsize {  1.298*  }}&	{\scriptsize {  2.324*  }}&	{\scriptsize {  0.501*  }}&	{\scriptsize {-0.703    }}&	{\scriptsize {  0.671*  }}&	{\scriptsize {  0.813*  }}&	{\scriptsize {  0.362*  }}&	{\scriptsize {  1.805*  }}	\\
+{\scriptsize {SP1FAAR vs. SP2s}}&	{\scriptsize {  0.134*  }}&	{\scriptsize {  4.442*  }}&	{\scriptsize {  0.046*  }}&	{\scriptsize {  0.729*  }}&	{\scriptsize {  0.905*  }}&	{\scriptsize {  1.292*  }}&	{\scriptsize {-0.143    }}&	{\scriptsize {  1.020*  }}&	{\scriptsize {  1.813*  }}&	{\scriptsize {  0.433*  }}&	{\scriptsize {  2.243*  }}	\\
+{\scriptsize {SP1FAAR vs. SP3s}}&	{\scriptsize {  0.102*  }}&	{\scriptsize {  4.460*  }}&	{\scriptsize {-0.089    }}&	{\scriptsize {  1.079*  }}&	{\scriptsize {  2.382*  }}&	{\scriptsize {  1.202*  }}&	{\scriptsize {  0.359*  }}&	{\scriptsize {  0.993*  }}&	{\scriptsize {  2.655*  }}&	{\scriptsize {  0.680*  }}&	{\scriptsize {  1.566*  }}	\\
+{\scriptsize {SP1Best vs. SP1s}}&	{\scriptsize {-0.003    }}&	{\scriptsize {-0.159    }}&	{\scriptsize {-0.126    }}&	{\scriptsize {-0.135    }}&	{\scriptsize {-0.516    }}&	{\scriptsize {-1.094    }}&	{\scriptsize {-0.621    }}&	{\scriptsize {-0.170    }}&	{\scriptsize {-0.690    }}&	{\scriptsize {-0.021    }}&	{\scriptsize {-0.196    }}	\\
+{\scriptsize {SP1Best vs. SP1Ls}}&	{\scriptsize {  0.049*  }}&	{\scriptsize {  0.035*  }}&	{\scriptsize {-0.431    }}&	{\scriptsize {  0.979*  }}&	{\scriptsize {  0.108*  }}&	{\scriptsize {-1.011    }}&	{\scriptsize {-0.145    }}&	{\scriptsize {-0.209    }}&	{\scriptsize {-0.030    }}&	{\scriptsize {-0.118    }}&	{\scriptsize {  0.369*  }}	\\
+{\scriptsize {SP1Best vs. SP2s}}&	{\scriptsize {  0.101*  }}&	{\scriptsize {  1.360*  }}&	{\scriptsize {-0.202    }}&	{\scriptsize {  0.410*  }}&	{\scriptsize {-0.335    }}&	{\scriptsize {-0.220    }}&	{\scriptsize {-0.888    }}&	{\scriptsize {  0.139*  }}&	{\scriptsize {  0.705*  }}&	{\scriptsize {-0.047    }}&	{\scriptsize {  0.808*  }}	\\
+{\scriptsize {SP1Best vs. SP3s}}&	{\scriptsize {  0.069*  }}&	{\scriptsize {  1.378*  }}&	{\scriptsize {-0.336    }}&	{\scriptsize {  0.760*  }}&	{\scriptsize {  1.141*  }}&	{\scriptsize {-0.309    }}&	{\scriptsize {-0.386    }}&	{\scriptsize {  0.112*  }}&	{\scriptsize {  1.546*  }}&	{\scriptsize {  0.200*  }}&	{\scriptsize {  0.131*  }}	\\
+{\scriptsize {SP1LBest vs. SP1Ls}}&	{\scriptsize {-0.378    }}&	{\scriptsize {-0.354    }}&	{\scriptsize {-0.217    }}&	{\scriptsize {-0.560    }}&	{\scriptsize {-1.448    }}&	{\scriptsize {-10.113    }}&	{\scriptsize {-2.209    }}&	{\scriptsize {-0.185    }}&	{\scriptsize {-0.296    }}&	{\scriptsize {-0.078    }}&	{\scriptsize {-0.095    }}	\\
+{\scriptsize {SP2Best vs. SP2s}}&	{\scriptsize {-0.005    }}&	{\scriptsize {-0.136    }}&	{\scriptsize {-0.217    }}&	{\scriptsize {-0.842    }}&	{\scriptsize {-0.091    }}&	{\scriptsize {-0.662    }}&	{\scriptsize {-0.022    }}&	{\scriptsize {-0.139    }}&	{\scriptsize {-0.070    }}&	{\scriptsize {-0.080    }}&	{\scriptsize {-0.508    }}	\\
+{\scriptsize {SP3Best vs. SP3s}}&	{\scriptsize {-0.057    }}&	{\scriptsize {-0.613    }}&	{\scriptsize {-0.210    }}&	{\scriptsize {-0.744    }}&	{\scriptsize {-2.084    }}&	{\scriptsize {-0.309    }}&	{\scriptsize {-0.203    }}&	{\scriptsize {-0.112    }}&	{\scriptsize {-1.546    }}&	{\scriptsize {-0.046    }}&	{\scriptsize {-0.303    }}	\\
+{\scriptsize {SP3Best vs. SP1s}}&	{\scriptsize {-0.069    }}&	{\scriptsize {-0.154    }}&	{\scriptsize {  0.126    }}&	{\scriptsize {-0.760    }}&	{\scriptsize {-0.114    }}&	{\scriptsize {-1.111    }}&	{\scriptsize {  0.039    }}&	{\scriptsize {-0.282    }}&	{\scriptsize {-0.224    }}&	{\scriptsize {-0.200    }}&	{\scriptsize {-0.131    }}	\\
+{\scriptsize {SP3Best vs. SP1Ls}}&	{\scriptsize {-0.020    }}&	{\scriptsize {-0.102    }}&	{\scriptsize {-0.305    }}&	{\scriptsize {  0.218    }}&	{\scriptsize {-0.006    }}&	{\scriptsize {-1.011    }}&	{\scriptsize {-0.106    }}&	{\scriptsize {-0.322    }}&	{\scriptsize {-0.184    }}&	{\scriptsize {-0.319    }}&	{\scriptsize {  0.239    }}	\\
+{\scriptsize {SP3Best vs. SP2s}}&	{\scriptsize {  0.032    }}&	{\scriptsize {-0.002    }}&	{\scriptsize {-0.075    }}&	{\scriptsize {-0.351    }}&	{\scriptsize {-0.148    }}&	{\scriptsize {-0.220    }}&	{\scriptsize {-0.050    }}&	{\scriptsize {  0.027    }}&	{\scriptsize {-0.084    }}&	{\scriptsize {-0.248    }}&	{\scriptsize {  0.677    }}	\\ \bottomrule
+
+%\end{tabular}%
+%} 
+\multicolumn{12}{c}{} \\
+\begin{minipage}{1.1\columnwidth} \scriptsize * Notes: See notes to Tables 1, 2 and 7. 
+Numerical entries are reality check statistics due to White (2000) and Corradi and Swanson (2007), 
+calculated for the forecast period 1984:6-2009:05, and summarize various results from Tables 3-6. 
+The null hypothesis of the statistic is that no alternative model ``outperforms'' the benchmark model. 
+Starred entries denote rejection of the null hypothesis at 5\% (**) and 10\% (*) siginificance levels. See Section 6 for further details. 
+The first entry under the header ``Model'' denotes the benchmark model, and the second entry denotes the group of alternative 
+models against which the benchmark is compared. Here, AR denotes our autoregressive benchmark model, 
+SP1s denotes all SP1  models, excluding the benchmark, SP2s and SP3s are analogously defined. A mnemonic with ``Best'' appended onto it denotes the point MSFE ``best'' model for a particular
+specification type. The notion ``FAARs'' and "Shrinks'' refers to all pure factor models, and all pure shrinkage (i.e., Bagging, Boosting, Ridge, LAR, EN, and NNG) models, respectively.
+Finally, SP1FAAR, when used as a benchmark, refer to the FAAR model estimation under SP1. 
+\end{minipage}
+\end{longtable}
+
+%TABLE 11 Percentage Difference  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage 
+%\begin{longtable}{y{2cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}y{.9cm}}
+\LTcapwidth=\textwidth
+\begin{longtable}{y{3cm}lllllllllll}
+\caption{\normalsize {Predictive Accuracy Percentage Differences Based on the Comparison of Various Pairs of Forecasting Models*}}\\
+\label{tb11}\\
+%{\scriptsize 
+%\begin{tabular}{lccccccccccc}
+%\begin{tabular}{llllllllllll}
+%\multicolumn{12}{c}{} \\
+%\multicolumn{12}{c}{{\footnotesize {Panel A: Recursive, $h=1$}}} \\ \multicolumn{12}{c}{} \\
+%\toprule \multicolumn{1}{c}{{\scriptsize {Cases}}} & \multicolumn{1}{c}{{\scriptsize {UR}}} & \multicolumn{1}{c}{{\scriptsize {PI}}} & \multicolumn{1}{c}{{\scriptsize {TB}}} & \multicolumn{1}{c}{{\scriptsize {CPI}}} & \multicolumn{1}{c}{{\scriptsize {PPI}}} & \multicolumn{1}{c}{{\scriptsize {NPE}}} & \multicolumn{1}{c}{{\scriptsize {HS}}}& \multicolumn{1}{c}{{\scriptsize {IPX}}} & \multicolumn{1}{c}{{\scriptsize {M2}}} & \multicolumn{1}{c}{{\scriptsize {SNP}}} & \multicolumn{1}{c}{{\scriptsize {GDP}}} \\ \midrule
+%\endfirsthead
+%\multicolumn{12}{c}{} \\
+%\toprule {\scriptsize {Cases}} & {\scriptsize {UR}} & {\scriptsize {PI}} & {\scriptsize {TB}} & {\scriptsize {CPI}} & {\scriptsize {PPI}} & {\scriptsize {NPE}} & {\scriptsize {HS}}& {\scriptsize {IPX}} & {\scriptsize {M2}} & {\scriptsize {SNP}} & {\scriptsize {GDP}} \\ \midrule
+%\multicolumn{12}{c}{{\footnotesize {Continued from previous page}}} \\ 
+%\endhead
+%
+%\multicolumn{12}{c}{{\footnotesize {Continued in next page}}} \\ 
+%\endfoot
+%
+%\\
+%\endlastfoot
+%
+\multicolumn{12}{c}{{\footnotesize {Panel A: Recursive Estimation, $h=1$}}} \\ \multicolumn{12}{c}{} \\
+\toprule \multicolumn{1}{c}{{\scriptsize {Models}}} & \multicolumn{1}{c}{{\scriptsize {UR}}} & \multicolumn{1}{c}{{\scriptsize {PI}}} & \multicolumn{1}{c}{{\scriptsize {TB}}} & \multicolumn{1}{c}{{\scriptsize {CPI}}} & \multicolumn{1}{c}{{\scriptsize {PPI}}} & \multicolumn{1}{c}{{\scriptsize {NPE}}} & \multicolumn{1}{c}{{\scriptsize {HS}}}& \multicolumn{1}{c}{{\scriptsize {IPX}}} & \multicolumn{1}{c}{{\scriptsize {M2}}} & \multicolumn{1}{c}{{\scriptsize {SNP}}} & \multicolumn{1}{c}{{\scriptsize {GDP}}} \\ \midrule
+
+\endfirsthead
+{\scriptsize {AR vs. SP1Best}}&	{\scriptsize {11.07\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  4.68\%}}&	{\scriptsize {  1.44\%}}&	{\scriptsize {  4.23\%}}&	{\scriptsize {  0.02\%}}&	{\scriptsize {  1.25\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  0.06\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.23\%}}	\\
+{\scriptsize {AR vs. SP1LBest}}&	{\scriptsize {  5.04\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  1.84\%}}&	{\scriptsize {  0.75\%}}&	{\scriptsize {  1.22\%}}&	{\scriptsize {  0.02\%}}&	{\scriptsize {  4.97\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  0.47\%}}&	{\scriptsize {  0.04\%}}	\\
+{\scriptsize {AR vs. SP2Best}}&	{\scriptsize {  2.21\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  3.99\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  0.46\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  2.31\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.06\%}}&	{\scriptsize {  0.58\%}}&	{\scriptsize {  0.00\%}}	\\
+{\scriptsize {AR vs. SP3Best}}&	{\scriptsize {  4.00\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {  0.58\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.01\%}}&	{\scriptsize {  0.01\%}}&	{\scriptsize {  1.60\%}}&	{\scriptsize {  0.36\%}}&	{\scriptsize {  0.49\%}}&	{\scriptsize {  0.89\%}}&	{\scriptsize {  0.27\%}}	\\
+{\scriptsize {AR vs. SP1Mean}}&	{\scriptsize {  5.36\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  4.68\%}}&	{\scriptsize {  0.78\%}}&	{\scriptsize {  1.20\%}}&	{\scriptsize {  0.02\%}}&	{\scriptsize {  1.25\%}}&	{\scriptsize {  0.09\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  0.34\%}}&	{\scriptsize {  0.06\%}}	\\
+{\scriptsize {AR vs. SP1LMean}}&	{\scriptsize {  5.04\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  4.61\%}}&	{\scriptsize {  0.75\%}}&	{\scriptsize {  1.22\%}}&	{\scriptsize {  0.02\%}}&	{\scriptsize {  1.20\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  0.38\%}}&	{\scriptsize {  0.04\%}}	\\
+{\scriptsize {AR vs. SP2Mean}}&	{\scriptsize {  1.70\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  3.99\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  0.46\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  7.16\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  0.22\%}}&	{\scriptsize {  0.51\%}}&	{\scriptsize {  0.14\%}}	\\
+{\scriptsize {AR vs. SP3Mean}}&	{\scriptsize {  1.77\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  4.33\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {  0.16\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  6.32\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  0.19\%}}&	{\scriptsize {  0.41\%}}&	{\scriptsize {  0.13\%}}	\\
+{\scriptsize {SP1Mean vs. SP1Best}}&	{\scriptsize {  7.90\%}}&	{\scriptsize {  0.08\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.91\%}}&	{\scriptsize {  3.22\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  0.34\%}}&	{\scriptsize {  0.19\%}}	\\
+{\scriptsize {SP1LMean vs. SP1LBest}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  3.36\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  4.58\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.05\%}}&	{\scriptsize {  0.49\%}}&	{\scriptsize {  0.00\%}}	\\
+{\scriptsize {SP2Mean vs. SP2Best}}&	{\scriptsize {  2.71\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  8.64\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.53\%}}&	{\scriptsize {  0.14\%}}	\\
+{\scriptsize {SP3Mean vs. SP3Best}}&	{\scriptsize {  3.63\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {  4.22\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {  0.17\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  6.70\%}}&	{\scriptsize {  0.32\%}}&	{\scriptsize {  0.30\%}}&	{\scriptsize {  0.81\%}}&	{\scriptsize {  0.22\%}}	\\
+{\scriptsize {SP1Best vs. SP2Mean}}&	{\scriptsize {18.04\%}}&	{\scriptsize {  0.17\%}}&	{\scriptsize {15.44\%}}&	{\scriptsize {  6.26\%}}&	{\scriptsize {  6.00\%}}&	{\scriptsize {  0.09\%}}&	{\scriptsize {  8.98\%}}&	{\scriptsize {  0.21\%}}&	{\scriptsize {  0.27\%}}&	{\scriptsize {  1.18\%}}&	{\scriptsize {  0.30\%}}	\\
+{\scriptsize {SP1Best vs. SP2Best}}&	{\scriptsize {13.66\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {11.17\%}}&	{\scriptsize {  5.44\%}}&	{\scriptsize {  5.88\%}}&	{\scriptsize {  0.06\%}}&	{\scriptsize {  3.23\%}}&	{\scriptsize {  0.18\%}}&	{\scriptsize {  0.16\%}}&	{\scriptsize {  1.06\%}}&	{\scriptsize {  0.26\%}}	\\
+{\scriptsize {SP1Best vs. SP3Mean}}&	{\scriptsize {17.45\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {10.26\%}}&	{\scriptsize {  6.23\%}}&	{\scriptsize {  5.88\%}}&	{\scriptsize {  0.08\%}}&	{\scriptsize {  7.47\%}}&	{\scriptsize {  0.17\%}}&	{\scriptsize {  0.21\%}}&	{\scriptsize {  0.87\%}}&	{\scriptsize {  0.22\%}}	\\
+{\scriptsize {SP1Best vs. SP3Best}}&	{\scriptsize {13.55\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  4.68\%}}&	{\scriptsize {  5.36\%}}&	{\scriptsize {  5.88\%}}&	{\scriptsize {  0.02\%}}&	{\scriptsize {  1.37\%}}&	{\scriptsize {  0.34\%}}&	{\scriptsize {  0.49\%}}&	{\scriptsize {  0.89\%}}&	{\scriptsize {  0.21\%}}	\\
+{\scriptsize {SP2Best vs. SP3Mean}}&	{\scriptsize {  2.77\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {11.53\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  0.38\%}}&	{\scriptsize {  0.08\%}}&	{\scriptsize {  6.46\%}}&	{\scriptsize {  0.15\%}}&	{\scriptsize {  0.22\%}}&	{\scriptsize {  0.98\%}}&	{\scriptsize {  0.17\%}}	\\
+{\scriptsize {SP2Best vs. SP3Best}}&	{\scriptsize {  4.47\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {10.22\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  0.28\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  3.48\%}}&	{\scriptsize {  0.35\%}}&	{\scriptsize {  0.49\%}}&	{\scriptsize {  1.38\%}}&	{\scriptsize {  0.28\%}}	\\ \bottomrule
+%
+%\pagebreak
+\multicolumn{12}{c}{} \\
+\multicolumn{12}{c}{} \\\multicolumn{12}{c}{{\footnotesize {Panel B: Recursive Estimation, $h=3$}}} \\ 
+\multicolumn{12}{c}{} \\
+\toprule \multicolumn{1}{c}{{\scriptsize {Models}}} & \multicolumn{1}{c}{{\scriptsize {UR}}} & \multicolumn{1}{c}{{\scriptsize {PI}}} & \multicolumn{1}{c}{{\scriptsize {TB}}} & \multicolumn{1}{c}{{\scriptsize {CPI}}} & \multicolumn{1}{c}{{\scriptsize {PPI}}} & \multicolumn{1}{c}{{\scriptsize {NPE}}} & \multicolumn{1}{c}{{\scriptsize {HS}}}& \multicolumn{1}{c}{{\scriptsize {IPX}}} & \multicolumn{1}{c}{{\scriptsize {M2}}} & \multicolumn{1}{c}{{\scriptsize {SNP}}} & \multicolumn{1}{c}{{\scriptsize {GDP}}} \\ \midrule
+%
+{\scriptsize {AR vs. SP1Best}}&	{\scriptsize {  8.56\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {  3.97\%}}&	{\scriptsize {  0.73\%}}&	{\scriptsize {  3.94\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  1.80\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  0.18\%}}&	{\scriptsize {  0.02\%}}	\\
+{\scriptsize {AR vs. SP1LBest}}&	{\scriptsize {10.27\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  0.76\%}}&	{\scriptsize {  1.52\%}}&	{\scriptsize {  2.07\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  4.14\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  0.00\%}}	\\
+{\scriptsize {AR vs. SP2Best}}&	{\scriptsize {  2.73\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  2.27\%}}&	{\scriptsize {  0.15\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  0.05\%}}&	{\scriptsize {  6.54\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}	\\
+{\scriptsize {AR vs. SP3Best}}&	{\scriptsize {  3.52\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  4.05\%}}&	{\scriptsize {  0.01\%}}&	{\scriptsize {  0.66\%}}&	{\scriptsize {  0.16\%}}&	{\scriptsize {  0.28\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.53\%}}&	{\scriptsize {  0.62\%}}&	{\scriptsize {  0.00\%}}	\\
+{\scriptsize {AR vs. SP1Mean}}&	{\scriptsize {  6.05\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  1.76\%}}&	{\scriptsize {  0.73\%}}&	{\scriptsize {  1.26\%}}&	{\scriptsize {  0.02\%}}&	{\scriptsize {  2.05\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  0.18\%}}&	{\scriptsize {  0.05\%}}	\\
+{\scriptsize {AR vs. SP1LMean}}&	{\scriptsize {  4.88\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  3.34\%}}&	{\scriptsize {  0.73\%}}&	{\scriptsize {  2.07\%}}&	{\scriptsize {  0.02\%}}&	{\scriptsize {  2.00\%}}&	{\scriptsize {  0.09\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  0.22\%}}&	{\scriptsize {  0.05\%}}	\\
+{\scriptsize {AR vs. SP2Mean}}&	{\scriptsize {  1.46\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  2.01\%}}&	{\scriptsize {  0.15\%}}&	{\scriptsize {  0.30\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  6.54\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  0.24\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.10\%}}	\\
+{\scriptsize {AR vs. SP3Mean}}&	{\scriptsize {  1.77\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  2.73\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  0.34\%}}&	{\scriptsize {  0.06\%}}&	{\scriptsize {  5.72\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  0.22\%}}&	{\scriptsize {  0.27\%}}&	{\scriptsize {  0.10\%}}	\\
+{\scriptsize {SP1Mean vs. SP1Best}}&	{\scriptsize {  6.22\%}}&	{\scriptsize {  0.09\%}}&	{\scriptsize {  3.98\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  2.79\%}}&	{\scriptsize {  0.05\%}}&	{\scriptsize {  2.43\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.19\%}}&	{\scriptsize {  0.03\%}}	\\
+{\scriptsize {SP1LMean vs. SP1LBest}}&	{\scriptsize {  7.89\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  3.00\%}}&	{\scriptsize {  0.84\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  4.25\%}}&	{\scriptsize {  0.17\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  0.19\%}}&	{\scriptsize {  0.05\%}}	\\
+{\scriptsize {SP2Mean vs. SP2Best}}&	{\scriptsize {  3.12\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  2.16\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.27\%}}&	{\scriptsize {  0.08\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  0.26\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.10\%}}	\\
+{\scriptsize {SP3Mean vs. SP3Best}}&	{\scriptsize {  2.78\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  3.25\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  0.42\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  5.78\%}}&	{\scriptsize {  0.20\%}}&	{\scriptsize {  0.31\%}}&	{\scriptsize {  0.50\%}}&	{\scriptsize {  0.10\%}}	\\
+{\scriptsize {SP1Best vs. SP2Mean}}&	{\scriptsize {  9.08\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {  4.41\%}}&	{\scriptsize {  8.52\%}}&	{\scriptsize {  7.55\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  7.34\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  0.24\%}}&	{\scriptsize {  0.40\%}}&	{\scriptsize {  0.13\%}}	\\
+{\scriptsize {SP1Best vs. SP2Best}}&	{\scriptsize {  9.24\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  6.84\%}}&	{\scriptsize {  8.23\%}}&	{\scriptsize {  4.84\%}}&	{\scriptsize {  0.05\%}}&	{\scriptsize {  7.62\%}}&	{\scriptsize {  0.18\%}}&	{\scriptsize {  0.09\%}}&	{\scriptsize {  0.45\%}}&	{\scriptsize {  0.11\%}}	\\
+{\scriptsize {SP1Best vs. SP3Mean}}&	{\scriptsize {  8.12\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  3.10\%}}&	{\scriptsize {  8.50\%}}&	{\scriptsize {  7.22\%}}&	{\scriptsize {  0.06\%}}&	{\scriptsize {  5.72\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.31\%}}&	{\scriptsize {  0.11\%}}	\\
+{\scriptsize {SP1Best vs. SP3Best}}&	{\scriptsize {11.42\%}}&	{\scriptsize {  0.08\%}}&	{\scriptsize {  5.41\%}}&	{\scriptsize {  8.12\%}}&	{\scriptsize {  4.96\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  1.80\%}}&	{\scriptsize {  0.20\%}}&	{\scriptsize {  0.54\%}}&	{\scriptsize {  0.70\%}}&	{\scriptsize {  0.02\%}}	\\
+{\scriptsize {SP2Best vs. SP3Mean}}&	{\scriptsize {  2.82\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  4.90\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  0.29\%}}&	{\scriptsize {  0.06\%}}&	{\scriptsize {  6.37\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.44\%}}&	{\scriptsize {  0.13\%}}	\\
+{\scriptsize {SP2Best vs. SP3Best}}&	{\scriptsize {  5.18\%}}&	{\scriptsize {  0.08\%}}&	{\scriptsize {  6.55\%}}&	{\scriptsize {  0.15\%}}&	{\scriptsize {  0.30\%}}&	{\scriptsize {  0.17\%}}&	{\scriptsize {  7.37\%}}&	{\scriptsize {  0.25\%}}&	{\scriptsize {  0.56\%}}&	{\scriptsize {  0.62\%}}&	{\scriptsize {  0.11\%}}	\\ \bottomrule
+%
+%\pagebreak
+\multicolumn{12}{c}{} \\
+\multicolumn{12}{c}{{\footnotesize {Panel C: Recursive Estimation, $h=12$}}} \\ 
+\multicolumn{12}{c}{} \\
+\toprule \multicolumn{1}{c}{{\scriptsize {Models}}} & \multicolumn{1}{c}{{\scriptsize {UR}}} & \multicolumn{1}{c}{{\scriptsize {PI}}} & \multicolumn{1}{c}{{\scriptsize {TB}}} & \multicolumn{1}{c}{{\scriptsize {CPI}}} & \multicolumn{1}{c}{{\scriptsize {PPI}}} & \multicolumn{1}{c}{{\scriptsize {NPE}}} & \multicolumn{1}{c}{{\scriptsize {HS}}}& \multicolumn{1}{c}{{\scriptsize {IPX}}} & \multicolumn{1}{c}{{\scriptsize {M2}}} & \multicolumn{1}{c}{{\scriptsize {SNP}}} & \multicolumn{1}{c}{{\scriptsize {GDP}}} \\ \midrule
+%
+{\scriptsize {AR vs. SP1Best}}&	{\scriptsize {  8.95\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  5.02\%}}&	{\scriptsize {  1.05\%}}&	{\scriptsize {  2.24\%}}&	{\scriptsize {  0.08\%}}&	{\scriptsize {  8.61\%}}&	{\scriptsize {  0.19\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  0.02\%}}	\\
+{\scriptsize {AR vs. SP1LBest}}&	{\scriptsize {  7.59\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  0.86\%}}&	{\scriptsize {  0.63\%}}&	{\scriptsize {  2.67\%}}&	{\scriptsize {  0.08\%}}&	{\scriptsize {  4.75\%}}&	{\scriptsize {  0.19\%}}&	{\scriptsize {  0.19\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.03\%}}	\\
+{\scriptsize {AR vs. SP2Best}}&	{\scriptsize {  3.70\%}}&	{\scriptsize {  0.01\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.02\%}}&	{\scriptsize {  0.06\%}}&	{\scriptsize {  3.39\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.05\%}}	\\
+{\scriptsize {AR vs. SP3Best}}&	{\scriptsize {  1.67\%}}&	{\scriptsize {  0.19\%}}&	{\scriptsize {  3.75\%}}&	{\scriptsize {  0.17\%}}&	{\scriptsize {  0.66\%}}&	{\scriptsize {  0.18\%}}&	{\scriptsize {  3.85\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.56\%}}&	{\scriptsize {  0.74\%}}&	{\scriptsize {  0.00\%}}	\\
+{\scriptsize {AR vs. SP1Mean}}&	{\scriptsize {  5.78\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  1.21\%}}&	{\scriptsize {  1.05\%}}&	{\scriptsize {  2.24\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  4.29\%}}&	{\scriptsize {  0.09\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  0.02\%}}	\\
+{\scriptsize {AR vs. SP1LMean}}&	{\scriptsize {  5.94\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  1.92\%}}&	{\scriptsize {  0.63\%}}&	{\scriptsize {  2.67\%}}&	{\scriptsize {  0.03\%}}&	{\scriptsize {  4.75\%}}&	{\scriptsize {  0.09\%}}&	{\scriptsize {  0.05\%}}&	{\scriptsize {  0.24\%}}&	{\scriptsize {  0.03\%}}	\\
+{\scriptsize {AR vs. SP2Mean}}&	{\scriptsize {  1.39\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {  2.00\%}}&	{\scriptsize {  0.15\%}}&	{\scriptsize {  0.27\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  3.39\%}}&	{\scriptsize {  0.09\%}}&	{\scriptsize {  0.26\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.13\%}}	\\
+{\scriptsize {AR vs. SP3Mean}}&	{\scriptsize {  1.83\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  2.86\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  0.12\%}}&	{\scriptsize {  0.05\%}}&	{\scriptsize {  3.78\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.32\%}}&	{\scriptsize {  0.11\%}}	\\
+{\scriptsize {SP1Mean vs. SP1Best}}&	{\scriptsize {  5.45\%}}&	{\scriptsize {  0.04\%}}&	{\scriptsize {  4.39\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  5.58\%}}&	{\scriptsize {  0.25\%}}&	{\scriptsize {  0.08\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}	\\
+{\scriptsize {SP1LMean vs. SP1LBest}}&	{\scriptsize {  4.14\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  1.74\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.25\%}}&	{\scriptsize {  0.16\%}}&	{\scriptsize {  0.24\%}}&	{\scriptsize {  0.00\%}}	\\
+{\scriptsize {SP2Mean vs. SP2Best}}&	{\scriptsize {  2.85\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  2.00\%}}&	{\scriptsize {  0.15\%}}&	{\scriptsize {  0.29\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  0.00\%}}&	{\scriptsize {  0.17\%}}&	{\scriptsize {  0.26\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.11\%}}	\\
+{\scriptsize {SP3Mean vs. SP3Best}}&	{\scriptsize {  1.89\%}}&	{\scriptsize {  0.18\%}}&	{\scriptsize {  3.19\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  0.64\%}}&	{\scriptsize {  0.13\%}}&	{\scriptsize {  4.14\%}}&	{\scriptsize {  0.21\%}}&	{\scriptsize {  0.34\%}}&	{\scriptsize {  0.64\%}}&	{\scriptsize {  0.11\%}}	\\
+{\scriptsize {SP1Best vs. SP2Mean}}&	{\scriptsize {  7.61\%}}&	{\scriptsize {  0.15\%}}&	{\scriptsize {  3.89\%}}&	{\scriptsize {  7.93\%}}&	{\scriptsize {  9.25\%}}&	{\scriptsize {  0.09\%}}&	{\scriptsize {  5.35\%}}&	{\scriptsize {  0.15\%}}&	{\scriptsize {  0.23\%}}&	{\scriptsize {  0.31\%}}&	{\scriptsize {  0.13\%}}	\\
+{\scriptsize {SP1Best vs. SP2Best}}&	{\scriptsize {  8.70\%}}&	{\scriptsize {  0.06\%}}&	{\scriptsize {  4.95\%}}&	{\scriptsize {  7.86\%}}&	{\scriptsize {  9.12\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  9.82\%}}&	{\scriptsize {  0.27\%}}&	{\scriptsize {  0.11\%}}&	{\scriptsize {  0.26\%}}&	{\scriptsize {  0.07\%}}	\\
+{\scriptsize {SP1Best vs. SP3Mean}}&	{\scriptsize {  6.80\%}}&	{\scriptsize {  0.14\%}}&	{\scriptsize {  2.79\%}}&	{\scriptsize {  7.89\%}}&	{\scriptsize {  9.13\%}}&	{\scriptsize {  0.07\%}}&	{\scriptsize {  3.56\%}}&	{\scriptsize {  0.15\%}}&	{\scriptsize {  0.19\%}}&	{\scriptsize {  0.31\%}}&	{\scriptsize {  0.10\%}}	\\
+{\scriptsize {SP1Best vs. SP3Best}}&	{\scriptsize {10.63\%}}&	{\scriptsize {  0.19\%}}&	{\scriptsize {  3.24\%}}&	{\scriptsize {  7.94\%}}&	{\scriptsize {  9.58\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  6.44\%}}&	{\scriptsize {  0.30\%}}&	{\scriptsize {  0.51\%}}&	{\scriptsize {  0.69\%}}&	{\scriptsize {  0.02\%}}	\\
+{\scriptsize {SP2Best vs. SP3Mean}}&	{\scriptsize {  3.18\%}}&	{\scriptsize {  0.15\%}}&	{\scriptsize {  4.42\%}}&	{\scriptsize {  0.10\%}}&	{\scriptsize {  0.53\%}}&	{\scriptsize {  0.08\%}}&	{\scriptsize {  5.56\%}}&	{\scriptsize {  0.17\%}}&	{\scriptsize {  0.21\%}}&	{\scriptsize {  0.38\%}}&	{\scriptsize {  0.09\%}}	\\
+{\scriptsize {SP2Best vs. SP3Best}}&	{\scriptsize {  3.93\%}}&	{\scriptsize {  0.20\%}}&	{\scriptsize {  3.75\%}}&	{\scriptsize {  0.17\%}}&	{\scriptsize {  0.60\%}}&	{\scriptsize {  0.20\%}}&	{\scriptsize {  5.55\%}}&	{\scriptsize {  0.22\%}}&	{\scriptsize {  0.56\%}}&	{\scriptsize {  0.77\%}}&	{\scriptsize {  0.08\%}}	\\ \bottomrule
+%
+%\end{tabular}%
+%} 
+\multicolumn{12}{c}{} \\
+\begin{minipage}{1\columnwidth} \scriptsize * Notes: See notes to Table 10. Mnemonics used under the header ``Models'' are defined in Table 10.
+Numerical entries are average percentage differences when comparing actual and predicted values of a given target variable, defined as follows: 
+$T^{-1} \sum_{t}\left\vert \left\vert \frac{\hat{Y}_{1,t}-Y_{t}}{Y_{t}}\right\vert
+-\left\vert \frac{\hat{Y}_{2,t}-Y_{t}}{Y_{t}}\right\vert \right\vert \times
+100\%$,
+where $Y_{t}$ is the actual value of the target variable at time $t.$
+Additionally, $\hat{Y}_{1,t}$ and $\hat{Y}_{2,t}$ are the forecasts from the
+two models being compared. In rare occurences where $Y_{t}$ is zero, it is
+replaced by $Y_{t-1}.$
+\end{minipage}
+\end{longtable}
+
+%\newpage 
+
+%\begin{equation*}
+%\begin{figure}[tbp]
+%\centering
+%\FRAME{itbpFU}{6.2179in}{7.9267in}{0in}{\Qct{Figure 1: Most Frequently Selected
+%Variables by Various Specification Types*}}{\Qlb{fig1}}{Figure}{\special%
+%{language "Scientific Word";type "GRAPHIC";display "USEDEF";valid_file "T";width 2.2087in;height 3.3053in;depth
+%0in;original-width 48.6111in;original-height 73.0559in;cropleft "0";croptop
+%"1";cropright "1";cropbottom "0";tempfilename
+%'MBJ2JM01.bmp';tempfile-properties "XPR";}}
+%\end{equation*}
+%\begin{minipage}{1\columnwidth} \scriptsize *Notes: Panels in this figure depict the 10 most commonly selected variables for use in factor construction, across the entire prediction period from 1984:6-2009:5, where factors are re-estimated at each point in time, prior to each new prediction being constructed. 45 degree lines denote cases for which a particular variables is selected every time.  All models reported on are MSFE-best models, across Specification Types 1 and 2, and estimation window types. For example, in Panels A and B, the BAA Bond Yield - Federal Funds Rate spread is the most frequently selected predictor when constructing factors to forecast the Producer Price Index and Housing Starts, respectively. Note that in Panel E, the 10 most commonly selected variables by EN are picked at every point in time. 
+%\end{minipage}
+%\end{figure}
+
+%\begin{equation*}
+\begin{figure}[tbp]
+\centering
+\FRAME{itbpF}{6.2179in}{7.9267in}{0in}{\Qct{Figure 1: Most Frequently
+Selected Variables by Various Specification Types*}}{\Qlb{fig1}}{Figure}{%
+\special{language "Scientific Word";type "GRAPHIC";maintain-aspect-ratio
+TRUE;display "USEDEF";valid_file "T";width 6.2179in;height 7.9267in;depth
+0in;original-width 48.6111in;original-height 73.0559in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'MERT7F00.gif';tempfile-properties "XPR";}} %\end{equation*}
+\begin{minipage}{1\columnwidth} \scriptsize *Notes: Panels in this figure depict the 10 most commonly selected variables for use in factor construction, across the entire prediction period from 1984:6-2009:5, where factors are re-estimated at each point in time, prior to each new prediction being constructed. 45 degree lines denote cases for which a particular variables is selected every time.  All models reported on are MSFE-best models, across Specification Types 1 and 2, and estimation window types. For example, in Panels A and B, the BAA Bond Yield - Federal Funds Rate spread is the most frequently selected predictor when constructing factors to forecast the Producer Price Index and Housing Starts, respectively. Note that in Panel E, the 10 most commonly selected variables by EN are picked at every point in time. 
+\end{minipage}
+\end{figure}
+
+\end{document}
