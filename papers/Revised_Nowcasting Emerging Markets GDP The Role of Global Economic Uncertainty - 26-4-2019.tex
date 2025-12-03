@@ -1,0 +1,823 @@
+% Template for articles submitted to the International Journal of Forecasting
+% Further instructions are available at www.ctan.org/pkg/elsarticle
+% You only need to submit the pdf file, not the source files.
+% If your article is accepted for publication, you will be asked for the source files.
+
+\documentclass[11pt,3p,review,authoryear]{elsarticle}
+\journal{}
+\usepackage{longtable}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{pifont}
+\usepackage{natbib}
+\usepackage{geometry}
+\usepackage{fleqn}
+\usepackage{graphicx}
+\usepackage{txfonts}
+\usepackage{hyperref}
+\usepackage{pdflscape}
+\usepackage{pdfpages}
+\usepackage{fancybox,epsf,latexsym,amssymb}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{caption}
+\usepackage{textcomp}
+\usepackage{anysize}
+\marginsize{2cm}{2cm}{2cm}{2cm}
+\bibliographystyle{model5-names}
+\biboptions{longnamesfirst}
+% Please use \citet and \citep for citations.
+
+
+\begin{document}
+
+\begin{center}
+
+{\Large Forecasting and Nowcasting Emerging Market GDP Growth Rates: The Role of Latent Global Economic Policy Uncertainty and Macroeconomic Data Surprise Factors$^{\ast }$}
+
+\bigskip
+\bigskip
+
+{\large Oguzhan Cepni$^1$, I. Ethem Guney$^1$, and Norman R. Swanson$^2$}
+
+{{\large $^{1}$Central Bank of the Republic of Turkey and $^{2}$Rutgers University}}
+
+\bigskip
+
+{\large This version: April 2019}
+
+\bigskip
+\bigskip
+\bigskip
+
+
+{\large Abstract}
+\end{center}
+
+\noindent {\footnotesize In this paper, we assess the predictive content of latent economic policy uncertainty and data surprises factors for forecasting and nowcasting GDP using factor-type econometric models. Our analysis focuses on five emerging market economies, including Brazil, Indonesia, Mexico, South Africa, and Turkey; and we carry out a forecasting horse-race in which predictions from various different models are compared. These models may (or may not) contain latent uncertainty and surprise factors constructed using both local and global economic datasets. The set of models that we examine in our experiments includes both simple benchmark linear econometric models as well as dynamic factor models (DFMs) that are estimated using a variety of frequentist and Bayesian data shrinkage methods based on the least absolute shrinkage operator (LASSO). We find that the inclusion of our new uncertainty and surprise factors leads to superior predictions of GDP growth, particularly when these latent factors are constructed using Bayesian variants of the LASSO. Overall, our findings point to the importance of spillover effects from global uncertainty and data surprises, when predicting GDP growth in emerging market economies.}
+
+\bigskip
+\bigskip
+
+\noindent \textit{Keywords:}{\normalsize \ Economic policy uncertainty, Emerging markets, Factor model, Forecasting, Lasso, Shrinkage.}
+
+\noindent \textit{JEL Classification}{\normalsize : C53, G17.\smallskip
+	\smallskip }
+
+\noindent \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+$^{\ast }${\scriptsize \ Oguzhan Cepni (Oguzhan.Cepni@tcmb.gov.tr) and I. Ethem Guney (Ethem.Guney@tcmb.gov.tr), Central Bank of the Republic of Turkey, Anafartalar Mah. Istiklal Cad. No:10 06050 Ulus, Altındag, Ankara, Turkey. Norman R. Swanson (nswanson@econ.rutgers.edu), Department of Economics, 75 Hamilton Street, New Brunswick, NJ, 08901 USA. The authors wish to thank Hyun Hak Kim, Mingmian Cheng, Eric Ghysels, Massimiliano Marcellino, Christian Schumacher, and Xiye Yang for useful discussions related to the content of this paper on modeling and forecasting using diffusion indexes. Many thanks are also owed to the editor, Massimiliano Marcellino, and to two anonymous referees for their many useful comments and suggestions during the revision process of this paper. }
+
+\setcounter{page}{0} \thispagestyle{empty}
+
+\newpage
+
+
+\section{Introduction}
+In many countries, initial real GDP estimates are released at least three weeks after the calendar  quarter to which the data pertains. For example, in the Euro area and the U.S., GDP reporting lags are  three and four weeks, respectively; and in Turkey, first release GDP data are available only after as many as 10 to 12 weeks. At the same time, tracking economic activity in real-time is crucial to the decision-making process of macroeconomic policymakers. Fortunately, there is now an abundance of both real-time and big datasets available to researchers, allowing for the construction of ever more accurate early forecasts and nowcasts (i.e., signals) of the current state of the economy. In this context, as pointed out by Giannone et al. (2008), dynamic factor models (DFMs) have become one of the workhorses for short-term forecasting, and are now widely used in central banks and research institutions for both forecasting and nowcasting. For further discussion, see, Artis et al. (2005) - for the UK; Schumacher (2010) - for Germany; Liu et al. (2012) - for Latin America countries; Bessec (2013) - for France; Luciani and Ricci (2014)- for Norway; Girardi et al. (2015) - for the Euro Area; Modugno et al. (2016) - for Turkey; Bragoli (2017) - for Japan; Kim and Swanson (2018a)- for the USA; Kim and Swanson (2018b) - for Korea, Luciani et al. (2018) - for Indonesia; Bragoli and Fosten (2018) - for India and Cepni et. al (2019) - for emerging markets.
+
+In this paper, we contribute to the literature on nowcasting and forecasting real GDP growth in emerging economies by empirically assessing the importance of economic policy uncertainty and data surprises in factor-type econometric forecasting models for five emerging market economies, including Brazil, Indonesia, Mexico, South Africa, and Turkey. Our analysis centers around the use of DFMs for constructing GDP predictions, although we also evaluate benchmark linear autoregressive (AR) models. Importantly, our DFMs are specified both with and without uncertainty and data surprise factors constructed using both local and global economic variables. Moreover, in addition to standard econometric estimation methods, we estimate factors using a variety of data shrinkage methods including the standard LASSO, the adaptive LASSO, the Bayesian LASSO, and the Bayesian adaptive LASSO.
+
+As mentioned above, we utilize both local and global datasets when constructing the factors used in our prediction models. Although there are many empirical papers that focus on using only local macroeconomic data in the context of GDP forecasting, the importance of uncertainty regarding policymakers' decisions on international economic policies has received increasing attention since the beginning of 2018. For example, concerns over US-China trade tensions, Brexit negotiations with the EU, Italy's' fiscal planning, and how the Federal Reserve Board of the USA will determine the timing and pace of policy normalization all weigh heavily on the global economy. These sorts of international spillovers are particularly important for emerging markets, in particular those with high foreign portfolio ownership and weak macroeconomic balance sheets. For this reason, it is crucial to assess the relevance of uncertainty and data surprises in the context of forecasting emerging market GDP. Needless to say, the impact of uncertainty on economic activity has received considerable attention in the economics literature in recent years (see, e.g. Bloom (2014)). For example, Bontempi et al. (2016) propose uncertainty indicators based on Google Trends. Their results suggest that online search data can provide early signals of uncertainty, and can be used in macroeconomic forecasting. Baker et al. (2016) construct an index of economic policy uncertainty (EPU) based on newspaper coverage frequency. They find that economic policy innovations foreshadow declines in investment, output, and employment, using a panel vector autoregressive (VAR) model for 12 major economies. Thorsrud (2018) develops a new coincident index of business cycle activity based on quarterly GDP and textual information contained in a daily business newspaper.
+
+In addition to the above proxies for economic policy ``uncertainty'', a growing strand of the literature uses consensus forecasts to disentangle macroeconomic uncertainty from more ``general'' uncertainty. In particular, it is argued in this literature that professional forecasters (e.g. those forecasters contributing to the Survey of Professional Forecasters in the USA) closely monitor macroeconomic data and often base their predictions on sophisticated econometric models. Thus, departures of their (consensus) predictions from actual realizations can be viewed as data ``surprises'', which are themselves measures of macroeconomic uncertainty. There are different proxies for this sort of macroeconomic uncertainty that are proposed in the empirical literature. For example, Rossi and Sekhposyan (2015) construct a macroeconomic uncertainty index based on comparing the realized forecast error of a variable of interest with the sample distribution of the forecast errors of that variable. If the realization is in the tail of the distribution, they conclude that the macroeconomic environment is more uncertain. Carriero et al. (2016) develop a model to identify uncertainty by modeling the common component of the volatility of the forecast errors of a large set of macroeconomic and financial variables. Finally, Scotti (2016) proposes a macroeconomic surprise index that exploits the difference between actual releases of data and Bloomberg forecasts to capture economic agents' expectations about the state of the economy. In this paper, we construct global economic policy uncertainty and surprise indices based on a variety of different local and global datasets. More specifically, we incorporate uncertainty into our prediction models in three different ways. First, as our benchmark we utilize only local macroeconomic data. Using this approach, we estimate both DFMs and simple AR models; but do not explicitly include any uncertainty or surprise indexes. Second, we augment our DFMs with ``surprise'' indices constructed using professional forecasters' expectations. Finally, we additionally augment our DFMs with factors extracted from a wide variety of uncertainty indices of economic policy, trade policy, monetary policy, and migration.
+
+It should be noted that we focus on the prediction of GDP growth in emerging markets (EM) for two main reasons. First, official releases of EM GDP figures are subject to significant publication lags and data revision, as discussed above. Second, again as discussed above, it is likely that the effects of uncertainty on economic activity are particularly significant in environments characterized by large budget deficits, high current account/GDP ratios, and high external funding needs. As a case in point, note that Carriere et al. (2013) investigate the effects of an uncertainty shock from the USA on developed and developing countries. They find that emerging markets suffer much more severe falls in investment and private consumption when there are credit constraints that lead to increases in the uncertainty index. Gauvin et al. (2014) also point out that elevated policy uncertainty in advanced countries may lead to an increase in capital outflows from emerging markets, because of rising global risk aversion. At the same time, it is important to note that low-quality emerging market data presents distinct challenges when forecasting GDP growth. However, our dataset contains a very large number of variables, allowing us to mitigate this effect to some degree by ``pre-selection'' of key variables for use in our DFMs. Namely, we argue that a small set indicators from our dataset may be sufficient to identify the most informative uncertainty indexes. Indeed, the idea that a small set of indicators, when chosen appropriately, can improve forecasting performance of factor models is supported by evidence presented in various papers, including Banerjee and Marcellino (2006), Boivin and Ng (2006), Schumacher (2007), Bai and Ng (2008), Banbura and R\"{u}nstler (2011), Kim and Swanson (2014, 2018a), Bulligan et al. (2015), and references cited therein. For this reason, we utilize variable selection methods to pre-select indicators before the construction of factors. To this end, we apply a number of LASSO methods for data shrinkage, as discussed above. Of course, we also use standard DFM methods where the entire dataset is used in factor construction. In this way, our analysis adds to our understanding not only of GDP forecasting using uncertainty indices, but also to the usefulness of shrinkage methods in DFM modeling.
+
+Our empirical findings can be summarized as follows. First, as expected, there is a substantial reduction in mean square forecast error (MSFE), as more data related to the current quarter become available and is incorporated into our models. Thus, the forecast accuracy of our DFM models generally increases by incorporating the latest information. This conclusion, as well as our subsequent findings, are based on point forecast evaluation. As pointed out by a referee, it is important to note that density forecasting may provide further insights into the usefulness of the models and methods analyzed in this paper\footnote{Along these lines, for example, Abbate and Marcellino (2018) find that interval and density forecasts of exchange rates are relevant to the modeling and decision making process of economic agents interested in constructing predictions G10 currencies.}. Second, uncertainty indexes are quite useful for predicting GDP growth in emerging market economies. More specifically, benchmark AR models, as well as dynamic factor models that utilize only local macroeconomic data yield inferior predictions for Indonesia, South Africa, and Turkey. For these three countries, both ``surprise'' and ``uncertainty'' indexes matter. Third, constructing surprise and uncertainty indexes using LASSO shrinkage methods leads to more accurate forecasts than when factors are constructed without variable pre-selection. Indeed, across all ten forecast horizons (including forecasts, nowcasts, and backcasts), and across all five countries the ``globally best'' models include factors constructed using targeted variable pre-selection in 47 of the 50 cases.\footnote{A globally best model is one that yields the lowest MSFE across all five data selection methods including (i) Use all data in DFM construction; (ii) use the standard LASSO for dataset reduction; (iii) use the adaptive LASSO for dataset reduction; (iv) use the Bayesian LASSO for dataset reduction; and (v) use the Bayesian adaptive LASSO for dataset reduction.} Finally, augmenting the DFMs utilized in our regression analysis with lags of the dependent variable (i.e., including an AR component in the DFM) yields forecasting gains relative to models without AR terms only for Indonesia and South Africa. This result is interesting given the preponderance of evidence in the time series forecasting literature concerning the importance of including AR components when forecasting economic variables, and serves to underscore the importance of uncertainty and surprise variables when predicting EM GDP.
+
+Summarizing, we find strong evidence that using targeted predictors in combination with global uncertainty indices as well as global surprise indices based on expectations of professional forecasters leads to more precise GDP predictions for emerging market economies. These findings suggest that when assessing macroeconomic conditions, policymakers and central bankers may increasingly need to take into account the level of economic policy uncertainty originating from other countries, as well as related macroeconomic forecasts formulated by professional forecasters.
+
+The rest of the paper is structured as follows. In Section 2, we present the main features of the datasets used in our empirical investigation. In Section 3, we outline the econometric methodology used in the papers. In Section 4, we discuss our empirical findings. Concluding remarks are gathered in Section 5. Finally, the Appendices include supplementary tables as well as additional details describing the datasets analyzed in the sequel.
+
+\section{Data}
+
+We analyze a relatively large set of economic indicators consists of 97, 87, 116, 109, 102 economic variables for Brazil, Indonesia, Mexico, South Africa, and Turkey, respectively. The dataset is composed of both ``hard indicators'' and survey data. Among the hard indicators, we have both supply-side variables, such as industrial production indexes, and demand-side variables, such as electricity consumption. Among the survey variables, we have the Market PMI survey, one of the most watched indicators of the business cycle. Given the sensitivity of EM economies to external conditions, we also include current account balance and volume indices of exports and imports, as well as real effective exchange rates. The dataset can be divided into six categories: \emph{Housing and Order Variables}: House price index, real estate units sold and new orders. \emph{Labor Market Variables}: Employment and unemployment. \emph{Prices}: Producers prices and consumer prices. \emph{Financial Variables}: Treasury bond yields, credit default swaps, exchange rates, and stock prices. \emph{Money, Credit and Quantity Aggregates}: Money supply, commercial bank loans, time and sight deposits. \emph{Real Economic Activity}: PMI survey, industrial production, retail sales, vehicle production and capacity utilization. In general, the survey variables and nominal indicators are released during the reference month (i.e., the calendar month to which the data pertains), whereas real and labor variables are announced with a publication lags of 1-3 months.
+
+In addition to the above collection of macroeconomic and financial indicators, which are used in our baseline DFM model (this DFM model is called Specification 1 in Section 3.3), we examine an uncertainty dataset that contains a wide variety of uncertainty indices pertaining to economic policy, trade policy, monetary policy and migration. These variables are largely the same as those constructed by Baker et al. (2016) for major economies and are called economic policy uncertainty (EPU) indices. Their data construction approach is based on computing the proportion of newspaper articles referring to a specific type of uncertainty over a given period. In particular, the EPU indices reflect the frequency of articles that include terms related to three categories, i.e., economy (E), policy (P) and uncertainty (U)\footnote{More details on the EPU indices can be found at http://www.policyuncertainty.com/index.html.}. In total, we utilize 45 ``uncertainty'' indices from various fully and less developed countries when constructing our ``uncertainty'' factors for use in our DFM forecasting models (see Specifications 2 and 4 in Section 3.3).
+
+We now turn to a discussion of our ``surprise'' indices. Understanding how economic data evolve, relative to consensus expectations, is important for gauging potential shifts in macroeconomic sentiment, for a given country. For this purpose, we collect a large set of surprise indices across key regions and countries. Our dataset consists of Citi and Goldman Sachs surprise indices, which are constructed based on similar methodologies. These indices are designed to summarize the degree of surprise inherent in a data release, relative to the associated Bloomberg median forecast of the variable in question. Multiplying the so-called relevance score for a variable by the surprise score allows us to track whether the economic data in a country are ``outperforming'' or ``under-performing'' consensus expectations. Since units of measurement vary across variables, the surprise scores are normalized by dividing by sample standard deviation of the corresponding variables.\footnote{Note that relevance scores are defined as the absolute value of the contemporaneous correlation between each variable and real GDP growth.} In total, we have 74 surprise indices across different regions and countries, including the USA, UK, Euro Area, Japan, Asia Pacific region, and Latin America. These indices are then used to construct our ``surprise'' factors for use in our DFM forecasting models (see Specifications 3 and 4 in Section 3.3).
+
+All datasets were collected from Bloomberg, and are for the period January 2003 - June 2018. The complete list of Blomberg tickers is provided in Tables B1-B7 in online appendix.
+
+Many of the macroeconomic variables that we analyze, and which are likely to contain seasonality, are seasonally adjusted by the reporting agencies. In the case of seasonally adjusted data not directly available for download, we construct year-on-year (YoY) growth rates or yearly differences, and do not implement any other variety of seasonality filter. One reason for this is that, as suggested by Luciani et al. (2018), the use of standard seasonality filters results in data deformation, which in turn may induce estimation bias. It is also worth pointing out that the use of YoY growth rates is consistent with the target variable that we forecast, which is the year-on-year GDP growth rate. Finally, as noted in Luciani et al. (2018), the use of YoY GDP growth rates makes our results comparable with YoY forecasts made by institutional forecasters, such as the IMF and various other data reporting agencies\footnote{To incorporate quarterly YoY GDP data in this setting, we construct a partially observable monthly YoY GDP series and link it to the monthly variables, imposing restrictions on the loadings for the quarterly variables which constitute a slight modification of the Mariano and Murasawa (2003) methodology. For further details refer to the online appendix for this paper, as well as to Giannone et al. (2013).}. For further discussion of the importance of seasonality, and isssues associated with seasonal adjustment, including the fact that use of YoY growth rates may induce spurious correlation, see Ghysels and Osborn (2001), Luciani et al. (2018), Swanson and Urbach (2015), and Uhlig (2009).
+
+\section{ Econometric Methodology}
+\subsection{Dynamic Factor Models}
+
+In our analysis, we separately extract potentially useful forecasting information from our three datasets (i.e., our macroeconomic indicator dataset, surprise dataset, and uncertainty index dataset). To do this, we employ the widely used dynamic factor model (DFM) of Giannone et al. (2008). In this framework, the dynamics of individual variables is represented as the sum of a component that is common to all variables in the economy and an orthogonal idiosyncratic residual. Formally, the DFM can be written as a system with two types of equation: a measurement equation (Eq. (1)) that links the observed variables to the unobserved common factor to be estimated, and the transition equation (Eq.(2)) that describe the dynamics of the common factors and the residuals of the measurement equation. Once Eqs. (1)-(2) are written in state space form, the Kalman filter and smoother are applied to extract common factors and generate forecasts for all of the variables in the model.
+
+More specifically, we consider a panel of observable economic variables, $ X_{i,t} $, where $i$ indicates the cross-section unit, $ i= 1,....,N$, and $t$ denotes the time index, $t= 1,....,T$. Each variable in the dataset can be decomposed into common part and idiosyncratic components, where the common component capture comovement in the data, and is driven by a small number of shocks. The DFM model can be written as:
+
+\begin{equation}
+X_t =\Lambda F_t +\xi_t,      \qquad \qquad\qquad           \xi_t \sim N(0,\Sigma_e),
+\end{equation}
+
+\begin{equation}
+F_t=\sum\limits_{i=1}^k\Psi_i F_{t-i} +u_t,     \qquad \qquad u_t   \sim N(0,Q),
+\end{equation}
+
+\noindent where $ F_t $  is an $ r\times1 $ vector of unobserved common factors with zero mean and unit variance, $ \Lambda $ is a corresponding $ N\times r $ factor loading matrix, and the idiosyncratic disturbance,  $\xi_t$, is uncorrelated with $ F_t $ at all leads and lags, and has a diagonal covariance matrix $\Sigma_e$. It is assumed that the common factors, $ F_t $,   follow a stationary VAR(p) process driven by the common shocks, $ u_t \sim N(0,Q)$, and that the $ \Psi_i $ are  $ r\times r $ matrices of autoregressive coefficients. Also, the common shocks ($u_t$)  and idiosyncratic components ($\xi_t$) are orthogonal. To handle missing observations at the end of the sample due to the non-synchronous flow of data, we characterize the variance of the idiosyncratic component as an extremely large variance. In this way, we ensure that the Kalman filter will put no weight on missing observations in the extraction of the common factors. Finally, in order to construct forecasts of our quarterly GDP target series,
+say $ y_t $, in our monthly DFM framework, we express each quarterly variable in terms of a partially observed monthly counterpart following the approach of Mariano and Murasawa (2003). Put differently, the general form of the forecasting model can be described as follows:
+
+\begin{equation}
+y_t= 	\mu+ \beta'F_t+\varepsilon_t,  \qquad \qquad \varepsilon_t    \sim N(0,\sigma^{2}_{\varepsilon}),
+\end{equation}
+
+\noindent where $\varepsilon$ is a stochastic disturbance term. In order to select the optimal number of factors (r), one may use various methods suggested in the the literature. A non-exhaustive list of possible methods are discussed in the following papers: Bai and Ng (2002), Onatski (2009), Alessi et al. (2010), and Ahn and Horenstein (2013). Although the Bai and Ng (2002) criteria is frequently used in the empirical literature, we find that it generally chooses too many factors, resulting in deterioration in forecast accuracy. Hence, we adopt the Onastki (2009) approach that is based on testing the null of
+$r-1 $ common factors against the alternative of $r$ common factors. Optimal lag length is selected using the Schwarz information criterion (SIC)\footnote{The list of selected r and p pairs are (2,2), (1,2), (1,3), (3,3), (1,2) for Brazil, Indonesia, Mexico, South Africa, and Turkey, respectively.}. In summary, we find that simple model specifications, with one or two factors and one or two lags often yield best out of sample forecast performance. Specification of a parsimonious one or two factor model is also consistent with the literature on factor models, which has shown that heavily parametrized models with many factors usually lead to poor forecasting performance (see Forni et al. (2000), Stock and Watson (2002), and Bragoli (2017)).
+
+\subsection{Identifying targeted predictors: LASSO - based approaches}
+
+Since dynamic factor models do not explicitly incorporate knowledge of the target variable being forecast, factor extraction is called ``un-targeted''. Needless to say, targeted forecasting, in which factors with information specific to the target variable are constructed and used in subsequent model specification may yield superior predictions, relative to predictions constructed using factors based on un-targeted methods. These issues are discussed at length in Boivin and Ng (2006), Bai and Ng (2008), Schumacher (2010), Caggiano et al. (2011),  Medeiros and Vasconcelos (2016), Kapetanios et al. (2016), Kim and Swanson (2014, 2018b), and many others. In the sequel, we utilize both un-targeted and targeted methods to construct factors. For un-targeted forecasting, we simply use the DFM model outlined in the previous section. For targeted forecasting, we note that one of the most commonly used variable selection and parameter shrinkage method is the LASSO. This method can be thought of as a type of penalized regression, related to classical ridge regression. However, in the case of ridge regression, an $\ell_2 $-norm penalty is imposed, while under the LASSO, an $\ell_1 $-norm penalty function is added to the usual least squares minimization problem. Interestingly, the $\ell_1 $-norm penalty function induces shrinkage to 0 of coefficients associated with ``irrelevant'' variables.\footnote{As an example of the coefficients referred to in the previous statement, consider coefficients that are defined to be the weights in a linear combination of variables forming a latent factor, when principal component analysis (PCA) is used to construct $F_t$. When using the LASSO, various of these factor loadings may be identically zero. On the other hand, the classical ridge regression penalty function results in all coefficients being nonzero, for each latent factor, under PCA.} For our purposes, since we are interested in selecting a targeted subset of the original variables in our dataset when constructing shrinkage type factors, we use the LASSO. In particular, we analyze factors constructed using the standard LASSO, the adaptive LASSO, the Bayesian LASSO and the Bayesian adaptive LASSO. When carrying our variable selection, we apply LASSO shrinkage to the full dataset. As suggested by a referee, recursive selection prior to re-estimation of the model at each point in time may lead to an variable selection instability. This in turn would complicate the interpretation of forecasts' revisions, which is crucial when reporting forecasts to policymakers. However, it should be stressed that the issue of recursive estimation is important, and that future research in this area is warranted. In order to illustrate why this issue is important, we carried out an experiment in which we repeated our variable selection, but using recursive estimation, with a new set of variables selected at each point in time. The percentage of variables that are re-selected more than one half of the time under recursive is given below, for each country.
+\newpage
+{\centering   {\it Percentage of variables that are re-selected more than half in case of iterative variable selection}
+	
+}
+
+
+\begin{center}
+	
+	\begin{tabular}{cc}\hline
+		\multicolumn{1}{c}{\textit{Country}} & \multicolumn{1}{c}{\textit{Ratio}} \\\hline
+		\textit{Brazil} & 0.37  \\
+		\textit{Indonesia} & 0.60\\
+		\textit{Mexico} & 0.37  \\
+		\textit{S.Africa} & 0.54 \\
+		\textit{Turkey} & 0.50  \\\hline
+	\end{tabular}%
+\end{center}
+
+Inspection of the entries in this table indicates the importance of recursive variable selection, as the percentage of variables that are re-selected more than one half of the time is is low as 37\% (for Brazil and Mexico).
+
+Turning again to our empirical setup, we consider a panel of observable economic variables, $ X_{i,t} $, where $i$ indicates the cross-section unit, $ i= 1,...,N$, and $t$ denotes the time index, $ i= 1,...,T$, as discussed above. Following the notation of Hastie et al. (2009), we consider the problem of selecting a subset of $ X$, where $ X $ is a $ T\times N $ matrix to be used for forecasting quarterly GDP growth, say $ Y $, for $ i= 1,...,T$.
+
+\subsubsection{Least absolute shrinkage operator (LASSO)}
+
+We implement the LASSO, as developed in Tibshirani (1996). This shrinkage operator performs both variable selection and regularization, using a regularization parameter, $\lambda$. The idea is to impose an $\ell_1 $-norm penalty on the regression coefficients, thus allowing for cases where $N>T$. This penalty also results in (possible) shrinkage of coefficients (called $\hat{\beta}^{LASSO}$) to zero, as discussed above. The LASSO estimator is defined as:
+
+\begin{equation}
+\begin{aligned}
+\hat{\beta}^{LASSO} = & \underset{\beta}{\text{arg min}}
+& &  \lVert Y-X\beta \rVert_2  +\lambda \sum\limits_{j=1}^N |\beta_j|,
+\end{aligned}
+\end{equation}
+where $ \lambda $ is a tuning (regularization) parameter that controls the strength of the  $\ell_1 $-norm penalty. We choose the tuning parameter $ \lambda $ via cross-validation, which is a data-driven method that is designed to maximize expected out of sample forecasting performance. Since the objective function in the LASSO is not differentiable, numerical optimization must be used when constructing $\hat{\beta}^{LASSO}$. For example, an efficient iterative algorithm called the ``shooting algorithm" is proposed in Fu (1998). One of the limitations of the LASSO approach is that the sample size bounds the number of selected variables. For example, if $N > T$,  the LASSO yields at most $T$ non-zero coefficients (see Swanson (2016) for further discussion). The variables associated with these non-zero coefficients constitute our set of targeted predictors when using the LASSO method.
+
+\subsubsection{Adaptive LASSO (AdaLASSO)}
+
+Although the LASSO can perform automatic variable selection because of the $\ell_1 $-norm penalty, it may yield biased estimates when coefficients are large. Fan and Li (2001) conjecture that LASSO does not have oracle properties and may yield an inconsistent set of selected variables in some cases. In order to address these issues, Zou (2006) introduces a new version of the LASSO, called the adaptive LASSO, where adaptive weights are used for penalizing different coefficients in the $\ell_1 $-norm penalty. They show that adaptive LASSO enjoys oracle properties. Moreover, Medeiros and Mendes (2016) show that the adaptive LASSO estimator maintains its' consistency, under very general conditions; and performs well even when the number of variables increases faster than the number of observations.
+
+The adaptive LASSO estimator can be written as follows:
+\begin{equation}
+\begin{aligned}
+\hat{\beta}^{AdaLASSO} = & \underset{\beta}{\text{arg min}}
+& &  \lVert Y-X\beta \rVert_2  +\lambda \sum\limits_{j=1}^N w_j|\beta_j|,
+\end{aligned}
+\end{equation}
+
+\noindent where $ w_j=\hat{|{\beta_j}^*|}^{-\tau}$ represents different weights on the penalization of each variable, $\hat{|{\beta_j}^*|}$ is an initial estimator, such as the OLS or ridge estimator (which is estimated in a first step), and ${\tau} > 0$ controls the difference in weights. Since the adaptive LASSO is still an $\ell_1 $-norm penalization method, the algorithms for solving the LASSO can be employed for constructing adaptive LASSO estimates.
+
+\subsubsection{Bayesian LASSO (BLASSO)}
+Tibshirani (1996) suggested that LASSO estimates can be interpreted as the posterior mode of the Bayes estimate, under the Laplace priors. While the LASSO attributes a value of exactly zero to regression coefficients of irrelevant variables, redundant Bayesian LASSO coefficient modes are not precisely zero. Instead, the BLASSO provides a posterior distribution of coefficients. In our BLASSO estimator, we implement a conditional Laplace prior of the form:
+
+\begin{equation}
+\begin{aligned}
+\pi\left( \beta |\sigma^{2}\right)= \prod ^{p}_{j=1} \dfrac{\lambda}{2\sqrt{\sigma^{2}}}  e^{\dfrac{-\lambda |\beta_j|} {\sqrt{\sigma^{2}}}}.
+\end{aligned}
+\end{equation}
+%where the non-informative scale-invariant marginal prior $\pi\left( \sigma^{2}\right)= 1 / {\sqrt{\sigma^{2}}} $.
+
+Park and Casella (2008) show that conditioning on error variance, ${\sigma^{2}} $, ensures a unimodal full posterior. Otherwise, expensive simulation methods lead to slow convergence of the Gibbs sampler and result in less meaningful point estimates. Since the Laplace distribution can be represented as a scale mixture of normal densities with an exponential mixing density, Park and Casella (2008) propose the following hierarchical BLASSO model:
+\begin{equation}
+\begin{aligned}
+y | X,\beta, \sigma^{2} \sim N_n(X\beta,\sigma^{2}I_n) \\
+\beta |\sigma^{2}, \{{ \tau_1}^2,...,{\tau_p}^2\} \sim N_p(0_p,\sigma^{2}D_{\tau}) \\
+D_{\tau}=diag \{{ \tau_1}^2,...,{\tau_p}^2\} \\
+\end{aligned}
+\end{equation}
+with the following priors on $\sigma^{2}$ and $\tau=\{{ \tau_1}^2,...,{\tau_p}^2\}$:
+\begin{equation}
+\sigma^{2}, { \tau_1}^2,...,{\tau_p}^2 \sim \pi\left( \sigma^{2}\right)d\sigma^{2} \prod ^{p}_{j=1}\dfrac{\lambda^{2}}{2} e^{\dfrac{-\lambda^{2} \tau_j^{2}}{2}} d\tau_j^{2}, \\
+\sigma^{2}, { \tau_1}^2,...,{\tau_p}^2 >0,
+\end{equation}
+\noindent where $D_{\tau}$ is the prior covariance matrix, and $\lambda$ is a rate parameter of the exponential distribution. Korobilis (2013) compares the forecasting performance of hierarchical Bayesian shrinkage and factor models, and finds that Bayesian shrinkage serves as a valuable addition to existing methods, in the presence of many predictor variables. Our approach is to use this BLASSO method and store the posterior distributions of all coefficients. Thereafter we calculate the  $ 95\%$ confidence intervals, and set a coefficient equal to zero if its interval includes zero. The remaining variables constitute our set of targeted predictors, when using the Bayesian LASSO.
+
+\subsubsection{Bayesian Adaptive LASSO (BaLASSO)}
+As discussed in Section 3.2.2, the AdaLASSO uses weighted shrinkage for consistent estimation of regression coefficients, while retaining the attractive convexity property of the LASSO. However, the AdaLASSO requires consistent and informative initial estimates of the regression coefficients, which are generally not available when the number of regressors is larger than the number of observations. Since Bayesian Adaptive LASSO does not require any informative initial estimates of the regression coefficients, this motivates us to replace equation (8) in the Bayesian LASSO section to allow for a more adaptive penalty, as follows:
+
+\begin{equation}
+\sigma^{2}, { \tau_1}^2,...,{\tau_p}^2 \sim \pi\left( \sigma^{2}\right)d\sigma^{2} \prod ^{p}_{j=1}\dfrac{\lambda_j^{2}}{2} e^{\dfrac{-\lambda_j^{2} \tau_j^{2}}{2}} d\tau_j^{2} \\
+\end{equation}
+
+Similar to the BLASSO, we select variables such that their corresponding  $ 95 \%$ confidence intervals do not include zero.
+
+\subsection{Factor Augmented Prediction Models}
+
+To evaluate the forecasting performance of dynamic factor models based on different factor specification types, we run a recursive pseudo out of sample forecasting exercise over the period July 2008 to June 2018. For each reference quarter, we produce a sequence of ten forecasts, starting with the forecast based on the information available in the first month of the two previous quarters, and stopping on the first of the month of the subsequent quarter, before GDP is released. Put differently, we construct three monthly forecasts ($h=1,2$), three monthly nowcasts ($h=0$), and one monthly backcast ($h=-1$) for a quarterly forecast of GDP.
+
+We apply the dynamic factor model to extract the leading common factors in our large set of uncertainty and surprise indices. We called these new factors our ``Global Economic Policy Uncertainty" (GEPU) and ``Global Macro-Surprise'' (GMS) factors. Earlier, we referred to these variables as our ``uncertainty'' and ``surprise'' variables, respectively. These factors can be interpreted as measures of common variation in economic policy uncertainty (uncertainty) and macroeconomic data uncertainty (surprise) across countries. These variables are individually "added" to our DFM model. In particular, noting that ``Local'' refers to factors that are constructed using only ``own'' country variables, we construct predictions using the following specifications, where Specification 1 is the model used in Giannone et al. (2008), and Specifications 2-4 are extensions that incorporate our new uncertainty and surprise factors.
+\begin{itemize}
+  \item \textbf{Specification 1}: Local factor model\\
+  $ y_{t+h}= \mu+ \beta'F_t^{Local}+\varepsilon_{t+h} $
+  \item \textbf{Specification 2}: Uncertainty factor model \\
+   $ y_{t+h}= \mu+ \beta'F_t^{Local}+ \vartheta'F_t^{GEPU}+\varepsilon_{t+h} $
+  \item \textbf{Specification 3}: Macro-Surprise factor model\\
+    $ y_{t+h}= 	\mu+ \beta'F_t^{Local}+\theta'F_t^{GMS}+\varepsilon_{t+h} $
+  \item \textbf{Specification 4}: Global factor model\\
+   $ y_{t+h}= 	\mu+ \beta'F_t^{Local}+\theta'F_t^{GEPU}+\delta'F_t^{GMS}+\varepsilon_{t+h} $
+\end{itemize}
+
+An additional set of models is also used to construct predictions, in which each of the above DFM models is augmented with lags of the dependent variable\footnote{To this end, we augment each model specification by adding lagged values of GDP growth, where the number of lags is selected using the SIC. Namely, we estimate the following additional models:
+
+\begin{itemize}
+	\item \textbf{Specification 5} - Local-AR:
+	$ y_{t+h}= \mu+\mathcal{L}Y_{t}+ \beta'F_t^{Local}+\varepsilon_{t+h} $
+	\item \textbf{Specification 6} - Uncertainty-AR:
+	$ y_{t+h}= \mu+\mathcal{L}Y_{t}+ \beta'F_t^{Local}+ \vartheta'F_t^{GEPU}+\varepsilon_{t+h} $
+	\item \textbf{Specification 7} - Surprise-AR:
+	$ y_{t+h}= 	\mu+\mathcal{L}Y_{t}+ \beta'F_t^{Local}+\theta'F_t^{GMS}+\varepsilon_{t+h} $
+	\item \textbf{Specification 8} - Global-AR:
+	$ y_{t+h}= 	\mu+\mathcal{L}Y_{t}+ \beta'F_t^{Local}+\theta'F_t^{GEPU}+\delta'F_t^{GMS}+\varepsilon_{t+h} $,
+\end{itemize}
+where $Y_{t} = (y_t , y_{t-1} , ... , y_{t-p})$, with $p$ selected using the SIC, and where $\mathcal{L}$ is a conformably defined vectors of coefficients.}. Finally, we also construct forecasts using a straw-man AR model, with lags selected using the SIC\footnote{Summarizing, we estimate Specifications 1-8 using least squares, after first extracting local, uncertainty, surprise and global factors from the set of targeted predictors selected using the shrinkage approaches discussed in Sections 3.2.1-3.2.4.}. We assess the precision of the different sequences of forecasts using mean square forecast error (MSFE), which is measured as the average of the squared differences between predicted and actual GDP values for the ten year period from July 2008 to June 2018. In order to assess the statistical significance of differences in MSFE across specification types, pairwise Diebold-Mariano (DM: 1995) tests of equal predictive accuracy are implemented. In this test, the null hypothesis that of equal predictive accuracy. For a discussion of the test, which is normally distributed under non-nestedness, and has a nonstandard distribution if models are nested, see Kim and Swanson (2018a,b). When carrying out DM tests, the benchmark against which each of our Specification Type 1-8 models are compared with our straw-man AR model.
+
+\section{Empirical Results}
+
+\subsection{Global Economic Policy Uncertainty and Macroeconomic Surprise Factors}
+
+Before describing our prediction results, it is of interest to investigate how global economic policy uncertainty and macroeconomic surprise factors are related to macroeconomic fluctuations across our EM economies. As seen in Figure 1, the global uncertainty factor captures the crucial events and spikes near elections in the USA, effects likely associated with Brexit, global financial crises, and major uncertainty surrounding fiscal policy in the USA. Given the pivotal role of uncertainty on world trade volume, spill-overs from elevated global uncertainty to emerging markets likely affect economic activity through a number of channels. For example, the uncertainty about whether the USA will place tariffs on steel or other goods that are imported from China is likely to undermine export oriented investments that are allocated to these sectors. This in turn puts pressure on Chinese GDP growth. Also, in the era of Brexit, we have seen that many firms have stopped hiring and are restricting production until the fallout from Brexit becomes more clear. This has a negative impact on GDP growth in countries with high exports to the UK. These sorts of linkages are precisely what we are trying to capture with our uncertainty and surprise factors.
+
+As shown in Figure 2, the global macroeconomic surprise factor tracks the world GDP growth quite closely and captures the sharp contraction in economic activity over the crisis period around 2008. While we might indeed expect markets to move in response to the ``surprise'' factor, it is noteworthy that the global macroeconomic surprise factor fails to track world GDP growth rates since the beginning of 2017. One reason might be that over this period, post-US election, economic agents' expectations were more pessimistic about the economy than warranted, given elevated global uncertainty in this period.
+
+The below table reports correlation coefficients between the global economic uncertainty factor (called ``Uncertainty''), the global macroeconomic surprise factor (called ``Surprise'') and country-specific (local) factors. The correlation coefficients between ``Uncertainty'' and country-specific factors range from -0.17 to -0.57, showing that the global economic uncertainty factor and economic activity is negatively correlated, except for Indonesia. A reason for this might be that an increase in uncertainty regarding economic policy is likely to trigger recessionary effects, including delays in investment and increases in unemployment. Furthermore, Carriere et al. (2013) show that the impact of exogenous uncertainty shocks on emerging economies is to increase the burden of foreign currency denominated debt, due to credit constraints. This may also have an adverse effect on economic growth. On the other hand, the positive relation between ``Surprise'' and country-specific factors shows that, in general, the macroeconomic data and market expectations move synchronously, as expected. Finally, note that country-specific factors are positively correlated, across countries, likely because of trade linkages.
+
+{\centering  Correlation Coefficients Between Local and Global Factors
+
+}
+
+{	
+	\centering
+	\scriptsize
+	
+	\begin{tabular}{lrrrrrrrr}\hline
+		& \multicolumn{1}{c}{\textit{Brazil}} & \multicolumn{1}{c}{\textit{Indonesia}} & \multicolumn{1}{c}{\textit{Mexico}} & \multicolumn{1}{c}{\textit{S.Africa}} & \multicolumn{1}{c}{\textit{Turkey}} & \multicolumn{1}{c}{\textit{Surprise}}& \multicolumn{1}{c}{\textit{Uncertainty}}\\\hline
+		\textit{Brazil} & 1 & 0.52& 0.34 & 0.67 & 0.38&0.48&-0.27 \\
+		\textit{Indonesia} & 0.52 & 1 & 0.18 & 0.32 & -0.02& 0.04&0.14\\
+		\textit{Mexico} & 0.34 & 0.18 & 1 & 0.63 & 0.70&0.40&-0.17 \\
+		\textit{S.Africa} & 0.67 & 0.32 & 0.63 & 1 & 0.51 &0.31&-0.57\\
+		\textit{Turkey} & 0.38 & -0.02 & 0.70 & 0.51 & 1&0.51&-0.20 \\
+		\textit{Surprise} & 0.43 & 0.04 & 0.40 & 0.31 & 0.51 &1&-0.25\\
+        \textit{Uncertainty} & -0.27 & 0.14 & -0.17 & -0.57 & -0.20&-0.25 &1\\\hline
+	\end{tabular}%
+
+}
+
+\bigskip
+In order to provide insight into the evolution of country-specific factors (local factors), Figure A1 of online appendix plots GDP growth against estimated common factors. As is evident from inspection of the plots in this figure, local common factors track GDP growth quite well; and also capture the GDP dynamics in these countries during the global financial crisis.
+
+
+\subsection{Forecasting Experiment Results}
+
+Tables 1-5 summarize the results of our prediction experiments, for each of Brazil, Indonesia, Mexico, South Africa, and Turkey, respectively. As discussed above, there are eight main DFM varieties in our experiment, including Specifications 1-4 (called ``Local'', ``Uncertainty'', ``Surprise'', and ``Global'', respectively, in the tables), as well as Specifications 1-4 with AR terms (called ``Local-AR'', ``Uncertainty-AR,'' ``Surprise-AR'', and ``Global-AR'', respectively). Additionally, each of these eight DFM models is estimated using five different types of shrinkage, including ``All Sample'', in which all country-specific variables are used in the DFM specification, ``LASSO", ``AdaLASSO'', ``Bayesian LASSO'', and ``Bayesian AdaLASSO''. For complete details, refer to Section 3. In each of the tables, entries in the first row correspond to MSFEs associated with forecasts constructed using our straw-man AR model. All other entries in the tables are relative MSFEs, where the numeraire is MSFE of the AR model. Thus, entries that are less than unity indicate point MSFEs that are lower than that of the AR model. For each of two quarterly $h$-step ahead forecast horizons, (under the headers ``$h=1$'' and ``$h=2$''), MSFEs from three monthly forecasts (denoted as months ``1'', ``2'', and ``3'') are reported. Results are also reported for three monthly nowcasts, under the header ``$h=0$'', and one monthly backcast (under the header ``$h=-1$''). For each country, entries denoted in bold indicate the MSFE-``best" model, across all specification types, for a given forecast horizon and shrinkage method. Additionally, for each country, entries denoted in bold and subscripted with "GB" (for ``globally-best") indicate the MSFE-best models across all specification types and shrinkage methods, for a given forecast horizon\footnote{ As mentioned in the introduction, density forecasting may provide further insights into our analysis. Although this topic is left to future research, there are many papers espousing the usefulness of such forecasts, and policy analyses used at central banks, for example, routinely include point and density forecasts. As noted by Rossi (2014), ``A natural application of forecast densities is the analysis and evaluation of macroeconomic risk. For example, before every Federal Open Market Committee meeting, the Federal Reserve Bank of New York complements its best guess of the future path of key macroeconomic variables (the so called “modal forecast”) with an assessment of the risk around it (Alessi et al., 2014).'' For further discussion of predictive density construction and evaluation, see Corradi and Swanson (2006).}
+
+The results in Table 1-5 reveal various interesting insights. First, there is a substantial reduction in MSFE as one moves from left to right along each row in the tables (i.e., as more data related to the current quarter become available). This increase in forecast accuracy is as expected, and indicates that the DFM models are able to correctly revise GDP prediction by effectively exploiting the flow of monthly data releases (see, Giannone et al. (2008), Banbura and Runstler (2011) and Li and Chen (2014) for further discussion). This result is consistent with other emerging markets studies in which it is found that DFM type forecasts and nowcasts are often more accurate than a variety of other benchmark models (see, Bragoli et al. (2015) for Brazil, Caruso (2015) for Mexico, Dahlhaus et al. (2017) for BRIC and Mexico, and Luciani et al. (2018) for Indonesia.) For example, Dahlhaus et al. (2017) adopt judgmental variable selection methods based on use of the Bloomberg relevance index and expert opinion, and find that dynamic factor models are very flexible when used for modeling emerging markets that are sometimes characterized by more volatile data and structural change than that observed in more advanced economies. Our results add to those discussed in the above papers by analyzing the usefulness of data-driven statistical learning methods.
+
+Second, virtually all of the entries in Tables 1-5 are less than unity, indicating that the DFM model generally produces smaller point MSFEs than our straw-man or benchmark AR model. Additionally, noting that starred entries indicate rejection of the null of equal predictive accuracy (when comparing a given model against the AR benchmark), it is apparent upon inspection of the tabulated results that many of these MSFEs are significantly lower than that of the AR model\footnote{ Following the suggestion of a referee, we also calculated mean forecast errors (forecast bias) for each period. In general, mean forecast errors are negative and close to zero, implying that there is little evidence of bias in our results. The reason for negative mean forecast errors is that models tend to under-predict the quick recovery in growth rates of emerging markets after the global financial crisis. This finding is consistent with our finding that MSFEs decrease appreciably as more data related to current quarter become available. These results are summarized in Tables A3-A7 of the online appendix.}.
+
+Third, recall that there are ten forecast horizons and five shrinkage methods so that there are a total of 50 specification types for each country. Our results indicate that there are notable decreases in MSFE for a number of countries when ``uncertainty'' and ``surprise'' factors extracted from our uncertainty and surprise index datasets are included in the DFM.{\footnote{Recall that entries labeled ``Uncertainty'' in the tables correspond to DFMs with ``uncertainty'' factors (i.e. Specification 2), entries labeled ``Surprise'' correspond to DFMs with ``surprise'' factors (i.e. Specification 3), and entries labeled ``Global'' correspond to DFMs with ``uncertainty'' and ``surprise'' factors (i.e. Specification 4).} Thus, latent factors that capture uncertainty and macro data surprise appear to contain significant marginal predictive content for country-specific growth prediction. For example, note that in Table 1 (i.e., the case of Brazil) the inclusion of factors extracted from uncertainty and/or surprise index datasets results in the globally MSFE-best models for 4 of 10 forecast horizons, across all shrinkage methods. For Indonesia (see Table 2), we see that for 7 of 10 forecast horizons, the inclusion of uncertainty and/or surprise factors results in the globally MSFE-best models. For Mexico, South Africa, and Turkey, the number of analogous ``wins'' for our global factors are 3 of 10, 10 of 10, and 9 of 10, respectively. Overall, thus globally MSFE-best models include our global uncertainty and surprise factors in 33 of 50 cases, across all five countries. In summary, there is strong evidence that global factors play a key role in GDP growth for Indonesia, South Africa, and Turkey; while the evidence is mixed for Brazil and Mexico. This result is consistent with an argument that the low level of domestic savings in Turkey and South Africa result in heavy reliance on capital in-flows to finance new investment projects. This in turn is reflected in the importance of global factors for these countries, since global swings in economic policy uncertainty are a key driver of capital flows. On the other hand, Indonesia is a leading exporter of various commodities, and is heavily dependent on exports to sustain economic growth. This makes growth in Indonesia vulnerable to global demand shocks and to increases in trade protectionism.
+	
+Fourth, if one digs more deeply into the findings concerning Brazil, a further pattern emerges. In particular, note that for Brazil, 3 of the 4 ``wins'' discussed above occur when forecasting, while only 1 of 4 ``wins'' occur when nowcasting or backcasting. Thus, for this country, global information appears to lose its predictive content, relative to local information, as the calendar date of available monthly data becomes closer to (or surpasses) the calendar date of the GDP value being predicted. This result may be explained by the fact that the main driver of the Brazil GDP growth is private consumption and construction. For Mexico, the story is different, as local information remains the most useful, regardless of forecast horizon. One reason for this might be that our global factors do not adequately account for shocks that are important to Mexico. This may in turn be due, in part, to the fact that Mexico has approximately the 15th largest economy in the world, in nominal terms, and exhibits a surprising level of macroeconomic stability. Moreover, Mexico has a largely export oriented economy with manufactured products accounting for approximately 90$\%$ of all exports.
+
+In order to determine whether the above findings are apparent upon visual inspection of DFM predictions, we have plotted nowcasts against actual GDP growth for the 5 countries (see Figure A2 in online appendix). In this figure, the ``Actual GDP'' plot is of actual GDP growth rates, ``AR'' corresponds to nowcasts made with our AR model using all available data (i.e., no shrinkage), and ``Local corresponds to DFM nowcasts made using all available data. Finally, for each country, we also include a ``Local'', ``Surprise'', or ``Global'' plot, corresponding to nowcasts made with the MSFE-best DFM model that includes ``uncertainty'' and/or ``surprise'' factors. Examination of these plots indicates that specification types based on uncertainty and macroeconomic data surprises tend to predict turning points relatively well, and outperform the ``Local'' factor model in volatile episodes, particularly for Brazil, South Africa, and Turkey. However, broad rankings of the variety available by summarizing the data in Tables 1-5 cannot be made by inspecting the plots in Figure A2 in online appendix. For this reason, we provide an alternative summary of the information given in Tables 1-5. This summary is given in Table A1 in online appendix. In this table, the number of model ``wins'' is tabulated by model specification type, across all forecast horizons. Results in this table corroborate the findings above concerning the usefulness of our global factors for predicting GDP growth in EM countries.
+
+Summarizing, our findings with respect to the importance of ``uncertainty'' factors are consistent with business cycle synchronization studies that focus on the growing financial and trade integration of world economies, and note that this integration is likely to result in stronger spillovers of shocks across economies. Additionally, our findings with regard to the importance of ``surprise'' factors  underscore the significance of expectations of economic agents, which in turn reflect the importance of the ever greater amount of ``soft" news that is available to agents, and that may not be reflected in the timely release of macroeconomic data.\footnote{For a summary of a small experiment in which we use only real variables in a nowcasting experiment, see the online appendix. Summarizing, our results are consistent with findings in Bragoli and Fosten (2018), Banbura et al. (2013) and Andreou et al. (2013) concerning the importance of carefully managing the number of real and nominal variables, and of imposing sparsity in forecasting exercises.}
+
+We now turn to a discussion of the usefulness of data shrinkage in our experiments. Even casual inspection of the findings in Tables 1-5 indicates that pre-selection of indicators using shrinkage delivers models with more accurate forecasts than when DFMs are estimated without pre-selection. In particular, when comparing the ``globally MSFE-best'' models in Table 1-5, which we have defined to be the MSFE-best models for each country across all specification and shrinkage methods, we see that 47 of the 50 ``globally best'' models utilize shrinkage\footnote{Recall that there are ten forecast horizons and five countries, so that we have total of 50 cases.}. This suggests that the selection of relevant predictors from a large dataset mitigates data noisiness, and model (and coefficient estimator) imprecision due to multicollinearity, as might be expected. This result corroborates that of Boivin and Ng (2006), where it is suggested that the possibility of correlated errors increase as more series from the same ``category'' are included in a dataset, and creates a situation where more data might not be desirable. Among the different shrinkage methods that we utilize in our experiment, the Bayesian methods (Bayesian LASSO and Bayesian AdaLASSO) perform surprisingly well, as they attain the top rank in 36 out of 50 cases. This evidence strongly supports the use of Bayesian shrinkage methods for variable selection.\footnote{See De Mol et al. (2008), where it is found that a few appropriately selected variables often capture the bulk of the covariation in large macroeconomic dataset that are characterized by collinearity, and use of these small groups of variables often yields comparable forecasting performance, relative to the case where all variables are used when constructing predictions.} These results are summarized in Tables 6 and 7.
+
+\section{Concluding Remarks}
+
+Dynamic factor models (DFMs) are widely used in the forecasting literature. In this paper, we add to this literature by utilizing these models to predict emerging market (EM) GDP growth rates. Moreover, we augment the standard DFM type models that we examine with global ``uncertainty'' and ``surprise'' factors that are meant to capture the deepening interdependencies among all countries in the world. To do this, we construct three new datasets, one focusing on country specific data, and two focusing on worldwide uncertainty, sentiment, and so-called ``surprise'' data, from which global latent factors are extracted. These factors are constructed using both standard estimation methods as well as via implementation of a number of LASSO type shrinkage methods. We find that our new global economic ``uncertainty'' and macroeconomic data ``surprise'' factors are indeed useful, in the sense that they contain substantial marginal predictive content for real GDP growth in numerous EM economies, as shown through a series of real-time forecasting experiments. Moreover, the data shrinkage methods employed in our experiments are found to significantly improve the predictive content of the latent factors used in our DFMs.
+
+This paper is meant as a starting point, as many questions remain unanswered. For example, it will be of interest to investigate the regime-dependent impact of uncertainty shocks on growth by distinguishing effects associated with phases of the business cycle. Also, it remains to analyze the impacts of possible changes in information rigidities in consensus forecasts (such as those used in the construction of our global ``surprise'' factors) when the economy moves from one phase of the business cycle to another. It also remains to asymptotically analyze extant shrinkage methods, with an eye to the development of new and improved estimation algorithms.
+
+
+\newpage
+
+\section*{References}
+
+Abbate, A., and Marcellino, M. (2018). Point, interval and density forecasts of exchange rates with time varying parameter models. Journal of the Royal Statistical Society: Series A (Statistics in Society), 181(1), 155-179.
+
+Ahn, S. C., and Horenstein, A. R. (2013). Eigenvalue ratio test for the number of factors. Econometrica, 81(3), 1203-1227.
+
+Alessi, L., Barigozzi, M., and Capasso, M. (2010). Improved penalization for determining the number of factors in approximate factor models. Statistics and Probability Letters, 80(23-24), 1806-1813.
+
+Alessi, L., Ghysels, E., Onorante, L., Peach, R. and Potter, S. (2014), Central bank macroeconomic forecasting during the global financial crisis: The European Central Bank and the Federal Reserve Bank of New York experiences. Journal of Business and Economic Statistics, 32(4), 483-500.
+
+Artis, M. J., Banerjee, A., and Marcellino, M. (2005). Factor forecasts for the UK. Journal of Forecasting, 24(4), 279-298.
+
+Andreou, E., Ghysels, E., and Kourtellos, A. (2013). Should macroeconomic forecasters use daily financial data and how?. Journal of Business and Economic Statistics, 31(2), 240-251.
+
+Bai, J., and Ng, S. (2002). Determining the number of factors in approximate factor models. Econometrica, 70, 191-221.
+
+Bai, J., and Ng, S. (2008). Forecasting economic time series using targeted predictors. Journal of Econometrics, 146, 304-317.
+
+Baker, S. R., Bloom, N., and Davis, S. J. (2016). Measuring economic policy uncertainty. The Quarterly Journal of Economics, 131(4), 1593-1636.
+
+Banbura, M.,  and R\"{u}nstler, G. (2011). A look into the factor model black box: publication lags and the role of hard and soft data in forecasting GDP. International Journal of Forecasting, 27, 333-346.
+
+Banbura M., Giannone D., Modugno M., Reichlin L. (2013) Now-casting and the real-time data-flow. In: Elliott G, Timmermann A (eds) Handbook of Economic Forecasting, vol 2. Elsevier- North Holland, Amsterdam, 195-237.
+
+Banerjee, A., and Marcellino, M. (2006). Are there any reliable leading indicators for US inflation and GDP growth?. International Journal of Forecasting, 22(1), 137-151.
+
+Bessec, M. (2013). Short-Term Forecasts of French GDP: A Dynamic Factor Model with Targeted Predictors. Journal of Forecasting, 32(6), 500-511.
+
+Bloom, N. (2014). Fluctuations in uncertainty. Journal of Economic Perspectives, 28(2), 153-76.
+
+Bontempi, M. E., Golinelli, R., and Squadrani, M. (2016). A New Index of Uncertainty Based on Internet Searches: A Friend or Foe of Other Indicators?, Quaderni, Working Paper DSE No 1062.
+
+Boivin, J., and Ng, S. (2006). Are more data always better for factor analysis? Journal of Econometrics, 132, 169-194.
+
+Bragoli, D. (2017). Now-casting the Japanese economy. International Journal of Forecasting, 33(2), 390-402.
+
+Bragoli, D., and Fosten, J. (2018). Nowcasting Indian GDP. Oxford Bulletin of Economics and Statistics, 80(2), 259-282.
+
+Bragoli, D., Metelli, L., and Modugno, M. (2015). The importance of updating: Evidence from a Brazilian nowcasting model. OECD Journal: Journal of Business Cycle Measurement and Analysis, 2015(1), 5-22.
+
+Bulligan, G., Marcellino, M., and Venditti, F. (2015). Forecasting economic activity with targeted predictors. International Journal of Forecasting, 31, 188-206.
+
+Caggiano, G., Kapetanios, G., and Labhard, V. (2011). Are more data always better for factor analysis? Results for the euro area, the six largest euro area countries and the UK. Journal of Forecasting, 30(8), 736-752.
+
+Carriere-Swallow, Y., and Cespedes, L. F. (2013). The impact of uncertainty shocks in emerging economies. Journal of International Economics, 90(2), 316-325.
+
+Carriero, A., Clark, T. E., and Marcellino, M. (2016). Common drifting volatility in large Bayesian VARs. Journal of Business and Economic Statistics, 34(3), 375-390.
+
+Cepni, O., G\"{u}ney, I.E., and Swanson, N.R. (2019). Nowcasting and forecasting GDP in emerging markets using global financial and macroeconomic diffusion indexes. International Journal of Forecasting, 35(2), 555-572.
+
+Corradi, V. and Swanson, N.R. (2006), Predictive density evaluation, in G. Elliott, C. Granger and A. Timmermann (eds), Handbook of Economic Forecasting, vol. 1, Elsevier-North Holland, Amsterdam, 197-284.
+
+De Mol, C., Giannone, D., and Reichlin, L. (2008). Forecasting using a large number of predictors: Is Bayesian shrinkage a valid alternative to principal components?. Journal of Econometrics, 146(2), 318-328.
+
+Diebold, F. X., and  Mariano, R. S. (1995). Comparing predictive accuracy. Journal of Business and Economic Statistics, 20, 134-144.
+
+Fan, J., and Li, R. (2001). Variable selection via non-concave penalized likelihood and its oracle properties. Journal of the American Statistical Association, 96(456), 1348-1360.
+
+Forni, M., Hallin, M., Lippi, M., and Reichlin, L. (2000). The generalized dynamic-factor model: Identification and estimation. Review of Economics and Statistics, 82, 540-554.
+
+Fu, W. J. (1998). Penalized regressions: the bridge versus the LASSO. Journal of Computational and Graphical Statistics, 7, 397-416.
+
+Gauvin, L., McLoughlin, C., and Reinhardt, D. (2014). Policy uncertainty spillovers to emerging markets–evidence from capital flows. Bank of England Working Paper No. 512
+
+Giannone, D., Reichlin, L., and Small, D. (2008). Nowcasting: The real-time informational content of macroeconomic data. Journal of Monetary Economics, 55(4), 665-676.
+
+Giannone, D., Agrippino, S. M., and Modugno, M. (2013). Nowcasting China Real GDP. Mimeo.
+
+Girardi, A., Gayer, C., and Reuter, A. (2015). The role of survey data in nowcasting euro area GDP growth. Journal of Forecasting, 35(5), 400-418.
+
+Hastie, T., Tibshirani, R., and Friedman, J. (2009). Unsupervised learning. In The elements of statistical learning (pp. 485-585). Springer, New York, NY.
+
+Kapetanios, G., Marcellino, M., and Papailias, F. (2016). Forecasting inflation and GDP growth using heuristic optimisation of information criteria and variable reduction methods. Computational Statistics and Data Analysis, 100, 369-382.
+
+Kim, H. H., and Swanson, N. R. (2014). Forecasting financial and macroeconomic variables using data reduction methods: New empirical evidence. Journal of Econometrics, 178, 352-367.
+
+Kim, H. H.,  and Swanson, N. R. (2018a). Mining big data using parsimonious factor, machine learning, variable selection and shrinkage methods. International Journal of Forecasting, 34, 339-354.
+
+Kim, H. H., and Swanson, N. R. (2018b). Methods for backcasting, nowcasting and forecasting using factor MIDAS: With an application to Korean GDP. Journal of Forecasting, 37(3), 281-302.
+
+Korobilis, D. (2013). Hierarchical shrinkage priors for dynamic regressions with many predictors. International Journal of Forecasting, 29(1), 43-59.
+
+Li, J., and Chen, W. (2014). Forecasting macroeconomic time series: LASSO-based approaches and their forecast combinations with dynamic factor models. International Journal of Forecasting, 30(4), 996-1015.
+
+Liu, P., Matheson, T. and Romeu, R., (2012). Real-time forecasts of economic activity for Latin American economies. Economic Modelling, 29(4), 1090-1098.
+
+Luciani, M., and Ricci, L. (2014). Nowcasting Norway. International Journal of Central Banking, 10(4), 215-248.
+
+Luciani, M., Pundit, M., Ramayandi, A., and Veronese, G. (2018). Nowcasting Indonesia. Empirical Economics, 55(2), 597-619.
+
+Mariano, R. S., and Murasawa, Y. (2003). A new coincident index of business cycles based on monthly and quarterly series. Journal of Applied Econometrics, 18(4), 427-443.
+
+Medeiros, M. C., and Mendes, E. F. (2016). L1-regularization of high-dimensional time-series models with non-Gaussian and heteroskedastic errors. Journal of Econometrics, 191(1), 255-271.
+
+Medeiros, M. C., and Vasconcelos, G. F. (2016). Forecasting macroeconomic variables in data-rich environments. Economics Letters, 138, 50-52.
+
+Modugno, M., Soybilgen, B., and Yazgan, E. (2016). Nowcasting Turkish GDP and news decomposition. International Journal of Forecasting, 32, 1369-1384.
+
+Onatski, A. (2009). Testing hypotheses about the number of factors in large factor models. Econometrica, 77(5), 1447-1479.
+
+Park, T., and Casella, G. (2008). The bayesian LASSO. Journal of the American Statistical Association, 103(482), 681-686.
+
+Rossi, B. (2014). Density Forecasts in Economics, Forecasting and Policymaking, Working Paper Number 37, Centre de Recerca en Economia Internacional (CREI).
+
+Rossi, B., and Sekhposyan, T. (2015). Macroeconomic uncertainty indices based on nowcast and forecast error distributions. American Economic Review, 105(5), 650-55.
+
+Schumacher, C. (2007). Forecasting German GDP using alternative factor models based on large datasets. Journal of Forecasting, 26(4), 271-302.
+
+Schumacher, C. (2010). Factor forecasting using international targeted predictors: the case of German GDP. Economics Letters, 107, 95-98.
+
+Scotti, C. (2016). Surprise and uncertainty indexes: Real-time aggregation of real-activity macro-surprises. Journal of Monetary Economics, 82, 1-19.
+
+Stock, J. H., and Watson, M. W. (2002). Macroeconomic forecasting using diffusion indexes. Journal of Business and Economic Statistics, 20, 147-162.
+
+Swanson, N.R., (2016). Comment On: In Sample Inference and Forecasting in Misspecified Factor Models, Journal of Business and Economic Statistics, 34, 348-353.
+
+Thorsrud, L. A. (2018). Words are the New Numbers: A Newsy Coincident Index of the Business Cycle. Journal of Business and Economic Statistics, (just-accepted), 1-35.
+
+Tibshirani, R. (1996). Regression shrinkage and selection via the LASSO. Journal of the Royal Statistical Society. Series B, 267-288.
+
+Zou, H. (2006). The adaptive LASSO and its oracle properties. Journal of the American Statistical Association, 101(476), 1418-1429.
+
+\pagebreak
+
+\begin{figure}
+  \centering
+  \caption{Global economic uncertainty factor}
+  \includegraphics[scale=0.60 ]{globalfactor1.jpg}
+\end{figure}
+
+\begin{figure}[hbt]
+  \centering
+  \caption{World GDP growth rates plotted against global macro-surprise factor}
+  \includegraphics[scale=0.60 ]{globalfactor2.jpg}
+\end{figure}
+%
+
+%\begin{landscape}
+%\begin{figure}
+%  \caption{GDP growth rates plotted against local (country-specific) factors}
+%  \includegraphics[scale=0.85 ]{factors.pdf}
+%\end{figure}
+%\end{landscape}
+
+
+\newpage
+%\begin{landscape}
+%\begin{figure}
+%	\caption{Comparison of actual GDP growth rates with nowcasts based on an AR benchmark, local factor model and MSFE-best models}
+%	\begin{center}
+%		\includegraphics[scale=0.83 ]{Nowcasts_new.pdf}
+%	\end{center}
+%\end{figure}
+%\end{landscape}
+
+\clearpage
+% Table generated by Excel2LaTeX from sheet 'Brazil'
+\begin{table}[!htb]
+  \centering
+   	\caption{MSFEs based on the use of different dimension reduction and shrinkage methods with added global diffusion indexes \\
+		Panel A: Brazil}
+   \tiny
+    \begin{tabular*}{\textwidth}{lc @{\extracolsep{\fill}}ccccccccccc}\hline
+		\multicolumn{1}{l}{\textbf{All Sample}} &   & Forecast (h=2) &   &   & Forecast (h=1) &   &   & Nowcast (h=0) &   & Backcast (h=-1) \\\hline
+		& 1 & 2 & 3 & 1 & 2 & 3 & 1 & 2 & 3 & 1 \\\hline
+    AR    & 4.43  & 4.43  & 4.20  & 3.85  & 3.85 & 3.52  & 2.99  & 2.99  & 2.62 & 2.62 \\
+    Local & 0.96  & 0.88  & 0.85  & 0.77  & 0.67*  & 0.62* & 0.50*  & 0.39*  & 0.33*  & 0.43** \\
+    Uncertainty & 0.94  & 0.85  & 0.83  & 0.72*  & 0.60*  & 0.57*  & 0.44*  & 0.30*  & 0.30*  & 0.46** \\
+    Suprise & 0.96  & 0.89  & 0.85  & 0.78  & 0.68  & 0.60*  & 0.51*  & 0.39*  & 0.28*  & 0.39** \\
+    Global & 0.92  & \textbf{0.84} & \textbf{0.83} & 0.72*  & 0.60*  & 0.57*  & 0.45*  & 0.30*  & 0.28*  & 0.44** \\
+    Local-AR & 0.96  & 0.89  & 0.86  & 0.78  & 0.68  & 0.63*  & 0.51*  & 0.39*  & 0.31*  & 0.38** \\
+    Uncertainty-AR & 0.93  & 0.85  & 0.84  & 0.72*  & 0.60*  & 0.57*  & 0.44*  & \textbf{0.29*} & \textbf{0.27*} & 0.43** \\
+    Suprise-AR & 0.96  & 0.89  & 0.86  & 0.78  & 0.68  & 0.60*  & 0.51*  & 0.38*  & 0.27*  & \textbf{0.38**} \\
+    Global-AR & \textbf{0.91} & 0.84  & 0.84  & \textbf{0.71*} & \textbf{0.60*} & \textbf{0.57*} & \textbf{0.44*} & 0.29*  & 0.27*  & 0.41** \\\hline
+    \multicolumn{1}{l}{\textbf{LASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & \textbf{0.90} & 0.81  & \textbf{0.76} & 0.72  & 0.64  & \textbf{0.53**} & 0.49*  & 0.42*  & 0.32*  & 0.44** \\
+    Uncertainty & 0.98  & 0.81  & 0.81  & 0.72*  & \textbf{0.58*} & 0.56**  & 0.44*  & 0.32*  & 0.33*  & 0.51** \\
+    Suprise & 0.92  & 0.82  & 0.83  & 0.74  & 0.66  & 0.54**  & 0.49*  & 0.41*  & 0.33*  & 0.41** \\
+    Global & 0.92  & \textbf{0.80} & 0.87  & \textbf{0.70*} & 0.59*  & 0.57**  & 0.44*  & 0.32*  & 0.34*  & 0.53* \\
+    Local-AR & 0.95  & 0.85  & 0.85  & 0.77  & 0.68  & 0.66* & 0.50*  & 0.41*  & 0.35*  & \textbf{0.34**} \\
+    Uncertainty-AR & 1.00  & 0.83  & 0.85  & 0.74*  & 0.59*  & 0.57**  & 0.43*  & \textbf{0.28*} & 0.25*  & 0.42** \\
+    Suprise-AR & 0.96  & 0.84  & 0.84  & 0.75*  & 0.67*  & 0.65*  & 0.48*  & 0.39*  & 0.35*  & 0.35** \\
+    Global-AR & 0.95  & 0.82  & 0.85  & 0.71*  & 0.59*  & 0.57*  & \textbf{0.42*} & 0.29*  & \textbf{0.25*} & 0.39** \\\hline
+    \multicolumn{1}{l}{\textbf{AdaLASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.91  & 0.86  & 0.85  & 0.75  & 0.67  & 0.63*  & 0.51*  & 0.40*  & 0.33*  & 0.38** \\
+    Uncertainty & 0.87  & 0.82  & 0.83  & 0.71*  & 0.61*  & 0.59*  & 0.46*  & 0.33*  & 0.31*  & 0.40** \\
+    Suprise & 0.91  & 0.86  & 0.85  & 0.77  & 0.68  & 0.62*  & 0.53*  & 0.40*  & 0.30*  & 0.35** \\
+    Global & \textbf{0.85} & \textbf{0.81} & \textbf{0.83} & \textbf{0.69*} & \textbf{0.60*} & \textbf{0.58*} & 0.46*  & 0.32*  & 0.29*  & 0.37** \\
+    Local-AR & 0.93  & 0.87  & 0.87  & 0.77  & 0.68  & 0.65*  & 0.52*  & 0.39*  & 0.31*  & \textbf{0.34**}$_\textbf{{GB}}$ \\
+    Uncertainty-AR & 0.89  & 0.83  & 0.85  & 0.72*  & 0.61*  & 0.59*  & 0.46*  & 0.31*  & 0.27*  & 0.37** \\
+    Suprise-AR & 0.93  & 0.87  & 0.86  & 0.77  & 0.68  & 0.63*  & 0.52*  & 0.40*  & 0.29*  & 0.34** \\
+    Global-AR & 0.87  & 0.83  & 0.84  & 0.70*  & 0.60*  & 0.58*  & \textbf{0.45*} & \textbf{0.31*} & \textbf{0.27*} & 0.39* \\\hline
+    \multicolumn{1}{l}{\textbf{Bayesian LASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.80  & 0.75  & 0.76  & \textbf{0.62*}$_\textbf{{GB}}$ & 0.54*& 0.53** & \textbf{0.28*}$_\textbf{{GB}}$ & \textbf{0.14*}$_\textbf{{GB}}$ & 0.13*  & 0.47* \\
+    Uncertainty & 0.81  & 0.76  & 0.77  & 0.64*  & 0.56*  & 0.54**  & 0.31*  & 0.16*  & \textbf{0.12*}$_\textbf{{GB}}$ & 0.45* \\
+    Suprise & \textbf{0.79} & \textbf{0.74} & \textbf{0.75} & 0.63*  & \textbf{0.54*}$_\textbf{{GB}}$ & \textbf{0.53**}  & 0.30*  & 0.16*  & 0.14*  & 0.46* \\
+    Global & 0.80  & 0.75  & 0.76  & 0.64*  & 0.56*  & 0.54*  & 0.31*  & 0.17*  & 0.13*  & 0.43** \\
+    Local-AR & 0.88  & 0.82  & 0.82  & 0.70*  & 0.61*  & 0.58*  & 0.39*  & 0.24*  & 0.14*  & 0.36** \\
+    Uncertainty-AR & 0.89  & 0.83  & 0.83  & 0.71  & 0.62*  & 0.59*  & 0.41*  & 0.26*  & 0.14*  & \textbf{0.35**} \\
+    Suprise-AR & 0.88  & 0.82  & 0.82  & 0.70*  & 0.61*  & 0.58*  & 0.40*  & 0.24*  & 0.14*  & 0.36** \\
+    Global-AR & 0.88  & 0.82  & 0.82  & 0.71*  & 0.62*  & 0.58*  & 0.40*  & 0.25*  & 0.13*  & 0.35** \\\hline
+    \multicolumn{1}{l}{\textbf{Bayesian AdaLASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.79  & \textbf{0.73}$_\textbf{{GB}}$ & \textbf{0.71*}$_\textbf{{GB}}$ & 0.66*  & \textbf{0.58*} & 0.53**  & \textbf{0.48*} & 0.41*  & 0.37* & 0.48** \\
+    Uncertainty & 0.80  & 0.74  & 0.72  & 0.67*  & 0.59*  & \textbf{0.52**}$_\textbf{{GB}}$ & 0.48*  & 0.42*  & 0.35*  & 0.47** \\
+    Suprise & 0.80  & 0.79  & 0.75  & 0.70*  & 0.65*  & 0.56**  & 0.53*  & 0.48*  & 0.37*  & 0.48** \\
+    Global & \textbf{0.76}$_\textbf{{GB}}$ & 0.79  & 0.74  & \textbf{0.65**} & 0.62  & 0.53*  & 0.49*  & 0.44*  & 0.33*  & 0.45** \\
+    Local-AR & 0.86  & 0.79  & 0.79  & 0.73*  & 0.65*  & 0.61**  & 0.52*  & 0.43*  & 0.34*  & \textbf{0.35**} \\
+    Uncertainty-AR & 0.83  & 0.76  & 0.75  & 0.70**  & 0.60*  & 0.54**  & 0.49*  & \textbf{0.39*} & 0.26*  & 0.36** \\
+    Suprise-AR & 0.85  & 0.80  & 0.78  & 0.73*  & 0.66*  & 0.59**  & 0.52*  & 0.46*  & 0.31*  & 0.38** \\
+    Global-AR & 0.81  & 0.79  & 0.77  & 0.68**  & 0.62*  & 0.54*  & 0.49*  & 0.40*  & \textbf{0.26*} & 0.41** \\\hline
+    \end{tabular*}%
+\begin{tablenotes}
+		\tiny
+		\item[a]{Entries in this table are MSFEs associated with various forecasting models for which latent factors are selected using the shrinkage methods given in bold in the first column of the table. The forecasting models, depicted as Local, Uncertainty, Surprise, Global, Local-AR, Uncertainty-AR, Surprise-AR, and Global-AR correspond to Specifications 1-8, respectively (see Section 3.3). Models that yield the smallest MSFE are denoted in bold, for each estimation method and forecast horizon; and models that are denoted in bold with a ``GB'' subscript denote models that are ``globally'' MSFE-``best'', across all models and estimation methods, for a given forecast horizon. Entries in the first row of the table are point MSFEs based our benchmark AR(SIC) model, while the rest of the entries in the table are relative MSFEs (i.e., relative to the AR(SIC) benchmark model). Thus, a value of less than unity indicates that a particular model and estimation method is more accurate than that based on the AR(SIC) benchmark, for a particular forecast horizon. Quarterly forecast horizons are denoted by $h$=-1,0,1, or 2; and monthly forecasts within each of these quarters are denoted by month 1, 2, or 3. Entries superscripted with asterisks (** = $5\% $ level; * = $10\%$ level) are significantly superior than the AR(SIC) benchmark model, based on application of the Diebold-Mariano (1995) predictive accuracy test. All models are listed in the first column of the table, and Local, Uncertainty, Surprise, and Global correspond to Specifications 1-4 from Section 3.3, respectively; while the models appended with ``-AR" are the same as Specifications 1-4, but with additional lagged dependent variables added as regressors. Entries in each panel shows results of mentioned specification types where factors are extracted based on the targeted predictors selected by using the corresponding shrinkage method. For complete details, refer to Section 3.}
+	\end{tablenotes}
+\end{table}%
+\newpage
+
+\clearpage
+% Table generated by Excel2LaTeX from sheet 'Indonesia'
+\begin{table}[!htb]
+  \centering
+   	\caption{MSFEs based on the use of different dimension reduction and shrinkage methods with added global diffusion indexes \\
+		Panel B: Indonesia}
+   \tiny
+    \begin{tabular*}{\textwidth}{lc @{\extracolsep{\fill}}ccccccccccc}\hline
+		\multicolumn{1}{l}{\textbf{All Sample}} &   & Forecast (h=2) &   &   & Forecast (h=1) &   &   & Nowcast (h=0) &   & Backcast (h=-1) \\\hline
+		& 1 & 2 & 3 & 1 & 2 & 3 & 1 & 2 & 3 & 1 \\\hline
+    AR    & 1.07  & 1.07  & 1.01  & 1.05  & 1.05  & 0.97  & 0.80  & 0.80  & 0.73  & 0.73 \\
+    Local & \textbf{0.83} & \textbf{0.83}$_\textbf{{GB}}$ & \textbf{0.92} & \textbf{0.72*} & \textbf{0.75*} & \textbf{0.82*} & 0.76*  & 0.79  & 0.88  & 1.16 \\
+    Uncertainty & 1.35  & 1.56  & 1.33  & 1.25  & 1.39  & 1.32  & 1.21  & 1.30  & 1.31  & 1.40 \\
+    Suprise & 1.13  & 1.18  & 1.28  & 0.98  & 1.01  & 1.11  & 0.94  & 0.93  & 1.02  & 1.07 \\
+    Global & 1.13  & 1.19  & 1.24  & 1.09  & 1.13  & 1.23  & 1.11  & 1.13  & 1.23  & 1.32 \\
+    Local-AR & 0.86  & 0.86  & 0.97  & 0.76*  & 0.76*  & 0.85  & \textbf{0.75*} & \textbf{0.71*} & \textbf{0.84} & \textbf{0.94} \\
+    Uncertainty-AR & 1.38  & 1.55  & 1.33  & 1.24  & 1.33  & 1.27  & 1.12  & 1.17  & 1.16  & 1.25 \\
+    Suprise-AR & 1.26  & 1.21  & 1.30  & 1.10  & 1.00  & 1.11  & 1.01  & 0.89  & 0.97  & 1.01 \\
+    Global-AR & 1.28  & 1.21  & 1.26  & 1.21  & 1.13  & 1.23  & 1.17  & 1.09  & 1.18  & 1.30 \\\hline
+    \multicolumn{1}{l}{\textbf{LASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.95  & 0.90  & 0.93  & 0.87*  & 0.87  & \textbf{0.82*} & 0.89*  & 0.86  & 0.88  & 1.03 \\
+    Uncertainty & 1.60  & 1.63  & 1.29  & 1.43  & 1.45  & 1.30  & 1.36  & 1.38  & 1.31  & 1.45 \\
+    Suprise & 1.26  & 1.17  & 1.23  & 1.15  & 1.08  & 1.06  & 1.13  & 1.08  & 0.99  & 1.11 \\
+    Global & 1.33  & 1.23  & 1.19  & 1.28  & 1.19  & 1.17  & 1.30  & 1.25  & 1.18  & 1.36 \\
+    Local-AR & \textbf{0.90} & \textbf{0.87} & \textbf{0.93} & \textbf{0.81*} & \textbf{0.83*} & 0.83  & \textbf{0.81*} & \textbf{0.79*} & \textbf{0.86} & \textbf{0.98} \\
+    Uncertainty-AR & 1.63  & 1.70  & 1.12  & 1.41  & 1.44  & 1.15  & 1.26  & 1.27  & 1.12  & 1.34 \\
+    Suprise-AR & 1.31  & 1.22  & 1.20  & 1.16  & 1.09  & 1.06  & 1.11  & 1.00  & 0.98  & 1.07 \\
+    Global-AR & 1.36  & 1.25  & 1.09  & 1.29  & 1.21  & 1.13  & 1.29  & 1.21  & 1.16  & 1.38 \\\hline
+    \multicolumn{1}{l}{\textbf{AdaLASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.89  & 0.89  & 0.92  & 0.77  & 0.74  & 0.76*  & 0.73*  & 0.65*  & 0.63*  & 0.96 \\
+    Uncertainty & 0.90  & 1.01  & 0.96  & 0.83  & 0.91  & 0.85*  & 0.91  & 0.92  & 0.83*  & 1.09 \\
+    Suprise & 0.93  & 1.01  & 1.00  & 0.83  & 0.86  & 0.84*  & 0.79  & 0.74*  & 0.68*  & 0.96 \\
+    Global & 0.90  & 0.94  & 0.89  & 0.82  & 0.85  & 0.79*  & 0.88  & 0.85  & 0.73*  & 1.05 \\
+    Local-AR & 0.95  & 0.97  & 0.97  & 0.79  & 0.80  & 0.75  & \textbf{0.65*} & \textbf{0.61*} & \textbf{0.55*} & 1.00 \\
+    Uncertainty-AR & \textbf{0.82}$_\textbf{{GB}}$ & \textbf{0.89} & \textbf{0.84}$_\textbf{{GB}}$ & \textbf{0.67*}$_\textbf{{GB}}$ & \textbf{0.68*}$_\textbf{{GB}}$ & \textbf{0.71*} & 0.72*  & 0.72  & 0.67*  & 1.11 \\
+    Suprise-AR & 1.04  & 1.04  & 1.04  & 0.86  & 0.85  & 0.81  & 0.71*  & 0.70*  & 0.63*  & \textbf{0.95} \\
+    Global-AR & 0.88  & 0.91  & 0.85  & 0.71*  & 0.70*  & 0.73*  & 0.74*  & 0.76  & 0.70*  & 1.08 \\\hline
+   \multicolumn{1}{l}{\textbf{Bayesian LASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 1.32  & 1.22  & 1.24  & 0.92  & 0.78  & 0.68*  & 0.55*  & 0.56*  & 0.39*  & 0.79 \\
+    Uncertainty & 1.25  & 1.20  & 1.21  & 0.85  & 0.76  & 0.69*  & 0.48*  & 0.57*  & 0.41*  & 0.86 \\
+    Suprise & 1.40  & 1.31  & 1.30  & 0.99  & 0.86  & 0.78  & 0.54*  & 0.54*  & 0.37*  & 0.73 \\
+    Global & 1.36  & 1.28  & 1.28  & 0.94  & 0.83  & 0.80  & 0.46*  & 0.51*  & 0.39*  & 0.78 \\
+    Local-AR & 1.21  & 1.13  & 1.06  & 0.85  & \textbf{0.77} & \textbf{0.67*}$_\textbf{{GB}}$ & 0.43*  & 0.38*  & \textbf{0.29*}$_\textbf{{GB}}$ & 0.49 \\
+    Uncertainty-AR & 1.23  & 1.16  & 1.17  & \textbf{0.82} & 0.77  & 0.75  & \textbf{0.35*}$_\textbf{{GB}}$ & \textbf{0.36*}$_\textbf{{GB}}$ & 0.32*  & 0.56 \\
+    Suprise-AR & 1.16  & 1.09  & 1.12  & 0.88  & 0.82  & 0.77*  & 0.53*  & 0.46*  & 0.42*  & \textbf{0.43}$_\textbf{{GB}}$ \\
+    Global-AR & 1.21  & 1.16  & 1.20  & 0.89  & 0.84  & 0.82  & 0.50*  & 0.46*  & 0.44*  & 0.50 \\\hline
+    \multicolumn{1}{l}{\textbf{Bayesian AdaLASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & \textbf{0.95} & \textbf{0.94} & 1.03  & 0.83*  & \textbf{0.80} & \textbf{0.87} & 0.81*  & 0.73*  & 0.82  & 0.99 \\
+    Uncertainty & 1.04  & 0.97  & 1.13  & 1.05  & 0.97  & 1.06  & 1.20  & 1.16  & 1.17  & 1.43 \\
+    Suprise & 1.15  & 1.11  & 1.21  & 1.02  & 0.97  & 1.04  & 0.99  & 0.88  & 0.92  & 1.08 \\
+    Global & 1.28  & 0.99  & 1.12  & 1.19  & 0.95  & 1.04  & 1.24  & 1.10  & 1.09  & 1.33 \\
+    Local-AR & 1.00  & 1.00  & 1.10  & \textbf{0.83} & 0.83  & 0.92  & \textbf{0.71*} & \textbf{0.63*} & \textbf{0.75} & \textbf{0.88} \\
+    Uncertainty-AR & 1.09  & 0.98  & \textbf{0.99} & 1.03  & 0.88  & 0.90  & 1.09  & 1.02  & 0.97  & 1.36 \\
+    Suprise-AR & 1.22  & 1.14  & 1.18  & 1.04  & 0.96  & 1.00  & 0.91  & 0.77*  & 0.83  & 1.00 \\
+    Global-AR & 1.42  & 1.16  & 1.08  & 1.26  & 1.01  & 0.96  & 1.24  & 1.09  & 0.97  & 1.36 \\\hline
+    \end{tabular*}%
+ 	\begin{tablenotes}
+		\tiny
+		\item[a]{See notes to Table 1.}
+	\end{tablenotes}
+\end{table}%
+\newpage
+
+% Table generated by Excel2LaTeX from sheet 'Mexico'
+\begin{table}[!htb]
+  \centering
+   	\caption{MSFEs based on the use of different dimension reduction and shrinkage methods with added global diffusion indexes \\
+		Panel C: Mexico}
+   \tiny
+    \begin{tabular*}{\textwidth}{lc @{\extracolsep{\fill}}ccccccccccc}\hline
+		\multicolumn{1}{l}{\textbf{All Sample}} &   & Forecast (h=2) &   &   & Forecast (h=1) &   &   & Nowcast (h=0) &   & Backcast (h=-1) \\\hline
+		& 1 & 2 & 3 & 1 & 2 & 3 & 1 & 2 & 3 & 1 \\\hline
+     AR    & 4.38  & 4.38  & 3.98  & 3.72  & 3.72  & 3.26  & 2.73  & 2.73  & 2.25  & 2.25 \\
+    Local & \textbf{0.63} & \textbf{0.53} & 0.52  & \textbf{0.45*} & 0.38**  & \textbf{0.44**} & 0.35**  & 0.33**  & \textbf{0.60*} & \textbf{0.66} \\
+    Uncertainty & 0.70  & 0.63  & 0.54  & 0.50*  & 0.45*  & 0.48**  & 0.37**  & 0.36**  & 0.62*  & 0.72 \\
+    Suprise & 0.65  & 0.53  & 0.57  & 0.48*  & 0.39**  & 0.52**  & 0.36**  & 0.33**  & 0.68  & 0.78 \\
+    Global & 0.70  & 0.61  & 0.57  & 0.50*  & 0.43*  & 0.52**  & 0.37**  & 0.34**  & 0.68  & 0.79 \\
+    Local-AR & 0.72  & 0.59  & 0.55  & 0.49*  & 0.40**  & 0.45**  & 0.34**  & 0.32**  & 0.62*  & 0.70 \\
+    Uncertainty-AR & 0.75  & 0.65  & 0.55  & 0.51*  & 0.45*  & 0.48**  & 0.36**  & 0.35**  & 0.63*  & 0.74 \\
+    Suprise-AR & 0.67  & 0.53  & \textbf{0.51} & 0.47*  & \textbf{0.37**} & 0.47**  & \textbf{0.33**} & \textbf{0.30**} & 0.65  & 0.79 \\
+    Global-AR & 0.70  & 0.58  & 0.52  & 0.49*  & 0.40*  & 0.49**  & 0.35**  & 0.32**  & 0.65  & 0.79 \\\hline
+    \multicolumn{1}{l}{\textbf{LASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & \textbf{0.68} & 0.58  & 0.53  & 0.47*  & 0.39**  & 0.46**  & 0.32**  & 0.28**  & 0.60*  & \textbf{0.71} \\
+    Uncertainty & 0.73  & 0.69  & 0.55  & 0.48*  & 0.43**  & 0.48**  & 0.31**  & 0.29**  & 0.61*  & 0.77 \\
+    Suprise & 0.69  & \textbf{0.55} & 0.53  & \textbf{0.45*} & \textbf{0.37**} & 0.48**  & 0.30**  & 0.26**  & 0.64  & 0.77 \\
+    Global & 0.71  & 0.65  & 0.56  & 0.46*  & 0.37**  & 0.48**  & 0.29**  & 0.26**  & 0.64  & 0.80 \\
+    Local-AR & 0.78  & 0.64  & 0.55  & 0.52*  & 0.42*  & 0.46**  & 0.31**  & 0.27**  & \textbf{0.60*} & 0.74 \\
+    Uncertainty-AR & 0.81  & 0.73  & 0.57  & 0.52*  & 0.45*  & 0.50**  & 0.31**  & 0.28**  & 0.60*  & 0.79 \\
+    Suprise-AR & 0.77  & 0.61  & \textbf{0.52} & 0.50*  & 0.39*  & \textbf{0.46**} & 0.30**  & 0.25**  & 0.61*  & 0.79 \\
+    Global-AR & 0.78  & 0.70  & 0.56  & 0.49*  & 0.39*  & 0.48**  & \textbf{0.29**} & \textbf{0.25**} & 0.62*  & 0.81 \\\hline
+    \multicolumn{1}{l}{\textbf{AdaLASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & \textbf{0.53}$_\textbf{{GB}}$ & \textbf{0.48}$_\textbf{{GB}}$ & \textbf{0.48*}$_\textbf{{GB}}$ & \textbf{0.41*}$_\textbf{{GB}}$ & \textbf{0.40*} & \textbf{0.42**}$_\textbf{{GB}}$ & 0.34**  & 0.33**  & 0.52**  & \textbf{0.64*}$_\textbf{{GB}}$ \\
+    Uncertainty & 0.63  & 0.56  & 0.61  & 0.45*  & 0.44*  & 0.53**  & 0.34**  & 0.32**  & 0.57*  & 0.79 \\
+    Suprise & 0.55  & 0.52  & 0.52  & 0.42*  & 0.42*  & 0.49**  & 0.34**  & 0.34**  & 0.62*  & 0.78 \\
+    Global & 0.61  & 0.54  & 0.62  & 0.45*  & 0.42*  & 0.56**  & 0.33**  & 0.31**  & 0.64*  & 0.87 \\
+    Local-AR & 0.64  & 0.56  & 0.54  & 0.46*  & 0.41*  & 0.44**  & 0.31**  & \textbf{0.29**} & \textbf{0.52*} & 0.67 \\
+    Uncertainty-AR & 0.71  & 0.64  & 0.67  & 0.49*  & 0.47*  & 0.58**  & 0.32**  & 0.32**  & 0.56*  & 0.79 \\
+    Suprise-AR & 0.63  & 0.57  & 0.52  & 0.44*  & 0.43*  & 0.46**  & 0.31**  & 0.32**  & 0.58*  & 0.81 \\
+    Global-AR & 0.67  & 0.59  & 0.64  & 0.46*  & 0.43*  & 0.56**  & \textbf{0.31**} & 0.31**  & 0.60*  & 0.87 \\\hline
+   \multicolumn{1}{l}{\textbf{Bayesian LASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.91  & \textbf{0.74} & \textbf{0.82} & 0.47*  & \textbf{0.41*} & \textbf{0.57*} & \textbf{0.19**}$_\textbf{{GB}}$ & 0.17** & 0.18**  & 0.78 \\
+    Uncertainty & \textbf{0.90} & 0.80  & 0.83  & \textbf{0.47*} & 0.43*  & 0.58*  & 0.20**  & 0.21**  & 0.18**  & 0.78 \\
+    Suprise & 0.91  & 0.75  & 0.83  & 0.47*  & 0.41*  & 0.58*  & 0.19**  & \textbf{0.16**}$_\textbf{{GB}}$ & \textbf{0.18**}$_\textbf{{GB}}$ & 0.77 \\
+    Global & 0.90  & 0.80  & 0.84  & 0.47*  & 0.43*  & 0.59*  & 0.21**  & 0.22**  & 0.18**  & 0.77 \\
+    Local-AR & 1.18  & 0.87  & 0.99  & 0.66  & 0.52*  & 0.72  & 0.23**  & 0.26**  & 0.31**  & 0.70 \\
+    Uncertainty-AR & 1.25  & 0.97  & 1.03  & 0.71  & 0.56*  & 0.75  & 0.24**  & 0.20**  & 0.33**  & 0.71 \\
+    Suprise-AR & 1.17  & 0.88  & 0.99  & 0.65  & 0.52*  & 0.72  & 0.23**  & 0.25**  & 0.32**  & \textbf{0.70} \\
+    Global-AR & 1.23  & 0.96  & 1.04  & 0.70  & 0.55*  & 0.76  & 0.24**  & 0.22**  & 0.34** & 0.70 \\\hline
+    \multicolumn{1}{l}{\textbf{Bayesian AdaLASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & \textbf{0.61} & 0.53  & \textbf{0.48} & 0.45*  & 0.40*  & \textbf{0.43**} & 0.35**  & 0.33**  & \textbf{0.58*} & \textbf{0.69} \\
+    Uncertainty & 0.66  & 0.56  & 0.50  & 0.47*  & 0.41*  & 0.47**  & 0.35**  & 0.34**  & 0.61*  & 0.78 \\
+    Suprise & 0.62  & \textbf{0.51} & 0.48  & \textbf{0.42*} & 0.36**  & 0.44**  & 0.32**  & 0.31**  & 0.62*  & 0.74 \\
+    Global & 0.65  & 0.52  & 0.51  & 0.44*  & \textbf{0.36**}$_\textbf{{GB}}$ & 0.47**  & 0.33**  & 0.31**  & 0.63*  & 0.80 \\
+    Local-AR & 0.73  & 0.62  & 0.53  & 0.52*  & 0.44*  & 0.46**  & 0.35**  & 0.32**  & 0.59*  & 0.74 \\
+    Uncertainty-AR & 0.76  & 0.62  & 0.54  & 0.52*  & 0.44*  & 0.49**  & 0.35**  & 0.33**  & 0.60*  & 0.80 \\
+    Suprise-AR & 0.74  & 0.60  & 0.52  & 0.49*  & 0.41*  & 0.46**  & \textbf{0.33**} & 0.31**  & 0.62*  & 0.78 \\
+    Global-AR & 0.75  & 0.60  & 0.54  & 0.49*  & 0.38*  & 0.49**  & 0.33**  &\textbf{ 0.30**}  & 0.62*  & 0.81 \\\hline
+   \end{tabular*}%
+ 	\begin{tablenotes}
+		\tiny
+		\item[a]{See notes to Table 1.}
+	\end{tablenotes}
+\end{table}%
+\newpage
+
+
+
+
+% Table generated by Excel2LaTeX from sheet 'S.Africa'
+\begin{table}[!htb]
+  \centering
+   	\caption{MSFEs based on the use of different dimension reduction and shrinkage methods with added global diffusion indexes \\
+		Panel D: South Africa}
+   \tiny
+    \begin{tabular*}{\textwidth}{lc @{\extracolsep{\fill}}ccccccccccc}\hline
+		\multicolumn{1}{l}{\textbf{All Sample}} &   & Forecast (h=2) &   &   & Forecast (h=1) &   &   & Nowcast (h=0) &   & Backcast (h=-1) \\\hline
+		& 1 & 2 & 3 & 1 & 2 & 3 & 1 & 2 & 3 & 1 \\\hline
+    AR    & 2.55  & 2.55  & 2.38  & 2.10  & 2.10  & 1.90  & 1.44  & 1.44  & 1.30  & 1.30 \\
+    Local & 0.94  & 0.91  & 1.10  & 0.93  & 0.77  & 0.90  & 0.85  & 0.77  & 1.01  & 1.04 \\
+    Uncertainty & 1.04  & 0.94  & \textbf{0.94} & 0.86  & 0.74  & \textbf{0.74*} & 0.76*  & 0.78  & 0.84  & 0.88 \\
+    Suprise & 0.91  & 0.82  & 1.18  & 0.91  & 0.76  & 0.97  & 0.85  & 0.73*  & 0.99  & 1.03 \\
+    Global & \textbf{0.78} & \textbf{0.76} & 0.99  & \textbf{0.79*} & \textbf{0.71*} & 0.80  & \textbf{0.72*} & \textbf{0.72**} & \textbf{0.80} & \textbf{0.80} \\
+    Local-AR & 1.28  & 1.13  & 1.27  & 1.04  & 1.00  & 1.04  & 0.89  & 0.88  & 1.09  & 1.14 \\
+    Uncertainty-AR & 1.07  & 1.14  & 1.12  & 0.95  & 0.98  & 1.05  & 0.78*  & 0.89  & 1.08  & 0.98 \\
+    Suprise-AR & 1.25  & 1.06  & 1.47  & 1.01  & 0.94  & 1.21  & 0.88  & 0.82  & 1.09  & 1.12 \\
+    Global-AR & 1.09  & 1.04  & 1.05  & 0.88  & 0.94  & 0.93  & 0.73**  & 0.88  & 0.99  & 0.91 \\\hline
+    \multicolumn{1}{l}{\textbf{LASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.82  & 0.85  & 1.10  & 0.81**  & 0.72**  & 1.04  & 0.70**  & 0.67**  & 0.86  & 0.77 \\
+    Uncertainty & 0.92  & 0.85  & 1.02  & 0.82**  & 0.69**  & \textbf{0.95} & 0.69**  & 0.65**  & \textbf{0.80} & 0.96 \\
+    Suprise & \textbf{0.75} & \textbf{0.80} & 1.18  & 0.79**  & \textbf{0.68**} & 1.18  & 0.68**  & 0.65  & 0.93  & 0.77 \\
+    Global & 0.92  & 0.87  & 1.06  & 0.89  & 0.75**  & 1.06  & 0.80  & 0.73**  & 0.82  & 1.01 \\
+    Local-AR & 0.87  & 0.86  & 1.18  & 0.83**  & 0.72**  & 1.16  & 0.71**  & \textbf{0.64**} & 0.90  & 0.68 \\
+    Uncertainty-AR & 0.85  & 0.80  & 1.07  & 0.82*  & 0.68*  & 1.01  & 0.72**  & 0.67**  & 0.83  & 0.75 \\
+    Suprise-AR & 0.77  & 0.87  & 1.28  & \textbf{0.76**} & 0.72**  & 1.35  & \textbf{0.65**} & 0.66**  & 0.99  & \textbf{0.67*}$_\textbf{{GB}}$ \\
+    Global-AR & 0.90  & 0.85  & 1.18  & 0.84  & 0.72**  & 1.18  & 0.81  & 0.67**  & 0.88  & 0.88 \\\hline
+    \multicolumn{1}{l}{\textbf{AdaLASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.99  & 0.99  & 1.09  & 0.87*  & 0.89*  & 1.09  & 0.86*  & 0.89  & 1.50  & 0.87 \\
+    Uncertainty & \textbf{0.90} & \textbf{0.92} & \textbf{0.83} & \textbf{0.79*} & \textbf{0.82*} & \textbf{0.70*} & \textbf{0.78**} & 0.86*  & \textbf{0.71*} & 0.84 \\
+    Suprise & 0.95  & 0.98  & 0.93  & 0.85*  & 0.89  & 0.78*  & 0.85*  & \textbf{0.84**} & 0.82  & 0.85 \\
+    Global & 0.91  & 0.97  & 0.99  & 0.80*  & 0.89  & 1.03  & 0.80*  & 0.89  & 1.47  & 0.86 \\
+    Local-AR & 1.20  & 1.08  & 1.07  & 0.99  & 1.02  & 0.95  & 0.88**  & 1.00  & 0.94  & 0.80 \\
+    Uncertainty-AR & 1.10  & 0.98  & 0.98  & 0.90  & 0.92  & 0.85  & 0.82**  & 0.90  & 0.94  & \textbf{0.70} \\
+    Suprise-AR & 1.29  & 1.24  & 1.12  & 1.15  & 1.18  & 1.21  & 1.09  & 1.24  & 1.88  & 0.91 \\
+    Global-AR & 1.03  & 1.02  & 0.95  & 0.91  & 1.03  & 0.77  & 0.81**  & 0.94  & 0.73*  & 0.70 \\\hline
+    \multicolumn{1}{l}{\textbf{Bayesian LASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.97  & 0.71  & 0.79  & 0.95  & 0.68**  & 0.79*  & 0.81**  & 0.89*  & 1.05  & 1.16 \\
+    Uncertainty & 0.87  & 0.78  & 0.79  & 0.85*  & 0.71**  & 0.82*  & 0.83**  & 0.92*  & 1.09  & 1.17 \\
+    Suprise & 0.97  & \textbf{0.69*}$_\textbf{{GB}}$ & 0.76  & 0.89  & 0.66**  & 0.77*  & 0.79**  & 0.85*  & 1.01  & 1.16 \\
+    Global & 0.82  & 0.75  & 0.77  & 0.79*  & 0.69** & 0.77*  & 0.83*  & 0.92*  & 1.05  & 1.18 \\
+    Local-AR & 0.80  & 0.74  & 0.68  & 0.61**  & 0.58**  & 0.53**  & 0.52**  & 0.57**  & 0.70**  & 0.91 \\
+    Uncertainty-AR & 0.79  & 0.75  & 0.68  & 0.62**  & 0.57**  & 0.53**  & 0.53**  & 0.61**  & 0.73**  & 0.94 \\
+    Suprise-AR & 0.74  & 0.72  & \textbf{0.68*}$_\textbf{{GB}}$ & \textbf{0.58**}$_\textbf{{GB}}$ & 0.56**  & \textbf{0.52**}$_\textbf{{GB}}$ & \textbf{0.50**}$_\textbf{{GB}}$ & \textbf{0.56**}$_\textbf{{GB}}$ & \textbf{0.67**} & \textbf{0.88} \\
+    Global-AR & \textbf{0.74}$_\textbf{{GB}}$ & 0.75  & 0.69*  & 0.60**  & \textbf{0.55**}$_\textbf{{GB}}$ & 0.53**  & 0.51**  & 0.61**  & 0.70**  & 0.92 \\\hline
+   \multicolumn{1}{l}{\textbf{Bayesian AdaLASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & \textbf{0.92} & 0.81  & 0.91  & 0.79*  & 0.65**  & 0.81  & 0.73*  & 0.81  & 0.77*  & 0.85 \\
+    Uncertainty & 1.11  & 0.97  & \textbf{0.85} & 0.98  & 0.82  & \textbf{0.77} & 0.91  & 1.00  & \textbf{0.64*}$_\textbf{{GB}}$ & 0.92 \\
+    Suprise & 0.94  & \textbf{0.75} & 1.04  & \textbf{0.79*} & \textbf{0.55**} & 0.97  & \textbf{0.71*} & \textbf{0.77*} & 0.80  & \textbf{0.82} \\
+    Global & 1.12  & 0.95  & 1.01  & 0.96  & 0.81  & 0.97  & 0.95  & 0.83  & 0.74*  & 1.12 \\
+    Local-AR & 1.12  & 1.04  & 1.15  & 0.95  & 0.93  & 1.04  & 0.78*  & 1.05  & 0.86  & 0.93 \\
+    Uncertainty-AR & 1.29  & 1.17  & 1.04  & 1.18  & 1.06  & 1.01  & 1.03  & 1.25  & 0.87  & 1.10 \\
+    Suprise-AR & 1.13  & 1.00  & 1.33  & 0.93  & 0.88  & 1.29  & 0.73*  & 1.09  & 0.98  & 0.87 \\
+    Global-AR & 1.10  & 1.20  & 1.16  & 0.98  & 1.09  & 1.16  & 0.94  & 0.95  & 0.94  & 1.08 \\\hline
+   \end{tabular*}%
+ 	\begin{tablenotes}
+		\tiny
+		\item[a]{See notes to Table 1.}
+	\end{tablenotes}
+\end{table}%
+\newpage
+
+
+% Table generated by Excel2LaTeX from sheet 'Sheet2'
+\begin{table}[!htb]
+  \centering
+   	\caption{MSFEs based on the use of different dimension reduction and shrinkage methods with added global diffusion indexes \\
+		Panel E: Turkey}
+   \tiny
+    \begin{tabular*}{\textwidth}{lc @{\extracolsep{\fill}}ccccccccccc}\hline
+		\multicolumn{1}{l}{\textbf{All Sample}} &   & Forecast (h=2) &   &   & Forecast (h=1) &   &   & Nowcast (h=0) &   & Backcast (h=-1) \\\hline
+		& 1 & 2 & 3 & 1 & 2 & 3 & 1 & 2 & 3 & 1 \\\hline
+    AR    & 7.21  & 7.21  & 6.58  & 6.63  & 6.63  & 5.94  & 5.48  & 5.48  & 4.69  & 4.69 \\
+    Local & 0.68  & 0.65  & 0.72  & 0.62**  & 0.56**  & 0.60  & 0.56  & 0.55  & 0.66**  & 0.67 \\
+    Uncertainty & 0.69  & 0.69  & 0.75  & \textbf{0.60} & 0.55  & 0.58  & 0.56  & 0.55  & 0.66**  & 0.72 \\
+    Suprise & \textbf{0.68}$_\textbf{{GB}}$ & \textbf{0.64}$_\textbf{{GB}}$ & \textbf{0.69} & 0.60**  & \textbf{0.54**} & 0.56*  & 0.53  & 0.53  & 0.64**  & 0.74 \\
+    Global & 0.68  & 0.67  & 0.73  & 0.60**  & 0.55*  & 0.57  & 0.55**  & 0.55  & 0.64**  & 0.71 \\
+    Local-AR & 0.71  & 0.68  & 0.73  & 0.62  & 0.58  & 0.58  & 0.51  & 0.50  & 0.52  & 0.58* \\
+    Uncertainty-AR & 0.71  & 0.71  & 0.75  & 0.60  & 0.56  & 0.56*  & 0.51*  & 0.50  & 0.52  & 0.56* \\
+    Suprise-AR & 0.73  & 0.69  & 0.73  & 0.62**  & 0.58**  & 0.56*  & \textbf{0.50*} & 0.49  & 0.48  & 0.54* \\
+    Global-AR & 0.72  & 0.71  & 0.74  & 0.62*  & 0.59*  & \textbf{0.55*} & 0.51*  & \textbf{0.50} & \textbf{0.48} & \textbf{0.51*} \\\hline
+    \multicolumn{1}{l}{\textbf{LASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.73  & 0.66  & 0.70  & 0.64*  & 0.57**  & 0.58  & 0.52*  & 0.51  & 0.58*  & 0.61* \\
+    Uncertainty & 0.71  & 0.70  & 0.73  & 0.61  & 0.57  & 0.58*  & 0.54  & 0.53  & 0.58**  & 0.66 \\
+    Suprise & 0.73  & \textbf{0.65} & \textbf{0.68*}$_\textbf{{GB}}$ & 0.63**  & 0.56**  & 0.56  & 0.50*  & 0.51  & 0.57  & 0.71 \\
+    Global & \textbf{0.70} & 0.67  & 0.71  & \textbf{0.59*} & \textbf{0.56*} & \textbf{0.55*} & 0.53  & 0.55  & 0.57*  & 0.65 \\
+    Local-AR & 0.79  & 0.72  & 0.73  & 0.66**  & 0.61**  & 0.59  & 0.49*  & 0.48  & 0.47  & 0.56* \\
+    Uncertainty-AR & 0.75  & 0.72  & 0.75  & 0.63*  & 0.59  & 0.57*  & 0.49*  & \textbf{0.48} & 0.48  & 0.54* \\
+    Suprise-AR & 0.78  & 0.71  & 0.73  & 0.65*  & 0.60**  & 0.58  & \textbf{0.48**} & 0.49  & \textbf{0.45} & 0.54* \\
+    Global-AR & 0.74  & 0.70  & 0.74  & 0.62*  & 0.59  & 0.56*  & 0.50  & 0.50  & 0.47  & \textbf{0.51*} \\\hline
+    \multicolumn{1}{l}{\textbf{AdaLASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.74  & 0.70  & 0.81  & 0.67  & 0.62  & 0.70  & 0.60  & 0.58  & 0.70**  & 0.72 \\
+    Uncertainty & 0.75  & 0.79  & 0.82  & 0.64  & 0.62  & 0.64  & 0.63  & 0.61  & 0.69**  & 0.76 \\
+    Suprise & \textbf{0.71} & \textbf{0.68} & \textbf{0.75} & 0.64  & 0.60  & 0.64  & 0.56  & 0.56  & 0.67**  & 0.78 \\
+    Global & 0.72  & 0.76  & 0.79  & 0.60  & 0.60  & 0.61  & 0.62  & 0.62  & 0.68**  & 0.74 \\
+    Local-AR & 0.75  & 0.75  & 0.80  & 0.66  & 0.64  & 0.66  & 0.54*  & 0.52  & 0.51  & 0.56* \\
+    Uncertainty-AR & 0.76  & 0.77  & 0.79  & 0.62  & 0.61  & 0.61  & 0.55  & 0.52  & 0.54  & 0.58* \\
+    Suprise-AR & 0.76  & 0.75  & 0.79  & 0.66  & 0.63  & 0.64  & \textbf{0.53*} & \textbf{0.52} & \textbf{0.48*} & 0.53* \\
+    Global-AR & 0.73  & 0.75  & 0.77  & \textbf{0.60*} & \textbf{0.59*} & \textbf{0.58*} & 0.55  & 0.54  & 0.51*  & \textbf{0.53*} \\\hline
+    \multicolumn{1}{l}{\textbf{Bayesian LASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.76  & 0.73  & 0.78  & 0.62*  & 0.58  & 0.63  & 0.40**  & 0.39*  & 0.40  & \textbf{0.46}$_\textbf{{GB}}$ \\
+    Uncertainty & 0.74  & 0.72  & 0.78  & 0.58*  & 0.52  & 0.59  & 0.37**  & 0.36*  & 0.37*  & 0.61* \\
+    Suprise & 0.75  & 0.72  & \textbf{0.76} & 0.61*  & 0.58  & 0.61  & 0.39**  & 0.38**  & 0.38*  & 0.65* \\
+    Global & \textbf{0.74} & \textbf{0.72} & 0.78  & \textbf{0.57*} & \textbf{0.52} & \textbf{0.59} & \textbf{0.36**}$_\textbf{{GB}}$ & 0.35*  & 0.36*  & 0.62* \\
+    Local-AR & 0.94  & 0.82  & 0.84  & 0.69  & 0.61  & 0.62  & 0.38**  & 0.36*  & 0.32**  & 0.55* \\
+    Uncertainty-AR & 0.93  & 0.82  & 0.83  & 0.67  & 0.59  & 0.61  & 0.37**  & 0.35*  & 0.30**  & 0.54* \\
+    Suprise-AR & 0.96  & 0.83  & 0.83  & 0.69  & 0.62  & 0.62  & 0.38**  & 0.36*  & 0.31**  & 0.55* \\
+    Global-AR & 0.94  & 0.82  & 0.83  & 0.67  & 0.59  & 0.60  & 0.36**  & \textbf{0.35*}$_\textbf{{GB}}$ & \textbf{0.30**}$_\textbf{{GB}}$ & 0.53* \\\hline
+   \multicolumn{1}{l}{\textbf{Bayesian AdaLASSO}} &   &   &   &   &   &   &   &   &   &  \\\hline
+    Local & 0.76  & 0.67  & 0.72  & 0.62*  & 0.55*  & 0.58  & 0.46**  & 0.45  & 0.50  & \textbf{0.53*} \\
+    Uncertainty & 0.73  & 0.70  & 0.74  & 0.54  & 0.50  & 0.54**  & 0.42**  & 0.43  & 0.48  & 0.65 \\
+    Suprise & 0.76  & \textbf{0.66} & \textbf{0.69} & 0.62*  & 0.54*  & 0.56  & 0.44**  & 0.44  & 0.49  & 0.72 \\
+    Global & \textbf{0.72} & 0.69  & 0.71  & \textbf{0.54*}$_\textbf{{GB}}$ & \textbf{0.50*}$_\textbf{{GB}}$ & 0.52**  & 0.42** & 0.44  & 0.48  & 0.65 \\
+    Local-AR & 0.85  & 0.71  & 0.73  & 0.64  & 0.56*  & 0.57*  & 0.42**  & 0.42*  & 0.43  & 0.61 \\
+    Uncertainty-AR & 0.81  & 0.72  & 0.75  & 0.58  & 0.52  & 0.54**  & 0.39**  & \textbf{0.39*} & 0.42*  & 0.58* \\
+    Suprise-AR & 0.84  & 0.69  & 0.72  & 0.63  & 0.55*  & 0.55*  & 0.41**  & 0.41*  & 0.42*  & 0.61* \\
+    Global-AR & 0.78  & 0.70  & 0.72  & 0.57  & 0.51  & \textbf{0.52**}$_\textbf{{GB}}$ & \textbf{0.39**} & 0.40  & \textbf{0.41*} & 0.56* \\\hline
+    \end{tabular*}%
+ 	\begin{tablenotes}
+		\tiny
+		\item[a]{See notes to Table 1.}
+	\end{tablenotes}
+\end{table}%
+\newpage
+
+\begin{table}[h]
+	\centering
+	\caption{The number of MSFE-"wins" by specification type, across all shrinkage methods and prediction horizons }
+	\tiny
+	\begin{tabular}{c|ccccc}
+		\multicolumn{1}{c}{} & Brazil & Indonesia & Mexico & S.Africa & Turkey \\
+		\midrule
+		AR    & 0     & 3     & 0     & 1     & 0 \\
+		Local & 10    & 11    & 25    & 1     & 2 \\
+		Uncertainty & 3     & 0     & 2     & 15    & 1 \\
+		Suprise & 5     & 0     & 7     & 11    & 12 \\
+		Global & 12    & 0     & 1     & 8     & 13 \\
+		Local-AR & 3     & 24    & 3     & 1     & 0 \\
+		Uncertainty-AR & 5     & 10    & 0     & 1     & 2 \\
+		Suprise-AR & 1     & 2     & 8     & 10    & 6 \\
+		Global-AR & 11    & 0     & 4     & 2     & 14 \\\hline
+	\end{tabular}%
+    \begin{tablenotes}
+    	\tiny
+    	\item[a]{See notes to Table 1. Fifty cases are summarized in this table. Namely, there are 5 shrinkage types, and 10 prediction horizons in Table 1. Across these 50 cases, MSFE best models are tabulated, by specification types, where the forecasting models depicted as Local, Uncertainty, Surprise, Global, Local-AR, Uncertainty-AR, Surprise-AR, and Global-AR correspond to Specifications 1-8, respectively (see Section 3.3). Finally, AR is the benchmark autoregressive model.}
+    \end{tablenotes}
+	\label{tab:addlabel}%
+\end{table}%
+
+\begin{table}[h]
+	\centering
+	\caption{Summary of the ``globally-best" models across all shrinkage methods and specification types, for each prediction horizon}
+	\tiny
+	\begin{tabular*}{\textwidth}{lc @{\extracolsep{\fill}}cccccccccccc}\hline
+		& \multicolumn{3}{c}{Forecast (h=2)} & \multicolumn{3}{c}{Forecast (h=1)} & \multicolumn{3}{c}{Nowcast (h=0)} & Backcast (h=-1) \\\hline
+		& 1     & 2     & 3     & 1     & 2     & 3     & 1     & 2     & 3     & 1 \\\hline
+		Brazil & BaLASSO-4 & BaLASSO-1  & BaLASSO-1   & BLASSO-1 & BLASSO-2   & BaLASSO-2   & BLASSO-1 & BLASSO-1   & BLASSO-2 & AdaLASSO-5 \\
+		Indonesia & AdaLASSO-6  & ALL-1   & AdaLASSO-6  & AdaLASSO-6   & AdaLASSO-6   & BLASSO-5   & BLASSO-6  & BLASSO-6   & BLASSO-5  & BLASSO-7  \\
+		Mexico & AdaLASSO-1  & AdaLASSO-1    & AdaLASSO-1    & AdaLASSO-1    & BaLASSO-4  & AdaLASSO-1   & BLASSO-1   & BLASSO-3 & BLASSO-3   & AdaLASSO-1 \\
+		S.Africa & BLASSO-8  & BLASSO-3   & BLASSO-7   & BLASSO-7   & BLASSO-8   & BLASSO-7   & BLASSO-7   & BLASSO-7  & BaLASSO-2  & LASSO-7 \\
+		Turkey & ALL-3 & ALL-3  & LASSO-3   & BaLASSO-4   & BaLASSO-4   & BaLASSO-8   & BLASSO-4   & BLASSO-8  & BLASSO-8   & BLASSO-1  \\\hline
+	\end{tabular*}%
+	\begin{tablenotes}
+		\tiny
+		\item[a]{See notes to Table 3. The abbreviations ``-1" to ``-8" denote Specification 1-8. Entries in the table denote ``globally-best'' forecasting models, in the sense that the listed models are MSEF-best, across all specification types and shrinkage methods. See Sections 3 and 4 for further details.}
+	\end{tablenotes}
+\end{table}%
+
+ \end{document}

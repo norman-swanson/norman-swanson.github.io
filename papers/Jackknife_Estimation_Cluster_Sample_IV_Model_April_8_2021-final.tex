@@ -1,0 +1,3053 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 936
+
+
+\documentclass[12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{setspace}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2606}
+%TCIDATA{Codepage=936}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Sunday, July 18, 2004 16:10:34}
+%TCIDATA{LastRevised=Friday, April 09, 2021 21:00:19}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=article.cst}
+%TCIDATA{PageSetup=72,72,72,72,0}
+%TCIDATA{AllPages=
+%F=36,\PARA{038<p type="texpara" tag="Body Text" >\hfill \thepage}
+%}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand{\baselinestretch}{1.3} 
+\textwidth=6.8in
+\textheight=8.7in
+\oddsidemargin=0in
+\evensidemargin=0in
+\topmargin=0in
+\baselineskip=10pt
+\linespread{1.3}
+\input{tcilatex}
+\geometry{left=1in,right=1in,top=1.25in,bottom=1.25in}
+
+\begin{document}
+
+\title{\textbf{Jackknife Estimation of a Cluster-Sample IV Regression Model
+with Many Weak Instruments\thanks{%
+Corresponding author: John C. Chao, Department of Economics, 7343 Preinkert
+Drive, University of Maryland, chao@econ.umd.edu. Norman R. Swanson,
+Department of Economics, 9500 Hamilton Street, Rutgers University,
+nswanson@econ.rutgers.edu. Tiemen Woutersen, Department of Economics, 1130 E
+Helen Street, University of Arizona, woutersen@arizona.edu. The authors owe
+special thanks to Jerry Hausman and Whitney Newey for many discussions on
+the topic of this paper over a number of years. In addition, thanks are owed
+to the particpants of the 2019 MIT Conference Honoring Whitney Newey for
+comments on and advice given about the topic of this paper. Finally, the
+authors wish to thank Miriam Arden for excellent research assistance. Chao
+thanks the University of Maryland for research support, and Woutersen's work
+was supported by an Eller College of Management Research Grant.}}}
+\author{John C. Chao, Norman R. Swanson, and Tiemen Woutersen}
+\date{April 8, 2021}
+\maketitle
+
+\begin{spacing}{1.0}
+\begin{abstract}
+This paper proposes new jackknife IV estimators that are robust to the
+effects of many weak instruments and error heteroskedasticity in a cluster
+sample setting with cluster-specific effects and possibly many included
+exogenous regressors. The estimators that we propose are designed to
+properly partial out the cluster-specific effects and included exogenous
+regressors while preserving the re-centering property of the jackknife
+methodology. To the best of our knowledge, our proposed procedures provide
+the first consistent estimators under many weak instrument asymptotics in
+the setting considered. We also present results on the asymptotic normality
+of our estimators and show that t-statistics based on our estimators are asymptotically normal under the
+null and consistent under fixed alternatives. Our Monte Carlo results
+further show that our t-statistics perform better in controlling size in
+finite samples than those based on alternative jackknife IV procedures
+previously introduced in the literature.
+\end{abstract}
+\end{spacing}
+
+\noindent \textit{Keywords: }Cluster sample, instrumental variables,
+heteroskedasticity, jackknife, many weak instruments, panel data
+
+\medskip
+
+\noindent \textit{JEL classification: }C12, C13, C23, C26, C38
+
+\noindent \setcounter{page}{1}
+
+\section{Introduction}
+
+\noindent \qquad The problem of endogeneity remains central to economics,
+despite the vast literature on the topic. One key reason for this is that
+there are many different regression settings for which endogeneity is an
+issue, but for which valid estimators are not currently available. One such
+setting involves the case where the objective is to estimate an IV
+regression with fixed effects using panel or cluster-sampled data in
+situations where the number of available instruments may be large, but where
+the instruments themselves are all only weakly correlated with the
+endogenous regressors. There is now a substantial literature on estimation
+and inference under many weak instruments, including Chao and Swanson
+(2005), Stock and Yogo (2005), Hansen, Hausman, and Newey (2008), Hausman et
+al. (2012), Chao et al. (2012, 2014), Bekker and Crudu (2015), Crudu,
+Mellace, and S\'{a}ndor (2020), and Mikusheva and Sun (2020). However, the
+analyses given in these papers are for cross-sectional data, thus precluding
+panel data or cluster sampling settings where there is additional unobserved
+heterogeneity modeled by fixed or cluster-specific effects. Moreover, even
+in the cross-sectional context, 2SLS and the LIML estimators are not well
+behaved under many weak instruments. In particular, Chao and Swanson (2005)
+and Stock and Yogo (2005) show that the 2SLS estimator is inconsistent under
+many weak instrument asymptotics, even when the errors are homoskedastic. In
+addition, Hausman et al. (2012) and Chao et al. (2012) both point out that
+LIML is also inconsistent under many weak instruments, when there is error
+heteroskedasticity. Estimators that are robust to the effects of many weak
+instruments in cross sectional settings with error heteroskedasticity turn
+out to have a jackknife form, as discussed in Chao and Swanson (2004). These
+include the JIVE1 and JIVE2 estimators studied in Angrist, Imbens, and
+Krueger (1999), for example. For further discussion, see Phillips and Hale
+(1977), Blomquist and Dahlberg (1999), Ackerberg and Devereux (2009), and
+Bekker and Crudu (2015). These papers again only study various versions of
+the jackknife IV estimator in a cross-sectional setup without fixed effects.
+
+The goal of this paper is to consider the problem of many weak instruments
+in a panel data or cluster-sampling framework with fixed or cluster specific
+effects. In addition to the presence of unobserved heterogeneity, our setup
+allows the structural equation of interest to have a partially linear form
+so that additional exogenous regressors can enter the equation nonlinearly.
+In this sense, our paper is also related to recent work by Cattaneo,
+Jansson, and Newey (2018a,b) on the partially linear model. However, the
+focus of these papers differs from ours, as they do not consider the problem
+of endogeneity. Thus, rather than employing IV estimators, estimation is
+done using an OLS estimator, with the nonlinear component being first
+approximated nonparametrically by a set of basis functions.
+
+To consistently estimate the parameters of an IV regression with fixed or
+cluster-specific effects, we propose three new estimators, which we refer to
+by the acronyms FEJIV, FELIM, and FEFUL. These estimators are so named as
+they are modified versions and generalizations, respectively, of the
+jackknife IV (JIV), the LIML, and the Fuller (1977) estimators. In contrast
+to the original JIV, LIML, and Fuller estimators, our new estimators are
+designed to be robust to the effects of many weak instruments and error
+heteroskedasticity, even in the presence of additional complications caused
+by having fixed or cluster-specific effects and many included exogenous
+regressors. To achieve consistency in our setting requires an estimator that
+not only properly partials out additional covariates and cluster-specific
+effects, but at the same time is also properly centered in a form similar to
+a degenerate U-statistic. It turns out that accomplishing both of these
+objectives simultaneously is quite challenging. While a number of innovative
+JIV-type estimators have been proposed recently (see, for example, the
+improved jackknife estimators, IJIVE1 and IJIVE2, of Ackerberg and Devereux
+(2009), and the UJIVE estimator of Koles\'{a}r (2013)), due to the
+aforementioned difficulties, these estimators are not consistent when
+applied to our setting under many weak instrument asymptotics, as we shall
+elaborate in greater detail in Section 2. On the other hand, the estimation
+procedures that we introduce here are carefully designed to properly partial
+out the presence of fixed or cluster-specific effects and included exogenous
+regressors, while preserving the re-centering property of the jackknife
+methodology. To the best of our knowledge, the estimators presented here are
+the first consistent estimators under many weak instrument asymptotics in an
+IV regression model with fixed or cluster-specific effects and possibly many
+included exogenous regressors. In addition to consistency, we also establish
+the asymptotic normality of the FELIM and FEFUL estimators\footnote{%
+We do not provide a formal proof of the asymptotic normality of the FEJIV
+estimator because the results of our Monte Carlo study, as reported in
+Section 5, show that FELIM and FEFUL tend to have better finite sample
+properties than FEJIV. For this reason, we shall focus the presentation of
+our theoretical results on FELIM\ and FEFUL only. However, one can easily
+show, by slightly modifying the arguments that we give for FELIM and FEFUL,
+that FEJIV is also asymptotically normal, under many weak instrument
+asymptotics. Note also that our simulation finding regarding the properties
+of FEJIV are consistent with the findings of Davidson and MacKinnon (2006).}.
+
+This paper also provides a number of results showing that hypothesis testing
+procedures based on FELIM and FEFUL are robust to the effects of many weak
+instruments. In particular, we construct t-statistics based on these two
+estimators and show that, when the null hypothesis is true, these
+t-statistics converge to an asymptotic standard normal distribution under
+both standard (strong but fixed number of instruments) asymptotics and also
+under many weak instrument asymptotics. Moreover, our t-statistics are shown
+to be consistent in the sense that under fixed alternatives they diverge,
+with probability approaching one, in the direction of the alternative
+hypothesis.
+
+The many-weak-instrument asymptotic framework used in this paper to analyze
+the performance of FELIM and FEFUL was first proposed in Chao and Swanson
+(2005). This framework extends earlier work by Morimune (1983) and Bekker
+(1994) on what has become known in the IV literature as the many-instrument
+asymptotics or \textquotedblleft Bekker asymptotics\textquotedblright ,
+whereby a large sample approximation is carried out by considering an
+alternative sequence where the number of instruments is allowed to approach
+infinity as the sample size grows to infinity. A key difference between the
+Bekker asymptotic framework and the many-weak-instrument asymptotic
+framework is the rate of growth of the so-called concentration parameter. As
+has been pointed out by Phillips (1983) and Rothenberg (1984), among others,
+the concentration parameter is the natural measure of instrument strength in
+a linear IV model. In the original papers by Morimune (1983) and Bekker
+(1994), the concentration parameter is assumed to grow at the same rate as
+the sample size, which is also what is assumed under standard (strong but
+fixed number of instruments) asymptotics, whereas the many-weak-instrument
+asymptotic framework allows the concentration parameter to grow at a rate
+much slower than the sample size, thus allowing for much weaker instruments.
+Let $\mu _{n}^{2}$ be a sequence that gives the rate of growth of the
+concentration parameter, and let $K_{2,n}$ denote the number of instruments.
+Chao and Swanson (2005) show that for consistent point estimation to be
+possible, a sufficient condition is $\sqrt{K_{2,n}}/\mu _{n}^{2}\rightarrow
+0 $, as $K_{2,n}$, $\mu _{n}^{2},n\rightarrow \infty $. This allows for the
+possibility that $\mu _{n}^{2}$ is of an order smaller than $K_{2,n}$ which,
+in turn, can be of an order much smaller than the sample size $n$. The
+original Bekker framework, on the other hand, requires $K_{2,n},\mu
+_{n}^{2}, $ and $n$ to all be of the same order of magnitude. Recent work by
+Mikusheva and Sun (2020) indicates that the condition $\sqrt{K_{2,n}}/\mu
+_{n}^{2}\rightarrow 0$, as $K_{2,n}$, $\mu _{n}^{2},n\rightarrow \infty $ is
+not only sufficient but also necessary for consistency in point estimation
+and hypothesis testing.
+
+It should be noted that the hypothesis testing procedures considered in this
+paper will not be valid under the weak instrument asymptotics proposed in
+Staiger and Stock (1997). However, we do not find this to be a problem. The
+reason is that the Staiger-Stock framework considers a setting where $\mu
+_{n}^{2}=O\left( 1\right) $; hence, the instruments are so weak that the IV
+model is not point identified. As a result, two of the properties that we
+are particularly interested in, and that we think are most important for
+reliable practical applications (namely, consistency in point estimation and
+test consistency), will both be unachievable in their framework. In
+addition, the results of a survey of the applied literature reported in
+Hansen, Hausman, and Newey (2008) suggest that instruments used in empirical
+microeconomic applications are typically not so weak that one must resort to
+the type of large sample approximations given by the Staiger-Stock weak
+instrument asymptotics.
+
+The rest of the paper is organized as follows. Section 2 states the model,
+defines the FELIM, FEFUL, and FEJIV estimators, and provides an explanation
+of how our estimators improve upon various alternative jackknife IV
+estimators that have previously been proposed in the literature. Analytical
+results presented in Section 3 establish that our estimators are consistent
+and asymptotically normally distributed. Section 4 shows how to estimate the
+variances of the estimators and also provides asymptotic results for
+t-statistics based on our estimators. Section 5 contains the results of a
+series of Monte Carlo experiments in which the relative performance of our
+estimators is compared with that of extant estimators in the literature.
+Section 6 concludes. Proofs of Theorem 1, Corollary 1, and Theorems 4-6 are
+presented in the Appendix to this paper. The proofs of Theorems 2 and 3 are
+longer and are given in a supplemental Appendix, along with the proofs of a
+number of supporting lemmas.
+
+Before proceeding, we will first say a few words about some of the commonly
+used notations in this paper. In what follows, we use $\lambda _{\min
+}\left( A\right) $, $\lambda _{\max }\left( A\right) $, and $tr\left(
+A\right) $ to denote, respectively, the minimal eigenvalue, the maximal
+eigenvalue, and the trace of a square matrix $A,$ whereas $A^{\prime }$
+denotes the transpose of a (not necessarily square) matrix $A$. $\left\Vert
+a\right\Vert _{2}$ denotes the usual Euclidean norm when applied to a
+(finite-dimensional) vector $a$. On the other hand, for a matrix $A$, $%
+\left\Vert A\right\Vert _{2}\equiv \max \left\{ \sqrt{\lambda \left(
+A^{\prime }A\right) }:\lambda \left( A^{\prime }A\right) \text{ is an
+eigenvalue of }A^{\prime }A\right\} $ denotes the matrix spectral norm,
+while $\left\Vert A\right\Vert _{F}\equiv \sqrt{tr\left\{ A^{\prime
+}A\right\} }$ denotes the Frobenius norm and $\left\Vert A\right\Vert
+_{\infty }\equiv \max_{1\leq i\leq
+m_{n}}\dsum\nolimits_{j=1}^{m_{n}}\left\vert a_{ij}\right\vert $ (i.e., the
+maximal row sum of an $m_{n}\times m_{n}$ matrix). In addition, we use $%
+A\circ B$ to denote the Hadamard product of two conformable matrices $A$ and 
+$B$ (i.e., $A\circ B\equiv \left[ a_{ij}b_{ij}\right] ,$ for $A=\left[ a_{ij}%
+\right] $ and $B=\left[ b_{ij}\right] ).$ We take $D\left( a\right) $ to be
+a diagonal matrix whose diagonal elements correspond with the elements of
+the vector $a,$ while $D\left( A\right) $ is taken to be a diagonal matrix
+whose diagonal elements are the same as the diagonal elements of the square
+matrix $A$. Furthermore, we will let $\iota _{p}=\left( 1,1,...,1\right)
+^{\prime }$ denote a $p\times 1$ vector of ones. Finally, we use CS and T,
+respectively, to denote the Cauchy-Schwarz and the triangle inequality, and
+the abbreviation w.p.a.1 stands for \textquotedblleft with probability
+approaching one\textquotedblright .
+
+\section{Model, Assumptions, and Estimation Procedures}
+
+The model that we consider is a cluster-sample IV regression model
+
+\begin{eqnarray}
+\underset{1\times 1}{y_{\left( i,t\right) }} &=&X_{\left( i,t\right)
+}^{\prime }\delta _{0}+\varphi _{n}\left( W_{1,\left( i,t\right) }\right)
++\alpha _{i}+\varepsilon _{\left( i,t\right) },  \label{structural eqn} \\
+X_{\left( i,t\right) } &=&\Phi _{n}\left( W_{1,\left( i,t\right) }\right)
++\Upsilon _{n}\left( W_{2,\left( i,t\right) }\right) +\xi _{i}+U_{\left(
+i,t\right) },  \label{1st stage eqn}
+\end{eqnarray}%
+where $i=1,...,n,$ $t=1,...,T_{i},$ and the total sample size is given by $%
+m_{n}=\dsum\nolimits_{i=1}^{n}T_{i}$. The notation $\left( i,t\right) :%
+\mathbb{N\times N\rightarrow }$ $\mathbb{N}$ denotes a pairing function
+which maps an ordered pair of natural numbers into a natural number, so
+that, in particular, we have $\left( 1,1\right) =1$, $\left( 1,T_{1}\right)
+=T_{1}$, $\left( 2,1\right) =T_{1}+1$, and $\left( n,T_{n}\right) =m_{n}$.
+This is just a notational device used to convert a double index into a
+single index, thus, facilitating certain vectorization and summation
+operations while still allowing one to keep track of both $i$ and $t$. In
+this setup, we take $X_{\left( i,t\right) }$ to be a $d\times 1$ vector of
+endogenous regressors, and we let $W_{1,\left( i,t\right) }$ and $%
+W_{2,\left( i,t\right) }$ denote, respectively, a $p_{1}\times 1$ vector and
+a $p_{2}\times 1$ vector of exogenous variables, for $i=1,2,...,n$ and $%
+t=1,...,T_{i}$ (or, equivalently, for $\left( i,t\right) =1,...,m_{n}$).
+Note that $\varphi _{n}\left( \cdot \right) $, $\Phi _{n}\left( \cdot
+\right) $, and $\Upsilon _{n}\left( \cdot \right) $ are allowed to be
+nonlinear functions, so that the structural equation (\ref{structural eqn})
+can be taken to be a partially linear equation, and the system of
+first-stage equations given by (\ref{1st stage eqn}) may be interpreted as a
+generalized additive model in the sense of Hastie and Tibshirani (1990). In
+addition, $\alpha _{i}$ and $\xi _{i}$ in the above equations are unobserved
+or individual effects interpreted as \textquotedblleft fixed
+effects\textquotedblright\ in the sense that although we do not necessarily
+require $\alpha _{i}$ and $\xi _{i}$ to be (non-random) constants, they are
+allowed to be correlated with the exogenous variables $W_{1,\left(
+i,t\right) }$ and $W_{2,\left( i,t\right) }$, unlike the typical assumptions
+specified in a traditional \textquotedblleft random
+effects\textquotedblright\ model. More precise assumptions on the model
+given by equations (\ref{structural eqn}) and (\ref{1st stage eqn}) are
+given below.
+
+We will develop some additional notations before proceeding. First, let
+
+\noindent $W_{\left( i,t\right) }=\left( W_{1,\left( i,t\right) }^{\prime
+},W_{2,\left( i,t\right) }^{\prime }\right) ^{\prime },$ for $\left(
+i,t\right) =1,...,m_{n}$, and define
+
+\noindent $W_{n}=\left( W_{\left( 1,1\right) },..,W_{\left( 1,T_{1}\right)
+},...,W_{\left( n,1\right) },..,W_{\left( n,T_{n}\right) }\right) ^{\prime }$%
+. Now, stacking the observations $\left( i,t\right) =1,...,m_{n}$, we can
+write the model given by equations (\ref{structural eqn}) and (\ref{1st
+stage eqn}) more succinctly as%
+\begin{eqnarray}
+\underset{m_{n}\times 1}{y} &=&\underset{m_{n}\times d}{X}\underset{d\times 1%
+}{\delta _{0}}+\underset{m_{n}\times 1}{\varphi _{n}}+\underset{m_{n}\times n%
+}{Q}\underset{n\times 1}{\alpha }+\underset{m_{n}\times 1}{\varepsilon }%
+\text{,}  \label{structural eqn stacked} \\
+\underset{m_{n}\times d}{X} &=&\underset{m_{n}\times d}{\Phi _{n}}+\underset{%
+m_{n}\times d}{\Upsilon _{n}}+\underset{m_{n}\times n}{Q}\underset{n\times d}%
+{\Xi }+\underset{m_{n}\times d}{U}\text{,}  \label{1st stage eqn stacked}
+\end{eqnarray}%
+where $\alpha =\left( \alpha _{1},...,\alpha _{n}\right) ^{\prime }$, $\Xi
+=\left( \xi _{1},...,\xi _{n}\right) ^{\prime }$, and
+
+\noindent\ 
+\begin{equation*}
+\underset{m_{n}\times n}{Q}=\left( 
+\begin{array}{cccc}
+\iota _{T_{1}} & 0 & \cdots & 0 \\ 
+0 & \iota _{T_{2}} & \ddots & \vdots \\ 
+\vdots & \ddots & \ddots & 0 \\ 
+0 & \cdots & 0 & \iota _{T_{n}}%
+\end{array}%
+\right) \text{.}
+\end{equation*}%
+and where the other vectors and matrices are stacked similar to $W_{n}$. For
+notational convenience, we have suppressed the dependence of $\varphi _{n}$, 
+$\Phi _{n}$, and $\Upsilon _{n}$ on $W_{n}$. Note that our setup allows the
+clusters to be of possibly different sizes, so that our model can also be
+interpreted as a possibly unbalanced panel data model.
+
+Making use of these notations, we can write down the following assumptions
+for our model.
+
+\medskip
+
+\noindent \textbf{Assumption 1: }Let $\mathcal{F}_{n}^{W}=\sigma \left(
+W_{n}\right) $ (i.e., the $\sigma $-algebra generated by $W_{n})$. Suppose
+that the following conditions are satisfied (i) Conditional on $\mathcal{F}%
+_{n}^{W}$, $\left( \varepsilon _{\left( 1,1\right) },U_{\left( 1,1\right)
+}^{\prime }\right) ,...,\left( \varepsilon _{\left( 1,T_{1}\right)
+},U_{\left( 1,T_{1}\right) }^{\prime }\right) ,$
+
+\noindent $.....,\left( \varepsilon _{\left( n,1\right) },U_{\left(
+n,1\right) }^{\prime }\right) ,...,\left( \varepsilon _{\left(
+n,T_{n}\right) },U_{\left( n,T_{n}\right) }^{\prime }\right) $ are mutually
+independent. (ii) $E\left[ \varepsilon _{\left( i,t\right) }|\mathcal{F}%
+_{n}^{W}\right] =0$ and $E\left[ U_{\left( i,t\right) }|\mathcal{F}_{n}^{W}%
+\right] =0$ $a.s.,$ for $\left( i,t\right) =1,...,m_{n}$.
+
+\medskip
+
+\noindent \textbf{Assumption 2: }Suppose that there exists a constant $C\geq
+1$ such that for all $n$
+
+\noindent (i) $\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \varepsilon
+_{\left( i,t\right) }^{8}|\mathcal{F}_{n}^{W}\right] \leq C<\infty $ $a.s.$%
+and $\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \left\Vert U_{\left(
+i,t\right) }\right\Vert _{2}^{8}|\mathcal{F}_{n}^{W}\right] \leq C<\infty $ $%
+a.s.$ and (ii) $\inf_{1\leq \left( i,t\right) \leq m_{n}}\lambda _{\min
+}\left( \Omega _{\left( i,t\right) }\right) \geq 1/C>0$ $\ a.s.$, where $%
+\Omega _{\left( i,t\right) }=E\left[ \nu _{\left( i,t\right) }\nu _{\left(
+i,t\right) }^{\prime }|\mathcal{F}_{n}^{W}\right] $ with $\nu _{\left(
+i,t\right) }=\left( 
+\begin{array}{cc}
+\varepsilon _{\left( i,t\right) } & U_{\left( i,t\right) }^{\prime }%
+\end{array}%
+\right) ^{\prime }$.\bigskip
+
+\noindent \textbf{Assumption 3: }Suppose that $\Upsilon _{n}\left(
+W_{2,\left( i,t\right) }\right) =D_{\mu }\gamma \left( W_{2,\left(
+i,t\right) }\right) /\sqrt{n},$ for $\left( i,t\right) =1,...,m_{n}$, where $%
+D_{\mu }=diag\left( \mu _{1,n},..,\mu _{d,n}\right) $. The following
+conditions are assumed on the diagonal elements $\mu _{1,n},..,\mu _{d,n},$
+as $n\rightarrow \infty $. (i) Either $\mu _{k,n}=\sqrt{n}$ or $\mu _{k,n}/%
+\sqrt{n}\rightarrow 0,$ for $k\in \left\{ 1,...,d\right\} $. (ii) Let $\mu
+_{n}^{\min }=\min_{1\leq k\leq d}$ $\mu _{k,n}$ , and suppose that $\mu
+_{n}^{\min }\rightarrow \infty ,$ as $n\rightarrow \infty $, such that$\sqrt{%
+K_{2,n}}/\left( \mu _{n}^{\min }\right) ^{2}\rightarrow 0$. (iii) $\lambda
+_{\min }\left( H_{n}\right) \geq 1/C>0$ and $\lambda _{\max }\left( \Gamma
+^{\prime }\Gamma /n\right) \leq C<\infty $ $a.s.,$ for all $n$ sufficiently
+large, where $H_{n}=\Gamma ^{\prime }M^{\left( Z_{1},Q\right) }\Gamma /n$ and
+
+\noindent $\underset{m_{n}\times d}{\Gamma }=\left( 
+\begin{array}{ccccccc}
+\gamma \left( W_{2,\left( 1,1\right) }\right) & \cdots & \gamma \left(
+W_{2,\left( 1,T_{1}\right) }\right) & \cdots & \gamma \left( W_{2,\left(
+n,1\right) }\right) & \cdots & \gamma \left( W_{2,\left( n,T_{n}\right)
+}\right)%
+\end{array}%
+\right) ^{\prime }$.\bigskip
+
+\noindent \textbf{Assumption 4: }Suppose that $\Phi _{n}\left( W_{1,\left(
+i,t\right) }\right) =D_{\kappa }f\left( W_{1,\left( i,t\right) }\right) /%
+\sqrt{n}$ and $\varphi _{n}\left( W_{1,\left( i,t\right) }\right) $
+
+\noindent $=\tau _{n}g\left( W_{1,\left( i,t\right) }\right) /\sqrt{n},$ for 
+$\left( i,t\right) =1,...,m_{n}$, where $\underset{d\times d}{D_{\kappa }}%
+=diag\left( \kappa _{1,n},..,\kappa _{d,n}\right) $ and $\tau _{n}$ is a
+sequence of positive real numbers. The following conditions are assumed on $%
+\kappa _{1,n},..,\kappa _{d,n}$ and on $\tau _{n}$ as $n\rightarrow \infty $%
+: (i) either $\kappa _{\ell ,n}=\sqrt{n}$ or $\kappa _{\ell ,n}/\sqrt{n}%
+\rightarrow 0,$ for $\ell \in \left\{ 1,...,d\right\} $; (ii) either $\tau
+_{n}=\sqrt{n}$ or $\tau _{n}/\sqrt{n}\rightarrow 0.$\medskip 
+
+\medskip
+
+We shall consider approximating the function $\gamma \left( W_{2,\left(
+i,t\right) }\right) $ in Assumption 3 by the series expansion $%
+\dsum\nolimits_{k=1}^{K_{2,n}}\pi _{k}z_{2,k}\left( W_{2,\left( i,t\right)
+}\right) ,$ for some family of approximating functions $z_{2,1}\left( \cdot
+\right) ,z_{2,2}\left( \cdot \right) ,.....$\footnote{%
+The approximating functions $z_{2,k}\left( \cdot \right) $, for $%
+k=1,..,K_{2,n}$, may be polynomials, splines, or some other family of
+functions as discussed in Newey (1997).}. Stacking the observed values of
+these functions into a matrix, we obtain the $m_{n}\times K_{2,n}$ matrix, $%
+Z_{2}=\left[ Z_{2}\left( W_{2,\left( 1,1\right) }\right) ,..,Z_{2}\left(
+W_{2,\left( 1,T_{1}\right) }\right) ,...,Z_{2}\left( W_{2,\left( n,1\right)
+}\right) ,..,Z_{2}\left( W_{2,\left( n,T_{n}\right) }\right) \right] $,
+where $Z_{2}\left( W_{2,\left( i,t\right) }\right) =\left( z_{2,1}\left(
+W_{2,\left( i,t\right) }\right) ,....,z_{2,K_{2,n}}\left( W_{2,\left(
+i,t\right) }\right) \right) ^{\prime }$ is a $K_{2,n}\times 1$ vector, for
+each $\left( i,t\right) \in \left\{ 1,...,m_{n}\right\} $. Similarly, we
+shall approximate the functions $f\left( W_{1,\left( i,t\right) }\right) $
+and $g\left( W_{1,\left( i,t\right) }\right) $ given in Assumption 4 by,
+respectively, the series expansions $\dsum\nolimits_{k=1}^{K_{1,n}}\Theta
+_{k}z_{1,k}\left( W_{2,\left( i,t\right) }\right) $ and
+
+\noindent $\dsum\nolimits_{k=1}^{K_{1,n}}\theta _{k}z_{1,k}\left(
+W_{2,\left( i,t\right) }\right) ,$ \ for a family of approximating functions 
+$z_{1,1}\left( \cdot \right) ,z_{1,2}\left( \cdot \right) ,.....$ Stacking
+the observed values of these functions, we get the $m_{n}\times K_{1,n}$
+matrix,
+
+\noindent $Z_{1}=\left[ Z_{1}\left( W_{1,\left( 1,1\right) }\right)
+,..,Z_{1}\left( W_{1,\left( 1,T_{1}\right) }\right) ,...,Z_{1}\left(
+W_{1,\left( n,1\right) }\right) ,..,Z_{1}\left( W_{1,\left( n,T_{n}\right)
+}\right) \right] $, with $Z_{1}\left( W_{1,\left( i,t\right) }\right)
+=\left( z_{1,1}\left( W_{1,\left( i,t\right) }\right)
+,....,z_{1,K_{1,n}}\left( W_{1,\left( i,t\right) }\right) \right) ^{\prime }$
+being a $K_{1,n}\times 1$ vector, for each $\left( i,t\right) \in \left\{
+1,...,m_{n}\right\} $. For notational convenience, we shall suppress the
+dependence of $Z_{1}$ and $Z_{2}$ on $W_{n}$. In addition, let $\underset{%
+m_{n}\times K_{n}}{Z}=\left[ 
+\begin{array}{cc}
+Z_{1} & Z_{2}%
+\end{array}%
+\right] $, with $K_{n}=K_{1,n}+K_{2,n}$, and let $\Pi ^{K_{2,n}}=\left( \pi
+_{1},...,\pi _{K_{2,n}}\right) ^{\prime }$, $\Theta ^{K_{1,n}}=\left( \Theta
+_{1},...,\Theta _{K_{1,n}}\right) ^{\prime }$, and $\theta ^{K_{1,n}}=\left(
+\theta _{1},...,\theta _{K_{1,n}}\right) ^{\prime }$.
+
+Analogous to the linear IV model, we could interpret $Z_{2}$ as the matrix
+of observations on the instruments of the model and $Z_{1}$ as the matrix of
+observations on the additional covariates or included exogenous regressors.
+Viewed in this light, we see that Assumption 3 is general enough to
+accommodate a range of situations including both cases where there are
+strong instruments and cases where the instruments are weaker. In
+particular, when $\mu _{1,n}=\cdot \cdot \cdot =\mu _{d,n}=\mu _{n}^{\min }=%
+\sqrt{n}$, our model specializes to the more classical situation where the
+instruments are strong. On the other hand, the cases where some of the $\mu
+_{j,n}$'s $\left( j=1,..,d\right) $ grow at a rate slower than $\sqrt{n}$
+correspond to cases where at least some of the components of the parameter
+vector of interest $\delta $ are weakly identified. By allowing for the
+possibility that different $\mu _{j,n}$'s may grow at different rates, our
+setup also allows for heterogeneity in how strongly the different components
+of $\delta $ are identified. Note, however, that we do require that $\sqrt{%
+K_{2,n}}/\left( \mu _{n}^{\min }\right) ^{2}\rightarrow 0$, since (as
+discussed in Chao and Swanson (2005), Hausman et al. (2012), and Chao et al.
+(2012)), if this condition is not fulfilled, then consistent estimation of
+at least some of the components of $\delta $ may not be possible; and, in
+this paper, we focus only on situations where we can consistently estimate $%
+\delta $. To interpret this condition, it is easiest to consider the special
+case where $\mu _{1,n}=\cdot \cdot \cdot =\mu _{d,n}=\mu _{n}^{\min }$. In
+this case, $\left( \mu _{n}^{\min }\right) ^{2}$ can be interpreted as
+giving the order of magnitude of the signal component of the IV model,
+whereas $\sqrt{K_{2,n}}$ measures the order of magnitude of a leading noise
+term, so that, in order for consistent estimation to be possible, the
+signal-to-noise ratio $\left( \mu _{n}^{\min }\right) ^{2}/\sqrt{K_{2,n}}$
+must diverge to infinity. A consequence of imposing this condition is that
+our framework does not include the Staiger and Stock (1997) type weak
+instrument situation, where $\mu _{1,n}=\cdot \cdot \cdot =\mu _{d,n}=\mu
+_{n}^{\min }=O\left( 1\right) $, under which consistent point estimation
+cannot be achieved.
+
+Likewise, Assumption 4 allows for possible local-to-zero modeling of the
+nonlinear components $g\left( W_{1,\left( i,t\right) }\right) $ and $f\left(
+W_{1,\left( i,t\right) }\right) $. In the special case where $\kappa
+_{1,n}=\cdot \cdot \cdot =\kappa _{d,n}=\tau _{n}=\sqrt{n}$ and $\mu
+_{1,n}=\cdot \cdot \cdot =\mu _{d,n}=\mu _{n}^{\min }=\sqrt{n}$, our
+structural equation of interest becomes a standard partially linear model,
+whereas the system of first-stage equations becomes a standard multivariate
+generalized additive model . However, by allowing for the possibility that
+some of the $\kappa _{j,n}$'s and/or $\tau _{n}$ may grow at a rate slower
+than $\sqrt{n}$, we also accommodate situations where the additional
+covariates may only be weakly correlated with $y_{\left( i,t\right) }$
+and/or with some elements of \ $X_{\left( i,t\right) }$.
+
+\medskip
+
+\noindent \textbf{Assumption 5: }(i) $m_{n}\rightarrow \infty $ as $%
+n\rightarrow \infty ,$ such that $m_{n}\sim n$. (ii) $K_{1,n},K_{2,n}%
+\rightarrow \infty ,$ as $n\rightarrow \infty ,$ such that $%
+K_{1,n}^{2}/n=O\left( 1\right) $ and $K_{2,n}^{2}/n=o\left( 1\right) $.
+(iii) Let $M^{Q}=I_{m_{n}}-Q\left( Q^{\prime }Q\right) ^{-1}Q^{\prime }$.
+There exists a positive constant $\underline{C}$ such that $\lambda _{\min
+}\left( Z^{\prime }M^{Q}Z\right) \geq \underline{C}$ $>0$ $a.s.,$ for all $n$
+sufficiently large. (iv) Let $P^{\perp }=P^{\left( Z,Q\right) }-P^{\left(
+Z_{1},Q\right) }=M^{\left( Z_{1},Q\right) }Z_{2}\left( Z_{2}^{\prime
+}M^{\left( Z_{1},Q\right) }Z_{2}\right) ^{-1}Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }$ and let $P^{Z_{1}^{\perp }}=M^{Q}Z_{1}\left( Z_{1}^{\prime
+}M^{Q}Z_{1}\right) ^{-1}Z_{1}^{\prime }M^{Q}$, where $M^{\left(
+Z_{1},Q\right) }=M^{Q}-M^{Q}Z_{1}\left( Z_{1}^{\prime }M^{Q}Z_{1}\right)
+^{-1}Z_{1}^{\prime }M^{Q}$ with $M^{Q}$ as defined in part (iii) above.
+Suppose that $\max_{1\leq \left( i,t\right) \leq m_{n}}P_{\left( i,t\right)
+,\left( i,t\right) }^{Z_{1}^{\perp }}=O_{a.s.}\left( K_{1,n}/n\right) $ and $%
+\max_{1\leq \left( i,t\right) \leq m_{n}}P_{\left( i,t\right) ,\left(
+i,t\right) }^{\perp }=O_{a.s.}\left( K_{2,n}/n\right) $.
+
+\medskip
+
+Note that part (ii) of Assumption 5 requires that both $K_{1,n}$ and $%
+K_{2,n} $ grow at a rate slower than the sample size $n$. Hence, our setup
+does not include the type of many-instrument setup of Morimune (1983) and
+Bekker (1994), where the number of instruments grows at the same rate as $n$%
+, nor the type of many-regressor setup of Cattaneo, Jansson, and Newey
+(2018a,b), where the number of exogenous regressors grows to infinity on the
+same order as $n$. However, note that our assumptions are in accord with the
+interpretation of the structural equation as a partially linear model with
+the nonlinear component being estimated nonparametrically by a series
+estimator, as Newey (1997) has given results which show that consistent
+series estimation requires $\kappa _{n}$, the number of approximating
+functions, to grow slower than the sample size $n$. In fact, for consistent
+series estimation using regression spline functions, Newey (1997) provides
+an explicit rate restriction, where $\kappa _{n}^{2}/n\rightarrow 0$ as $%
+n\rightarrow \infty $, and our assumption is in accord with this rate
+condition. Moreover, note that our setup does allow the number of fixed or
+cluster-specific effects to be on the order of $n$, so that the number of
+overall covariates in the structural equation of interest will be on the
+order of $n$. Hence, we believe that our framework is general enough to
+accommodate a wide range of empirical problems of interest.
+
+\medskip
+
+\noindent \textbf{Assumption 6: }(i)\textbf{\ }$\min_{1\leq i\leq
+n}T_{i}\geq 3$ for all $n$; (ii)\textbf{\ }There exists a positive integer $%
+\overline{T}\geq 3,$ such that $\max_{1\leq i\leq n}T_{i}\leq \overline{T}%
+<\infty ,$ for all $n$.
+
+\medskip
+
+\noindent \textbf{Assumption 7: }Let $\mathcal{W}_{1}\subseteq \mathbb{R}%
+^{p_{1}}$ and $\mathcal{W}_{2}\subseteq \mathbb{R}^{p_{2}}$ denote the
+support of $W_{1,\left( i,t\right) }$ and $W_{2,\left( i,t\right) }$,
+respectively. The following rates of approximation are assumed. (i) There
+exists a positive real number $\varrho _{g}$ and a vector of coefficients $%
+\theta ^{K_{1,n}},$ such that 
+\begin{equation*}
+\left\Vert g\left( \cdot \right) -\theta ^{K_{1,n}\prime }Z_{1}\left( \cdot
+\right) \right\Vert _{\infty }=O_{a.s.}\left( K_{1,n}^{-\varrho _{g}}\right) 
+\text{, as }K_{1,n}\rightarrow \infty \text{,}
+\end{equation*}%
+where $\tau _{n}/K_{1,n}^{\varrho _{g}}=o\left( 1\right) $ and $\left\Vert
+g\left( \cdot \right) -\theta ^{K_{1,n}\prime }Z_{1}\left( \cdot \right)
+\right\Vert _{\infty }=\sup_{w_{1}\in \mathcal{W}_{1}}\left\vert g\left(
+w_{1}\right) -\theta ^{K_{1,n}\prime }Z_{1}\left( w_{1}\right) \right\vert $.
+
+\noindent (ii) There exists a positive real number $\varrho _{f}$ and a
+matrix of coefficients $\Theta ^{K_{1,n}},$ such that 
+\begin{equation*}
+\left\Vert f\left( \cdot \right) -\Theta ^{K_{1,n}\prime }Z_{1}\left( \cdot
+\right) \right\Vert _{\infty ,d}=O_{a.s.}\left( K_{1,n}^{-\varrho
+_{f}}\right) \text{, as }K_{1,n}\rightarrow \infty \text{,}
+\end{equation*}%
+where $\kappa _{n}^{\max }/K_{1,n}^{\varrho _{f}}=O\left( 1\right) ,$ with $%
+\kappa _{n}^{\max }=\max_{1\leq \ell \leq d}$ $\kappa _{\ell ,n}$ and $%
+\left\Vert f\left( \cdot \right) -\Theta ^{K_{1,n}\prime }Z_{1}\left( \cdot
+\right) \right\Vert _{\infty ,d}=\max_{\ell \in \left\{ 1,2,...,d\right\}
+}\sup_{w_{1}\in \mathcal{W}_{1}}\left\vert f_{\ell }\left( w_{1}\right)
+-e_{\ell ,d}^{\prime }\Theta ^{K_{1,n}\prime }Z_{1}\left( w_{1}\right)
+\right\vert ,$ with $e_{\ell ,d}$ denoting a $d\times 1$ elementary vector
+with $1$ in the $\ell ^{th}$ component and $0$ in all other components.
+
+\noindent (iii) There exists a positive real number $\varrho _{\gamma }$ and
+a matrix of coefficients $\Pi ^{K_{2,n}},$ such that 
+\begin{equation*}
+\left\Vert \gamma \left( \cdot \right) -\Pi ^{K_{2,n}\prime }Z_{2}\left(
+\cdot \right) \right\Vert _{\infty ,d}=O_{a.s.}\left( K_{2,n}^{-\varrho
+_{\gamma }}\right) \text{, as }K_{2,n}\rightarrow \infty \text{,}
+\end{equation*}%
+where $\mu _{n}^{\max }/K_{2,n}^{\varrho _{\gamma }}=O\left( 1\right) ,$
+with $\mu _{n}^{\max }=\max_{1\leq \ell \leq d}$ $\mu _{\ell ,n}$ and $%
+\left\Vert \gamma \left( \cdot \right) -\Pi ^{K_{2,n}\prime }Z_{2}\left(
+\cdot \right) \right\Vert _{\infty ,d}=\max_{\ell \in \left\{
+1,2,...,d\right\} }\sup_{w_{2}\in \mathcal{W}_{2}}\left\vert \gamma _{\ell
+}\left( w_{2}\right) -e_{\ell ,d}^{\prime }\Pi ^{K_{2,n}\prime }Z_{2}\left(
+w_{2}\right) \right\vert $. (iv) Assume that
+
+\noindent $\max_{1\leq \left( i,t\right) \leq m_{n}}\left\Vert \Gamma
+^{\prime }M^{\left( Z_{1},Q\right) }e_{\left( i,t\right) }\right\Vert _{2}/%
+\sqrt{n}=o_{p}\left( 1\right) $.
+
+\medskip
+
+A few comments about Assumption 7 are in order. Parts (i)-(iii) of this
+assumption place conditions on the rate at which the error in approximating
+the functions $g\left( \cdot \right) $, $f\left( \cdot \right) $, $\gamma
+\left( \cdot \right) $, and $\mu _{\Gamma }\left( \cdot \right) $ must
+vanish uniformly. A similar assumption \ has been specified in Newey (1997)
+in studying convergence rates for nonparametric series estimators (see
+Assumption 3 of that paper). As noted in that paper, the size of the
+exponents, such as $\varrho _{g}$, $\varrho _{f}$, $\varrho _{\gamma }$, and 
+$\varrho _{\mu },$ depends both on the degree of smoothness of the function
+to be approximated (i.e., the number of continuous derivatives that the
+functions has) and on the dimension of the argument of the function (i.e.,
+the dimension of $W_{1,\left( i,t\right) }$ or $W_{2,\left( i,t\right) }$ in
+our case). For example, under Assumption 7(i), if the approximating
+functions used are splines or polynomials, then $\left\Vert g\left( \cdot
+\right) -\theta ^{K_{1,n}\prime }Z_{1}\left( \cdot \right) \right\Vert
+_{\infty }=O_{a.s.}\left( K_{1,n}^{-\varrho _{g}}\right) ,$ with $\varrho
+_{g}=s/p_{1}$, where $s$ is the number of continuous derivatives of the
+function $g\left( \cdot \right) $ and $p_{1}$ is the dimension of $%
+W_{1,\left( i,t\right) }$. Since our results require that these
+approximation errors vanish sufficiently fast, this, in turn, places certain
+requirements on the smoothness of the functions $g\left( \cdot \right) $, $%
+f\left( \cdot \right) $, $\gamma \left( \cdot \right) $, and $\mu _{\Gamma
+}\left( \cdot \right) $ and on the dimension of $W_{1,\left( i,t\right) }$
+or $W_{2,\left( i,t\right) }$, with some trade-offs between the two.
+Finally, note that part (iv) of Assumption 7 is similar to a condition given
+in Assumption 3 of Cattaneo, Jansson, and Newey (2018b). As noted in that
+paper, this condition comes close to being minimal for the central limit
+theorem to hold.
+
+Although our specification allows the structural equation (\ref{structural
+eqn}) and the system of first-stage equations (\ref{1st stage eqn}) to have
+nonlinear components, the results that we give in this paper will also, of
+course, hold under a linear specification with (possibly) many weak
+instruments and/or many weak covariates taking the form 
+\begin{eqnarray}
+y_{\left( i,t\right) } &=&X_{\left( i,t\right) }^{\prime }\delta _{0}+\frac{%
+\tau _{n}\theta ^{K_{1,n}\prime }Z_{1,\left( i,t\right) }}{\sqrt{n}}+\alpha
+_{i}+\varepsilon _{\left( i,t\right) },  \label{linear structural eqn} \\
+X_{\left( i,t\right) } &=&\frac{D_{\kappa }\Theta ^{K_{1,n}\prime
+}Z_{1,\left( i,t\right) }}{\sqrt{n}}+\frac{D_{\mu }\Pi ^{K_{2,n}\prime
+}Z_{2,\left( i,t\right) }}{\sqrt{n}}+\xi _{i}+U_{\left( i,t\right) },
+\label{linear 1st stage eqn}
+\end{eqnarray}%
+where $i=1,...,n$ and $t=1,...,T_{i}$. In this case, $Z_{1,\left( i,t\right)
+}$ and $Z_{2,\left( i,t\right) }$ will be exogenous regressors/instruments
+that need not depend on other variables such as $W_{1,\left( i,t\right) }$
+and $W_{2,\left( i,t\right) }$. In addition, in a strictly linear setup,
+parts (i)-(iii) of Assumption 7 that impose conditions on the approximation
+errors by series estimation will no longer be needed.
+
+\medskip
+
+\noindent \textbf{Assumption 8: }Let $\rho _{n}=E\left[ U^{\prime
+}M^{Q}\varepsilon \right] /E\left[ \varepsilon ^{\prime }M^{Q}\varepsilon %
+\right] $. Suppose that the limit of $\rho _{n}$ exists, so that $\rho
+_{n}\rightarrow \rho $ ,\ as $n\rightarrow \infty ,$ for some fixed $d\times
+1$ vector $\rho \in \mathcal{S}_{\rho }$, where $\mathcal{S}_{\rho }$
+denotes some compact subset of $\mathbb{R}^{d}$.\bigskip
+
+To estimate the parameter (vector) of interest $\delta $ in equation (\ref%
+{structural eqn}), we propose three new jackknife-type IV estimators. We
+shall use the acronyms FEJIV, FELIM, and FEFUL to denote, respectively, the
+Fixed Effect Jackknife IV, the Fixed Effect LIML, and the Fixed Effect
+Fuller estimator.
+
+\begin{enumerate}
+\item \textbf{FEJIV: }%
+\begin{equation*}
+\widehat{\delta }_{J}=\left( X^{\prime }AX\right) ^{-1}X^{\prime }Ay\text{,}
+\end{equation*}
+where $A=P^{\perp }-M^{\left( Z,Q\right) }D_{\widehat{\vartheta }}M^{\left(
+Z,Q\right) }$, $P^{\perp }=P^{\left( Z,Q\right) }-P^{\left( Z_{1},Q\right) }$%
+, and $M^{\left( Z,Q\right) }=I_{m_{n}}-P^{\left( Z,Q\right) }$, with $%
+P^{\left( Z,Q\right) }$ and $P^{\left( Z_{1},Q\right) }$ being projection
+matrices that project into the column space of $\left[ 
+\begin{array}{cc}
+Z & Q%
+\end{array}%
+\right] $ and $\left[ 
+\begin{array}{cc}
+Z_{1} & Q%
+\end{array}%
+\right] $, respectively. In addition, $D_{\widehat{\vartheta }}$ denotes an $%
+m_{n}\times m_{n}$ diagonal matrix, whose diagonal elements $\widehat{%
+\vartheta }=\left( 
+\begin{array}{cccc}
+\widehat{\vartheta }_{1} & \widehat{\vartheta }_{2} & \cdots & \widehat{%
+\vartheta }_{N}%
+\end{array}%
+\right) ^{\prime }$, when stacked into a vector, correspond to the solution
+of the system of linear equations $d_{P^{\perp }}=\left( M^{\left(
+Z,Q\right) }\circ M^{\left( Z,Q\right) }\right) \vartheta $, where $%
+d_{P^{\perp }}$ is an $m_{n}\times 1$ vector containing the diagonal
+elements of the projection matrix $P^{\perp }$.
+
+\item \textbf{FELIM: }The FELIM estimator $\widehat{\delta }_{L}$ is the
+estimator that minimizes the objective function 
+\begin{equation}
+\widehat{Q}_{FELIM}\left( \delta \right) =\frac{\left( y-X\delta \right)
+^{\prime }A\left( y-X\delta \right) }{\left( y-X\delta \right) ^{\prime
+}M^{\left( Z_{1},Q\right) }\left( y-X\delta \right) },  \label{FELIM obj fn}
+\end{equation}%
+where $A$ is as defined above in the definition of FEJIV and $M^{\left(
+Z_{1},Q\right) }=I_{m_{n}}-P^{\left( Z_{1},Q\right) },$ with $P^{\left(
+Z_{1},Q\right) }$ as defined above. $\widehat{\delta }_{L}$ has the explicit
+representation%
+\begin{equation}
+\widehat{\delta }_{L}=\left( X^{\prime }\left[ A-\widehat{\ell }%
+_{L}M^{\left( Z_{1},Q\right) }\right] X\right) ^{-1}\left( X^{\prime }\left[
+A-\widehat{\ell }_{L}M^{\left( Z_{1},Q\right) }\right] y\right) ,
+\label{FELIM}
+\end{equation}%
+where $\widehat{\ell }_{L}$ is the smallest root of the determinantal
+equation $\det \left\{ \overline{X}^{\prime }A\overline{X}-\ell \overline{X}%
+^{\prime }M^{\left( Z_{1},Q\right) }\overline{X}\right\} $
+
+$=0$ with $\overline{X}=\left[ 
+\begin{array}{cc}
+y & X%
+\end{array}%
+\right] $.
+
+\item \textbf{FEFUL: }The FEFUL estimator $\widehat{\delta }_{F}$ is defined
+as follows\textbf{\ }%
+\begin{equation*}
+\widehat{\delta }_{F}=\left( X^{\prime }\left[ A-\widehat{\ell }%
+_{F}M^{\left( Z_{1},Q\right) }\right] X\right) ^{-1}\left( X^{\prime }\left[
+A-\widehat{\ell }_{F}M^{\left( Z_{1},Q\right) }\right] y\right) ,
+\end{equation*}%
+where $M^{\left( Z_{1},Q\right) }=I_{m_{n}}-P^{\left( Z_{1},Q\right) }$ and $%
+\widehat{\ell }_{F}=\left[ \widehat{\ell }_{L}-\left( 1-\widehat{\ell }%
+_{L}\right) C/m_{n}\right] /\left[ 1-\left( 1-\widehat{\ell }_{L}\right)
+C/m_{n}\right] $ for some constant $C$. Here, $\widehat{\ell }_{L}$ is the
+smallest root of equation
+
+$\det \left\{ \overline{X}^{\prime }A\overline{X}-\ell \overline{X}^{\prime
+}M^{\left( Z_{1},Q\right) }\overline{X}\right\} =0$. For the Monte Carlo
+results reported in section 5, we shall take $C=1$.\medskip
+\end{enumerate}
+
+To help develop some intuition for these new estimators, it is easiest if we
+focus the discussion on FEJIV. To proceed, note first that, under our setup,
+it is not difficult to show that%
+\begin{equation*}
+\widehat{\delta }_{J}-\delta _{0}=\left( X^{\prime }AX\right) ^{-1}X^{\prime
+}A\varepsilon +o_{p}\left( 1\right) =\left( X^{\prime }AX\right) ^{-1}\left(
+\Upsilon _{n}^{\prime }A\varepsilon +U^{\prime }A\varepsilon \right)
++o_{p}\left( 1\right) ,
+\end{equation*}%
+so that, at least in large samples, the \textquotedblleft
+numerator\textquotedblright\ of the right-hand side of this equation has a
+familiar form (i.e., it is in terms of a linear form $\Upsilon _{n}^{\prime
+}A\varepsilon $ plus a bilinear form $U^{\prime }A\varepsilon )$. Next, note
+that an elementary result from linear algebra states that if $A=MDM$, where $%
+A$ is a square matrix, $D$ is a diagonal matrix, and $M$ is a symmetric
+matrix, then $a=\left( M\circ M\right) d$, where $a=\left(
+a_{11},a_{22},...,a_{m_{n},m_{n}}\right) ^{\prime }$ and $d=\left(
+d_{11},d_{22},...,d_{m_{n},m_{n}}\right) ^{\prime }$. Put in words, this
+result states that the vector of diagonal elements of $A$ is a linear
+transformation of the vector of diagonal elements of $D$, with the
+transformation matrix given by $\left( M\circ M\right) $. Since in the
+definition of $\widehat{\delta }_{J}$, we have specified $A=P^{\perp
+}-M^{\left( Z,Q\right) }D_{\widehat{\vartheta }}M^{\left( Z,Q\right) }$, it
+follows that by choosing the diagonal elements of $D_{\widehat{\vartheta }}$
+to satisfy the system of linear equations $d_{P^{\perp }}=\left( M^{\left(
+Z,Q\right) }\circ M^{\left( Z,Q\right) }\right) \vartheta $, where $%
+d_{P^{\perp }}=\left( P_{11}^{\perp },P_{22}^{\perp
+},...,P_{m_{n},m_{n}}^{\perp }\right) ^{\prime }$, we would, by
+construction, end up with a matrix $A$ whose diagonal elements $%
+A_{11},...,A_{m_{n},m_{n}}$ are all zero. This, in turn, leads to the
+bilinear form $U^{\prime }A\varepsilon $ having the characteristics of a
+degenerate U-statistic, with expectation that is properly centered at zero.
+This proper centering, in turn, allows $\widehat{\delta }_{J}$ to be both
+consistent and asymptotically normal under many weak instrument asymptotics.
+In addition, write $\widehat{\delta }_{J}-\delta _{0}=\left( X^{\prime
+}AX\right) ^{-1}X^{\prime }A\left( \varphi _{n}+Q\alpha +\varepsilon \right) 
+$, and note that 
+\begin{eqnarray*}
+X^{\prime }A\left( \varphi _{n}+Q\alpha +\varepsilon \right) &=&\left( \Phi
+_{n}+\Upsilon _{n}+Q\Xi +U\right) \left[ P^{\perp }-M^{\left( Z,Q\right) }D_{%
+\widehat{\vartheta }}M^{\left( Z,Q\right) }\right] \left( \varphi
+_{n}+\varepsilon \right) \\
+&=&\left( \Phi _{n}+\Upsilon _{n}+U\right) \left[ P^{\perp }-M^{\left(
+Z,Q\right) }D_{\widehat{\vartheta }}M^{\left( Z,Q\right) }\right] \left(
+\varphi _{n}+\varepsilon \right) .
+\end{eqnarray*}%
+Looking at the equation above, we see that the matrix $A$ is designed to not
+only partial out the fixed effects, but also to make all the
+\textquotedblleft projection residues\textquotedblright\ $M^{\left(
+Z,Q\right) }\varphi _{n}$, $M^{\left( Z,Q\right) }\Upsilon _{n}$, and $%
+M^{\left( Z,Q\right) }\Phi _{n}$ sufficiently small so as not to cause a
+bias problem even in the presence of many weak instruments. For this
+purpose, it is important that our specification uses $M^{\left( Z,Q\right)
+}. $ This matrix projects into the orthogonal complement of the full set of
+exogenous variables/approximating functions, $\left( Z,Q\right) =\left(
+Z_{1},Z_{2},Q\right) $, and not $M^{\left( Z_{1},Q\right) },$ whose use may
+still leave the projection residue $M^{\left( Z_{1},Q\right) }\Upsilon _{n}$
+relatively large. In addition, note that $M^{\left( Z,Q\right) }$ appears on
+both sides of the jackknife correction matrix $M^{\left( Z,Q\right) }D_{%
+\widehat{\vartheta }}M^{\left( Z,Q\right) }$ so that fixed effects and
+nonlinear exogenous components are taken out on both sides of the
+(multivariate) bilinear form, not just on one side. FELIM and FEFUL are a
+bit more complicated than FEJIV, but they share the same basic design as
+FEJIV; and, in consequence, they will also be consistent and asymptotically
+normal under many weak instrument asymptotics, as we will show in the
+theorems below.
+
+On the other hand, jackknife IV estimators currently available in the
+literature do not fully accomplish the dual goals of being both properly
+centered and of having all cluster-specific effects and additional
+covariates properly partialed out. To be more specific, we will briefly
+discuss a number of jackknife IV estimators that have been proposed in the
+literature. The paper by Angrist, Imbens, and Krueger (1999) consider the
+JIVE1 and JIVE2 estimators of the parameter vector $\delta ,$ but in a
+cross-sectional setup without either fixed effects or included exogenous
+regressors. Hence, these authors do not explicitly study the more general
+version of these estimators that partials out additional covariates. Hausman
+et al. (2012) introduce jackknife versions of LIML\ and Fuller estimators
+called HLIM\ and HFUL, but they do so in a cross-sectional context where
+there are no fixed effects and where only a small number of included
+exogenous regressors is allowed, so that the problem of having to partial
+out fixed effects and a potentially large number of included exogenous
+variables is not studied in that paper. In addition, the symmetric jackknife
+IV (SJIVE) estimator proposed by Bekker and Crudu (2015) is formulated in a
+setting without fixed effects and with no included exogenous regressors.
+Hence, that paper also does not consider issues related to having to partial
+out additional covariates.
+
+A recent paper, Evdokimov and Koles\'{a}r (2018), does examine a number of
+interesting jackknife IV estimators that allow for partialing out of
+additional covariates. In the following discussion we discuss how these
+estimators might perform if applied to our setting under many weak
+instrument asymptotics. Consider first the IJIVE1 estimator studied in that
+paper. This estimator was originally proposed by Ackerberg and Devereux
+(2009) and is further analyzed in the grouped data setting by Evdokimov and
+Koles\'{a}r (2018). Using our notation, the estimator can be written in the
+form%
+\begin{eqnarray*}
+\widehat{\delta }_{IJIVE1} &=&\left( X^{\prime }M^{\left( Z_{1},Q\right) }%
+\left[ P^{\perp }-D\left( P^{\perp }\right) \right] \left[ I_{m_{n}}-D\left(
+P^{\perp }\right) \right] ^{-1}M^{\left( Z_{1},Q\right) }X\right) ^{-1} \\
+&&\times \left( X^{\prime }M^{\left( Z_{1},Q\right) }\left[ P^{\perp
+}-D\left( P^{\perp }\right) \right] \left[ I_{m_{n}}-D\left( P^{\perp
+}\right) \right] ^{-1}M^{\left( Z_{1},Q\right) }y\right) .
+\end{eqnarray*}%
+It follows that we can further write the deviation of this estimator from
+the true value $\delta _{0}$ as%
+\begin{eqnarray}
+\widehat{\delta }_{IJIVE1}-\delta _{0} &=&\left( X^{\prime }A_{IJ1}X\right)
+^{-1}\left( X^{\prime }A_{IJ1}\varphi _{n}+X^{\prime }A_{IJ1}\varepsilon
+\right)  \notag \\
+&=&\left( X^{\prime }A_{IJ1}X\right) ^{-1}\left( X^{\prime }A_{IJ1}\varphi
+_{n}+\Phi _{n}^{\prime }A_{IJ1}\varepsilon +\Upsilon _{n}^{\prime
+}A_{IJ1}\varepsilon +U^{\prime }A_{IJ1}\varepsilon \right) \text{,}
+\label{IJIVE1}
+\end{eqnarray}%
+where $A_{IJ1}=M^{\left( Z_{1},Q\right) }\left[ P^{\perp }-D\left( P^{\perp
+}\right) \right] \left[ I_{m_{n}}-D\left( P^{\perp }\right) \right]
+^{-1}M^{\left( Z_{1},Q\right) }$. By straightforward
+
+\noindent calculation, it is easy to see that the $\left( i,t\right) ^{th}$
+diagonal element of the matrix $A_{IJ1}$ is given by%
+\begin{equation*}
+A_{IJ1,\left( i,t\right) ,\left( i,t\right) }=\dsum\limits_{\left(
+j,s\right) =1}^{m_{n}}\frac{M_{\left( j,s\right) ,\left( i,t\right)
+}^{\left( Z_{1},Q\right) }}{1-P_{\left( j,s\right) ,\left( j,s\right)
+}^{\perp }}\left[ P_{\left( i,t\right) ,\left( j,s\right) }^{\perp
+}-M_{\left( i,t\right) ,\left( j,s\right) }^{\left( Z_{1},Q\right)
+}P_{\left( j,s\right) ,\left( j,s\right) }^{\perp }\right] \neq 0,
+\end{equation*}%
+for $\left( i,t\right) =1,...,m_{n}$, so that $U^{\prime }A_{IJ1}\varepsilon 
+$, the bilinear form on the right-hand side of equation (\ref{IJIVE1})
+above, will not be a degenerate U-statistic and will not be properly
+centered at zero. Another way of looking at this issue is that although the
+matrix $\left[ P^{\perp }-D\left( P^{\perp }\right) \right] \left[
+I_{m_{n}}-D\left( P^{\perp }\right) \right] ^{-1}$ does have a
+\textquotedblleft jackknife form\textquotedblright\ in the sense that the
+elements of its main diagonal are all zero, it defines a bilinear form not
+with respect to $u$ and $\varepsilon $ but with respect to the projected
+vectors $\widehat{u}=M^{\left( Z_{1},Q\right) }u$ and $\widehat{\varepsilon }%
+=M^{\left( Z_{1},Q\right) }\varepsilon $. Note, however, that in general the 
+$i^{th}$ element of $\widehat{u}$ will contain not just the $i^{th}$ element
+of $u$ but other elements as well, and similarly for $\widehat{\varepsilon }$%
+. In consequence, merely having the diagonal elements zeroed out in this
+case is not sufficient for the bilinear form $u^{\prime }A_{IJ1}\varepsilon =%
+\widehat{u}^{\prime }\left[ P^{\perp }-D\left( P^{\perp }\right) \right] %
+\left[ I_{m_{n}}-D\left( P^{\perp }\right) \right] ^{-1}\widehat{\varepsilon 
+}$ to be properly centered at zero. In some sense, the process of partialing
+out the covariates has interfered with the process of jackknife recentering
+in the way this estimator is constructed. We can use a similar argument to
+also show that the bilinear form for IJIVE2 is not properly centered at zero.
+
+Now consider the UJIVE estimator, which was first introduced in Koles\'{a}r
+(2013) and is further analyzed in the grouped data setting by Evdokimov and
+Koles\'{a}r (2018). This estimator takes the form%
+\begin{eqnarray*}
+\widehat{\delta }_{UJIVE} &=&\left( X^{\prime }\left[ \widetilde{P}^{\left(
+Z,Q\right) }D\left( M^{\left( Z,Q\right) }\right) ^{-1}-\widetilde{P}%
+^{\left( Z_{1},Q\right) }D\left( M^{\left( Z_{1},Q\right) }\right) ^{-1}%
+\right] X\right) ^{-1} \\
+&&\times \left( X^{\prime }\left[ \widetilde{P}^{\left( Z,Q\right) }D\left(
+M^{\left( Z,Q\right) }\right) ^{-1}-\widetilde{P}^{\left( Z_{1},Q\right)
+}D\left( M^{\left( Z_{1},Q\right) }\right) ^{-1}\right] y\right) ,
+\end{eqnarray*}%
+where $Z=\left[ 
+\begin{array}{cc}
+Z_{1} & Z_{2}%
+\end{array}%
+\right] $, $\widetilde{P}^{\left( Z,Q\right) }=P^{\left( Z,Q\right)
+}-D\left( P^{\left( Z,Q\right) }\right) $, and $\widetilde{P}^{\left(
+Z_{1},Q\right) }=P^{\left( Z_{1},Q\right) }-D\left( P^{\left( Z_{1},Q\right)
+}\right) $. To discuss this estimator, it is most convenient to consider the 
+$d=1$ case (i.e., the case where there is only one endogenous regressor). In
+this case, the diagonal matrix $D_{\mu }$ defined in Assumption 3 reduces to
+the scalar $\mu _{n}=\mu _{n}^{\min }$. Now, we can write the deviation of
+this estimator from the true value $\delta _{0}$ as%
+\begin{equation*}
+\widehat{\delta }_{UJIVE}-\delta _{0}=\left( \frac{X^{\prime }A_{UJ}X}{\mu
+_{n}^{2}}\right) ^{-1}\left( \frac{X^{\prime }A_{UJ}\varphi _{n}+X^{\prime
+}A_{UJ}Q\alpha +\Phi _{n}^{\prime }A_{UJ}\varepsilon +\Upsilon _{n}^{\prime
+}A_{UJ}\varepsilon +U^{\prime }A_{UJ}\varepsilon }{\mu _{n}^{2}}\right) ,
+\end{equation*}%
+where $A_{UJ}=\left[ P^{\left( Z,Q\right) }-D\left( P^{\left( Z,Q\right)
+}\right) \right] D\left( M^{\left( Z,Q\right) }\right) ^{-1}-\left[
+P^{\left( Z_{1},Q\right) }-D\left( P^{\left( Z_{1},Q\right) }\right) \right]
+D\left( M^{\left( Z_{1},Q\right) }\right) ^{-1}$. Note first that the
+diagonal elements of the matrix $A_{UJ}$ are all equal to zero, so the
+bilinear term for this estimator, $U^{\prime }A_{UJ}\varepsilon $, is
+properly centered. However, this estimator has a bias problem that arises
+from the presence of the term $X^{\prime }A_{UJ}\varphi _{n}/\mu _{n}^{2}$,
+which can be nonnegligible and even large in order of magnitude. To see
+this, observe first that simple manipulation shows that $A_{UJ}=M^{\left(
+Z_{1},Q\right) }D\left( M^{\left( Z_{1},Q\right) }\right) ^{-1}-M^{\left(
+Z,Q\right) }D\left( M^{\left( Z,Q\right) }\right) ^{-1}$. Using this
+identity, we can write%
+\begin{eqnarray}
+\frac{X^{\prime }A_{UJ}\varphi _{n}}{\mu _{n}^{2}} &=&\frac{\Upsilon
+_{n}^{\prime }M^{\left( Z_{1},Q\right) }D\left( M^{\left( Z_{1},Q\right)
+}\right) ^{-1}\varphi _{n}}{\mu _{n}^{2}}-\frac{\Upsilon _{n}^{\prime
+}M^{\left( Z,Q\right) }D\left( M^{\left( Z,Q\right) }\right) ^{-1}\varphi
+_{n}}{\mu _{n}^{2}}  \notag \\
+&&+\frac{\Phi _{n}^{\prime }M^{\left( Z_{1},Q\right) }D\left( M^{\left(
+Z_{1},Q\right) }\right) ^{-1}\varphi _{n}}{\mu _{n}^{2}}-\frac{\Phi
+_{n}^{\prime }M^{\left( Z,Q\right) }D\left( M^{\left( Z,Q\right) }\right)
+^{-1}\varphi _{n}}{\mu _{n}^{2}}  \notag \\
+&&+\frac{U^{\prime }M^{\left( Z_{1},Q\right) }D\left( M^{\left(
+Z_{1},Q\right) }\right) ^{-1}\varphi _{n}}{\mu _{n}^{2}}-\frac{U^{\prime
+}M^{\left( Z,Q\right) }D\left( M^{\left( Z,Q\right) }\right) ^{-1}\varphi
+_{n}}{\mu _{n}^{2}}.  \label{XAphi}
+\end{eqnarray}%
+Note that the term on the right-hand side of (\ref{XAphi}) which can be
+particularly large in order of magnitude is $\Upsilon _{n}^{\prime
+}M^{\left( Z_{1},Q\right) }D\left( M^{\left( Z_{1},Q\right) }\right)
+^{-1}\varphi _{n}/\mu _{n}^{2}$. In fact, one can show that%
+\begin{equation*}
+\frac{\Upsilon _{n}^{\prime }M^{\left( Z_{1},Q\right) }D\left( M^{\left(
+Z_{1},Q\right) }\right) ^{-1}\varphi _{n}}{\mu _{n}^{2}}=\frac{\mu
+_{n}\Gamma _{n}^{\prime }M^{\left( Z_{1},Q\right) }D\left( M^{\left(
+Z_{1},Q\right) }\right) ^{-1}}{\sqrt{n}\mu _{n}^{2}}\frac{\tau _{n}g_{n}}{%
+\sqrt{n}}
+\end{equation*}%
+\begin{equation*}
+=\frac{\tau _{n}}{\mu _{n}}\frac{\Gamma _{n}^{\prime }M^{\left(
+Z_{1},Q\right) }D\left( M^{\left( Z_{1},Q\right) }\right) ^{-1}g_{n}}{n}%
+=O_{a.s.}\left( \frac{\tau _{n}}{\mu _{n}}\right) \text{.}
+\end{equation*}%
+Hence, this estimator will be inconsistent as long as $\mu _{n}=O\left( \tau
+_{n}\right) $. This will certainly be true in weak instrument cases where $%
+\mu _{n}=o\left( \tau _{n}\right) $, but can also occur even in strong
+instrument cases where $\mu _{n}\sim \sqrt{n}$ if the included exogenous
+regressors enter significantly into the structural equation of interest, in
+which case $\tau _{n}\sim \sqrt{n}$. Our simulation results, given in
+Section 5, confirm that UJIVE tends to do much less well in terms of bias
+when there are included exogenous regressors that enter significantly into
+the structural equation of interest.
+
+It should be noted, however, that, in the context of a linear IV model such
+as that given by (\ref{linear structural eqn}) and (\ref{linear 1st stage
+eqn}), UJIVE can be shown to be consistent under many weak instrument
+asymptotics in the special case where the equation of interest contains no
+included exogenous regressors and only fixed effects. This is not only
+because in this case there is no term of the form $X^{\prime }A_{UJ}\varphi
+_{n}/\mu _{n}^{2}=\tau _{n}X^{\prime }A_{UJ}Z_{1}\theta ^{K_{1,n}}/\left(
+\mu _{n}^{2}\sqrt{n}\right) $, but also because, in a linear model with no
+included exogenous regressors, $\Upsilon _{n}^{\prime }A_{UJ}Q\alpha /\mu
+_{n}^{2}$
+
+\noindent $=\Pi ^{K_{2,n}\prime }Z_{2}^{\prime }\left[ M^{Q}D\left(
+M^{Q}\right) ^{-1}-M^{\left( Z_{2},Q\right) }D\left( M^{\left(
+Z_{2},Q\right) }\right) ^{-1}\right] Q\alpha /\left( \mu _{n}\sqrt{n}\right)
+=0$ so that, without the contaminating effects of the included exogenous
+regressors, UJIVE does properly partial out the fixed effects.
+
+Since our setup essentially has a panel data structure, one may also wonder
+if it is possible to simply first difference away the fixed effects and then
+do a jackknife-type recentering. A problem with this strategy occurs if the
+IV regression contains, in addition to fixed effects, other included
+exogenous regressors which cannot be eliminated by first-differencing. In
+that case, one will have to do a projection to partial out these included
+exogenous regressors, leading to the same problem as we have discussed
+previously with regard to IJIVE1. In fact, the problem will be worse in this
+case due to the serial correlation in the errors induced by the
+first-differencing. Moreover, even if there are no additional included
+exogenous regressors, the serial correlation induced by first differencing
+causes additional complications. In particular, let $P^{Z}=Z\left( Z^{\prime
+}Z\right) ^{-1}Z^{\prime }$ denote the projection matrix of the instruments%
+\footnote{%
+Here, we let $Z$ denote the matrix of observations on the instruments
+because we are referring to a case where there are no included exogenous
+variables, $Z_{1}$.}. Then, to achieve proper jackknife recentering in this
+case requires the removal not only of the elements on the main diagonal of $%
+P^{Z}$ but also the elements on the superdiagonal and the subdiagonal of $%
+P^{Z}$, so that with serial correlation proper recentering is attained only
+at the cost of greater information loss. Finally, the presence of serial
+correlation also makes the large sample covariance matrix of a jackknife IV
+estimator under many weak instrument asymptotics both more complicated and
+more difficult to estimate. Hence, we believe that our approach for removing
+fixed or cluster-specific effects has certain advantages over any
+alternative procedure that is based on first-differencing. It should be
+noted that a recent panel data paper by Hsiao and Zhou (2018) does take the
+approach of constructing a jackknife IV estimator after first-differencing
+the data. However, the objective and focus of that paper differs greatly
+from ours. First of all, the panel data simultaneous equations model
+specified in Hsiao and Zhou (2018) does not allow for the degree of
+instrument weakness that we consider. In addition, the model that they
+consider does not have error heteroskedasticity or included exogenous
+regressors. If we apply their estimator to our setting, the estimator will
+not be consistent in the case where $K_{2,n}\sim \left( \mu _{n}^{\min
+}\right) ^{2}$ or in the case where $K_{2,n}/\left( \mu _{n}^{\min }\right)
+^{2}\rightarrow \infty ,$ but $\sqrt{K_{2,n}}/\left( \mu _{n}^{\min }\right)
+^{2}\rightarrow 0$. Still, it should be stressed that in their setting with
+strong instruments and error homoskedasticity their estimator has good
+asymptotic properties.
+
+Turning our attention back to the equation $d_{P^{\perp }}=\left( M^{\left(
+Z,Q\right) }\circ M^{\left( Z,Q\right) }\right) \vartheta $, note that in
+order for this system of linear equations to have a unique solution, we need
+the matrix $\left( M^{\left( Z,Q\right) }\circ M^{\left( Z,Q\right) }\right) 
+$ to be invertible. The following lemma provides sufficient conditions for
+the invertibility of $\left( M^{\left( Z,Q\right) }\circ M^{\left(
+Z,Q\right) }\right) $.
+
+\medskip
+
+\noindent \textbf{Lemma 1: }Suppose that Assumptions 5 and 6(i) are
+satisfied. Then, there exists a positive constant $C$ such that $\lambda
+_{\min }\left( M^{\left( Z,Q\right) }\circ M^{\left( Z,Q\right) }\right)
+\geq C>0$ $a.s.$, for all $n$ sufficiently large\footnote{%
+The proof of Lemma 1 follows in a manner similar to the argument given in
+Section 3 of the Supplemental Appendix to Cattaneo, Jansson, and Newey
+(2018b). Hence, to save space, we have not included the proof here. An
+explicit proof of this lemma, however, is available from us upon request.}.
+
+\smallskip
+
+It should be noted that a more general result on conditions for the
+invertibility of Hadamard products has been given previously in Cattaneo,
+Jansson, and Newey (2018b)\footnote{%
+See, in particular, the analysis given in Section 3 of their Supplemental
+Appendix.}. However, we choose to present a specialization of their result
+because it shows that, in the context of our cluster-sampling setup, a key
+condition for ensuring the invertibility of $\left( M^{\left( Z,W,Q\right)
+}\circ M^{\left( Z,W,Q\right) }\right) $ is $\min_{1\leq i\leq n}T_{i}\geq 3$%
+, which we explicitly assume in Assumption 6 part (i) above.
+
+A further observation is that, in analyzing estimators that are obtained
+from minimizing a variance ratio (e.g., FELIM), it is often convenient to
+first consider the objective function in the form $Q\left( \beta \right)
+=\left( \beta ^{\prime }\overline{X}^{\prime }A\overline{X}\beta \right)
+/\left( \beta ^{\prime }\overline{X}^{\prime }M^{\left( Z_{1},Q\right) }%
+\overline{X}\beta \right) $, where $\overline{X}=\left[ y,X\right] $ and
+where $\beta $ is a $\left( d+1\right) \times 1$ vector, not initially
+normalized to identify the dependent variable from the regressors. Here,
+ones performs the minimization problem on $Q\left( \beta \right) $ in order
+to obtain a minimizer $\widetilde{\beta }=\left( 
+\begin{array}{cc}
+\widetilde{\beta }_{1} & \widetilde{\beta }_{2}^{\prime }%
+\end{array}%
+\right) ^{\prime }$, with $\widetilde{\beta }_{1}$ a scalar and $\widetilde{%
+\beta }_{2}$ a $d\times 1$ vector, and subsequently normalize the last $d$
+components of $\widetilde{\beta }$ to obtain an estimator $\widetilde{\delta 
+}=-\widetilde{\beta }_{2}/\widetilde{\beta }_{1},$ for the coefficients of
+the endogenous regressors $X$. The following assumption ensures that this
+subsequent normalization is well-defined. Moreover, in the proof of Lemma
+S2-11 given in the Supplemental Appendix to this paper, we show that, by
+following this procedure, we end up with exactly the FELIM estimator $%
+\widehat{\delta }_{L}$, that satisfies the first-order conditions of the
+objective function given by (\ref{FELIM obj fn}) and that also has explicit
+representation given by equation (\ref{FELIM}) above.
+
+\medskip
+
+\noindent \textbf{Assumption 9: }Consider the variance-ratio objective
+function
+
+\noindent $Q\left( \beta \right) =\left( \beta ^{\prime }\overline{X}%
+^{\prime }A\overline{X}\beta \right) /\left( \beta ^{\prime }\overline{X}%
+^{\prime }M^{\left( Z_{1},Q\right) }\overline{X}\beta \right) $, where $%
+\beta \in \overline{B}=\left\{ \beta \in \mathbb{R}^{d+1}:\left\Vert \beta
+\right\Vert _{2}=1\right\} $. Let $\widetilde{\beta }$ be a $\left(
+d+1\right) \times 1$ vector that minimizes the objective function $Q\left(
+\beta \right) ,$ among all $\beta \in \overline{B}$ (i.e., $\widetilde{\beta 
+}=\arg \min_{\beta \in \overline{B}}Q\left( \beta \right) )$. Partition $%
+\widetilde{\beta }=\left( \widetilde{\beta }_{1},\widetilde{\beta }%
+_{2}^{\prime }\right) ^{\prime }$ as defined above and assume that there
+exists a positive constant $\underline{C}$ such that 
+\begin{equation}
+\left\vert \widetilde{\beta }_{1}\right\vert \geq \underline{C}>0\text{ \ }%
+a.s.\text{ for all }n\text{ sufficiently large.}  \label{Cond 9}
+\end{equation}
+
+\medskip
+
+\noindent Note that constraining $\beta $ (so that $\left\Vert \beta
+\right\Vert _{2}=1)$ is not restrictive since we are dealing with an
+objective function $Q\left( \beta \right) $ that is a ratio of quadratic
+forms in $\beta $. More precisely, let $\overline{\beta }=\arg \min_{\beta
+\in \mathbb{R}^{d+1}}Q\left( \beta \right) $, where $\overline{\beta }\neq 0$%
+, and let $\widetilde{\beta }=\overline{\beta }/\left\Vert \overline{\beta }%
+\right\Vert _{2}$ so that $\left\Vert \widetilde{\beta }\right\Vert _{2}=1$.
+Then, $Q\left( \overline{\beta }\right) =\left( \overline{\beta }^{\prime }%
+\overline{X}^{\prime }A\overline{X}\overline{\beta }\right) /\left( 
+\overline{\beta }^{\prime }\overline{X}^{\prime }M^{\left( Z_{1},Q\right) }%
+\overline{X}\overline{\beta }\right) =\left( \left\Vert \overline{\beta }%
+\right\Vert _{2}^{-1}\overline{\beta }^{\prime }\overline{X}^{\prime }A%
+\overline{X}\overline{\beta }\left\Vert \overline{\beta }\right\Vert
+_{2}^{-1}\right) /\left( \left\Vert \overline{\beta }\right\Vert _{2}^{-1}%
+\overline{\beta }^{\prime }\overline{X}^{\prime }M^{\left( Z_{1},Q\right) }%
+\overline{X}\overline{\beta }\left\Vert \overline{\beta }\right\Vert
+_{2}^{-1}\right) $
+
+\noindent $=Q\left( \widetilde{\beta }\right) $, so any minimal value of $%
+Q\left( \beta \right) $ obtained by minimizing $\beta $ over all $\beta \in 
+\mathbb{R}^{d+1}$ can also be achieved by some $\widetilde{\beta }$ such
+that $\left\Vert \widetilde{\beta }\right\Vert _{2}=1$.
+
+\section{\noindent Consistency and Asymptotic Normality \newline
+of Point Estimators}
+
+\noindent \textbf{Theorem 1: }Suppose that Assumptions 1-7 are satisfied. Let
+
+\noindent $\overline{\delta }_{n}=\left( X^{\prime }\left[ A-\overline{\ell }%
+_{n}M^{\left( Z_{1},Q\right) }\right] X\right) ^{-1}\left( X^{\prime }\left[
+A-\overline{\ell }_{n}M^{\left( Z_{1},Q\right) }\right] y\right) $, for some
+sequence $\overline{\ell }_{n},$ such that $\overline{\ell }_{n}=o_{p}\left( %
+\left[ \mu _{n}^{\min }\right] ^{2}/n\right) =o_{p}\left( 1\right) $. Then,
+as $n\rightarrow \infty $, $\left\Vert D_{\mu }\left( \overline{\delta }%
+_{n}-\delta _{0}\right) /\mu _{n}^{\min }\right\Vert _{2}\overset{p}{%
+\rightarrow }0$ and $\left\Vert \overline{\delta }_{n}-\delta
+_{0}\right\Vert _{2}\overset{p}{\rightarrow }0$.
+
+\medskip
+
+Special cases of the class of estimators that satisfy the conditions of
+Theorem 1, and are thus consistent in the sense described in the theorem,
+include FEJIV $\widehat{\delta }_{J,n}$, FELIM $\widehat{\delta }_{L,n}$,
+and FEFUL $\widehat{\delta }_{F,n}$. Evidently, the main difference between
+these estimators is the different specifications of $\overline{\ell }_{n}$. $%
+\widehat{\delta }_{J,n}$ takes $\overline{\ell }_{n}=0,$ for all $n$; $%
+\widehat{\delta }_{L,n}$ takes $\overline{\ell }_{n}=\widehat{\ell }_{L,n},$
+where $\widehat{\ell }_{L,n}$ is the smallest root of the determinantal
+equation $\det \left\{ \overline{X}^{\prime }A\overline{X}-\ell \overline{X}%
+^{\prime }M^{\left( Z_{1},Q\right) }\overline{X}\right\} =0$; and $\widehat{%
+\delta }_{F,n}$ takes $\overline{\ell }_{n}=\widehat{\ell }_{F,n}$ $=\left[ 
+\widehat{\ell }_{L}-\left( 1-\widehat{\ell }_{L}\right) C/m_{n}\right] /%
+\left[ 1-\left( 1-\widehat{\ell }_{L}\right) C/m_{n}\right] $, as described
+earlier. Hence, by verifying that, in all three cases, $\overline{\ell }_{n}$
+satisfies the condition $\overline{\ell }_{n}=o_{p}\left( \left[ \mu
+_{n}^{\min }\right] ^{2}/n\right) =o_{p}\left( 1\right) $, we can easily
+specialize the consistency result of Theorem 1 to establish the consistency
+of FEJIV, FELIM, and FEFUL. These results are given in the following
+corollary.
+
+\medskip
+
+\noindent \textbf{Corollary 1: }Under Assumptions 1-7 and 9, the following
+results hold as $n\rightarrow \infty $. (a) $\left\Vert D_{\mu }\left( 
+\widehat{\delta }_{J,n}-\delta _{0}\right) /\mu _{n}^{\min }\right\Vert _{2}%
+\overset{p}{\rightarrow }0$ and $\left\Vert \widehat{\delta }_{J,n}-\delta
+_{0}\right\Vert _{2}\overset{p}{\rightarrow }0$. (b) $\left\Vert D_{\mu
+}\left( \widehat{\delta }_{L,n}-\delta _{0}\right) /\mu _{n}^{\min
+}\right\Vert _{2}\overset{p}{\rightarrow }0$ and $\left\Vert \widehat{\delta 
+}_{L,n}-\delta _{0}\right\Vert _{2}\overset{p}{\rightarrow }0$. (c) $%
+\left\Vert D_{\mu }\left( \widehat{\delta }_{F,n}-\delta _{0}\right) /\mu
+_{n}^{\min }\right\Vert _{2}\overset{p}{\rightarrow }0$ and $\left\Vert 
+\widehat{\delta }_{F,n}-\delta _{0}\right\Vert _{2}\overset{p}{\rightarrow }%
+0 $.
+
+\medskip
+
+The next two results establish asymptotic normality for the FELIM and FEFUL
+estimators, under two different cases: (i) Case I: $K_{2,n}/\left( \mu
+_{n}^{\min }\right) ^{2}=O\left( 1\right) $ and (ii) Case II: $%
+K_{2,n}/\left( \mu _{n}^{\min }\right) ^{2}\rightarrow \infty ,$ but $\sqrt{%
+K_{2,n}}/\left( \mu _{n}^{\min }\right) ^{2}\rightarrow 0$. The FEJIV
+estimator can also be shown to have an asymptotic normal distribution under
+both Cases I and II. However, we choose to focus our theoretical analysis on
+FELIM\ and FEFUL\ because, as noted previously, the results of our Monte
+Carlo study indicate that FELIM and FEFUL have better finite sample
+properties than FEJIV.
+
+To facilitate the statement of the next two results, define%
+\begin{eqnarray}
+\Lambda _{I,n} &=&H_{n}^{-1}\left( \Sigma _{1,n}+\Sigma _{2,n}\right)
+H_{n}^{-1}=H_{n}^{-1}\Sigma _{n}H_{n}^{-1}\text{,}  \label{Asy Var I} \\
+\Lambda _{II,n} &=&\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}%
+H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}\text{,}  \label{Asy Var II}
+\end{eqnarray}%
+where $H_{n}=\Gamma ^{\prime }M^{\left( Z_{1},Q\right) }\Gamma /n$, $\Sigma
+_{1,n}=VC\left( \Gamma ^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon /%
+\sqrt{n}|\mathcal{F}_{n}^{W}\right) =\Gamma ^{\prime }M^{\left(
+Z_{1},Q\right) }D_{\sigma ^{2}}M^{\left( Z_{1},Q\right) }\Gamma /n$, and%
+\begin{eqnarray*}
+\Sigma _{2,n} &=&D_{\mu }^{-1}VC\left( \underline{U}^{\prime }A\varepsilon |%
+\mathcal{F}_{n}^{W}\right) D_{\mu }^{-1} \\
+&=&\dsum\limits_{\substack{ \left( i,t\right) ,\left( j,s\right) =1  \\ %
+\left( i,t\right) \neq \left( j,s\right) }}^{m_{n}}A_{\left( i,t\right)
+,\left( j,s\right) }^{2}E\left[ \varepsilon _{\left( i,t\right) }^{2}|%
+\mathcal{F}_{n}^{W}\right] D_{\mu }^{-1}E\left[ \underline{U}_{\left(
+j,s\right) }\underline{U}_{\left( j,s\right) }^{\prime }|\mathcal{F}_{n}^{W}%
+\right] D_{\mu }^{-1} \\
+&&+\dsum\limits_{\substack{ \left( i,t\right) ,\left( j,s\right) =1  \\ %
+\left( i,t\right) \neq \left( j,s\right) }}^{m_{n}}A_{\left( i,t\right)
+,\left( j,s\right) }^{2}D_{\mu }^{-1}E\left[ \underline{U}_{\left(
+i,t\right) }\varepsilon _{\left( i,t\right) }|\mathcal{F}_{n}^{W}\right] E%
+\left[ \varepsilon _{\left( j,s\right) }\underline{U}_{\left( j,s\right)
+}^{\prime }|\mathcal{F}_{n}^{W}\right] D_{\mu }^{-1}\text{,}
+\end{eqnarray*}%
+with $\Sigma _{n}=\Sigma _{1,n}+\Sigma _{2,n}$ and $\underline{U}_{\left(
+i,t\right) }=U_{\left( i,t\right) }-\rho \varepsilon _{\left( i,t\right) }$
+for $\left( i,t\right) =1,...,m_{n}$. Here, for any random vector $x$, $%
+VC\left( x|\mathcal{F}_{n}^{W}\right) $ denotes the conditional
+variance-covariance matrix of $x$ given $\mathcal{F}_{n}^{W}$. In addition,
+let $D_{\sigma ^{2}}=diag\left( \sigma _{\left( 1,1\right) }^{2},....,\sigma
+_{\left( n,T_{n}\right) }^{2}\right) =diag\left( \sigma _{1}^{2},....,\sigma
+_{m_{n}}^{2}\right) $, where $\sigma _{\left( i,t\right) }^{2}=\left[
+\varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{W}\right] ,$ for $%
+\left( i,t\right) =1,...,m_{n}$ and where, for notational convenience, we
+suppress the dependence of $\sigma _{\left( i,t\right) }^{2}$ on $\mathcal{F}%
+_{n}^{W}$.
+
+As evident from the results given below, $\Lambda _{I,n}$ and $\Lambda
+_{II,n}$ are the (conditional) variance-covariance matrices of FELIM\ (and
+also of FEFUL) in large samples under Cases I and II, respectively.
+
+\medskip
+
+\noindent \textbf{Theorem 2: }Suppose that Assumptions 1-9 are satisfied. In
+addition, suppose that Case I holds so that $K_{2,n}/\left( \mu _{n}^{\min
+}\right) ^{2}=O\left( 1\right) $. Then, $\Lambda _{I,n}$ is positive
+definite $a.s.$ for all $n$ sufficiently large; and, as $n\rightarrow \infty 
+$, $\Lambda _{I,n}^{-1/2}D_{\mu }\left( \widehat{\delta }_{L,n}-\delta
+_{0}\right) \overset{d}{\rightarrow }N\left( 0,I_{d}\right) $ and $\Lambda
+_{I,n}^{-1/2}D_{\mu }\left( \widehat{\delta }_{F,n}-\delta _{0}\right) 
+\overset{d}{\rightarrow }N\left( 0,I_{d}\right) $.
+
+\medskip
+
+\noindent \textbf{Theorem 3: }Suppose that Assumptions 1-9 are satisfied,
+and suppose that Case II holds, so that $\left( \mu _{n}^{\min }\right)
+^{2}/K_{2,n}=o\left( 1\right) ,$ but $\sqrt{K_{2,n}}/\left( \mu _{n}^{\min
+}\right) ^{2}\rightarrow 0$. In addition, let $\widetilde{L}_{n}$ be a $%
+q\times d$ matrix with $1\leq q\leq d$, and suppose that there exists a
+positive constant $C$ such that $\left\Vert \widetilde{L}_{n}\right\Vert
+_{2}\leq C<\infty $ and $\lambda _{\min }\left( \widetilde{L}_{n}\Lambda
+_{II,n}\widetilde{L}_{n}^{\prime }\right) \geq 1/C>0$ $a.s.n$. Then,
+
+\noindent $\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right) \left( \widetilde{L}%
+_{n}\Lambda _{II,n}\widetilde{L}_{n}^{\prime }\right) ^{-1/2}\widetilde{L}%
+_{n}D_{\mu }\left( \widehat{\delta }_{L,n}-\delta _{0}\right) \overset{d}{%
+\rightarrow }N\left( 0,I_{q}\right) $ and
+
+\noindent $\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right) \left( \widetilde{L}%
+_{n}\Lambda _{II,n}\widetilde{L}_{n}^{\prime }\right) ^{-1/2}\widetilde{L}%
+_{n}D_{\mu }\left( \widehat{\delta }_{F,n}-\delta _{0}\right) \overset{d}{%
+\rightarrow }N\left( 0,I_{q}\right) $.
+
+\medskip
+
+As alluded to earlier, the asymptotic results for FEJIV, FELIM, and FEFUL
+given in the above theorems can be specialized to obtain results for the
+linear IV regression case with (possibly) many weak instruments and/or many
+weak covariates, as specified in equations (\ref{linear structural eqn}) and
+(\ref{linear 1st stage eqn}) above.
+
+\section{Covariance Matrix Estimation and Hypothesis\newline
+Testing}
+
+\noindent \qquad To consistently estimate the asymptotic variance-covariance
+matrix of FELIM and FEFUL, we propose the following estimators%
+\begin{equation}
+\widehat{V}_{L}=\widehat{H}_{L}^{-1}\widehat{\Sigma }_{L}\widehat{H}_{L}^{-1}%
+\text{ and }\widehat{V}_{F}=\widehat{H}_{F}^{-1}\widehat{\Sigma }_{F}%
+\widehat{H}_{F}^{-1}\text{,}  \label{Var Est LIM and FUL}
+\end{equation}%
+where%
+\begin{eqnarray*}
+\widehat{H}_{L} &=&X^{\prime }\left[ A-\widehat{\ell }_{L,n}M^{\left(
+Z_{1},Q\right) }\right] X\text{, }\widehat{H}_{F}=X^{\prime }\left[ A-%
+\widehat{\ell }_{F,n}M^{\left( Z_{1},Q\right) }\right] X \\
+\widehat{\Sigma }_{L} &=&X^{\prime }AD\left( J\left[ \widehat{\varepsilon }%
+_{L}\circ \widehat{\varepsilon }_{L}\right] \right) AX-\widehat{\rho }%
+_{L}\left( \widehat{\varepsilon }_{L}\circ \widehat{\varepsilon }_{L}\right)
+^{\prime }J\left( A\circ A\right) J\left( \widehat{\varepsilon }_{L}\iota
+_{d}^{\prime }\circ M^{\left( Z,Q\right) }X\right) \\
+&&-\left( \widehat{\varepsilon }_{L}\iota _{d}^{\prime }\circ M^{\left(
+Z,Q\right) }X\right) ^{\prime }J\left( A\circ A\right) J\left( \widehat{%
+\varepsilon }_{L}\circ \widehat{\varepsilon }_{L}\right) \widehat{\rho }%
+_{L}^{\prime }+\widehat{\rho }_{L}\widehat{\rho }_{L}^{\prime }\left( 
+\widehat{\varepsilon }_{L}\circ \widehat{\varepsilon }_{L}\right) ^{\prime
+}J\left( A\circ A\right) J\left( \widehat{\varepsilon }_{L}\circ \widehat{%
+\varepsilon }_{L}\right) \\
+&&+\left( \widehat{\varepsilon }_{L}\iota _{d}^{\prime }\circ \widehat{%
+\underline{U}}_{L}\right) ^{\prime }J\left( A\circ A\right) J\left( \widehat{%
+\varepsilon }_{L}\iota _{d}^{\prime }\circ \widehat{\underline{U}}%
+_{L}\right) \text{,} \\
+\widehat{\Sigma }_{F} &=&X^{\prime }AD\left( J\left[ \widehat{\varepsilon }%
+_{F}\circ \widehat{\varepsilon }_{F}\right] \right) AX-\widehat{\rho }%
+_{F}\left( \widehat{\varepsilon }_{F}\circ \widehat{\varepsilon }_{F}\right)
+^{\prime }J\left( A\circ A\right) J\left( \widehat{\varepsilon }_{F}\iota
+_{d}^{\prime }\circ M^{\left( Z,Q\right) }X\right) \\
+&&-\left( \widehat{\varepsilon }_{F}\iota _{d}^{\prime }\circ M^{\left(
+Z,Q\right) }X\right) ^{\prime }J\left( A\circ A\right) J\left( \widehat{%
+\varepsilon }_{F}\circ \widehat{\varepsilon }_{F}\right) \widehat{\rho }%
+_{F}^{\prime }+\widehat{\rho }_{F}\widehat{\rho }_{F}^{\prime }\left( 
+\widehat{\varepsilon }_{F}\circ \widehat{\varepsilon }_{F}\right) ^{\prime
+}J\left( A\circ A\right) J\left( \widehat{\varepsilon }_{F}\circ \widehat{%
+\varepsilon }_{F}\right) \\
+&&+\left( \widehat{\varepsilon }_{F}\iota _{d}^{\prime }\circ \widehat{%
+\underline{U}}_{F}\right) ^{\prime }J\left( A\circ A\right) J\left( \widehat{%
+\varepsilon }_{F}\iota _{d}^{\prime }\circ \widehat{\underline{U}}%
+_{F}\right) \text{.}
+\end{eqnarray*}%
+and where $J=\left[ M^{Q}\circ M^{Q}\right] ^{-1}$, $\widehat{\varepsilon }%
+_{L}=M^{\left( Z,Q\right) }\left( y-X\widehat{\delta }_{L}\right) $, $%
+\widehat{\varepsilon }_{F}=M^{\left( Z,Q\right) }\left( y-X\widehat{\delta }%
+_{F}\right) $,
+
+\noindent $\widehat{\underline{U}}_{L}=M^{\left( Z,Q\right) }X-\widehat{%
+\varepsilon }_{L}\widehat{\rho }_{L}^{\prime }$, and $\widehat{\underline{U}}%
+_{F}=M^{\left( Z,Q\right) }X-\widehat{\varepsilon }_{F}\widehat{\rho }%
+_{F}^{\prime }$. In addition, let
+
+\noindent $\widehat{\rho }_{L}=\left[ X^{\prime }M^{\left( Z,Q\right)
+}\left( y-X\widehat{\delta }_{L}\right) \right] /\left[ \left( y-X\widehat{%
+\delta }_{L}\right) ^{\prime }M^{\left( Z,Q\right) }\left( y-X\widehat{%
+\delta }_{L}\right) \right] $ and
+
+\noindent $\widehat{\rho }_{F}=\left[ X^{\prime }M^{\left( Z,Q\right)
+}\left( y-X\widehat{\delta }_{F}\right) \right] /\left( y-X\widehat{\delta }%
+_{F}\right) ^{\prime }M^{\left( Z,Q\right) }\left( y-X\widehat{\delta }%
+_{F}\right) $ denote estimators of the parameter $\rho =\lim_{n\rightarrow
+\infty }E\left[ U^{\prime }M^{Q}\varepsilon \right] /E\left[ \varepsilon
+^{\prime }M^{Q}\varepsilon \right] ,$ based on $\widehat{\delta }_{L}$ and $%
+\widehat{\delta }_{F}$, respectively.
+
+Our next result shows the consistency of the covariance matrix estimators
+given in equation (\ref{Var Est LIM and FUL}) under both Cases I and II%
+\footnote{%
+It can be shown that an estimator of the asymptotic covariance matrix of
+FEJIV, which will be consistent under both Case I and II, is given by%
+\begin{equation*}
+\widehat{V}_{J,n}=\widehat{H}^{-1}\widehat{\Sigma }_{J}\widehat{H}%
+^{-1}=\left( X^{\prime }AX\right) ^{-1}\left[ X^{\prime }AD_{\widehat{%
+\varsigma }_{J}}AX+\left( \widehat{\varepsilon }_{J}\circ \widehat{U}\right)
+^{\prime }J\left( A\circ A\right) J\left( \widehat{\varepsilon }_{J}\circ 
+\widehat{U}\right) \right] \left( X^{\prime }AX\right) ^{-1},
+\end{equation*}%
+where $D_{\widehat{\varsigma }_{J}}=diag\left( \widehat{\varsigma }%
+_{J,\left( 1,1\right) },..,\widehat{\varsigma }_{J,\left( 1,T_{1}\right)
+},..,\widehat{\varsigma }_{J,\left( n,1\right) },..,\widehat{\varsigma }%
+_{J,\left( n,T_{n}\right) }\right) $, $\widehat{\varsigma }_{J,\left(
+i,t\right) }=e_{\left( i,t\right) }^{\prime }J\left( \widehat{\varepsilon }%
+_{J}\circ \widehat{\varepsilon }_{J}\right) $, $\widehat{\varepsilon }%
+_{J}=M^{\left( Z,Q\right) }\left( y-X\widehat{\delta }_{J}\right) $, and $%
+\widehat{U}=M^{\left( Z,Q\right) }X$. Note also that the standard error used
+for FEJIV in our Monte Carlo study given in section 5 is based on the above
+formula.}.
+
+\bigskip
+
+\noindent \textbf{Theorem 4: }Suppose that Assumptions 1-9 are satisfied.
+Then, the following statements are true.
+
+\begin{enumerate}
+\item[(a)] For Case I, where $K_{2,n}/\left( \mu _{n}^{\min }\right)
+^{2}=O\left( 1\right) $, $D_{\mu }\widehat{V}_{L}D_{\mu }=\Lambda
+_{I,n}+o_{p}\left( 1\right) $ and $D_{\mu }\widehat{V}_{F}D_{\mu }=\Lambda
+_{I,n}+o_{p}\left( 1\right) $, where $\Lambda _{I,n}$ is as defined in
+equation (\ref{Asy Var I}).
+
+\item[(b)] For Case II, where $K_{2,n}/\left( \mu _{n}^{\min }\right)
+^{2}\rightarrow \infty $, but $\sqrt{K_{2,n}}/\left( \mu _{n}^{\min }\right)
+^{2}\rightarrow 0$, $\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}%
+\right] D_{\mu }\widehat{V}_{L}D_{\mu }=\Lambda _{II,n}+o_{p}\left( 1\right) 
+$ and $\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}\right] D_{\mu }%
+\widehat{V}_{F}D_{\mu }=\Lambda _{II,n}+o_{p}\left( 1\right) $, where $%
+\Lambda _{II,n}$ is as defined in equation (\ref{Asy Var II}).
+\end{enumerate}
+
+\bigskip
+
+Theorem 5 below provides asymptotic normality results for t-statistics
+associated with the FELIM and FEFUL estimators in the case where $\mu
+_{1,n}=\cdot \cdot \cdot =\mu _{d,n}=\mu _{n}^{\min }$. The case where the
+degree of instrument weakness is homogeneous and does not vary across the
+different first-stage equations is one which is often assumed in previous
+papers on weak and/or many instruments. In this case, we show that, without
+any additional side conditions that may restrict the form of the linear
+hypothesis tested, the t-ratio based on our estimators has an asymptotic
+standard normal distribution under the null hypothesis, as long as $\sqrt{%
+K_{2,n}}/\left( \mu _{n}^{\min }\right) ^{2}=\sqrt{K_{2,n}}/\left( \mu
+_{n}\right) ^{2}\rightarrow 0$. Moreover, the results show that, under these
+same rate conditions, the tests are also consistent, as the test statistics
+diverge under fixed alternatives.
+
+\bigskip
+
+\noindent \textbf{Theorem 5: }Suppose that Assumptions 1-9 are satisfied.
+Suppose further that the diagonal matrix $D_{\mu }$ in Assumption 3 takes
+the form $D_{\mu }=\mu _{n}^{\min }\cdot I_{d}$ (i.e., $\mu _{1,n}=\cdot
+\cdot \cdot =\mu _{d,n}=\mu _{n}^{\min })$. Then, the following statements
+are true for the t-statistics $\mathbb{T}_{L}=\left( c^{\prime }\widehat{%
+\delta }_{L}-r\right) /\sqrt{c^{\prime }\widehat{V}_{L}c}$ and $\mathbb{T}%
+_{F}=\left( c^{\prime }\widehat{\delta }_{F}-r\right) /\sqrt{c^{\prime }%
+\widehat{V}_{F}c}$.
+
+\begin{enumerate}
+\item[a.] For Case I, where $K_{2,n}/\left( \mu _{n}^{\min }\right)
+^{2}=O\left( 1\right) $:
+
+\begin{enumerate}
+\item[(i)] Under $H_{0}:c^{\prime }\delta _{0}=r$, $\mathbb{T}_{L}\overset{d}%
+{\rightarrow }N\left( 0,1\right) $ and $\mathbb{T}_{F}\overset{d}{%
+\rightarrow }N\left( 0,1\right) .$
+
+\item[(ii) ] Under $H_{1}:c^{\prime }\delta _{0}\neq r$, with probability
+approaching one, as $n\rightarrow \infty $, the following results hold: $%
+\mathbb{T}_{L}\rightarrow +\infty $ \ if $c^{\prime }\delta _{0}>r$; $%
+\mathbb{T}_{L}\rightarrow -\infty $ \ if $c^{\prime }\delta _{0}<r$; $%
+\mathbb{T}_{F}\rightarrow +\infty $\ if $c^{\prime }\delta _{0}>r$; and $%
+\mathbb{T}_{F}\rightarrow -\infty $ \ if $c^{\prime }\delta _{0}<r$.
+\end{enumerate}
+
+\item[b.] For Case II, where $K_{2,n}/\left( \mu _{n}^{\min }\right)
+^{2}\rightarrow \infty $ but $\sqrt{K_{2,n}}/\left( \mu _{n}^{\min }\right)
+^{2}\rightarrow 0$:
+
+\begin{enumerate}
+\item[(i)] Under $H_{0}:c^{\prime }\delta _{0}=r$, $\mathbb{T}_{L}\overset{d}%
+{\rightarrow }N\left( 0,1\right) $ and $\mathbb{T}_{F}\overset{d}{%
+\rightarrow }N\left( 0,1\right) .$
+
+\item[(ii)] Under $H_{1}:c^{\prime }\delta _{0}\neq r$, with probability
+approaching one, as $n\rightarrow \infty $, the following results hold: $%
+\mathbb{T}_{L}\rightarrow +\infty $ \ if $c^{\prime }\delta _{0}>r$; $%
+\mathbb{T}_{L}\rightarrow -\infty $ \ if $c^{\prime }\delta _{0}<r$; $%
+\mathbb{T}_{F}\rightarrow +\infty $\ if $c^{\prime }\delta _{0}>r$; and $%
+\mathbb{T}_{F}\rightarrow -\infty $ \ if $c^{\prime }\delta _{0}<r$.
+\end{enumerate}
+\end{enumerate}
+
+Our next result considers cases where we test a null hypothesis involving
+only one coefficient, such as testing the significance of a particular
+parameter. We choose to analyze this case because this seems to be the most
+frequent use of the t-statistic by empirical researchers. In these cases, we
+establish that, under mild additional conditions, the t-test based on our
+proposed estimators will be robust to many weak instruments, even if there
+is heterogeneity in the degree of instrument weakness across the different
+first-stage equations. Moreover, our test will be robust to many weak
+instruments even if the empirical researcher using our test has no knowledge
+of how the degree of instrument weakness varies across the different
+first-stage equations. For this result, we introduce a modification of
+Assumption 3.
+
+\medskip
+
+\noindent \textbf{Assumption 3*: }Suppose that $\Upsilon _{n}\left(
+W_{2,\left( i,t\right) }\right) =D_{\mu }\gamma \left( W_{2,\left(
+i,t\right) }\right) /\sqrt{n},$ for $\left( i,t\right) =1,...,m_{n}$, where $%
+D_{\mu }$ has the form%
+\begin{equation}
+D_{\mu }=\left( 
+\begin{array}{cc}
+\underset{d_{1}\times d_{1}}{D_{1}} & 0 \\ 
+0 & \left( \mu _{n}^{\min }\right) \cdot I_{d_{2}}%
+\end{array}%
+\right) \text{,}  \label{Dmu}
+\end{equation}%
+with $D_{1}=diag\left( \mu _{1,n},..,\mu _{d_{1},n}\right) ,$ and where $%
+d_{1}$ and $d_{2}$ are positive integers, with $d_{1}+d_{2}=d$. The
+following conditions are assumed. (i) Either $\mu _{g,n}=\sqrt{n}$ or $\mu
+_{g,n}/\sqrt{n}\rightarrow 0,$ for $g\in \left\{ 1,...,d\right\} $. (ii) Let 
+$\mu _{n}^{\min }=\min_{1\leq g\leq d}$ $\mu _{g,n},$and suppose that $\mu
+_{n}^{\min }\rightarrow \infty ,$ as $n\rightarrow \infty ,$ such that$\sqrt{%
+K_{2,n}}/\left( \mu _{n}^{\min }\right) ^{2}\rightarrow 0$. (iii) $\left(
+\mu _{n}^{\min }\right) /\mu _{g,n}\rightarrow 0,$ as $n\rightarrow \infty ,$
+for $g\in \left\{ 1,...,d_{1}\right\} $. (iv) Let $H_{n}$ be as defined in
+Assumption 3(iii) above, and suppose that there exists a positive constant $%
+C,$ such that $\lambda _{\max }\left( H_{n}\right) \leq C<\infty $ and $%
+\lambda _{\min }\left( H_{n}\right) \geq 1/C>0$ $a.s.,$ for all $n$
+sufficiently large. (v) Let $e_{g}$ denote a $d\times 1$ elementary vector
+whose $g^{th}$ element is $1,$ with all other elements (or components) equal
+to $0$. Partition $H_{n}^{-1}$ as $H_{n}^{-1}=\overline{H}_{n}=\left( 
+\begin{array}{cc}
+\overline{H}_{1\cdot }^{\prime } & \overline{H}_{2\cdot }^{\prime }%
+\end{array}%
+\right) ^{\prime }$, where $\overline{H}_{1\cdot }$ is $d_{1}\times d$ and $%
+\overline{H}_{2\cdot }$ is $d_{2}\times d$. Suppose that there exists a
+positive constant $C_{\ast }$ such that $e_{g}^{\prime }\overline{H}_{2\cdot
+}^{\prime }\overline{H}_{2\cdot }e_{g}\geq C_{\ast }>0$ $a.s.$for all $n$
+sufficiently large and for $g\in \left\{ 1,...,d\right\} $.
+
+\medskip
+
+Note that writing the matrix $D_{\mu }$ in the form given by equation (\ref%
+{Dmu}) may appear to require a particular ordering of the diagonal elements $%
+\mu _{1n},..,\mu _{d_{1},n},\mu _{n}^{\min }$ of $D_{\mu }$, where $\mu
+_{n}^{\min }$ is placed in the last $d_{2}$ diagonal position. However, it
+is easily seen that the way $D_{\mu }$ is specified in equation (\ref{Dmu})
+does not really lead to any loss of generality. In fact, a more general $%
+D_{\mu }$ matrix, where not all of the diagonal elements grow at the same
+rate, as $n\rightarrow \infty $, can always be put in the form given in
+equation (\ref{Dmu}), via repermutation of the rows and columns of $D_{\mu }$%
+. To see this, suppose that $\mu _{1n},..,\mu _{d_{1},n},\mu _{n}^{\min }$
+are not ordered as in equation (\ref{Dmu}), so that we have some diagonal
+matrix $D_{\mu }^{\ast },$ whose diagonal elements are $\mu _{1n},..,\mu
+_{d_{1},n},\mu _{n}^{\min },$ but in some other ordering. Then, there exists
+some permutation matrix $P$ such that $D_{\mu }=PD_{\mu }^{\ast }P^{\prime }$%
+, where $D_{\mu }$ is the diagonal matrix given in equation (\ref{Dmu}).
+Moreover, let the elements of $\widehat{\delta }^{\ast },\delta _{0}^{\ast }$%
+, $c^{\ast }$, and $\widehat{V}^{\ast }$ be ordered in a way that is
+conformable with $D_{\mu }^{\ast },$ and let $\widehat{\delta },\delta _{0}$%
+, $c$, and $\widehat{V}$ be the corresponding vectors and matrix but with
+elements ordered conformably with $D_{\mu }$. Then, it is easy to see that $%
+\widehat{\delta }=P\widehat{\delta }^{\ast }$, $\delta _{0}=P\delta
+_{0}^{\ast }$, $c=Pc^{\ast }$, $\widehat{V}=P\widehat{V}^{\ast }P^{\prime }$%
+. Hence, by making use of these relations and of the fact that $P$ is an
+orthogonal matrix, we further obtain that $\mathbb{T}_{L}^{\ast }=c^{\ast
+\prime }\left( \widehat{\delta }^{\ast }-\delta _{0}^{\ast }\right) /\sqrt{%
+c^{\ast \prime }\widehat{V}^{\ast }c^{\ast }}=c^{\ast \prime }P^{\prime
+}P\left( \widehat{\delta }^{\ast }-\delta _{0}^{\ast }\right) /\sqrt{c^{\ast
+\prime }P^{\prime }P\widehat{V}^{\ast }P^{\prime }Pc^{\ast }}=c^{\prime
+}\left( \widehat{\delta }-\delta _{0}\right) /\sqrt{c^{\prime }\widehat{V}c}=%
+\mathbb{T}_{L}$. It follows that the value of the t-statistic is invariant
+to repermutation of the order of the elements of $\widehat{\delta }$, $%
+\delta _{0}$, $c$, and $\widehat{V}$, so that the asymptotic distribution
+which we derive for $\mathbb{T}_{L}$, under an assumed ordering of the
+elements of $\widehat{\delta }$, $\delta _{0}$, $c$, and $\widehat{V}$ that
+is conformable with equation (\ref{Dmu}) will still apply, even if the
+t-statistic computed by the empirical researcher is based on some other
+ordering.
+
+Here, we let $D_{1}=diag\left( \mu _{1,n},..,\mu _{d_{1},n}\right) ,$ such
+that $\left( \mu _{n}^{\min }\right) /\mu _{g,n}\rightarrow 0,$ as $%
+n\rightarrow \infty ,$ for $g\in \left\{ 1,...,d_{1}\right\} $, where $d_{1}$
+and $d_{2}$ are positive integers with $d_{1}+d_{2}=d$. This specification
+excludes the case where $d_{1}=0$, or $d_{2}=d$, because this case has
+already been covered by Theorem 5.
+
+\medskip
+
+\noindent \textbf{Theorem 6: }Suppose that Assumptions 1, 2, 3$^{\text{*}}$,
+4-9 are satisfied; and, in what follows, let $e_{g}$ denote a $d\times 1$
+elementary vector whose $g^{th}$ element is $1,$ with all other elements (or
+components) equal to $0$, and define the t-statistics $\mathbb{T}_{L}=\left(
+e_{g}^{\prime }\widehat{\delta }_{L}-r\right) /\sqrt{e_{g}^{\prime }\widehat{%
+V}_{L}e_{g}}$ and $\mathbb{T}_{F}=\left( e_{g}^{\prime }\widehat{\delta }%
+_{F}-r\right) /\sqrt{e_{g}^{\prime }\widehat{V}_{F}e_{g}}$.
+
+\begin{enumerate}
+\item[a.] For Case I, where $K_{2,n}/\left( \mu _{n}^{\min }\right)
+^{2}=O\left( 1\right) $, the following results hold for any $g\in \left\{
+1,...,d\right\} $.
+
+\begin{enumerate}
+\item[(i)] Under $H_{0}:e_{g}^{\prime }\delta _{0}=r$, $\mathbb{T}_{L}%
+\overset{d}{\rightarrow }N\left( 0,1\right) $ and $\mathbb{T}_{F}\overset{d}{%
+\rightarrow }N\left( 0,1\right) $.
+
+\item[(ii) ] Under $H_{1}:e_{g}^{\prime }\delta _{0}\neq r$, with
+probability approaching one, as $n\rightarrow \infty $, the following
+results hold: $\mathbb{T}_{L}\rightarrow +\infty $ \ if $e_{g}^{\prime
+}\delta _{0}>r$; $\mathbb{T}_{L}\rightarrow -\infty $ \ if $e_{g}^{\prime
+}\delta _{0}<r$; $\mathbb{T}_{F}\rightarrow +\infty $\ if $e_{g}^{\prime
+}\delta _{0}>r$; and $\mathbb{T}_{F}\rightarrow -\infty $ \ if $%
+e_{g}^{\prime }\delta _{0}<r$.
+\end{enumerate}
+
+\item[b.] For Case II, where $K_{2,n}/\left( \mu _{n}^{\min }\right)
+^{2}\rightarrow \infty $ but $\sqrt{K_{2,n}}/\left( \mu _{n}^{\min }\right)
+^{2}\rightarrow 0$, the following results hold, for any $g\in \left\{
+1,...,d\right\} $.
+
+\begin{enumerate}
+\item[(i)] Under $H_{0}:e_{g}^{\prime }\delta _{0}=r$, $\mathbb{T}_{L}%
+\overset{d}{\rightarrow }N\left( 0,1\right) $ and $\mathbb{T}_{F}\overset{d}{%
+\rightarrow }N\left( 0,1\right) $.
+
+\item[(ii)] Under $H_{1}:e_{g}^{\prime }\delta _{0}\neq r$, with probability
+approaching one, as $n\rightarrow \infty $, the following results hold: $%
+\mathbb{T}_{L}\rightarrow +\infty $ \ if $e_{g}^{\prime }\delta _{0}>r$; $%
+\mathbb{T}_{L}\rightarrow -\infty $ \ if $e_{g}^{\prime }\delta _{0}<r$; $%
+\mathbb{T}_{F}\rightarrow +\infty $\ if $e_{g}^{\prime }\delta _{0}>r$; and $%
+\mathbb{T}_{F}\rightarrow -\infty $ \ if $e_{g}^{\prime }\delta _{0}<r$.
+\end{enumerate}
+\end{enumerate}
+
+\medskip
+
+Comparing Assumption 3* with Assumption 3, we see that the one additional
+side condition required for Theorem 6 is the condition placed on elements of 
+$\overline{H}_{2\cdot }$ in part (v) of Assumption 3*. To test hypotheses
+involving only the $g^{th}$ coefficient, this condition will be violated
+only if the $g^{th}$ column of $\overline{H}_{2\cdot }$ does not have a
+single nonzero entry, which seems unlikely in most practical applications.
+
+To date, papers in the weak instrument literature have focused primarily on
+size control, with little attention paid to test consistency under weak
+identification. One exception is a recent paper by Mikusheva and Sun (2020),
+which shows that a condition similar to $\sqrt{K_{2,n}}/\left( \mu
+_{n}^{\min }\right) ^{2}\rightarrow 0$ is both necessary and sufficient for
+the existence of a consistent test. Interpreted in light of their result,
+the results presented in Theorems 5 and 6 above prove that t-tests based on
+FELIM and FEFUL are consistent as long as instruments are strong enough so
+that consistency in hypothesis testing is possible. In contrast, t-tests
+based on estimators such as the 2SLS estimator will only be consistent if $%
+K_{2,n}/\left( \mu _{n}^{\min }\right) ^{2}\rightarrow 0$ (i.e., under
+stronger instruments). Test statistics based on LIML also have undesirable
+properties under many weak instrument asymptotics, when there is error
+heteroskedasticity. In addition, note that one advantage of t-tests is that
+they are particularly easy to apply if one is interested in testing against
+one-sided alternatives. The results of Theorems 5 and 6 show that, when the
+null hypothesis is incorrect, t-tests based on FELIM and FEFUL diverge in
+the direction of the true alternative, with probability approaching one,
+even in situations where identification is weaker than that typically
+assumed under standard large sample theory, provided of course that $\sqrt{%
+K_{2,n}}/\left( \mu _{n}^{\min }\right) ^{2}\rightarrow 0$. Hence, the test
+statistics proposed in this paper should be useful to empirical researchers
+interested in testing whether an effect in a particular direction is
+statistically significant.
+
+\section{\noindent Monte Carlo Results}
+
+In this section, we report some Monte Carlo results based on a setup similar
+to that of Hausman et al. (2012), but extended to the cluster-sample/panel
+data setting. In particular, we consider two closely related groups of
+data-generating processes:
+
+\noindent \textbf{DGP 1:}%
+\begin{eqnarray*}
+y_{\left( i,t\right) } &=&\underset{1\times 1}{\delta }\underset{1\times 1}{%
+x_{\left( i,t\right) }}+\underset{1\times 9}{\gamma ^{\prime }}\underset{%
+9\times 1}{Z_{1,\left( i,t\right) }}+\alpha _{i}+\varepsilon _{\left(
+i,t\right) }\text{,} \\
+x_{\left( i,t\right) } &=&\underset{1\times 1}{\pi }\underset{1\times 1}{%
+z_{2,\left( i,t\right) }}+\underset{1\times 9}{\Phi ^{\prime }}\underset{%
+9\times 1}{Z_{1,\left( i,t\right) }}+\xi _{i}+u_{\left( i,t\right) }\text{.}
+\end{eqnarray*}%
+In all experiments that utilize this DGP, we take $\gamma =\left( 
+\begin{array}{cccc}
+1 & 1 & \cdots & 1%
+\end{array}%
+\right) ^{\prime }$ and $\Phi =\left( 
+\begin{array}{cccc}
+1 & 1 & \cdots & 1%
+\end{array}%
+\right) ^{\prime }$.
+
+\noindent \textbf{DGP 2:}%
+\begin{eqnarray*}
+y_{\left( i,t\right) } &=&\underset{1\times 1}{\delta }\underset{1\times 1}{%
+x_{\left( i,t\right) }}+\underset{1\times 1}{\gamma _{1}}\underset{1\times 1}%
+{z_{1,\left( i,t\right) }}+\alpha _{i}+\varepsilon _{\left( i,t\right) }%
+\text{,} \\
+x_{\left( i,t\right) } &=&\underset{1\times 1}{\pi }\underset{1\times 1}{%
+z_{2,\left( i,t\right) }}+\underset{1\times 1}{\Phi _{1}}\underset{1\times 1}%
+{z_{1,\left( i,t\right) }}+\xi _{i}+u_{\left( i,t\right) }\text{.}
+\end{eqnarray*}%
+In all experiments that utilize this DGP, we take $\gamma _{1}=1$ and $\Phi
+_{1}=1$. Additionally, we set $n=300$ and $T_{i}=3,$ for each $i\in \left\{
+1,2,...,300\right\} $, so that $m_{n}=900$. We also take $\left\{
+z_{1,\left( i,t\right) }\right\} _{\left( i,t\right) =1}^{900}\equiv
+i.i.d.N\left( 0,1\right) $, $\left\{ z_{2,\left( i,t\right) }\right\}
+_{\left( i,t\right) =1}^{900}\equiv i.i.d.N\left( 0,1\right) $, and $\left\{
+u_{\left( i,t\right) }\right\} _{\left( i,t\right) =1}^{900}\equiv
+i.i.d.N\left( 0,1\right) $. Moreover, $z_{1,\left( i,t\right) }$, $%
+z_{2,\left( i,t\right) }$, and $u_{\left( i,t\right) }$ are all mutually
+independent. The $\left( i,t\right) ^{th}$ observation of the vector of
+instruments is specified to be $Z_{2,\left( i,t\right) }=\left( 
+\begin{array}{cccccc}
+z_{2,\left( i,t\right) } & z_{2,\left( i,t\right) }^{2} & z_{2,\left(
+i,t\right) }^{3} & z_{2,\left( i,t\right) }^{4} & z_{2,\left( i,t\right)
+}D_{\left( i,t\right) ,1} & \cdots%
+\end{array}%
+\right. $
+
+\noindent $\left. 
+\begin{array}{cc}
+\cdots & z_{2,\left( i,t\right) }D_{\left( i,t\right) ,5}%
+\end{array}%
+\right) ^{\prime }$, while the $\left( i,t\right) ^{th}$ observation of the
+vector of included exogenous regressors, or covariates, is given by $%
+Z_{1,\left( i,t\right) }=\left( 
+\begin{array}{cccccc}
+z_{1,\left( i,t\right) } & z_{1,\left( i,t\right) }^{2} & z_{1,\left(
+i,t\right) }^{3} & z_{1,\left( i,t\right) }^{4} & z_{1,\left( i,t\right)
+}D_{\left( i,t\right) ,1} & \cdots%
+\end{array}%
+\right. $
+
+\noindent $\left. 
+\begin{array}{cc}
+\cdots & z_{1,\left( i,t\right) }D_{\left( i,t\right) ,5}%
+\end{array}%
+\right) ^{\prime }$, where $D_{\left( i,t\right) ,k}\in \left\{ 0,1\right\} $
+for $k\in \left\{ 1,2,..,5\right\} $ is a binary variable such that $\Pr
+\left( D_{\left( i,t\right) ,k}=1\right) =1/2,$ and where $\left\{ D_{\left(
+i,t\right) ,k}\right\} $ is independent across both $\left( i,t\right) $ and 
+$k$. The structural disturbance, $\varepsilon _{\left( i,t\right) },$ is
+allowed to exhibit conditional heteroskedasticity in a manner similar to the
+design given in Hausman et al. (2012). In particular, under DGP1, we take%
+\begin{equation}
+\varepsilon _{\left( i,t\right) }=\rho u_{\left( i,t\right) }+\sqrt{\frac{%
+1-\rho ^{2}}{\phi ^{2}+\left( 0.86\right) ^{4}}}\left( \phi v_{1,\left(
+i,t\right) }+0.86v_{2,\left( i,t\right) }\right) ,  \label{epsilon}
+\end{equation}%
+where $v_{1,\left( i,t\right) }|Z_{1,\left( i,t\right) },z_{2,\left(
+i,t\right) }\sim N\left( 0,\kappa _{1}\left[ 1+\left( \iota _{9}^{\prime
+}Z_{1,\left( i,t\right) }+z_{2,\left( i,t\right) }\right) ^{2}\right]
+\right) $ and $v_{2,\left( i,t\right) }\sim N\left( 0,\left( 0.86\right)
+^{2}\right) $. Both of these distributions are assumed to be independent
+across the index $\left( i,t\right) $. Under DGP2, $\varepsilon _{\left(
+i,t\right) }$ has a similar structure as given in equation (\ref{epsilon})
+above, except that we take $v_{1,\left( i,t\right) }|Z_{1,\left( i,t\right)
+},z_{2,\left( i,t\right) }\equiv v_{1,\left( i,t\right) }|z_{1,\left(
+i,t\right) },z_{2,\left( i,t\right) }\sim N\left( 0,\kappa _{2}\left[
+1+\left( z_{1,\left( i,t\right) }+z_{2,\left( i,t\right) }\right) ^{2}\right]
+\right) $. Also, $\kappa _{1}$ and $\kappa _{2}$ are normalization constants
+chosen so that under both DGP1 and DGP2 the unconditional variance, $%
+Var\left( v_{1,\left( i,t\right) }\right) $, is equal to 1. For all
+experiments reported below, we set $\rho =0.3$ and, under both DGP1 and
+DGP2, we choose the parameter $\phi $, so that the R-squared for the
+regression of $\varepsilon ^{2}$ on the instruments and the included
+exogenous variables take the values $0$, $0.1$, and $0.2$.
+
+Our simulation study examines the finite sample properties of our three
+estimators (FEJIV, FELIM, and FEFUL) and their associated t-statistics.
+Additionally, we compare the performance of our estimators with the 2SLS
+estimator, the IJIVE1 estimator originally proposed in Ackerberg and
+Devereux (2009), the IJIVE2 estimator introduced in Evdokimov and Koles\'{a}%
+r (2018), and the UJIVE estimator originally proposed in Koles\'{a}r (2013)
+and further studied in Evdokimov and Koles\'{a}r (2018). The comparison of
+these point estimators is made on the basis of median bias and nine decile
+range. We also evaluate the associated t-statistics for these estimators on
+the basis of size control, as measured by their rejection frequencies under
+the null hypothesis $H_{0}:\delta =0$.
+
+\noindent \qquad The results of our Monte Carlo study are reported in Tables
+1-6 below.
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline\hline
+\multicolumn{9}{|c|}{Table 1: Median Bias, DGP 1} \\ \hline\hline
+$\mu ^{2}$ & $\mathcal{R}_{\varepsilon ^{2}|z_{1}^{2}}^{2}$ & 2SLS & IJIVE1
+& IJIVE2 & UJIVE & FEJIV & FELIM & FEFUL \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.1056} & 
+\multicolumn{1}{|c|}{0.0429} & \multicolumn{1}{|c|}{0.0417} & 
+\multicolumn{1}{|c|}{0.3405} & \multicolumn{1}{|c|}{0.0012} & 
+\multicolumn{1}{|c|}{0.0029} & \multicolumn{1}{|c|}{0.0157} \\ \cline{2-9}
+24 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.1028} & 
+\multicolumn{1}{|c|}{0.0417} & \multicolumn{1}{|c|}{0.0400} & 
+\multicolumn{1}{|c|}{0.3474} & \multicolumn{1}{|c|}{-0.0002} & 
+\multicolumn{1}{|c|}{0.0007} & \multicolumn{1}{|c|}{0.0122} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.1060} & 
+\multicolumn{1}{|c|}{0.0423} & \multicolumn{1}{|c|}{0.0417} & 
+\multicolumn{1}{|c|}{0.3517} & \multicolumn{1}{|c|}{0.0022} & 
+\multicolumn{1}{|c|}{0.0083} & \multicolumn{1}{|c|}{0.0200} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.0852} & 
+\multicolumn{1}{|c|}{0.0321} & \multicolumn{1}{|c|}{0.0298} & 
+\multicolumn{1}{|c|}{0.2241} & \multicolumn{1}{|c|}{-0.0059} & 
+\multicolumn{1}{|c|}{0.0009} & \multicolumn{1}{|c|}{0.0105} \\ \cline{2-9}
+32 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.0830} & 
+\multicolumn{1}{|c|}{0.0273} & \multicolumn{1}{|c|}{0.0264} & 
+\multicolumn{1}{|c|}{0.2376} & \multicolumn{1}{|c|}{-0.0131} & 
+\multicolumn{1}{|c|}{-0.0010} & \multicolumn{1}{|c|}{0.0082} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.0842} & 
+\multicolumn{1}{|c|}{0.0295} & \multicolumn{1}{|c|}{0.0285} & 
+\multicolumn{1}{|c|}{0.2453} & \multicolumn{1}{|c|}{-0.0094} & 
+\multicolumn{1}{|c|}{0.0026} & \multicolumn{1}{|c|}{0.0118} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.0729} & 
+\multicolumn{1}{|c|}{0.0247} & \multicolumn{1}{|c|}{0.0244} & 
+\multicolumn{1}{|c|}{0.1622} & \multicolumn{1}{|c|}{-0.0062} & 
+\multicolumn{1}{|c|}{-0.0004} & \multicolumn{1}{|c|}{0.0079} \\ \cline{2-9}
+40 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.0714} & 
+\multicolumn{1}{|c|}{0.0245} & \multicolumn{1}{|c|}{0.0240} & 
+\multicolumn{1}{|c|}{0.1783} & \multicolumn{1}{|c|}{-0.0084} & 
+\multicolumn{1}{|c|}{-0.0014} & \multicolumn{1}{|c|}{0.0058} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.0724} & 
+\multicolumn{1}{|c|}{0.0270} & \multicolumn{1}{|c|}{0.0255} & 
+\multicolumn{1}{|c|}{0.1802} & \multicolumn{1}{|c|}{-0.0050} & 
+\multicolumn{1}{|c|}{0.0032} & \multicolumn{1}{|c|}{0.0104} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.0625} & 
+\multicolumn{1}{|c|}{0.0212} & \multicolumn{1}{|c|}{0.0200} & 
+\multicolumn{1}{|c|}{0.1269} & \multicolumn{1}{|c|}{-0.0068} & 
+\multicolumn{1}{|c|}{0.0004} & \multicolumn{1}{|c|}{0.0065} \\ \cline{2-9}
+48 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.0605} & 
+\multicolumn{1}{|c|}{0.0182} & \multicolumn{1}{|c|}{0.0176} & 
+\multicolumn{1}{|c|}{0.1272} & \multicolumn{1}{|c|}{-0.0117} & 
+\multicolumn{1}{|c|}{-0.0020} & \multicolumn{1}{|c|}{0.0042} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.0605} & 
+\multicolumn{1}{|c|}{0.0190} & \multicolumn{1}{|c|}{0.0182} & 
+\multicolumn{1}{|c|}{0.1414} & \multicolumn{1}{|c|}{-0.0082} & 
+\multicolumn{1}{|c|}{0.0009} & \multicolumn{1}{|c|}{0.0073} \\ \hline
+\end{tabular}
+
+{\small Results based on 10,000 simulations}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline\hline
+\multicolumn{9}{|c|}{Table 2: Nine Decile Range 0.05 to 0.95\QQfnmark{%
+By nine decile range we mean the range between the $0.05$ and the $0.95$
+quantiles.}, DGP 1} \\ \hline\hline
+$\mu ^{2}$ & $\mathcal{R}_{\varepsilon ^{2}|z_{1}^{2}}^{2}$ & 2SLS & IJIVE1
+& IJIVE2 & UJIVE & FEJIV & FELIM & FEFUL \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.5986} & 
+\multicolumn{1}{|c|}{0.9415} & \multicolumn{1}{|c|}{0.9447} & 
+\multicolumn{1}{|c|}{6.1610} & \multicolumn{1}{|c|}{1.5655} & 
+\multicolumn{1}{|c|}{1.2073} & \multicolumn{1}{|c|}{1.0575} \\ \cline{2-9}
+24 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.6032} & 
+\multicolumn{1}{|c|}{0.9402} & \multicolumn{1}{|c|}{0.9428} & 
+\multicolumn{1}{|c|}{6.1080} & \multicolumn{1}{|c|}{1.5857} & 
+\multicolumn{1}{|c|}{1.2502} & \multicolumn{1}{|c|}{1.0800} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.5968} & 
+\multicolumn{1}{|c|}{0.9392} & \multicolumn{1}{|c|}{0.9360} & 
+\multicolumn{1}{|c|}{6.2265} & \multicolumn{1}{|c|}{1.5635} & 
+\multicolumn{1}{|c|}{1.1811} & \multicolumn{1}{|c|}{1.0528} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.5386} & 
+\multicolumn{1}{|c|}{0.7618} & \multicolumn{1}{|c|}{0.7639} & 
+\multicolumn{1}{|c|}{5.7060} & \multicolumn{1}{|c|}{1.1133} & 
+\multicolumn{1}{|c|}{0.9156} & \multicolumn{1}{|c|}{0.8485} \\ \cline{2-9}
+32 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.5367} & 
+\multicolumn{1}{|c|}{0.7662} & \multicolumn{1}{|c|}{0.7657} & 
+\multicolumn{1}{|c|}{6.2091} & \multicolumn{1}{|c|}{1.1017} & 
+\multicolumn{1}{|c|}{0.9167} & \multicolumn{1}{|c|}{0.8526} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.5492} & 
+\multicolumn{1}{|c|}{0.7763} & \multicolumn{1}{|c|}{0.7716} & 
+\multicolumn{1}{|c|}{5.8831} & \multicolumn{1}{|c|}{1.1172} & 
+\multicolumn{1}{|c|}{0.9282} & \multicolumn{1}{|c|}{0.8678} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.4994} & 
+\multicolumn{1}{|c|}{0.6591} & \multicolumn{1}{|c|}{0.6570} & 
+\multicolumn{1}{|c|}{5.5880} & \multicolumn{1}{|c|}{0.8722} & 
+\multicolumn{1}{|c|}{0.7608} & \multicolumn{1}{|c|}{0.7229} \\ \cline{2-9}
+40 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.4961} & 
+\multicolumn{1}{|c|}{0.6412} & \multicolumn{1}{|c|}{0.6415} & 
+\multicolumn{1}{|c|}{5.1816} & \multicolumn{1}{|c|}{0.8585} & 
+\multicolumn{1}{|c|}{0.7572} & \multicolumn{1}{|c|}{0.7170} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.4970} & 
+\multicolumn{1}{|c|}{0.6528} & \multicolumn{1}{|c|}{0.6546} & 
+\multicolumn{1}{|c|}{5.5664} & \multicolumn{1}{|c|}{0.8550} & 
+\multicolumn{1}{|c|}{0.7454} & \multicolumn{1}{|c|}{0.7109} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.4608} & 
+\multicolumn{1}{|c|}{0.5790} & \multicolumn{1}{|c|}{0.5764} & 
+\multicolumn{1}{|c|}{4.7318} & \multicolumn{1}{|c|}{0.7231} & 
+\multicolumn{1}{|c|}{0.6490} & \multicolumn{1}{|c|}{0.6237} \\ \cline{2-9}
+48 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.4586} & 
+\multicolumn{1}{|c|}{0.5822} & \multicolumn{1}{|c|}{0.5822} & 
+\multicolumn{1}{|c|}{5.0871} & \multicolumn{1}{|c|}{0.7322} & 
+\multicolumn{1}{|c|}{0.6516} & \multicolumn{1}{|c|}{0.6288} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.4700} & 
+\multicolumn{1}{|c|}{0.5873} & \multicolumn{1}{|c|}{0.5855} & 
+\multicolumn{1}{|c|}{5.0922} & \multicolumn{1}{|c|}{0.7309} & 
+\multicolumn{1}{|c|}{0.6636} & \multicolumn{1}{|c|}{0.6389} \\ \hline
+\end{tabular}%
+\QQfntext{0}{
+By nine decile range we mean the range between the $0.05$ and the $0.95$
+quantiles.}
+
+{\small Results based on 10,000 simulations}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline\hline
+\multicolumn{9}{|c|}{Table 3: 0.05 Rejection Frequencies\QQfnmark{%
+See Ackerberg and Devereux (2009), Koles\'{a}r (2013), and Evdokimov and
+Koles\'{a}r (2018) for formulae for the estimators IJIVE1, IJIVE2, and UJIVE
+as well as for the standard errors used in constructing the t-statistics for
+these estimators.}, DGP 1} \\ \hline\hline
+$\mu ^{2}$ & $\mathcal{R}_{\varepsilon ^{2}|z_{1}^{2}}^{2}$ & 2SLS & IJIVE1
+& IJIVE2 & UJIVE & FEJIV & FELIM & FEFUL \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.1861} & 
+\multicolumn{1}{|c|}{0.1056} & \multicolumn{1}{|c|}{0.0961} & 
+\multicolumn{1}{|c|}{0.5167} & \multicolumn{1}{|c|}{0.0322} & 
+\multicolumn{1}{|c|}{0.0559} & \multicolumn{1}{|c|}{0.0588} \\ \cline{2-9}
+24 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.1809} & 
+\multicolumn{1}{|c|}{0.1013} & \multicolumn{1}{|c|}{0.0920} & 
+\multicolumn{1}{|c|}{0.5333} & \multicolumn{1}{|c|}{0.0307} & 
+\multicolumn{1}{|c|}{0.0583} & \multicolumn{1}{|c|}{0.0602} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.1894} & 
+\multicolumn{1}{|c|}{0.1038} & \multicolumn{1}{|c|}{0.0940} & 
+\multicolumn{1}{|c|}{0.5318} & \multicolumn{1}{|c|}{0.0317} & 
+\multicolumn{1}{|c|}{0.0579} & \multicolumn{1}{|c|}{0.0610} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.1716} & 
+\multicolumn{1}{|c|}{0.1077} & \multicolumn{1}{|c|}{0.0962} & 
+\multicolumn{1}{|c|}{0.5281} & \multicolumn{1}{|c|}{0.0313} & 
+\multicolumn{1}{|c|}{0.0486} & \multicolumn{1}{|c|}{0.0515} \\ \cline{2-9}
+32 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.1678} & 
+\multicolumn{1}{|c|}{0.1061} & \multicolumn{1}{|c|}{0.0974} & 
+\multicolumn{1}{|c|}{0.5307} & \multicolumn{1}{|c|}{0.0367} & 
+\multicolumn{1}{|c|}{0.0556} & \multicolumn{1}{|c|}{0.0587} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.1767} & 
+\multicolumn{1}{|c|}{0.1124} & \multicolumn{1}{|c|}{0.1033} & 
+\multicolumn{1}{|c|}{0.5342} & \multicolumn{1}{|c|}{0.0373} & 
+\multicolumn{1}{|c|}{0.0581} & \multicolumn{1}{|c|}{0.0620} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.1662} & 
+\multicolumn{1}{|c|}{0.1143} & \multicolumn{1}{|c|}{0.1055} & 
+\multicolumn{1}{|c|}{0.5390} & \multicolumn{1}{|c|}{0.0371} & 
+\multicolumn{1}{|c|}{0.0510} & \multicolumn{1}{|c|}{0.0536} \\ \cline{2-9}
+40 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.1600} & 
+\multicolumn{1}{|c|}{0.1084} & \multicolumn{1}{|c|}{0.0987} & 
+\multicolumn{1}{|c|}{0.5573} & \multicolumn{1}{|c|}{0.0371} & 
+\multicolumn{1}{|c|}{0.0519} & \multicolumn{1}{|c|}{0.0553} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.1643} & 
+\multicolumn{1}{|c|}{0.1129} & \multicolumn{1}{|c|}{0.1033} & 
+\multicolumn{1}{|c|}{0.5469} & \multicolumn{1}{|c|}{0.0387} & 
+\multicolumn{1}{|c|}{0.0521} & \multicolumn{1}{|c|}{0.0555} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.1551} & 
+\multicolumn{1}{|c|}{0.1166} & \multicolumn{1}{|c|}{0.1039} & 
+\multicolumn{1}{|c|}{0.5749} & \multicolumn{1}{|c|}{0.0348} & 
+\multicolumn{1}{|c|}{0.0479} & \multicolumn{1}{|c|}{0.0508} \\ \cline{2-9}
+48 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.1542} & 
+\multicolumn{1}{|c|}{0.1126} & \multicolumn{1}{|c|}{0.1033} & 
+\multicolumn{1}{|c|}{0.5695} & \multicolumn{1}{|c|}{0.0399} & 
+\multicolumn{1}{|c|}{0.0531} & \multicolumn{1}{|c|}{0.0555} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.1643} & 
+\multicolumn{1}{|c|}{0.1200} & \multicolumn{1}{|c|}{0.1102} & 
+\multicolumn{1}{|c|}{0.5733} & \multicolumn{1}{|c|}{0.0409} & 
+\multicolumn{1}{|c|}{0.0567} & \multicolumn{1}{|c|}{0.0603} \\ \hline
+\end{tabular}%
+\QQfntext{0}{
+See Ackerberg and Devereux (2009), Koles\'{a}r (2013), and Evdokimov and
+Koles\'{a}r (2018) for formulae for the estimators IJIVE1, IJIVE2, and UJIVE
+as well as for the standard errors used in constructing the t-statistics for
+these estimators.}
+
+{\small Results based on 10,000 simulations}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline\hline
+\multicolumn{9}{|c|}{Table 4: Median Bias, DGP 2} \\ \hline\hline
+$\mu ^{2}$ & $\mathcal{R}_{\varepsilon ^{2}|z_{1}^{2}}^{2}$ & 2SLS & IJIVE1
+& IJIVE2 & UJIVE & FEJIV & FELIM & FEFUL \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.1056} & 
+\multicolumn{1}{|c|}{0.0429} & \multicolumn{1}{|c|}{0.0417} & 
+\multicolumn{1}{|c|}{-0.0095} & \multicolumn{1}{|c|}{0.0012} & 
+\multicolumn{1}{|c|}{0.0029} & \multicolumn{1}{|c|}{0.0157} \\ \cline{2-9}
+24 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.1030} & 
+\multicolumn{1}{|c|}{0.0403} & \multicolumn{1}{|c|}{0.0397} & 
+\multicolumn{1}{|c|}{-0.0110} & \multicolumn{1}{|c|}{-0.0037} & 
+\multicolumn{1}{|c|}{0.0034} & \multicolumn{1}{|c|}{0.0155} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.1076} & 
+\multicolumn{1}{|c|}{0.0457} & \multicolumn{1}{|c|}{0.0445} & 
+\multicolumn{1}{|c|}{-0.0047} & \multicolumn{1}{|c|}{0.0051} & 
+\multicolumn{1}{|c|}{0.0135} & \multicolumn{1}{|c|}{0.0258} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.0852} & 
+\multicolumn{1}{|c|}{0.0321} & \multicolumn{1}{|c|}{0.0298} & 
+\multicolumn{1}{|c|}{-0.0120} & \multicolumn{1}{|c|}{-0.0059} & 
+\multicolumn{1}{|c|}{0.0009} & \multicolumn{1}{|c|}{0.0105} \\ \cline{2-9}
+32 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.0837} & 
+\multicolumn{1}{|c|}{0.0285} & \multicolumn{1}{|c|}{0.0281} & 
+\multicolumn{1}{|c|}{-0.0137} & \multicolumn{1}{|c|}{-0.0102} & 
+\multicolumn{1}{|c|}{-0.0007} & \multicolumn{1}{|c|}{0.0087} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.0869} & 
+\multicolumn{1}{|c|}{0.0315} & \multicolumn{1}{|c|}{0.0305} & 
+\multicolumn{1}{|c|}{-0.0138} & \multicolumn{1}{|c|}{-0.0079} & 
+\multicolumn{1}{|c|}{0.0058} & \multicolumn{1}{|c|}{0.0156} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.0729} & 
+\multicolumn{1}{|c|}{0.0247} & \multicolumn{1}{|c|}{0.0244} & 
+\multicolumn{1}{|c|}{-0.0135} & \multicolumn{1}{|c|}{-0.0062} & 
+\multicolumn{1}{|c|}{-0.0004} & \multicolumn{1}{|c|}{0.0079} \\ \cline{2-9}
+40 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.0715} & 
+\multicolumn{1}{|c|}{0.0255} & \multicolumn{1}{|c|}{0.0246} & 
+\multicolumn{1}{|c|}{-0.0137} & \multicolumn{1}{|c|}{-0.0069} & 
+\multicolumn{1}{|c|}{-0.0002} & \multicolumn{1}{|c|}{0.0073} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.0752} & 
+\multicolumn{1}{|c|}{0.0277} & \multicolumn{1}{|c|}{0.0271} & 
+\multicolumn{1}{|c|}{-0.0077} & \multicolumn{1}{|c|}{-0.0030} & 
+\multicolumn{1}{|c|}{0.0082} & \multicolumn{1}{|c|}{0.0148} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.0625} & 
+\multicolumn{1}{|c|}{0.0212} & \multicolumn{1}{|c|}{0.0200} & 
+\multicolumn{1}{|c|}{-0.0096} & \multicolumn{1}{|c|}{-0.0068} & 
+\multicolumn{1}{|c|}{0.0004} & \multicolumn{1}{|c|}{0.0065} \\ \cline{2-9}
+48 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.0603} & 
+\multicolumn{1}{|c|}{0.0196} & \multicolumn{1}{|c|}{0.0185} & 
+\multicolumn{1}{|c|}{-0.0108} & \multicolumn{1}{|c|}{-0.0098} & 
+\multicolumn{1}{|c|}{-0.0013} & \multicolumn{1}{|c|}{0.0048} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.0635} & 
+\multicolumn{1}{|c|}{0.0208} & \multicolumn{1}{|c|}{0.0198} & 
+\multicolumn{1}{|c|}{-0.0111} & \multicolumn{1}{|c|}{-0.0089} & 
+\multicolumn{1}{|c|}{0.0026} & \multicolumn{1}{|c|}{0.0085} \\ \hline
+\end{tabular}
+
+{\small Results based on 10,000 simulations}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline\hline
+\multicolumn{9}{|c|}{Table 5: Nine Decile Range 0.05 to 0.95, DGP 2} \\ 
+\hline\hline
+$\mu ^{2}$ & $\mathcal{R}_{\varepsilon ^{2}|z_{1}^{2}}^{2}$ & 2SLS & IJIVE1
+& IJIVE2 & UJIVE & FEJIV & FELIM & FEFUL \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.5986} & 
+\multicolumn{1}{|c|}{0.9415} & \multicolumn{1}{|c|}{0.9447} & 
+\multicolumn{1}{|c|}{1.5682} & \multicolumn{1}{|c|}{1.5655} & 
+\multicolumn{1}{|c|}{1.2073} & \multicolumn{1}{|c|}{1.0575} \\ \cline{2-9}
+24 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.6153} & 
+\multicolumn{1}{|c|}{0.9693} & \multicolumn{1}{|c|}{0.9704} & 
+\multicolumn{1}{|c|}{1.6082} & \multicolumn{1}{|c|}{1.6216} & 
+\multicolumn{1}{|c|}{1.3049} & \multicolumn{1}{|c|}{1.1267} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.6399} & 
+\multicolumn{1}{|c|}{1.0004} & \multicolumn{1}{|c|}{0.9935} & 
+\multicolumn{1}{|c|}{1.6862} & \multicolumn{1}{|c|}{1.6536} & 
+\multicolumn{1}{|c|}{1.3127} & \multicolumn{1}{|c|}{1.1508} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.5386} & 
+\multicolumn{1}{|c|}{0.7618} & \multicolumn{1}{|c|}{0.7639} & 
+\multicolumn{1}{|c|}{1.0812} & \multicolumn{1}{|c|}{1.1133} & 
+\multicolumn{1}{|c|}{0.9156} & \multicolumn{1}{|c|}{0.8485} \\ \cline{2-9}
+32 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.5574} & 
+\multicolumn{1}{|c|}{0.7975} & \multicolumn{1}{|c|}{0.7949} & 
+\multicolumn{1}{|c|}{1.1461} & \multicolumn{1}{|c|}{1.1600} & 
+\multicolumn{1}{|c|}{0.9613} & \multicolumn{1}{|c|}{0.8939} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.5821} & 
+\multicolumn{1}{|c|}{0.8192} & \multicolumn{1}{|c|}{0.8103} & 
+\multicolumn{1}{|c|}{1.1639} & \multicolumn{1}{|c|}{1.1644} & 
+\multicolumn{1}{|c|}{1.0028} & \multicolumn{1}{|c|}{0.9361} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.4994} & 
+\multicolumn{1}{|c|}{0.6591} & \multicolumn{1}{|c|}{0.6570} & 
+\multicolumn{1}{|c|}{0.8578} & \multicolumn{1}{|c|}{0.8722} & 
+\multicolumn{1}{|c|}{0.7608} & \multicolumn{1}{|c|}{0.7229} \\ \cline{2-9}
+40 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.5119} & 
+\multicolumn{1}{|c|}{0.6670} & \multicolumn{1}{|c|}{0.6634} & 
+\multicolumn{1}{|c|}{0.8851} & \multicolumn{1}{|c|}{0.8864} & 
+\multicolumn{1}{|c|}{0.7891} & \multicolumn{1}{|c|}{0.7481} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.5301} & 
+\multicolumn{1}{|c|}{0.6920} & \multicolumn{1}{|c|}{0.6876} & 
+\multicolumn{1}{|c|}{0.9098} & \multicolumn{1}{|c|}{0.9150} & 
+\multicolumn{1}{|c|}{0.8068} & \multicolumn{1}{|c|}{0.7691} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.4608} & 
+\multicolumn{1}{|c|}{0.5790} & \multicolumn{1}{|c|}{0.5764} & 
+\multicolumn{1}{|c|}{0.7159} & \multicolumn{1}{|c|}{0.7231} & 
+\multicolumn{1}{|c|}{0.6490} & \multicolumn{1}{|c|}{0.6237} \\ \cline{2-9}
+48 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.4762} & 
+\multicolumn{1}{|c|}{0.6038} & \multicolumn{1}{|c|}{0.6019} & 
+\multicolumn{1}{|c|}{0.7554} & \multicolumn{1}{|c|}{0.7649} & 
+\multicolumn{1}{|c|}{0.6822} & \multicolumn{1}{|c|}{0.6560} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.4995} & 
+\multicolumn{1}{|c|}{0.6237} & \multicolumn{1}{|c|}{0.6216} & 
+\multicolumn{1}{|c|}{0.7731} & \multicolumn{1}{|c|}{0.7742} & 
+\multicolumn{1}{|c|}{0.7101} & \multicolumn{1}{|c|}{0.6838} \\ \hline
+\end{tabular}
+
+{\small Results based on 10,000 simulations}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline\hline
+\multicolumn{9}{|c|}{Table 6: 0.05 Rejection Frequencies, DGP 2} \\ 
+\hline\hline
+$\mu ^{2}$ & $\mathcal{R}_{\varepsilon ^{2}|z_{1}^{2}}^{2}$ & 2SLS & IJIVE1
+& IJIVE2 & UJIVE & FEJIV & FELIM & FEFUL \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.1861} & 
+\multicolumn{1}{|c|}{0.1056} & \multicolumn{1}{|c|}{0.0961} & 
+\multicolumn{1}{|c|}{0.2236} & \multicolumn{1}{|c|}{0.0322} & 
+\multicolumn{1}{|c|}{0.0559} & \multicolumn{1}{|c|}{0.0588} \\ \cline{2-9}
+24 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.1783} & 
+\multicolumn{1}{|c|}{0.1015} & \multicolumn{1}{|c|}{0.0924} & 
+\multicolumn{1}{|c|}{0.2243} & \multicolumn{1}{|c|}{0.0304} & 
+\multicolumn{1}{|c|}{0.0627} & \multicolumn{1}{|c|}{0.0646} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.1786} & 
+\multicolumn{1}{|c|}{0.1018} & \multicolumn{1}{|c|}{0.0927} & 
+\multicolumn{1}{|c|}{0.2306} & \multicolumn{1}{|c|}{0.0313} & 
+\multicolumn{1}{|c|}{0.0631} & \multicolumn{1}{|c|}{0.0657} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.1716} & 
+\multicolumn{1}{|c|}{0.1077} & \multicolumn{1}{|c|}{0.0962} & 
+\multicolumn{1}{|c|}{0.2563} & \multicolumn{1}{|c|}{0.0313} & 
+\multicolumn{1}{|c|}{0.0486} & \multicolumn{1}{|c|}{0.0515} \\ \cline{2-9}
+32 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.1718} & 
+\multicolumn{1}{|c|}{0.1098} & \multicolumn{1}{|c|}{0.0992} & 
+\multicolumn{1}{|c|}{0.2575} & \multicolumn{1}{|c|}{0.0356} & 
+\multicolumn{1}{|c|}{0.0547} & \multicolumn{1}{|c|}{0.0579} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.1739} & 
+\multicolumn{1}{|c|}{0.1155} & \multicolumn{1}{|c|}{0.1039} & 
+\multicolumn{1}{|c|}{0.2607} & \multicolumn{1}{|c|}{0.0380} & 
+\multicolumn{1}{|c|}{0.0600} & \multicolumn{1}{|c|}{0.0627} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.1662} & 
+\multicolumn{1}{|c|}{0.1143} & \multicolumn{1}{|c|}{0.1055} & 
+\multicolumn{1}{|c|}{0.2770} & \multicolumn{1}{|c|}{0.0371} & 
+\multicolumn{1}{|c|}{0.0510} & \multicolumn{1}{|c|}{0.0536} \\ \cline{2-9}
+40 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.1600} & 
+\multicolumn{1}{|c|}{0.1133} & \multicolumn{1}{|c|}{0.1029} & 
+\multicolumn{1}{|c|}{0.2767} & \multicolumn{1}{|c|}{0.0380} & 
+\multicolumn{1}{|c|}{0.0558} & \multicolumn{1}{|c|}{0.0590} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.1608} & 
+\multicolumn{1}{|c|}{0.1167} & \multicolumn{1}{|c|}{0.1063} & 
+\multicolumn{1}{|c|}{0.2851} & \multicolumn{1}{|c|}{0.0389} & 
+\multicolumn{1}{|c|}{0.0578} & \multicolumn{1}{|c|}{0.0609} \\ \hline
+& \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0.1551} & 
+\multicolumn{1}{|c|}{0.1166} & \multicolumn{1}{|c|}{0.1039} & 
+\multicolumn{1}{|c|}{0.2958} & \multicolumn{1}{|c|}{0.0348} & 
+\multicolumn{1}{|c|}{0.0479} & \multicolumn{1}{|c|}{0.0508} \\ \cline{2-9}
+48 & \multicolumn{1}{|c|}{0.1} & \multicolumn{1}{|c|}{0.1579} & 
+\multicolumn{1}{|c|}{0.1173} & \multicolumn{1}{|c|}{0.1057} & 
+\multicolumn{1}{|c|}{0.2960} & \multicolumn{1}{|c|}{0.0384} & 
+\multicolumn{1}{|c|}{0.0524} & \multicolumn{1}{|c|}{0.0555} \\ \cline{2-9}
+& \multicolumn{1}{|c|}{0.2} & \multicolumn{1}{|c|}{0.1614} & 
+\multicolumn{1}{|c|}{0.1240} & \multicolumn{1}{|c|}{0.1121} & 
+\multicolumn{1}{|c|}{0.2988} & \multicolumn{1}{|c|}{0.0440} & 
+\multicolumn{1}{|c|}{0.0605} & \multicolumn{1}{|c|}{0.0616} \\ \hline
+\end{tabular}
+
+{\small Results based on 10,000 simulations}
+
+Looking over the results reported in Tables 1-6, note first that, in terms
+of median bias, the performance of FEJIV, FELIM, and FEFUL are almost
+uniformly better than 2SLS, IJIVE1, and IJIVE2, although our experiments do
+show the latter three to be less dispersed than the three estimators studied
+in this paper. Comparing FELIM and FEFUL in terms of the nine decile range,
+we see that FEFUL is less dispersed than FELIM, which is in accord with the
+motivation behind the original Fuller (1977) modification. Perhaps the most
+notable difference in performance is that t-statistics based on FELIM\ and
+FEFUL have much less size distortion than t-statistics constructed from any
+of the other five estimators. The t-statistics based on the FEJIV estimator
+tend to be undersized, but the empirical rejection frequencies are still
+closer to the nominal level than t-statistics based on 2SLS, IJIVE1, IJIVE2,
+or UJIVE. Finally, we note that UJIVE did much better under DGP2 than under
+DGP1. This is due to the fact that UJIVE does not properly partial out the
+included exogenous regressors; hence, it performs less well under DGP1,
+where a larger number of included exogenous regressors enter significantly
+into the structural equation of interest.
+
+\section{Conclusion}
+
+This paper considers an IV regression model with many weak instruments,
+cluster specific effects, error heteroskedasticity, and possibly many
+included exogenous regressors. To carry out point estimation in this setup,
+we propose three new jackknife-type IV estimators, which we refer to by the
+acronyms FEJIV, FELIM, and FEFUL. All three of these estimators are shown to
+be robust to the effects of many weak instruments, in the sense that they
+are shown to be consistent in a framework broad enough to include both the
+standard situation with strong instruments and situations with many weak
+instruments. ~To the best of our knowledge, the estimators proposed in this
+paper are the first to be consistent under many weak instrument asymptotics
+when the IV regression under consideration has both cluster specific effects
+and possibly many included exogenous regressors. We establish asymptotic
+normality for FELIM and FEFUL under both strong instrument and many weak
+instrument asymptotics. In addition, we provide consistent standard errors
+for our estimators and show that, when the null hypothesis is true,
+t-statistics based on these standard errors are asymptotically normal under
+both strong instrument and many weak instrument asymptotics. Finally, we
+show that under both strong instrument and many weak instrument asymptotics,
+the t-statistics based on these standard errors are consistent under fixed
+alternatives. Thus, we underscore an interesting aspect of the many weak
+instrument setup. Namely, test consistency is still possible under this
+framework, as has been pointed out in a recent paper by Mikusheva and Sun
+(2020). In a series of Monte Carlo experiments, we find that t-statistics
+based on FELIM and FEFUL control size better in finite samples than
+t-statistics based on alternative jackknife-type IV estimators that have
+previously been proposed in the literature. Hence, based on the findings of
+this paper, we recommend that either FELIM or FEFUL be used in settings
+where there are many weak instruments. cluster specific effects, and
+possibly many included exogenous regressors.
+
+\begin{thebibliography}{99}
+\bibitem{} Ackerberg, D.A. and P.J. Devereux (2009): Improved JIVE
+Estimators for Overidentified Linear Models with and without
+Heteroskedasticity,\ Review of Economics and Statistics, 91, 351-362.
+
+\bibitem{} Angrist, J.D., G.W. Imbens, and A. Krueger (1999): Jackknife
+Instrumental Variables Estimation,\ Journal of Applied Econometrics, 14,
+57-67.
+
+\bibitem{} Bekker, P. A. (1994): Alternative Approximations to the
+Distributions of Instrumental Variables Estimators,\ Econometrica, 62,
+657-681.
+
+\bibitem{} Bekker, P. A. and F. Crudu (2015): Jackknife Instrumental
+Variable Estimation with Heteroskedasticity,\ Journal of Econometrics, 185,
+332-342.
+
+\bibitem{} Blomquist, S. and M. Dahlberg (1999): Small Sample Properties of
+LIML and Jackknife IV Estimators: Experiments with Weak Instruments,\
+Journal of Applied Econometrics, 14, 69-88.
+
+\bibitem{} Cattaneo, M. D., M. Jansson, and W.K. Newey (2018a): Alternative
+Asymptotics and the Partially Linear Model with Many Regressors,\
+Econometric Theory, 34, 277-301.
+
+\bibitem{} Cattaneo, M. D., M. Jansson, and W.K. Newey (2018b): Inference \
+in Linear Regression Models with Many Covariates and Heteroskedasticity,
+Journal of the American Statistical\textit{\ }Association, 113, 1350-1361.
+
+\bibitem{} Chao, J. C. and N. R. Swanson (2004): Estimation and Testing
+Using Jackknife IV in Heteroskedastic Regressions with Many Weak
+Instruments, Unpublished Manuscript, University of Maryland and Rutgers
+University.
+
+\bibitem{} Chao, J. C. and N. R. Swanson (2005): Consistent \ Estimation
+with a Large Number of Weak Instruments,\ Econometrica, 73, 1673-1692.
+
+\bibitem{} Chao, J.C., \ N. R. Swanson, J. A. Hausman, W. K. Newey, and T.
+Woutersen (2012): Asymptotic Distribution of JIVE in a Heteroskedastic IV
+Regression with Many Instruments,\ Econometric Theory, 28, 42-86.
+
+\bibitem{} Crudu, F., G. Mellace. and Z. S\'{a}ndor (2020): Inference in
+Instrumental Variables Models with Heteroskedasticity and Many Instruments,\
+Econometric Theory, forthcoming.
+
+\bibitem{} Davidson, R. and J. G. MacKinnon (2006): The Case Against JIVE,
+Journal of Applied Econometrics, 21, 827--833.
+
+\bibitem{} Evdokimov, K. S. and M. Koles\'{a}r (2018): Inference in
+Instrumental Variables Analysis with Heterogeneous Treatment Effects,
+Unpublished Manuscript,\ Princeton University.
+
+\bibitem{} Fuller, W. A. (1977): Some Properties of a Modification of the
+Limited Information Estimator, Econometrica, 45, 939-954.
+
+\bibitem{} Hansen, C., J. A. Hausman, and W. K. Newey (2008): Estimation
+with Many Instrumental Variables,\ Journal of Business \& Economic
+Statistics, 26, 398-422.
+
+\bibitem{} Hastie, T. and R. Tibshirani (1990): Generalized Additive Models.
+London: Chapman and Hall.
+
+\bibitem{} Hausman, J. A., W. K. Newey, T. Woutersen, J. C. Chao, and N. R.
+Swanson (2012): Instrumental Variable Estimation with Heteroskedasticity and
+Many Instruments, Quantitative\textit{\ }Economics, 3, 211-255.
+
+\bibitem{} Hsiao, C. and Q. Zhou (2018): JIVE for Panel Dynamic Simultaneous
+Equations Models,\ Econometric Theory, 34, 1325-1369.
+
+\bibitem{} Koles\'{a}r, M. (2013): Estimation in Instrumental Variables
+Models with Treatment Effect Heterogeneity, Unpublished Manuscript,\
+Princeton University.
+
+\bibitem{} Mikusheva, A. and L. Sun (2020): Inference with Many Weak
+Instruments, Unpublished Manuscript,\ MIT.
+
+\bibitem{} Morimune, K. (1983): Approximate Distributions of k-Class
+Estimators When the Degree of Overidentifiability Is Large Compared with the
+Sample Size,\ Econometrica, 51, 821-841.
+
+\bibitem{} Newey, W. K. (1997): Convergence Rates and Asymptotic Normality
+for Series Estimators, Journal of Econometrics, 79, 147-168.
+
+\bibitem{} Phillips, G. D. A. and C. Hale (1977): The Bias of Instrumental
+Variable Estimators of Simultaneous Equation Systems, International Economic
+Review, 18, 219-228.
+
+\bibitem{} Phillips, P. C. B. (1983). Exact Small Sample Theory in the
+Simultaneous Equations Model, in Handbook of Econometrics, Vol. I, ed. by Z.
+Griliches and M.D. Intriligator. Amsterdam: North-Holland, 449-516.
+
+\bibitem{} Rothenberg, T. (1984): Approximating the Distributions of
+Econometric Estimators and Test Statistics,\ in Handbook of Econometrics,
+Vol. II, ed. by Z. Griliches and M.D. Intriligator. Amsterdam:
+North-Holland, 881-935.
+
+\bibitem{} Staiger, D. and J. H. Stock (1997): Instrumental Variables
+Regression with Weak Instruments, Econometrica, 65, 557-586.
+
+\bibitem{} Stock, J. \ H. and M. Yogo (2005): Asymptotic Distributions of
+Instrumental Variables Statistics with Many Instruments,\ in Identification
+and Inference for Econometric Models: Essays in\textbf{\ }Honor of Thomas
+Rothenberg, ed. by D.W.K. Andrews and J. H. Stock, Chapter 6. Cambridge:
+Cambridge University Press.
+\end{thebibliography}
+
+\section{Appendix: Proofs of Main Theorems and Other Key Results}
+
+\noindent This appendix provides the proofs for Theorem 1, Corollary 1, and
+Theorems 4-6 of the paper. The proofs of Theorems 2 and 3 are longer and,
+thus, are given in Appendix S1 of a Supplemental Appendix to this paper. In
+addition, the proofs provided below rely on a number of technical results
+that are established in Appendix S2 of the Supplemental Appendix. These
+results are designated in the derivations that follow by the use of the
+prefix S. So, for example, Lemma S2-2 will refer to the second lemma in
+Appendix S2 of the Supplemental Appendix.\vspace{0.08in}
+
+\noindent \textbf{Proof of Theorem 1:}
+
+To proceed, note first that, by parts (a) and (b) of Lemma S2-2 and by the
+assumption on $\overline{\ell }_{n}$, we have $D_{\mu }^{-1}X^{\prime }\left[
+A-\overline{\ell }_{n}M^{\left( Z_{1},Q\right) }\right] XD_{\mu
+}^{-1}=D_{\mu }^{-1}X^{\prime }AXD_{\mu }^{-1}-\overline{\ell }_{n}D_{\mu
+}^{-1}X^{\prime }M^{\left( Z_{1},Q\right) }XD_{\mu }^{-1}=H_{n}+o_{p}\left(
+1\right) $, where $H_{n}=\Gamma ^{\prime }M^{\left( Z_{1},Q\right) }\Gamma
+/n=O_{p}\left( 1\right) $. By Assumption 3(iii), we also have that $H_{n}$
+is positive definite almost surely for $n$ sufficiently large, so that $%
+D_{\mu }^{-1}X^{\prime }\left[ A-\overline{\ell }_{n}M^{\left(
+Z_{1},Q\right) }\right] XD_{\mu }^{-1}$ is invertible w.p.a.1. Hence,
+w.p.a.1., we can write%
+\begin{eqnarray*}
+\frac{1}{\mu _{n}^{\min }}D_{\mu }\left( \overline{\delta }_{n}-\delta
+_{0}\right) &=&\left( D_{\mu }^{-1}X^{\prime }\left[ A-\overline{\ell }%
+_{n}M^{\left( Z_{1},Q\right) }\right] XD_{\mu }^{-1}\right) ^{-1}\frac{1}{%
+\mu _{n}^{\min }}D_{\mu }^{-1}X^{\prime }\left[ A-\overline{\ell }%
+_{n}M^{\left( Z_{1},Q\right) }\right] \varphi _{n} \\
+&&+\left( D_{\mu }^{-1}X^{\prime }\left[ A-\overline{\ell }_{n}M^{\left(
+Z_{1},Q\right) }\right] XD_{\mu }^{-1}\right) ^{-1}\frac{1}{\mu _{n}^{\min }}%
+D_{\mu }^{-1}X^{\prime }\left[ A-\overline{\ell }_{n}M^{\left(
+Z_{1},Q\right) }\right] \varepsilon .
+\end{eqnarray*}%
+Moreover, by applying part (a) of Lemma S2-4 and part (a) of Lemma S2-5, we
+obtain%
+\begin{eqnarray*}
+\frac{1}{\mu _{n}^{\min }}D_{\mu }^{-1}X^{\prime }\left[ A-\overline{\ell }%
+_{n}M^{\left( Z_{1},Q\right) }\right] \varphi _{n} &=&\frac{1}{\mu
+_{n}^{\min }}D_{\mu }^{-1}X^{\prime }A\varphi _{n}-\overline{\ell }_{n}\frac{%
+1}{\mu _{n}^{\min }}D_{\mu }^{-1}X^{\prime }M^{\left( Z_{1},Q\right)
+}\varphi _{n} \\
+&=&O_{p}\left( \frac{\tau _{n}}{\left[ \mu _{n}^{\min }\right]
+K_{1,n}^{\varrho _{g}}}\right) +o_{p}\left( \frac{\left[ \mu _{n}^{\min }%
+\right] \tau _{n}}{nK_{1,n}^{\varrho _{g}}}\right) =o_{p}\left( 1\right) .
+\end{eqnarray*}%
+Applying part (b) of Lemma S2-4 and part (b) of Lemma S2-5, we get%
+\begin{eqnarray*}
+\frac{1}{\mu _{n}^{\min }}D_{\mu }^{-1}X^{\prime }\left[ A-\overline{\ell }%
+_{n}M^{\left( Z_{1},Q\right) }\right] \varepsilon &=&\frac{1}{\mu _{n}^{\min
+}}D_{\mu }^{-1}X^{\prime }A\varepsilon -\overline{\ell }_{n}\frac{1}{\mu
+_{n}^{\min }}D_{\mu }^{-1}X^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon \\
+&=&O_{p}\left( \max \left\{ \frac{1}{\mu _{n}^{\min }},\frac{\sqrt{K_{2,n}}}{%
+\left( \mu _{n}^{\min }\right) ^{2}}\right\} \right) +o_{p}\left( 1\right)
+=o_{p}\left( 1\right) .
+\end{eqnarray*}%
+It follows by the triangle inequality and the Slutsky's Theorem that $%
+\left\Vert D_{\mu }\left( \overline{\delta }_{n}-\delta _{0}\right) /\left(
+\mu _{n}^{\min }\right) \right\Vert _{2}=o_{p}\left( 1\right) $, which gives
+the first result. To show the second result, note that, by straightforward
+calculations, we obtain $\left\Vert D_{\mu }\left( \overline{\delta }%
+_{n}-\delta _{0}\right) /\left( \mu _{n}^{\min }\right) \right\Vert _{2}\geq 
+\sqrt{\left( \mu _{n}^{\min }\right) ^{2}/\left( \mu _{n}^{\min }\right) ^{2}%
+}\sqrt{\left( \overline{\delta }_{n}-\delta _{0}\right) ^{\prime }\left( 
+\overline{\delta }_{n}-\delta _{0}\right) }=\left\Vert \overline{\delta }%
+_{n}-\delta _{0}\right\Vert _{2}$, which implies that $\left\Vert \overline{%
+\delta }_{n}-\delta _{0}\right\Vert _{2}\overset{p}{\rightarrow }0$, as
+required. $\square $
+
+\bigskip
+
+\noindent \textbf{Proof of Corollary 1:}
+
+In light of the results given in Theorem 1, it suffices that we verify the
+condition $\overline{\ell }_{n}=o_{p}\left( \left[ \mu _{n}^{\min }\right]
+^{2}/n\right) =o_{p}\left( 1\right) $ for all three estimators. For the
+FEJIV estimator considered in part (a), $\overline{\ell }_{n}=0$ for all $n$%
+, so this condition is trivially satisfied. Now, part (b) considers the
+FELIM estimator. For this estimator, the result of Lemma S2-11 has shown
+that we can take $\overline{\ell }_{n}=\widehat{\ell }_{L,n}=\min_{\beta \in 
+\overline{B}}\left( \beta ^{\prime }\overline{X}^{\prime }A\overline{X}\beta
+\right) /\left( \beta ^{\prime }\overline{X}^{\prime }M^{\left(
+Z_{1},Q\right) }\overline{X}\beta \right) $
+
+\noindent $=\left( y-X\widehat{\delta }_{L}\right) ^{\prime }A\left( y-X%
+\widehat{\delta }_{L}\right) /\left[ \left( y-X\widehat{\delta }_{L}\right)
+^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\widehat{\delta }_{L}\right) %
+\right] $. By part (a)\ of Lemma S2-7, we then have $\widehat{\ell }%
+_{L,n}=o_{p}\left( \left[ \mu _{n}^{\min }\right] ^{2}/n\right) $, so FELIM
+also satisfies the needed condition. Finally, part (c) considers the FEFUL
+estimator, which takes $\overline{\ell }_{n}=\widehat{\ell }_{F,n}$
+
+\noindent $=\left[ \widehat{\ell }_{L,n}-\left( 1-\widehat{\ell }%
+_{L,n}\right) \left( C/m_{n}\right) \right] /\left[ 1-\left( 1-\widehat{\ell 
+}_{L,n}\right) \left( C/m_{n}\right) \right] $. By part (b) of Lemma S2-7,
+we have that $\widehat{\ell }_{F,n}=o_{p}\left( \left[ \mu _{n}^{\min }%
+\right] ^{2}/n\right) $, so the needed condition is satisfied again. The
+consistency results given in parts (a)-(c) of this corollary then follow as
+a consequence of Theorem 1. $\square $
+
+\medskip
+
+\noindent \textbf{Proof of Theorem 4:}
+
+We shall prove this theorem for the FELIM case since the proof for FEFUL is
+similar. To proceed, first define $S_{L,1}=X^{\prime }AD\left( J\left[ 
+\widehat{\varepsilon }_{L}\circ \widehat{\varepsilon }_{L}\right] \right) AX$%
+, $S_{L,2}=\left( \widehat{\varepsilon }_{L}\circ \widehat{\varepsilon }%
+_{L}\right) ^{\prime }J\left( A\circ A\right) J\left( \widehat{\varepsilon }%
+_{L}\iota _{d}^{\prime }\circ M^{\left( Z,Q\right) }X\right) $, $%
+S_{L,3}=\left( \widehat{\varepsilon }_{L}\circ \widehat{\varepsilon }%
+_{L}\right) ^{\prime }J\left( A\circ A\right) J\left( \widehat{\varepsilon }%
+_{L}\circ \widehat{\varepsilon }_{L}\right) $, $\underline{S}_{L,4}=\left( 
+\widehat{\varepsilon }_{L}\iota _{d}^{\prime }\circ \widehat{\underline{U}}%
+_{L}\right) ^{\prime }J\left( A\circ A\right) J\left( \widehat{\varepsilon }%
+_{L}\iota _{d}^{\prime }\circ \widehat{\underline{U}}_{L}\right) $, $%
+\widehat{H}_{L}=X^{\prime }\left[ A-\widehat{\ell }_{L,n}M^{\left(
+Z_{1},Q\right) }\right] X$, $\Sigma _{1,n}=\Gamma ^{\prime }M^{\left(
+Z_{1},Q\right) }D_{\sigma ^{2}}M^{\left( Z_{1},Q\right) }\Gamma /n$. In
+addition, also define $\sigma _{\left( i,t\right) }^{2}=E\left[ \varepsilon
+_{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{W}\right] $, $\phi _{\left(
+i,t\right) }=E\left[ U_{\left( i,t\right) }\varepsilon _{\left( i,t\right) }|%
+\mathcal{F}_{n}^{W}\right] $, $\Psi _{\left( i,t\right) }=E\left[ U_{\left(
+i,t\right) }U_{\left( i,t\right) }^{\prime }|\mathcal{F}_{n}^{W}\right] $, $%
+\underline{\phi }_{\left( i,t\right) }=E\left[ \underline{U}_{\left(
+i,t\right) }\varepsilon _{\left( i,t\right) }|\mathcal{F}_{n}^{W}\right] $,
+and $\underline{\Psi }_{\left( i,t\right) }=E\left[ \underline{U}_{\left(
+i,t\right) }\underline{U}_{\left( i,t\right) }^{\prime }|\mathcal{F}_{n}^{W}%
+\right] $ where $\underline{U}_{\left( i,t\right) }=U_{\left( i,t\right)
+}-\rho \varepsilon _{\left( i,t\right) }$ and where for notational
+convenience we suppress the dependence of $\sigma _{\left( i,t\right) }^{2}$%
+, $\phi _{\left( i,t\right) }$, $\Psi _{\left( i,t\right) }$, $\underline{%
+\phi }_{\left( i,t\right) }$, and $\underline{\Psi }_{\left( i,t\right) }$
+on $\mathcal{F}_{n}^{W}=\sigma \left( W_{n}\right) $.
+
+Using these notations, to show part (a), we first write $D_{\mu }\widehat{V}%
+_{L}D_{\mu }=\widehat{V}_{L,1}+\widehat{V}_{L,2}+\widehat{V}_{L,3}+\widehat{V%
+}_{L,4}$, where $\widehat{V}_{L,1}=\left( D_{\mu }^{-1}\widehat{H}_{L}D_{\mu
+}^{-1}\right) ^{-1}D_{\mu }^{-1}S_{L,1}D_{\mu }^{-1}\left( D_{\mu }^{-1}%
+\widehat{H}_{L}D_{\mu }^{-1}\right) ^{-1}$,
+
+\noindent $\widehat{V}_{L,2}=-\left( D_{\mu }^{-1}\widehat{H}_{L}D_{\mu
+}^{-1}\right) ^{-1}D_{\mu }^{-1}\left( \widehat{\rho }_{L}S_{L,2}+S_{L,2}^{%
+\prime }\widehat{\rho }_{L}^{\prime }\right) D_{\mu }^{-1}\left( D_{\mu
+}^{-1}\widehat{H}_{L}D_{\mu }^{-1}\right) ^{-1}$,
+
+\noindent $\widehat{V}_{L,3}=\left( D_{\mu }^{-1}\widehat{H}_{L}D_{\mu
+}^{-1}\right) ^{-1}D_{\mu }^{-1}\widehat{\rho }_{L}S_{L,3}\widehat{\rho }%
+_{L}^{\prime }D_{\mu }^{-1}\left( D_{\mu }^{-1}\widehat{H}_{L}D_{\mu
+}^{-1}\right) ^{-1}$, and $\widehat{V}_{L,4}=\left( D_{\mu }^{-1}\widehat{H}%
+_{L}D_{\mu }^{-1}\right) ^{-1}$
+
+\noindent $\times D_{\mu }^{-1}\underline{S}_{L,4}D_{\mu }^{-1}\left( D_{\mu
+}^{-1}\widehat{H}_{L}D_{\mu }^{-1}\right) ^{-1}$. Now, consider $\widehat{V}%
+_{L,1}$ first. Note that, by Lemma S2-17, 
+\begin{equation*}
+D_{\mu }^{-1}X^{\prime }AD\left( \varepsilon \circ \varepsilon \right)
+AXD_{\mu }^{-1}=\Sigma _{1,n}+\dsum\limits_{\substack{ \left( i,t\right)
+,\left( j,s\right) =1  \\ \left( i,t\right) \neq \left( j,s\right) }}%
+^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\sigma _{\left(
+i,t\right) }^{2}D_{\mu }^{-1}\Psi _{\left( j,s\right) }D_{\mu
+}^{-1}+o_{p}\left( 1\right) \text{,}
+\end{equation*}%
+from which we deduce that $D_{\mu }^{-1}X^{\prime }AD\left( \varepsilon
+\circ \varepsilon \right) AXD_{\mu }^{-1}=O_{p}\left( 1\right) $ using
+Assumptions 2(i) and 3(iii), Lemma S2-1 part (a), and the assumption that $%
+K_{2,n}/\left( \mu _{n}^{\min }\right) ^{2}=O\left( 1\right) $ under Case I.
+
+Next, note that by Lemma S2-11,
+
+\noindent $\widehat{\ell }_{L}=\left( y-X\widehat{\delta }_{L}\right)
+^{\prime }A\left( y-X\widehat{\delta }_{L}\right) /\left( y-X\widehat{\delta 
+}_{L}\right) ^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\widehat{\delta }%
+_{L}\right) $. Moreover, by the result given in Lemma S2-10, we have that $%
+D_{\mu }^{-1}\widehat{H}_{L}D_{\mu }^{-1}=H_{n}+o_{p}\left( 1\right) $,
+where, by Assumption 3(iii), $H_{n}=\Gamma ^{\prime }M^{\left(
+Z_{1},Q\right) }\Gamma /n$ is positive definite $a.s.n.$ In addition, we can
+apply part (a) of Lemma S2-18 and Slutsky's theorem to deduce that%
+\begin{eqnarray}
+\widehat{V}_{L,1} &=&\left( D_{\mu }^{-1}\widehat{H}_{L}D_{\mu }^{-1}\right)
+^{-1}D_{\mu }^{-1}S_{L,1}D_{\mu }^{-1}\left( D_{\mu }^{-1}\widehat{H}%
+_{L}D_{\mu }^{-1}\right) ^{-1}  \notag \\
+&=&H_{n}^{-1}\Sigma _{1,n}H_{n}^{-1}+H_{n}^{-1}\left( \dsum\limits 
+_{\substack{ \left( i,t\right) ,\left( j,s\right) =1  \\ \left( i,t\right)
+\neq \left( j,s\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right)
+}^{2}\sigma _{\left( i,t\right) }^{2}D_{\mu }^{-1}\Psi _{\left( j,s\right)
+}D_{\mu }^{-1}\right) H_{n}^{-1}+o_{p}\left( 1\right) \text{.}
+\label{VhatL 1}
+\end{eqnarray}%
+Next, consider $\widehat{V}_{L,2}$. Here, note that we can further decompose 
+$\widehat{V}_{L,2}$ as $\widehat{V}_{L,2}=\widehat{V}_{L,2,1}+\widehat{V}%
+_{L,2,2}$, where $\widehat{V}_{L,2,1}=-\left( D_{\mu }^{-1}\widehat{H}%
+_{L}D_{\mu }^{-1}\right) ^{-1}D_{\mu }^{-1}\widehat{\rho }_{L}S_{L,2}D_{\mu
+}^{-1}\left( D_{\mu }^{-1}\widehat{H}_{L}D_{\mu }^{-1}\right) ^{-1}$ and
+
+\noindent $\widehat{V}_{L,2,2}=-\left( D_{\mu }^{-1}\widehat{H}_{L}D_{\mu
+}^{-1}\right) ^{-1}D_{\mu }^{-1}S_{L,2}^{\prime }\widehat{\rho }_{L}^{\prime
+}D_{\mu }^{-1}\left( D_{\mu }^{-1}\widehat{H}_{L}D_{\mu }^{-1}\right) ^{-1}$%
+. Noting that $K_{2,n}/\left( \mu _{n}^{\min }\right) ^{2}=O\left( 1\right) $
+under Case I and applying the result of Lemma S2-10, as well as parts (d)
+and (e) of Lemma S2-18 and Slutsky's theorem, we get%
+\begin{eqnarray*}
+\widehat{V}_{L,2,1} &=&-H_{n}^{-1}\frac{K_{2,n}}{\left( \mu _{n}^{\min
+}\right) }\left\{ D_{\mu }^{-1}\rho +D_{\mu }^{-1}\left( \widehat{\rho }%
+_{L}-\rho \right) \right\} \frac{\mu _{n}^{\min }}{K_{2,n}}S_{L,2}D_{\mu
+}^{-1}H_{n}^{-1}\left( 1+o_{p}\left( 1\right) \right) \\
+&=&-H_{n}^{-1}D_{\mu }^{-1}\rho \dsum\limits_{\substack{ \left( i,t\right)
+,\left( j,s\right) =1  \\ \left( i,t\right) \neq \left( j,s\right) }}%
+^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\sigma _{\left(
+i,t\right) }^{2}\phi _{\left( j,s\right) }^{\prime }D_{\mu
+}^{-1}H_{n}^{-1}+o_{p}\left( 1\right) .
+\end{eqnarray*}%
+Moreover, since $\widehat{V}_{L,2,2}=\widehat{V}_{L,2,1}^{\prime }$, we also
+have
+
+\noindent $\widehat{V}_{L,2,2}=-H_{n}^{-1}\dsum\nolimits_{\left( i,t\right)
+,\left( j,s\right) =1:m_{n},\left( i,t\right) \neq \left( j,s\right)
+}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\sigma _{\left( i,t\right)
+}^{2}D_{\mu }^{-1}\phi _{\left( j,s\right) }\rho ^{\prime }D_{\mu
+}^{-1}H_{n}^{-1}+o_{p}\left( 1\right) $. Given that $\widehat{V}_{L,2}=%
+\widehat{V}_{L,2,1}+\widehat{V}_{L,2,2}$, it follows from these calculations
+that%
+\begin{equation}
+\widehat{V}_{L,2}=-H_{n}^{-1}\dsum\limits_{\substack{ \left( i,t\right)
+,\left( j,s\right) =1  \\ \left( i,t\right) \neq \left( j,s\right) }}%
+^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}D_{\mu }^{-1}\left(
+\rho \sigma _{\left( i,t\right) }^{2}\phi _{\left( j,s\right) }^{\prime
+}+\sigma _{\left( i,t\right) }^{2}\phi _{\left( j,s\right) }\rho ^{\prime
+}\right) D_{\mu }^{-1}H_{n}^{-1}+o_{p}\left( 1\right)  \label{VhatL 2}
+\end{equation}%
+Turning our attention to $\widehat{V}_{L,3}$, note that, in this case, we
+can apply Lemma S2-10, parts (b) and (e) of Lemma S2-18, and Slutsky's
+theorem to obtain%
+\begin{eqnarray}
+\widehat{V}_{L,3} &=&K_{2,n}H_{n}^{-1}\left[ D_{\mu }^{-1}\rho +D_{\mu
+}^{-1}\left( \widehat{\rho }_{L}-\rho \right) \right] \frac{S_{L,3}}{K_{2,n}}%
+\rho ^{\prime }D_{\mu }^{-1}H_{n}^{-1}\left( 1+o_{p}\left( 1\right) \right) 
+\notag \\
+&&+K_{2,n}H_{n}^{-1}\left[ D_{\mu }^{-1}\rho +D_{\mu }^{-1}\left( \widehat{%
+\rho }_{L}-\rho \right) \right] \frac{S_{L,3}}{K_{2,n}}\left( \widehat{\rho }%
+_{L}-\rho \right) ^{\prime }D_{\mu }^{-1}H_{n}^{-1}\left( 1+o_{p}\left(
+1\right) \right)  \notag \\
+&=&H_{n}^{-1}D_{\mu }^{-1}\rho \dsum\limits_{\substack{ \left( i,t\right)
+,\left( j,s\right) =1  \\ \left( i,t\right) \neq \left( j,s\right) }}%
+^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\sigma _{\left(
+i,t\right) }^{2}\sigma _{\left( j,s\right) }^{2}\rho ^{\prime }D_{\mu
+}^{-1}H_{n}^{-1}+o_{p}\left( 1\right) \text{.}  \label{Vhatl 3}
+\end{eqnarray}%
+Lastly, we consider $\widehat{V}_{L,4}$. Here, we can apply Lemma S2-10,
+part (f) of Lemma S2-18, the fact that $K_{2,n}/\left( \mu _{n}^{\min
+}\right) ^{2}=O\left( 1\right) $ under Case I, as well as Slutsky's theorem
+to obtain 
+\begin{eqnarray}
+\widehat{V}_{L,4} &=&H_{n}^{-1}D_{\mu }^{-1}\underline{S}_{L,4}D_{\mu
+}^{-1}H_{n}^{-1}\left( 1+o_{p}\left( 1\right) \right)  \notag \\
+&=&H_{n}^{-1}\dsum\limits_{\substack{ \left( i,t\right) ,\left( j,s\right)
+=1  \\ \left( i,t\right) \neq \left( j,s\right) }}^{m_{n}}A_{\left(
+i,t\right) ,\left( j,s\right) }^{2}D_{\mu }^{-1}\underline{\phi }_{\left(
+i,t\right) }\underline{\phi }_{\left( j,s\right) }^{\prime }D_{\mu
+}^{-1}H_{n}^{-1}+o_{p}\left( 1\right) .  \label{Vhatl 4}
+\end{eqnarray}%
+It follows from equations (\ref{VhatL 1}), (\ref{VhatL 2}), (\ref{Vhatl 3}),
+and (\ref{Vhatl 4}) that%
+\begin{eqnarray*}
+D_{\mu }\widehat{V}_{L}D_{\mu } &=&H_{n}^{-1}\Sigma
+_{1,n}H_{n}^{-1}+H_{n}^{-1}\dsum\limits_{\substack{ \left( i,t\right)
+,\left( j,s\right) =1  \\ \left( i,t\right) \neq \left( j,s\right) }}%
+^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\sigma _{\left(
+i,t\right) }^{2}D_{\mu }^{-1}\underline{\Psi }_{\left( j,s\right) }D_{\mu
+}^{-1}H_{n}^{-1} \\
+&&+H_{n}^{-1}\dsum\limits_{\substack{ \left( i,t\right) ,\left( j,s\right)
+=1  \\ \left( i,t\right) \neq \left( j,s\right) }}^{m_{n}}A_{\left(
+i,t\right) ,\left( j,s\right) }^{2}D_{\mu }^{-1}E\underline{\phi }_{\left(
+i,t\right) }\underline{\phi }_{\left( j,s\right) }^{\prime }D_{\mu
+}^{-1}H_{n}^{-1}+o_{p}\left( 1\right) \\
+&=&H_{n}^{-1}\left( \Sigma _{1,n}+\Sigma _{2,n}\right)
+H_{n}^{-1}+o_{p}\left( 1\right) =\Lambda _{I,n}+o_{p}\left( 1\right) \text{.}
+\end{eqnarray*}
+
+To show the same result for FEFUL, note that $\widehat{\delta }_{F}$
+satisfies the conditions of both Lemma S2-12 and Lemma S2-18. Hence, we can
+make the same argument as given above for FELIM, except that we use the
+result of Lemma S2-12 in lieu of Lemma S2-10 to obtain $D_{\mu }\widehat{V}%
+_{F}D_{\mu }=H_{n}^{-1}\left( \Sigma _{1,n}+\Sigma _{2,n}\right)
+H_{n}^{-1}+o_{p}\left( 1\right) =\Lambda _{I,n}+o_{p}\left( 1\right) $.
+
+To show part (b), we again only provide an explicit argument for $\widehat{V}%
+_{L}$ since the proof of $\widehat{V}_{F}$ follows in a similar way. To
+proceed, write $\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}\right]
+D_{\mu }\widehat{V}_{L}D_{\mu }=\left[ \left( \mu _{n}^{\min }\right)
+^{2}/K_{2,n}\right] \dsum\nolimits_{\ell =1}^{4}\widehat{V}_{L,\ell }$,
+where $\widehat{V}_{L,1}$, $\widehat{V}_{L,2}$, $\widehat{V}_{L,3}$, and $%
+\widehat{V}_{L,4}$ are as defined in the proof of part (a).
+
+Considering $\widehat{V}_{L,1}$ first, note that, since $K_{2,n}/\left( \mu
+_{n}^{\min }\right) ^{2}\rightarrow \infty $ but $\sqrt{K_{2,n}}/\left( \mu
+_{n}^{\min }\right) ^{2}\rightarrow 0$ under Case II, we have, upon applying
+the result of Lemma S2-10, part (a) of Lemma S2-18, and Slutsky's theorem,%
+\begin{eqnarray}
+\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\widehat{V}_{L,1}
+&=&H_{n}^{-1}\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\left[
+\Sigma _{1,n}+\dsum\limits_{\substack{ \left( i,t\right) ,\left( j,s\right)
+=1  \\ \left( i,t\right) \neq \left( j,s\right) }}^{m_{n}}A_{\left(
+i,t\right) ,\left( j,s\right) }^{2}\sigma _{\left( i,t\right) }^{2}D_{\mu
+}^{-1}\Psi _{\left( j,s\right) }D_{\mu }^{-1}\right] H_{n}^{-1}\left(
+1+o_{p}\left( 1\right) \right)  \notag \\
+&=&H_{n}^{-1}\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits 
+_{\substack{ \left( i,t\right) ,\left( j,s\right) =1  \\ \left( i,t\right)
+\neq \left( j,s\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right)
+}^{2}\sigma _{\left( i,t\right) }^{2}D_{\mu }^{-1}\Psi _{\left( j,s\right)
+}D_{\mu }^{-1}H_{n}^{-1}+o_{p}\left( 1\right) .  \label{VLhat 1}
+\end{eqnarray}%
+Now, consider $\widehat{V}_{L,2}$. Here, we write $\left[ \left( \mu
+_{n}^{\min }\right) ^{2}/K_{2,n}\right] \widehat{V}_{L,2}=\left[ \left( \mu
+_{n}^{\min }\right) ^{2}/K_{2,n}\right] \widehat{V}_{L,2,1}$
+
+\noindent $+\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}\right] 
+\widehat{V}_{L,2,2}$, where $\widehat{V}_{L,2,1}$ and $\widehat{V}_{L,2,2}$
+are again as defined in the proof of part (a). Making use of the results of
+Lemma S2-10, parts (d) and (e) of Lemma S2-18, and Slutsky's theorem while
+noting that $K_{2,n}/\left( \mu _{n}^{\min }\right) ^{2}\rightarrow \infty $
+under Case II, we get%
+\begin{eqnarray*}
+\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\widehat{V}_{L,2,1}
+&=&-H_{n}^{-1}\left( \mu _{n}^{\min }\right) \left\{ D_{\mu }^{-1}\rho
++D_{\mu }^{-1}\left( \widehat{\rho }_{L}-\rho \right) \right\} \frac{\mu
+_{n}^{\min }}{K_{2,n}}S_{L,2}D_{\mu }^{-1}H_{n}^{-1}\left( 1+o_{p}\left(
+1\right) \right) \\
+&=&-H_{n}^{-1}\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}%
+\dsum\limits _{\substack{ \left( i,t\right) ,\left( j,s\right) =1  \\ \left(
+i,t\right) \neq \left( j,s\right) }}^{m_{n}}A_{\left( i,t\right) ,\left(
+j,s\right) }^{2}D_{\mu }^{-1}\rho \sigma _{\left( i,t\right) }^{2}\phi
+_{\left( j,s\right) }^{\prime }D_{\mu }^{-1}H_{n}^{-1}+o_{p}\left( 1\right)
+\end{eqnarray*}%
+Moreover, since $\widehat{V}_{L,2,2}=\widehat{V}_{L,2,1}^{\prime }$, we also
+have
+
+\noindent $\left[ \left( \mu _{n}^{\min }\right) ^{2}K_{2,n}^{-1}\right] 
+\widehat{V}_{L,2,2}=-H_{n}^{-1}\left[ \left( \mu _{n}^{\min }\right)
+^{2}K_{2,n}^{-1}\right] \dsum\nolimits_{\substack{ \left( i,t\right) ,\left(
+j,s\right) =1  \\ \left( i,t\right) \neq \left( j,s\right) }}%
+^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}D_{\mu }^{-1}\phi
+_{\left( j,s\right) }\sigma _{\left( i,t\right) }^{2}\rho ^{\prime }D_{\mu
+}^{-1}H_{n}^{-1}+o_{p}\left( 1\right) $. It follows from these calculations
+that%
+\begin{equation}
+\frac{\left( \mu _{n}^{\min }\right) ^{2}\widehat{V}_{L,2}}{K_{2,n}}%
+=-H_{n}^{-1}\dsum\limits_{\substack{ \left( i,t\right) ,\left( j,s\right) =1 
+\\ \left( i,t\right) \neq \left( j,s\right) }}^{m_{n}}\frac{\left( \mu
+_{n}^{\min }\right) ^{2}A_{\left( i,t\right) ,\left( j,s\right) }^{2}}{%
+K_{2,n}}D_{\mu }^{-1}\left( \rho \sigma _{\left( i,t\right) }^{2}\phi
+_{\left( j,s\right) }^{\prime }+\phi _{\left( j,s\right) }\sigma _{\left(
+i,t\right) }^{2}\rho ^{\prime }\right) D_{\mu }^{-1}H_{n}^{-1}+o_{p}\left(
+1\right) .  \label{VLhat 2}
+\end{equation}%
+Next, consider $\widehat{V}_{L,3}$. Given that $K_{2,n}/\left( \mu
+_{n}^{\min }\right) ^{2}\rightarrow \infty $ under Case II, we get, upon
+applying the result given in Lemma S2-10, as well as parts (b) and (e) of
+Lemma S2-18 and Slutsky's theorem,%
+\begin{eqnarray}
+\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\widehat{V}_{L,3}
+&=&\left( \mu _{n}^{\min }\right) ^{2}H_{n}^{-1}\left[ D_{\mu }^{-1}\rho
++D_{\mu }^{-1}\left( \widehat{\rho }_{L}-\rho \right) \right] \frac{S_{L,3}}{%
+K_{2,n}}\rho ^{\prime }D_{\mu }^{-1}H_{n}^{-1}\left( 1+o_{p}\left( 1\right)
+\right)  \notag \\
+&&+\left( \mu _{n}^{\min }\right) ^{2}H_{n}^{-1}\left[ D_{\mu }^{-1}\rho
++D_{\mu }^{-1}\left( \widehat{\rho }_{L}-\rho \right) \right] \frac{S_{L,3}}{%
+K_{2,n}}\left( \widehat{\rho }_{L}-\rho \right) ^{\prime }D_{\mu
+}^{-1}H_{n}^{-1}\left( 1+o_{p}\left( 1\right) \right)  \notag \\
+&=&H_{n}^{-1}\dsum\limits_{\substack{ \left( i,t\right) ,\left( j,s\right)
+=1  \\ \left( i,t\right) \neq \left( j,s\right) }}^{m_{n}}\frac{\left( \mu
+_{n}^{\min }\right) ^{2}A_{\left( i,t\right) ,\left( j,s\right) }^{2}}{%
+K_{2,n}}D_{\mu }^{-1}\rho \sigma _{\left( i,t\right) }^{2}\sigma _{\left(
+j,s\right) }^{2}\rho ^{\prime }D_{\mu }^{-1}H_{n}^{-1}+o_{p}\left( 1\right)
+\label{VLhat 3}
+\end{eqnarray}%
+Finally, we consider $\widehat{V}_{L,4}$. Again, noting that $K_{2,n}/\left(
+\mu _{n}^{\min }\right) ^{2}\rightarrow \infty $ under Case II, we have,
+upon applying the result given in Lemma S2-10, as well as part (f) of Lemma
+S2-18 and Slutsky's theorem,%
+\begin{equation*}
+\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\widehat{V}%
+_{L,4}=H_{n}^{-1}\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}D_{\mu
+}^{-1}\underline{S}_{L,4}D_{\mu }^{-1}H_{n}^{-1}\left( 1+o_{p}\left(
+1\right) \right)
+\end{equation*}%
+\begin{equation}
+=H_{n}^{-1}\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits 
+_{\substack{ \left( i,t\right) ,\left( j,s\right) =1  \\ \left( i,t\right)
+\neq \left( j,s\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right)
+}^{2}D_{\mu }^{-1}\underline{\phi }_{\left( i,t\right) }\underline{\phi }%
+_{\left( j,s\right) }^{\prime }D_{\mu }^{-1}H_{n}^{-1}+o_{p}\left( 1\right) .
+\label{VLhat 4}
+\end{equation}%
+It follows from equations (\ref{VLhat 1}), (\ref{VLhat 2}), (\ref{VLhat 3}),
+and (\ref{VLhat 4}) that%
+\begin{eqnarray*}
+\frac{\left( \mu _{n}^{\min }\right) ^{2}D_{\mu }\widehat{V}_{L}D_{\mu }}{%
+K_{2,n}} &=&H_{n}^{-1}\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}%
+\dsum\limits_{\substack{ \left( i,t\right) ,\left( j,s\right) =1  \\ \left(
+i,t\right) \neq \left( j,s\right) }}^{m_{n}}A_{\left( i,t\right) ,\left(
+j,s\right) }^{2}D_{\mu }^{-1}\left( \sigma _{\left( i,t\right) }^{2}%
+\underline{\Psi }_{\left( j,s\right) }+\underline{\phi }_{\left( i,t\right) }%
+\underline{\phi }_{\left( j,s\right) }^{\prime }\right) D_{\mu
+}^{-1}H_{n}^{-1}+o_{p}\left( 1\right) \\
+&=&\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}H_{n}^{-1}\Sigma
+_{2,n}H_{n}^{-1}+o_{p}\left( 1\right) =\Lambda _{II,n}+o_{p}\left( 1\right) 
+\text{. \ }
+\end{eqnarray*}%
+To show the same result for FEFUL, note again that $\widehat{\delta }_{F}$
+satisfies the conditions of Lemmas S2-12 and S2-18. Hence, we can make the
+same argument as given above for FELIM, except using Lemma S2-12 in lieu of
+Lemma S2-10 to obtain $\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}%
+\right] D_{\mu }\widehat{V}_{F}D_{\mu }=$
+
+\noindent $\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}\right]
+H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}+o_{p}\left( 1\right) =\Lambda
+_{II,n}+o_{p}\left( 1\right) $. $\square $
+
+\medskip
+
+\noindent \textbf{Proof of Theorem 5:}
+
+To show part (a), first note that since $\mu _{1,n}=\cdot \cdot \cdot =\mu
+_{d,n}=\mu _{n}^{\min }$ here, we can take $\mu _{n}^{\min }=\mu _{n}$.
+Moreover, by part (d) of Lemma S2-3 and Assumption 3(iii), $\Lambda _{I,n}$
+is positive definite $a.s.n$. In addition, specializing the result of part
+(a) of Theorem 4 to this case, we have $D_{\mu }\widehat{V}_{L}D_{\mu }=\mu
+_{n}^{2}\widehat{V}_{L}=\Lambda _{I,n}+o_{p}\left( 1\right) $, so that $\mu
+_{n}^{2}\widehat{V}_{L}$ is positive definite w.p.a.1. Hence, under $%
+H_{0}:c^{\prime }\delta _{0}=r$, we can write%
+\begin{equation*}
+\mathbb{T}_{L}=\frac{c^{\prime }\widehat{\delta }_{L,n}-r}{\sqrt{c^{\prime }%
+\widehat{V}_{L}c}}=\frac{c^{\prime }\left( \widehat{\delta }_{L,n}-\delta
+_{0}\right) }{\sqrt{c^{\prime }\widehat{V}_{L}c}}=\frac{c^{\prime }\Lambda
+_{I,n}^{1/2}\left[ \mu _{n}\Lambda _{I,n}^{-1/2}\left( \widehat{\delta }%
+_{L,n}-\delta _{0}\right) \right] }{\sqrt{c^{\prime }\mu _{n}^{2}\widehat{V}%
+_{L}c}}
+\end{equation*}%
+Now, specializing the result of Theorem 2 to this case, we have $\Lambda
+_{I,n}^{-1/2}D_{\mu }\left( \widehat{\delta }_{L,n}-\delta _{0}\right) =\mu
+_{n}\Lambda _{I,n}^{-1/2}\left( \widehat{\delta }_{L,n}-\delta _{0}\right) 
+\overset{d}{\rightarrow }N\left( 0,I_{d}\right) $. It follows by the
+continuous mapping theorem that%
+\begin{equation}
+\mathbb{T}_{L}=\frac{c^{\prime }\Lambda _{I,n}^{1/2}\left[ \mu _{n}\Lambda
+_{I,n}^{-1/2}\left( \widehat{\delta }_{L,n}-\delta _{0}\right) \right] }{%
+\sqrt{c^{\prime }\Lambda _{I,n}c}}\left[ 1+o_{p}\left( 1\right) \right] 
+\overset{d}{\rightarrow }N\left( 0,1\right) \text{.}  \label{asy normality I}
+\end{equation}%
+On the other hand, under $H_{1}$, we have $c^{\prime }\delta _{0}=r+h$ for
+some $h\in \mathbb{R}\backslash \left\{ 0\right\} $, and we can write $%
+\mathbb{T}_{L}=\left( c^{\prime }\widehat{\delta }_{L,n}-r\right) /\sqrt{%
+c^{\prime }\widehat{V}_{L}c}=c^{\prime }\left( \widehat{\delta }%
+_{L,n}-\delta _{0}\right) /\sqrt{c^{\prime }\widehat{V}_{L}c}+h/\sqrt{%
+c^{\prime }\widehat{V}_{L}c}$. The first term above is $O_{p}\left( 1\right)
+,$ as shown in (\ref{asy normality I}) above, whereas application of part
+(a) of Theorem 4 and Slutsky's theorem shows that $\mu _{n}^{2}c^{\prime }%
+\widehat{V}_{L}c=c^{\prime }\Lambda _{I,n}c+o_{p}\left( 1\right) $, where $%
+c^{\prime }\Lambda _{I,n}c>0$ for all $c\neq 0$ $a.s.n.$ in light of part
+(d) of Lemma S2-3 and Assumption 3(iii). In addition, by parts (a) and (c)
+of Lemma S2-3; Assumption 3(iii); and the fact that, under Case I, $%
+K_{2,n}/\left( \mu _{n}^{\min }\right) ^{2}=K_{2,n}/\mu _{n}^{2}=O\left(
+1\right) $; there exists a positive constant $C<\infty $ such that, almost
+surely for all $n$ sufficiently large,%
+\begin{equation}
+\lambda _{\max }\left( \Lambda _{I,n}\right) \leq \frac{\lambda _{\max }%
+\left[ VC\left( \Gamma ^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon /%
+\sqrt{n}\right) |\mathcal{F}_{n}^{W}\right] +\frac{K_{2,n}}{\mu _{n}^{2}}%
+\lambda _{\max }\left[ VC\left( \underline{U}^{\prime }A\varepsilon /\sqrt{%
+K_{2,n}}\right) |\mathcal{F}_{n}^{W}\right] }{\left[ \lambda _{\min }\left(
+H_{n}\right) \right] ^{2}}\leq C\text{.}  \label{maxlam bd case I}
+\end{equation}%
+It follows that, in this case, $h/\sqrt{c^{\prime }\widehat{V}_{L}c}=\mu
+_{n}h/\sqrt{c^{\prime }\mu _{n}^{2}\widehat{V}_{L}c}=\left( \mu _{n}h/\sqrt{%
+c^{\prime }\Lambda _{I,n}c}\right) \left[ 1+o_{p}\left( 1\right) \right] $.
+So, w.p.a.1, $h/\sqrt{c^{\prime }\widehat{V}_{L}c}\rightarrow +\infty $ \ if 
+$h>0,$ whereas $h/\sqrt{c^{\prime }\widehat{V}_{L}c}\rightarrow -\infty $ \
+if $h<0$, from which the stated result follows. Finally, note that the
+results for $\mathbb{T}_{F}$ can be shown in the same way, so to avoid
+redundancy, we omit the proof.
+
+To show part (b), note that, setting $\widetilde{L}_{n}=c^{\prime }$ and $%
+D_{\mu }=\mu _{n}\cdot I_{d}$ in Theorem 3, we have $\left( \mu _{n}/\sqrt{%
+K_{2,n}}\right) \left( c^{\prime }\Lambda _{II,n}c\right) ^{-1/2}c^{\prime }%
+\left[ \mu _{n}\left( \widehat{\delta }_{L,n}-\delta _{0}\right) \right] 
+\overset{d}{\rightarrow }N\left( 0,1\right) $. Moreover, part (b) of Theorem
+4 implies that $\left( \mu _{n}^{2}/K_{2,n}\right) D_{\mu }\widehat{V}%
+_{L}D_{\mu }=\left( \mu _{n}^{4}/K_{2,n}\right) \widehat{V}_{L}=\Lambda
+_{II,n}+o_{p}\left( 1\right) $. It follows that, under $H_{0}:c^{\prime
+}\delta _{0}=r$,%
+\begin{equation}
+\mathbb{T}_{L}=\frac{\left( \mu _{n}/\sqrt{K_{2,n}}\right) c^{\prime }\left[
+\mu _{n}\left( \widehat{\delta }_{L,n}-\delta _{0}\right) \right] }{\sqrt{%
+c^{\prime }\left( \mu _{n}^{4}/K_{2,n}\right) \widehat{V}_{L}c}}=\frac{%
+\left( \mu _{n}/\sqrt{K_{2,n}}\right) c^{\prime }\left[ \mu _{n}\left( 
+\widehat{\delta }_{L,n}-\delta _{0}\right) \right] }{\sqrt{c^{\prime
+}\Lambda _{II,n}c}}\left[ 1+o_{p}\left( 1\right) \right] \overset{d}{%
+\rightarrow }N\left( 0,1\right) \text{.}  \label{asy normality II}
+\end{equation}%
+Under $H_{1}$, we again write $c^{\prime }\delta _{0}=r+h$ for some $h\in 
+\mathbb{R}\backslash \left\{ 0\right\} $, and note that, in this case, by
+part (b) of Theorem 4 and Slutsky's theorem, we have $\left( \mu
+_{n}^{4}/K_{2,n}\right) c^{\prime }\widehat{V}_{L}c=c^{\prime }\Lambda
+_{II,n}c+o_{p}\left( 1\right) $. Moreover, there exists a positive constant $%
+\underline{C}$ such that $c^{\prime }\Lambda _{II,n}c=\mu _{n}^{2}c^{\prime
+}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}c/K_{2,n}=c^{\prime }H_{n}^{-1}VC\left( 
+\underline{U}^{\prime }A\varepsilon /\sqrt{K_{2,n}}|\mathcal{F}%
+_{n}^{W}\right) H_{n}^{-1}c\geq \underline{C}>0$ $a.s.n.$ for all $c\neq 0$,
+by the almost sure positive definiteness of $VC\left( \underline{U}^{\prime
+}A\varepsilon /\sqrt{K_{2,n}}|\mathcal{F}_{n}^{W}\right) $ as shown in part
+(b) of Lemma S2-3. In addition, by part (c) of Lemma S2-3 and Assumption
+3(iii), there exists a positive constant $C$ such that, almost surely for
+all $n$ sufficiently large%
+\begin{equation}
+\lambda _{\max }\left( \Lambda _{II,n}\right) \leq \frac{\mu _{n}^{2}}{%
+K_{2,n}}\frac{1}{\left[ \lambda _{\min }\left( H_{n}\right) \right] ^{2}}%
+\frac{K_{2,n}}{\mu _{n}^{2}}\lambda _{\max }\left[ VC\left( \frac{\underline{%
+U}^{\prime }A\varepsilon }{\sqrt{K_{2,n}}}\right) |\mathcal{F}_{n}^{W}\right]
+\leq C<\infty \text{.}  \label{maxlam bd case II}
+\end{equation}%
+It follows that, for this case,%
+\begin{equation*}
+\frac{h}{\sqrt{c^{\prime }\widehat{V}_{L}c}}=\frac{\left( \mu _{n}^{2}/\sqrt{%
+K_{2,n}}\right) h}{\sqrt{\left( \mu _{n}^{4}/K_{2,n}\right) c^{\prime }%
+\widehat{V}_{L}c}}=\frac{\left( \mu _{n}^{2}/\sqrt{K_{2,n}}\right) h}{\sqrt{%
+c^{\prime }\Lambda _{II,n}c}}\left[ 1+o_{p}\left( 1\right) \right] \text{.}
+\end{equation*}%
+Hence, w.p.a.1, $h/\sqrt{c^{\prime }\widehat{V}_{L}c}\rightarrow +\infty $ \
+if $h>0$ whereas $h/\sqrt{c^{\prime }\widehat{V}_{L}c}\rightarrow -\infty $
+\ if $h<0$, given the condition that $\mu _{n}^{2}/\sqrt{K_{2,n}}\rightarrow
+\infty $. Finally, write 
+\begin{equation*}
+\mathbb{T}_{L}=\frac{c^{\prime }\widehat{\delta }_{L,n}-r}{\sqrt{c^{\prime }%
+\widehat{V}_{L}c}}=\frac{c^{\prime }\left( \widehat{\delta }_{L,n}-\delta
+_{0}\right) }{\sqrt{c^{\prime }\widehat{V}_{L}c}}+\frac{h}{\sqrt{c^{\prime }%
+\widehat{V}_{L}c}}\text{.}
+\end{equation*}%
+Since the first term on the right-hand side above is $O_{p}\left( 1\right) $
+as shown in (\ref{asy normality II}), we deduce that w.p.a.1, $\mathbb{T}%
+_{L}\rightarrow +\infty $ \ if $h>0$ and $\mathbb{T}_{L}\rightarrow -\infty $
+\ if $h<0$. The results for $\mathbb{T}_{F}$ can be shown in the same way,
+so to avoid redundancy, we omit the proof. $\square $
+
+\medskip
+
+\noindent \textbf{Proof of Theorem 6:}
+
+To show part (a), note first that, by part (d) of Lemma S2-3 and Assumption
+3*(iv), $\Lambda _{I,n}$ is positive definite $a.s.n$. Hence, under $%
+H_{0}:e_{g}^{\prime }\delta _{0}=r$, we can write%
+\begin{equation}
+\mathbb{T}_{L}=\frac{e_{g}^{\prime }\widehat{\delta }_{L}-r}{\sqrt{%
+e_{g}^{\prime }\widehat{V}_{L}e_{g}}}=\frac{e_{g}^{\prime }\left( \mu
+_{g,n}\right) D_{\mu }^{-1}\Lambda _{I,n}^{1/2}\left[ \Lambda
+_{I,n}^{-1/2}D_{\mu }\left( \widehat{\delta }_{L}-\delta _{0}\right) \right] 
+}{\sqrt{e_{g}^{\prime }\left( \mu _{g,n}\right) D_{\mu }^{-1}D_{\mu }%
+\widehat{V}_{L}D_{\mu }D_{\mu }^{-1}\left( \mu _{g,n}\right) e_{g}}}=\frac{%
+e_{g}^{\prime }\Lambda _{I,n}^{1/2}\left[ \Lambda _{I,n}^{-1/2}D_{\mu
+}\left( \widehat{\delta }_{L}-\delta _{0}\right) \right] }{\sqrt{%
+e_{g}^{\prime }D_{\mu }\widehat{V}_{L}D_{\mu }e_{g}}}
+\label{Case I T stat repr}
+\end{equation}%
+where the last equality follows from the fact that
+
+\noindent $e_{g}^{\prime }\left( \mu _{g,n}\right) D_{\mu }^{-1}=\left( \mu
+_{g,n}\right) e_{g}^{\prime }\left[ 
+\begin{array}{ccc}
+\left( \mu _{1,n}\right) ^{-1}e_{1} & \cdots  & \left( \mu _{d,n}\right)
+^{-1}e_{d}%
+\end{array}%
+\right] =e_{g}^{\prime }$. Now, applying the result of Theorem 2 to this
+case, we have $\Lambda _{I,n}^{-1/2}D_{\mu }\left( \widehat{\delta }%
+_{L}-\delta _{0}\right) \overset{d}{\rightarrow }N\left( 0,I_{d}\right) $.
+In addition, applying the result of part (a) of Theorem 4 to this case, we
+have $D_{\mu }\widehat{V}_{L}D_{\mu }=\Lambda _{I,n}+o_{p}\left( 1\right) $.
+Let $a_{n}^{\prime }=e_{g}^{\prime }\Lambda _{I,n}^{1/2}/\sqrt{e_{g}^{\prime
+}\Lambda _{I,n}e_{g}}$, and note that $a_{n}^{\prime }a_{n}=1$. It follows
+from these intermediate results and the continuous mapping theorem that $%
+\mathbb{T}_{L}=a_{n}^{\prime }\Lambda _{I,n}^{-1/2}D_{\mu }\left( \widehat{%
+\delta }_{L}-\delta _{0}\right) \left[ 1+o_{p}\left( 1\right) \right] 
+\overset{d}{\rightarrow }N\left( 0,1\right) $. On the other hand, under $%
+H_{1}$, we can take $e_{g}^{\prime }\delta _{0}=r+h$ for some $h\in \mathbb{R%
+}\backslash \left\{ 0\right\} $. Write%
+\begin{equation*}
+\mathbb{T}_{L}=\frac{e_{g}^{\prime }\left( \widehat{\delta }_{L}-\delta
+_{0}\right) }{\sqrt{e_{g}^{\prime }\widehat{V}_{L}e_{g}}}+\frac{\left( \mu
+_{g,n}\right) h}{\sqrt{e_{g}^{\prime }\left( \mu _{g,n}\right) D_{\mu
+}^{-1}D_{\mu }\widehat{V}_{L}D_{\mu }D_{\mu }^{-1}\left( \mu _{g,n}\right)
+e_{g}}}=\frac{e_{g}^{\prime }\left( \widehat{\delta }_{L}-\delta _{0}\right) 
+}{\sqrt{e_{g}^{\prime }\widehat{V}_{L}e_{g}}}+\frac{\left( \mu _{g,n}\right)
+h}{\sqrt{e_{g}^{\prime }D_{\mu }\widehat{V}_{L}D_{\mu }e_{g}}}\text{,}
+\end{equation*}%
+where the last line again follows from the identity $e_{g}^{\prime }\left(
+\mu _{g,n}\right) D_{\mu }^{-1}=e_{g}^{\prime }$, as shown previously. Now,
+the first term on the right-hand side of the last equality above has
+previously been shown to converge to a $N\left( 0,1\right) $ distribution so
+that, in particular, $e_{g}^{\prime }\left( \widehat{\delta }_{L}-\delta
+_{0}\right) /\sqrt{e_{g}^{\prime }\widehat{V}_{L}e_{g}}=O_{p}\left( 1\right) 
+$. Moreover, application of part (a) of Theorem 4 and Slutsky's theorem
+shows that $e_{g}^{\prime }D_{\mu }\widehat{V}_{L}D_{\mu
+}e_{g}=e_{g}^{\prime }\Lambda _{I,n}e_{g}+o_{p}\left( 1\right) $, where $%
+e_{g}^{\prime }\Lambda _{I,n}e_{g}>0$  $a.s.n.$ since $\Lambda _{I,n}$ is
+positive definite $a.s.n.$ by part (d) of Lemma S2-3 and Assumption 3*(iv).
+In addition, by parts (a) and (c) of Lemma S2-3, Assumption 3*(iv), and the
+fact that $K_{2,n}/\left( \mu _{n}^{\min }\right) ^{2}=K_{2,n}/\mu
+_{n}^{2}=O\left( 1\right) $ under Case I, there exists a positive constant $C
+$ such that, almost surely for all $n$ sufficiently large, $\lambda _{\max
+}\left( \Lambda _{I,n}\right) \leq C<\infty $, as can be shown by following
+an argument similar to that given previously in obtaining equation (\ref%
+{maxlam bd case I}) in the proof of Theorem 5. Hence, in this case, $h/\sqrt{%
+e_{g}^{\prime }\widehat{V}_{L}e_{g}}=\left( \mu _{g,n}\right) h/\sqrt{%
+e_{g}^{\prime }D_{\mu }\widehat{V}_{L}D_{\mu }e_{g}}=\left( \left( \mu
+_{g,n}\right) h/\sqrt{e_{g}^{\prime }\Lambda _{I,n}e_{g}}\right) \left[
+1+o_{p}\left( 1\right) \right] $. Given that $\mu _{g,n}\rightarrow \infty $
+as $n\rightarrow \infty $, w.p.a.1, $h/\sqrt{e_{g}^{\prime }\widehat{V}%
+_{L}e_{g}}\rightarrow +\infty $ \ if $h>0,$ whereas $h/\sqrt{e_{g}^{\prime }%
+\widehat{V}_{L}e_{g}}\rightarrow -\infty $ \ if $h<0$, from which the stated
+result follows. The results for $\mathbb{T}_{F}$ can be shown in the same
+way, so to avoid redundancy, we omit the proof.
+
+To show part (b), note first that 
+\begin{equation*}
+\left( \mu _{n}^{\min }\right) D_{\mu }^{-1}=\left( \mu _{n}^{\min }\right)
+\left( 
+\begin{array}{cc}
+D_{1}^{-1} & 0 \\ 
+0 & \left( \mu _{n}^{\min }\right) ^{-1}\cdot I_{d_{2}}%
+\end{array}%
+\right) \rightarrow \left( 
+\begin{array}{cc}
+0 & 0 \\ 
+0 & I_{d_{2}}%
+\end{array}%
+\right) =D_{0}\text{, \ }\left( say\right) \text{.}
+\end{equation*}%
+Moreover, note that there exists a positive constant $C$ such that $%
+e_{g}^{\prime }\Lambda _{II,n}e_{g}\geq $ $C>0$ w.p.a.1 as $n\rightarrow
+\infty $ since%
+\begin{eqnarray*}
+e_{g}^{\prime }\Lambda _{II,n}e_{g} &=&e_{g}^{\prime }H_{n}^{-1}\left( \mu
+_{n}^{\min }\right) D_{\mu }^{-1}VC\left( \frac{\underline{U}^{\prime
+}A\varepsilon }{\sqrt{K_{2,n}}}|\mathcal{F}_{n}^{W}\right) D_{\mu
+}^{-1}\left( \mu _{n}^{\min }\right) H_{n}^{-1}e_{g} \\
+&=&e_{g}^{\prime }H_{n}^{-1}D_{0}VC\left( \frac{\underline{U}^{\prime
+}A\varepsilon }{\sqrt{K_{2,n}}}|\mathcal{F}_{n}^{W}\right)
+D_{0}H_{n}^{-1}e_{g}\left[ 1+o_{p}\left( 1\right) \right] 
+\end{eqnarray*}%
+and since, by applying the result of part (b) of Lemma S2-3 and Assumption
+3*(v), we have $e_{g}^{\prime }H_{n}^{-1}D_{0}V\left( \underline{U}^{\prime
+}A\varepsilon /\sqrt{K_{2,n}}|\mathcal{F}_{n}^{W}\right)
+D_{0}H_{n}^{-1}e_{g}\geq \underline{C}e_{g}^{\prime }\overline{H}_{2\cdot
+}^{\prime }\overline{H}_{2\cdot }e_{g}\geq \underline{C}C_{\ast }=C>0$ $%
+a.s.n.$ for $\overline{H}_{2\cdot }$ as defined in Assumption 3*(v) and for
+positive constants $\underline{C}$ (defined in Lemma S2-3), $C_{\ast }$
+(defined in Assumption 3*(v)), and $C=\underline{C}C_{\ast }$. Now, setting $%
+\widetilde{L}_{n}=e_{g}^{\prime }$ in Theorem 3, we have $\left( \mu
+_{n}^{\min }/\sqrt{K_{2,n}}\right) \left( e_{g}^{\prime }\Lambda
+_{II,n}e_{g}\right) ^{-1/2}e_{g}^{\prime }D_{\mu }\left( \widehat{\delta }%
+_{L}-\delta _{0}\right) \overset{d}{\rightarrow }N\left( 0,1\right) $, and,
+by applying part (b) of Theorem 4 and Slutsky's theorem, we also obtain $%
+\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}\right] e_{g}^{\prime
+}D_{\mu }\widehat{V}_{L}D_{\mu }e_{g}=e_{g}^{\prime }\Lambda
+_{II,n}e_{g}+o_{p}\left( 1\right) $. Hence, under $H_{0}:e_{g}^{\prime
+}\delta _{0}=r$, we can apply the identity $e_{g}^{\prime }\left( \mu
+_{g,n}\right) D_{\mu }^{-1}=e_{g}^{\prime }$ to obtain 
+\begin{eqnarray*}
+\mathbb{T}_{L} &=&\frac{\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right) \left[
+e_{g}^{\prime }\left( \mu _{g,n}\right) D_{\mu }^{-1}D_{\mu }\left( \widehat{%
+\delta }_{L}-\delta _{0}\right) \right] }{\sqrt{\left[ \left( \mu _{n}^{\min
+}\right) ^{2}/K_{2,n}\right] e_{g}^{\prime }\left( \mu _{g,n}\right) D_{\mu
+}^{-1}D_{\mu }\widehat{V}_{L}D_{\mu }D_{\mu }^{-1}\left( \mu _{g,n}\right)
+e_{g}}}=\frac{\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right) \left[
+e_{g}^{\prime }D_{\mu }\left( \widehat{\delta }_{L}-\delta _{0}\right) %
+\right] }{\sqrt{\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}\right]
+e_{g}^{\prime }D_{\mu }\widehat{V}_{L}D_{\mu }e_{g}}}\text{ \ } \\
+&=&\frac{\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right) \left[ e_{g}^{\prime
+}D_{\mu }\left( \widehat{\delta }_{L}-\delta _{0}\right) \right] }{\sqrt{%
+e_{g}^{\prime }\Lambda _{II,n}e_{g}}}\left[ 1+o_{p}\left( 1\right) \right] 
+\overset{d}{\rightarrow }N\left( 0,1\right) \text{.}
+\end{eqnarray*}%
+Under $H_{1}$, write $e_{g}^{\prime }\delta _{0}=r+h$ for some $h\in \mathbb{%
+R}\backslash \left\{ 0\right\} $. As shown above,
+
+\noindent $\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}\right]
+e_{g}^{\prime }D_{\mu }\widehat{V}_{L}D_{\mu }e_{g}=e_{g}^{\prime }\Lambda
+_{II,n}e_{g}+o_{p}\left( 1\right) $, where there exists a positive constant $%
+C$ such that $e_{g}^{\prime }\Lambda _{II,n}e_{g}\geq $ $C>0$ w.p.a.1 as $%
+n\rightarrow \infty $. In addition, by part (c) of Lemma S2-3 and Assumption
+3$^{\text{*}}$(iv), there exists a positive constant $C$ such that, almost
+surely for all $n$ sufficiently large, $\lambda _{\max }\left( \Lambda
+_{II,n}\right) \leq C<\infty $, as can be shown by following an argument
+similar to that given previously in obtaining equation (\ref{maxlam bd case
+II}) in the proof of Theorem 5. It follows from these results and from
+making use of the identity $e_{g}^{\prime }\left( \mu _{g,n}\right) D_{\mu
+}^{-1}=e_{g}^{\prime }$ that%
+\begin{equation*}
+\frac{h}{\sqrt{e_{g}^{\prime }\widehat{V}_{L}e_{g}}}=\frac{\left( \mu
+_{n}^{\min }/\sqrt{K_{2,n}}\right) \left( \mu _{g,n}\right) h}{\sqrt{\frac{%
+\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}e_{g}^{\prime }\left( \mu
+_{g,n}\right) D_{\mu }^{-1}D_{\mu }\widehat{V}_{L}D_{\mu }D_{\mu
+}^{-1}\left( \mu _{g,n}\right) e_{g}}}=\frac{\mu _{n}^{\min }}{\sqrt{K_{2,n}}%
+}\frac{\left( \mu _{g,n}\right) h}{\sqrt{e_{g}^{\prime }\Lambda _{II,n}e_{g}}%
+}\left[ 1+o_{p}\left( 1\right) \right] \text{.}
+\end{equation*}%
+Thus, w.p.a.1, $h/\sqrt{e_{g}^{\prime }\widehat{V}_{L}e_{g}}\rightarrow
++\infty $ \ if $h>0$ whereas $h/\sqrt{e_{g}^{\prime }\widehat{V}_{L}e_{g}}%
+\rightarrow -\infty $ \ if $h<0$, given that $\left( \mu _{n}^{\min }\right)
+^{2}/\sqrt{K_{2,n}}\rightarrow \infty $ and $\mu _{n}^{\min }/\mu
+_{g,n}=O\left( 1\right) $ for any $g\in \left\{ 1,...,d\right\} $. Finally,
+write 
+\begin{equation}
+\mathbb{T}_{L}=\frac{e_{g}^{\prime }\widehat{\delta }_{L}-r}{\sqrt{%
+e_{g}^{\prime }\widehat{V}_{L}e_{g}}}=\frac{e_{g}^{\prime }\left( \widehat{%
+\delta }_{L}-\delta _{0}\right) }{\sqrt{e_{g}^{\prime }\widehat{V}_{L}e_{g}}}%
++\frac{h}{\sqrt{e_{g}^{\prime }\widehat{V}_{L}e_{g}}}\text{.}
+\label{T stat under H1}
+\end{equation}%
+Since the first term on the right-hand side of equation (\ref{T stat under
+H1}) is $O_{p}\left( 1\right) ,$ as shown above, we deduce that w.p.a.1., $%
+\mathbb{T}_{L}\rightarrow +\infty $ \ if $h>0$ and $\mathbb{T}%
+_{L}\rightarrow -\infty $ \ if $h<0$. Finally, the results for $\mathbb{T}%
+_{F}$ can be shown in the same way, so to avoid redundancy, we omit the
+proof. $\square $
+
+\end{document}
