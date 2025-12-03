@@ -1,0 +1,3307 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                     %
+%              Scientific Word   Wrap/Unwrap  Version 2.5             %
+%              Scientific Word   Wrap/Unwrap  Version 3.0             %
+%                                                                     %
+% If you are separating the files in this message by hand, you will   %
+% need to identify the file type and place it in the appropriate      %
+% directory.  The possible types are: Document, DocAssoc, Other,      %
+% Macro, Style, Graphic, PastedPict, and PlotPict. Extract files      %
+% tagged as Document, DocAssoc, or Other into your TeX source file    %
+% directory.  Macro files go into your TeX macros directory. Style    %
+% files are used by Scientific Word and do not need to be extracted.  %
+% Graphic, PastedPict, and PlotPict files should be placed in a       %
+% graphics directory.                                                 %
+%                                                                     %
+% Graphic files need to be converted from the text format (this is    %
+% done for e-mail compatability) to the original 8-bit binary format. %
+%                                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                     %
+% Files included:                                                     %
+%                                                                     %
+% "/document/New-Robust-Nov-12-2022.tex", Document, 132836, 11/14/2022, 18:47:37, ""%
+% "/document/RLCPJC00.wmf", PastePict, 15592, 7/24/2020, 15:41:39, "" %
+% "/document/RLCPJC01.wmf", PastePict, 31374, 7/24/2020, 14:07:34, "" %
+%                                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%% Start /document/New-Robust-Nov-12-2022.tex %%%%%%%%%%%%%
+
+%2multibyte Version: 5.50.0.2960 CodePage: 936
+
+\documentclass[final,notitlepage]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{caption}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{Codepage=936}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Wed May 15 17:28:15 2002}
+%TCIDATA{LastRevised=Monday, November 14, 2022 13:47:36}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+%TCIDATA{PageSetup=65,65,72,72,0}
+%TCIDATA{AllPages=
+%H=36
+%F=29,\PARA{038<p type="texpara" tag="Body Text" > \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  }
+%}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+\textwidth=16.0cm
+\oddsidemargin=0cm \evensidemargin=0cm
+\topmargin=-20pt
+\numberwithin{equation}{section}
+\baselineskip=100pt
+\textheight=21cm
+\def\baselinestretch{1.2}
+\begin{document}
+
+\title{}
+
+\begin{center}
+{\LARGE Robust Forecast Superiority Testing with an Application to Assessing
+Pools of Expert Forecasters*} \bigskip
+
+{\Large Valentina Corradi}$^{1}${\Large , Sainan Jin}$^{2},$ {\Large and
+Norman R. Swanson}$^{3}\medskip $
+
+$^{1}$University of Surrey, $^{2}$Tsinghua University, and $^{3}$Rutgers
+University
+
+\bigskip
+
+November 2022
+
+\bigskip
+
+Abstract
+\end{center}
+
+\noindent {We develop a forecast superiority testing methodology which is
+robust to the choice of loss function. Following Jin, Corradi and Swanson
+(JCS: 2017), we rely on a mapping between generic loss forecast evaluation
+and stochastic dominance principles. However, unlike JCS tests, which are
+not uniformly valid, and have correct asymptotic size only under the least
+favorable case, our tests are uniformly asymptotically valid and
+non-conservative. These properties are derived by first establishing uniform
+convergence (over error support) of HAC variance estimators. Monte Carlo
+experiments indicate good finite sample performance of the new tests, and an
+empirical illustration suggests that prior forecast accuracy matters in the
+Survey of Professional Forecasters. Namely, for our longest forecast
+horizons (4 quarters ahead), selecting pools of expert forecasters based on
+prior accuracy results in ensemble forecasts that are superior to those
+based on forming simple averages and medians from the entire panel of
+experts. }
+
+{\small \bigskip \bigskip \bigskip }
+
+\noindent
+
+\noindent \textit{Keywords}: Robust Forecast Evaluation, Many Moment
+Inequalities, Bootstrap, Estimation Error, Combination Forecasts, Survey of
+Professional Forecasters.
+
+\noindent \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\noindent *{\footnotesize Valentina Corradi, School of Economics, University
+of Surrey, Guildford, Surrey, GU2 7XH, UK, v.corradi@surrey.ac.uk; Sainan
+Jin, School of Social Sciences and School of\ Economics and Management,
+Tsinghua University, Beijing 100084, jinsn@tsinghua.edu.cn; and Norman R.
+Swanson, Department of Economics, Rutgers University, 75 Hamilton Street,
+New Brunswick, NJ 08901, USA, nswanson@econ.rutgers.edu. We are grateful to
+the Editor, Barbara Rossi, and two anonymous referees for their very useful
+and constructive comments. We also thank Kevin Lee, Patrick Marsh, Luis
+Martins, James Mitchell, Alessia Paccagini, Paulo Parente, Ivan Petrella,
+Valerio Poti, Simon Van Norden, Claudio Zoli, and to the participants at the
+2018 NBER-NSF Times Series Conference, the 2016 European Meeting of the
+Econometric Society, Conference for 50 years of Keynes College at Kent
+University, and seminars at Mannheim University, the University of
+Nottingham, University College Dublin, Instituto Universit\'{a}rio de
+Lisboa, Universita' di Verona and the Warwick Business School for useful
+comments and suggestions. Additionally, many thanks are owed to Mingmian
+Cheng for excellent research assistance. Jin gratefully acknowledges the
+NSFC for financial support under the grant number 72133002.}
+
+\setcounter{page}{0} \thispagestyle{empty}
+
+\renewcommand{\baselinestretch}{1.4}%
+%TCIMACRO{\TeXButton{nomalsize}{\normalsize{}}}%
+%BeginExpansion
+\normalsize{}%
+%EndExpansion
+
+\newpage
+
+\section{Introduction}
+
+Forecast accuracy is typically measured in terms of a given loss function,
+with quadratic and absolute loss being the most common choices. In recent
+years, there has been a growing discussion about the choice of the
+\textquotedblleft right\textquotedblright\ loss function. Gneiting (2011)
+stresses the importance of matching the quantity to be forecasted and the
+choice of loss function (or scoring rule). The latter is said to be
+consistent for a given statistical functional (e.g. the mean or the median),
+if expected loss is minimized when such a functional is used. In a recent
+paper, Patton (2020) shows that if forecasts are based on nested information
+sets and on correctly specified models, then in the absence of estimation
+error, forecast ranking is robust to the choice of loss function within the
+class of consistent functions. On the other hand, if any of the above
+conditions fail, then model ranking is dependent on the specific loss
+function used. This is an important finding, given that it is natural for
+researchers to focus on the comparison of multiple misspecified models;
+immediately implying that model rankings are loss function dependent.
+
+In summary, given the importance of loss function dependence when comparing
+forecast accuracy, an issue of key concern to empirical economists is the
+construction of loss function robust forecast accuracy tests. A loss
+function free forecast evaluation criterion should be based on the
+distribution of raw forecast errors. Heuristically, one can define the best
+forecasting model as that producing errors having a step cumulative
+distribution function that is equal to zero on the negative real line and
+equal to one on the positive real line. Diebold and Shin (2015, 2017) build
+on this idea, and suggest choosing the model for which the cumulative
+distribution of the forecast errors is closest to a step function. This idea
+is also discussed in Corradi and Swanson (2013). Jin, Corradi and Swanson
+(JCS: 2017) establish a one to one mapping between generalized loss (GL)
+forecast superiority and first order stochastic dominance, as well as a one
+to one mapping between convex loss function (CL) and second order stochastic
+dominance.\footnote{%
+A loss function\ is a GL function if it\ is monotonically non-decreasing as
+the error\ moves away from zero. Additionally, CL functions are the subset
+of convex GL functions.} In particular, they show that the \textquotedblleft
+best\textquotedblright\ model (regardless of loss function) according to a
+GL (CL) function is the one which is first (second) order stochastically
+dominated on the negative real line and first (second) order stochastically
+dominant on the positive real line, when comparing forecast errors. In this
+sense, JCS (2017) establish that loss function free tests for forecast
+superiority can be framed in terms of tests for stochastic dominance. In
+this paper, we note that tests for stochastic dominance can be seen as tests
+for infinitely many moment inequalities. This allows us to utilize tools
+recently developed by Andrews and Shi (2013, 2017) to derive asymptotically
+uniformly valid and non conservative forecast superiority tests.
+Importantly, these tests improve over those introduced in JCS (2017), as the
+latter were asymptotically non conservative only in the least favorable case
+under the null (i.e., when all moment weak inequalities hold as equality).
+Needless to say, controlling for slack inequalities is crucial when there
+are infinitely many of them.
+
+The implementation of our tests require that sample moments are standardized
+by an estimator of the standard deviation. Now, forecast errors are
+typically non martingale difference sequences, either because they are based
+on dynamically misspecified models or because forecasters do not efficiently
+use all the available information, in the case of subjective predictions.
+Hence, we require heteroskedasticity and autocorrelation (HAC) robust
+variance estimators. In our set-up, each variance estimator depends on a
+specific point in the forecasting error support. Thus, in order to introduce
+our new tests for forecast superiority, we must establish the consistency of
+HAC variance estimators uniformly over the error support. Moreover, in order
+to carry out inference, using our tests, we also establish uniform
+convergence of the HAC variance estimator bootstrap counterparts. Because of
+the presence of the lag truncation parameter, uniform convergence of HAC
+estimators and of their bootstrap analogs does not follow straightforwardly
+from uniform convergence of (kernel) nonparametric estimators. To the best
+of our knowledge this contribution is a novel addition to the vast
+literature on HAC covariance matrix estimation. In the sequel, we focus on
+the case of judgmental \ forecasts, in which there is no parameter
+estimation error. In a supplemental online appendix, we consider the case of
+predictions based on estimated models, and extend all of our results to the
+case of non vanishing estimation error. This is accomplished under a
+recursive estimation scheme, by extending the recursive block bootstrap
+introduced in Corradi and Swanson (2007). For the case of fixed estimation
+scheme, Generalized Moment Selection tests in the presence of non-vanishing
+estimation error have been considered in Coroneo, Corradi and
+Santos-Monteiro (2018).
+
+Linton, Song and Whang (2010) also develop tests for stochastic dominance
+which are correctly asymptotically sized over the boundary of the null, for
+the pairwise comparison case. A key role in their asymptotic analysis is
+played by the contact set (i.e., the set of $x$ over which the two CDFs are
+equal). However, the notion of contact set does not extend straightforwardly
+to the multiple comparison case considered in this paper. It should also be
+noted that other papers have addressed the problem of forecast evaluation in
+the absence of full specification of the loss function. For example, Patton
+and Timmermann (2007) have studied forecast optimality under only generic
+assumptions on the loss function. However, they do not address the issue of
+forecast ranking under (partially) unknown loss. More recently, Barendse and
+Patton (2022) introduce forecast multiple comparison under loss functions
+which are specified only up to a shape parameter. Finally, Arvanitis, Post,
+Poti and Karabati (2021), revisit the set up of JCS and suggest a blockwise
+Empirical Likelihood type test for testing forecast superiority. Their
+inference is conservative, since based on majorizing chi-squared critical
+values.
+
+We assess the forecast superiority testing methodology discussed in this
+paper via a series of Monte Carlo experiments. Simulation results show that
+our new tests are in some key cases much more accurately sized and have much
+higher power than JCS tests. For example, in size experiments where DGPs
+contain some models which are worse than the benchmark model, our new tests
+are substantially better sized than the tests of JCS (2017). Additionally,
+they exhibit notable power gains, relative to JCS tests, in power
+experiments where DGPs contain some alternative models that dominate the
+benchmark, while others are strictly dominated. These findings are as
+expected, given that JCS tests are undersized, while our new tests are
+asymptotically non conservative.
+
+In an empirical illustration, we apply our testing procedure to the Survey
+of Professional Forecasters (SPF) dataset. In the SPF, participants are told
+which variables to forecast and whether they should provide a point forecast
+or instead a probability interval, but they are not given a loss function
+(see Crushore (1993) for a detailed description of the SPF). In the context
+of analyzing the predictive content of the SPF, many papers find evidence of
+the usefulness of forecast combinations constructed using individual SPF
+predictions, under quadratic or absolute loss. For example, Zarnowitz and
+Braun (1993) find that using the mean or median provides a consensus
+forecast with lower average errors than most individual forecasts. Aiolfi,
+Capistr\'{a}n, and Timmermann (2011) and Genre, Kenny, Meyler, and
+Timmermann (2013) find that equal weighted averages of SPF and ECB \textit{%
+(European Central Bank)} SPF forecasts often outperform model based
+forecasts. In our illustration, we depart from these papers by noting that
+the SPF naturally lends itself to loss function free forecast superiority
+testing, since participants are not given loss functions. In light of this,
+we apply our new tests, and show that forecast averages (and medians) from
+small pools of survey participants ranked according to recent forecast
+performance are preferred to forecast averages based on the entire pool of
+experts, for our longest forecast horizon (1-year ahead). We thus conclude
+that simple average and median forecasts can in some cases be
+\textquotedblleft beaten\textquotedblright , regardless of loss function.
+
+The rest of the paper is organized as follows. Section 2 outlines the set-up
+and introduces our new tests. Section 3 establishes the asymptotic
+properties of the tests in the context of generalized moment selection.
+Section 4 contains the results of our Monte Carlo experiments, and Section 5
+contains the results of our analysis of GDP growth forecasts from the SPF.
+Finally, Section 6\textit{\ }provides a number of concluding remarks. Proofs
+for the case of GL forecast superiority are gathered in an appendix. In
+Supplement SA1 of the appendix, we report all results concerning CL forecast
+superiority. In Supplement SA2, we establish the asymptotic properties of
+our new tests in the context of non-vanishing recursive parameter estimation
+error, for the recursive estimation schemes. Supplement SA3 provides details
+of the JCS test used for comparison in the Monte Carlo and empirical
+sections. Finally, Supplement SA4 and S5 provides additional Monte Carlo and
+empirical results, respectively.
+
+\section{Forecast Superiority Tests}
+
+\noindent Assume that we have a time series of forecast errors for each
+model/forecaster. Namely, we observe $e_{j,t},$ for $j=1,...,k$ and $%
+t=1,...n $, where $k$ denotes the number of models/forecasters, and $n$
+denotes the number of observations. As stated earlier, we focus on the case
+in which we can ignore estimation error, such as when forecasts are
+judgmental or subjective.\textit{\ }Surveys including the SPF are leading
+examples of judgmental forecasts.\textit{\ }Hereafter, the sequence $%
+e_{1,t}, $ $t=1,...,n $ is called the \textquotedblleft
+benchmark\textquotedblright . In the context of the SPF, an example of a
+relevant benchmark against which to compare all other sequences is the
+consensus forecast constructed as the simple arithmetic average of
+individual forecasts in the survey. Our goal is to test whether there exists
+some competing forecast that is superior to the benchmark for any loss
+function, $L$, satisfying Assumption A0.
+
+\noindent \textbf{Assumption A0 }(i)\textbf{\ }$L\in \mathcal{L}_{G}$ if $L:%
+\mathbb{R\rightarrow R}^{+}$ is continuously differentiable, except for
+finitely many points, with derivative $L^{\prime },$ such that $L^{\prime
+}(z)\leq 0,$ for all $z\leq 0,$ and $L^{\prime }(z)\geq 0,$ for all $z\geq
+0. $ (ii) $L\in \mathcal{L}_{C}$ is a convex function belonging to $\mathcal{%
+L}_{G}.$
+
+Note that $\mathcal{L}_{G}$ includes most of the loss functions commonly
+used by practitioners, including asymmetric loss, and it basically coincides
+with notion of generalized loss in Granger (1999). The only restriction is
+that the loss depends solely on the forecast errors. This rules out the
+class of loss function considered in e.g. Section 3 of Patton and Timmermann
+(2007).
+
+Hereafter, let $F_{j}(x)$ denote the cumulative distribution function (CDF)
+of forecast error $e_{j}.$ Also, define $sgn(x)=1$ $if$ $x\geq 0$ $and$ $%
+sgn(x)=-1$ $if$ $x<0.$ Given Assumption A0, Propositions 2.2 and 2.3 in JCS
+(2017) establish the following results.\medskip
+
+\noindent \textit{1. For any }$L\in \mathcal{L}_{G},$\textit{\ }$%
+E(L(e_{1}))\leq E(L(e_{2})),$\textit{\ if and only if }$%
+(F_{2}(x)-F_{1}(x))sgn(x)\leq 0,$\textit{\ for all }$x\in \mathcal{X}.$%
+\textit{\ \medskip }
+
+\noindent \textit{2. For any }$L\in \mathcal{L}_{C},$\textit{\ }$%
+E(L(e_{1}))\leq E(L(e_{2})),$\textit{\ if and only if}
+
+\textit{\noindent }$\left( \int_{-\infty
+}^{x}(F_{1}(t)-F_{2}(t))dt1(x<0)+\int_{x}^{\infty
+}(F_{2}(t)-F_{1}(t))dt1(x\geq 0)\right) \leq 0,$\textit{\ for all }$x\in 
+\mathcal{X}.\medskip $
+
+The first statement establishes a mapping between GL forecast superiority
+and first order stochastic dominance (FOSD). In particular, $e_{1}$ is not
+GL\ dominated by $e_{2}$ if $F_{1}(x)$ lies below $F_{2}(x)$ on the negative
+real line, and lies above $F_{2}(x)$ on the positive real line. Indeed, this
+ensures that we choose the forecast whose CDF has larger mass around zero.
+Likewise, the second statement establishes a mapping between CL superiority
+and second order stochastic dominance.
+
+In this framework, it follows that testing for loss function robust forecast
+superiority involves testing: 
+\begin{equation}
+H_{0}^{G}:\max_{j=2,...,k}\left( E(L(e_{1}))-E(L(e_{k}))\right) \leq 0\text{
+for all }L\in \mathcal{L}_{G}  \label{Hnull}
+\end{equation}%
+versus%
+\begin{equation}
+H_{A}^{G}:\max_{j=2,...,k}\left( E(L(e_{1}))-E(L(e_{k}))\right) >0\text{ for
+some }L\in \mathcal{L}_{G},  \label{HA}
+\end{equation}%
+with $H_{0}^{C}$ and $H_{A}^{C},$ defined analogously, replacing $\mathcal{L}%
+_{G}$ with $\mathcal{L}_{C}.$
+
+\noindent Hereafter, let $\mathcal{X}=\mathcal{X}^{-}\cup \mathcal{X}^{+}$
+be the union of the support of $(e_{1},...,e_{k}).$ Given the equivalence
+between $GL$ forecast superiority and first order stochastic dominance, we
+can restate $H_{0}^{G}$ and $H_{A}^{G}$ as%
+\begin{eqnarray*}
+H_{0}^{G} &=&H_{0}^{G-}\cap H_{0}^{G+} \\
+&:&\left( F_{1}(x)-F_{j}(x)\leq 0,\text{ for }j=2,...,k,\text{ and for all }%
+x\in \mathcal{X}^{-}\right) \\
+&&\cap \left( F_{j}(x)-F_{1}(x)\leq 0,\text{ for }j=2,...,k,\text{ and for
+all }x\in \mathcal{X}^{+}\right)
+\end{eqnarray*}%
+versus%
+\begin{eqnarray*}
+H_{A}^{G} &=&H_{A}^{G-}\cup H_{A}^{G+} \\
+&:&\left( F_{1}(x)-F_{j}(x)>0,\text{ for some }j=2,...,k,\text{ and for some 
+}x\in \mathcal{X}^{-}\right) \\
+&&\cup \left( F_{j}(x)-F_{1}(x)>0,\text{ for some }j=2,...,k,\text{ and for
+some }x\in \mathcal{X}^{+}\right) .
+\end{eqnarray*}%
+For brevity, hereafter we state all statistics and results for the GL case
+only, and report the corresponding statistics and results for the CL case in
+Supplement SA1.
+
+It is immediate to see that $H_{0}^{G}$ can be written as the intersection
+of $(k-1)$ moment inequalities, which have to hold uniformly over $\mathcal{X%
+}.$ This gives rise to an infinite number of moment conditions. Andrews and
+Shi (2013) develop tests for conditional moment inequalities, and as is well
+known in the literature on consistent specification testing (e.g., see
+Bierens (1982, 1990)) a finite number of conditional moments can be
+transformed into an infinite number of unconditional moments. The same is
+true in the case of weak inequalities. Andrews and Shi (2017) consider tests
+for conditional stochastic dominance, which are then characterized by an
+infinite number of conditional moment inequalities and so by a
+\textquotedblleft twice\textquotedblright\ infinite number of unconditional
+inequalities. Recalling that our interest is on testing GL or CL forecast
+superiority as in (\ref{Hnull}) and (\ref{HA}), we confine our attention to
+unconditional testing of stochastic dominance.
+
+Because of the discontinuity at zero in the tests, $H_{0}^{G+}$ and $%
+H_{0}^{G-}$ should be tested separately, and then one can use Holm (1979)
+bounds to control the two resulting p-values (see Rules TG in JCS (2017)).
+In the sequel, for the sake of brevity, but without loss of generality, we
+focus our discussion on testing $H_{0}^{G+}$ versus $H_{A}^{G+}.$ However,
+when defining statistics, some discussion of the statistics associated with
+the case where $x\in \mathcal{X}^{-}$ is also given, when needed for clarity
+of exposition.
+
+Let $G^{+}(x)=\left( G_{2}^{+}(x),...,G_{k}^{+}(x)\right) ,$ with $%
+G_{j}^{+}(x)=F_{j}(x)-F_{1}(x)$, for $x\geq 0.$ Define the empirical analog
+of $G^{+}(x)$ as $G_{n}^{+}(x)=\left(
+G_{2,n}^{+}(x),...,G_{k,n}^{+}(x)\right) ,$ and for $x\geq 0,$ let%
+\begin{equation}
+G_{j,n}^{+}(x)=\widehat{F}_{j,n}(x)-\widehat{F}_{1,n}(x),  \label{Gn}
+\end{equation}%
+where 
+\begin{equation*}
+\widehat{F}_{j,n}(x)=\frac{1}{n}\sum_{t=1}^{n}1\left\{ e_{j,t}\leq x\right\}
+\end{equation*}%
+Further, define
+
+\begin{equation}
+\Sigma ^{G+}\left( x,x^{\prime }\right) =\mathrm{acov}\left( \sqrt{n}%
+G^{+}(x),\sqrt{n}G^{+}(x^{\prime })\right) .  \label{SIGMA}
+\end{equation}%
+In order to implement the statistic we need only estimators for $\sigma
+_{j}^{2,G^{+}}(x)=\mathrm{avar}\left( \sqrt{n}G_{j}^{+}(x)\right) $ for $%
+j=2,...k$ and $x\in \mathcal{X}^{+}.$ Letting $\widehat{u}_{j,t}(x)=1\left\{
+e_{j,t}\leq x\right\} -\frac{1}{n}\sum_{t=1}^{n}1\left\{ e_{j,t}\leq
+x\right\} $, the HAC\ estimator for $\sigma _{j}^{2,G^{+}}(x)$ reads as
+
+\begin{eqnarray}
+\widehat{\sigma }_{j,n}^{2,G+}(x) &=&\frac{1}{n}\sum_{t=1}^{n}(\widehat{u}%
+_{j,t}(x)-\widehat{u}_{1,t}(x))^{2}  \notag \\
+&&+2\frac{1}{n}\sum_{\tau =1}^{l_{n}}\sum_{t=\tau +1}^{n}w_{\tau }(\widehat{u%
+}_{j,t}(x)-\widehat{u}_{1,t}(x))(\widehat{u}_{j,t-\tau }(x)-\widehat{u}%
+_{1,t-\tau }(x)),  \label{HAC}
+\end{eqnarray}%
+where $w_{\tau }=1-\frac{\tau }{1+l_{n}},$ with $l_{n}\rightarrow \infty $
+as $n\rightarrow \infty .$\ We can now define the statistics for testing GL
+forecast superiority, namely%
+\begin{equation}
+S_{n}^{G+}=\underset{x\in \mathcal{X}^{+}}{\int }\underset{j=2}{\sum^{k}}%
+\left( \max \left\{ 0,\sqrt{n}\frac{G_{j,n}(x)}{\overline{\sigma }%
+_{j,n}^{G}(x)}\right\} \right) ^{2}dQ(x)  \label{SG+}
+\end{equation}%
+where 
+\begin{equation}
+\overline{\sigma }_{j,n}^{G}(x)=\widehat{\sigma }_{j,n}^{G}(x)+\varepsilon .
+\label{sigma-bar}
+\end{equation}%
+$\varepsilon >0,$ and%
+\begin{equation}
+S_{n}^{G-}=\underset{x\in \mathcal{X}^{-}}{\int }\underset{j=2}{\sum^{k}}%
+\left( \max \left\{ 0,\sqrt{n}\frac{G_{j,n}(x)}{\overline{\sigma }%
+_{j,n}^{G}(x)}\right\} \right) ^{2}dQ(x)  \label{SG-}
+\end{equation}%
+where $Q$ is a weighting function defined below, $G_{j,n}(x)=G_{j,n}^{+}(x)$
+in (\ref{SG-}) is the $j-$th component of $G_{n}^{+}(x)$ as defined in (\ref%
+{Gn}). $G_{j,n}(x)=G_{j,n}^{-}(x)$ is defined similarily. The role of the
+additional $\varepsilon $ term in (\ref{SG+}) and (\ref{SG-}) is to correct
+for the possible singularity of the variance estimator, which occurs when we
+compare forecast errors from nested models.\footnote{%
+Pincheira et al. (2021) suggest a randomized version of tests for equal
+predictive ability in the context of nested models which has an
+asymptotically normal limiting distribution.} By scaling moment conditions
+by $\widehat{\sigma }_{2}(x)+\varepsilon $ rather than by $\widehat{\sigma }%
+_{2}(x),$ we have a slightly smaller term and so we may reduce power.
+However, since we add the same $\varepsilon $ in the construction of the
+bootstrap counterpart of $\widehat{\sigma }_{j,n}^{G}(x)$, there is no
+actual loss in power.
+
+Here, $S_{n}^{G+}$ is a \textquotedblleft sum\textquotedblright\ function,
+as in equation (3.8) in Andrews and Shi (2013), and satisfies their
+Assumptions S1-S4, which are required to guarantee that convergence is
+uniform over the null DGPs.\footnote{%
+Note that we could have constructed a different \textquotedblleft
+sum\textquotedblright\ function, using the statistic in (3.9) of Andrews and
+Shi (2013).},\footnote{%
+Recall that one main drawback of the $\max_{j=2,...,k}\sup_{x\in \mathcal{X}%
+^{+}}\sqrt{n}G_{n}^{+}$ statistic in JCS (2017) is that it diverges to $%
+-\infty $ under some sequence of probability measures under the null, thus
+ruling out uniformity.} If $k=2$ and $\widehat{\sigma }_{j,n}^{G}(x)=1,$ for
+all $j$ and $x$ (i.e. no standardization), and $\varepsilon =0,$ then $%
+S_{n}^{G+}$ is the statistic used in Linton, Song and Whang (2010) for
+testing FOSD.\footnote{%
+Andrews and Soares (2010, p.123) suggest standardizing the moment
+conditions, in order to ensure invariance to rescaling.}
+
+Of note is that in our context, potential slackness causes a discontinuity
+in the pointwise asymptotic distribution of the statistic.\footnote{%
+By pointwise asymptotic distribution we mean the limiting distribution under
+a fixed probability measure.} This is because the pointwise asymptotic
+distribution is discontinuous, unless all moment conditions hold with
+equality. On the other hand, the finite sample distribution is not
+necessarily discontinuous. Thus, in the presence of slackness, the pointwise
+limiting distribution is not a good approximation of the finite sample
+distribution, and critical values based on pointwise asymptotics may be
+invalid. This is why we construct tests that are uniformly asymptotically
+valid (i.e., this is why we study the limiting distribution of our tests
+under drifting sequences of probability measures belonging to the null
+hypothesis). Moreover, in the infinite dimensional case, there is an
+additional source of discontinuity. In particular, the number of moment
+inequalities which contributes to the statistic varies across the different
+values of $x.$ For example, the key difference between the case of $k=2$ and 
+$k>2$ is that in the former case, for each value of $x$ there is only one
+moment inequality which can be binding (or not). On the other hand, if $k=3$%
+, say, then for each value of $x$ there can be either one or two moment
+inequalities which may be binding (or not), and whether or not a particular
+inequality is binding (or not) varies over $x$. Under this setup, we require
+the following assumptions in order to analyze the asymptotic behavior of our
+test statistics.
+
+\noindent \textbf{Assumption A1}: For $j=1,...,k,$ $e_{j,t}$ is strictly
+stationary and $\beta -$mixing, with mixing coefficients, $a_{m}=m^{-\beta
+}, $ where $\beta >\frac{6\delta }{1-2\delta },$ $0<\delta <1/2$ and $\beta
+\delta >1.$
+
+\noindent \textbf{Assumption A2}: The union of the supports of $%
+e_{1},..,e_{k}$ is the compact set, $\mathcal{X}=\mathcal{X}^{-}\cup 
+\mathcal{X}^{+}$.
+
+\noindent \textbf{Assumption A3:} $F_{j}(x)$ has a continuos bounded density.
+
+\noindent \textbf{Assumption A4}: The weighting function $Q$ has full
+support $\mathcal{X}^{+}$ (or $\mathcal{X}^{-}\,).$
+
+Assumption A1 requires strict stationarity. We require strict stationarity
+and beta mixing in the proof of Lemma 1. Furthermore, in the proof of
+Theorem 2 we use the results on bootstrap for empirical processes by
+Peligrad (1998) which also require strict stationarity.\footnote{%
+As with all tests involving out of sample forecast evaluation, our test
+breaks down in the presence of time instability (see e.g. Giacomini and
+Rossi (2009)) for the discussion of a test for the null of (no) forecast
+failure in this context.}
+
+\section{Asymptotic Properties}
+
+\subsection{\noindent Uniform Convergence of the HAC Estimator}
+
+If $e_{1,t},...,e_{k,t}$ were martingale difference sequences, then we can
+still use the sample second moment as a variance estimator, and uniform
+consistency will follow by application of an appropriate uniform law of
+large numbers. In our set-up, we can assume that $e_{1},...,e_{k}$ are
+martingale difference sequences if either: (i) they are judgmental forecasts
+from professional forecasters, say, who efficiently use all available
+information at time $t$ (a strong assumption, which is tested in the
+forecast rationality literature)$;$ or (ii) they are prediction errors from
+one-step ahead forecasts based on dynamically correctly specified models.
+With respect to (i), it is worth noting that professional forecasters may be
+rational, ex-post, according to some loss function (see Elliott, Komunjer
+and Timmermann (2005,2008), although it is not as likely that they are
+rational according to a generalized loss function. With respect to (ii), it
+should be noted that at most one model can be dynamically correctly
+specified for a given information set, and thus $e_{j}$ cannot be a
+martingale difference sequence, for all $j=1,...,k.$ In light of these
+facts, we allow for time dependence in the forecast error sequences used in
+our statistics, and use a HAC variance estimator in (\ref{SG+}) and (\ref%
+{SG-}). In order to ensure that the HAC estimators converge uniformly over $%
+\mathcal{X}^{+},$ it suffices to establish the counterpart of Lemma A1 of
+Supplement A of Andrews and Shi (2013) to the case of mixing sequences. This
+is done below.
+
+\noindent \textbf{Lemma 1}\textit{: Let Assumptions A1-A3 hold. Then, if as }%
+$n\rightarrow \infty ,$ $\frac{l_{n}}{n^{\delta }}\rightarrow c,$\textit{\
+with }$0<c<\infty ,$ and $0<\delta <\frac{1}{2},$\textit{\ with }$\delta $%
+\textit{\ defined as in Assumption A1:}
+
+\begin{equation*}
+\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{\sigma }_{j,n}^{2,G+}(x)-%
+\sigma _{j}^{2,G+}(x)\right\vert =o_{p}\left( 1\right) ,
+\end{equation*}%
+\textit{with }$\sigma _{j}^{2,G+}(x)=\mathrm{avar}\left( \sqrt{n}%
+G_{j,n}^{+}(x)\right) .$
+
+Lemma 1 establishes the uniform convergence over $\mathcal{X}^{+}$ of HAC
+estimators. Of note is that we require $\beta -$mixing. This differs from
+the stationary pointwise HAC variance estimator case studied by Andrews
+(1991), where $\alpha -$mixing suffices, and where the mixing coefficients
+decline to zero slightly slower than in our Assumption A1. This is because
+there is a trade-off between the degree of dependence and the rate of growth
+of the lag truncation parameter in the HAC estimator. Indeed, in the uniform
+case, the covering number (e.g., see Andrews and Pollard (1994)) grows with
+both $l_{n}$ and the degree of dependence, thus leading to a trade-off
+between the two. For example, in the case of exponential mixing series, $%
+\delta $ can be arbitrarily close to $1/2.$
+
+Recently, Li and Liao (2020) have established consistency for HAC estimators
+when the dimension of the long run variance increases with the sample size.
+On the other hand, our estimator for each $x\in \mathcal{X}^{+}$ is a
+scalar, $\widehat{\sigma }_{j,n}^{2,G^{+}}(x),$ and we show that as $%
+n\rightarrow \infty ,$ $\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{%
+\sigma }_{j,n}^{2,G^{+}}(x)-\sigma _{j}^{2,G^{+}}(x)\right\vert =o_{p}(1)$
+for $j=2,...,J$ with $J$ fixed. Hence, it suffices we show uniform
+convergence for each single $j.$ If instead, we would let $J=J_{n}$ with $%
+J_{n}\rightarrow \infty $ as $n\rightarrow \infty $ then we would need to
+combine our approach with Li and Liao (2020).
+
+For carrying out inference on our forecast superiority tests, we require a
+bootstrap analog of the HAC variance estimator, which can be constructed as
+follows. Using the block bootstrap, make $b_{n}$ draws of length $l_{n}$
+from $e_{j,1},...,e_{j,n},$ in order to obtain $\left( e_{j,1}^{\ast
+},...,e_{j,n}^{\ast }\right) =\left(
+e_{j,I_{1+1}},...,e_{j,I_{1+l_{n}}},...,e_{j,I_{b_{n}+l_{n}}}\right) ,$ with 
+$b_{n}l_{n}=n,$ where the block size, $l_{n},$ is equal to the lag
+truncation parameter in the HAC estimator described above.\footnote{%
+We thus use the same notation, $l_{n},$ for both the lag truncation
+parameter and the block length.} Now, let $u_{1,t}^{\ast }(x)=1\left\{
+e_{1,t}^{\ast }\leq x\right\} -\frac{1}{n}\sum_{t=1}^{n}1\left\{ e_{1,t}\leq
+x\right\} ,$ $u_{j,t}^{\ast }(x)=1\left\{ e_{j,t}^{\ast }\leq x\right\} -%
+\frac{1}{n}\sum_{t=1}^{n}1\left\{ e_{j,t}\leq x\right\} ,$ and%
+\begin{equation}
+\widehat{\sigma }_{j,n}^{2\ast G+}(x)=\frac{1}{b_{n}}\sum_{k=1}^{b_{n}}%
+\left( \frac{1}{\sqrt{l_{n}}}\sum_{i=1}^{l_{n}}\left(
+u_{j,(k-1)l_{n}+i}^{\ast }(x)-u_{1,(k-1)l_{n}+i}^{\ast }(x)\right) \right)
+^{2}.  \label{sigmaG*}
+\end{equation}
+
+\noindent \textbf{Lemma 2: }\textit{Let Assumptions A1-A3 hold. Then, if as }%
+$n\rightarrow \infty ,$ $\frac{l_{n}}{n^{\delta }}\rightarrow c,$\textit{\
+with }$0<c<\infty ,$ and $0<\delta <\frac{1}{2},$\textit{\ with }$\delta $%
+\textit{\ defined as in Assumption A1:}
+
+\begin{equation*}
+\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{\sigma }_{j,n}^{\ast G+}(x)-%
+\widehat{\sigma }_{j,n}^{G+}(x)\right\vert =o_{p}^{\ast }\left( 1\right) ,
+\end{equation*}%
+\textit{where }$o_{p}^{\ast }(1)$\textit{\ denotes convergence to zero
+according to the bootstrap law, }$P^{\ast },$\textit{\ conditional on the
+sample.}
+
+Lemma 2 is a key ingredient for establishing the validity of the boostrap
+procedure outlined in the sequence.
+
+\subsection{Inference Using the Bootstrap and Bounding Limiting Distributions%
+}
+
+The statistics $S_{n}^{G+}$ is highly discontinuous over $x.$ Exactly which
+moment conditions, and how many of them are binding varies over $x.$ Hence, $%
+S_{n}^{G+}$ does not necessarily have a well defined limiting distribution;
+and the continuous mapping theorem cannot be applied. However, following the
+generalized moment selection (GMS) test approach of Andrews and Shi (2013)
+we can establish lower and upper bound limiting distributions. Let%
+\begin{equation}
+v^{G+}(.)=(v_{2}^{G+}(.),...,v_{k}^{G+}(.))^{\prime },  \label{vu}
+\end{equation}%
+be a ($k-1)-$dimensional zero mean Gaussian process with covariance kernel
+defined as in (\ref{SIGMA}). Also, let%
+\begin{equation}
+h_{j,A,n}^{G+}(x)=\sigma _{j}^{G+}(x)^{-1}\sqrt{n}G_{j}^{+}(x)  \label{hA}
+\end{equation}%
+\begin{equation}
+h_{j,B}^{G+}(x)=\sigma _{j}^{2,G+}(x)^{-1}\left( \sigma
+_{j}^{G+}(x)+\varepsilon \right) ^{2}  \label{hB}
+\end{equation}%
+where $h_{A,n}^{G+}(x)=\left( h_{2,A,n}^{G+}(x),...,h_{k,A,n}^{G+}(x)\right) 
+$ and $h_{B}^{G+}(x)=\left( h_{2,B}^{G+}(x),...,h_{k,B}^{G+}(x)\right) $%
+\begin{equation}
+S_{n}^{\dag G+}=\int_{\mathcal{X}^{+}}\sum_{j=2}^{k}\left( \max \left\{ 0,%
+\frac{v_{j}^{G+}(x)+h_{j,A,n}^{G+}(x)}{\sqrt{h_{j,B}^{G+}(x)}}\right\}
+\right) ^{2}\mathrm{d}Q(x),  \label{Sn-dag}
+\end{equation}%
+and
+
+\begin{equation}
+S_{\infty }^{\dag G+}=\int_{\mathcal{X}^{+}}\sum_{j=2}^{k}\left( \max
+\left\{ 0,\frac{v_{j}^{G+}(x)+h_{j,A,\infty }^{G+}(x)}{\sqrt{h_{j,B}^{G+}(x)}%
+}\right\} \right) ^{2}\mathrm{d}Q(x),  \label{Sn-inf}
+\end{equation}%
+where $h_{j,A,\infty }^{G+}(x)=0,$ if $G_{j}^{+}(x)=0,$ and $h_{j,A,\infty
+}^{G+}(x)=-\infty $ , if $G_{j}^{+}(x)<0.$ Hereafter let%
+\begin{equation*}
+\mathcal{P}_{0}^{G+}=\left\{ P:\text{ }H_{0}^{G+}\text{ holds}\right\}
+\end{equation*}%
+so that $\mathcal{P}_{0}^{G+}$ is the collection of DGPs under which the
+null hypothesis holds. The following result holds.
+
+\noindent \textbf{Theorem 1: }\textit{Let Assumptions A1-A4 hold. Then,
+under }$H_{0}^{G+},$\textit{\ there exists }$\delta >0$\textit{\ and }$%
+a^{G+}>0,$ such that%
+\begin{equation*}
+\lim \sup_{n\rightarrow \infty }\sup_{P\in \mathcal{P}_{0}^{G+}}\left[
+P\left( S_{n}^{G+}>a^{G+}\right) -P\left( S_{n}^{\dag G+}+\delta
+>a^{G+}\right) \right] \leq 0
+\end{equation*}%
+\textit{and}%
+\begin{equation*}
+\lim \inf_{n\rightarrow \infty }\inf_{P\in \mathcal{P}_{0}^{G+}}\left[
+P\left( S_{n}^{G+}>a^{G+}\right) -P\left( S_{n}^{\dag G+}-\delta
+>a^{G+}\right) \right] \geq 0.
+\end{equation*}%
+Theorem 1 provides upper and lower bounds for $P\left(
+S_{n}^{G+}>a^{G+}\right) ,$ uniformly, over the probabilities under $%
+H_{0}^{G+}$. In particular, Theorem 1 establishes lower and upper bound for $%
+S_{n}^{G+}$ as $n\rightarrow \infty .$
+
+Following Andrews and Shi (2013), we can construct bootstrap critical values
+which properly mimic the critical values of $S_{\infty }^{\dag G+}.$ We rely
+on the block bootstrap to capture the dependence in the data when
+constructing our bootstrap statistics. Let $\left( e_{j,1}^{\ast
+},...,e_{j,n}^{\ast }\right) ,b_{n},$ and $l_{n}$ be defined as in the
+previous subsection, and let:%
+\begin{equation}
+G_{j,n}^{\ast +}(x)=\frac{1}{n}\sum_{i=1}^{n}\left( 1\left\{ e_{j,i}^{\ast
+}\leq x\right\} -1\left\{ e_{1,i}^{\ast }\leq x\right\} \right)  \label{G*}
+\end{equation}%
+and $v_{n}^{\ast G+}(x)=\left( v_{2,n}^{\ast G+}(x),...,v_{k,n}^{\ast
+G+}(x)\right) $ with%
+\begin{equation}
+v_{j,n}^{\ast G+}(x)=\frac{\sqrt{n}\left( G_{j,n}^{\ast
++}(x)-G_{j,n}^{+}(x)\right) }{\widehat{\sigma }_{j,n}^{G+}(x)}.  \label{vu*}
+\end{equation}
+
+\noindent Then, define:%
+\begin{equation}
+\xi _{j,n}^{G+}(x)=\kappa _{n}^{-1}n^{1/2}\frac{G_{j,n}^{+}(x)}{\overline{%
+\sigma }_{j,n}^{G+}(x)},  \label{xi}
+\end{equation}%
+with $\overline{\sigma }_{j,n}^{G+}(x)$ as in (\ref{sigma-bar}), $\kappa
+_{n}\rightarrow \infty ,$ as $n\rightarrow \infty ,$ and%
+\begin{equation}
+\phi _{j,n}^{G+}(x)=c_{n}1\left\{ \xi _{j,n}^{G+}(x)<-1\right\} ,
+\label{phi}
+\end{equation}%
+and $\phi _{n}^{G+}=\left( \phi _{2,n}^{G+},...,\phi _{k,n}^{G+}\right) ,$
+with $c_{n}$ a positive sequence, which is bounded away from zero. Thus, $%
+\phi _{j,n}^{G+}(x)=c_{n},$ when $G_{j,n}^{+}(x)<-\kappa _{n}n^{-1/2}%
+\overline{\sigma }_{j,n}^{G+}(x)$, i.e., when the $j-$th inequality is slack
+at $x,$ and is equal to zero otherwise. We say that a competing model is
+slack at $x>0$ $(x<0),$ if its CDF evaluated at $x$ is strictly below
+(strictly above) the CDF of the benchmark model.
+
+It it clear from the selection rule in (\ref{phi}), that we do need an
+estimator of the variance of the moment conditions, despite the fact we use
+bootstrap critical values. In fact, standardization does not play a crucial
+role in the statistics, as all positive sample moment conditions matter. On
+the other hand, without the scaling factor in (\ref{xi}), the number of
+non-slack moment conditions would depend on the scale, and hence our
+bootstrap critical values would no longer be scale invariant. Let%
+\begin{equation}
+S_{n}^{\ast G+}=\int_{\mathcal{X}^{+}}\sum_{j=2}^{k}\max \left( \left\{ 0,%
+\frac{v_{j,n}^{\ast G+}(x)-\phi _{j,n}^{G+}(x)}{\sqrt{h_{j,B}^{\ast G+}(x)}}%
+\right\} \right) ^{2}\mathrm{d}Q(x),  \label{Sn*}
+\end{equation}%
+where 
+\begin{equation}
+h_{j,B}^{\ast G+}(x)=\overline{\sigma }_{j,n}^{2,\ast G+}(x)/\widehat{\sigma 
+}_{j,n}^{2,G+}(x),  \label{hB*}
+\end{equation}%
+with $\overline{\sigma }_{j,n}^{2,\ast G+}=\left( \widehat{\sigma }%
+_{j,n}^{\ast G+}(x)+\varepsilon \right) ^{2},$ and $\widehat{\sigma }%
+_{j,n}^{2,\ast G+}(x)$ defined as in (\ref{sigmaG*}), and $h_{B}^{\ast
+G+}(x)=\left( h_{2,B}^{\ast G+}(x),...,h_{k,B}^{\ast G+}(x)\right) $. Note
+that if $c_{n}$ grows with $n,$ then all slack inequalities are discarded,
+asymptotically. It is immediate to see that $S_{n}^{\ast G+}$ is the
+bootstrap counterpart of $S_{n}^{\dag G+}$ in (\ref{Sn-dag}), with $\phi
+_{j,n}^{G+}(x)$ mimicking the contribution of the slackness of inequality $%
+j, $ i.e. $h_{j,A,n}^{G+}(x).$ However, $\phi _{j,n}^{G+}(x)$ is not a
+consistent estimator of $h_{j,A,n}^{G+}(x),$ since the latter cannot be
+consistently estimated.
+
+By comparing (\ref{Sn*}) with (\ref{SG+}), it is immediate to see that $%
+G_{j,n}^{+}(x)$ does not contribute to the test statistic when $%
+G_{j,n}^{+}(x)<0,$ while it does not contribute to the bootstrap statistic
+when $G_{j,n}^{+}(x)<-\kappa _{n}n^{-1/2}\overline{\sigma }_{j,n}^{G+}(x),$
+with $\kappa _{n}n^{-1/2}\rightarrow 0.$ Heuristically, by letting $\kappa
+_{n}$ grow with the sample size, we control the rejection rates in a uniform
+manner.
+
+\noindent It remains to define the GMS bootstrap critical values. Let $%
+c_{n,B,1-\alpha }^{\ast G+}\left( \phi _{n}^{G+},h_{B}^{\ast G+}\right) $ be
+the $(1-\alpha )$-th \ critical value of $S_{n}^{\ast G+},$ based on $B$
+bootstrap replications, with $\phi _{n}^{G+}$ defined as in (\ref{phi}). The
+($1-\alpha )$-th GMS bootstrap critical value, $c_{0,n,1-\alpha }^{\ast
+G+}\left( \phi _{n}^{G+},h_{B}^{\ast G+}\right) ,$ is defined as:%
+\begin{equation*}
+c_{0,n,1-\alpha }^{\ast G+}\left( \phi _{n}^{G+},h_{B}^{\ast G+}\right)
+=\lim_{B\rightarrow \infty }c_{n,B,1-\alpha +\eta }^{\ast G+}\left( \phi
+_{n}^{G+},h_{B}^{\ast G+}\right) +\eta ,
+\end{equation*}%
+for $\eta >0,$ arbitrarily small.
+
+Here, the constant $\eta $ is used to guarantee uniformity over the infinite
+dimensional nuisance parameters, $h_{A,n}^{G+}(.)$ uniformly on $x\in 
+\mathcal{X}^{+},$ and is termed the infinitesimal uniformity factor by
+Andrews and Shi (2013).
+
+Finally, let%
+\begin{equation}
+\mathcal{B}^{G+}=\left\{ x\in \mathcal{X}^{+}\text{ s.t. }h_{A,j,\infty
+}^{G+}\left( x\right) =0,\text{ for some }j=2,...,k\right\}  \label{BG+}
+\end{equation}%
+where $\mathcal{B}^{G+}$ defines the set over which at least one moment
+condition holds with strict equality, and this set represents the boundaries
+of $H_{0}^{G+}$.
+
+The following result holds.
+
+\noindent \textbf{Theorem 2: }\textit{Let Assumptions A1-A4 hold, and let }$%
+l_{n}\rightarrow \infty $\textit{\ and }$l_{n}n^{\frac{1}{3}-\varepsilon
+}\rightarrow 0$\textit{\ as }$n\rightarrow \infty .$ \textit{Under }$%
+H_{0}^{G+}:$
+
+\textit{\noindent (i) if as }$n\rightarrow \infty ,$\textit{\ }$\kappa
+_{n}\rightarrow \infty $\textit{\ and }$c_{n}/\kappa _{n}\rightarrow 0,$%
+\textit{\ then}%
+\begin{equation*}
+\lim \sup_{n\rightarrow \infty }\sup_{P\in \mathcal{P}_{0}^{G+}}P\left(
+S_{n}^{G+}\geq c_{0,n,1-\alpha }^{\ast G+}\left( \phi
+_{n}^{G+},h_{B,n}^{\ast G+}\right) \right) \leq \alpha ;
+\end{equation*}%
+\textit{and }
+
+\textit{\noindent (ii) if as }$n\rightarrow \infty ,$\textit{\ }$\kappa
+_{n}\rightarrow \infty ,$\textit{\ }$c_{n}\rightarrow \infty $\textit{, }$%
+c_{n}/\kappa _{n}\rightarrow 0,$\textit{\ }$\sqrt{n}/\kappa _{n}\rightarrow
+\infty ,$\textit{\ and }$Q\left( \mathcal{B}^{G+}\right) >0,$\textit{\ then}%
+\begin{equation*}
+\lim_{\eta \rightarrow 0}\lim \sup_{n\rightarrow \infty }\sup_{P\in \mathcal{%
+P}_{0}^{G+}}P\left( S_{n}^{G+}\geq c_{0,n,1-\alpha }^{\ast G+}\left( \phi
+_{n}^{G+},h_{B,n}^{\ast G+}\right) \right) =\alpha .
+\end{equation*}%
+Note that in Theorem 2 we require $l_{n}$ to grow slower than $n^{1/3},$
+which is a slower rate than that allowed in Lemma 2. This slower rate is
+required for the bootstrap empirical central limit theorem for a mixing
+process to hold (see Peligrad (1998)).
+
+Statement (i) of Theorem 2 establishes that inference based on GMS bootstrap
+critical values is uniformly asymptotically valid. Statement (ii)
+establishes that inference based on GMS bootstrap critical values is
+asymptotically non-conservative, whenever $Q\left( \mathcal{B}^{+}\right) >0$
+(i.e., whenever at least one moment condition holds with equality, over a
+set $x\in \mathcal{X}^{+}$ with non-zero $Q-$measure). Although the GMS
+based tests are not similar on the boundary, the degree of non similarity,
+which is%
+\begin{eqnarray*}
+&&\lim_{\eta \rightarrow 0}\lim \sup_{n\rightarrow \infty }\sup_{P\in 
+\mathcal{P}_{0}^{G+}}P\left( S_{n}^{G+}\geq c_{0,n,1-\alpha }^{\ast
+G+}\left( \phi _{n}^{G+},h_{B,n}^{\ast G+}\right) \right) \\
+&&-\lim_{\eta \rightarrow 0}\lim \inf \inf_{P\in \mathcal{P}%
+_{0}^{G+}}P\left( S_{n}^{G+}\geq c_{0,n,1-\alpha }^{\ast G+}\left( \phi
+_{n}^{G+},h_{B,n}^{\ast G+}\right) \right) ,
+\end{eqnarray*}%
+is much smaller than that associated with using the \textquotedblleft
+usual\textquotedblright\ recentered bootstrap. In the case of pairwise
+comparison (i.e., $k=2),$ Theorem 2(ii) of Linton, Song and Whang (2010)
+establishes similarity of stochastic dominance tests on a subset of the
+boundary.
+
+For implementation of the tests discussed in this paper, it thus follows
+that one can use Holm bounds as is done in JCS (2017), with modifications
+due to the presence of the constant $\eta $. Estimate bootstrap $p-$values $%
+p_{B,n,S_{n}^{G+}}^{G+}=\frac{1}{B}\sum_{s=1}^{B}1\left( (S_{n}^{\ast
+G^{+}}+\eta )\geq S_{n}^{G^{+}}\right) $ and $p_{B,n,S_{n}^{G-}}^{G-}=\frac{1%
+}{B}\sum_{s=1}^{B}1\left( (S_{n}^{\ast G^{-}}+\eta )\geq
+S_{n}^{G^{-}}\right) $. Then, use the following rules (Holm (1979)):
+
+\noindent \textbf{Rule }$S_{n}^{G}$\textbf{: }Reject $H_{0}^{G}$ at level $%
+\alpha ,$ if $\min \left\{
+p_{B,n,S_{n}^{G+}}^{G+},p_{B,n,S_{n}^{G-}}^{G-}\right\} \leq (\alpha -\eta
+)/2$.
+
+\subsection{Power against Fixed and Local Alternatives}
+
+As our statistics are weighted averages over $\mathcal{X}^{+},$ they have
+non-trivial power only if the null is violated over a subset of non zero $Q-$%
+measure. This applies to both power against fixed alternative, as well as to
+power against $\sqrt{n}-$local alternatives. In particular, for power
+against fixed alternatives, we require the following assumption.
+
+\noindent \textbf{Assumption FA:} $Q(B_{FA}^{G+})>0,$ where $%
+B_{FA}^{G+}=\left\{ x\in \mathcal{X}^{+}:G_{j}(x)>0\text{ for some }%
+j=2,...,k\right\} .$
+
+The following result holds.
+
+\noindent \textbf{Theorem 3: }\textit{Let Assumptions A1-A4 hold. If
+Assumption FA holds, then under }$H_{A}^{G+}:$%
+\begin{equation*}
+\lim_{n\rightarrow \infty }P\left( S_{n}^{G+}\geq c_{0,n,1-\alpha }^{\ast
+G+}\left( \phi _{n}^{G+},h_{B,n}^{\ast G+}\right) \right) =1.
+\end{equation*}%
+It is immediate to see that we have unit power against fixed alternatives,
+provided that the null hypothesis is violated, for at least one $j=2,...,k,$
+over a subset of $\mathcal{X}^{+}$ of non-zero $Q-$measure. Now, if we
+instead used a Kolmogorov type statistic (i.e., replace the integral over $%
+\mathcal{X}^{+}$ with the supremum over $\mathcal{X}^{+}),$ then we would
+not need Assumption FA, and it would suffice to have violation for some $x,$
+with possibly zero $Q-$measure, or in general with zero Lebesgue measure.%
+\footnote{%
+The Kolmorogov versions of $S_{n}^{G+}$ and $S_{n}^{C+}$ are:%
+\begin{equation*}
+KS_{n}^{G+}=\max_{x\in \mathcal{X}^{+}}\sum_{j=2}^{k}\left( \max \left\{ 0,%
+\frac{\sqrt{n}G_{j,n}^{+}(x)}{\overline{\sigma }_{j,n}^{G+}(x)}\right\}
+\right) ^{2}
+\end{equation*}%
+\begin{equation*}
+KS_{n}^{C+}=\max_{x\in \mathcal{X}^{+}}\sum_{j=2}^{k}\left( \max \left\{ 0,%
+\frac{\sqrt{n}C_{j,n}^{+}(x)}{\overline{\sigma }_{j,n}^{G+}(x)}\right\}
+\right) ^{2}
+\end{equation*}%
+} However, as pointed out in Supplement B of Andrews and Shi (2013) the
+statement in parts (ii) of Theorem 2 does not apply to Kolmogorov tests, and
+hence asymptotic non-conservativeness would not necessarily hold. This is
+because the proof of those statements use the bounded convergence theorem,
+which applies to integrals but not to suprema.
+
+We now consider the following sequences of local alternatives:%
+\begin{equation*}
+H_{L,n}^{G+}:G_{Lj}^{+}(x)=G_{j}^{+}(x)+\frac{\delta _{j}(x)}{\sqrt{n}}%
++o\left( n^{-1/2}\right) ,\text{ for }j=2,...,k,\text{ }x\in \mathcal{X}^{+},
+\end{equation*}%
+so that $\lim_{n\rightarrow \infty }\sqrt{n}\sigma
+^{2,G+}(x)^{-1/2}G_{Lj}^{+}(x)\rightarrow h_{j,A,\infty }^{G+}(x)+\delta
+_{j}(x).$ Define,%
+\begin{equation*}
+S_{\infty ,\delta ,LG}^{\dag ,G+}=\int_{\mathcal{X}^{+}}\sum_{j=2}^{k}\left(
+\max \left\{ 0,\frac{v_{j}^{G+}(x)+h_{j,A,\infty }^{G+}(x)+\delta _{j}(x)}{%
+\sqrt{h_{j,B}^{G+}(x)}}\right\} \right) ^{2}\mathrm{d}Q(x)
+\end{equation*}
+
+\noindent We require the following assumption.
+
+\noindent \textbf{Assumption LA:} $Q(B_{LA}^{G+})>0,$ where
+
+\noindent $B_{LA}^{G+}=\left\{ x:\sqrt{n}\sigma
+_{j}^{G+}(x)^{-1}G_{Lj}^{+}(x)\rightarrow h_{j,A,\infty }^{G+}(x)+\delta
+_{j}(x),\text{ }0<h_{j,A,\infty }^{G+}(x)+\delta _{j}(x)<\infty ,\text{ for
+some }j=2,...,k\right\} $.
+
+The following result holds.
+
+\noindent \textbf{Theorem 4: }\textit{Let Assumptions A1-A4 hold. If
+Assumption LA holds, then under }$H_{L,n}^{G+}:$%
+\begin{equation*}
+\lim_{n\rightarrow \infty }P\left( S_{n}^{G+}\geq c_{0,n,1-\alpha }^{\ast
+G+}\left( \phi _{n}^{G+},h_{B,n}^{\ast G+}\right) \right) =P\left( S_{\infty
+,\delta ,LG}^{\dag G+}\geq c_{LG,1-\alpha }\left( h_{A,\infty
+}^{G+},h_{B,\infty }^{G+}\right) \right) ,
+\end{equation*}%
+\textit{with }$c_{LG,1-\alpha }\left( h_{A,\infty }^{G+},h_{B,\infty
+}^{G+}\right) $\textit{\ denoting the (}$1-\alpha )$\textit{-th critical
+value of }$S_{\infty ,\delta ,LG}^{\dag G+}$\textit{, with }$0<h_{j,A,\infty
+}^{G+}(x)+\delta _{j}(x)<\infty ,$\textit{\ for some }$j=2,...,k.$
+
+Theorem 4 establishes that our tests have power against $\sqrt{n}-$%
+alternatives, provided that the drifting sequence is bounded away from zero,
+over a subset of $\mathcal{X}^{+}$ of non-zero $Q-$measure. Note also that
+for given loss function, $L,$ the sequence of local alternatives for the
+White reality check (White 2000)\footnote{%
+The White reality check null hypothesis states that no competing model
+outperforms a given benchmark model.} can be defined as:%
+\begin{equation}
+H_{A,n}:\max_{j=2,...,k}\left( E(L(e_{1}))-E(L(e_{j}))\right) =\frac{\lambda 
+}{\sqrt{n}}+o\left( n^{-1/2}\right) ,\text{ }\lambda >0.  \label{HAn}
+\end{equation}%
+For sake of simplicity, suppose that $k=2$ (this is the well known Diebold
+and Mariano (1995) test framework). Here,
+
+\begin{eqnarray}
+&&0<\lambda =n^{1/2}E(L(e_{1}))-E(L(e_{2}))+o(1)  \notag \\
+&=&n^{1/2}\int_{-\infty }^{\infty }L(x)\left( f_{1,n}(x)-f_{2,n}(x)\right) 
+\mathrm{d}x  \notag \\
+&=&-n^{1/2}\int_{-\infty }^{0}L^{\prime }(x)\left(
+F_{1,n}(x)-F_{2,n}(x)\right) \mathrm{d}x  \notag \\
+&&-n^{1/2}\int_{0}^{\infty }L^{\prime }(x)\left(
+F_{1,n}(x)-F_{2,n}(x)\right) \mathrm{d}x  \notag \\
+&=&n^{1/2}\int_{-\infty }^{0}\left( h_{A,\infty }^{G-}(x)+\delta (x)\right)
+Q(x)\mathrm{d}x+n^{1/2}\int_{0}^{\infty }\left( h_{A,\infty }^{G+}(x)+\delta
+(x)\right) Q(x)\mathrm{d}x,  \label{RC}
+\end{eqnarray}%
+where $F_{j,n}(x)=F_{j}(x)+\frac{\delta _{j}(x)}{\sqrt{n}}.$ Hence, $H_{A,n}$
+in (\ref{HAn}) is equivalent to $H_{LA}^{G+}\cap H_{LA}^{G-}$, whenever
+Assumption A0 holds and $Q(x)=L^{\prime }(x)sgn(x).$
+
+\subsection{Implementation}
+
+In order to construct the statistic $S_{n}^{G+}$ as in (\ref{SG+}), we need
+to select $\mathcal{X}^{+},$ the weighting function $Q,$ the lag truncation
+parameter $l_{n},$ and the tuning parameter $\varepsilon .$ In order to
+implement the bootstrap counterpart of $S_{n}^{\ast G+},$ as defined in (\ref%
+{Sn*}), we also need to choose the sequences $c_{n}$ and $\kappa _{n},$ as
+well as the uniformity factor $\eta .$ For $S_{n}^{G-}$ and $S_{n}^{\ast
+G-}, $ we need to select $\mathcal{X}^{-}$ instead of $\mathcal{X}^{+}.$ Let 
+$\mathcal{S}_{j,n}$ denote the support of $\left( e_{j,1},...,e_{j,n}\right) 
+$ and note that as $n$ grows, $\mathcal{S}_{j,n}$ gets close to $\mathcal{X}%
+_{j},$ the support of $e_{j}.$ Note that $\mathcal{S}_{j,n}=\mathcal{S}%
+_{j,n}^{+}\cup \mathcal{S}_{j,n}^{-},$ where $\mathcal{S}_{j,n}^{+}$ and $%
+\mathcal{S}_{j,n}^{-}$ denote the positive and negative part of $\mathcal{S}%
+_{j,n}.$ Let $\mathcal{S}_{j,n}^{+,tr}$ define the trimmed version of $%
+\mathcal{S}_{j,n}^{+},$ obtained by trimming the largest $5\%$ or $1\%$ of
+observations, say, with the degree of trimming being the same across all $j,$
+and let $\mathcal{S}_{j,n}^{-}$ be obtained by trimming the smallest $5\%$
+or $1\%$ of observations. Finally, let $\mathcal{S}_{n}^{+,tr}=\cup
+_{j=1}^{k}\mathcal{S}_{j,n}^{+,tr}$ and $\mathcal{S}_{n}^{-,tr}=\cup
+_{j=1}^{k}\mathcal{S}_{j,n}^{-,tr}.$ Now, set $\mathcal{X}^{+}=\mathcal{S}%
+_{n}^{+,tr}.$ In practice, we need to approximate the integral with a sum,
+and so we partition $\mathcal{S}_{n}^{+,tr}$ ($\mathcal{X}^{+})$ into $N$
+equal intervals, say. If we want to set $Q$ to be a uniform weighting
+matrix, we can simply set $\mathrm{d}Q=Q_{\iota }-Q_{\iota -1}=N^{-1},$ for $%
+\iota =1,...,N,$ with $Q_{0}=0.$ Hence, for $x_{\iota }>0,$ we compute $%
+S_{n}^{G+}$ as%
+\begin{equation*}
+S_{n}^{G+}=\frac{1}{N}\sum_{\iota =1}^{N}\sum_{j=2}^{k}\left( \max \left\{ 0,%
+\frac{\sqrt{n}G_{j,n}^{+}\left( x_{\iota }\right) }{\overline{\sigma }%
+_{j,n}^{G+}(x_{\iota })+\varepsilon }\right\} \right) ,
+\end{equation*}%
+where $\varepsilon $ is small positive number, ranging from $0.01$ to $0.05$%
+, say$.$ As another example, consider the case where we do not care about
+small prediction errors. Then, choose a $\mathrm{d}Q$ value that is smaller
+than $N^{-1}$ for small values of $\iota $ and a $\mathrm{d}Q$ value that is
+larger than $N^{-1}$ for large values of $\iota $. With regard to the lag
+truncation parameter, choice thereof depends on the degree of
+autocorrelation of the error. In general, $l_{n}$ can be chosen according to
+a rule of thumb, i.e. choose a value such that a small increase or decrease
+does not substantially change the estimator. Even though Lemma 1 requires
+more stringent conditions on the rate of growth of $l_{n},$ one can still
+use automated procedures, such as Andrews (1991).
+
+Now consider the bootstrap counterpart, $S_{n}^{\ast G+},$ for which rate
+conditions for the choice of $c_{n}$ and $\kappa _{n}$ are given in Andrews
+and Shi (2013, 2017). In general, by setting $\kappa _{n}=c_{0}\log (n)$ and 
+$c_{n}=c_{1}\frac{\log (n)}{\log (\log (n))},$ with $c_{0}$ and $c_{1}$
+positive constants, the rate conditions in Theorem 2 are satisfied. To the
+best of our knowledge, there are no data driven procedures avaiable for
+choosing $c_{0}$ and $c_{1}.$ Our simulation studies suggest that $c_{0}$
+and $c_{1}$ should be small numbers, typically smaller than $0.5.$ The
+choice of the uniformity factor $\eta $ is more delicate. In order to have
+an asymptotically non conservative test, we need $\eta $ very close to zero,
+though only $\eta >0$ ensures uniform asymptotic validity. As discussed
+below, in the simulation study we find that finite sample rejection rates
+are quite robust to values of $\eta $ ranging from $0.0015$ to $0.003.$
+
+\section{Monte Carlo Experiments}
+
+In this section, we evaluate the finite sample performance of $GL$ and $CL$\
+forecast superiority tests when there are multiple competing sequences of
+forecast errors, under stationarity. We analyze the performance of our tests
+based on $S_{n}^{G+}$ and $S_{n}^{G-}$ (GL forecast superiority), as defined
+in (\ref{SG+})-(\ref{SG-}), and based on $S_{n}^{C+}$ and $S_{n}^{C-}$ (CL
+forecast superiority), as defined in Appendix SA1 and compare their
+performance with that of the related test statistics from (2.5)-(2.6) in JCS
+(2017), here called $JCS_{n}^{G+}$, $JCS_{n}^{G-},$ $JCS_{n}^{C+}$, and $%
+JCS_{n}^{C-}$.\footnote{%
+In JCS (2017), Eqs.(2.5)-(2.6), $JCS_{n}^{G+}$, $JCS_{n}^{G-},$ $%
+JCS_{n}^{C+} $, and $JCS_{n}^{C-}$ are termed $%
+TG_{n}^{+},TG_{n}^{-},TC_{n}^{+}$ and $TG_{n}^{+}$ respectively. For details
+on the calculation of these statistics, refer to the supplemental appendix.}
+For the sake of brevity, these two classes of tests are called $S_{n}$ and $%
+JCS_{n}$ tests, respectively. For each experiment we carry out 1000 Monte
+Carlo replications, and the number of bootstrap samples is $B=500$.
+Additionally, four different values of the smoothing parameter, $J_{n},$ are
+examined for the $JCS_{n}$ tests, including $J_{n}=\{0.20,0.35,0.50,0.60\}$;
+and four different values of the uniformity constant, $\eta ,$ are examined
+for the $S_{n}$ tests, including $\eta =\{0.0015,0.002,0.0025,0.003\}.$
+Finally, when implementing the bootstrap counterpart of $S_{n}$, we set $%
+\kappa _{n}=\sqrt{0.3\log (n)}$ and $c_{n}=\sqrt{0.4\log (n)/\log (\log (n))}%
+,$ following Andrews and Shi (2013, 2017). Sample sizes of $n\in
+\{300,600,900\}$ are generated using each of the following eight data
+generating processes (DGPs), with independent forecast errors.
+
+\noindent DGP1: $e_{1t}$ $\sim $ $i.i.d.N(0,1)$ and $e_{kt}$ $\sim $ $%
+i.i.d.N(0,1),$ $k=2,3.$
+
+\noindent DGP2: $e_{1t}$ $\sim $ $i.i.d.N(0,1)$ and $e_{kt}$ $\sim $ $%
+i.i.d.N(0,1),$ $k=2,3,4,5.$
+
+\noindent DGP3: $e_{1t}$ $\sim $ $i.i.d.N(0,1)$, $e_{kt}$ $\sim $ $%
+i.i.d.N(0,1),$ $k=2,3$ and $e_{kt}$ $\sim i.i.d.N(0,1.4^{2}),$ $k=4,5$
+
+\noindent DGP4: $e_{1t}$ $\sim $ $i.i.d.N(0,1)$, $e_{kt}$ $\sim $ $%
+i.i.d.N(0,1),$ $k=2,3$ and $e_{kt}$ $\sim $ $i.i.d.N(0,1.6^{2}),$ $k=4,5$
+
+\noindent DGP5: $e_{1t}$ $\sim $ $i.i.d.N(0,1)$, $e_{kt}$ $\sim $ $%
+i.i.d.N(0,0.8^{2}),$ $k=2,3$ and $e_{kt}$ $\sim $ $i.i.d.N(0,1.2^{2}),$ $%
+k=4,5.$
+
+\noindent DGP6: $e_{1t}$ $\sim $ $i.i.d.N(0,1),$ $e_{kt}$ $\sim $ $%
+i.i.d.N(0,0.8^{2}),$ $k=2,3,4,5$ and $e_{kt}$ $\sim $ $i.i.d.N(0,1.2^{2}),$ $%
+k=6,7,8,9.$
+
+\noindent DGP7: $e_{1t}$ $\sim $ $i.i.d.N(0,1)$, $e_{kt}$ $\sim $ $%
+i.i.d.N(0,1),$ $k=2,3$ and $e_{kt}$ $\sim $ $i.i.d.N(0,0.8^{2}),$ $k=4,5.$
+
+\noindent DGP8: $e_{1t}$ $\sim $ $i.i.d.N(0,1)$, $e_{kt}$ $\sim $ $%
+i.i.d.N(0,1),$ $k=2,3$ and $e_{kt}$ $\sim $ $i.i.d.N(0,0.6^{2}),$ $k=4,5.$
+
+\noindent DGP9: $e_{1t}$ $\sim $ $i.i.d.N(0,1)$ and $e_{kt}$ $\sim $ $%
+i.i.d.N(0,0.8^{2}),$ $k=2,3,4,5.$
+
+\noindent DGP10: $e_{1t}$ $\sim $ $i.i.d.N(0,1)$ and $e_{kt}$ $\sim $ $%
+i.i.d.N(0,0.6^{2}),$ $k=2,3,4,5.$
+
+Given the importance of the HAC results developed in this paper, we conduct
+experiments using DGPs specified with autocorrelated errors. Denote $%
+\widetilde{e}_{i,t}=\varrho \widetilde{e}_{i,t-1}+(1-\varrho ^{2})^{1/2}\eta
+_{i,t},$with $\eta _{kt}\sim i.i.d.N(0,1)$ $i=1,...,5,$ and $\varrho
+=\{0.2,0.4\}.$ The DGPs for these experiments are as follows.
+
+\noindent DGP-H1: $e_{1t}$ $=\widetilde{e}_{1,t}$ and $e_{kt}$ $=\widetilde{e%
+}_{k,t},$ $k=2,3,4,5.$
+
+\noindent DGP-H2: $e_{1t}$ $=\widetilde{e}_{1,t}$, $e_{kt}$ $=\widetilde{e}%
+_{k,t},$ $k=2,3$ and $e_{kt}$ $=1.4\widetilde{e}_{k,t},$ $k=4,5.$
+
+\noindent DGP-H3: $e_{1t}$ $=\widetilde{e}_{1,t}$, $e_{kt}$ $=0.8\widetilde{e%
+}_{k,t},$ $k=2,3$ and $e_{kt}$ $=1.2\widetilde{e}_{k,t},$ $k=4,5.$
+
+\noindent DGP-H4: $e_{1t}$ $=\widetilde{e}_{1,t}$, $e_{kt}$ $=\widetilde{e}%
+_{k,t},$ $k=2,3$ and $e_{kt}$ $=0.6\widetilde{e}_{k,t},$ $k=4,5.$
+
+In the above setup, DGPs 1-4 and DGPs H1-H2 are used to conduct size
+experiments, while DGPs 5-10 and DGPs H3-H4 are used to conduct power
+experiments. In all cases, $e_{1t}$ denote the forecast errors from the
+benchmark model. Note that DGPs 1-2 and DGP-H1 correspond to the least
+favorable elements in the null, while in DGPs 3-4 and DGP H2, some models
+underperform the benchmark. This is the case where we expect significant
+improvement when using our new tests instead of JCS tests. In DGPs 5-6 and
+DGP-H3, one half of the competing models outperform the benchmark model and
+the other half underperform. In DGPs 7-8 and DGP-H4, one half of the
+competing models outperform, while in DGPs 9-10, the competing models all
+outperform the benchmark model. The above DGPs are similar to those examined
+in JCS (2017), and are utilized in our experiments because they clearly
+illustrate the trade-offs associated with using $JCS_{n}$ and $S_{n}$
+forecast superiority tests.
+
+For the sake of brevity, findings based on DGPs 1-10 are reported in the
+supplemental online appendix. Additionally, for DGPs H1-H4, we tabulate
+results for sample sizes of $n\in \{100,150,200\}$ in addition to the
+aforementioned sample sizes of $n\in \{300,600,900\}$.
+
+Results reported in Tables 1 ($JCS_{n}$ tests) and Table 2 ($S_{n}$ tests)
+are rejection frequencies based on carrying out the $JCS_{n}$ and $S_{n}$
+tests using a nominal size equal to 0.1, and for $\varrho =0.2$ (results
+based on $\varrho =0.4$ were qualitatively the same as those reported here).
+Inspection of the rejection frequencies in Table 1 indicates that $%
+GL-JCS_{n} $ tests have reasonably good size under DGPs H1-H2 (the least
+favorable case under the null), across all sample sizes. However, $CL-$ $%
+JCS_{n}$ tests are undersized under DGP-H2. Also, as reported in the
+supplemental appendix, both types of tests are undersized for some sample
+size / $J_{n}$ permutations when some models are worse than the benchmark
+(see DGPs 3-4), as should be expected given that the tests are not
+asymptotically correctly sized under these two DGPs. Moreover, in these
+cases the empirical size is non monotonic, in paricular for $GL$ forecast
+superiority. Turning to Table 2, note that $S_{n}$ tests, which are
+asymptotically non conservative, often exhibit better size properties under
+DGPs 3-4 (compare DGPs 3-4 in Tables 1 and 2 in the supplemental appendix)
+than $JCS_{n}$ tests. For example, for the $CL$ forecast superiority test
+the empirical size of the $JCS_{n}$ test is $0.020$ for all values of $J_{n}$%
+, when $n=900$ (see Table 1 in the supplemental appendix). The analogous
+value based on implementation of the $S_{n}$ test is $0.083,$ for all values
+of $\eta $ (see Table 2 in the supplemental appendix)$.$ Again, it is worth
+stressing that this finding comes as no surprise, given that the $S_{n}$
+test is asymptotically non-conservative on the boundary of the null
+hypotheses, while the $JCS_{n}$ test is conservative.
+
+Now, from Table 1, we see that the power of the $JCS_{n}$ test is sometimes
+quite low relative to that of the $S_{n}$ test. For example, under DGP-H3,
+power is $0.385$ for the $GL-JCS_{n}$ test and $0.650$ for the $CL-JCS_{n}$
+test, when $n=300$. Analogous rejection frequencies for the $S_{n}$ test are 
+$0.896$ and $0.952$ (see Table 2, DGP-H2, $n=300$). As expected, thus, $%
+S_{n} $ tests exhibit improved power relative to $JCS_{n}$ tests, when some
+models are worse than the benchmark. Empirical power findings based on DGPs
+5-10 are qualitatively the same (see supplemental appendix).
+
+Finally, it should be pointed out that the $S_{n}$ test is not overly
+sensitive to the choice of $\eta $, and the empirical size of $S_{n}$ tests
+appears \textquotedblleft best\textquotedblright\ when $\eta $ is very
+small, as should be expected. In conclusion, there is a clear performance
+improvement when comparing our new robust predictive superiority tests with $%
+JCS_{n}$ tests.\footnote{%
+For a discussion of simulation results based on application of the Diebold
+and Mariano (DM: 1995) test (in which specific loss functions are utilized)
+in our experimental setup, refer to JCS(2017). Summarizing from that paper,
+it is clear that when the loss function is unknown, there is an advantage to
+using our approach of testing for forecast superiority. However the DM test
+for pairwise comparison or a reality check\ test for multiple comparisons
+might yield improved power, for a given loss function. Indeed, under
+quadratic loss, JCS (2017) show that when the sample size is small, the DM\
+test has better power performance than $JCS_{n}$ type tests.\ When the
+sample size increases, the power difference between the two tests becomes
+smaller. This is as expected.}
+
+\section{Empirical Illustration:\ Robust Forecast Evaluation of SPF Expert
+Pools}
+
+In the real-time forecasting literature, predictions from econometric models
+are often compared with surveys of expert forecasters.\footnote{%
+See Fair and Shiller (1990), Swanson and White (1997a,b), Aiolfi, Capistr%
+\'{a}n and Timmermann (2011), and the references cited therein for further
+discussion.} Such comparisons are important when assessing the implications
+associated with using econometric models in policy setting contexts, for
+example. One key survey dataset collecting expert predictions is the \textit{%
+Survey of Professional Forecasters} (SPF), which is maintained by the
+Philadelphia Federal Reserve Bank (see Croushore (1993)). This dataset,
+formerly known as the \textit{American Statistical Association/National
+Bureau of Economic Research Economic Outlook Survey, }collects predictions
+on various key economic indicators (including, for example, nominal GDP
+growth, real GDP growth, prices, unemployment, and industrial production).
+For further discussion of the variables contained in the SPF, refer to
+Croushore (1993) and Aiolfi, Capistr\'{a}n, and Timmermann (2011). The SPF
+has been examined in numerous papers. For example, Zarnowitz and Braun
+(1993) comprehensively study the SPF, and find, among other things, that use
+of the mean or median provides a consensus forecast with lower average
+errors than most individual forecasts. More recently, Aiolfi, Capistr\'{a}n,
+and Timmermann (2011) consider combinations of SPF survey forecasts, and
+find that equal weighted averages of survey forecasts outperform model based
+forecasts, although in some cases these mean forecasts can be improved upon
+by averaging them with mean econometric model-based forecasts. When
+utilizing European data from the recently released ECB SPF, Genre, Kenny,
+Meyler, and Timmermann (2013) again find that it is very difficult to beat
+the simple average. This well known result pervades the macroeconometric
+forecasting literature, and reasons for the success of such simple forecast
+averaging are discussed in Timmermann (2006). He notes that by averaging
+forecasts, issues such as misspecification and time instability, are
+attenuated, and this may explain the success of simple model averaging. Our
+empirical illustration attempts to shed further light on the issue of simple
+model averaging and its importance in forecasting macroeconomic variables.%
+\footnote{%
+As pointed out by an anonymous referee, and notwithstanding the fact that
+the forecast averaging methods used in our paper serve to mitigate
+misspecification and time instability, it remains to analyze our data using
+different sub-samples in order to ascertain the robustness of our empirical
+findings. This is left to future research.}
+
+Our approach is to address the issue of forecast averaging and combination
+by viewing the problem through the lens of forecast superiority testing. Our
+use of loss function robust tests is unique to the SPF literature, to the
+best of our knowledge. Since we use robust forecast superiority tests, we do
+not evaluate pooling by using loss function specific tests, such as those
+discussed in Diebold and Mariano (1995), McCracken (2000), Corradi and
+Swanson (2003), and Clark and McCracken (2013). Additionally, our approach
+differs from that taken by Elliott, Timmermann, and Komunjer (2005, 2008),
+where the rationality of sequences of forecasts is evaluated by determining
+whether there exists a particular loss function under which the forecasts
+are rational. We instead evaluate predictive accuracy irrespective of the
+loss function implicitly used by the forecaster, and determine whether
+certain forecast combinations are superior when compared against any loss
+function, regardless of how the forecasts were constructed. In our tests,
+the benchmarks against which we compare our forecast combinations are simple
+average and median consensus forecasts. We aim to assess whether the well
+documented success of these benchmark combinations remains intact when they
+are compared against other combinations, under generic loss.\footnote{%
+For an interesting discussion of machine learning and forecast combination
+methods, see Lahiri, Peng, and Zhao (2017); and for a discussion of
+probability forecasting and calibrated combining using the SPF, see Lahiri,
+Peng, and Zhao (2015). In these papers, various cases where consensus
+combinations do not \textquotedblleft win\textquotedblright\ are discussed.}
+
+In our experiments, we utilize SPF predictions of both nominal and real GDP
+growth. Results for nominal GDP are reported in the sequel, while those for
+real GDP are gathered in the supplemental appendix (see Tables 5-8 of the
+appendix). For a discussion of the importance of tracking nominal GDP for
+policy setting, refer to Barnett, Chauvet and Leiva-Leon (2016), where it is
+claimed that under nominal GDP targeting, monitoring output is important for
+carrying out effective monetary policy implementation and design. Also, for
+arguments in favor of targeting nominal GDP, refer to Del Negro, Giannoni
+and Patterson (2012) and Woodford (2012). The SPF is a quarterly survey, and
+the dataset is available at the Philadelphia Federal Reserve Bank (PFRB)
+website. The original survey began in 1968:Q4, and PFRB took control of it
+in 1990:Q2; but from that date, there are only around 100 quarterly
+observations prior to 2018:Q1, where we end our sample. In our analysis we
+thus use the entire dataset, which, after trimming to account for differing
+forecast horizons in our calculations, is 166 observations. \footnote{%
+It should be noted that the \textquotedblleft timing\textquotedblright\ of
+the survey was not known with certainty prior to 1990. However, SPF
+documentation states that they believe, although are not sure, that the
+timing of the survey was similar before and after they took control of it.},%
+\footnote{%
+For further details on the SPF dataset, refer to the documentation at
+https://www.philadelphiafed.org/research-and-data/real-time-center/survey-of-professional-forecasters.%
+}
+
+For our analysis, we consider 5 forecast horizons (i.e., $h=0,1,2,3,4).$ The
+reason we use $h=0$ for one of the horizons is that the first horizon for
+which survey participants predict GDP growth is the quarter in which they
+are making their predictions. In light of this, forecasts made at $h=0$ are
+called nowcasts. Moreover, it is worth noting that nowcasts are very
+important in policy making settings, since first release GDP data are not
+available until around the middle of the subsequent quarter. The nominal
+GDP\ variable that we examine is called NGDP in the SPF, and the real GDP
+variable reported on in the supplemental appendix is called RGDP.\textit{\ }%
+Consider NGDP growth rate prediction errors. In particular, assume that one
+survey participant makes a forecast of NGDP, say $y_{t+h}^{f}|\mathcal{F}%
+_{t} $.\footnote{%
+Here, $\mathcal{F}_{t}$ denotes the information set available to the expert
+forecaster at the time their predictions are made.} The associated forecast
+error is: 
+\begin{equation*}
+e_{t}=\left\{ \ln (y_{t+h})-\ln (y_{t})\right\} -\left\{ \ln (y_{t+h}^{f}|%
+\mathcal{F}_{t})-\ln (y_{t})\right\} =\ln (y_{t+h})-\ln (y_{t+h}^{f}|%
+\mathcal{F}_{t}),
+\end{equation*}%
+where the actual NGDP value, $y_{t+h},$ is reported in the SPF, along with
+the NGDP predictions of each survey participant. Note that when $h=0$, $%
+\mathcal{F}_{t}$ does not include $y_{t}.$ However, for $h>0$, $\mathcal{F}%
+_{t}$ includes $y_{t}$. As discussed previously, this is due to the release
+dates associated with the availability of NGDP\ data. Figure 1 illustrates
+some of the key properties of the NGDP data that we utilize. Namely, note
+that the distributions of the expert forecasts vary over time, and exhibit
+interesting skewness and kurtosis properties (compare Panels A-D of the
+figure, and the skewness and kurtosis statistics reported below the plots in
+the figure). Based on examination of the densities in Figure 1, one might
+wonder whether \textquotedblleft trimming\textquotedblright\ experts from
+the panel, say those experts that provided the forecasts appearing in the
+left tails of the distributions, might improve overall predictive accuracy
+of the panel. Although this question is not directly addressed in our
+analysis, we do construct and analyze the performance of various
+\textquotedblleft pools\textquotedblright\ formed by trimming\ experts that
+exhibit sub-par predictive accuracy, for example. Note that we cannot
+distinguish individual from institutions, as individuals from the same
+institutions have the same identity code. This circumvents the potential
+issues of unbalanceness in the panel, also individual from the same
+institutions are likely to be rather homogeneous.
+
+In addition to constructing $S_{n}^{G+},S_{n}^{G-},S_{n}^{C-},$ and $%
+S_{n}^{C+}$ tests in our empirical investigation, we also test for forecast
+superiority using the $JCS_{n}$ tests discussed above, which have correct
+size only under the least favorable case under the null. In particular, we
+construct $JCS_{n}^{G+},JCS_{n}^{G-},JCS_{n}^{C-},$ and $JCS_{n}^{C+}$ test
+statistics (see Supplement SA3 for further details). All test statistics are
+calculated using the same parameter values (for $B,$ $J_{n}$, $\eta ,$ $%
+l_{n},$ and $\varepsilon )$ as used in our Monte Carlo experiments. However,
+results are only reported for $J_{n}=0.20$ and $\eta =0.002,$ since our
+findings remain unchanged when other values of $J_{n}$ and $\eta $ from our
+Monte Carlo experiments are used.
+
+Two different benchmark models are considered, including (i) the arithmetic
+mean prediction from all participants; and (ii) the median prediction from
+all participants. Additionally, a variety of alternative model
+\textquotedblleft groups\textquotedblright\ are considered. In all
+alternative models, mean and median predictions are again formed, but this
+time using subsets of the total available panel of experts, chosen in a
+number of ways, as outlined below.
+
+\noindent \textit{Group 1 - Experts Chosen Based on Experience: }Three
+expert pools (i.e. three alternative models) consisting of experts with 1,
+3, and 5 years of experience.
+
+In all of the remaining groups of combinations, individuals are ranked
+according to average absolute forecast errors, as well as according to
+average squared forecast errors. Mean (or median) predictions from these
+groups are then compared with our benchmark combinations.
+
+\noindent \textit{Group 2 - Experts Chosen Based on Forecast Accuracy I: }%
+Three expert pools consisting of most accurate expert over last 1, 3, and 5
+years.
+
+\noindent \textit{Group 3 - Experts Chosen Based on Forecast Accuracy II: }%
+Three expert pools consisting of most accurate group of 3 experts over last
+1, 3, and 5 years.
+
+\noindent \textit{Group 4 - Experts Chosen Based on Forecast Accuracy III: }%
+Three expert pools consisting of top 10\% most accurate group of experts
+over last 1, 3, and 5 years.
+
+\noindent \textit{Group 5 - Experts Chosen Based on Forecast Accuracy IV: }%
+Three expert pools consisting of top 25\% most accurate group of experts
+over last 1, 3, and 5 years.
+
+Finally, 3 additional groups which combine models from each of Groups 1-5
+are analyzed. These include:
+
+\noindent \textit{Group 6: }Five expert pools, including one pool with
+experts that have 1 year of experience, and 4 additional pools, one from
+each of Groups 2-5, all defined over the last 1 year.
+
+\noindent \textit{Group 7: }Five expert pools, including one pool with
+experts that have 3 years of experience, and 4 additional pools, one from
+each of Groups 2-5, all defined over the last 3 years.
+
+\noindent \textit{Group 8: }Five expert pools, including one pool with
+experts that have 5 years of experience, and 4 additional pools, one from
+each of Groups 2-5, all defined over the last 5 years.
+
+As an example of how testing is performed, note that when implementing the $%
+S_{n}^{G}$ test using \textit{Group 1, }there are three alternative models.
+The same is true when implementing tests using \textit{Groups 2-5}. For 
+\textit{Groups 6-8}, tests are implemented using 5 alternative models, where
+one alternative is taken from each of \textit{Groups 1-5. }Summarizing, we
+consider: (i) two benchmark models, against which each group of alternatives
+is compared; (ii) alternative models that are based on either mean or median
+pooled forecasts for, \textit{Groups 2-8}; (iii) forecast accuracy pools
+used in $Groups$ 1-8 that are based on either average absolute forecast
+errors or average squared forecast errors; (iv) 5 forecast horizons.
+
+We now discuss our empirical findings. In Tables 3-4, statistics are
+reported for all forecast superiority tests. Entries are $S_{n}^{G}$, $%
+S_{n}^{C}$, $JCS_{n}^{G}$, and $JCS_{n}^{C}$ test statistics reported for
+forecast horizons $h={0,1,2,3,4}$. More specifically, $S_{n}^{G}=S_{n}^{G+}$
+if $p_{B,n,S_{n}^{G+}}^{G+}\leq p_{B,n,S_{n}^{G-}}^{G-}$; otherwise $%
+S_{n}^{G}=S_{n}^{G-}$. The other statistics reported in the tables (i.e., $%
+S_{n}^{C}$, $JCS_{n}^{G}$, and $JCS_{n}^{C})$ are defined analogously.
+Rejections of the null of no forecast superiority at a 10\% level are
+denoted by a superscript *. In Table 3, the benchmark model is always the
+arithmetic mean prediction from all participants, and expert pool forecasts
+are also arithmetic means. Analogously, in Table 4 the benchmark is the
+median prediction from all participants, and expert pool forecasts are also
+medians. To understand the layout of the tables, turn to Table 3, and note
+that for $Group$ $1$, the 4 statistics defined above (i.e., $S_{n}^{G}$, $%
+S_{n}^{C}$, $JCS_{n}^{G}$, and $JCS_{n}^{C})$ are given, for each forecast
+horizon, $h=0,1,2,3,$ and $4.$ Superscripts denote rejection of the null
+hypothesis based on a particular test. For example, note that application of
+the $JCS_{n}^{G}$ test in $Group$ $2$ yields a test rejection for horizons $%
+h=2$ and $4.$ Turning to the results summarized in the tables, a number of
+clear conclusions emerge. Summarizing, the results of 160 distinct forecast
+superiority tests are reported in each of Tables 3 and 4. These tests
+correspond to eight sets of alternative models against which the benchmark
+model is tested (i.e., Groups 1-8), five forecast horizons (i.e., $h=0-4$),
+and 4 distinct tests (i.e., $S_{n}^{G}$, $S_{n}^{C}$, $JCS_{n}^{G}$, and $%
+JCS_{n}^{C}$), for a total of 8x5x4=160 tests.
+
+Our first finding is that the majority of test rejections occur for $h=4$,
+as can be seen by inspection of the results in both Tables 3 and 4$.$ In
+particular, note that for $h=4$, there are 13 test rejections (of a possible
+32) in Table 3 and 11 test rejections (of a possible 32) in Table 4, across $%
+Groups$ 1-8. On the other hand, for all other forecast horizons combined
+(i.e., $h=\{0,1,2,3\})$, there are 11 test rejections (of a possible 128) in
+Table 3 and 8 test rejections (of a possible 128) in Table 4. This suggests
+that expert pools which are constructed by \textquotedblleft
+trimming\textquotedblright\ the least effective experts are most useful for
+our longest forecast horizon (i.e., $h=4$). Indeed, expert pools offer
+little advantage for all horizons less than $h=4$. These findings make sense
+if one assumes that it is easier to make short term forecasts than long term
+forecasts. Namely, some experts are simply not \textquotedblleft up to the
+task\textquotedblright\ when forecasting at longer horizons. Summarizing,
+our main finding indicates that simple average or median forecasts can be
+beaten, in cases where forecasts are more difficult to make (i.e., longer
+horizons). Second, \textquotedblleft experience\textquotedblright\ as
+measured by the length of time an expert has taken part in the SPF is not a
+direct indicator of forecast superiority, since there are no rejections of
+our tests for $Group$ $1,$ when either mean (see Table 3) or median (see
+Table 4) forecasts are used in our tests. This does not necessarily mean
+that experience does not matter, at least indirectly (notice that test
+rejections sometimes occur for $Groups$ 6-8, where experience and accuracy
+traits are combined.\footnote{%
+To explore this finding in more detail, we also construct additional tables
+that are closely related to Tables 3 and 4, except that in these tables,
+RMSFEs are reported for all of the models used in each test (see
+supplemental appendix, Tables S1 and S2). In these tables, we see that
+combining experience with prior predictive accuracy can lead to lower
+RMSFEs, relative to the case where the entire pool of experts is used.
+However, RMSFEs are even lower for various alternative models for which we
+only use prior predictive accuracy to select expert pools (compare RMSFEs
+for $Groups$ 3-5 with those for $Groups$ 6-8 in the supplemental tables).
+\par
+\bigskip} Finally, note that Tables 1 and 2 in the supplemental appendix
+report root mean square forecast errors (RMSFEs) from the benchmark and
+competing models utilized when constructing the test statistics discussed
+above. In these supplemental tables, we see that in the majority of cases
+considered, forecasts that utilize the mean have lower RMSFEs than when the
+median is used for constructing combination forecasts. For example, when
+comparing the benchmark RMSFEs of $Group$ 1 that are reported in Tables 1
+and 2 in the supplemental appendix, RMSFEs associated with mean combination
+forecasts are lower for $h=\{0,2,3,4\}$ than the RMSFEs associated with
+median combination forecasts. This is interesting, given the clear asymmetry
+and long left tails associated with the distributions of expert forecasts
+exhibited in Figure 1, and suggests that outlier forecasts from
+\textquotedblleft less accurate\textquotedblright\ experts are not overly
+influential when using measures of central tendency as ensemble forecasts.
+
+Summarizing, we have direct evidence that judicious selection of pools of
+experts can lead to loss function robust forecast superiority. However, it
+should be stressed that in this illustration of the testing techniques
+developed in this paper, we do not consider various combination methods,
+including Bayesian model averaging, for example. Additionally, we only look
+at GDP, although the SPF has various other variables in it.\footnote{%
+Results for RGDP are gathered in Tables 5-8 in the supplemental appendix,
+and are qualitatively similar to those reported for NGP, although the number
+of test rejections are fewer.} Extensions such as these are left to future
+research.
+
+\section{Concluding Remarks}
+
+We develop uniformly valid forecast superiority tests that are
+asymptotically non conservative, and that are robust to the choice of loss
+function. Our tests are based on principles of stochastic dominance, which
+can be interpreted as tests for infinitely many moment inequalities. In
+light of this, we use tools from Andrews and Shi (2013, 2017) when
+developing our tests. The tests build on earlier work due to Jin, Corradi,
+and Swanson (2017), and are meant to provide a class of predictive accuracy
+tests that are not reliant on a choice of loss function. In developing the
+new tests, we establish uniform convergence (over error support) of HAC
+variance estimators, and of their bootstrap counterparts. In a Supplement,
+we also extend the theory of generalized moment selection testing to allow
+for the presence of non-vanishing parameter estimation error. In a series of
+Monte Carlo experiments, we show that finite sample performance of our tests
+is quite good, and that the power of our tests dominates those proposed by
+JCS (2017). Additionally, we carry out an empirical analysis of the well
+known Survey of Professional Forecasters, and show that utilizing expert
+pools based on past forecast quality can lead to loss function robust
+forecast superiority, when compared with pools that include all survey
+participants. This finding is particularly prevalent for our longest
+forecast horizon (i.e., 1-year ahead).
+
+\newpage
+
+\section{Appendix}
+
+$\boldsymbol{\noindent }$\textbf{Proof of Lemma 1: }The proof is the same
+for all $j,$ so we suppress the subscript$.$ Thus, let $u_{t}(x)=\left(
+1\left\{ e_{j,t}\leq x\right\} -F_{j}(x)\right) -\left( 1\left\{ e_{1,t}\leq
+x\right\} -F_{1}(x)\right) ,$ and define 
+\begin{equation*}
+\widehat{\widehat{\sigma }}_{n}^{2,G+}(x)=\frac{1}{n}%
+\sum_{t=1}^{n}u_{t}^{2}(x)+2\frac{1}{n}\sum_{\tau =1}^{l_{n}}w_{\tau
+}u_{t}(x)u_{t-\tau }(x).
+\end{equation*}%
+We first show that%
+\begin{equation*}
+\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{\widehat{\sigma }}%
+_{n}^{2,G+}(x)-\sigma ^{2,G+}(x)\right\vert =o_{p}\left( 1\right) ,
+\end{equation*}%
+and then we show that 
+\begin{equation}
+\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{\widehat{\sigma }}%
+_{n}^{2,G+}(x)-\widehat{\sigma }_{n}^{2,G+}(x)\right\vert =o_{p}\left(
+1\right) .  \label{hat-hat}
+\end{equation}%
+and the desired statement follows by triangular inequality. Now, adding and
+subtracting $\mathrm{E}\left( u_{t}(x)u_{t-\tau }(x)\right) $ and $\mathrm{E}%
+\left( u_{t}^{2}(x)\right) $%
+\begin{eqnarray}
+&&\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{\widehat{\sigma }}%
+_{n}^{2,G+}(x)-\sigma ^{2,G+}(x)\right\vert  \notag \\
+&\leq &\sup_{x\in \mathcal{X}^{+}}\left\vert \frac{1}{n}\sum_{t=1}^{n}\left(
+u_{t}^{2}(x)-\mathrm{E}\left( u_{t}^{2}(x)\right) \right) +2\frac{1}{n}%
+\sum_{\tau =1}^{l_{n}}w_{\tau }\sum_{t=\tau +1}^{n}\left( u_{t}(x)u_{t-\tau
+}(x)-\mathrm{E}\left( u_{t}(x)u_{t-\tau }(x)\right) \right) \right\vert 
+\notag \\
+&&+\sup_{x\in \mathcal{X}^{+}}\left\vert \left( \sigma ^{2}(x)-\frac{1}{n}%
+\sum_{t=1}^{n}\mathrm{E}\left( u_{t}^{2}(x)\right) +2\frac{1}{n}\sum_{\tau
+=1}^{l_{n}}w_{\tau }\sum_{t=\tau +1}^{n}\mathrm{E}\left( u_{t}(x)u_{t-\tau
+}(x)\right) \right) \right\vert .  \label{main}
+\end{eqnarray}%
+We begin with the first term on the RHS of (\ref{main}). First note that,
+since $w_{\tau }\leq 1,$%
+\begin{eqnarray*}
+&&\sup_{x\in \mathcal{X}^{+}}\left\vert \frac{1}{n}\sum_{t=1}^{n}\left(
+u_{t}^{2}(x)-\mathrm{E}\left( u_{t}^{2}(x)\right) \right) +2\frac{1}{n}%
+\sum_{\tau =1}^{l_{n}}w_{\tau }\sum_{t=\tau +1}^{n}\left( u_{t}(x)u_{t-\tau
+}(x)-\mathrm{E}\left( u_{t}(x)u_{t-\tau }(x)\right) \right) \right\vert \\
+&\leq &\sup_{x\in \mathcal{X}^{+}}2\sum_{\tau =0}^{l_{n}}\left\vert \frac{1}{%
+n}\sum_{t=1}^{n}\left( u_{t}(x)u_{t-\tau }(x)-\mathrm{E}\left(
+u_{t}(x)u_{t-\tau }(x)\right) \right) \right\vert .
+\end{eqnarray*}%
+Now, since the probability of the sum is less than or equal to the sum of
+the probability,%
+\begin{eqnarray*}
+&&\Pr \left( \sup_{x\in \mathcal{X}^{+}}2\sum_{\tau =0}^{l_{n}}\left\vert 
+\frac{1}{n}\sum_{t=\tau +1}^{n}\left( u_{t}(x)u_{t-\tau }(x)-\mathrm{E}%
+\left( u_{t}(x)u_{t-\tau }(x)\right) \right) \right\vert \geq \varepsilon
+\right) \\
+&\leq &2\sum_{\tau =0}^{l_{n}}\Pr \left( \sup_{x\in \mathcal{X}%
+^{+}}\left\vert \frac{1}{n}\sum_{t=\tau +1}^{n}\left( u_{t}(x)u_{t-\tau }(x)-%
+\mathrm{E}\left( u_{t}(x)u_{t-\tau }(x)\right) \right) \right\vert \geq 
+\frac{\varepsilon }{l_{n}}\right) ,
+\end{eqnarray*}%
+so that we need to show that,%
+\begin{equation*}
+\Pr \left( \sup_{x\in \mathcal{X}^{+}}\left\vert \frac{1}{n}\sum_{t=\tau
++1}^{n}\left( u_{t}(x)u_{t-\tau }(x)-\mathrm{E}\left( u_{t}(x)u_{t-\tau
+}(x)\right) \right) \right\vert \geq \frac{\varepsilon }{l_{n}}\right) <%
+\frac{\delta }{l_{n}}.
+\end{equation*}%
+Given Assumption A2, WLOG, we can set $\mathcal{X}^{+}=[0,\Delta ],$ so that
+it can be covered by $a_{n}^{-1}$ balls $s_{j},$ $j=1,...,\Delta a_{n}^{-1},$
+centered at $s_{j},$ with radius $a_{n}.$ Then,%
+\begin{eqnarray*}
+&&\sup_{x\in \mathcal{X}^{+}}\left\vert \frac{1}{n}\sum_{t=\tau
++1}^{n}\left( u_{t}(x)u_{t-\tau }(x)-\mathrm{E}\left( u_{t}(x)u_{t-\tau
+}(x)\right) \right) \right\vert \\
+&\leq &\max_{j=1,..,\Delta a_{n}^{-1}}\left\vert \frac{1}{n}\sum_{t=\tau
++1}^{n}\left( u_{t}(s_{j})u_{t-\tau }(s_{j})-\mathrm{E}\left(
+u_{t}(s_{j})u_{t-\tau }(s_{j})\right) \right) \right\vert \\
+&&+\max_{j=1,..,\Delta a_{n}^{-1}}\sup_{x\in S_{j}}2\left\vert \left( \frac{1%
+}{n}\sum_{t=\tau +1}^{n}u_{t-\tau }(s_{j})\left(
+u_{t}(x)-u_{t}(s_{j})\right) \right) \right. \\
+&&-\left. \left( \frac{1}{n}\sum_{t=\tau +1}^{n}\mathrm{E}\left( u_{t-\tau
+}(s_{j})\left( u_{t}(x)-u_{t}(s_{j})\right) \right) \right) \right\vert \\
+&=&A_{n}+B_{n}.
+\end{eqnarray*}%
+Now,
+
+\begin{eqnarray*}
+B_{n} &\leq &\max_{j=1,..,\Delta a_{n}^{-1}}\sup_{x\in S_{j}}\left\vert 
+\frac{1}{n}\sum_{t=\tau +1}^{n}u_{t-\tau }(s_{j})\left(
+u_{t}(x)-u_{t}(s_{j})\right) \right\vert \\
+&&+\max_{j=1,..,\Delta a_{n}^{-1}}\sup_{x\in S_{j}}\left\vert \frac{1}{n}%
+\sum_{t=\tau +1}^{n}\mathrm{E}\left( u_{t-\tau }(s_{j})\left(
+u_{t}(x)-u_{t}(s_{j})\right) \right) \right\vert \\
+&=&B1_{n}+B2_{n}.
+\end{eqnarray*}%
+Given Assumption A1, noting that by Cauchy - Schwarz,%
+\begin{eqnarray*}
+B2_{n} &\leq &\max_{j=1,..,\Delta a_{n}^{-1}}\sup_{x\in S_{j}}\sqrt{\mathrm{E%
+}\left( u_{t-\tau }(s_{j})\right) ^{2}}\max_{j=1,..,a_{n}^{-1}}\sup_{x\in
+S_{j}}\sqrt{\mathrm{E}\left( u_{t}(s_{j})-u_{t}(x)\right) ^{2}} \\
+&\leq &Ca_{n}^{1/2}
+\end{eqnarray*}%
+for some constant $C.$ Recalling given that $u_{t}(x)=\left( 1\left\{
+e_{j,t}\leq x\right\} -F_{j}(x)\right) -\left( 1\left\{ e_{1,t}\leq
+x\right\} -F_{1}(x)\right) $ and $u_{t}(s_{j})$ stay between $-1$ and $1$%
+\begin{eqnarray*}
+&&B1_{n}\leq 2\max_{j=1,..,\Delta a_{n}^{-1}}\sup_{x\in S_{j}}\frac{1}{n}%
+\sum_{t=1}^{n}\left\vert u_{t}(s_{j})-u_{t}(x)\right\vert \\
+&\leq &\frac{2}{n}\sum_{t=1}^{n}1\left\{ x-a_{n}\leq e_{1,t}\leq
+x+a_{n}\right\} +\frac{2}{n}\sum_{t=1}^{n}1\left\{ x-a_{n}\leq e_{j,t}\leq
+x+a_{n}\right\} \\
+&&+2a_{n}\sup_{x\in \mathcal{X}^{+}}\left( f_{1}(x)+f_{j}(x)\right) \\
+&=&O_{p}\left( a_{n}\right) =o_{p}(a_{n}^{1/2})
+\end{eqnarray*}%
+Hence, by Chebyshev inequality%
+\begin{equation*}
+l_{n}\Pr \left( B_{n}>\frac{\varepsilon }{l_{n}}\right) =O\left(
+a_{n}l_{n}^{3}\right) =o(1),
+\end{equation*}%
+for $a_{n}=o\left( l_{n}^{-3}\right) .$
+
+Now, consider $A_{n}.$ Recalling that given Assumption A1, $\mathrm{var}%
+\left( \sum_{t=1}^{m}\left( u_{t}(s_{j})u_{t-\tau }(s_{j})-\mathrm{E}\left(
+u_{t}(s_{j})u_{t-\tau }(s_{j})\right) \right) \right) \leq Cm,$ for some
+constant $C,$
+
+\begin{eqnarray*}
+&&\Pr \left( \max_{j=1,..,a_{n}^{-1}}\left\vert \frac{1}{n}\sum_{t=\tau
++1}^{n}\left( u_{t}(s_{j})u_{t-\tau }(s_{j})-\mathrm{E}\left(
+u_{t}(s_{j})u_{t-\tau }(s_{j})\right) \right) \right\vert \geq \frac{%
+\varepsilon }{l_{n}}\right) \\
+&\leq &\sum_{j=1}^{a_{n}^{-1}}\Pr \left( \left\vert \sum_{t=\tau
++1}^{n}\left( u_{t}(s_{j})u_{t-\tau }(s_{j})-\mathrm{E}\left(
+u_{t}(s_{j})u_{t-\tau }(s_{j})\right) \right) \right\vert \geq \frac{%
+n\varepsilon }{l_{n}}\right) \\
+&\leq &4a_{n}^{-1}\left( \exp \left( -\frac{\frac{n^{2}}{l_{n}^{2}}%
+\varepsilon ^{2}}{64Cn+\frac{8}{3}\frac{\Delta n^{2}}{4l_{n}^{3}}}\right) +%
+\frac{16}{\Delta }l_{n}^{2}\left( \frac{\Delta }{4}\frac{n}{l_{n}^{2}}%
+\right) ^{-\beta }\right) \\
+&=&a_{n}^{-1}\exp \left( -\frac{1}{64C\frac{l_{n}^{2}}{n}+\frac{8}{3}\frac{%
+\Delta }{4l_{n}}}\right) +64a_{n}^{-1}l_{n}^{2}\NEG{l}_{n}^{2\beta
+}n^{-\beta } \\
+&=&o(1)+O\left( n^{\delta \left( 6+2\beta \right) }n^{-\beta }\right) \\
+&=&o(1)\text{ for }\beta >\frac{6\delta }{1-2\delta },
+\end{eqnarray*}%
+where the RHS of the second inequality follows from the Lemma on page 739 of
+Hansen (2008), setting $a_{n}=l_{n}^{-4},$ $b=1,$ $m=\frac{\Delta n}{%
+4l_{n}^{2}},$ and $l_{n}=n^{\delta },$ with $\delta <1/2.$ Hence, the first
+term on the RHS of (\ref{main}) is $o_{p}(1)$ uniformly in $x\in \mathcal{X}%
+^{+}.$
+
+\noindent We now turm to the second term on the RHS of (\ref{main}).
+Recalling that given stationarity, $\sigma ^{2,G+}(x)=\lim_{n\rightarrow
+\infty }\mathrm{E}\left( \frac{1}{\sqrt{n}}\sum_{t=1}^{n}u_{t}(x)\right)
+^{2} $%
+\begin{eqnarray}
+&&\sup_{x\in \mathcal{X}^{+}}\left\vert \left( \sigma ^{2,G+}(x)-\frac{1}{n}%
+\sum_{t=1}^{n}\mathrm{E}\left( u_{t}^{2}(x)\right) +2\frac{1}{n}\sum_{\tau
+=1}^{l_{n}}w_{\tau }\sum_{t=\tau +1}^{n}\mathrm{E}\left( u_{t}(x)u_{t-\tau
+}(x)\right) \right) \right\vert  \notag \\
+&\leq &2\sup_{x\in \mathcal{X}^{+}}\left\vert \frac{1}{n}\sum_{\tau
+=1}^{l_{n}}\left( 1-w_{\tau }\right) \sum_{t=\tau +1}^{n}\mathrm{E}\left(
+u_{t}(x)u_{t-\tau }(x)\right) \right\vert  \label{NW} \\
+&&+2\sup_{x\in \mathcal{X}^{+}}\left\vert \frac{1}{n}\sum_{\tau
+=l_{n}+1}^{n}\sum_{t=\tau +1}^{n}\mathrm{E}\left( u_{t}(x)u_{t-\tau
+}(x)\right) \right\vert .  \notag
+\end{eqnarray}%
+The first term on the RHS of (\ref{NW}) is $o_{p}(1),$ by the same argument
+as that used in Theorem 2 of Newey and West (1987). Also, by Lemma 6.17 in
+White (1984), for $q>2,$%
+\begin{equation*}
+\mathrm{E}\left( u_{t}(x)u_{t-\tau }(x)\right) \leq C\tau ^{-\beta /2-1/q}%
+\mathrm{var}\left( u_{t}(x)\right) ^{1/2}\mathrm{E}\left\Vert
+u_{t}(x)\right\Vert ^{q}
+\end{equation*}%
+and 
+\begin{eqnarray*}
+&&\sup_{x\in \mathcal{X}^{+}}\left\vert \frac{1}{n}\sum_{\tau
+=l_{n}+1}^{n}\sum_{t=\tau +1}^{n}\mathrm{E}\left( u_{t}(x)u_{t-\tau
+}(x)\right) \right\vert \\
+&\leq &C\sup_{x\in \mathcal{X}^{+}}\mathrm{var}\left( u_{t}(x)\right) ^{1/2}%
+\mathrm{E}\left\Vert u_{t}(x)\right\Vert ^{q}\sum_{\tau =l_{n}+1}^{n}\tau
+^{-\beta /2-1/q}=o(1),
+\end{eqnarray*}%
+as $\beta \delta >1,$ given Assumption A1, and noting that $q$ can be taken
+arbitrarily large because of the boundedness of $u_{t}(x).$
+
+Finally, by the same argument as that used in the proof of (\ref{main}), for
+all $j,$%
+\begin{equation*}
+\sup_{x\in \mathcal{X}^{+}}\frac{1}{n}\sum_{t=1}^{n}\left( 1\left\{
+e_{j,t}\leq x\right\} -F_{j}(x)\right) =o_{p}\left( l_{n}^{-1}\right) .
+\end{equation*}%
+The statement in (\ref{hat-hat}) follows immediately.
+
+\bigskip
+
+\noindent $\boldsymbol{\noindent }$\textbf{Proof of Lemma 2:} Since blocks
+are identically and indepently distributed conditionally on the sample,%
+\begin{eqnarray*}
+&&\mathrm{E}^{\ast }\left( \widehat{\sigma }_{j,n}^{2\ast G+}(x)\right) \\
+&=&\mathrm{E}^{\ast }\left( \frac{1}{l_{n}^{1/2}}\sum_{i=1}^{l_{n}}\left(
+u_{j,1+i}^{\ast }(x)-u_{j,1+i}^{\ast }(x)\right) \right) ^{2} \\
+&=&\frac{1}{l_{n}}\sum_{i=1}^{l_{n}}\sum_{s=1}^{l_{n}}\mathrm{E}^{\ast
+}\left( \left( u_{j,1+i}^{\ast }(x)-u_{j,1+i}^{\ast }(x)\right) \left(
+u_{j,1+s}^{\ast }(x)-u_{j,1+s}^{\ast }(x)\right) \right) \\
+&=&\frac{1}{n}\frac{1}{l_{n}}\sum_{t=l_{n}}^{n-l_{n}}\sum_{i=1}^{l_{n}}%
+\sum_{s=1}^{l_{n}}\left( u_{j,t+i}(x)-u_{j,t+i}(x)\right) \left(
+u_{j,t+s}(x)-u_{j,t+s}(x)\right) +O_{p}\left( \frac{l_{n}^{2}}{n}\right) \\
+&=&\frac{1}{n}\sum_{t=l_{n}}^{n-l_{n}}\sum_{i=-l_{n}}^{l_{n}}\left(
+u_{j,t}(x)-u_{j,t}(x)\right) \left( u_{j,t+i}(x)-u_{j,t+i}(x)\right)
++O_{p}\left( \frac{l_{n}^{2}}{n}\right) +o_{p}(1) \\
+&=&\widehat{\sigma }_{j,n}^{2,G+}(x)+o_{p}(1),
+\end{eqnarray*}%
+with the $o_{p}(1)$ term holding uniformly in $x\in \mathcal{X}^{+}.$ By
+noting that,%
+\begin{eqnarray*}
+&&\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{\sigma }_{j,n}^{\ast G+}(x)-%
+\widehat{\sigma }_{j,n}^{G+}(x)\right\vert \\
+&\leq &\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{\sigma }_{j,n}^{\ast
+G+}(x)-\mathrm{E}^{\ast }\left( \widehat{\sigma }_{n}^{\ast }(x)\right)
+\right\vert +\sup_{x\in \mathcal{X}^{+}}\left\vert \mathrm{E}^{\ast }\left( 
+\widehat{\sigma }_{n}^{\ast }(x)\right) -\widehat{\sigma }%
+_{j,n}^{G+}(x)\right\vert \\
+&=&\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{\sigma }_{j,n}^{\ast
+G+}(x)-\mathrm{E}^{\ast }\left( \widehat{\sigma }_{n}^{\ast }(x)\right)
+\right\vert +o_{p}(1)
+\end{eqnarray*}%
+It suffices to show that%
+\begin{equation*}
+\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{\sigma }_{j,n}^{\ast G+}(x)-%
+\mathrm{E}^{\ast }\left( \widehat{\sigma }_{j,n}^{\ast }(x)\right)
+\right\vert =o_{p^{\ast }}(1).
+\end{equation*}%
+For brevity, and with a slight abuse of notation, let $u_{(k-1)l_{n}+i}^{%
+\ast }(x)=u_{1,(k-1)l_{n}+i}^{\ast }(x)-u_{j,(k-1)l_{n}+i}^{\ast }(x),$ then%
+\begin{eqnarray*}
+&&\sup_{x\in \mathcal{X}^{+}}\left\vert \widehat{\sigma }_{j,n}^{\ast 2}(x)-%
+\mathrm{E}^{\ast }\left( \widehat{\sigma }_{j,n}^{\ast }(x)\right)
+\right\vert \\
+&\leq &\sup_{x\in \mathcal{X}^{+}}\frac{l_{n}}{b}\sum_{k=1}^{b}\left\vert
+\left( \frac{1}{l_{n}}\sum_{i=1}^{l_{n}}u_{(k-1)l_{n}+i}^{\ast }(x)\right)
+^{2}-\mathrm{E}^{\ast }\left( \left( \frac{1}{l_{n}}%
+\sum_{j=1}^{l_{n}}u_{(k-1)l_{n}+j}^{\ast }(x)\right) ^{2}\right) \right\vert
+\\
+&=&\sup_{x\in \mathcal{X}^{+}}\frac{l_{n}}{b}\sum_{k=1}^{b}\left\vert \frac{1%
+}{l_{n}^{2}}\sum_{j=1}^{l_{n}}\sum_{i=1}^{l_{n}}\left(
+u_{(k-1)l_{n}+j}^{\ast }(x)u_{(k-1)l_{n}+i}^{\ast }(x)-\mathrm{E}^{\ast
+}\left( u_{(k-1)l_{n}+j}^{\ast }(x)u_{(k-1)l_{n}+i}^{\ast }(x)\right)
+\right) \right\vert
+\end{eqnarray*}%
+Now,%
+\begin{eqnarray*}
+&&\Pr \left( \sup_{x\in \mathcal{X}^{+}}\frac{l_{n}}{b}\sum_{k=1}^{b}\left%
+\vert \frac{1}{l_{n}^{2}}\sum_{j=1}^{l_{n}}\sum_{i=1}^{l_{n}}\left(
+u_{(k-1)l_{n}+j}^{\ast }(x)u_{(k-1)l_{n}+i}^{\ast }(x)-\mathrm{E}^{\ast
+}\left( u_{(k-1)l_{n}+j}^{\ast }(x)u_{(k-1)l_{n}+i}^{\ast }(x)\right)
+\right) \right\vert \geq \varepsilon _{1}a_{n}\right) \\
+&\leq &l_{n}\Pr \left( \sup_{x\in \mathcal{X}^{+}}\frac{l_{n}}{b}%
+\sum_{k=1}^{b}\left\vert \frac{1}{l_{n}^{2}}\sum_{j=1}^{l_{n}}%
+\sum_{i=1}^{l_{n}}u_{(k-1)l_{n}+j}^{\ast }(x)u_{(k-1)l_{n}+i}^{\ast }(x)-%
+\mathrm{E}^{\ast }\left( u_{(k-1)l_{n}+j}^{\ast }(x)u_{(k-1)l_{n}+i}^{\ast
+}(x)\right) \right\vert \geq \varepsilon _{1}\frac{a_{n}}{l_{n}}\right) .
+\end{eqnarray*}%
+It suffices to show that, uniformly in $k,$%
+\begin{equation*}
+\Pr \left( \sup_{x\in \mathcal{X}^{+}}\left\vert \frac{1}{l_{n}^{2}}%
+\sum_{j=1}^{l_{n}}\sum_{i=1}^{l_{n}}u_{(k-1)l+j}^{\ast
+}(x)u_{(k-1)l+i}^{\ast }(x)-\mathrm{E}^{\ast }\left( u_{(k-1)l+j}^{\ast
+}(x)u_{(k-1)l+i}^{\ast }(x)\right) \right\vert \geq \varepsilon _{1}\frac{%
+a_{n}}{l_{n}}\right) <\frac{\delta }{l_{n}}.
+\end{equation*}%
+This follows using the same "covering numbers" argument used in the proof of
+Lemma 1.
+
+\medskip
+
+\noindent \textbf{Proof of Theorem 1:} We need to show that the statement in
+Lemma A1 in the Supplement Appendix of Andrews and Shi (2013) holds. Then,
+the proof of the theorem will follow using the same arguments as those used
+in the proof of their Theorem 1, as the proof is the same for independent
+and dependent observations. In fact, our set-up differs from Andrews and Shi
+(2013) only because we have dependent observations, and because we scale the
+statistic by a Newey-West variance estimator. For the rest of the proof, our
+set-up is simpler as we can fix their $\theta _{n}$ at a given value, say
+zero. Let $v_{n}(x)=v_{j}^{G+}(x)+h_{j,A,n}^{G+}(x),$\ then it suffices to
+show that:
+
+\noindent (i) $v_{n}\left( .\right) \Rightarrow v(.),$ as a process indexed
+by $x\in \mathcal{X}^{+},$ where $v(.)$ is a zero-mean $k-1-$dimensional
+Gaussian process, with covariance kernel given $\Sigma (x,x^{\prime }),$ as
+defined in (\ref{SIGMA})$.$
+
+\noindent (ii) $\sup_{x\in \mathcal{X}^{+}}\left\Vert \widehat{\sigma }%
+_{j,n}^{2,G+}(x)-\sigma _{j}^{2,G+}(x)\right\Vert =o_{p}(1).$
+
+\noindent Now, statement (ii) follows directly from Lemma 1. It remains to
+show that (i) holds. The key difference between the independent and the
+dependent cases is that in the former we can rely on the concept of
+manageability, while in the latter we cannot. Nevertheless, (i) follows if
+we can show that $v_{n}\left( .\right) $ satisfies an empirical process.
+Given Assumptions A1-A3, this follows from Lemma A2 in Jin, Corradi and
+Swanson (2017).
+
+\medskip
+
+\noindent \textbf{Proof of Theorem 2: (i)} The proof of this theorem mirrors
+the proof of Theorem 2(a) in the Supplement of Andrews and Shi (2013). Let $%
+c_{0}\left( h_{A,n},1-\alpha \right) $ be the $1-\alpha $ critical value of $%
+S_{n}^{\dag G^{+}},$ as defined in (\ref{Sn-dag}). Given Theorem 1, it
+follows that for all $\delta >0,$%
+\begin{equation*}
+\lim \sup_{n\rightarrow \infty }\sup_{P\in \mathcal{P}_{0}}P\left( S_{n}\geq
+c_{0}\left( h_{A,n},1-\alpha \right) +\delta \right) \leq \alpha .
+\end{equation*}%
+The statement follows if we can show that%
+\begin{equation}
+\lim \sup_{n\rightarrow \infty }\sup_{P\in \mathcal{P}_{0}}P\left(
+c_{0,n,1-\alpha }^{\ast }\left( \phi _{n},h_{B,n}^{\ast G+}\right) \leq
+c_{0,n,1-\alpha }\left( h_{A,n},h_{B,n}^{\ast G+}\right) \right) =0,
+\label{c0*}
+\end{equation}%
+and that 
+\begin{equation}
+\lim \sup_{n\rightarrow \infty }\sup_{P\in \mathcal{P}_{0}}P\left(
+c_{0,n,1-\alpha }\left( h_{A,n},h_{B,n}^{\ast G+}\right) \leq c_{0}\left(
+h_{A,n},1-\alpha \right) \right) =0.  \label{c0}
+\end{equation}%
+where $c_{0,n,1-\alpha }\left( h_{A,n},h_{B,n}^{\ast G+}\right) $ is defined
+as $c_{0}\left( h_{A,n},1-\alpha \right) $ with $h_{B,n}^{\ast G+}(x)$, in (%
+\ref{hB*}), replacing $h_{B}(x)$ in (\ref{hB}).
+
+\noindent For $c_{n}\rightarrow \infty $ and $c_{n}/\kappa _{n}\rightarrow
+0, $ $\tau _{n}\rightarrow \infty $ and $\tau _{n}/\kappa _{n}\rightarrow 0,$
+
+\begin{eqnarray*}
+&&\sup_{P\in \mathcal{P}_{0}}P\left( c_{0,n,1-\alpha }^{\ast }\left( \phi
+_{n},h_{B,n}^{\ast G+}\right) \leq c_{0,n,1-\alpha }\left(
+h_{A,n},h_{B,n}^{\ast G+}\right) \right) \\
+&\leq &\sup_{P\in \mathcal{P}_{0}}P\left( -\phi _{j,n}(x)\leq h_{A,j,n}(x),%
+\text{ for some }x\in \mathcal{X}^{+}\text{ and some }j=2,..,k\right) \\
+&\leq &\sup_{P\in \mathcal{P}_{0}}P\left( \xi _{j,n}(x)<-1\text{ AND }%
+-c_{n}\leq h_{A,j,n}(x),\text{ for some }x\in \mathcal{X}^{+}\text{ and }%
+j=2,..,k\right) \\
+&\leq &\sup_{P\in \mathcal{P}_{0}}P\left( \overline{\sigma }%
+_{j,n}^{G+}(x)^{-1}\sqrt{n}\left( G_{j,n}^{+}(x)-G_{j}^{+}(x)\right) +%
+\overline{\sigma }_{j,n}^{G+}(x)^{-1}h_{j,A,n}(x)<-\kappa _{n}\right. \\
+&&\left. \text{AND }-c_{n}\leq h_{A,j,n}(x),\text{ for some }x\in \mathcal{X}%
+^{+}\text{ and }j=2,..,k\right) \\
+&\leq &\sup_{P\in \mathcal{P}_{0}}P\left( -\tau _{n}+\overline{\sigma }%
+_{j,n}^{G+}(x)^{-1}h_{j,A,n}(x)<-\kappa _{n}\right. \\
+&&\left. \text{AND }-c_{n}\leq h_{A,j,n}(x),\text{ for some }x\in \mathcal{X}%
+^{+}\text{ and }j=2,..,k\right) \\
+&&+\sup_{P\in \mathcal{P}_{0}}P\left( \overline{\sigma }_{j,n}^{G+}(x)^{-1}%
+\sqrt{n}\left( G_{j,n}(x)-G_{j}(x)\right) <-\tau _{n},\text{ for some }x\in 
+\mathcal{X}^{+}\text{ and }j=2,..,k\right) \\
+&\leq &\sup_{P\in \mathcal{P}_{0}}P\left( -\overline{\sigma }%
+_{j,n}^{G+}(x)^{-1}h_{j,A,n}(x)<-\kappa _{n}+c_{n}\right. \\
+&&\left. \text{AND }-c_{n}\leq h_{A,j,n}(x),\text{ for some }x\in \mathcal{X}%
+^{+}\text{ and }j=2,..,k\right) \\
+&=&o(1).
+\end{eqnarray*}%
+This establishes that (\ref{c0*}) holds. Finally, (\ref{c0}) follows from
+Lemma 1 and Lemma 2.
+
+\bigskip
+
+\noindent \textbf{(ii)} Recall that $c_{0,n,1-\alpha }^{\ast }\left( \phi
+_{n},h_{B,n}\right) $ is the ($1-\alpha )-$ percentile of $S_{n}^{\ast },$
+as defined in (\ref{Sn*}); and define $c_{0,n,1-\alpha }^{GMS}\left( \phi
+_{n},\overline{h}_{B,n}\right) $ to the ($1-\alpha )-$ percentile of $%
+S_{n}^{GMS},$ where%
+\begin{equation*}
+S_{n}^{GMS}=\max_{x\in \mathcal{X}^{+}}\sum_{j=2}^{k}\max \left( \left\{ 0,%
+\frac{\overline{v}_{j,n}(x)-\phi _{j,n}(x)}{\sqrt{\overline{h}_{B,j}(x)}}%
+\right\} \right) ^{2},
+\end{equation*}%
+with $\overline{h}_{B,j}(x)=\frac{\left( \widehat{\sigma }_{j,n}(x)+\epsilon
+\right) ^{2}}{\widehat{\sigma }_{j,n}(x)},$ $\overline{v}_{n}=(\overline{v}%
+_{2,n},...,\overline{v}_{k,n})^{\prime }$ is a $k-1$ dimensional Gaussian
+process, with mean zero and covariance kernel with element given by $%
+\widehat{\sigma }_{i,n}(x)^{-1}\left( \widehat{\sigma }_{i,n}(x)+\epsilon
+\right) \left( \widehat{\sigma }_{j,n}(x^{\prime })+\epsilon \right) 
+\widehat{\sigma }_{j,n}(x^{\prime })^{-1}$ for $i,j=2,...,k$ and $%
+x,x^{\prime }\in \mathcal{X}^{+}.$ Finally, let $v=(v_{2},...,v_{k})^{\prime
+}$ is a $k-1$ dimensional Gaussian process, with mean zero and covariance
+kernel with element given by $\sigma _{i}(x)^{-1}\left( \sigma
+_{i}(x)+\epsilon \right) \left( \sigma _{j}(x^{\prime })+\epsilon \right) 
+\widehat{\sigma }_{j}(x^{\prime })^{-1}$ for $i,j=2,...,k$ and $x,x^{\prime
+}\in \mathcal{X}^{+}.$ We first need to show that%
+\begin{equation}
+c_{0,n,1-\alpha }^{\ast }\left( \phi _{n},h_{B,n}\right) -c_{0,n,1-\alpha
+}^{GMS}\left( \phi _{n},\overline{h}_{B,n}\right) =o_{p}(1),  \label{cv}
+\end{equation}%
+and then to prove that the statement holds when replacing $c_{0,n,1-\alpha
+}^{\ast }\left( \phi _{n},h_{B,n}\right) $ with $c_{0,n,1-\alpha
+}^{GMS}\left( \phi _{n},\overline{h}_{B,n}\right) .$
+
+From Lemma 2, $\widehat{\sigma }_{j,n}^{\ast G+}(x)-\widehat{\sigma }%
+_{j,n}^{G+}(x)=o_{p}^{\ast }(1)$ uniformly in $x\in \mathcal{X}^{+}$ for all 
+$j=2,...,k.$ Then, by Theorem 2.3 in Peligrad (1998),%
+\begin{equation*}
+v^{\ast }\overset{d^{\ast }}{\Longrightarrow }v\text{ a.s.-}\omega ,
+\end{equation*}%
+where $v^{\ast }\overset{\ast }{\Longrightarrow }v$ denotes weak
+convergence, conditional on sample. As $\overline{v}_{n}\Longrightarrow v,$ (%
+\ref{cv}) follows.
+
+Given Assumption A4, by Lemma B3 in the Supplement of Andrews and Shi
+(2013), the distribution of $S_{\infty }^{\dag },$ as defined in (\ref%
+{Sn-inf}), is continuous. It is also strictly increasing and its $(1-\alpha
+)-$quantile is strictly positive, for all $\alpha <1/2.$ The statement then
+follows by the same argument as that used in the proof of Theorem 2(b) in
+the Supplement of Andrews and Shi (2013).
+
+\medskip
+
+\noindent \textbf{Proof of Theorem 3: (i)} Without loss of generality, let $%
+B_{FA}^{G+}=\left\{ x\in \mathcal{X}^{+}:G_{2}(x)>0\right\} ,$ and note that
+for all $x\in B_{FA}^{G+},$ $\max \left\{ 0,\frac{\sqrt{n}G_{2,n}^{+}(x)}{%
+\overline{\sigma }_{2,n}^{G+}(x)}\right\} =\frac{\sqrt{n}G_{2,n}^{+}(x)}{%
+\overline{\sigma }_{2,n}^{G+}(x)}.$ Thus,%
+\begin{eqnarray*}
+S_{n}^{G+} &=&\int_{B_{FA}^{G+}}\sum_{j=2}^{k}\left( \max \left\{ 0,\frac{%
+\sqrt{n}G_{j,n}^{+}(x)}{\overline{\sigma }_{j,n}^{G+}(x)}\right\} \right)
+^{2}\mathrm{d}Q(x)+\int_{\mathcal{X}^{+}\backslash
+B_{FA}^{G+}}\sum_{j=2}^{k}\left( \max \left\{ 0,\frac{\sqrt{n}G_{j,n}^{+}(x)%
+}{\overline{\sigma }_{j,n}^{G+}(x)}\right\} \right) ^{2}\mathrm{d}Q(x) \\
+&=&\int_{B_{FA}^{G+}}\left( \frac{\sqrt{n}G_{2,n}^{+}(x)}{\overline{\sigma }%
+_{2,n}^{G+}(x)}\right) ^{2}\mathrm{d}Q(x)+\int_{B_{FA}^{G+}}\sum_{j=3}^{k}%
+\left( \max \left\{ 0,\frac{\sqrt{n}G_{j,n}^{+}(x)}{\overline{\sigma }%
+_{j,n}^{G+}(x)}\right\} -\left( \frac{\sqrt{n}G_{2,n}^{+}(x)}{\overline{%
+\sigma }_{2,n}^{G+}(x)}\right) \right) ^{2}\mathrm{d}Q(x) \\
+&&+\int_{\mathcal{X}^{+}\backslash B_{FA}^{G+}}\sum_{j=2}^{k}\left( \max
+\left\{ 0,\frac{\sqrt{n}G_{j,n}^{+}(x)}{\overline{\sigma }_{j,n}^{G+}(x)}%
+\right\} \right) ^{2}\mathrm{d}Q(x) \\
+&=&I_{n}+II_{n}+III_{n},
+\end{eqnarray*}%
+with with $\overline{\sigma }_{j,n}^{2,\ast G+}=\left( \widehat{\sigma }%
+_{j,n}^{\ast G+}(x)+\varepsilon \right) ^{2}.$ Now, $I_{n}$ diverges to
+infinity with probability approaching one. Theorem 1 ensures that $II_{n}$
+and $III_{n}$ are $O_{p}(1)$. Thus, $S_{n}^{G+}$ diverges to infinity$.$ As $%
+S_{n}^{\ast G+}$ is $O_{p^{\ast }}(1),$ conditional on the sample, the
+statement follows.
+
+\medskip
+
+\noindent \textbf{Proof of Theorem 4:}
+
+\noindent Define, $S_{\infty ,LA}^{\dag G+}$ as in (\ref{Sn-inf}), but with
+the vector $h_{j,A,\infty }^{G+}(x)$ having at least one component strictly
+bounded away above from zero, and finite, for all $x\in B_{LA}^{G+}.$ Let $%
+\mathcal{P}_{n,LA}^{G+}$ denote the set of probabilities under the sequence
+of local alternatives. We have that for all $a>0,$ 
+\begin{equation*}
+\lim \sup_{n\rightarrow \infty }\sup_{P\in \mathcal{P}_{n,LA}^{G+}}\left[
+P\left( S_{n}^{G+}>a\right) -P\left( S_{\infty ,LA}^{\dag G+}>a\right) %
+\right] =0,
+\end{equation*}%
+and the distribution of $S_{\infty ,LA}^{\dag G+}$ is continuous at its $%
+(1-\alpha )+\delta $ quintile, for all $0<\alpha <1/2$ and $\delta \geq 0.$
+Also, note that for all $x\in B_{LA}^{G+},$ $\phi _{n}^{G+}=0.$ The
+statement then follows by the same argument as that used in the proof of
+Theorem 2\textbf{(}ii\textbf{)}.
+
+\newpage
+
+\section{References}
+
+\noindent Aiolfi, M., C. Capistr\'{a}n, and A. Timmermann (2011). Forecast
+Combinations. In M.P. Clements and D\medskip .F. Hendry (eds.), \textbf{%
+Oxford Handbook of Economic Forecasting}, pp. 355-390, Oxford University
+Press, Oxford.\medskip
+
+\noindent Andrews, D.W.K. (1991). Heteroskedasticity and Autocorrelation
+Robust Covariance Matrix Estimation. \textit{Econometrica, }59,
+817-858.\medskip
+
+\noindent Andrews, D.W.K. and D. Pollard (1994). An Introduction to
+Functional Central Limit Theorems for Dependent Stochastic Processes. 
+\textit{International Statistical Review, }62, 119-132.\medskip
+
+\noindent Andrews, D.W.K. and X. Shi (2013). Inference Based on Conditional
+Moment Inequalities. \textit{Econometrica, }81, 609-666.\medskip
+
+\noindent Andrews, D.W.K. and X. Shi (2017). Inference Based on Many
+Conditional Moment Inequalities. \textit{Journal of Econometrics, }196,
+275-287.\medskip
+
+\noindent Andrews, D.W.K. and G. Soares (2010). Inference for Parameters
+Defined by Moment Inequalities Using Generalized Moment Selection. \textit{%
+Econometrica, }78, 119-157.\medskip
+
+\noindent Arvanitis, S., Th. Post, V. Poti and S. Karabati (2021).
+Nonparametric Test for Optimal Predictive Ability. \textit{International
+Journal of Forecasting, }37, 881-898.\medskip
+
+\noindent Barendse, S. and A.J. Patton (2022). Comparing Predictive Accuracy
+in the Presence of a Loss Function Shape Parameter. \textit{Journal of
+Business and Economic Statistics}, 40, 1057-1069.\medskip 
+
+\noindent Barnett, W.A., M. Chauvet, D. Leiva-Leon (2016). Real-time
+nowcasting of nominal GDP with structural breaks. \textit{Journal of
+Econometrics}, 191, 312-324.\medskip 
+
+\noindent Bierens, H.J. (1982). Consistent Model Specification Tests. 
+\textit{Journal of Econometrics, }20, 105-134.\medskip
+
+\noindent Bierens, H.J. (1990). A Consistent Conditional Moment Tests for
+Functional Form. \textit{Econometrica, }58, 1443-1458.\medskip
+
+\noindent Clark, T. and M. McCracken (2013). Advances in Forecast
+Evaluation. In G. Elliott, C.W.J. Granger and A. Timmermann (eds.), \textbf{%
+Handbook of Economic Forecasting Vol. 2}, pp. 1107-1201, Elsevier,
+Amsterdam.\medskip
+
+\noindent Coroneo, L., V. Corradi and P. Santos Monteiro (2018). Testing for
+Optimal Monetary Policy via Moment Inequalities. \textit{Journal of Applied
+Econometrics, }33, 780-796.\medskip
+
+\noindent Corradi, V. and N.R. Swanson (2003). Predictive Density
+Evaluation. In G. Elliott, C.W.J. Granger and A. Timmermann (eds.), \textbf{%
+Handbook of Economic Forecasting Vol. 1}, pp. 197-284, Elsevier,
+Amsterdam.\medskip
+
+\noindent Corradi, V. and N.R. Swanson (2007). Nonparametric Bootstrap
+Procedures for Predictive Inference Based on Recursive Estimation Schemes. 
+\textit{International Economic Review, }48, 67-109.\medskip
+
+\noindent Corradi, V. and N. R. Swanson (2013). A Survey of Recent Advances
+in Forecast Accuracy Comparison Testing, with an Extension to Stochastic
+Dominance. In X. Chen and N.R. Swanson (eds.), \textbf{Causality,
+Prediction, and Specification Analysis: Recent Advances and Future
+Directions, Essays in honor of Halbert L. White, Jr.}, pp. 121-144,
+Springer, New York.\medskip
+
+\noindent Croushore, D. (1993). Introducing: The Survey of Professional
+Forecasters. \textit{The Federal Reserve Bank of Philadelphia Business Review%
+}, November-December, 3-15.\medskip 
+
+\noindent Del Negro, M., M. Giannoni, and C. Patterson (2012). The Forward
+Guidance Puzzle. Staff Reports 574, Federal Reserve Bank of New
+York.\medskip \medskip
+
+\noindent Diebold, F. X. and R.S. Mariano(1995). Comparing Predictive
+Accuracy. \textit{Journal of Business and Economic Statistics}, 13,
+253-263.\medskip
+
+\noindent Diebold, F.X. and M. Shin (2015). Assessing Point Forecast
+Accuracy by Stochastic Loss Distance. \textit{Economics Letters, }130,
+37-38.\medskip
+
+\noindent Diebold, F.X. and M. Shin (2017). Assessing Point Forecast
+Accuracy by Stochastic Error Distance. \textit{Econometric Reviews, }36,
+588-598.\medskip
+
+\noindent Elliott, G., I. Komunjer and A. Timmermann (2005). Estimation and
+Testing of Forecast Rationality under Flexible Loss. \textit{Review of
+Economic Studies, }72, 1107-1125.\medskip
+
+\noindent Elliott, G., I. Komunjer and A. Timmermann (2008). Biases in
+Macroeconomic Forecasts: Irrationality of Asymmetric Loss? \textit{Journal
+of the European Economic Association, }6, 122-157.\medskip
+
+\noindent Fair, R.C. and R.J. Shiller (1990). Comparing Information in
+Forecasts from Econometric Models. \textit{American Economic Review}, 80,
+375-389.\medskip
+
+\noindent Genre, V., G. Kenny, A. Meyler, and A. Timmermann (2013).
+Combining Expert Forecasts: Can Anything Beat the Simple Average. \textit{%
+International Journal of Forecasting}, 29, 108-121.\medskip
+
+\noindent Giacomini, R. and B. Rossi. (2009) Detecting and Predicting
+Forecast Breakdown. \textit{Review of Economics Studies, }76,
+669-685.\medskip
+
+\noindent Gneiting, T. (2011). Making and Evaluating Point Forecast. \textit{%
+Journal of the American Statistical Association, }106, 746-762.\medskip
+
+\noindent Granger, C. W. J. (1999). Outline of Forecast Theory using
+Generalized Cost Functions. \textit{Spanish Economic Review,} 1,
+161-173.\medskip
+
+\noindent Hansen, B.E. (2008). Uniform Convergence Rates for Kernel
+Estimators with Dependent Data. \textit{Econometric Theory, }24,
+726-748.\medskip
+
+\noindent Holm, S. (1979). A Simple Sequentially Rejective Multiple Test
+Procedure. \textit{Scandinavian Journal of Statistics,} 6, 65-70.\medskip
+
+\noindent Jin, S., V. Corradi and N.R. Swanson (2017). Robust Forecast
+Comparison. \textit{Econometric Theory, }33, 1306-1351.\medskip
+
+\noindent Lahiri, K., H. Peng, and Y. Zhao (2015). Testing the Value of
+Probability Forecasts for Calibrated Combining. \textit{International
+Journal of Forecasting}, 31, 113-129.\medskip
+
+\noindent Lahiri, K., H. Peng, and Y. Zhao (2017). Online Learning and
+Forecast Combination in Unbalanced Panels. \textit{Econometric Reviews, }36,
+257-288.\medskip
+
+\noindent Li, J. and Z.P. Liao (2020). Uniform Nonparametric Inference for
+Time Series. \textit{Journal of Econometrics, }219, 38-51.\medskip
+
+\noindent Linton, O., K. Song and Y.J. Whang (2010). An Improved Bootstrap
+Test of Stochastic Dominance. \textit{Journal of Econometrics, }154,
+186-202.\medskip
+
+\noindent McCracken, M.W. (2000). Robust Out-of-Sample Inference. \textit{%
+Journal of Econometrics}, 99, 195-223.\medskip
+
+\noindent Newey, W.K. and West, K.D. (1987). A Simple, Positive Definite,
+Heteroskedasticty and Autocorrelation Consistent Covariance Matrix. \textit{%
+Econometrica,} 55, 703-708.\medskip
+
+\noindent Patton, A.J. (2020). Comparing Possibly Misspecified Forecasts. 
+\textit{Journal of Business \& Economic Statistics, }38, 796-809.\medskip
+
+\noindent Patton, A.J. and A. Timermann (2007). \ Testing Forecast
+Optimality under Unknown Loss. \textit{Journal of the American Statistical
+Association, }v.102, 1172-1184.\medskip
+
+\noindent Peligrad, M. (1998). On the Blockwise Bootstrap for Empirical
+Processes for Stationary Sequences. \textit{Annals of Probability, }26,
+877-901.\medskip
+
+\noindent Pincheira, P., N. Hardy and F. Munoz (2021). Go Wild for a While:
+A New Asymptotically Normal Test for Forecast Evaluation in Nested Models. 
+\textit{Mathematics, }9, 1-28.\medskip
+
+\noindent Swanson, N.R. and H. White (1997a). A Model Selection Approach to
+Real-Time Macroeconomic Forecasting Using Linear Models and Artificial
+Neural Networks. \textit{Review of Economics and Statistics}, 79, 1997,
+540-550.\medskip
+
+\noindent Swanson, N.R. and H. White (1997b). Forecasting Economic Time
+Series Using Adaptive Versus Nonadaptive and Linear Versus Nonlinear
+Econometric Models. \textit{International Journal of Forecasting,} 13, 1997,
+439-461.\medskip
+
+\noindent Timmermann, A. (2006). Forecast Combinations. In A. Timmermann,
+C.W.J. Granger, and G. Elliott (eds.), \textbf{Handbook of Forecasting Vol. 1%
+}, pp. 135-196\textbf{. }North Holland, Amsterdam.\medskip
+
+\noindent White, H. (2000). A Reality Check for Data Snooping. \textit{%
+Econometrica} 68, 1097-1126.\medskip
+
+\noindent White, H. (1984). \textbf{Asymptotic Theory for Econometricians}.
+Academic Press, San Diego.\medskip
+
+\noindent Woodford, M. (2012). Methods of Policy Accomodation at the
+Interest-Rate Lower Bound. \textit{Proceedings: Economic Policy Symposium, }%
+Federal Reserve Bank of Kansas City, 185-288.\medskip \medskip
+
+\noindent Zarnowitz, V. and P. Braun, (1993). Twenty-Two Years of the
+NBER-ASA Quarterly Economic Outlook Surveys: Aspects and Comparisons of
+Forecasting Performance. In J.H. Stock and M.W. Watson (eds.), \textbf{%
+Business Cycles, Indicators, and Forecasting}, pp. 11-94, University of
+Chicago Press, Chicago.
+
+\bigskip
+
+\begin{center}
+\linespread{1.1}
+
+\begin{table}[tbp]
+\caption{Monte Carlo Results for $JCS_n^{G+}$, $JCS_n^{G-} $, $JCS_n^{C+}$,
+and $JCS_n^{C-}$ Forecast Superiority Tests$^*$}{\centering}
+\par
+\hspace{1cm}
+\par
+\begin{tabular}{cc|cccc|cccc}
+\hline\hline
+$DGP$ & $n$ & {$J_n = 0.20$} & {$J_n = 0.35$} & {$J_n = 0.50$} & {$J_n =
+0.65 $} & {$J_n = 0.20$} & {$J_n = 0.35$} & {$J_n = 0.50$} & {$J_n = 0.65$}
+\\ 
+&  & \multicolumn{4}{c}{GL Forecast Superiority} & \multicolumn{4}{c}{CL
+Forecast Superiority} \\ \hline
+&  & \multicolumn{8}{c}{$Empirical$ $Size$} \\ \hline
+DGP-H1 & 100 & 0.116 & 0.120 & 0.112 & 0.120 & 0.130 & 0.126 & 0.138 & 0.140
+\\ 
+& 150 & 0.112 & 0.132 & 0.136 & 0.146 & 0.132 & 0.132 & 0.134 & 0.144 \\ 
+& 200 & 0.120 & 0.128 & 0.136 & 0.140 & 0.114 & 0.130 & 0.134 & 0.146 \\ 
+& 300 & 0.125 & 0.125 & 0.135 & 0.150 & 0.115 & 0.135 & 0.140 & 0.150 \\ 
+& 600 & 0.115 & 0.130 & 0.160 & 0.155 & 0.115 & 0.115 & 0.130 & 0.145 \\ 
+& 900 & 0.095 & 0.115 & 0.110 & 0.115 & 0.125 & 0.135 & 0.165 & 0.170 \\ 
+\hline
+DGP-H2 & 100 & 0.084 & 0.078 & 0.086 & 0.092 & 0.042 & 0.040 & 0.044 & 0.042
+\\ 
+& 150 & 0.078 & 0.088 & 0.088 & 0.096 & 0.038 & 0.036 & 0.044 & 0.046 \\ 
+& 200 & 0.076 & 0.090 & 0.088 & 0.100 & 0.032 & 0.030 & 0.032 & 0.040 \\ 
+& 300 & 0.075 & 0.070 & 0.075 & 0.090 & 0.030 & 0.030 & 0.050 & 0.055 \\ 
+& 600 & 0.085 & 0.090 & 0.100 & 0.110 & 0.015 & 0.025 & 0.030 & 0.035 \\ 
+& 900 & 0.070 & 0.065 & 0.080 & 0.090 & 0.020 & 0.020 & 0.020 & 0.025 \\ 
+\hline
+&  & \multicolumn{8}{c}{$Empirical$ $Power$} \\ \hline
+DGP-H3 & 100 & 0.210 & 0.214 & 0.234 & 0.238 & 0.290 & 0.300 & 0.308 & 0.308
+\\ 
+& 150 & 0.240 & 0.230 & 0.240 & 0.274 & 0.382 & 0.406 & 0.430 & 0.454 \\ 
+& 200 & 0.282 & 0.308 & 0.322 & 0.356 & 0.488 & 0.506 & 0.520 & 0.550 \\ 
+& 300 & 0.385 & 0.430 & 0.460 & 0.490 & 0.650 & 0.660 & 0.700 & 0.745 \\ 
+& 600 & 0.720 & 0.735 & 0.745 & 0.780 & 0.945 & 0.950 & 0.960 & 0.965 \\ 
+& 900 & 0.900 & 0.915 & 0.920 & 0.935 & 0.995 & 1.000 & 1.000 & 1.000 \\ 
+\hline
+DGP-H4 & 100 & 0.656 & 0.660 & 0.682 & 0.704 & 0.892 & 0.914 & 0.916 & 0.926
+\\ 
+& 150 & 0.840 & 0.850 & 0.874 & 0.880 & 0.988 & 0.988 & 0.994 & 0.994 \\ 
+& 200 & 0.948 & 0.958 & 0.966 & 0.974 & 1.000 & 0.998 & 1.000 & 0.998 \\ 
+& 300 & 0.995 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+& 600 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+& 900 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+\hline\hline
+\end{tabular}%
+\par
+\begin{minipage}{1\columnwidth}
+\vspace{0.1in}
+{\noindent $^{*}$ Notes: Entries denote rejection frequencies of ($JCS_n^{G+}$,$JCS_n^{G-}$) tests (i.e., GL forecast superiority) and ($JCS_n^{C+}$,$JCS_n^{C-}$) tests 
+(i.e., CL forecast superiority) under a variety of data generating processes 
+denoted by DGP-H1 - DGP-H4. In DGP-H1 - DGP-H2, no alternative outperforms the benchmark model. In DGPH3 - DGP-H4, at least one alternative model outperfroms the benchmark model.
+Sample sizes include $n$=100, 150, 200, 300, 600, and 900 observations, as indicated in the second column of entries in the table. Nominal test size is 10\%, and tests 
+are carried out using critical values 
+constructed for values of $J_n$ including 0.20, 0.35, 0.50, and 0.65. See Section 4 for complete details.}
+\end{minipage}
+\end{table}
+
+\begin{table}[tbp]
+\caption{Monte Carlo Results for $S_n^{G+}$, $S_n^{G-}$, $S_n^{C+}$, and $%
+S_n^{C-}$ Forecast Superiority Tests$^*$}{\centering}
+\par
+\hspace{1cm}
+\par
+\begin{tabular}{cc|cccc|cccc}
+\hline\hline
+$DGP$ & $n$ & {$\eta = 0.0015$} & {$\eta = 0.002$} & {$\eta = 0.0025$} & {$%
+\eta = 0.003$} & {$\eta = 0.0015$} & {$\eta = 0.002$} & {$\eta = 0.0025$} & {%
+$\eta = 0.003$} \\ 
+&  & \multicolumn{4}{c}{GL Forecast Superiority} & \multicolumn{4}{c}{CL
+Forecast Superiority} \\ \hline
+&  & \multicolumn{8}{c}{$Empirical$ $Size$} \\ \hline
+DGP-H1 & 100 & 0.130 & 0.128 & 0.128 & 0.128 & 0.123 & 0.123 & 0.122 & 0.122
+\\ 
+& 150 & 0.130 & 0.130 & 0.130 & 0.129 & 0.133 & 0.133 & 0.133 & 0.132 \\ 
+& 200 & 0.124 & 0.124 & 0.124 & 0.124 & 0.133 & 0.132 & 0.131 & 0.130 \\ 
+& 300 & 0.075 & 0.075 & 0.075 & 0.074 & 0.082 & 0.082 & 0.082 & 0.082 \\ 
+& 600 & 0.114 & 0.114 & 0.113 & 0.112 & 0.099 & 0.099 & 0.098 & 0.098 \\ 
+& 900 & 0.123 & 0.122 & 0.122 & 0.120 & 0.153 & 0.153 & 0.152 & 0.151 \\ 
+\hline
+DGP-H2 & 100 & 0.035 & 0.035 & 0.035 & 0.035 & 0.031 & 0.031 & 0.031 & 0.031
+\\ 
+& 150 & 0.031 & 0.031 & 0.031 & 0.031 & 0.036 & 0.036 & 0.036 & 0.036 \\ 
+& 200 & 0.033 & 0.033 & 0.033 & 0.032 & 0.058 & 0.058 & 0.058 & 0.058 \\ 
+& 300 & 0.034 & 0.033 & 0.032 & 0.031 & 0.040 & 0.037 & 0.037 & 0.036 \\ 
+& 600 & 0.076 & 0.076 & 0.076 & 0.075 & 0.102 & 0.102 & 0.102 & 0.102 \\ 
+& 900 & 0.092 & 0.092 & 0.091 & 0.091 & 0.110 & 0.110 & 0.110 & 0.110 \\ 
+\hline
+&  & \multicolumn{8}{c}{$Empirical$ $Power$} \\ \hline
+DGP-H3 & 100 & 0.363 & 0.363 & 0.363 & 0.363 & 0.429 & 0.428 & 0.428 & 0.427
+\\ 
+& 150 & 0.510 & 0.510 & 0.510 & 0.508 & 0.641 & 0.639 & 0.638 & 0.637 \\ 
+& 200 & 0.710 & 0.708 & 0.707 & 0.705 & 0.794 & 0.793 & 0.793 & 0.792 \\ 
+& 300 & 0.896 & 0.895 & 0.895 & 0.895 & 0.952 & 0.952 & 0.952 & 0.952 \\ 
+& 600 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+& 900 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+\hline
+DGP-H4 & 100 & 0.967 & 0.966 & 0.966 & 0.966 & 0.974 & 0.974 & 0.974 & 0.974
+\\ 
+& 150 & 0.999 & 0.999 & 0.999 & 0.999 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+& 200 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+& 300 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+& 600 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+& 900 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+\hline\hline
+\end{tabular}%
+\par
+\begin{minipage}{1\columnwidth}
+\vspace{0.1in}
+{\noindent $^{*}$ Notes: See notes to Table 1. Entries denote rejection frequencies of ($S_n^{G+}$,$S_n^{G-}$) tests (i.e., GL forecast superiority) 
+and ($S_n^{C+}$,$S_n^{C-}$) tests (i.e., CL forecast superiority). Nominal test size is 10\%, and tests are carried out using critical values 
+constructed for values of $\eta$ including 0.0015, 0.002, 0.0025, and 0.0030. See Section 4 for complete details.}
+\end{minipage}
+\end{table}
+
+\bigskip
+
+\linespread{1.05}
+
+\begin{table}[tbp]
+\caption{SPF Forecast Pooling Analysis of Quarterly Nominal GDP Using Mean
+Benchmark Model and Mean Expert Pool Predictions$^*$}{\centering}
+\par
+\hspace{0.3cm}
+\par
+\begin{center}
+\begin{tabular}{cl|lllll}
+\hline\hline
+$Group$ & $Statistic$ & \multicolumn{5}{c}{$Forecast$ $Horizon$} \\ \hline
+&  & $h=0$ & $h=1$ & $h=2$ & $h=3$ & $h=4$ \\ \hline\hline
+Group 1 & $S_n^G$ & 0.000718 & 0.000781 & 0.001284 & 0.001525 & 0.024494 \\ 
+& $S_n^C$ & 0.000008 & 0.000020 & 0.000203 & 0.000172 & 0.024470 \\ 
+& $JCS_n^G$ & 0.232845 & 0.232845 & 0.232845 & 0.310460 & 0.024611 \\ 
+& $JCS_n^C$ & 0.000357 & 0.000333 & 0.000729 & 0.000745 & 0.025276 \\ \hline
+Group 2 & $S_n^G$ & 0.000820 & 0.002681 & 0.002334 & 0.002451 & 0.008070 \\ 
+& $S_n^C$ & 0.000037 & 0.001516 & 0.001983 & 0.002675 & 0.003287 \\ 
+& $JCS_n^G$ & 0.543305 & 0.698535 & 1.164226$^*$ & 0.698535 & 1.397071$^*$
+\\ 
+& $JCS_n^C$ & 0.000115 & 0.006752 & 0.009945 & 0.011544 & 0.021668 \\ \hline
+Group 3 & $S_n^G$ & 0.001975 & 0.004097 & 0.005302 & 0.004784 & 0.009391 \\ 
+& $S_n^C$ & 0.000878 & 0.001306 & 0.008277 & 0.004486 & 0.014821$^*$ \\ 
+& $JCS_n^G$ & 0.465690 & 0.698535 & 0.776151 & 0.620920 & 1.164226$^*$ \\ 
+& $JCS_n^C$ & 0.002955 & 0.005766 & 0.011527$^*$ & 0.010482 & 0.020510$^*$
+\\ \hline
+Group 4 & $S_n^G$ & 0.001779 & 0.005075 & 0.004359 & 0.003820 & 0.008772 \\ 
+& $S_n^C$ & 0.000512 & 0.001760 & 0.004896 & 0.004161 & 0.009259 \\ 
+& $JCS_n^G$ & 0.543305 & 0.853766 & 0.776151 & 0.620920 & 1.241841$^*$ \\ 
+& $JCS_n^C$ & 0.002621 & 0.007716$^*$ & 0.008856 & 0.010377 & 0.022399$^*$
+\\ \hline
+Group 5 & $S_n^G$ & 0.001540 & 0.003063 & 0.005878 & 0.007226 & 0.012886$^*$
+\\ 
+& $S_n^C$ & 0.000507 & 0.000842 & 0.008293 & 0.012770$^*$ & 0.020682$^*$ \\ 
+& $JCS_n^G$ & 0.465690 & 0.776151 & 0.620920 & 0.853766 & 1.008996$^*$ \\ 
+& $JCS_n^C$ & 0.002235 & 0.004643 & 0.010388$^*$ & 0.015376$^*$ & 0.018873$%
+^* $ \\ \hline
+Group 6 & $S_n^G$ & 0.002384 & 0.007759 & 0.005390 & 0.004585 & 0.012976 \\ 
+& $S_n^C$ & 0.000369 & 0.002493 & 0.008548 & 0.007844 & 0.022130$^*$ \\ 
+& $JCS_n^G$ & 0.776151 & 1.164226$^*$ & 0.776151 & 0.698535 & 1.008996 \\ 
+& $JCS_n^C$ & 0.002619 & 0.008085$^*$ & 0.009990 & 0.014823 & 0.020172 \\ 
+\hline
+Group 7 & $S_n^G$ & 0.002284 & 0.006819 & 0.008704 & 0.009044 & 0.008960 \\ 
+& $S_n^C$ & 0.000986 & 0.002106 & 0.011060 & 0.008702 & 0.007617 \\ 
+& $JCS_n^G$ & 0.465690 & 0.931381$^*$ & 1.086611$^*$ & 0.698535 & 0.931381
+\\ 
+& $JCS_n^C$ & 0.002803 & 0.005994$^*$ & 0.011401$^*$ & 0.011645 & 0.012845
+\\ \hline
+Group 8 & $S_n^G$ & 0.001857 & 0.004237 & 0.003911 & 0.006975 & 0.016996 \\ 
+& $S_n^C$ & 0.000452 & 0.001066 & 0.004071 & 0.007224 & 0.015145 \\ 
+& $JCS_n^G$ & 0.931381 & 0.776151 & 0.698535 & 0.853766 & 1.397071$^*$ \\ 
+& $JCS_n^C$ & 0.002526 & 0.004420 & 0.007946 & 0.008453 & 0.020293$^*$ \\ 
+\hline\hline
+\end{tabular}%
+\end{center}
+\par
+\begin{minipage}{1\columnwidth}
+\vspace{0.05in}
+{\noindent $^{*}$ Notes: Entries are $S_n^G$, $S_n^C$, $JCS_n^G$, and $JCS_n^C$ test statistics reported for forecast horizons $h={0,1,2,3,4}$. More specifically, 
+$S_n^G = S_n^{G+}$ $if$ $p_{B,n,S_n^{G+}}^{G+} \le p_{B,n,S_n^{G-}}^{G-}$; $otherwise$ $S_n^G = S_n^{G-}$. $S_n^C$, $JCS_n^G$, and $JCS_n^C$ are defined analogously. 
+Rejections of the null of no forecast superiority at a 10\% level are denoted by a superscipt *. See Section 5 for complete details.}
+\end{minipage}
+\end{table}
+
+\bigskip
+
+\begin{table}[tbp]
+\caption{SPF Forecast Pooling Analysis of Quarterly Nominal GDP Using Median
+Benchmark Model and Median Expert Pool Predictions$^*$}{\centering}
+\par
+\hspace{0.3cm}
+\par
+\begin{center}
+\begin{tabular}{cl|lllll}
+\hline\hline
+$Group$ & $Statistic$ & \multicolumn{5}{c}{$Forecast$ $Horizon$} \\ \hline
+&  & $h=0$ & $h=1$ & $h=2$ & $h=3$ & $h=4$ \\ \hline\hline
+Group 1 & $S_n^G$ & 0.000563 & 0.001063 & 0.001381 & 0.002021 & 0.001943 \\ 
+& $S_n^C$ & 0.000006 & 0.000152 & 0.000556 & 0.001059 & 0.000194 \\ 
+& $JCS_n^G$ & 0.310460 & 0.232845 & 0.232845 & 0.232845 & 0.388075 \\ 
+& $JCS_n^C$ & 0.000178 & 0.000907 & 0.000989 & 0.002319 & 0.001603 \\ \hline
+Group 2 & $S_n^G$ & 0.000715 & 0.002496 & 0.002127 & 0.002244 & 0.004061 \\ 
+& $S_n^C$ & 0.000055 & 0.001409 & 0.001548 & 0.001152 & 0.001612 \\ 
+& $JCS_n^G$ & 0.465690 & 0.698535 & 1.086611$^*$ & 0.931381 & 1.008996 \\ 
+& $JCS_n^C$ & 0.000858 & 0.007005 & 0.009498 & 0.008086 & 0.012498 \\ \hline
+Group 3 & $S_n^G$ & 0.001448 & 0.003776 & 0.004268 & 0.002254 & 0.010113$^*$
+\\ 
+& $S_n^C$ & 0.000318 & 0.001068 & 0.003558 & 0.001985 & 0.014572$^*$ \\ 
+& $JCS_n^G$ & 0.620920 & 0.853766 & 0.853766 & 0.465690 & 1.008996 \\ 
+& $JCS_n^C$ & 0.001480 & 0.005813 & 0.010052 & 0.007434 & 0.017275$^*$ \\ 
+\hline
+Group 4 & $S_n^G$ & 0.001730 & 0.004888 & 0.002593 & 0.002697 & 0.006291 \\ 
+& $S_n^C$ & 0.000587 & 0.002044 & 0.002279 & 0.002268 & 0.006855 \\ 
+& $JCS_n^G$ & 0.698535 & 0.853766 & 0.776151 & 0.776151 & 1.164226$^*$ \\ 
+& $JCS_n^C$ & 0.002062 & 0.007503$^*$ & 0.007827 & 0.012697 & 0.019182$^*$
+\\ \hline
+Group 5 & $S_n^G$ & 0.001379 & 0.003470 & 0.004909 & 0.005554 & 0.009491 \\ 
+& $S_n^C$ & 0.000534 & 0.001044 & 0.007032 & 0.009277$^*$ & 0.017460$^*$ \\ 
+& $JCS_n^G$ & 0.388075 & 0.620920 & 0.776151 & 0.776151 & 0.776151 \\ 
+& $JCS_n^C$ & 0.001413 & 0.005926 & 0.009500$^*$ & 0.013223$^*$ & 0.016788$%
+^* $ \\ \hline
+Group 6 & $S_n^G$ & 0.001767 & 0.005915 & 0.004387 & 0.005942 & 0.008262 \\ 
+& $S_n^C$ & 0.000177 & 0.002169 & 0.006224 & 0.009615 & 0.020157$^*$ \\ 
+& $JCS_n^G$ & 0.931381$^*$ & 0.853766 & 0.698535 & 0.853766 & 0.698535 \\ 
+& $JCS_n^C$ & 0.001680 & 0.007416$^*$ & 0.009586 & 0.012696 & 0.018839 \\ 
+\hline
+Group 7 & $S_n^G$ & 0.002128 & 0.007057 & 0.008938 & 0.004600 & 0.009174 \\ 
+& $S_n^C$ & 0.001056 & 0.002847 & 0.008537 & 0.005034 & 0.008895 \\ 
+& $JCS_n^G$ & 0.465690 & 0.931381 & 1.008996 & 0.620920 & 1.086611$^*$ \\ 
+& $JCS_n^C$ & 0.002062 & 0.007216$^*$ & 0.010561$^*$ & 0.007966 & 0.015189
+\\ \hline
+Group 8 & $S_n^G$ & 0.001997 & 0.003098 & 0.002059 & 0.004183 & 0.012612 \\ 
+& $S_n^C$ & 0.000379 & 0.000686 & 0.001185 & 0.001744 & 0.010617 \\ 
+& $JCS_n^G$ & 0.620920 & 0.620920 & 0.388075 & 0.698535 & 1.086611$^*$ \\ 
+& $JCS_n^C$ & 0.001764 & 0.003088 & 0.003562 & 0.004157 & 0.016000$^*$ \\ 
+\hline\hline
+\end{tabular}%
+\end{center}
+\par
+\begin{minipage}{1\columnwidth}
+
+{\noindent $^{*}$ Notes: See notes to Table 3.}
+\end{minipage}
+\end{table}
+\end{center}
+
+\newpage
+
+\begin{center}
+\FRAME{}{5.3852in}{3.9496in}{0pt}{\Qcb{{}}}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";display "USEDEF";valid_file "T";width
+5.3852in;height 3.9496in;depth 0pt;original-width 20.01in;original-height
+9.5622in;cropleft "0";croptop "1";cropright "1";cropbottom "0";tempfilename
+'RLCPJC00.wmf';tempfile-properties "XPR";}}
+
+Summary Statistics
+
+\FRAME{}{3.9998in}{2.2321in}{0pt}{}{}{Figure}{\special{language "Scientific
+Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display "USEDEF";valid_file
+"T";width 3.9998in;height 2.2321in;depth 0pt;original-width
+4.3552in;original-height 2.4171in;cropleft "0";croptop "1";cropright
+"1";cropbottom "0";tempfilename 'RLCPJC01.wmf';tempfile-properties "XPR";}}
+\end{center}
+
+* Notes: Figures are kernel density estimates (Epanechnikov kernel) for
+various 4 quarter ahead predictions made during the fourth quarters of 1968,
+1983, 1998, and 2013. The number of experts in each sample ranges from 31 in
+1998 to 87 in 1968, as noted in table of summary statistics below the plots
+in the figure. See Section 5 for further details.
+
+\end{document}
+
+%%%%%%%%%%%%%%% End /document/New-Robust-Nov-12-2022.tex %%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%% Start /document/RLCPJC00.wmf %%%%%%%%%%%%%%%%%%%%
+
+WwlqZB@@@@@@@`QEp|@tB@@@@@PzOE@@I@@@CdfG@@@F@pA@@@@@@P@@@@p@A`@@E@@@@p`@p|@
+FUT@@@@pBB@@@@@PA@@@@BDP@@@@@E@@@@d`@@@@@@\@@@@@BD@@@@@@@@@@D@@@@tR@@@pA@@
+@@|K@@@|C@@@P@@@@PKAD@@I@@@@taAa@@|@lKAa_phB`_@D@@@@tR@@@@A@@@@pGP@@`@@@
+@`~B@@@D@@@@@@@@@@A@@@@mDP@@`@@@@`~B@@@C@@@@@@@@@@A@@@@mD`@@P@@@@PKAD@@E@@@
+@Pa@bJp}AT@@@@pDBxuAwGPA@@@@SH`WGd]BE@@@@La@bJPvIT@@@@pDBHj@wG@B@@@@zK@@@D@
+@@@@@@@@@D@@@@tR@C@@A@@@@mD@@@P@@@@PKAL@@D@@@@@_@B@@A@@@@pGP@@\@@@@@B@@@
+@@@@D@@@@tR@A@PB@@@@]XPH@@O@{RPxGLj@~p@A@@@@mD@@@P@@@@@|AD@@H@@@@ho@@@@A@
+@@@@@@@@P@@@@PKAD@@H@@@@ho@@@p@@@@@@@@@@P@@@@PKAH@@D@@@@tR@A@PA@@@@TH`hBtCC
+E@@@@La@^]POLT@@@@pDBxuA_PQA@@@@SH`hB|AEE@@@@La@bJPOLP@@@@PKAL@@D@@@@tR@@@@
+A@@@@mDp@@P@@@@@|AH@@D@@@@@_@A@pA@@@@|K@@@|C@@@P@@@@PKAD@@I@@@@taAa@@|@l
+KAa_PWI`_@D@@@@tR@@@@A@@@@pGP@@`@@@@`~B@@@D@@@@@@@@@@A@@@@mDP@@`@@@@`~B@@@C
+@@@@@@@@@@A@@@@mD`@@P@@@@PKAD@@E@@@@Pa@\ep}AT@@@@pDB`aCwGPA@@@@SH@FNd]BE@@@
+@La@\ePvIT@@@@pDBpUBwG@A@@@@mDp@@P@@@@PKA@@@D@@@@tR@C@@A@@@@pG`@@P@@@@@|AD@
+@G@@@@po@@@pO@@@@A@@@@mDP@@d@@@@PGFDB@pCpnDD~A]e`OLP@@@@PKA@@@D@@@@@_@A@
+@B@@@@zK@@@P@@@@@@@@@@D@@@@tR@A@@B@@@@zK@@@L@@@@@@@@@@D@@@@tR@B@@A@@@@mDP@@
+T@@@@@EBpUB}pPA@@@@SH@FNtCCE@@@@La@XxpGTT@@@@pDBpUB_PQA@@@@SH@WItCCD@@@@tR@
+C@@A@@@@mD@@@P@@@@PKAL@@D@@@@@_@B@@A@@@@pGP@@T@@@@@EB@@@@@PA@@@@BDP@@@@@E@@
+@@d`@@@@@@P@@@@PKA@@@E@@@@Pa@@@@@@T@@@@`@AD@@@@PA@@@@IH@@@@@@D@@@@tR@@@@G@@
+@@{K`nC@@@@@@@@Y@@@@@A@@@AHRPreVXlA`YbOsmOYs~G@@@iXcm@@@@@@@@@@@P@@@
+@PKAD@@E@@@@d`@@@@@@`@@@@`~B@@@C@@@@@@@@@@A@@@@mD`@@`@@@@PHEL@@n@CL@|rAcEPA
+@@@@TH@WGP_@E@@@@La@\]@vA`@@@@PHEL@@n@SL@tcAcEPA@@@@TH`ZFP_@E@@@@La@jY@vA`@
+@@@PHEL@@n@cL@lTAcEPA@@@@TH@^EP_@E@@@@La@xU@vA`@@@@PHEL@@n@sL@hEAcEPA@@@@TH
+paDP_@E@@@@La@GR@vA`@@@@PHEL@@n@CM@`v@cEPA@@@@THPeCP_@E@@@@La@UN@vA`@@@@PHE
+L@@n@SM@\g@cEPA@@@@TH@iBP_@E@@@@La@dJ@vApA@@@p~Bh{@@@@@@@@PF@@@@P@@@P@bDd\
+iEF[@Xfxs\{SvlA@@PuXK@@@@@@@@@@@D@@@@tR@D@PA@@@@IH@@@@@@H@@@@ho@@@p
+@@@@@@@@@@P@@@@PKAT@@H@@@@DRAC@@Nv@C@J^poAT@@@@@EBDvAyGPA@@@@SHP_Gd_@H@@@@D
+RAC@@Nw@C@J^`]BT@@@@@EBDvApJPA@@@@SHP_G@k@H@@@@DRAC@@Nx@C@J^PKCT@@@@@EBDvAg
+MPA@@@@SHP_G\v@H@@@@DRAC@@Ny@C@J^@yCT@@@@@EBDvA^PPA@@@@SHP_GxAAH@@@@DRAC@PN
+p@C@J^pfDT@@@@@EBDvAUSPA@@@@SHP_GTMAH@@@@DRAC@PNq@C@J^`TET@@@@@EBDvALVPA@@@
+@SHP_GpXAH@@@@DRAC@PNr@C@J^PBFT@@@@@EBDvACYPA@@@@SHP_GLdAH@@@@DRAC@PNs@C@J^
+@pFT@@@@@EBDvAz[PA@@@@SHP_GhoAH@@@@DRAC@PNt@C@J^p]GT@@@@@EBDvAq^PA@@@@SHP_G
+D{AH@@@@DRAC@PNu@C@J^`KHT@@@@@EBDvAhaPA@@@@SHP_G`FBH@@@@DRAC@PNv@C@J^PyHT@@
+@@@EBDvA_dPA@@@@SHP_G|QBH@@@@DRAC@PNw@C@J^PgIT@@@@@EBDvAWgPA@@@@SHP_G\]BH@@
+@@ho@@@@B@@@@@@p@P@@@@PKAX@@H@@@@ho@@@PA@@@@@@p@P@@@@PKA\@@D@@@@tR@F@PA@@
+@@TH@WGlh@E@@@@La@T]PgBT@@@@@EBPuA]JPA@@@@SHPSG@k@E@@@@Pa@M]@lBT@@@@pDB\tAB
+KPA@@@@THpQGHl@E@@@@La@C]@uBT@@@@@EBLtATKPA@@@@SHpOG\n@E@@@@Pa@\pyBT@@@@pD
+BXsAyKPA@@@@TH`MGdo@E@@@@La@n\pBCT@@@@@EBxrAKLPA@@@@SHPJGtq@E@@@@Pa@i\PGCT@
+@@@pDB\rApLPA@@@@THpIG@s@E@@@@La@g\`PCT@@@@@EB\rABMPA@@@@SHPJGPu@E@@@@Pa@i\
+@UCT@@@@pDBxrAgMPA@@@@TH`KG\v@E@@@@La@v\P^CT@@@@@EBXsAyMPA@@@@SHpOGlx@E@@@@
+Pa@\pbCT@@@@pDBLtA^NPA@@@@THpPGxy@E@@@@La@G]@lCT@@@@@EB\tApNPA@@@@SHPSGH|@
+E@@@@Pa@M]`pCT@@@@pDBPuATOPA@@@@TH@UGP}@E@@@@La@[]pyCT@@@@@EBluAgOPA@@@@SH@
+WGd@E@@@@Pa@\]P~CT@@@@pDBpuAKPPA@@@@TH@WGl@AE@@@@La@T]`GDT@@@@@EBPuA^PPA@@
+@@SHPSG@CAE@@@@Pa@M]@LDT@@@@pDB\tABQPA@@@@THpQGHDAE@@@@La@C]PUDT@@@@@EBLtAU
+QPA@@@@SH@NG\FAE@@@@Pa@x\pYDT@@@@pDB|rAyQPA@@@@THpKGdGAE@@@@La@i\pbDT@@@@@E
+BdrAKRPA@@@@SHPIGxIAE@@@@Pa@e\`gDT@@@@pDBpqApRPA@@@@TH@GG@KAE@@@@La@V\`pDT@
+@@@@EBXqABSPA@@@@SH@EGTMAE@@@@Pa@T\PuDT@@@@pDBXqAgSPA@@@@TH`EG\NAE@@@@La@\\
+P~DT@@@@@EBpqAySPA@@@@SH@IGpPAE@@@@Pa@d\@CET@@@@pDBDrA^TPA@@@@THPHGxQAE@@@@
+La@Z\@LET@@@@@EBhqApTPA@@@@SHpCGHTAE@@@@Pa@O\`PET@@@@pDBdoAUUPA@@@@THP~FTUA
+E@@@@La@b[pYET@@@@@EBHnAgUPA@@@@SHpiFdWAE@@@@Pa@gZP^ET@@@@pDBPgALVPA@@@@TH@
+]FpXAE@@@@La@OY`gET@@@@@EB|dA^VPA@@@@SH`CF@[AE@@@@Pa@NX@lET@@@@pDBt\ACWPA@@
+@@THPsEL\AE@@@@La@DVPuET@@@@@EBPXAUWPA@@@@SHPOE\^AE@@@@Pa@}TpyET@@@@pDBxNAy
+WPA@@@@TH`{Dd_AE@@@@La@qR@CFT@@@@@EBDKALXPA@@@@SHP[DxaAE@@@@Pa@mQ`GFT@@@@pD
+B|@ApXPA@@@@THpCD@cAE@@@@La@oNpPFT@@@@@EB|z@CYPA@@@@SHPYCTeAE@@@@Pa@eMPUFT@
+@@@pDBPr@gYPA@@@@TH@IC\fAE@@@@La@gK`^FT@@@@@EB\n@zYPA@@@@SH@tBphAE@@@@Pa@PK
+@cFT@@@@pDBPn@^ZPA@@@@TH@yBxiAE@@@@La@xK@lFT@@@@@EB`o@pZPA@@@@SH`ICLlAE@@@@
+Pa@fLppFT@@@@pDBHu@U[PA@@@@TH`TCTmAE@@@@La@TNpyFT@@@@@EBPy@g[PA@@@@SH@xChoA
+E@@@@Pa@`O`~FT@@@@pDB@DAL\PA@@@@TH@PDppAE@@@@La@cR`GGT@@@@@EBLJA^\PA@@@@SH@
+|DDsAE@@@@Pa@pSPLGT@@@@pDBLSAC]PA@@@@THpLELtAE@@@@La@yUPUGT@@@@@EBdWAU]PA@@
+@@SH`iE`vAE@@@@Pa@fV@ZGT@@@@pDBD^Az]PA@@@@THPxEhwAE@@@@La@\X@cGT@@@@@EBpaAL
+^PA@@@@SH`VFxyAE@@@@Pa@ZY`gGT@@@@pDB@iAq^PA@@@@TH@dFD{AE@@@@La@A[ppGT@@@@@E
+BDlAC_PA@@@@SH`wFT}AE@@@@Pa@^[PuGT@@@@pDBdoAh_PA@@@@THP~F`~AE@@@@La@R\`~GT@
+@@@@EBHqAz_PA@@@@SH@HGp@BE@@@@Pa@`\@CHT@@@@pDBDsA_`PA@@@@THPLG|ABE@@@@La@E]
+PLHT@@@@@EBTtAq`PA@@@@SH@UGLDBE@@@@Pa@T]pPHT@@@@pDBluAUaPA@@@@THpVGTEBE@@@@
+La@\]@ZHT@@@@@EBpuAhaPA@@@@SH@WGhGBE@@@@Pa@\]`^HT@@@@pDBTuALbPA@@@@THPUGpHB
+E@@@@La@M]pgHT@@@@@EBttA_bPA@@@@SHPPGDKBE@@@@Pa@A]PlHT@@@@pDBTsACcPA@@@@THP
+MGLLBE@@@@La@k\`uHT@@@@@EBlrAVcPA@@@@SHPIG`NBE@@@@Pa@e\@zHT@@@@pDBDrAzcPA@@
+@@THPHGhOBE@@@@La@_\@CIT@@@@@EB|qALdPA@@@@SHPHG|QBE@@@@Pa@a\pGIT@@@@pDBPrAq
+dPA@@@@TH@IGDSBE@@@@La@k\pPIT@@@@@EBlrACePA@@@@SH@MGXUBE@@@@Pa@t\`UIT@@@@pD
+B@tAhePA@@@@TH@PG`VBE@@@@La@M]`^IT@@@@@EBttAzePA@@@@SH@UGtXBE@@@@Pa@T]PcIT@
+@@@pDBluA_f@A@@@@mDp@@P@@@@PKA@@@D@@@@tR@C@@A@@@@pGpA@P@@@@@|AX@@H@@@@ho@@@
+@A@@@@@@@@@P@@@@PKAX@@H@@@@ho@@@p@@@@@@@@@@P@@@@PKA\@@D@@@@tR@F@PA@@@@TH`hB
+\_@E@@@@La@^]p}AT@@@@pDBxuAYgPA@@@@SH`hBd]BE@@@@La@bJp}AP@@@@PKAL@@D@@@@tR@
+@@@A@@@@mDp@@P@@@@@|A\@@D@@@@@_@F@@G@@@@{K@kC@@@@@@@@Y@@@@@A@@@AHRPreVXlA`
+YbOsmOYs~G@@@eZcm@@@@@@@@@@@P@@@@PKAX@@E@@@@d`@@@@@@\@@@@PHED@@PA`uA`
+IAG@@@@DRAA@PX@X]@QSpA@@@@aTP@@xF@VG`D\@@@@PHED@@eA`uAxRAG@@@@DRAA@@[KX]@[
+UpA@@@@aTP@@@B@VGP[E\@@@@PHED@@Am`uATXAG@@@@DRAA@`NJX]@~VpA@@@@aTP@@@r\VG`u
+E\@@@@PHED@@qL`uAx^AG@@@@DRAA@PNCX]@^XpA@@@@aTP@@Xs@VG`SF\@@@@PHED@@xL`uAxg
+AG@@@@DRAA@`N@X]@nZpA@@@@aTP@@Du@VG`qF\@@@@PHED@@t@`uA`pAE@@@@Pa@@@@@@T@@@@
+@EB@@@@@PA@@@@BDP@@@@@E@@@@d`@@@@@@P@@@@PKA@@@\@@@@lo@z~O@@@@@@@@dA@@@@D@@@
+D`HAIWZaqF@fI~Lw~dM{_@@@DdMvB@@@@@@@@@@@A@@@@mDpA@T@@@@PBB@@@@@@B@@@@
+zK@@@L@@@@@@@@@@D@@@@tR@H@@B@@@@aT@A@xBLp@sKGHxBE@@@@Pa@\]`NLT@@@@pDBpuA^p@
+B@@@@aT@A@xBLpHc`FHxBE@@@@Pa@oZ`NLT@@@@pDB|jA^p@B@@@@aT@A@xBLpPSuEHxBE@@@@P
+a@BX`NLT@@@@pDBH`A^p@B@@@@aT@A@xBLpXSJEHxBE@@@@Pa@VU`NLT@@@@pDBXUA^p@B@@@@a
+T@A@xBLp`C_DHxBE@@@@Pa@iR`NLT@@@@pDBdJA^p@B@@@@aT@A@xBLq@CtCHxBE@@@@Pa@}O`N
+LT@@@@pDBt@^p@B@@@@aT@A@xBLqHsHCHxBE@@@@Pa@PM`NLT@@@@pDB@u@^p@B@@@@aT@A@xB
+LqPs]BHxBE@@@@Pa@dJ`NLT@@@@pDBPj@^p@G@@@@{K`nC@@@@@@@@Y@@@@@A@@@AHRPreVXlA
+`YbOsmOYs~G@@@}Zcm@@@@@@@@@@@P@@@@PKAd@@E@@@@d`@@@@@@`@@@@`~B@@@C@@@@
+@@@@@@A@@@@mD`B@d@@@@PHET@@spBMx@C@J^@zKT@@@@@EBDvApPA@@@@SHP_G|CCI@@@@DRA
+E@pLlTcLp@`bGLNCE@@@@Pa@a]`NMT@@@@pDBtwAztPB@@@@aTPA@LCKuXCL@hxA_wPA@@@@THP
+XGXcCE@@@@La@}]`MNd@@@@PHET@@spbMp@C@J^pvNT@@@@@EBDvAr|PA@@@@SHP_GHsCI@@@@D
+RAE@pLlXCMp@`bG\}CE@@@@Pa@a]`KPT@@@@pDBtwAn@QB@@@@aTPA@LCKv`CL@hxARCQA@@@@T
+HPXGdRDE@@@@La@}]PJQd@@@@PHET@@sprMr@C@J^`sQT@@@@@EBDvAeHQA@@@@SHP_GTbDI@@@
+@DRAE@pLl\cMp@`bGhlDE@@@@Pa@a]PHST@@@@pDBtwAaLQB@@@@aTPA@LCKx@CL@hxAFOQA@@@
+@THPXGtAEE@@@@La@}]PGT`@@@@`~B@@@H@@@@@@@C@A@@@@mDpB@`@@@@`~B@@@E@@@@@@@C
+@A@@@@mD@C@P@@@@PKAl@@E@@@@Pa@\]@QMT@@@@pDBPuATuPA@@@@TH@UGPUCE@@@@La@I]@YM
+T@@@@@EBdtAduPA@@@@SHpOGTWCE@@@@Pa@\P]MT@@@@pDBXsAEvPA@@@@TH`MGTXCE@@@@La@
+o\PeMT@@@@@EB|rAUvPA@@@@SH@JGTZCE@@@@Pa@h\PiMT@@@@pDBLrAvvPA@@@@THpHGX[CE@@
+@@La@_\`qMT@@@@@EB|qAFwPA@@@@SH@GGX]CE@@@@Pa@\\`uMT@@@@pDBhqAgwPA@@@@TH`FG\
+^CE@@@@La@Z\p}MT@@@@@EBhqAwwPA@@@@SH`FG\`CE@@@@Pa@Z\pANT@@@@pDBpqAXxPA@@@@T
+H@GG`aCE@@@@La@_\@JNT@@@@@EB|qAhxPA@@@@SHpHG`cCE@@@@Pa@c\@NNT@@@@pDB`rAIyPA
+@@@@TH@JGddCE@@@@La@o\PVNT@@@@@EB|rAYyPA@@@@SH`MGdfCE@@@@Pa@v\PZNT@@@@pDB|s
+AzyPA@@@@THpOGhgCE@@@@La@I]`bNT@@@@@EBdtAJzPA@@@@SH@UGhiCE@@@@Pa@T]`fNT@@@@
+pDBpuAkzPA@@@@TH@WGljCE@@@@La@\]pnNT@@@@@EBpuA{zPA@@@@SH@WGllCE@@@@Pa@\]prN
+T@@@@pDBpuA\{PA@@@@TH@WGpmCE@@@@La@\]@{NT@@@@@EBpuAl{PA@@@@SH@WGpoCE@@@@Pa@
+\]@NT@@@@pDBpuAL|PA@@@@TH@WGppCE@@@@La@\]PGOT@@@@@EBpuA]|PA@@@@SH@WGtrCE@@
+@@Pa@\]PKOT@@@@pDB\uA}|PA@@@@THpUGtsCE@@@@La@H]`SOT@@@@@EB`tAN}PA@@@@SHpLGx
+uCE@@@@Pa@s\`WOT@@@@pDB@rAn}PA@@@@TH@HGxvCE@@@@La@J\p_OT@@@@@EBhpA}PA@@@@S
+H`zF|xCE@@@@Pa@j[pcOT@@@@pDBdlA_~PA@@@@THPrF|yCE@@@@La@lZ@lOT@@@@@EBpjAp~PA
+@@@@SHpdF@|CE@@@@Pa@SZ@pOT@@@@pDB|gAPPA@@@@THp_F@}CE@@@@La@oYPxOT@@@@@EB|f
+AaPA@@@@SH@WFDCE@@@@Pa@\YP|OT@@@@pDB\dAA@QA@@@@THpQFD@DE@@@@La@oX`DPT@@@@
+@EB|bAR@QA@@@@SH`EFHBDE@@@@Pa@VX`HPT@@@@pDBL`Ar@QA@@@@THp@FHCDE@@@@La@xWpPP
+T@@@@@EB`_ACAQA@@@@SH`{ELEDE@@@@Pa@nWpTPT@@@@pDB`^AcAQA@@@@TH@zELFDE@@@@La@
+ZW@]PT@@@@@EBh]AtAQA@@@@SH@qEPHDE@@@@Pa@DW@aPT@@@@pDBTZATBQA@@@@THPiEPIDE@@
+@@La@tU@iPT@@@@@EBPWAdBQA@@@@SH`JETKDE@@@@Pa@jTPmPT@@@@pDBxMAECQA@@@@TH`wDT
+LDE@@@@La@^RPuPT@@@@@EBxIAUCQA@@@@SHpWDXNDE@@@@Pa@_Q`yPT@@@@pDB|AAvCQA@@@@T
+HpGDXODE@@@@La@^O`AQT@@@@@EBx}@FDQA@@@@SH@iC\QDE@@@@Pa@dNpEQT@@@@pDBLw@gDQA
+@@@@THp\C\RDE@@@@La@PMpMQT@@@@@EB@u@wDQA@@@@SH`NC`TDE@@@@Pa@zL@RQT@@@@pDB\r
+@XEQA@@@@THpIC`UDE@@@@La@YL@ZQT@@@@@EBdq@hEQA@@@@SHpDCdWDE@@@@Pa@SLP^QT@@@@
+pDBPq@IFQA@@@@TH@ECdXDE@@@@La@aLPfQT@@@@@EBDr@YFQA@@@@SH`NChZDE@@@@Pa@zL`jQ
+T@@@@pDBHv@zFQA@@@@TH`XCh[DE@@@@La@UN`rQT@@@@@EBTy@JGQA@@@@SHpqCl]DE@@@@Pa@
+GOpvQT@@@@pDBh@kGQA@@@@TH`~Cl^DE@@@@La@hPp~QT@@@@@EB`BA{GQA@@@@SH`SDp`DE@@
+@@Pa@NQ@CRT@@@@pDBtFA\HQA@@@@THP[DpaDE@@@@La@VR@KRT@@@@@EBXIAlHQA@@@@SHPqDp
+cDE@@@@Pa@ES@ORT@@@@pDB\OAMIQA@@@@THp}DtdDE@@@@La@iTPWRT@@@@@EBdRA]IQA@@@@S
+H`UEtfDE@@@@Pa@VUP[RT@@@@pDBPXA~IQA@@@@TH@aExgDE@@@@La@sV`cRT@@@@@EBL[ANJQA
+@@@@SH`yExiDE@@@@Pa@fW`gRT@@@@pDBdaAoJQA@@@@THPFF|jDE@@@@La@IYpoRT@@@@@EBdd
+AJQA@@@@SHp]F|lDE@@@@Pa@wYpsRT@@@@pDBLjA`KQA@@@@THphF@nDE@@@@La@D[@|RT@@@@
+@EBPlApKQA@@@@SH`wF@pDE@@@@Pa@^[@@ST@@@@pDBPoAQLQA@@@@TH@}FDqDE@@@@La@I\PHS
+T@@@@@EBdpAaLQA@@@@SH`FGDsDE@@@@Pa@Z\PLST@@@@pDBhrABMQA@@@@TH`JGHtDE@@@@La@
+u\`TST@@@@@EBTsARMQA@@@@SH`OGHvDE@@@@Pa@~\`XST@@@@pDB\tAsMQA@@@@THpQGLwDE@@
+@@La@R]p`ST@@@@@EBHuACNQA@@@@SH`VGLyDD@@@@tR@C@@A@@@@mD@@@P@@@@PKAL@@D@@@@@
+_@L@@A@@@@pGpB@`@@@@`~B@@@D@@@@@@@@@@A@@@@mDpB@`@@@@`~B@@@C@@@@@@@@@@A@@@@m
+D@C@P@@@@PKAl@@E@@@@Pa@bJPOLT@@@@pDBxuA}pPA@@@@SH`WG|AEE@@@@La@bJpGTT@@@@pD
+BHj@}p@A@@@@mDp@@P@@@@PKA@@@D@@@@tR@C@@A@@@@pG@C@P@@@@@|Al@@\@@@@lo@l~O@@@@
+@@@@dA@@@@D@@@D`HAIWZaqF@fI~Lw~dM{_@@@DiMvB@@@@@@@@@@@A@@@@mDpB@T@@@@
+PBB@@@@@pA@@@@aTP@@@E@VG`wN\@@@@PHED@@aM`uA\qCG@@@@DRAA@`[@X]@D}pA@@@@aTP@@
+Tv@VG@]O\@@@@PHED@@lA`uADzCG@@@@DRAA@@H@X]@s~pA@@@@aTP@@HD@VGprO\@@@@PHED@@
+z@`uAP@DG@@@@DRAA@@H@X]@\@qA@@@@aTP@@DC@VG@MP\@@@@PHED@@yh`uAPFDG@@@@DRAA@@
+NCX]@TBqA@@@@aTP@@LcBVG@qP\@@@@PHED@@z@`uAPODG@@@@DRAA@PTKX]@LDqA@@@@aTP@@P
+s@VG`SQT@@@@@EB@@@@@PA@@@@TH@@@@@@E@@@@HP@A@@@@T@@@@PBB@@@@@@A@@@@mD@@@pA@@
+@p~Bh{@@@@@@@@PF@@@@P@@@P@bDd\iEF[@Xfxs\{SvlA@@PdvXK@@@@@@@@@@@D@@@
+@tR@L@PA@@@@IH@@@@@@H@@@@ho@@@p@@@@@@@@@@P@@@@PKAt@@H@@@@DRAD@`Kp@CLiw@OAT@
+@@@@EBXaCtGPA@@@@SH`EN`]@H@@@@DRAD@`Kp@SL_t@OAT@@@@@EBpTCtGPA@@@@SH@SM`]@H@
+@@@DRAD@`Kp@cLVq@OAT@@@@@EBLHCtGPA@@@@SHp`L`]@H@@@@DRAD@`Kp@sLMn@OAT@@@@@EB
+h{BtGPA@@@@SH`nK`]@H@@@@DRAD@`Kp@CMCk@OAT@@@@@EB@oBtGPA@@@@SH@|J`]@H@@@@DRA
+D@`Kp@SMzg@OAT@@@@@EB\bBtGPA@@@@SHpIJ`]@H@@@@DRAD@`Kp@cMqd@OAT@@@@@EBxUBtGP
+A@@@@SH`WI`]@\@@@@lo@z~O@@@@@@@@dA@@@@D@@@D`HAIWZaqF@fI~Lw~dM{_@@@dbM
+vB@@@@@@@@@@@A@@@@mD`C@T@@@@PBB@@@@@@B@@@@zK@@@L@@@@@@@@@@D@@@@tR@O@PB@@@@a
+TPA@`CKs@CL@PdCbFPA@@@@THpFNd_@E@@@@La@wxP~Ad@@@@PHET@@xpBMp@C@DyPgBT@@@@@E
+BlaCtKPA@@@@SHpMNPo@I@@@@DRAE@@NlTCLp@@QNdy@E@@@@Pa@[x@|CT@@@@pDB\cCpOPB@@@
+@aTPA@`CKv@CL@PdCURPA@@@@THpFNpNAE@@@@La@wx@{Dd@@@@PHET@@xprMp@C@DyPdET@@@@
+@EBlaChWPA@@@@SHpMN`^AI@@@@DRAE@@Nl`CLp@@QNphAE@@@@Pa@[xpxFT@@@@pDB\cCc[PB@
+@@@aTPA@`CKy@CL@PdCH^PA@@@@THpFN|}AE@@@@La@wxpwGd@@@@PHET@@ypBLp@C@Dy@aHT@@
+@@@EBlaC[cPA@@@@SHpMNlMBI@@@@DRAE@PNlDCLp@@QN@XBE@@@@Pa@[xpuIT@@@@pDB\cCWg@
+B@@@@zK@@@`@@@@@@@|O@D@@@@tR@P@@B@@@@zK@@@T@@@@@@@|O@D@@@@tR@Q@@A@@@@mD@D@T
+@@@@@EBXaC{KPA@@@@SH`ENlp@E@@@@Pa@VxpBCT@@@@pDBd`C\LPA@@@@THPBNpq@E@@@@La@{
+w@KCT@@@@@EBl_ClLPA@@@@SH@|Mts@E@@@@Pa@pwPOCT@@@@pDBX^CNMPA@@@@TH`yMxt@E@@@
+@La@]w`WCT@@@@@EBt]C^MPA@@@@SH`uM|v@E@@@@Pa@Vwp[CT@@@@pDBD]CMPA@@@@THPtM|w
+@E@@@@La@Mw@dCT@@@@@EBt\CPNPA@@@@SHprM@z@E@@@@Pa@Kw@hCT@@@@pDBh\CqNPA@@@@TH
+`rMD{@E@@@@La@Kw`pCT@@@@@EBl\CBOPA@@@@SHPsMH}@E@@@@Pa@Mw`tCT@@@@pDBD]CcOPA@
+@@@THPtML~@E@@@@La@Vwp|CT@@@@@EBX]CsOPA@@@@SHPwMP@AE@@@@Pa@]w@ADT@@@@pDBX^C
+UPPA@@@@TH`yMTAAE@@@@La@pwPIDT@@@@@EB@_CePPA@@@@SHp~MXCAE@@@@Pa@{w`MDT@@@@p
+DBd`CFQPA@@@@THPBNXDAE@@@@La@VxpUDT@@@@@EBXaCWQPA@@@@SH`EN\FAE@@@@Pa@VxpYDT
+@@@@pDBXaCxQPA@@@@TH`EN`GAE@@@@La@VxPbDT@@@@@EBXaCIRPA@@@@SH`ENdIAE@@@@Pa@V
+xPfDT@@@@pDBXaCjRPA@@@@TH`ENhJAE@@@@La@Vx`nDT@@@@@EBXaCzRPA@@@@SH`ENlLAE@@@
+@Pa@VxprDT@@@@pDBXaC[SPA@@@@TH`ENlMAE@@@@La@Vx@{DT@@@@@EBXaClSPA@@@@SH`ENtO
+AE@@@@Pa@VxPDT@@@@pDBXaCMTPA@@@@TH`ENtPAE@@@@La@Vx`GET@@@@@EBXaC^TPA@@@@SH
+`ENxRAE@@@@Pa@Vx`KET@@@@pDBXaCTPA@@@@TH`EN|SAE@@@@La@VxpSET@@@@@EBXaCOUPA@
+@@@SH`EN@VAE@@@@Pa@Vx@XET@@@@pDBXaCqUPA@@@@TH`ENDWAE@@@@La@JxP`ET@@@@@EBh`C
+AVPA@@@@SH@|MHYAE@@@@Pa@pw`dET@@@@pDB\]CbVPA@@@@THpuMHZAE@@@@La@{vplET@@@@@
+EBl[CsVPA@@@@SH@fML\AE@@@@Pa@XvppET@@@@pDB|VCTWPA@@@@THp[MP]AE@@@@La@KuPyET
+@@@@@EBlTCeWPA@@@@SHPKMT_AE@@@@Pa@mtP}ET@@@@pDBTQCFXPA@@@@THPEMX`AE@@@@La@C
+t`EFT@@@@@EBLPCVXPA@@@@SHP}L\bAE@@@@Pa@uspIFT@@@@pDBpMCwXPA@@@@TH@wL\cAE@@@
+@La@zr@RFT@@@@@EBhKCHYPA@@@@SH@gLdeAE@@@@Pa@\rPVFT@@@@pDBLHCiYPA@@@@THp`Ldf
+AE@@@@La@aq`^FT@@@@@EBDFCzYPA@@@@SH@RLhhAE@@@@Pa@Hq`bFT@@@@pDBlAC[ZPA@@@@TH
+pFLliAE@@@@La@popjFT@@@@@EB@BkZPA@@@@SH@oKpkAE@@@@Pa@|n@oFT@@@@pDBlwBM[PA@
+@@@THp^KtlAE@@@@La@mlPwFT@@@@@EBtrB][PA@@@@SHpzJxnAE@@@@Pa@kk`{FT@@@@pDB`kB
+~[PA@@@@TH@nJxoAE@@@@La@DjpCGT@@@@@EBPhBO\PA@@@@SH`LJ|qAE@@@@Pa@rhpGGT@@@@p
+DBT^Bp\PA@@@@THPyI@sAE@@@@La@nfPPGT@@@@@EBxZBA]PA@@@@SHPeIDuAE@@@@Pa@UfPTGT
+@@@@pDB|XBb]PA@@@@THpcIHvAE@@@@La@Uf`\GT@@@@@EBTYBr]PA@@@@SHphILxAE@@@@Pa@c
+fp`GT@@@@pDBL[BS^PA@@@@THplILyAE@@@@La@]g@iGT@@@@@EBt]Bd^PA@@@@SHPGJT{AE@@@
+@Pa@]hPmGT@@@@pDB`eBE_PA@@@@TH@VJT|AE@@@@La@gj`uGT@@@@@EB\jBV_PA@@@@SHpxJX~
+AE@@@@Pa@ck`yGT@@@@pDBLrBw_PA@@@@THpHK\AE@@@@La@^mpAHT@@@@@EBxuBG`PA@@@@SH
+`dK`ABE@@@@Pa@Rn@FHT@@@@pDB@|Bi`PA@@@@TH@pKdBBE@@@@La@voPNHT@@@@@EBXBy`PA@
+@@@SH`OLhDBE@@@@Pa@~p`RHT@@@@pDBLHCZaPA@@@@THp`LhEBE@@@@La@irpZHT@@@@@EBdJC
+kaPA@@@@SHpqLlGBE@@@@Pa@Gsp^HT@@@@pDB`NCLbPA@@@@TH@zLpHBE@@@@La@QtPgHT@@@@@
+EBDQC]bPA@@@@SH@MMtJBE@@@@Pa@ttPkHT@@@@pDB@UC~bPA@@@@TH@TMxKBE@@@@La@lu`sHT
+@@@@@EBpVCNcPA@@@@SHp`M|MBE@@@@Pa@CvpwHT@@@@pDB|YCocPA@@@@THpgM|NBE@@@@La@}
+v@@IT@@@@@EBt[C@dPA@@@@SH`tMDQBE@@@@Pa@RwPDIT@@@@pDB`^CadPA@@@@TH@zMDRBE@@@
+@La@ww`LIT@@@@@EB\_CrdPA@@@@SHp@NHTBE@@@@Pa@Cx`PIT@@@@pDB@aCSePA@@@@TH@DNLU
+BE@@@@La@VxpXIP@@@@PKAL@@D@@@@tR@@@@A@@@@mDp@@P@@@@@|ADA@D@@@@@_@P@@B@@@@zK
+@@@P@@@@@@@@@@D@@@@tR@P@@B@@@@zK@@@L@@@@@@@@@@D@@@@tR@Q@@A@@@@mD@D@T@@@@@EB
+pUBwGPA@@@@SH@FN\_@E@@@@La@XxPvIT@@@@pDBpUBYgPA@@@@SH@WI\_@D@@@@tR@C@@A@@@@
+mD@@@P@@@@PKAL@@D@@@@@_@Q@@A@@@@pG@D@pA@@@p~Bh{@@@aC@@@PF@@@@P@@@P@bDd\iEF
+[@Xfxs\{SvlA@@POvXK@@@@@@@@@@@D@@@@tR@P@PA@@@@IH@@@@@@G@@@@DRAA@@Q@D
+CCUBpA@@@@aTP@@TF@~oPe@\@@@@PHED@@nApuKTI@G@@@@DRAA@p\K@{BUBpA@@@@aTP@@dv\L
+nPe@\@@@@PHED@@tMP_KTI@G@@@@DRAA@P^@`vBUB@G@@@@{K@kC@@@@@@@@Y@@@@@A@@@AHRP
+reVXlA`YbOsmOYs~G@@@}Xcm@@@@@@@@@@@P@@@@PKADA@E@@@@d`@@@@@@\@@@@PHED@
+@PMPdH\IAG@@@@DRAA@PX@DIBPSpA@@@@aTP@@xv@QbPD\@@@@PHED@@eAPdHtRAG@@@@DRAA@
+@[@DIBZUpA@@@@aTP@@@B@Qb@[E\@@@@PHED@@CAPdHPXAG@@@@DRAA@`N@DIB@WpA@@@@aTP@@
+@B@Qb@vE\@@@@PHED@@qhPdH@_AG@@@@DRAA@PNCDIB`XpA@@@@aTP@@dcBQb@TF\@@@@PHED@@
+x@PdH@hAG@@@@DRAA@`N@DIBpZpA@@@@aTP@@DE@Qb@rF\@@@@PHED@@t@PdHhpAE@@@@Pa@@@@
+@@T@@@@@EB@@@@@PA@@@@BDP@@@@@E@@@@d`@@@@@@P@@@@PKA@@@\@@@@lo@z~O@@@@@@@@dA@
+@@@D@@@D`HAIWZaqF@fI~Lw~dM{_@@@TeMvB@@@@@@@@@@@A@@@@mD`D@T@@@@PBB@@@@
+@@B@@@@zK@@@L@@@@@@@@@@D@@@@tR@S@@B@@@@aT@A@xBLp@SzMHxBE@@@@Pa@Vx`NLT@@@@pD
+BXaC^p@B@@@@aT@A@xBLpDs}LHxBE@@@@Pa@dt`NLT@@@@pDBPRC^p@B@@@@aT@A@xBLpHSALHx
+BE@@@@Pa@rp`NLT@@@@pDBHCC^p@B@@@@aT@A@xBLpLCEKHxBE@@@@Pa@Am`NLT@@@@pDBDtB^p
+@B@@@@aT@A@xBLpPcHJHxBE@@@@Pa@Oi`NLT@@@@pDB|dB^p@B@@@@aT@A@xBLpTSLIHxBE@@@@
+Pa@^e`NLT@@@@pDBxUB^p@G@@@@{K`nC@@@@@@@@Y@@@@@A@@@AHRPreVXlA`YbOsmOYs
+~G@@@}Xcm@@@@@@@@@@@P@@@@PKAPA@E@@@@d`@@@@@@`@@@@`~B@@@C@@@@@@@@@@A@@@@mDP
+E@d@@@@PHEX@@q\CKr@CLDyPuKT@@@@@EBlaCpPA@@@@SHpMN|CCI@@@@DRAF@PLwprLp@CQNP
+OCE@@@@Pa@[x`WMT@@@@pDB\cC^uPB@@@@aT`A@DsMlPCLpPdCTxPA@@@@THpFNxgCE@@@@La@w
+x`_Nd@@@@PHEX@@q\CKu@CLDy@MOT@@@@@EBlaC^~PA@@@@SHpMNxyCI@@@@DRAF@PLwpbMp@CQ
+NLEDE@@@@Pa@[xPoPT@@@@pDB\cC}BQB@@@@aT`A@DsMl\CLpPdCsEQA@@@@THpFNt]DE@@@@La
+@wxPwQd@@@@PHEX@@q\CKx@CLDypdRT@@@@@EBlaC}KQA@@@@SHpMNtoDI@@@@DRAF@PLwpRNp@
+CQNL{DE@@@@Pa@[xPGTT@@@@pDB\cC]PAB@@@@zK@@@`@@@@@@@|O@D@@@@tR@V@@B@@@@zK@@@
+T@@@@@@@|O@D@@@@tR@W@@A@@@@mD`E@T@@@@@EBXaC@tPA@@@@SH`DNDQCE@@@@Pa@RxPDMT@@
+@@pDBl`CctPA@@@@THpBNLRCE@@@@La@Ex@MMT@@@@@EBT`CttPA@@@@SHpMXTCE@@@@Pa@w`
+QMT@@@@pDBT_CXuPA@@@@THP}M`UCE@@@@La@gwPZMT@@@@@EB\^CiuPA@@@@SH@vMlWCE@@@@P
+a@Xwp^MT@@@@pDBd\CLvPA@@@@THPrMpXCE@@@@La@{v`gMT@@@@@EBl[C^vPA@@@@SH`kM|ZCE
+@@@@Pa@nvpkMT@@@@pDB|YCAwPA@@@@THpgMD\CE@@@@La@Ov`tMT@@@@@EB|XCRwPA@@@@SH``
+MP^CE@@@@Pa@Bv@yMT@@@@pDBXWCvwPA@@@@TH`]MX_CE@@@@La@lupANT@@@@@EBpVCGxPA@@@
+@SHPYMdaCE@@@@Pa@euPFNT@@@@pDB|UCjxPA@@@@THpWMhbCE@@@@La@[u@ONT@@@@@EBlUC|x
+PA@@@@SHPVMtdCE@@@@Pa@YuPSNT@@@@pDB`UC_yPA@@@@TH@VM|eCE@@@@La@ZuP\NT@@@@@EB
+hUCqyPA@@@@SHPWMHhCE@@@@Pa@]u``NT@@@@pDB|UCTzPA@@@@THpWMPiCE@@@@La@`uPiNT@@
+@@@EB@VCezPA@@@@SHPXM\kCE@@@@Pa@aupmNT@@@@pDB@VCH{PA@@@@TH@XM`lCE@@@@La@Tu`
+vNT@@@@@EBPUCZ{PA@@@@SH`MMlnCE@@@@Pa@vtpzNT@@@@pDBtPC}{PA@@@@THPCMtoCE@@@@L
+a@_spCOT@@@@@EB|MCO|PA@@@@SH`jL@rCE@@@@Pa@jr@HOT@@@@pDBDGCr|PA@@@@THP\LHsCE
+@@@@La@wppPOT@@@@@EB\CCC}PA@@@@SH@@LTuCE@@@@Pa@@pPUOT@@@@pDB`|Bf}PA@@@@TH@r
+KXvCE@@@@La@Nn@^OT@@@@@EBxxBx}PA@@@@SHPUKdxCE@@@@Pa@UmPbOT@@@@pDBDrB[~PA@@@
+@THPHKlyCE@@@@La@rkPkOT@@@@@EBHoBm~PA@@@@SH`qJx{CE@@@@Pa@Fk`oOT@@@@pDBliBP
+PA@@@@THpfJ@}CE@@@@La@qiPxOT@@@@@EBDgBaPA@@@@SH`RJLCE@@@@Pa@Jip|OT@@@@pDB
+dbBD@QA@@@@THPJJP@DE@@@@La@Qh`EPT@@@@@EBDaBV@QA@@@@SH@@J\BDE@@@@Pa@@hpIPT@@
+@@pDBd_By@QA@@@@THP~IdCDE@@@@La@}gpRPT@@@@@EBt_BKAQA@@@@SHpAJpEDE@@@@Pa@Gh@
+WPT@@@@pDBdaBnAQA@@@@THPFJxFDE@@@@La@whp_PT@@@@@EB\cBAQA@@@@SHpWJDIDE@@@@P
+a@_iPdPT@@@@pDBxhBbBQA@@@@TH`cJHJDE@@@@La@Ak@mPT@@@@@EBDlBtBQA@@@@SH@|JXLDE
+@@@@Pa@pk`qPT@@@@pDBpqBWCQA@@@@TH@GK\MDE@@@@La@|lPzPT@@@@@EBpsBiCQA@@@@SH`T
+KhODE@@@@Pa@Rm`~PT@@@@pDBTvBLDQA@@@@THPYKpPDE@@@@La@vmPGQT@@@@@EBXwB]DQA@@@
+@SH@aK|RDE@@@@Pa@DnpKQT@@@@pDBDyB@EQA@@@@THPdK@TDE@@@@La@cn`TQT@@@@@EBLzBRE
+QA@@@@SHpmKPVDE@@@@Pa@wn@YQT@@@@pDBh|BuEQA@@@@TH`rKTWDE@@@@La@\opaQT@@@@@EB
+p}BGFQA@@@@SH`|K`YDE@@@@Pa@ro@fQT@@@@pDBl@CjFQA@@@@THpBLhZDE@@@@La@gppnQT@@
+@@@EB\BC{FQA@@@@SH`OLt\DE@@@@Pa@~pPsQT@@@@pDBpDC^GQA@@@@TH@SLx]DE@@@@La@Yq@
+|QT@@@@@EBdECpGQA@@@@SHpYLH`DE@@@@Pa@gq`@RT@@@@pDBXGCSHQA@@@@TH`]LLaDE@@@@L
+a@HrPIRT@@@@@EB`HCeHQA@@@@SHpfLXcDE@@@@Pa@[r`MRT@@@@pDBLKCHIQA@@@@THplL`dDE
+@@@@La@JsPVRT@@@@@EBhLCYIQA@@@@SHpwLlfDE@@@@Pa@_spZRT@@@@pDB\OC|IQA@@@@THp}
+LpgDE@@@@La@Tt`cRT@@@@@EBPQCNJQA@@@@SHpLM@jDE@@@@Pa@st@hRT@@@@pDB@UCqJQA@@@
+@TH@TMDkDE@@@@La@cuppRT@@@@@EBLVCCKQA@@@@SH`\MPmDE@@@@Pa@ru@uRT@@@@pDBHXCfK
+QA@@@@TH``MXnDE@@@@La@Pvp}RT@@@@@EB@YCwKQA@@@@SHPgMdpDE@@@@Pa@]vPBST@@@@pDB
+`ZC[LQA@@@@TH@jMlqDE@@@@La@sv@KST@@@@@EBL[ClLQA@@@@SHpoMxsDE@@@@Pa@v`OST@@
+@@pDBp\COMQA@@@@TH@sM|tDE@@@@La@XwPXST@@@@@EB`]CaMQA@@@@SHPxMHwDE@@@@Pa@aw`
+\ST@@@@pDBl^CDNQA@@@@THpzMPxDE@@@@La@vwPeST@@@@@EBX_CUNQA@@@@SH`@N\zDE@@@@P
+a@BxpiST@@@@pDBx`CyNQA@@@@TH`CNd{DE@@@@La@Ux`rSP@@@@PKAL@@D@@@@tR@@@@A@@@@m
+Dp@@P@@@@@|A\A@D@@@@@_@V@@B@@@@zK@@@P@@@@@@@@@@D@@@@tR@V@@B@@@@zK@@@L@@@@@@
+@@@@D@@@@tR@W@@A@@@@mD`E@T@@@@@EBpUB}pPA@@@@SH@FNtCCE@@@@La@XxpGTT@@@@pDBpU
+B_PQA@@@@SH@WItCCD@@@@tR@C@@A@@@@mD@@@P@@@@PKAL@@D@@@@@_@W@@A@@@@pG`E@pA@@@
+p~Bpz@@@@@@@@PF@@@@P@@@P@bDd\iEF[@Xfxs\{SvlA@@PuXK@@@@@@@@@@@D@@@@
+tR@V@PA@@@@IH@@@@@@G@@@@DRAA@@TKDIB]{pA@@@@aTP@@DF@Qb`EO\@@@@PHED@@nAPdHLtC
+G@@@@DRAA@PYJDIBs}pA@@@@aTP@@pF@Qb@hO\@@@@PHED@@`@PdHH{CG@@@@DRAA@@Q@DIBJp
+A@@@@aTP@@hC@Qb`AP\@@@@PHED@@`lPdHxADG@@@@DRAA@`LCDIBv@qA@@@@aTP@@@cBQb`YP\
+@@@@PHED@@q@PdHXIDG@@@@DRAA@pL@DIBFCqA@@@@aTP@@hsBQb`}P\@@@@PHED@@QAPdHxPDG
+@@@@DRAA@@MKDIBPEQA@@@@TH@@@@@@\@@@@lo@t}O@@@@@@@@dA@@@@D@@@D`HAIWZaqF@fI~
+Lw~dM{_@@@ddMvB@@@@@@@@@@@A@@@@mDpE@T@@@@PBB@@@@@pA@@@@aTP@@XD@QBPiA\@
+@@@PHED@@iAPd@p_@G@@@@DRAA@pYCDI@ZHpA@@@@aTP@@TG@QB@ZB\@@@@PHED@@rAPd@Xk@G@
+@@@DRAA@PY@DI@fKpA@@@@aTP@@@B@QB@MC\@@@@PHED@@q@Pd@`u@G@@@@DRAA@`NCDI@fNpA@
+@@@aTP@@@B@QBPsC\@@@@PHED@@KAPd@D@G@@@@DRAA@PY@DI@NQpA@@@@aTP@@HgBQB@gD\@@
+@@PHED@@niPd@pLAG@@@@DRAA@PYCDI@ZTpA@@@@aTP@@pfBQB@ZE\@@@@PHED@@`@Pd@XXAG@@
+@@DRAA@@Q@DI@jVpA@@@@aTP@@TF@QB@DF\@@@@PHED@@nAPd@xeAG@@@@DRAA@p\sEI@lZpA@@
+@@aTP@@dF@QB@}F\@@@@PHED@@tAPd@HqAG@@@@DRAA@PZ@DI@y\pA@@@@aTP@@Tv\QBpUG\@@@
+@PHED@@sAPd@TzAG@@@@DRAA@@H@DI@m_pA@@@@aTP@@|F@QBPDH\@@@@PHED@@fAPd@|EBG@@@
+@DRAA@@H@DI@FbpA@@@@aTP@@@E@QBpjH\@@@@PHED@@aiPd@`PBG@@@@DRAA@`[@DI@VepA@@@
+@aTP@@TF@QB@iI\@@@@PHED@@lAPd@H_BG@@@@DRAA@@HCDI@PhpA@@@@aTP@@TdBQB@MJ\@@@@
+PHED@@xMPd@DiBG@@@@DRAA@@\JDI@YkpA@@@@aTP@@Tv@QBpIK\@@@@PHED@@rAPd@TwBG@@@@
+DRAA@@]@DI@enpA@@@@aTP@@@B@QB@sK\@@@@PHED@@NAPd@@BG@@@@DRAA@p[KDI@VqpA@@@@
+aTP@@tF@QB@iL\@@@@PHED@@iAPd@XQCG@@@@DRAA@`[JDI@ttpA@@@@aTP@@DF@QB``M\@@@@P
+HED@@lAPd@@]CG@@@@DRAA@@H@DI@nwpA@@@@aTP@@\D@QB`DN\@@@@PHED@@DmPd@DhCG@@@@D
+RAA@@TCDI@g{pA@@@@aTP@@@bBQB@QO\@@@@PHED@@FAPd@`vCG@@@@DRAA@p[@DI@~pA@@@@a
+TP@@HwBQBPCP\@@@@PHED@@eAPd@tCDG@@@@DRAA@pXKDI@KBqA@@@@aTP@@DF@QBptP\@@@@PH
+ED@@sAPd@DRDG@@@@DRAA@@]KDI@iEqA@@@@aTP@@Lw@QB@dQ\@@@@PHED@@j@Pd@`]DE@@@@Pa
+@@@@@@L@@@@@@@@
+
+%%%%%%%%%%%%%%%%%%%%%% End /document/RLCPJC00.wmf %%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%% Start /document/RLCPJC01.wmf %%%%%%%%%%%%%%%%%%%%
+
+WwlqZB@@@@@@@TsJ|_A{I@@@@@@@@H@@I@@@CpSO@@pA@XAD@@@@@XAD@@`IF|@@b@rUMYtPA@@
+@@@@@A@pI_A@@@@p@@@@@@@B@@pIL@@@gPA@@A@@@@pF@@@`}E@@@sQB@@poA@@@OGE@@H
+OA}A@@n_A@@@RQMYD@@D@@\BE@@Lw@@@PA@@@@@@@@@@@@@@@@@@@@@|@@@@GB@@pCB@@@h
+D@@@@@@@@@@@@@@@@@@@`iBH@@PDR@@f@@@@pA@@@P@@@@@@@@@@D@@@@@@@@@@@@@@@TB@@@@C
+@@@@A@@@@HE@@@@\A@@@B@@@@`~O@@@@@@@@@@@@@@@@dA@@@@@@@A@@@AHRP@HG@iAPX@pF
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@Rydm@@@@@@vVPdM{_@@PUTJ@C}jA@@@@@@@@@@@@@r[Q@K~O@@@@@@@@@@@Rydm@@@
+@@@R{PHsA@@@@@@@@@@@@@@@@QBQn@@@@@@@@@@@@@@@@`}RTYs~G@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@pLoA@@@@@@@@@@@@@@@@PzQTYs~G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@oA@@@@@@@@@@@@@@@@@A@@@@@@@@@@Op`L@@@@@@@@@@@@@@@@@@@|D@@@@@@@pLoA@@@@
+@@@sp[@@@@@@PE@@@@~G@@HmCs}x\D@@Pf]@`@@@@@@e@@@@p@@@@`@@@@@e@@@@p@@@
+@PC@@@`h@@@@p@@@@`@@@@@RA@@@@W@@@`@@@@@hC@@@@@@@@@@@@@@@@Y@@@@@@@P@@@P@
+bDD@rAPZ@DF@lA@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@pS@@@@@@PjkSA@@@@@@H@@@@@@@@@@WfM{P{_@@@P@@@@@@@@@@@@@@
+pP@@@@@@@@@@@@@@@@@@@@H{Ck~x\D@@hpjJ@`@@@@@@@@@@@XTACT@@@@@mQ}
+gEb~O@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JAEr@@@@@@Pw{OCT@@@@@tQTHC@@@@@`lOhpj
+GH{T@@@@@@@dnq]P{_@@@Xv{XPA@@@@@n~NFD@@@@@yZ{kWHA@@@@DEr@@@@@@@@@@@@
+@@@@@`wyEC@@@@@@@@@@@@@@@@@@@@@@@@@@@P@@@@@@@@@@@@@@@dYG@H@@@@@PI@@@@L@@@@H
+@@@@`D@@@@L@@@@D@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@L@@@@@@@@@@@@@@@@PI@@@@L
+@@@@L@@@@PF@@@@L@@@@|CpJ@@@@X@@@@X_A@@plZ@@@lA@@@PI@@@@L@@@@T@@@@hI
+@@@@\@@@@P@@@@@@@@@@A@@@@@@@@@@@@@@@e@@@@p@@@@@A@@@@h@@@@p@@@@p@@@@@e@@@@p@
+@@@@B@@@`g@@@@`A@@@p@@@@@@@@@@|C@@@@@@e@@@@p@@@@p@@@@@Y@@@@p@@@@pO@k@
+@@@`A@@@@kF@@@ctA@@pF@@@@e@@@@p@@@@PA@@@`e@@@@p@@@@@A@@@@h@@@@p@@@@p@@
+@@@e@@@@p@@@@@B@@@`g@@@@`A@@@p@@@@@@@@@@|C@@@@@@e@@@@p@@@@p@@@@@Y@@@@p@@
+@@pO@k@@@@`A@@@@RG@@@S~A@@pF@@@@e@@@@p@@@@PA@@@`e@@@@p@@@@@A@@@@h@@
+@@p@@@@p@@@@@e@@@@p@@@@@B@@@`g@@@@`A@@@p@@@@@@@@@@|C@@@@@@e@@@@p@@@@p@@@
+@@Y@@@@p@@@@pO@k@@@@`A@@@@yG@@@CHB@@pF@@@@e@@@@p@@@@PA@@@`e@@@@p@@@
+@@A@@@@h@@@@p@@@@p@@@@@e@@@@p@@@@@B@@@`g@@@@`A@@@p@@@@@@@@@@|C@@@@@@e@@@
+@p@@@@p@@@@@Y@@@@p@@@@pO@k@@@@`A@@@@`H@@@sQB@@pF@@@@e@@@@p@@@@PA@@@
+`e@@@@p@@@@@A@@@@h@@@@p@@@@p@@@@@RA@@@@W@@@p@@@@@hC@@@@@@@@@@@@@@@@Y@@@
+@@@@P@@@P@bDD@rAPZ@DF@lA@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@pS@@@@@@PBhSA@@@@@@H@@@@@@@@@@WfM{P{_@@@P@@@@
+C@@@@PHsE@@P@@@@@@@@@@@@@@@@@@@@HmCaLG@@@@@oCYeM{_@@`@@@@@@@@@@`@@@@@
+@@@@@R{p\O@s|F@@@@@@@@@@@@@@@@@X@@@@@@@@@@JAEr@@@@@@Pw{OCT@@@@@B@@@@@
+@@@@`C@@@@@@@@@@@@@@@@@@@@D@@@@@@@@@@Xv{XPA@@@@@n~NFD@@@@@@@pS@@@@@@@@hSA@@
+@@@@@@@@@@@@@@@fL@@@@@@@@@@@@@@@@@@@`L`L@@@@@@P@@@@@@@@@@`Cr@dYG@H@@@@@PI
+@@@@L@@@@L@@@@@J@@@@L@@@@H@@@@@F@@@@L@@@@@@@@@@U@@@@TA@@@d_A@@P@@@@@W@@@lA
+@@@P@@@@@UUyVA}eP[ET~E@@@A@@@@D@@@@@S@@@@@@@@@@@@@@@@@@@@OT@@@@`@
+@@@\@@@@@F@@@@L@@@@@@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@
+@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@X_A@@pF@@@@lZ@@@\C@@@PI@@@@L@@@@T@@
+@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@
+@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@pjA@@pF@@@@H]@@@\C@@@PI@@
+@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@
+@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@`tA@@pF@@@@d_@@
+@\C@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@
+@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@P~A@@
+pF@@@@@b@@@\C@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@
+`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@
+X@@@@@HB@@pF@@@@\d@@@\C@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@P
+I@@@@L@@@@D@@@@pF@@@@P@@@@X_A@@@I@@@@v@@@@@A@@@@kF@@@d@@@@lA@@@@D@@@@vW@@@`
+B@@@`M@@@@P@@@@pjA@@@J@@@@e@@@@p@@@@P@@@@@[@@@@@A@@@@kF@@@d@@@@XC@@@@D@@@@H
+]@@@PB@@@pF@@@@P@@@@pjA@@@J@@@@v@@@@@A@@@@RG@@@h@@@@TB@@@@C@@@@A@@@@lA@@@@D
+@@@@H]@@@PB@@@`M@@@@P@@@@P~A@@@I@@@@[@@@@@A@@@@RG@@@h@@@@XC@@@@D@@@@d_@@@`B
+@@@PI@@@@L@@@@D@@@@pF@@@@P@@@@P~A@@@I@@@@v@@@@@A@@@@`H@@@d@@@@lA@@@@D@@@@d_
+@@@`B@@@`M@@@@P@@@@@HB@@@J@@@@e@@@@p@@@@P@@@@@[@@@@@A@@@@`H@@@d@@@@XC@@@@D@
+@@@\d@@@PB@@@pF@@@@P@@@@@HB@@@J@@@@v@@@@@A@@@@GI@@@h@@@@TB@@@@C@@@@A@@@@lA@
+@@@D@@@@vW@@@PB@@@`M@@@@P@@@@pQB@@@I@@@@[@@@@@A@@@`}E@@@h@@@@XC@@@@D@@@@\d@
+@@`B@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@
+@@L@@@@|CpJ@@@@X@@@@X_A@@pM@@@@lZ@@@LE@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@
+@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@
+@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@pjA@@pM@@@@H]@@@LE@@@PI@@@@L@@@@T@@@@XI@@@
+@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@
+PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@`tA@@pM@@@@d_@@@LE@@@PI@@@@L@@@@
+T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@
+@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@P~A@@pM@@@@@b@@@LE@@@P
+I@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H
+@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@@HB@@pM@@@@\
+d@@@LE@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@@F@@@@L@@@@@@@@@@U
+@@@@xA@@@tlA@@PN@@@@g\@@@LE@@@P@@@@@UUyVA}eP[ETsF@@@y@@@@\@@@@@S@@@@@@@@@@@
+@@@@@@@@@OW@@@@q@PN@XC@x@`N@DE@t@@@@t@@@@PC@@@@M@@@@t@@@@pA@@@@S@
+@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@xA@@@dvA@@PN@@@@C_@@@LE@@@P@@
+@@@UUyVA}eP[ETZG@@@y@@@@\@@@@@S@@@@@@@@@@@@@@@@@@@@OW@@@@q@PN@`C@
+s@`N@DE@t@@@@t@@@@PC@@@@M@@@@t@@@@pA@@@@S@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@
+@@@@@@@@U@@@@xA@@@T@B@@PN@@@@_a@@@LE@@@P@@@@@UUyVA}eP[ETAH@@@y@@@@\@@@@@S@@
+@@@@@@@@@@@@@@@@@@OW@@@@q@PN@dC@x@`N@DE@t@@@@t@@@@PC@@@@M@@@@t@@@
+@pA@@@@S@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@xA@@@DJB@@PN@@@@{c@@
+@LE@@@P@@@@@UUyVA}eP[EThH@@@y@@@@\@@@@@S@@@@@@@@@@@@@@@@@@@@OW@@@
+@r@@L@DC@s@`N@DE@t@@@@t@@@@PC@@@@M@@@@t@@@@pA@@@@S@@@@t@@@@@F@@@@L@@@@@@@@@
+PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@
+|CpJ@@@@X@@@@X_A@@pT@@@@lZ@@@|F@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@
+L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@P
+F@@@@L@@@@|CpJ@@@@X@@@@pjA@@pT@@@@H]@@@|F@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P
+@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L
+@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@`tA@@pT@@@@d_@@@|F@@@PI@@@@L@@@@T@@@@XI
+@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@
+@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@P~A@@pT@@@@@b@@@|F@@@PI@@@@L@
+@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@
+@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@@HB@@pT@@@@\d@@@|F@
+@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@D@@@@pF@@@@P@@
+@@X_A@@@W@@@@v@@@@@A@@@@kF@@@\A@@@lA@@@@D@@@@vW@@@@F@@@`M@@@@P@@@@pjA@@@X@@
+@@e@@@@p@@@@P@@@@@[@@@@@A@@@@kF@@@\A@@@XC@@@@D@@@@H]@@@pE@@@pF@@@@P@@@@pjA@
+@@X@@@@v@@@@@A@@@@RG@@@`A@@@TB@@@@C@@@@A@@@@lA@@@@D@@@@H]@@@pE@@@`M@@@@P@@@
+@P~A@@@W@@@@[@@@@@A@@@@RG@@@`A@@@XC@@@@D@@@@d_@@@@F@@@PI@@@@L@@@@D@@@@pF@@@
+@P@@@@P~A@@@W@@@@v@@@@@A@@@@`H@@@\A@@@lA@@@@D@@@@d_@@@@F@@@`M@@@@P@@@@@HB@@
+@X@@@@e@@@@p@@@@P@@@@@[@@@@@A@@@@`H@@@\A@@@XC@@@@D@@@@\d@@@pE@@@pF@@@@P@@@@
+@HB@@@X@@@@v@@@@@A@@@@GI@@@`A@@@TB@@@@C@@@@A@@@@lA@@@@D@@@@vW@@@pE@@@`M@@@@
+P@@@@pQB@@@W@@@@[@@@@@A@@@`}E@@@`A@@@XC@@@@D@@@@\d@@@@F@@@PI@@@@L@@@@`@@@@x
+I@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@X
+_A@@p[@@@@lZ@@@lH@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L
+@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ
+@@@@X@@@@pjA@@p[@@@@H]@@@lH@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@
+@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@
+@@@|CpJ@@@@X@@@@`tA@@p[@@@@d_@@@lH@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@
+@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@
+@@PF@@@@L@@@@|CpJ@@@@X@@@@P~A@@p[@@@@@b@@@lH@@@PI@@@@L@@@@T@@@@XI@@@@L@@
+@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@
+@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@@HB@@p[@@@@\d@@@lH@@@PI@@@@L@@@@T@@@
+@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@@F@@@@L@@@@@@@@@@U@@@@lA@@@d_A@@P\@@@@zX@@
+@lH@@@P@@@@@UUyVA}eP[ET~E@@@qA@@@T@@@@@S@@@@@@@@@@@@@@@@@@@@OV@@@
+@`@PS@TF@aA`[@@@@G@@@@LA@@@PC@@@@M@@@@x@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@
+@U@@@@DB@@@XlA@@P\@@@@n\@@@lH@@@P@@@@@UUyVA}eP[EdqF@@@qA@@@d@@@@@S@@@@@@@@@
+@@@@@@@@@@@OX@@@@`@PN@HC@s@`K@\C@w@@L@DC@@@pA@@@@M@@@@t@@@@PC@@@@
+G@@@@t@@@@PC@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@@HvA@@P
+\@@@@J_@@@lH@@@P@@@@@UUyVA}eP[EdXG@@@qA@@@d@@@@@S@@@@@@@@@@@@@@@@@@@@
+OX@@@@`@pL@XC@x@`M@xB@t@@M@PC@@@pA@@@@M@@@@t@@@@PC@@@@M@@@@\@@@@PC@@@@M
+@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@@xA@@P\@@@@fa@@@lH@@@P@
+@@@@UUyVA}eP[EdG@@@qA@@@d@@@@@S@@@@@@@@@@@@@@@@@@@@OX@@@@`@@N@`C
+@s@pM@xB@y@@M@@C@@@pA@@@@M@@@@t@@@@PC@@@@M@@@@\@@@@PC@@@@M@@@@t@@@@@F@@@@L@
+@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@@hIB@@P\@@@@Bd@@@lH@@@P@@@@@UUyVA}eP[EdfH
+@@@qA@@@d@@@@@S@@@@@@@@@@@@@@@@@@@@OX@@@@`@PL@\C@u@pM@`C@n@`M@`C@
+@@pA@@@@M@@@@t@@@@PC@@@@M@@@@t@@@@pA@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@PI@@@@L@@
+@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@
+@@X@@@@X_A@@pb@@@@lZ@@@\J@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@
+@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@
+@|CpJ@@@@X@@@@pjA@@pb@@@@H]@@@\J@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@
+@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@
+PF@@@@L@@@@|CpJ@@@@X@@@@`tA@@pb@@@@d_@@@\J@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@
+P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@
+L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@P~A@@pb@@@@@b@@@\J@@@PI@@@@L@@@@T@@@@X
+I@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@
+@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@@HB@@pb@@@@\d@@@\J@@@PI@@@@L
+@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@@F@@@@L@@@@@@@@@@U@@@@xA@@@d_A@@Pc
+@@@@MY@@@\J@@@P@@@@@UUyVA}eP[ET~E@@@MB@@@\@@@@@S@@@@@@@@@@@@@@@@@@@@
+OW@@@@`@PS@TF@dAPZ@DF@nA@@@\@@@@pD@@@@M@@@@x@@@@PA@@@@M@@@@x@@@@@F@@@@L@
+@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@@XlA@@Pc@@@@n\@@@\J@@@P@@@@@UUyVA}eP[EdqF
+@@@MB@@@d@@@@@S@@@@@@@@@@@@@@@@@@@@OX@@@@`@PN@HC@u@`K@@C@p@@L@@C@
+@@pA@@@@M@@@@t@@@@PC@@@@G@@@@t@@@@PC@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@
+@@@@@@@@U@@@@DB@@@HvA@@Pc@@@@J_@@@\J@@@P@@@@@UUyVA}eP[EdXG@@@MB@@@d@@@@@S@@
+@@@@@@@@@@@@@@@@@@OX@@@@`@pL@XC@x@pM@xB@p@@L@@C@@@pA@@@@M@@@@t@@@
+@PC@@@@M@@@@\@@@@PC@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@
+@xA@@Pc@@@@fa@@@\J@@@P@@@@@UUyVA}eP[EdG@@@MB@@@d@@@@@S@@@@@@@@@@@@@@@@@@@
+@OX@@@@`@@N@`C@t@`M@xB@p@@L@@C@@@pA@@@@M@@@@t@@@@PC@@@@M@@@@\@@@@
+PC@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@@hIB@@Pc@@@@Bd@@@
+\J@@@P@@@@@UUyVA}eP[EdfH@@@MB@@@d@@@@@S@@@@@@@@@@@@@@@@@@@@OX@@@@
+`@PL@\C@u@`M@\C@n@PN@DC@@@pA@@@@M@@@@t@@@@PC@@@@M@@@@t@@@@pA@@@@M@@@@t@@@@@
+F@@@@L@@@@@@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H
+@@@@PF@@@@L@@@@|CpJ@@@@X@@@@X_A@@pi@@@@lZ@@@LL@@@PI@@@@L@@@@T@@@@XI@@@@L
+@@@@P@@@@`EP@@@fXpC@HBHWudQCE@@@@@@@D@@@@@@@@@@C@@@@@@H@@@gP@@@\BE@@`B@@@@C
+@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA
+@@@@C@@@@@lB@@@@F@@@@lZ@@@\J@@@@RG@@@CC@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@
+@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@
+@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@H]@@@\J@@@@yG@@@CC@@@TB@@@@C@@@@E@@@@VB@
+@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@
+@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@d_@@@\J@@@@`H@@@CC@@@TB@@@@C@@
+@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@
+@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@@b@@@\J@@@@GI@@@CC@@
+@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@`A@@@@C@@@@@@@@@PE@@@@_@@@
+@yW@@@dJ@@@PYF@@@CC@@@D@@@@PUUnUP_ItVAe_A@@Pj@@@@H@@@@pD@@@@@@@@@@@@@@@@@@@
+psE@@@@H@tD@aA@^@dF@mAP]@tF@G@@@@LA@@@PC@@@@K@@@@T@@@@@E@@@@N@@@@
+PA@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@@XlA@@Pj@@@@n\@@@LL@@@P@@@@@
+UUyVA}eP[EdqF@@@iB@@@d@@@@@S@@@@@@@@@@@@@@@@@@@@OX@@@@`@PN@XC@p@`
+K@@C@p@@L@@C@@@pA@@@@M@@@@t@@@@PC@@@@G@@@@t@@@@PC@@@@M@@@@t@@@@@F@@@@L@@@@@
+@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@@HvA@@Pj@@@@J_@@@LL@@@P@@@@@UUyVA}eP[EdXG@@@i
+B@@@d@@@@@S@@@@@@@@@@@@@@@@@@@@OX@@@@`@pL@\C@u@@L@xB@p@@L@@C@@@pA
+@@@@M@@@@t@@@@PC@@@@M@@@@\@@@@PC@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@
+@@@@U@@@@DB@@@xA@@Pj@@@@fa@@@LL@@@P@@@@@UUyVA}eP[EdG@@@iB@@@d@@@@@S@@@@@@
+@@@@@@@@@@@@@@OX@@@@`@@N@dC@x@@M@xB@v@@L@@C@@@pA@@@@M@@@@t@@@@PC@
+@@@M@@@@\@@@@PC@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@@hIB
+@@Pj@@@@Bd@@@LL@@@P@@@@@UUyVA}eP[EdfH@@@iB@@@d@@@@@S@@@@@@@@@@@@@@@@@@@@
+OX@@@@`@PL@\C@w@@N@DC@n@@L@XC@A@@@@M@@@@t@@@@PC@@@@M@@@@t@@@@pA@@
+@@M@@@@t@@@@@F@@@@L@@@@@@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@
+@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@X_A@@pp@@@@lZ@@@|M@@@PI@@@@L@@@
+@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@
+@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@pjA@@pp@@@@H]@@@|M@@@
+PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@
+H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@`tA@@pp@@@@
+d_@@@|M@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@x
+I@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@P
+~A@@pp@@@@@b@@@|M@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L
+@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ
+@@@@X@@@@@HB@@pp@@@@\d@@@|M@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@
+@@@@F@@@@L@@@@@@@@@@U@@@@|A@@@d_A@@Pq@@@@`Y@@@|M@@@P@@@@@UUyVA}eP[ET~E@@@EC
+@@@`@@@@@S@@@@@@@@@@@@@@@@@@@@OW@@@@`@PS@dF@nAPZ@tF@uAP[@\@@@@pD@
+@@@E@@@@x@@@@PA@@@@T@@@@x@@@@@E@@@@X@@@@p@@@@@@@@@@X@@@@p@@@@@@@@@@TA@@@PH@
+@@`qF@@@EC@@@xrA@@pw@@@@A@@@@TUe[EtWBmUPF[@@@TL@@@PB@@@@LA@@@@@@@@@@@@@@@@@
+@@|`A@@@@B@x@pM@TC@n@@L@@C@p@@L@@@@G@@@@t@@@@PC@@@@M@@@@\@@@@PC@@
+@@M@@@@t@@@@PC@@@@X@@@@p@@@@@@@@@@X@@@@p@@@@@@@@@@TA@@@PH@@@`XG@@@EC@@@h|A@
+@pw@@@@A@@@@TUe[EtWBmUPb]@@@TL@@@PB@@@@LA@@@@@@@@@@@@@@@@@@@|`A@@
+@@B@s@PM@TC@p@`K@@C@p@@L@@@@G@@@@t@@@@PC@@@@M@@@@t@@@@pA@@@@M@@@@t@@@@PC@@@
+@X@@@@p@@@@@@@@@@X@@@@p@@@@@@@@@@TA@@@PH@@@`G@@@EC@@@XFB@@pw@@@@A@@@@TUe[E
+tWBmUP~_@@@TL@@@PB@@@@LA@@@@@@@@@@@@@@@@@@@|`A@@@@B@x@@M@\C@u@`K@
+@C@p@@L@|G@@@@t@@@@PC@@@@M@@@@t@@@@pA@@@@M@@@@t@@@@PC@@@@X@@@@p@@@@@@@@@@
+X@@@@p@@@@@@@@@@TA@@@PH@@@`fH@@@EC@@@HPB@@pw@@@@A@@@@TUe[EtWBmUPZb@@@TL@@@P
+B@@@@LA@@@@@@@@@@@@@@@@@@@|`A@@@@B@q@pM@LC@u@@N@xB@w@`L@@@@G@@@@t
+@@@@PC@@@@M@@@@t@@@@PC@@@@G@@@@t@@@@PC@@@@X@@@@p@@@@@@@@@@e@@@@p@@@@@B@@@`g
+@@@@`A@@@`@@@@@@@@@@|C@@@@@@e@@@@p@@@@`@@@@@Y@@@@p@@@@pO@k@@@@`A@@@`}
+E@@@_C@@@pjA@@p~@@@@e@@@@p@@@@PA@@@`e@@@@p@@@@@A@@@@h@@@@p@@@@`@@@@@e@@@@p@
+@@@@B@@@`g@@@@`A@@@`@@@@@@@@@@|C@@@@@@e@@@@p@@@@`@@@@@Y@@@@p@@@@pO@k@
+@@@`A@@@@kF@@@_C@@@`tA@@p~@@@@e@@@@p@@@@PA@@@`e@@@@p@@@@@A@@@@h@@@@p@@@@`@@
+@@@e@@@@p@@@@@B@@@`g@@@@`A@@@`@@@@@@@@@@|C@@@@@@e@@@@p@@@@`@@@@@Y@@@@p@@
+@@pO@k@@@@`A@@@@RG@@@_C@@@P~A@@p~@@@@e@@@@p@@@@PA@@@`e@@@@p@@@@@A@@@@h@@
+@@p@@@@`@@@@@e@@@@p@@@@@B@@@`g@@@@`A@@@`@@@@@@@@@@|C@@@@@@e@@@@p@@@@`@@@
+@@Y@@@@p@@@@pO@k@@@@`A@@@@yG@@@_C@@@@HB@@p~@@@@e@@@@p@@@@PA@@@`e@@@@p@@@
+@@A@@@@h@@@@p@@@@`@@@@@e@@@@p@@@@@B@@@`g@@@@`A@@@`@@@@@@@@@@|C@@@@@@e@@@
+@p@@@@`@@@@@Y@@@@p@@@@pO@k@@@@`A@@@@`H@@@_C@@@pQB@@p~@@@@e@@@@p@@@@PA@@@
+`e@@@@p@@@@@A@@@@h@@@@p@@@@`@@@@@X@@@@p@@@@@@@@@@TA@@@`H@@@P~E@@@aC@@@HfA@@
+p~@@@@A@@@@TUe[EtWBmUPyW@@@DN@@@`B@@@@LA@@@@@@@@@@@@@@@@@@@|`A@@@
+@B@SA@]@PF@n@@H@PD@eA`]@xB@G@@@@@A@@@pA@@@@N@@@@\@@@@pA@@@@Q@@@@t@@@@pB@@@@
+G@@@@`A@@@@C@@@@@@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@F[@@@DN@@@`KG@@@{C@@@D@@@@P
+UUnUP_ItVAYlA@@Px@@@@I@@@@pD@@@@@@@@@@@@@@@@@@@pCF@@@@H@DC@r@`K@D
+C@v@pL@LC@s@@@@\@@@@PC@@@@M@@@@\@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@C@@@@@
+@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@b]@@@DN@@@`rG@@@{C@@@D@@@@PUUnUP_ItVAIvA@@Px
+@@@@I@@@@pD@@@@@@@@@@@@@@@@@@@pCF@@@@H@LC@w@`K@XC@p@PN@XC@q@@@@\@
+@@@PC@@@@M@@@@\@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@C@@@@@@@@@`A@@@@C@@@@@@
+@@@PE@@@@a@@@@~_@@@DN@@@`YH@@@{C@@@D@@@@PUUnUP_ItVAyA@@Px@@@@I@@@@pD@@@@@@
+@@@@@@@@@@@@@pCF@@@@H@dC@t@`K@DC@s@@N@`C@y@@@@\@@@@PC@@@@M@@@@\@@
+@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@C@@@@@@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@Zb@
+@@DN@@@`@I@@@{C@@@D@@@@PUUnUP_ItVAiIB@@Px@@@@I@@@@pD@@@@@@@@@@@@@@@@@@@p
+CF@@@@H@DC@p@@L@xB@p@`M@@C@x@@@@\@@@@PC@@@@M@@@@t@@@@pA@@@@M@@@@t@@@
+@PC@@@@M@@@@`A@@@@C@@@@@@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@
+@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@vW@@@lO@@@@kF@@@WD@@@TB@@@@C@@@
+@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@
+pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@lZ@@@lO@@@@RG@@@WD@@@
+TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@
+B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@H]@@@lO@@@@
+yG@@@WD@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^
+B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@d
+_@@@lO@@@@`H@@@WD@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C
+@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB
+@@@@F@@@@@b@@@lO@@@@GI@@@WD@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@
+@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@yW@@@tO@@@@[F@@@WD@@@D@@@@PUUnUP_ItVAe_A@@P@
+@@@I@@@@pD@@@@@@@@@@@@@@@@@@@pCF@@@@H@LE@kAPY@\G@nAPY@LG@sA@@@\@@
+@@@D@@@@L@@@@t@@@@PD@@@@N@@@@t@@@@@C@@@@L@@@@`A@@@@C@@@@@@@@@`A@@@@C@@@@@@@
+@@PE@@@@a@@@@E[@@@tO@@@`KG@@@WD@@@D@@@@PUUnUP_ItVAUlA@@P@@@@I@@@@pD@@@@@@@
+@@@@@@@@@@@@pCF@@@PK@@C@n@@N@`C@t@`L@LC@s@@@@`@@@@PC@@@@G@@@@t@@@
+@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@C@@@@@@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@a]@@
+@tO@@@`rG@@@WD@@@D@@@@PUUnUP_ItVAEvA@@P@@@@I@@@@pD@@@@@@@@@@@@@@@@@@@p
+CF@@@PK@DC@n@pL@DC@p@`L@LC@x@@@@`@@@@PC@@@@G@@@@t@@@@PC@@@@M@@@@t@@@@
+PC@@@@M@@@@`A@@@@C@@@@@@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@}_@@@tO@@@`YH@@@WD@@@
+D@@@@PUUnUP_ItVAuA@@P@@@@I@@@@pD@@@@@@@@@@@@@@@@@@@pCF@@@PK@DC@
+n@pM@`C@v@@N@\C@w@@@@`@@@@PC@@@@G@@@@t@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@
+C@@@@@@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@Yb@@@tO@@@`@I@@@WD@@@D@@@@PUUnUP_ItVAe
+IB@@P@@@@I@@@@pD@@@@@@@@@@@@@@@@@@@pCF@@@PK@@C@n@@L@HC@w@@N@HC@t
+@@@@`@@@@PC@@@@G@@@@t@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@C@@@@@@@@@TB@@@@C
+@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB
+@@@@F@@@@vW@@@\Q@@@@kF@@@sD@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@
+@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@
+@@@@lB@@@@F@@@@lZ@@@\Q@@@@RG@@@sD@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@
+@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@
+@@dA@@@@C@@@@@lB@@@@F@@@@H]@@@\Q@@@@yG@@@sD@@@TB@@@@C@@@@E@@@@VB@@@@C@@
+@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@
+@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@d_@@@\Q@@@@`H@@@sD@@@TB@@@@C@@@@E@@@
+@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO
+@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@@b@@@\Q@@@@GI@@@sD@@@TB@@@
+@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@yW@@@
+dQ@@@`UF@@@sD@@@D@@@@PUUnUP_ItVAe_A@@PFA@@@I@@@@pD@@@@@@@@@@@@@@@@@@@p
+CF@@@@H@lD@uA`\@PG@oAp\@dF@sA@@@\@@@@@D@@@@N@@@@`@@@@pA@@@@M@@@@p@@@@P
+A@@@@L@@@@`A@@@@C@@@@@@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@F[@@@dQ@@@`KG@@@sD@@@D
+@@@@PUUnUP_ItVAYlA@@PFA@@@I@@@@pD@@@@@@@@@@@@@@@@@@@pCF@@@@H@\C@n
+@PM@\C@t@pM@DC@s@@@@\@@@@PC@@@@G@@@@t@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@C
+@@@@@@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@b]@@@dQ@@@`rG@@@sD@@@D@@@@PUUnUP_ItVAIv
+A@@PFA@@@I@@@@pD@@@@@@@@@@@@@@@@@@@pCF@@@@H@XC@n@@L@dC@p@PN@XC@r@
+@@@\@@@@PC@@@@G@@@@t@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@C@@@@@@@@@`A@@@@C@
+@@@@@@@@PE@@@@a@@@@~_@@@dQ@@@`YH@@@sD@@@D@@@@PUUnUP_ItVAyA@@PFA@@@I@@@@pD@
+@@@@@@@@@@@@@@@@@@pCF@@@@H@`C@n@`L@`C@w@PL@@C@s@@@@\@@@@PC@@@@G@@
+@@t@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@C@@@@@@@@@`A@@@@C@@@@@@@@@PE@@@@a@@
+@@Zb@@@dQ@@@`@I@@@sD@@@D@@@@PUUnUP_ItVAiIB@@PFA@@@I@@@@pD@@@@@@@@@@@@@@@@@@
+@pCF@@@@H@HC@n@@N@LC@y@@L@\C@t@@@@\@@@@PC@@@@G@@@@t@@@@PC@@@@M@@@
+@t@@@@PC@@@@M@@@@`A@@@@C@@@@@@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO
+@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@vW@@@LS@@@@kF@@@OE@@@TB@@@
+@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@
+@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@lZ@@@LS@@@@RG@@@
+OE@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@
+F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@H]@@@L
+S@@@@yG@@@OE@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H
+@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F
+@@@@d_@@@LS@@@@`H@@@OE@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB
+@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@
+@lB@@@@F@@@@@b@@@LS@@@@GI@@@OE@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@
+@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@
+@@@C@@@@@lB@@@@F@@@@vW@@@|T@@@@kF@@@kE@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@
+@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@
+@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@lZ@@@|T@@@@RG@@@kE@@@TB@@@@C@@@@E@@@@VB@@
+@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@
+@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@H]@@@|T@@@@yG@@@kE@@@TB@@@@C@@@
+@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@
+pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@d_@@@|T@@@@`H@@@kE@@@
+TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@
+B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@@b@@@|T@@@@
+GI@@@kE@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@`A@@@@C@@@@@@@@@P
+E@@@@e@@@@yW@@@DU@@@p`F@@@kE@@@D@@@@PUUnUP_ItVAe_A@@PTA@@@L@@@@pD@@@@@@@@@@
+@@@@@@@@@pSF@@@@H@hD@aA`\@DG@uAPY@tB@BAPY@HG@aApA@@@@L@@@@t@@@@@B
+@@@@N@@@@x@@@@PC@@@@H@@@@@A@@@PC@@@@H@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@
+@@@@U@@@@DB@@@XlA@@PTA@@@n\@@@lV@@@P@@@@@da@@@XbAO@`oP\USFMT@@@@@@@P@@@@@@@
+@@@L@@@@@gP@@@@@@@@pIT@@PUUnUP_ItVAYlA@@PTA@@@I@@@@pD@@@@@@@@@@@@@@@@@@@p
+CF@@@@H@`C@w@`K@HC@p@PL@@C@w@@@@\@@@@PC@@@@M@@@@\@@@@PC@@@@M@@@@t@@
+@@PC@@@@M@@@@`A@@@@C@@@@@@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@b]@@@DU@@@`rG@@@kE@
+@@D@@@@PUUnUP_ItVAIvA@@PTA@@@I@@@@pD@@@@@@@@@@@@@@@@@@@pCF@@@@H@H
+C@t@`K@XC@s@PL@PC@r@@@@\@@@@PC@@@@M@@@@\@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@
+@@C@@@@@@@@@`A@@@@C@@@@@@@@@PE@@@@a@@@@~_@@@DU@@@`YH@@@kE@@@D@@@@PUUnUP_ItV
+AyA@@PTA@@@I@@@@pD@@@@@@@@@@@@@@@@@@@pCF@@@@H@TC@r@`K@XC@p@pL@LC
+@u@@@@\@@@@PC@@@@M@@@@\@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@C@@@@@@@@@`A@@@
+@C@@@@@@@@@PE@@@@a@@@@Zb@@@DU@@@`@I@@@kE@@@D@@@@PUUnUP_ItVAiIB@@PTA@@@I@@@@
+pD@@@@@@@@@@@@@@@@@@@pCF@@@@H@@C@n@@L@PC@y@PM@LC@q@@@@\@@@@PC@@@@
+G@@@@t@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@`A@@@@C@@@@@@@@@TB@@@@C@@@@H@@@@^B@@@@
+F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@vW@@@l
+V@@@@kF@@@GF@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H
+@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@@lB@@@@F
+@@@@lZ@@@lV@@@@RG@@@GF@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@@@@B@@@@TB
+@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@@@@C@@@@
+@lB@@@@F@@@@H]@@@lV@@@@yG@@@GF@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@@@`B@@@@C@
+@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@@@B@@@@dA@
+@@@C@@@@@lB@@@@F@@@@d_@@@lV@@@@`H@@@GF@@@TB@@@@C@@@@E@@@@VB@@@@C@@@@D@@
+@@`B@@@@C@@@@B@@@@TB@@@@C@@@@H@@@@^B@@@@F@@@@B@@@@@@@@@pO@@@@@@TB@@@@C@@
+@@B@@@@dA@@@@C@@@@@lB@@@@F@@@@@b@@@lV@@@@GI@@@GF@@@TB@@@@C@@@@E@@@@VB@@
+@@C@@@@D@@@@`B@@@@C@@@@B@@@@`A@@@@C@@@@@@@@@PE@@@@e@@@@yW@@@tV@@@@\F@@@GF@@
+@D@@@@PUUnUP_ItVAe_A@@P[A@@@L@@@@pD@@@@@@@@@@@@@@@@@@@pSF@@@@H@@E
+@rAp[@HF@aA`X@dF@lAPZ@PG@yApA@@@@P@@@@`@@@@PC@@@@N@@@@t@@@@`C@@@@E@@@@X@@@@
+PA@@@@G@@@@p@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@@XlA@@P[A@@@n\@@@
+\X@@@P@@@@@UUyVA}eP[EdqF@@@mE@@@d@@@@@S@@@@@@@@@@@@@@@@@@@@OX@@@@
+`@@L@xB@p@@L@@C@p@@L@@C@@@pA@@@@M@@@@\@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@t@@@@@
+F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@DB@@@HvA@@P[A@@@J_@@@\X@@@P@@@@@UUyVA}
+eP[EdXG@@@mE@@@d@@@@@S@@@@@@@@@@@@@@@@@@@@OX@@@@`@@L@xB@p@@L@@C@p
+@@L@PC@@@pA@@@@M@@@@\@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@@F
+@@@@L@@@@@@@@@@U@@@@DB@@@xA@@P[A@@@fa@@@\X@@@P@@@@@UUyVA}eP[EdG@@@mE@@@d@
+@@@@S@@@@@@@@@@@@@@@@@@@@OX@@@@`@@L@xB@p@@L@@C@p@@L@@C@@@pA@@@@M@
+@@@\@@@@PC@@@@M@@@@t@@@@PC@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@
+@@@DB@@@hIB@@P[A@@@Bd@@@\X@@@P@@@@@UUyVA}eP[EdfH@@@mE@@@d@@@@@S@@@@@@@@@@@@
+@@@@@@@@OX@@@@`@@L@xB@y@pM@TC@u@pL@dC@@@pA@@@@M@@@@\@@@@PC@@@@M@@
+@@t@@@@PC@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@
+@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@X_A@@paA@@@lZ@@@LZ@@
+@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@
+@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@pjA@@paA@@
+@H]@@@LZ@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@
+xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@
+`tA@@paA@@@d_@@@LZ@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@
+L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|Cp
+J@@@@X@@@@P~A@@paA@@@@b@@@LZ@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H
+@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L
+@@@@|CpJ@@@@X@@@@@HB@@paA@@@\d@@@LZ@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J
+@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@
+@@@PF@@@@L@@@@|CpJ@@@@X@@@@X_A@@phA@@@lZ@@@|[@@@PI@@@@L@@@@T@@@@XI@@@@L@
+@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@@@@@@@PI@
+@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@pjA@@phA@@@H]@@@|[@@@PI@@@@L@@@@T@@
+@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@@@@@@@@
+@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@`tA@@phA@@@d_@@@|[@@@PI@@
+@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@@X@@@@H@@@
+@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@P~A@@phA@@@@b@@
+@|[@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@PI@@@@L@@@@`@@@@xI@@@
+@X@@@@H@@@@@@@@@@@@@@@@PI@@@@L@@@@H@@@@PF@@@@L@@@@|CpJ@@@@X@@@@@HB@@
+phA@@@\d@@@|[@@@PI@@@@L@@@@T@@@@XI@@@@L@@@@P@@@@@J@@@@L@@@@H@@@@@F@@@@L@@@@
+@@@@@@U@@@@\B@@@d_A@@PiA@@@LZ@@@|[@@@P@@@@@UUyVA}eP[ET~E@@@eF@@@t@@@@@S@@@@
+@@@@@@@@@@@@@@@@OZ@@@@`@pS@HF@sAPY@HG@vAPX@PG@iAp[@xF@sA@@@\@@@@p
+D@@@@N@@@@p@@@@PC@@@@H@@@@l@@@@PC@@@@G@@@@T@@@@PC@@@@N@@@@p@@@@@F@@@@L@@@@@
+@@@@@F@@@@L@@@@@@@@@@U@@@@`A@@@hnA@@PiA@@@J\@@@|[@@@P@@@@@UUyVA}eP[EdzF@@@e
+F@@@L@@@@@S@@@@@@@@@@@@@@@@@@@@OU@@@@`@@N@\C@@@pA@@@@M@@@@t@@@@@F
+@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@`A@@@XxA@@PiA@@@f^@@@|[@@@P@@@@@UUyVA}e
+P[EdaG@@@eF@@@L@@@@@S@@@@@@@@@@@@@@@@@@@@OU@@@@`@pL@XC@@@pA@@@@M@
+@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@`A@@@HBB@@PiA@@@Ba@@@|[@@@P@@
+@@@UUyVA}eP[EdHH@@@eF@@@L@@@@@S@@@@@@@@@@@@@@@@@@@@OU@@@@`@pL@DC@
+@@pA@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@@F@@@@L@@@@@@@@@@U@@@@`A@@@xKB@@PiA@@@^c@
+@@|[@@@P@@@@@UUyVA}eP[EdoH@@@eF@@@L@@@@@S@@@@@@@@@@@@@@@@@@@@OU@@
+@@`@@M@DC@@@pA@@@@M@@@@t@@@@@F@@@@L@@@@@@@@@`T@@@@pE@@@H@@@@@z@@@@@@@@@
+@@@@@@@PF@@@@@@@D@@@D`HAA`\@dF@aA@[@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|D@@@@@@d[zT@@@@@@@B@@@@@@@@@peYsN
+t~G@@@D@@@@@@@@@@@@@@@@@@@@D@@@@@@@@@@@@@@@@@@@@@kNE@@@@@@@rM}LPA@@@@H@@@@
+@@@@@@@@@@@@@@@@@pjSA@@@@@@@VFKL@@@@@@@@@@@@@@@@PMeKBP@@@@@`RPaL@@@@@@t}~s@
+E@@@@`SAeD@@@@@@pI@@@@@@@@@@@@@@@@@@@`t[dGPA@@@@@f}NFT@@@@@`kocAA@@@@@XYlp@
+@@@@@@PFKL@@@@@@@@@@@@@@@@@x]^q@@@@@@@@@@@@@@@@@@@@@@@@@@@@D@@@@@@@@@@H`L@
+YvA@B@@@@@TB@@@@C@@@@B@@@@`B@@@@C@@@@C@@@@x@@@@@E@@@@@@@@@@A@@@@E@@@@D@@@@L
+P@H@PA@@@@KH@@@lo@E@@@@p`@`CpdA`@@@@`~B@@@A@@@@@@@@@@A@@@@mD@@@pA@@@p~BP@
+@@@@@@@PF@@@@P@@@P@bDd\iEF[@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D@@@@tR@A@@G
+@@@@{K@B@P@@@@@@@pk@@@@@@D`@BHrTyMG]euF@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P@
+@@@PKAH@@D@@@@@_@A@@G@@@@{K@}C@@@@@@@@Y@@@@@A@@@AHRPreVXlA@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@P@@@@PKAD@@D@@@@HP@A@@B@@@@zKPA@@@@@@pO@D@@@@tR@C@pA@
+@@@|K@@@|C@@@P@@@@PKAP@@E@@@@D`@@\@@@@pFD|@@WMpoo@G@@@@po@A@@@@@@@
+@@@A@@@@mDPA@`@@@@`~B@@@A@@@@@@@@@@A@@@@mD`A@P@@@@@|AP@@D@@@@tR@C@pA@@@@|K@
+@@|C@@@P@@@@PKAP@@E@@@@D`@@\@@@@pFD|@@eNp[u@D@@@@tR@E@@A@@@@mD`A@P
+@@@@@|AP@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAP@@E@@@@D`@@\@@@@pFD|@@s
+OpSz@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AP@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PK
+AP@@E@@@@D`@@\@@@@pFD|@@AQpK@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AP@@D@@@@tR
+@C@pA@@@@|K@@@|C@@@P@@@@PKAP@@E@@@@D`@@\@@@@pFD|@@ORpCDAD@@@@tR@E@
+@A@@@@mD`A@P@@@@@|AP@@\@@@@lo@tO@@@@@@@@dA@@@@D@@@D`HAIWZaqF@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@A@@@@mD@A@P@@@@@|AD@@E@@@@d`@@@@@@d@@@@`LJD@@}KP@@@@@
+`@p@@T@@@@PBB@@@@@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@
+@@lAA]@pUCx@@{K@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@
+@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAA]@PiCx@@VM@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A
+@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAA]@p|Cx@@dN@A
+@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@
+@AHpO@G@@@@lAA]@PPDx@@rO@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@
+@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAA]@pcDx@@@Q@A@@@@mDPA@P@@@@PKA
+X@@D@@@@@_@A@@A@@@@mD@@@T@@@@@EBHA@{KPA@@@@SH`D@Xu@E@@@@Pa@T@p~BT@@@@pDBPA@
+VM@A@@@@mD@@@T@@@@@EBHA@VMPA@@@@SH`D@Pz@E@@@@Pa@T@`UCT@@@@pDBPA@dN@A@@@@mD@
+@@T@@@@@EBHA@dNPA@@@@SH`D@H@E@@@@Pa@T@@iCT@@@@pDBPA@rO@A@@@@mD@@@T@@@@@EBH
+A@rOPA@@@@SH`D@@DAE@@@@Pa@T@`|CT@@@@pDBPA@@Q@A@@@@mD@@@T@@@@@EBHA@@QPA@@@@S
+H`D@xHAE@@@@Pa@T@@PDT@@@@pDBPA@NR@A@@@@mD@@@T@@@@@EBHA@{KPA@@@@SH`D@xHAE@@@
+@Pa@T@p~BT@@@@pDBPA@NR@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO
+@G@@@@lAAk@pUCpA@{K@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@
+@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAk@PiCpA@VM@A@@@@mDPA@P@@@@PKAX@@D@@@@
+@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAk@p|CpA@
+dN@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@P
+A@@@@AHpO@G@@@@lAAk@PPDpA@rO@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\
+@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAk@pcDpA@@Q@A@@@@mDPA@P@@@
+@PKAX@@D@@@@@_@A@PA@@@@IH@@@@@@R@@@@HcB]@pYC\@@@@PLyXCNzDEM@X@@G@`A@\@@C@`B
+@X@@E@@@@d`@@@@@@T@@@@PBB@@@@@`D@@@@rhPG@T{@G@@@@DSNxLcNQQC@F@pA@X@@G@p@@h@
+@F@PA@@@@IH@@@@@@E@@@@d`@@@@@@HA@@@`LJtA@CPpA@@@@qdSNxhSTt@`A@\@@F@pA@L@@J@
+`A@T@@@@PBB@@@@@PA@@@@IH@@@@@@R@@@@HcB]@PTD\@@@@`LpDsLzDEM@X@@G@`A@\@@C@`B@
+X@@E@@@@d`@@@@@@P@@@@PKAL@@G@@@@po@@@pO@@@@A@@@@mDP@@T@@@@P@B|CpA@@@@
+[PPN@\u@j@p~BP@@@@PKAT@@D@@@@tR@F@@A@@@@pGP@@P@@@@PKAL@@G@@@@po@@@pO@@@@
+A@@@@mDP@@T@@@@P@B|CpA@@@@[PPN@Tz@j@`UCP@@@@PKAT@@D@@@@tR@F@@A@@@@pGP@@P
+@@@@PKAL@@G@@@@po@@@pO@@@@A@@@@mDP@@T@@@@P@B|CpA@@@@[PPN@L@j@@iCP@@@
+@PKAT@@D@@@@tR@F@@A@@@@pGP@@P@@@@PKAL@@G@@@@po@@@pO@@@@A@@@@mDP@@T@@@@P@
+B|CpA@@@@[PPN@DDAj@`|CP@@@@PKAT@@D@@@@tR@F@@A@@@@pGP@@P@@@@PKAL@@G@@@@po
+@@@pO@@@@A@@@@mDP@@T@@@@P@B|CpA@@@@[PPN@|HAj@@PDP@@@@PKAT@@D@@@@tR@F@
+@A@@@@pGP@@P@@@@PKA@@@E@@@@Pa@n@p~BT@@@@pDBxB@VMPA@@@@TH@L@lo@E@@@@La@p@`UC
+P@@@@PKA@@@E@@@@Pa@n@`UCT@@@@pDBxB@dNPA@@@@TH@L@Xu@E@@@@La@p@@iCP@@@@PKA@@@
+E@@@@Pa@n@@iCT@@@@pDBxB@rOPA@@@@TH@L@Pz@E@@@@La@p@`|CP@@@@PKA@@@E@@@@Pa@n@`
+|CT@@@@pDBxB@@QPA@@@@TH@L@H@E@@@@La@p@@PDP@@@@PKA@@@E@@@@Pa@n@@PDT@@@@pDBx
+B@NRPA@@@@TH@L@@DAE@@@@La@p@`cDP@@@@PKA@@@E@@@@Pa@n@p~BT@@@@pDBxB@NRPA@@@@T
+H@L@lo@E@@@@La@p@`cDP@@@@PKAL@@G@@@@po@@@pO@@@@A@@@@mDP@@T@@@@P@B|CpA
+@@@@[PpQ@\u@x@p~BP@@@@PKAT@@D@@@@tR@F@@A@@@@pGP@@P@@@@PKAL@@G@@@@po@@@pO
+@@@@A@@@@mDP@@T@@@@P@B|CpA@@@@[PpQ@Tz@x@`UCP@@@@PKAT@@D@@@@tR@F@@A@@@@pG
+P@@P@@@@PKAL@@G@@@@po@@@pO@@@@A@@@@mDP@@T@@@@P@B|CpA@@@@[PpQ@L@x@@iC
+P@@@@PKAT@@D@@@@tR@F@@A@@@@pGP@@P@@@@PKAL@@G@@@@po@@@pO@@@@A@@@@mDP@@T@@
+@@P@B|CpA@@@@[PpQ@DDAx@`|CP@@@@PKAT@@D@@@@tR@F@@A@@@@pGP@@P@@@@PKAL@@G@@
+@@po@@@pO@@@@A@@@@mDP@@T@@@@P@B|CpA@@@@[PpQ@|HAx@@PDP@@@@PKAT@@D@@@@t
+R@F@@A@@@@pGP@@T@@@@PBB@@@@@pC@@@@rhPN@to@E@@@@@RSeEf[@L@@J@`A@\@@G@PA@@@@I
+H@@@@@@E@@@@d`@@@@@@TA@@@`LJdC@cMPB@@@@`dcLsxrMw@SL@P@@F@pA@X@@D@`A@\@@F@pA
+@T@@@@PBB@@@@@PA@@@@IH@@@@@@U@@@@HcBy@PlCd@@@@@HsXCNvxBMtPC@D@`A@\@@F@pA@L@
+@G@`A@\@@E@@@@d`@@@@@@T@@@@PBB@@@@@PE@@@@rhPN@|@I@@@@@BNxLsMndCMp@@A@X@@G@
+`A@\@@C@pA@X@@G@PA@@@@IH@@@@@@E@@@@d`@@@@@@TA@@@`LJdC@MQPB@@@@`DsMu\CNnXCN@
+P@@F@pA@X@@G@`A@P@@F@pA@T@@@@PBB@@@@@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@
+A@PA@@@@AHpO@G@@@@lAAUApUCXD@{K@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp
+@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAUAPiCXD@VM@A@@@@mDPA@P
+@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G
+@@@@lAAUAp|CXD@dN@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@
+@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAUAPPDXD@rO@A@@@@mDPA@P@@@@PKAX@@D@@@@@_
+@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAUApcDXD@@Q
+@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@PA@@@@IH@@@@@@R@@@@HcBGAPB\@@@@@HMUFYiEf[@
+L@@J@`A@\@@C@`A@\@@E@@@@d`@@@@@@T@@@@PBB@@@@@PE@@@@rhpQ@Lv@I@@@@@RNrTcKp@CL
+p@@A@X@@G@`A@P@@F@pA@X@@G@PA@@@@IH@@@@@@E@@@@d`@@@@@@TA@@@`LJ\D@qNPB@@@@`Lc
+Mx\cKp@CL@P@@F@pA@X@@G@p@@\@@F@pA@T@@@@PBB@@@@@PA@@@@IH@@@@@@U@@@@HcBGApCd
+@@@@@Hx`CMvxBLp@C@D@`A@\@@F@pA@L@@G@`A@\@@E@@@@d`@@@@@@T@@@@PBB@@@@@PE@@@@r
+hpQ@tDAI@@@@@RLwTcMwxRNq@@A@X@@G@`A@\@@F@@A@X@@G@PA@@@@IH@@@@@@D@@@@tR@C@pA
+@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@pFDLF@WM@U@lo@D@@@@tR@E@@A@@@
+@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@
+pFDLF@eN@U@Xu@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K@@@|C@@@
+P@@@@PKAD@@E@@@@D`@@\@@@@pFDLF@sO@U@Pz@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@
+D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@pFDLF@AQ@U@H@D@@
+@@tR@E@@A@@@@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D
+`@@\@@@@pFDLF@OR@U@@DAD@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@E@@@@d`@@@@@@LA@@
+@`LJTE@}K@B@@@@`tTXxeV[uuv@@h@@F@`A@H@@J@pA@h@@E@@@@d`@@@@@@T@@@@PBB@@@@@PE
+@@@@rhPU@Lv@I@@@@@RNv@cKp@CLp@@A@X@@G@`A@P@@F@pA@X@@G@PA@@@@IH@@@@@@E@@@@d`
+@@@@@@TA@@@`LJTE@qNPB@@@@`LsMu@cKp@CL@P@@F@pA@X@@G@p@@\@@F@pA@T@@@@PBB@@@@@
+PA@@@@IH@@@@@@U@@@@HcBUApCd@@@@@HxdCNtxbMp@C@D@`A@\@@F@pA@L@@G@`A@\@@E@@@@
+d`@@@@@@T@@@@PBB@@@@@PE@@@@rhPU@tDAI@@@@@RLw\CNqxBLv@@A@X@@G@`A@\@@F@@A@X@@
+G@PA@@@@IH@@@@@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@p
+FDDG@WM`X@lo@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K@@@|C@@@P
+@@@@PKAD@@E@@@@D`@@\@@@@pFDDG@eN`X@Xu@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@D
+@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@pFDDG@sO`X@Pz@D@@@
+@tR@E@@A@@@@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`
+@@\@@@@pFDDG@AQ`X@H@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K
+@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@pFDDG@OR`X@@DAD@@@@tR@E@@A@@@@mD`A@
+P@@@@@|AD@@E@@@@d`@@@@@@LA@@@`LJLF@}K@B@@@@`tTZneV[uuv@@h@@B@pA@L@@J@pA@h@@
+E@@@@d`@@@@@@T@@@@PBB@@@@@PE@@@@rhpX@Lv@I@@@@@BNwTcKp@CLp@@A@X@@G@`A@P@@F@p
+A@X@@G@PA@@@@IH@@@@@@E@@@@d`@@@@@@TA@@@`LJLF@qNPB@@@@`LSMu@cKp@CL@P@@F@pA@X
+@@G@p@@\@@F@pA@T@@@@PBB@@@@@PA@@@@IH@@@@@@U@@@@HcBcApCd@@@@@HxPsMuxBLp@C@D
+@`A@\@@F@pA@L@@G@`A@\@@E@@@@d`@@@@@@T@@@@PBB@@@@@PE@@@@rhpX@tDAI@@@@@RLwLSM
+xxrMr@@A@X@@G@`A@\@@F@@A@X@@G@PA@@@@IH@@@@@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@
+@@@PKAD@@E@@@@D`@@\@@@@pFD|G@WM@\@lo@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@D@
+@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@pFD|G@eN@\@Xu@D@@@@
+tR@E@@A@@@@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@
+@\@@@@pFD|G@sO@\@Pz@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K@
+@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@pFD|G@AQ@\@H@D@@@@tR@E@@A@@@@mD`A@P
+@@@@@|AD@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@pFD|G@O
+R@\@@DAD@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@E@@@@d`@@@@@@XA@@@`LJDG@}K`B@@@@`LE]
+dyBHDUf]nL@@H@@A@\@@C@@A@`@@G@PA@P@@E@@@@d`@@@@@@T@@@@PBB@@@@@PE@@@@rhP\@Lv
+@I@@@@@RLrxRLvLsLs@@A@X@@G@p@@\@@F@pA@X@@G@PA@@@@IH@@@@@@E@@@@d`@@@@@@TA@@@
+`LJDG@qNPB@@@@`LsMnXCLyXSL@P@@F@pA@L@@G@`A@\@@F@pA@T@@@@PBB@@@@@PA@@@@IH@@@
+@@@U@@@@HcBqApCd@@@@@HyPcKqLCNxdC@D@`A@\@@C@pA@X@@G@`A@\@@E@@@@d`@@@@@@T@@
+@@PBB@@@@@PE@@@@rhP\@tDAI@@@@@RLp@cKpXCLx@@A@X@@G@`A@P@@F@pA@X@@G@PA@@@@IH@
+@@@@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@pFDtH@WM`_@l
+o@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E
+@@@@D`@@\@@@@pFDtH@eN`_@Xu@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@D@@@@tR@C@pA
+@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@pFDtH@sO`_@Pz@D@@@@tR@E@@A@@@
+@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K@@@|C@@@P@@@@PKAD@@E@@@@D`@@\@@@@
+pFDtH@AQ`_@H@D@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@D@@@@tR@C@pA@@@@|K@@@|C@@@
+P@@@@PKAD@@E@@@@D`@@\@@@@pFDtH@OR`_@@DAD@@@@tR@E@@A@@@@mD`A@P@@@@@|AD@@
+E@@@@d`@@@@@@TA@@@`LJ|G@}KPB@@@@`LuZe]g[eMw\@L@@H@`A@\@@H@pA@\@@F@`A@T@@@@P
+BB@@@@@PA@@@@IH@@@@@@U@@@@HcBApXCd@@@@PKpxBNxPcLsLC@D@`A@P@@F@pA@X@@G@`A@\
+@@E@@@@d`@@@@@@T@@@@PBB@@@@@PE@@@@rhp_@D{@I@@@@tRLnLSLpHsLx@@A@X@@D@`A@\@@F
+@pA@X@@G@PA@@@@IH@@@@@@E@@@@d`@@@@@@TA@@@`LJ|G@OPB@@@@mDcKw`cMx\sM@P@@F@@A
+@X@@G@`A@\@@F@pA@T@@@@PBB@@@@@PA@@@@IH@@@@@@U@@@@HcBAPSDd@@@@PKpxBLr\CNrPC
+@D@`A@P@@F@pA@X@@G@`A@\@@E@@@@d`@@@@@@P@@@@PKAL@@G@@@@po@@@pO@@@@A@@@@mD
+P@@T@@@@P@B|CpA@@@@[Ppf@\u@LBp~BP@@@@PKAT@@D@@@@tR@F@@A@@@@pGP@@P@@@@PKA
+L@@G@@@@po@@@pO@@@@A@@@@mDP@@T@@@@P@B|CpA@@@@[Ppf@Tz@LB`UCP@@@@PKAT@@
+D@@@@tR@F@@A@@@@pGP@@P@@@@PKAL@@G@@@@po@@@pO@@@@A@@@@mDP@@T@@@@P@B|Cp
+A@@@@[Ppf@L@LB@iCP@@@@PKAT@@D@@@@tR@F@@A@@@@pGP@@P@@@@PKAL@@G@@@@po@@@p
+O@@@@A@@@@mDP@@T@@@@P@B|CpA@@@@[Ppf@DDALB`|CP@@@@PKAT@@D@@@@tR@F@@A@@@@p
+GP@@P@@@@PKAL@@G@@@@po@@@pO@@@@A@@@@mDP@@T@@@@P@B|CpA@@@@[Ppf@|HALB@P
+DP@@@@PKAT@@D@@@@tR@F@@A@@@@pGP@@T@@@@PBB@@@@@PE@@@@rhPc@to@I@@@@@rRuIG]oMW
+ZsAp@@`@@G@@A@P@@F@`A@L@@F@PA@@@@IH@@@@@@E@@@@d`@@@@@@TA@@@`LJtH@cMPB@@@@`\
+cKu\CMwDsL@P@@F@@A@X@@G@`A@\@@F@pA@T@@@@PBB@@@@@PA@@@@IH@@@@@@U@@@@HcBMBPlC
+d@@@@@HvxBLy@SNvHC@D@`A@P@@F@pA@X@@G@`A@\@@E@@@@d`@@@@@@T@@@@PBB@@@@@PE@@@@
+rhPc@|@I@@@@@BNnHCNwDCLs@@A@X@@D@`A@\@@F@pA@X@@G@PA@@@@IH@@@@@@E@@@@d`@@@@
+@@TA@@@`LJtH@MQPB@@@@`HcKxLSNp\CM@P@@F@@A@X@@G@`A@\@@F@pA@T@@@@PBB@@@@@@A@@
+@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAiBpUChI@{K@A@@@@m
+DPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHp
+O@G@@@@lAAiBPiChI@VM@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@
+@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAiBp|ChI@dN@A@@@@mDPA@P@@@@PKAX@@D@
+@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAiBPPD
+hI@rO@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@
+A@PA@@@@AHpO@G@@@@lAAiBpcDhI@@Q@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp
+@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAwBpUC`J@{K@A@@@@mDPA@P
+@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G
+@@@@lAAwBPiC`J@VM@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@
+@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAwBp|C`J@dN@A@@@@mDPA@P@@@@PKAX@@D@@@@@_
+@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAwBPPD`J@rO
+@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@
+@@@AHpO@G@@@@lAAwBpcD`J@@Q@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@PA@@@@IH@@@@@@
+Y@@@@HcBiBPBp@@@@@HJEf\qUWYmHTYrEv@@X@@G@@A@\@@G@`A@P@@H@pA@P@@F@PA@@@@IH@
+@@@@@E@@@@d`@@@@@@TA@@@`LJdJ@cMPB@@@@``sMnHCLq@sM@P@@F@pA@L@@G@`A@\@@F@pA@T
+@@@@PBB@@@@@PA@@@@IH@@@@@@U@@@@HcBiBPlCd@@@@@HrPcKvLSLtHC@D@`A@\@@C@pA@X@@G
+@`A@\@@E@@@@d`@@@@@@T@@@@PBB@@@@@PE@@@@rhPj@|@I@@@@@RMrxbMpLsLu@@A@X@@G@p@
+@\@@F@pA@X@@G@PA@@@@IH@@@@@@E@@@@d`@@@@@@TA@@@`LJdJ@MQPB@@@@`@cKpPSNuLSL@P@
+@F@@A@X@@G@`A@\@@F@pA@T@@@@PBB@@@@@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@
+PA@@@@AHpO@G@@@@lAAECpUCXK@{K@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@
+\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAECPiCXK@VM@A@@@@mDPA@P@@
+@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@
+@@lAAECp|CXK@dN@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@
+@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAECPPDXK@rO@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A
+@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAECpcDXK@@Q@A
+@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@PA@@@@IH@@@@@@Y@@@@HcBwBPBp@@@@@HPIw[bEfXiqV
+Ztew@@`@@D@pA@\@@F@pA@L@@C@`@@P@@F@PA@@@@IH@@@@@@E@@@@d`@@@@@@TA@@@`LJ\K@cM
+PB@@@@`@cKp@CLp@CL@P@@F@@A@X@@G@`A@\@@F@pA@T@@@@PBB@@@@@PA@@@@IH@@@@@@U@@@@
+HcBwBPlCd@@@@@HpxBLp@CLpPC@D@`A@P@@F@pA@X@@G@`A@\@@E@@@@d`@@@@@@T@@@@PBB@@@
+@@PE@@@@rhpm@|@I@@@@@BLn@CLp@CLp@@A@X@@D@`A@\@@F@pA@X@@G@PA@@@@IH@@@@@@E@@
+@@d`@@@@@@TA@@@`LJ\K@MQPB@@@@`@cKy\SMuLSN@P@@F@@A@X@@G@`A@\@@F@pA@T@@@@PBB@
+@@@@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAASCpUCPL@{
+K@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA
+@@@@AHpO@G@@@@lAASCPiCPL@VM@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@
+@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAASCp|CPL@dN@A@@@@mDPA@P@@@@
+PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@
+lAASCPPDPL@rO@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@
+D@@@@tR@A@PA@@@@AHpO@G@@@@lAASCpcDPL@@Q@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@
+A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAaCpUCHM@{K@A@@
+@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@A
+HpO@G@@@@lAAaCPiCHM@VM@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@
+B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAaCp|CHM@dN@A@@@@mDPA@P@@@@PKAX@
+@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@tR@A@PA@@@@AHpO@G@@@@lAAaC
+PPDHM@rO@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@@A@@@@mDp@@\@@@@@B@@@@@@@D@@@@
+tR@A@PA@@@@AHpO@G@@@@lAAaCpcDHM@@Q@A@@@@mDPA@P@@@@PKAX@@D@@@@@_@A@PA@@@@
+IH@@@@@@[@@@@HcBSCPBt@@@@@HOIv\eIg]aQWZoyv\@L@@J@pA@X@@F@@A@X@@F@@A@H@@G@p
+A@X@@E@@@@d`@@@@@@T@@@@PBB@@@@@@C@@@@rhpt@Tw@C@@@@@BNw@@A@X@@G@PA@@@@IH@@@@
+@@E@@@@d`@@@@@@p@@@@`LJLM@COp@@@@@`LcM@P@@F@pA@T@@@@PBB@@@@@PA@@@@IH@@@@@@L
+@@@@HcBSCPDDL@@@@@HsDC@D@`A@\@@E@@@@d`@@@@@@T@@@@PBB@@@@@@C@@@@rhpt@|EAC@@@
+@@BMq@@A@X@@G@PA@@@@IH@@@@@@\@@@@lo@tO@@@@@@@@dA@@@@D@@@D`HAIWZaqF@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@@@mDP@@P@@@@@|AP@@C@@@@@@@
+%%%%%%%%%%%%%%%%%%%%%% End /document/RLCPJC01.wmf %%%%%%%%%%%%%%%%%%%%%

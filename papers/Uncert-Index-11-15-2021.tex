@@ -1,0 +1,1717 @@
+\documentclass[10pt]{article}
+\usepackage{amssymb,amsfonts,mathrsfs,amsmath,amsthm,mathtools,bm,dsfont, thmtools}\allowdisplaybreaks
+\usepackage[dvipsnames]{xcolor}
+\usepackage{array, graphicx, graphics,float,multirow,tabularx,tikz,pgfplots, ctable, longtable,threeparttable}
+\usepackage[top=1.25in, bottom=1.25in, left=1.25in, right=1.25in]{geometry}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+%\usepackage[sort]{natbib}
+%\usepackage{bibentry}
+\usepackage{bibentry, natbib} % reference
+\usepackage{paralist}  % intermize and enumerate as paragraph
+\usepackage{appendix} % appendix
+\usepackage{setspace}
+\usepackage[hang,flushmargin]{footmisc} % no indent in footnote
+\usepackage{mathrsfs}
+\usepackage{appendix}
+\usepackage{enumitem}
+%\usepackage{authblk}
+\usepackage[font=small]{caption}
+\usepackage{titlesec}
+\usepackage{textcase,relsize}
+
+\usepackage{wrapfig}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{epstopdf}
+\usepackage{lscape}
+
+\usepackage{adjustbox}
+\usepackage{lipsum}% example text
+\usepackage{siunitx}
+%\usepackage[table]{xcolor}
+\usepackage{booktabs,tabulary}
+
+\usepackage{numprint} 
+
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}} 
+\newenvironment{Hblue}[1]{{\color{blue}#1}}
+
+\newenvironment{XY}[1]{{\color{BrickRed}(***** XY: #1 *****)}}
+
+\setlength{\bibsep}{0pt plus 0.3ex}
+
+%\textheight=21cm
+%\def\baselinestretch{1.2}
+
+\makeatletter
+\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
+\makeatother
+
+\textwidth=6in
+\oddsidemargin=0cm \evensidemargin=0cm
+\topmargin=-20pt
+\numberwithin{equation}{section}
+\baselineskip=100pt
+\textheight=21cm
+\def\baselinestretch{1.5}
+
+\begin{document}
+	
+	\begin{center} {\Large{Macroeconomic and Financial Uncertainty Measures in a Big Data Environment*}}
+		
+		\bigskip
+		
+		Weijia Peng$^1$, Norman R. Swanson$^2$, Xiye Yang$^2$, Chun Yao$^3$\\
+		%EndAName
+		{$^1$Sacred Heart University, $^{2}$Rutgers University and $^{3}$Barclays}
+		\bigskip
+		
+		{November 2021}
+		
+		\bigskip\bigskip\bigskip
+		
+		Abstract
+		
+	\end{center}	
+	
+	{\footnotesize In this paper, we introduce a class of multi-frequency financial and macroeconomic uncertainty measures. The factors are latent variables extracted from a state space model that includes multiple different frequencies of non-parametrically estimated components of quadratic variation, as well as mixed frequency macroeconomic variables. When forecasting growth rates of various monthly variables, use of our new uncertainty measures results in significant improvement in predictive performance. Additionally, when used to forecast corporate yields, predictive gains associated with use of our measures is shown to be monotonically increasing, as one moves from predicting higher to lower rated bonds. This is consistent with the existence of a natural pricing channel wherein financial risk is more important, predictively, for lower grade bonds. Finally, it is worth noting that a variety of extant risk factors, including the \cite{aruoba2009real} business conditions index also contain marginal predictive content for the variables that we examine, although their inclusion does not reduce the usefulness of our measures.}
+		   
+				
+			\vspace*{\fill}
+			
+		\noindent \textit{Keywords:} Latent factor, market volatility, uncertainty, high-frequency data, mixed-frequency data, state space model.
+		%\smallskip
+		
+		\noindent \textit{JEL classification:} C22, C53, C58. 
+		
+		\medskip\bigskip
+		
+		\blfootnote{\scriptsize \noindent $^{\ast }$ Weijia Peng, Department of Finance, Jack Welch College of Business \& Technology, Sacred Heart University, 5151 Park Avenue Fairfield, CT 06825, USA, pengw@sacredheart.edu; Norman R. Swanson, Department of Economics, Rutgers University, 75 Hamilton Street, New Brunswick, NJ 08901, USA, nswanson@economics.rutgers.edu; Xiye Yang, Department of Economics, Rutgers University, 75 Hamilton Street, New Brunswick, NJ 08901, USA, 
+		xiyeyang@economics.rutgers.edu; Chun Yao, US Economics Research, Barclays, 745 Seventh Avenue, New York, NY 10019, USA, chunyao.economics@gmail.com. We are grateful to Mingmian Cheng, Valentina Corradi, Frank Diebold, Xu Jiang, Hyun Hak Kim, Yuan Liao, and Greg Tkacz for useful comments and suggestions on the topics explored in this paper. The views expressed here are those of the authors and not necessarily those of any affiliated institution.} 
+	
+		
+			
+			\renewcommand{\baselinestretch}{1.4}%
+			%TCIMACRO{\TeXButton{nomalsize}{\normalsize{}}}%
+			%BeginExpansion
+			\normalsize{}%
+			%EndExpansion
+			\thispagestyle{empty}
+			\setcounter {page} {0}\newpage
+			
+			\section{Introduction}
+			Uncertainty plays an important role in the decisions of households and firms alike, and  influences macroeconomic variables such as employment and income, as well as financial variables such and interest rates and stock market returns. For this reason, a large literature has evolved that specifies and analyzes new measures of risk and uncertainty. This paper adds to this nascent literature by developing new measures of uncertainty that are designed to be useful in the context of financial and macroeconomic forecasting. A few recent key papers in this area include \cite{aruoba2009real}, \cite{bloom2018really}, \cite{baker2016measuring}, \cite{carriero2016measuring}, \cite{chauvet2015does}, \cite{jo2017macroeconomic}, \cite{ng2015}, and the papers cited therein. We do this by constructing latent measures based on state space models that include multiple different frequencies of non-parametrically estimated components of quadratic variation (all of which are extracted from high frequency financial data), as well as mixed frequency macroeconomic variables. Several previous studies have utilized variables of multiple different frequencies in forecasting and construction of latent measures. For example, \cite{aruoba2009real} extract a business conditions index from four key macroeconomic variables of different observational frequencies.\footnote{A 6-variable variant of this index is updated regularly by the Federal Reserve Bank of Philadelphia.} \cite{marcellino2016short} use a mixed-frequency dynamic factor model to investigate business cycles in the euro area. In a similar vein, \cite{andreou2013should} use the Mixed Data Sampling (MIDAS) framework developed in Ghysels et al. (2007) to include daily data when forecasting of macroeconomic variables.
+			
+			In this paper, we build on the above literature, and in particular on the work of \cite{ng2015}, by introducing a class of multi-frequency macroeconomic and financial volatility risk factors that are aimed at measuring market uncertainty. These latent uncertainty measures are extracted from state space models that include multiple different frequencies of macroeconomic and financial variables, as well as multiple different frequencies of non-parametrically estimated components of quadratic variation. Our models include data frequencies ranging from 5-minutes to quarterly, and are specified in one of two ways. First, they are specified solely using latent components of quadratic variation, including continuous and jump component variation measures extracted from high frequency S\&P500 data. Alternatively, they are specified using quadratic variation components as well as additional observed variables, including macroeconomic indicators such as interest rates, employment, and production. Related papers that utilize mixed-frequency state space models include \cite{mariano2003new}, \cite{frale2008monthly}, \cite{aruoba2009real} and \cite{marcellino2016short}. None of these papers, however, include multiple frequencies of the same latent variable, as is done in this paper.\footnote{An interesting alternative method to the state space modelling approach used in this paper is the mixed data sampling (MIDAS) approach proposed by \cite{ghysels2007midas}. The idea underlying this method is to establish a regression relation between a low-frequency variable and a set of higher-frequency variables that are aggregated by dynamic weighting functions. Following this idea, \cite{andreou2013should} demonstrate how daily financial data can be incorporated into a forecasting model for quarterly GDP.}
+			
+			Previous papers have utilized a variety of different approaches to incorporating financial market information when constructing uncertainty measures. For instance, \cite{bloom2009impact} and \cite{basu2017uncertainty} analyze the impact of uncertainty using VIX and VXO as uncertainty measures, which are two well-known investor fear gauges measuring the stock market's expectation of volatility based on S\&P 500 index options. In other recent work, \cite{gilchrist2014uncertainty} use realized volatility from a micro-level firm-specific asset returns dataset when constructing uncertainty measures. \cite{carriero2016measuring} incorporate both volatility uncertainty measures and ``target'' forecasting variables in a VAR setting. The use of latent factors constitutes another popular approach for building uncertainty measures. For example, \cite{jo2017macroeconomic} use forecasting errors from macroeconomic indicators in the Survey of Professional Forecasters and extract common factors using a stochastic volatility model, and \cite{carriero2015realtime} build a Bayesian model and extract latent uncertainty measures.\footnote{Other authors explore the use of other types of data when building uncertainty measures. For example, \cite{bachmann2013uncertainty} use survey data measuring firms' business conditions and equate forecast ``disagreement''  with uncertainty. \cite{baker2016measuring} develop a policy uncertainty index based on the frequency of news coverage in leading newspapers.} An important paper in this area which is closely related to ours is \cite{chauvet2015does}. These authors also implement a state space model to extract common components from realized volatilities of stocks and bonds. A key difference between our approach and theirs is that while they include high-frequency based measures of volatility in their analysis, all their measures are estimated using data of the same frequency. Our multi-frequency approach instead builds on the work of \cite{corsi2004}, where the use of heterogeneous autoregressive realized volatility models is motivated by arguing that agents with different decision horizons react to, and cause, different volatility dynamics. In this paper it is argued that there are short-term traders with daily (or higher) trading frequencies, medium-term investors who typically rebalance their positions weekly, and long-term investors who induce low frequency volatility dynamics. Our approach mirrors this logic and considers volatility frequencies of daily, bi-daily, tri-daily, and weekly, in order to capture effects associated with short-term and medium-term agent decisions. Finally, we would be remiss if we did not cite the key paper by \cite{aruoba2009real}, in which a business conditions index is constructed by extracting a latent factor from macroeconomic variables of different observational frequencies. A key difference between our approach and that of \cite{aruoba2009real} is that they do not include nonparametric measures of uncertainty constructed using high frequency data. Instead, they analyze a model that includes macroeconomic indicators. In order to compare our results with theirs, we include a variant of our model which nests their model. 	
+			
+			Our key findings can be summarized as follows. First, we provide broad empirical evidence that uncertainty measures extracted from models that include both integrated volatility measures nonparametrically constructed using high frequency S\&P500 returns data and mixed frequency macroeconomic data contain substantially more predictive content that uncertainty measures constructed solely using mixed frequency macroeconomic data. This is particularly apparent when observing the usefulness of our uncertainty measures after the recession of 2008. 
+			Second, models augmented with our new uncertainty measures represent the majority of the``best''-performing models in our out-of-sample forecasting experiments, in terms of point mean square forecast errors, based on direction forecast accuracy measures, and when applying Giacomini-White predictive accuracy tests. Our forecasts are statistically superior to those constructed using various benchmark models including simple autoregressive models, as well as models that directly incorporate nonparametric measures of integrated volatility. Indeed, large forecasting accuracy gains are observed for a number of macroeconomic ``target'' variables that we forecast, including housing starts, industrial production, and payroll employment. Third, and as alluded to above, some of our very best uncertainty measures are those extracted from state space models that include both integrated volatility measures and mixed frequency macroeconomic variables. Moreover, these measures are often in model confidence sets that include the ``best'' model. Fourth, an interesting pattern emerges when using uncertainty measures extracted from state space models that include only financial variables to forecast corporate bond yields. Namely, our purely financial volatility type uncertainty measures deliver monotonically increasing predictive accuracy gains (as measured by mean square forecast error (MSFE)), as one moves from predicting bonds with higher ratings to predicting bonds with lower ratings. This is consistent with the existence of a natural pricing channel wherein financial risk is more important, predictively, for lower grade bonds. For example, models that include our uncertainty measures are generally associated with 30\% to 40\% MSFE drops for bonds with ratings lower than BB; are associated with 10\% to 20\% drops for A and BBB rated bonds; and are associated with no drops for AAA and AA rated bonds. Summarizing, the highest rated investment grade bonds seem to act as 'safe haven', in the sense that they show little dependence on volatility. Finally, we analyze four commonly used integrated volatility measures, including realized volatility ($RV_t$), truncated realized volatility ($TRV_t$), bi-power variation ($BPV_t$), and jump variation ($JV_t = {RV}_t - {BPV}_t$), and find that continuous quadratic variation measures (i.e., exclude $JV_t$), are the most useful in our context. This is perhaps not surprising, given the difficulties noted in the financial econometrics literature associated with extracting useful predictive content from jump variation measures. In summary, we believe that we provide compelling new evidence of the usefulness of the new uncertainty measures developed in this paper.
+			
+			The rest of this paper is organized as follows. In Section 2, we outline the methodology used in the construction of the uncertainty measures analyzed in the sequel. In Section 3, we outline the experimental setup used in order to examine the predictive content of our uncertainty measures. Section 4 contains a description of the data used in our empirical analysis, and Section 5 contains the results of our forecasting experiments. Finally, Section 6 concludes.
+			
+			\section{Volatility, Macroeconomic, and Macroeconomic-volatility Uncertainty Measures} \label{sec:FactorModel}
+			
+			In this section, we outline the methodology used in the construction of the uncertainty measures analyzed in the sequel. We begin by summarizing the method that we use to address temporal aggregation as well as missing observations. We then briefly review the high frequency measures of volatility used, followed by a detailed explanation of the state space modeling framework implemented in order to estimate multi-frequency latent volatility uncertainty measures, latent macroeconomic uncertainty measures, and latent ``convolution'' type uncertainty measures that are estimated using state space models with (high frequency) nonparametric integrated volatility and mixed frequency macroeconomic variables.
+			
+			\subsection{Inter-temporal Aggregation} \label{subsec:aggregation}
+			
+			As discussed in \cite{aruoba2009real} and \cite{aruoba2009updates} various issues regarding the temporal aggregation of variables of different frequencies, as well as stock and flow features of the variables that we examine are worth mentioning.
+			
+			First, we need to consider the difference between flow and stock variables in the specification of our state space models. Observed values of the flow variable are accumulated within each period, while values of stock variable reflect quantities measured at a particular point in time. In particular, when the state space model is evolving at a higher frequency than the flow variable, accumulated values will result in regular shocks to the state variable. For example, for a state space model evolving at daily frequency, observed values of a monthly flow variable are accumulated over past 30 days, approximately. Every time this monthly flow variable updates to a new value, it will result in a 'shock' that affects latent factor estimation, unless flow variable observations are properly introduced into the system. 
+			
+			For stock variables, this complication does not arise. The observed value for a stock variable can simply be expressed as a function of the current state variable and the stochastic disturbance term. As an example, let ${F}_{t}$ denote the state variable at time $t$, and let the stock variable be $y_{t}^s$, then:
+			$$y_{t}^s=\beta F_{t}+u_{t},$$
+			where $F_t$ is state variable, and $u_t$ is a stochastic disturbance term. 
+			
+			On the other hand, and as discussed above, the value of flow variables reflects the aggregated value through each time period. Thus, flow variable $y_{t}^f$ can be defined as follows:
+			$$y_{t}^f=\sum_{i=0}^{K_{j}-1} y_{t-i}^f,$$  
+			where indices $i$ and $j$ denote the $i^{th}$ time point within the $j^{th}$ observational interval, and $K_{j}$ is the length of the interval between two observational time points (i.e., time points for which observations are available - namely, between the $(j-1)^{th}$ and $j^{th}$ time points).
+			Since the value of flow variable is inter-temporally accumulated over a given period of time, one straightforward way to handle inter-temporal aggregation is by defining a state vector that sums all lags of states within each period. For example, a monthly flow variable in a daily state space model can be specified as:
+			
+			$$y_{t}^f=\beta (F_{t}+F_{t-1}+F_{t-2}+\cdots+F_{t-m})+u_{t},$$
+			where $F_t$, $F_{t-1}$,$\cdots$, $F_{t-m}$ are state variable components, and $u_t$ is a stochastic disturbance term.
+			
+			However, given that our state space is evolving at a daily frequency, and the lowest frequency flow variable is quarterly real GDP, this approach will result in the specification of a very large state variable with more than 90 lag terms, and a large number of parameters to be estimated, causing excessive calculation and convergence issues. For this reason, we instead implement the aggregated states approach of \cite{aruoba2009updates} in order to account for flow variables in our system. Namely, we define
+			$$y_{t}^f=\beta{C}_{t}+\gamma y_{t-M}^f+w_{t},$$
+			where ${C}_{t}$ is a latent state variable defined specifically for flow variables, $M$ is the observational lag length, and the $w_{t}$ are serially uncorrelated error terms. Here, ${C}_{t}$ sums over its past values within the observational period of the flow variables. Namely,  
+			$${C}_{t+1} = \psi_{t+1}{C}_{t} + \rho{F}_{t}, $$
+			where
+			\begin{center}
+				$\psi_{t}= \displaystyle
+				\begin{cases}
+				0, & \text{if $t$ is the first observation of the period } \\
+				1, & \text{otherwise},
+				\end{cases}$ 
+			\end{center} 
+			and where $\psi_{t}$ is an indicator that controls for the observational frequency of the flow variable. Hence, if a flow variable is updated at time $t$, then the value of ${C}_{t+1}$ will be refreshed to be $0 + \rho{F}_{t}$, while if a flow variable is not updated at time $t$, then ${C}_{t+1} = {C}_{t} + \rho{F}_{t}$, which includes its past value in the sum.
+			
+			
+			\subsection{High frequency measures of volatility and jump risk} \label{subsec:high-frequency}
+			Let $X_{t}$ be the log-price of an asset at time $t$. Assume that the log-price process follows a jump-diffusion model (hence, almost surely, its paths are right continuous with left limits). Namely,
+			\begin{align*}
+			X_{t}=X_{0}+\int_{0}^{t}b_{s}ds+\int_{0}^{t}\sigma_{s}dB_{s} + \sum_{s\leq t}\Delta X_{s}.
+			\end{align*}
+			In the above expression, $B$ is a standard Brownian motion and $\Delta X_{s}:=X_{s}-X_{s-}$, where $X_{s-}:=\lim_{u\uparrow s} X_u$, represents the possible jump of the process $X$, at time $s$.
+			
+			Consider a finite time horizon, $[0,t]$ that contains $n$ high-frequency observations of the log-price process. A typical time horizon is one day. Let $\Delta_n = t/n$ be the sampling frequency. Then intra-daily returns can be expressed as $r_{i,n}=X_{i\Delta_{n}} - X_{(i-1)\Delta_{n}}$. 
+			
+			A well-established result in the high frequency econometrics literature is that realized volatility is a consistent estimator of the total quadratic variation. Namely,
+			\begin{align*}
+			RV_{t}=\sum\limits_{i=1}^n r_{i,n}^2 \overset{\text{u.c.p.}}\longrightarrow \int_{0}^{t}\sigma_{s}^2 ds + \sum_{s\leq T} (\Delta X_s)^2 = QV_t = IV_t + JV_t,
+			\end{align*}
+			where $\overset{\text{u.c.p.}}\longrightarrow$ denotes convergence in probability, uniformly in time.
+			There are many estimators of integrated volatility ($IV_t$), which is the variation due to the continuous component of quadratic variation ($QV_t$). For example, multipower variations are defined as follows:
+			\begin{align*}
+			V_{t}=\sum\limits_{i=j+1}^n |r_{i,n}|^{\gamma_1}|r_{i-1,n}|^{\gamma_2}...|r_{i-j,n}|^{\gamma_j},
+			\end{align*}
+			where $\gamma_1, \gamma_2, ...,\gamma_j$ are positive such that $\sum\limits_{i=1}^j \gamma_i = k$. An important special case of this estimator is bipower variation ($BPV_t$), which was introduced by \cite{barndorff2004power}. Namely, 
+			\begin{align*}
+			BPV_{t}=(\mu_1)^{-2} \sum\limits_{i=2}^n  |r_{i,n}||r_{i-1,n}| ,
+			\end{align*}
+			where $\mu_1 = E(|Z|) = 2^{1/2} \Gamma (1) / \Gamma (1/2) = \sqrt{2/\pi}$, with $Z$ a standard normal random variable, and where $\Gamma ( \cdot )$ denotes the gamma function. Another useful estimator is truncated bipower variation ($TBPV_t$), which combines the truncation method proposed by \cite{mancini2009non} and the bipower variation ($BPV_t$) estimator discussed above. Namely,  
+			\begin{align*}
+			\textit{TBPV}_{t} = (\mu_1)^{-2} \sum_{i=2}^{n} | \overline{r}_{i,n}|| \overline{r}_{i-1,n}|, \quad \overline{r}_{i,n} = r_{i,n} \boldmath{1}_{\{|r_{i,n}| < \alpha_{n}\}},  
+			\end{align*}
+			where $\alpha_{n} = \alpha \Delta_{n}^{\varpi}, \varpi \in (0, \frac{1}{2})$. Similarly, truncated realized variance ($TRV_t$) is defined as
+			\begin{align*}
+			\textit{TRV}_{t}=\sum\limits_{i=1}^n \overline{r}_{i,n}^2.
+			\end{align*}
+			Finally, jump variation ($JV_t$) can be estimated as $JV_t = {RV}_t - {BPV}_t$ or $JV_t = {RV}_t - {TBPV}_t$, for example. In the sequel, we shall utilize $RV_t$, $TRV_t$, $BPV_t$ and $JV_t = {RV}_t - {BPV}_t$ when specifying state space models in order to construct uncertainty measures, as well as when directly including estimates of quadratic variation in the factor augmented regression models used in our forecasting experiments.
+			
+			Under certain regularity conditions (refer to the above cited papers, \cite{Jacod&Protter:2011}, and \cite{Ait-Sahalia&Jacod:2014Book} for details), $\textit{BPV}_t$, $\textit{TBPV}_{t}$ and $\textit{TRV}_{t}$ are all consistent estimators of the integrated volatility $\text{IV}_t := \int_0^t \sigma_s^2 ds$. Hence, the corresponding $\text{JV}_t$ estimators are also consistent. Moreover, it is also well-established that these estimators converge stably in law at the rate $\sqrt{1/\Delta_n}$, or equivalently, $\sqrt{n}$. Let $T$ be the total number of such representative finite time horizons $[0,t]$ (e.g., day, week, month or quarter). If $\Delta_n T \rightarrow 0$, then the impact of estimating the latent volatility and jump uncertainty measures are asymptotically negligible, since the parameters in our state space model converge at rate $\sqrt{T}$.  
+			
+			\subsection{Volatility uncertainty measures} \label{subsec:statespace}
+			In order to extract pure volatility uncertainty measures we utilize  a standard state space model. The model that we implement is closest to that used in \cite{chauvet2015does}, and also follows \cite{aruoba2009real}, although the latter authors do not consider volatility measures in their analysis. While \cite{chauvet2015does} implement a very interesting strategy for extracting a latent volatility factor from various different realized stock and bond volatility measures, we instead focus solely on S\&P500 returns in our analysis and consider a model incorporating different frequencies of volatility. In this sense, the structure of our model resembles that of a heterogeneous autoregressive realized volatility type model of the variety introduced in \cite{corsi2004} and \cite{corsi2012discrete}. Our models, thus, are meant to capture the heavy persistence in volatility. Moreover, we consider different volatility estimators, including $RV_t$, $TRV_t$, $BPV_t$, and $JV_t$. 
+			
+			To be more specific, let the dependent variable $y_t = \{y_t^1, y_t^2, y_t^3, y_t^4\}$ in our observation equation represent data measured at 4 different time horizons, including daily (denoted by $d$), bi-daily (denoted by $2d$), tri-daily (denoted by $3d$), and weekly (denoted by $w$). Using our mixed frequency approach, we construct four uncertainty measures, for each of $RV_t$, $TRV_t$, $BPV_t$, and $JV_t$, respectively. For instance, when build the uncertainty measure based on $RV_t$, dependent variable $y_t$ in the observation equation would be: $\{RV_t^d, RV_t^{2d}, RV_t^{3d}, RV_t^w\}$. We denote our uncertainty measure as $\textit{MF}_{t}^{vol}$, which is the latent factor to be extracted from the state space model. Lastly, we include three aggregated state variables, i.e., ${C}_{t}^{1}$, ${C}_{t}^{2}$ and ${C}_{t}^{3}$, to address the inter-temporal aggregation issues as discussed in Section 2.1. The state space model is:  
+			
+				\noindent\textit{Observation Equation}:
+			\begin{align*}
+			\small
+			\left(\begin{array}{l}
+			y_t^{d}\\
+			y_t^{2d}\\
+			y_t^{3d}\\
+			y_t^{w}\\
+			\end{array}\right)=
+			\left(\begin{array}{llllllll}
+			\beta_{1} & 0& 0& 0& 1& 0& 0& 0\\
+			0& \beta_{2}& 0& 0& 0& 1& 0& 0\\
+			0& 0& \beta_{3}& 0& 0& 0& 1& 0 \\
+			0& 0& 0& \beta_{4} & 0& 0& 0& 1\\
+			\end{array}\right)\left(\begin{array}{l}
+			\textit{MF}_{t}^{vol}\\
+			{C}_{t}^{1}\\
+			{C}_{t}^{2}\\
+			{C}_{t}^{3}\\
+			{u}_{t}^{1}\\
+			{u}_{t}^{2}\\
+			{u}_{t}^{3}\\
+			{u}_{t}^{4}\\
+			\end{array}\right)
+			\end{align*}
+			
+			
+			
+			\noindent\textit{State Equation:}
+			\begin{footnotesize}
+				\begin{align*}
+				\left(\begin{array}{l}
+				\textit{MF}_{t+1}^{vol}\\
+				{C}_{t+1}^{1}\\
+				{C}_{t+1}^{2}\\
+				{C}_{t+1}^{3}\\
+				{u}_{t+1}^{1}\\
+				{u}_{t+1}^{2}\\
+				{u}_{t+1}^{3}\\
+				{u}_{t+1}^{4}\\
+				\end{array}\right) =\,& 
+				\left(\begin{array}{llllllll}
+				\rho & 0& 0& 0& 0& 0& 0& 0\\
+				\rho & \psi_{t+1}^1& 0& 0& 0& 0& 0& 0\\
+				\rho & 0& \psi_{t+1}^2& 0& 0& 0& 0& 0\\
+				\rho & 0& 0& \psi_{t+1}^3& 0& 0& 0& 0\\
+				0 & 0& 0& 0 & \eta_{1}& 0& 0& 0\\
+				0 & 0& 0& 0 &0& \eta_{2}& 0& 0\\
+				0 & 0& 0& 0 &0& 0& \eta_{3}& 0\\
+				0 & 0& 0& 0 &0& 0& 0& \eta_{4}
+				\end{array}\right)\left(\begin{array}{l}
+				\textit{MF}_{t}^{vol}\\
+				{C}_{t}^{1}\\
+				{C}_{t}^{2}\\
+				{C}_{t}^{3}\\
+				{u}_{t}^{1}\\
+				{u}_{t}^{2}\\
+				{u}_{t}^{3}\\
+				{u}_{t}^{4}\\
+				\end{array}\right) \\
+				& \quad +
+				\left(\begin{array}{lllll}
+				1 & 0 &0 & 0 &0\\
+				1 & 0 &0 & 0 &0\\
+				1 & 0 &0 & 0 &0\\
+				1 & 0 &0 & 0 &0\\
+				0 & 1 &0 & 0 &0\\
+				0 & 0 &1 & 0 &0\\
+				0 & 0 &0 & 1 &0\\
+				0 & 0 &0 & 0 &1\\
+				\end{array}\right)
+				\left(\begin{array}{l}
+				{e}_{t}^{1}\\
+				{e}_{t}^{2}\\
+				{e}_{t}^{3}\\
+				{e}_{t}^{4}\\
+				{e}_{t}^{5}\\
+				\end{array}\right),
+				\end{align*}
+			\end{footnotesize}
+			where the error terms follow a multivariate normal distribution:
+			
+			\begin{align*}
+			\begin{pmatrix}{e}_{t}^{1}\\
+			{e}_{t}^{2}\\
+			{e}_{t}^{3}\\
+			{e}_{t}^{4}\\
+			{e}_{t}^{5}
+			\end{pmatrix} &\sim  N
+			\begin{bmatrix}
+			\begin{pmatrix}
+			0\\
+			0\\
+			0\\
+			0\\
+			0
+			\end{pmatrix}\!\!,&
+			\begin{pmatrix}
+			1 & 0 & 0 & 0 & 0\\
+			0 & \sigma_{1}^2 & 0 & 0 & 0\\
+			0 & 0 & \sigma_{2}^2 & 0 & 0 \\
+			0 & 0 & 0 & \sigma_{3}^2 & 0 \\
+			0 & 0 & 0 & 0 & \sigma_{4}^2  
+			\end{pmatrix}
+			\end{bmatrix}\\[2\jot]
+			\end{align*}
+			
+			As mentioned above, the three aggregated variables in the state vector, ${C}_{t}^{1}$, ${C}_{t}^{2}$ and ${C}_{t}^{3}$, are designed to handle bi-daily, tri-daily and weekly updating of our volatility series, respectively. Also, $\psi_{1}$, $\psi_{2}$ and $\psi_{3}$ are binary-valued parameters for the aggregated state variables, and are defined as follows:
+			
+			$\psi_{t}^1=
+			\begin{cases}
+			0, & \text{if $t$ is an odd number} \\
+			1, & \text{otherwise,}
+			\end{cases}$,
+			
+			\noindent for the bi-daily updating series;
+			
+			$\psi_{t}^2=
+			\begin{cases}
+			0, & \text{if $t$ is the first day of every three days} \\
+			1, & \text{otherwise,}
+			\end{cases}$,
+			
+			\noindent for the tri-daily updating series; and
+			
+			$\psi_{t}^3=
+			\begin{cases}
+			0, & \text{if $t$ is the first day of every week} \\
+			1, & \text{otherwise,}
+			\end{cases}$
+			
+			\noindent for the weekly series.
+			
+			In the above observation equation, only the highest frequency variable, $y_t^{d}$, is directly connected with the factor, $\textit{MF}_{t}^{vol}$, via $\beta_{1}$. The three other volatility variables are connected with $\textit{MF}_{t}^{vol}$ via the aggregated state variables (i.e, ${C}_{t}^{1}$, ${C}_{t}^{2}$ and ${C}_{t}^{3}$) and via the parameters $\beta_{2}$, $\beta_{3}$ and $\beta_{4}$. Coupled with the setup of the binary-valued parameters (i.e., $\psi_{1}$, $\psi_{2}$ and $\psi_{3}$) in the state equation, this ensures the proper inter-temporal aggregation of the flow variables in the system and refreshes the quantity at the beginning of each period. Finally, the ${u}_{t}$ are stochastic disturbance terms, and are assumed to follow autoregressive processes, as in \cite{aruoba2009real}. In the state equation, the first four state variables are connected with  $\textit{MF}_{t}^{vol}$ via $\rho$. Of these four state variables, the last three (i.e., ${C}_{t}^{1}$, ${C}_{t}^{2}$ and ${C}_{t}^{3}$) are defined such that their previous values are added to $\rho$$\textit{MF}_{t}^{vol}$ whenever flow aggregation is required. 
+			
+			As a result of mixed frequency input signals, missing value will occur in the signal vector $y_t$. The state equation will continue to update the state variable with respect to the state equation, assuming no new information in the signal equation. That being said, the estimation of this state space model with mixed frequency signals is still similar to the universal frequency case, with some accommodation for missing values from lower frequency variables. As an illustration, denote a mixed-frequency dataset as $y_t^*$ and the corresponding signal vector as $y_t^* = [y_t^{d}, y_t^{2d}, y_t^{3d}, y_t^{w}]'$, where $y_t^* = y_t$ under the univariate frequency setup, and $\displaystyle y_t^*=M_ty_t$ under the mixed frequency setup, with elements in matrix $M_t$ equal to 0 for missing values in the signal vector and equal to 1 for non-missing values. The estimation procedure then follows the univariate scenario. Namely, let $S_t$ be a $m \times q$ vector of state variables. For $t = 1, \cdots, T$, the compact form of the state space model can be written as:
+			\begin{gather*}
+			y_t^* = H_t^* S_t \\
+			S_{t+1} = A S_t + B \eta_t, 
+			\end{gather*}
+			where $\eta_t \overset{i.i.d.}\sim N(0,Q)$. According to \cite{anderson2012optimal}, when observation $y_t$ becomes available in the standard state space model, the joint distribution between $\displaystyle y_t-E(y_t|y_{t-1})$ and $S_t$ updates $S_{t|t}$, where we use the notation \textquotedblleft $|t$\textquotedblright{} to denote the conditional expectation with respect to the filtration at period $t$. The state equation then yields $S_{t+1}$. By incorporating the mapping from $y_t$ to $y_t^*$, we can apply the estimation procedure used in the standard state space model to our mixed-frequency dataset. More specifically, we have
+			\begin{align*}
+			y_t^* = \displaystyle M_ty_t, \quad H_t^* = \displaystyle M_tH_t, \quad  \beta_t^* = \displaystyle M_t\beta_t.
+			\end{align*}
+			
+			Then similar to the standard state space model, we obtain the following joint distribution:
+			\begin{align*}
+			\begin{pmatrix}
+			S_{t}\\
+			y_t^*-E(y_t^*|y_{t-1}^*)
+			\end{pmatrix} \sim  N\left[\left(\begin{array}{c}
+			S_{t|t -1}\\
+			0
+			\end{array}\right),\left(\begin{array}{cc}
+			P_t H_t^{*'} & P_t H_t^{*'} \\
+			P_t H_t^{*'} & V_t 
+			\end{array}\right)\right],
+			\end{align*}
+			where $P_t$ denotes the variance of $S_t$ given $y_{t-1}^*$, and $V_t$ denotes the variance of $y_t^*-E(y_t^*|y_{t-1}^*)$. (Refer to \cite{anderson2012optimal} for a detailed derivation of the mean, covariance, and variance in the above discussion.) From the joint distribution of these variables, we obtain:
+			\begin{gather*}
+			\alpha_{t|t} = S_t + P_t H_t^{*'} F_t^{-1} [y_t^*-E(y_t^*|y_{t-1}^*)] \\
+			P_{t|t} = P_t + P_t H_t^{*'} F_t^{-1} H_t P_t^{'}.
+			\end{gather*}
+			According to the state equation, we can then forecast the next step state vector as:
+			\begin{gather*}
+			\alpha_{t+1} = A \alpha_{t|t} \\
+			P_{t+1} = A P_t A'+ BQB'
+			\end{gather*}
+			Alternatively, when $y_{t}$ has missing values due to different updating frequencies, the state vector will not update and instead adheres to the following law of motion:
+			\begin{gather*}
+			\alpha_{t+1} = A \alpha_{t} \\
+			P_{t+1} = A P_t A'+ BQB'.
+			\end{gather*}
+			
+			\subsection{Macroeconomic uncertainty measures} \label{subsec:macro}
+			We again begin with $y_t = (y_t^1, y_t^2, y_t^3, y_t^4 )$. In this section, these variables, however, are measured at daily (denoted by $d$), weekly (denoted by $w$), monthly (denoted by $m$), and quarterly (denoted by $w$) frequencies. This setup immediately allows us to construct a ``benchmark'' uncertainty measure corresponding to the business conditions index analyzed by \cite{aruoba2009real}. In particular, following \cite{aruoba2009real}, we use four macroeconomic variables with different sampling frequencies, including: (1) the daily yield curve spread (${y}_{t}^{1}$), defined as the difference between the 10-year U.S. Treasury note yield and the 3-month Treasury bill yield; (2) weekly initial claims for unemployment insurance (${y}_{t}^{2}$); (3) nonfarm payroll employment (${y}_{t}^{3}$); and (4) quarterly gross domestic product (${y}_{t}^{4}$). The corresponding state space model used to extract our uncertainty measure, called ${MF}_{t}^{mac}$ is:
+			
+			\smallskip
+			\noindent\textit{Observation equation:}
+			\begin{align*}
+			\left(\begin{array}{l}
+			{y}_{t}^{1}\\
+			{y}_{t}^{2}\\
+			{y}_{t}^{3}\\
+			{y}_{t}^{4}\\
+			\end{array}\right) =
+			\left(\begin{array}{llll}
+			\beta_{1} & 0& 0& 1\\
+			0 & \beta_{2}& 0& 0\\
+			\beta_{3}& 0 & 0& 0 \\
+			0& 0& \beta_{4} & 0\\
+			\end{array}\right) \left(\begin{array}{l}
+			\textit{MF}_{t}^{\,mac}\\
+			{C}_{t}^{1}\\
+			{C}_{t}^{2}\\
+			{u}_{t}^{1}
+			\end{array}\right) +
+			\left(\begin{array}{lll}
+			0 & 0& 0\\
+			\gamma_{2} & 0& 0\\
+			0 & \gamma_{3}& 0  \\
+			0 & 0& \gamma_{4}\\
+			\end{array}\right) \left(\begin{array}{l}
+			{y}_{t-W}^{2}\\
+			{y}_{t-M}^{3}\\
+			{y}_{t-Q}^{4}
+			\end{array}\right) +
+			\left(\begin{array}{l}
+			0\\
+			{w}_{t}^{2}\\
+			{w}_{t}^{3}\\
+			{w}_{t}^{4}
+			\end{array}\right).
+			\end{align*}
+			
+			\noindent\textit{State equation:}
+			\begin{align*}
+			\left(\begin{array}{l}
+			\textit{MF}_{t+1}^{\,mac}\\
+			{C}_{t+1}^{1}\\
+			{C}_{t+1}^{2}\\
+			{u}_{t+1}^{1}
+			\end{array}\right) =
+			\left(\begin{array}{llll}
+			\rho & 0& 0& 0\\
+			\rho & \psi_{t+1}^1& 0& 0\\
+			\rho & 0& \psi_{t+1}^2& 0\\
+			0 & 0& 0& \gamma_{1}
+			\end{array}\right) \left(\begin{array}{l}
+			\textit{MF}_{t}^{\,mac}\\
+			{C}_{t}^{1}\\
+			{C}_{t}^{2}\\
+			{u}_{t}^{1}
+			\end{array}\right) +
+			\left(\begin{array}{lll}
+			1 & 0\\
+			1 & 0\\
+			1 & 0\\
+			0 & 1
+			\end{array}\right)
+			\left(\begin{array}{l}
+			{e}_{t}^{1}\\
+			{e}_{t}^{2}
+			\end{array}\right),
+			\end{align*}
+			where the error terms ${e}_{t}^{i} \overset{i.i.d}\sim N(0,\sigma_{i}^2)$, with $i=1,2$.
+			
+			The variables in this model include: the observed vector $y_t$; our latent uncertainty measure ${MF}_{t}^{mac}$; aggregate state variables, ${C}_{t}^{1}$ and ${C}_{t}^{2}$; and stochastic disturbance terms, $u_t^1$, $w_t^2$, $w_t^3$, and $w_t^4$. Note that in this model, only $y_t^2$ and $y_t^4$ are flow variables, and hence there are only two aggregate state variables. 
+			Accordingly, we also define two binary-valued variables, $\psi_{1}$ and $\psi_{2}$, for these aggregated state variables. Namely,
+			
+			$
+			\psi_{t}^1=
+			\begin{cases}
+			0, & \text{if $t$ is the first day of the week } \\
+			1, & \text{otherwise,}
+			\end{cases}
+			$
+			
+			\noindent and
+			
+			$
+			\psi_{t}^2=
+			\begin{cases}
+			0, & \text{if $t$ is the first day of the quarter } \\
+			1, & \text{otherwise.}
+			\end{cases}
+			$
+			
+			\subsection{Macroeconomic-volatility (convolution) uncertainty measures}
+			In order to construct our third variety of uncertainty measure, we combine macroeconomic and volatility variables. The basic notion behind this uncertainty measure is that ``convoluting'' both types of data (i.e., high frequency financial and mixed frequency macroeconomic data) may yield a more complete picture of the interaction between risks directly affecting macroeconomic variables, and risks that are transmitted through financial market volatility. Namely, we are interested in ascertaining the usefulness of combining uncertainty measures of the variety analyzed by \cite{bloom2009impact} with those analyzed by \cite{chauvet2015does}, as well as \cite{aruoba2009real}.
+			
+			We begin with $y_t = (y_t^1, y_t^2, y_t^3, y_t^4, y_t^5 )$. Here, $y_t^1$ is alternatively set equal to daily $RV_t$, $TRV_t$, $BPV_t$, or $JV_t$. The rest of the observed variables in our model are the same as those use when constructing ${MF}_{t}^{mac}$. The uncertainty measure extracted in this setup depends on the definition of $y_t^1$. Namely, we first extract ``convolution'' uncertainty measures $MF_t^{conv} = {MF}_{t}^{mac-RV}$, ${MF}_{t}^{mac-TRV}$, ${MF}_{t}^{mac-BPV}$, and ${MF}_{t}^{mac-JV}$, for each of $y_t^1$ equal to $RV_t$, $TRV_t$, $BPV_t$ or $JV_t$, respectively; and second, convolution uncertainty measures $MF_t^{conv-sq} = {MF}_{t}^{mac-RV-sq}$, ${MF}_{t}^{mac-TRV-sq}$, ${MF}_{t}^{mac-BPV-sq}$, or ${MF}_{t}^{mac-JV-sq}$, for each of $y_t^1$ equal to the square root of $RV_t$, $TRV_t$, $BPV_t$, or $JV_t$, respectively. The state space model is:
+			
+			\smallskip
+			\noindent\textit{Observation equation:}
+			\begin{align*}
+			\footnotesize
+			\left(\begin{array}{l}
+			\textit{y}_t^{1}\\
+			{y}_{t}^{2}\\
+			{y}_{t}^{3}\\
+			{y}_{t}^{4}\\
+			{y}_{t}^{5}\\
+			\end{array}\right) =
+			\left(\begin{array}{lllll}
+			\beta_{0} & 0& 0& 0& 1\\
+			\beta_{1} & 0& 0& 1& 0\\
+			0 & \beta_{2}& 0& 0& 0\\
+			\beta_{3}& 0 & 0& 0& 0 \\
+			0& 0& \beta_{4} & 0& 0\\
+			\end{array}\right) \left(\begin{array}{l}
+			\textit{MF}_{t}^{\text{ conv}}\\
+			{C}_{t}^{1}\\
+			{C}_{t}^{2}\\
+			{u}_{t}^{1}\\
+			{u}_{t}^{0}\\
+			\end{array}\right) +
+			\left(\begin{array}{lll}
+			0 & 0& 0\\
+			0 & 0& 0\\
+			\gamma_{2} & 0& 0\\
+			0 & \gamma_{3}& 0  \\
+			0 & 0& \gamma_{4}\\
+			\end{array}\right) \left(\begin{array}{l}
+			{y}_{t-W}^{3}\\
+			{y}_{t-M}^{4}\\
+			{y}_{t-Q}^{5}
+			\end{array}\right) +
+			\left(\begin{array}{l}
+			0\\
+			0\\
+			{w}_{t}^{2}\\
+			{w}_{t}^{3}\\
+			{w}_{t}^{4}
+			\end{array}\right).
+			\end{align*}
+			
+			
+			\noindent\textit{State equation:}
+			\begin{align*}
+			\footnotesize
+			\left(\begin{array}{l}
+			\textit{MF}_{t+1}^{\text{conv}}\\
+			{C}_{t+1}^{1}\\
+			{C}_{t+1}^{2}\\
+			{u}_{t+1}^{1}\\
+			{u}_{t+1}^{0}\\
+			\end{array}\right) =
+			\left(\begin{array}{lllll}
+			\rho & 0& 0& 0& 0\\
+			\rho & \psi_{t+1}^1& 0& 0& 0\\
+			\rho & 0& \psi_{t+1}^2& 0& 0\\
+			0 & 0& 0& \gamma_{1}& 0\\
+			0 & 0& 0& 0& \gamma_{0}
+			\end{array}\right)\left(\begin{array}{l}
+			\textit{MF}_{t}^{\text{conv}}\\
+			{C}_{t}^{1}\\
+			{C}_{t}^{2}\\
+			{u}_{t}^{1}\\
+			{u}_{t}^{0}\\
+			\end{array}\right)+
+			\left(\begin{array}{lll}
+			1 & 0 &0\\
+			1 & 0 &0\\
+			1 & 0 &0\\
+			0 & 1 &0\\
+			0 & 0 &1
+			\end{array}\right)
+			\left(\begin{array}{l}
+			{e}_{t}^{1}\\
+			{e}_{t}^{2}\\
+			{e}_{t}^{3}
+			\end{array}\right),
+			\end{align*}
+			where the error terms ${e}_{t}^{i} \overset{i.i.d}\sim N(0,\sigma_{i}^2)$, with $i=1,2,3$.
+			
+			The variables in this model include observed variables, the $y_t$; our latent uncertainty measure, ${MF}_{t}^{conv}$; aggregate state variables, ${C}_{t}^{1}$ and ${C}_{t}^{2}$; and stochastic disturbance terms, $u_t^1$, $u_t^0$, $w_t^2$, $w_t^3$, and $w_t^4$. As above, only $y_t^2$ and $y_t^4$ are flow variables in this model, and hence there are only two aggregate state variables. 
+			Accordingly, we also define two binary-valued variables $\psi_{1}$ and $\psi_{2}$ for these aggregated state variables. Namely,
+			
+			$
+			\psi_{t}^1=
+			\begin{cases}
+			0, & \text{if t is the first day of the week } \\
+			1, & \text{otherwise}
+			\end{cases}
+			$
+			
+			\noindent and
+			
+			$
+			\psi_{t}^2=
+			\begin{cases}
+			0, & \text{if t is the first day of the quarter } \\
+			1, & \text{otherwise}
+			\end{cases}.
+			$
+			
+			\section{Experimental Setup}
+			
+			All of our prediction experiments are based on sample periods from January 2006 - December 2018 ($Sample$ 1) and January 2009 - December 2018 ($Sample$ 2). When constructing forecasting models, in-sample model estimation is carried out using a rolling window estimation scheme, with window lengths of $w=36$ and $w=72$.\footnote{For a discussion of the use of alternative windowing schemes in the context of forecasting, see \cite{clark2009improving} and \cite{hansen2012choice} and \cite{rossi2012out}.}$^,$\footnote{Recall that our latent uncertainy measures are extracted from state space models. These models are estimated using all data up until the period prior to the construction of each prediction, because of this the uncertainty measures appearing under $Sample$ 1 and $Sample$ 2 in our prediction experiments are different, regardless of the fact that rolling windows are used in the estimation of the autoregressive type forecasting models described in this section.} Monthly forecasts for 6 macroeconomic and 7 corporate bond yield variables (see Section 4) are constructed for $h={1,2,3,4,5,6}$ months ahead, with ex-ante prediction periods beginning in January 2012 (under $Sample$ 1) and January 2015 (under $Sample$ 2). In the remaining sub-sections, we describe the forecasting models as well as evaluation metrics used in our prediction experiments.
+
+			\subsection{Forecasting Models}
+			
+			\noindent \textbf{Autoregressive benchmark model}
+			
+			The benchmark is an autoregression of order $p$ (i.e., an AR($p$) model) specified as follows:
+			\begin{equation}
+			y_{t+h} = c +\alpha ^{\prime}W_{t}+\epsilon _{t+h},  \label{var}
+			\end{equation}
+			where $y_{t}$ is the ``target'' forecast variable of interest, $h$ denotes the forecast horizon, $W_{t}$ contains lags of $y_t$, and $\alpha$ is a conformably defined coefficient vector. Lag orders are chosen anew, prior to the construction of each monthly forecast, using either the Akaike Information Criterion (AIC) or the Schwarz Information Criterion (SIC). Tabulated mean square forecast errors (MSFEs) reported in the sequel are for the case where lag orders are selected using the AIC. Results for the SIC case are qualitatively the same and available upon request.
+			
+			\noindent \textbf{Autoregressive models with one uncertainty measure}
+			
+			Let $F_{t}$ denote one of the latent uncertainty measures (i.e., $MF_t^{vol}$, $MF_t^{mac}$, or $MF_t^{conv}$), and estimate the following model: 
+			\begin{equation*}
+			y_{t+h} = c + \alpha ^{\prime}W_{t}+\rho^{\prime}F_{t}+\epsilon _{t+h}.
+			\end{equation*}
+			All terms in this model are as defined above.
+			
+			\noindent \textbf{Autoregressive models with two uncertainty measures}
+			
+			Let $F_{t}^a$ denote one of our latent uncertainty measures from either $MF_t^{vol}$ or $MF_t^{mac}$ and let $F_{t}^b$ denote another uncertainty measure from either $MF_t^{vol}$ or $MF_t^{mac}$. As these risk factors do not contain $MF_t^{conv}$ they can be directly compared with models that only include $MF_t^{conv}$, in order to ascertain whether combination of high frequency financial and mixed frequency macroeconomic data is preferred to the use of uncertainty measures constructed separately using each variety of dataset. Interestingly, as shall be seen later, models with $MF_t^{conv}$ are always preferred, based on our predictive accuracy assessments. This model is specified as follows: 
+			\begin{equation*}
+			y_{t+h} = c + \alpha ^{\prime}W_{t}+\rho^{\prime}F_{t}^a + \rho^{\prime\prime}F_{t}^b + \epsilon _{t+h}.
+			\end{equation*}
+			All terms in this model are as defined above.
+			
+			\noindent \textbf{Autoregressive models with daily volatility measures}
+			
+			In addition to estimating models with multi-frequency latent volatility uncertainty measures, we also estimated models using standard daily quadratic variation component measures, including $RV_t$, $TRV_t$, $BPV_t$, and $JV_t$. Let $X_{t}$ denote one of these volatility measures, as well as lags thereof. We estimate the following volatility augmented forecasting model:
+			\begin{equation*}
+			y_{t+h} = c + \alpha ^{\prime}W_{t}+\gamma^{\prime}X_{t}+\epsilon _{t+h}.
+			\end{equation*}
+			All terms in this model are as defined above.
+			
+			\noindent \textbf{Autoregressive models with uncertainty measures and daily volatility measures}
+			
+			We also combine latent volatility uncertainty measures and quadratic variation terms using the following model:
+			\begin{equation*}
+			y_{t+h} = c + \alpha ^{\prime}W_{t}+\rho^{\prime}F_{t}+\gamma^{\prime}X_{t}+\epsilon _{t+h},
+			\end{equation*}
+			All terms are as defined above, other than $F_{t}$, which includes only $MF_t^{vol}$ in this model.			
+			
+			\subsection{Predictive Accuracy Assessment}	
+			
+			As mentioned above, although some components in the vector process $y$ are estimates obtained from high frequency data, as long as the sampling interval length $\Delta_n$ shrinks to zero fast enough, their associated estimation errors have asymptotically negligible effects on the parameters of interest in our setup. Alternatively, we can view our high frequency estimators as observed quantities associated with the latent factors in the state equation of our state-space models. Then, high frequency estimation errors are naturally embedded in the residuals of the observation equation. Since these high frequency estimation errors converge to zero, they are bounded in probability, and hence satisfy our standard assumption on the residuals of the processes that we have specified. 
+			
+			Forecasts made in the sequel are analyzed using MSFE and DPAR statistics (see below), and inference on these statistics is carried out using GW tests (i.e., using the conditional Diebold-Mariano (DM) tests developed by \cite{white2006}, which generalizes the original test by \cite{diebold1995comparing}), as well as chi-square tests of independence (associated with our DPAR statistics), and model confidence sets, as described in \cite{hansen2011model} (model confidence sets are groups of models that contain the ``best'' model, with a given level of confidence). 
+			
+			Recall that the null hypothesis of the DM test is: $ H_{0}: \text{E}[L(\epsilon_{t+h}^{(1)})] - \text{E}[L(\epsilon_{t+h}^{(2)})] = 0 $, where the $\epsilon_{t+h}^{(i)}$ are prediction errors associated with model $i$, for $i=1,2$. In our analysis, $L(\cdot)$ is a quadratic loss function, corresponding to of use of MSFE. The test statistic that we utilize is:
+			
+			\begin{equation*}
+			\textrm{DM}_{P} = P^{-1} \sum\limits_{t=1}^P \frac{d_{t+h}}{\hat{\sigma}_{\bar{d}}}, 
+			\end{equation*}
+			where $d_{t+h} = [\hat{\epsilon}_{t+h}^{(1)}]^{2} - [\hat{\epsilon}_{t+h}^{(2)}]^{2}$, $\bar{d}$ denotes the mean of $d_{t+h}$, $\hat{\sigma}_{\bar{d}}$ is a heteroskedasticity and autocorrelation consistent estimate of the standard deviation of $\bar{d}$, and $P$ denotes the number of ex-ante predictions used to construct the test statistic.\footnote{\cite{white2006} also discuss a Wald version of this test statistic, which we do not utilize in this paper.} If the $DM_P$ statistic is significantly negative, then Model 1 is preferred to Model 2. In the sequel, we assume that the test statistic is asymptotically normal following \cite{white2006}. For an interesting discussion of alternative approaches to assessing forecasting performance, see \cite{rossi2011understanding}.
+			
+			In addition, we compare directional predictive accuracy rates (DPARs) of our different models. This is done by examining contingency tables, as in \cite{swanson1995model}. The classical contingency table associated with directional prediction signals is:
+			
+			\vspace{0.1in}
+			
+			\begin{center}
+				\begin{tabular}{cc|cc}
+					\toprule
+					&       & \multicolumn{2}{c}{actual} \\
+					&       & down  & up \\
+					\midrule
+					\multicolumn{1}{c}{\multirow{2}[0]{*}{predicted}} & down  &  \phantom{aaaaaa} $d_1$ \phantom{aaaaaa}    & \phantom{aaaaaa}  $d_2$ \phantom{aaaaaa}  \\[0.2em]
+					\multicolumn{1}{c}{} & up    &  $d_3$     & $d_4$  \\
+					\bottomrule
+				\end{tabular}
+			\end{center}
+			
+			\vspace{0.1in}
+			
+			\noindent Here $d_1$ ($d_4$) is the number of correct forecasts of downward (upward) movements and $d_2$ ($d_3$) is the number of incorrect forecasts of downward (upward) movements. Define $P_1 = d_1 + d_3$, $P_2 = d_2 + d_4$, and $P = P_1 + P_2$. The null hypothesis is that there is no predictiveTo test this hypothesis, we use the chi-square test of independence (see e.g., \cite{pesaran1994generalization}). In this setup, note that DPAR = $( d_1 + d_4 ) /N$.
+			
+			\section{Data}
+			
+			Our data span the period from January 03, 2006 to December 31, 2018, and include financial asset transaction prices, macroeconomic variables, and bond yields.
+			
+			A number of our models utilize daily nonparametric volatility estimators of components of the quadratic variation of the S\&P500, in addition to various daily macroeconomic and financial variables. These volatility estimators are constructed using 5-minute SPY (SPDR S\&P 500 ETF Trust) transaction prices, which are collected from the NYSE Trade and Quote (TAQ) database\footnote{https://wrds-www.wharton.upenn.edu/pages/about/data-vendors/nyse-trade-and-quote-taq/.}. 
+			
+			Our macroeconomic variables and bond yields are obtained from the FRED-MD database maintained by the Federal Reserve Bank of St. Louis. More specifically, the following macroeconomic variables were collected for use in our state space models: (1) daily yield curve spread, defined as the difference between the 10-year U.S. Treasury note yield and the 3-month Treasury bill yield; (2) weekly initial claims for unemployment insurance; (3) monthly number of nonfarm payroll employees; and (4) quarterly gross domestic product. All of these variables are log differenced in all calculations in order to induce stationarity, and then standardized, with the exception of yield spreads.
+			
+			Additionally, the following monthly macroeconomic variables are used as ``target'' variables in our forecasting experiments: industrial production (IP), the monthly number of total nonfarm payroll employees (PAY), housing starts (HS), personal consumption expenditures (PCE), the University of Michigan consumer sentiment index (SI), and core consumption price index (CPI), which excludes food and energy. The first three of these variables are most closely related to firm level business spending and residential investment activities, while the latter three most closely reflect consumer spending activity. All of these variables are also log differenced in all calculations in order to induce stationarity, except for the housing starts and sentiment index as suggested by the FRED-MD database appendix to respectively take log and perform first order difference.
+			
+			Finally, we construct a corporate bond yield dataset and extract a second set of ``target'' variables, which we forecast. These variables include monthly bond yields for Fitch-rated AAA, AA, A, BBB, BB, B, and CCC bonds (see Table 1 for details). The source of this dataset is the ICE Benchmark Administration Limited (IBA), and they are available from FRED database. Details and transformations of macroeconomic and financial variables used in our experiments are given in Table \ref{table:table1}. 
+			
+			\section{Empirical Findings}
+			
+			Our experimental findings are summarized using MSFE and DPAR statistics, and inference on these statistics is carried out using GW tests, chi-square tests of independence, and model confidence sets. For forecast model construction, two data sub-samples are utilized, and are called $Sample$ 1 (2006:1 - 2018:12) and $Sample$ 2 (2009:1 - 2018:12). Corresponding ex-ante prediction periods are 2012:1 - 2018:12 and 2015:1 - 2018:12, respectively; and forecasts are constructed for $h={1,2,3,4,5,6}$ and $w={36,72}$. For complete details refer to Section 3. The variables used when constructing forecast models are listed in Table 1.\footnote{High frequency S\&P500 returns are also utilized in our experiments, as discussed above.} 
+			
+			The target variables that we forecast include IP, PAY, HS, PCE, SI, CPI, AAA, AA, A, BBB, BB, B, and CCC (see Section 4 for complete details). Additionally, all of the forecasting models analyzed in our experiments are summarized in Table 2. Turning to our experimental findings, note that Tables \ref{table:table3A} and \ref{table:table3B} contain MSFE results, while Tables \ref{table:table3C} and \ref{table:table3D} contain DPAR results, for HS. In these 4 tables, MSFE-``best'' and DPAR-``best'' models are denoted in bold font, and starred entries denote rejections of the DM-test null hypothesis of equal model accuracy (for Tables \ref{table:table3A} and \ref{table:table3B}) and rejection of the independence null hypothesis (for Tables \ref{table:table3C} and \ref{table:table3D} ).\footnote{For GW tests, each forecasting model listed in the table is compared with an AR benchmark model.} For the sake of brevity, results for our other 5 macroeconomic target variables are gathered in a supplemental appendix. Additionally, all model confidence set results are gathered in the appendix. Table \ref{table:table4} contains MSFE results from forecasting our 6 corporate bond yields. Of note is that only results for models that performed amongst the top 4 when predicting our macroeconomic variables are reported on in this table - again for the sake of brevity. Finally, Tables \ref{table:table5A} to \ref{table:table5D} report the overall ``winners'' in our experiments, by listing the MSFE- and DPAR-``best'' models for each of the six forecast horizons and two estimation window sizes.
+			
+			Prior to discussing our tabulated results, and as an aid to understanding the difference between the different uncertainty measures in our analysis, consider Figures \ref{figure:figure1} - \ref{figure:figure4}, in which all of the uncertainty measures (i.e., risk factors) utilized in our experiments are plotted using $Sample$ 1. A key take-away form inspection of these figures is that the macroeconomic risk factor plotted in Figure \ref{figure:figure1} is very different from the volatility uncertainty measures plotted in Figures \ref{figure:figure2} - \ref{figure:figure4}.
+			
+			\subsection{Macroeconometric Forecasting Results}
+			
+			\subsubsection{Variables most closely related to firm level business spending and residential investment decisions}
+			
+			The variables in this category include housing starts (HS), industrial production (IP), and nonfarm payroll employment (PAY), all of which are related to a firm's decisions on business spending and residential investment. As discussed above, MSFE, DPAR, and model confidence set results for these variables are summarized in Tables \ref{table:table3A} - \ref{table:table3D}, Tables \ref{table:table5A} - \ref{table:table5D}, and in Appendix A. Our findings can be summarized as follows.
+			
+			First, for HS and IP, out-of-sample MSFEs of various risk factor augmented models show significant reductions, relative to the AR benchmark model. Examples of models performing notably well include RV, TRV, BPV, and JV, for example. All of these models utilize nonparametric quadratic variation measures when estiamting latent risk factors. Consider the results fo HS in Tables \ref{table:table3A} to \ref{table:table3D}). For $Sample$ 1, the use of the BPV model results in MSFE decreases (relative to the AR benchmark) of 10.3\% when $h$=2 and $w$=36, and 22.1\%, when $h$=2 and $w$=72. Notice that the longer rolling window yields substantially lower MSFEs for the BPV model, and that this is our MSFE-best model. This finding characterizes many of our target variables, as evidenced upon inspection of Tables \ref{table:table5A} and \ref{table:table5B}, in which MSFE-best models are summarized, across all forecast horizons, windows, and sample periods. Interestingly, the maximum MSFE reduction is very high, at 53.7\%, and is achieved by the VTRV model, when $h$=6. For Sample 2, VRV, VTRV, and VBPV uncertainty measure augmented models again appreciably reduce MSFEs, for $h$=1 or 2, and for $w$=36 or 72. Here, RV volatility risk factor augmented models reduce MFSE the most (15.8\% when $h$=2 and $w$=36). Interestingly, our macro-volatility ``convolution'' uncertainty measure augmented models that utilize $MF_t^{conv}$ also yield forecasting improvement, when $w$=72. For instance, use of the CMTRV1 model decreases the MSFE by 7.3\%, relative to the AR benchmark. Results for IP (see supplemental appendix), are qualitatively the same as those reported for HS, although MSFE reductions are appreciably less, across all horizons, windows, and sample periods. These results provide initial evidence of the usefulness of our proposed uncertainty measures, when forecasting a variety of macroeconomic variables.
+			
+			Second, for PAY, use of our macroeconomic uncertainty measure (i.e., $MF_t^{mac}$) as well as  ``square root'' variants of our ``convolution'' uncertainty measures (i.e., $MF_t^{conv}$ - see models CMJV2, CMTRV2, CMBPV2, and CMJV2 in Table 2), lead to substantial MSFE reductions for both our shorter and longer sample periods. For example, for $Sample$ 1, the use of CMRV2, CMTRV2, and CMBPV2 results in MSFE reductions of 8.8\%, 8\%, and 3.2\%, respectively, when $h$=1 and $w$=36; and the use of CMTRV2 and CMBPV2 models result in MSFE decreases of 9.2\% and 8.4\%, respectively, when $h$=1 and $w$=72. These results carry over to the case where $Sample$ 2 is used, in which case MSFE reductions are all greater than 10\% (i.e., MSFE decreases are 17.2\%, 15.6\%, and 9.8\%, for $w$=36, and MSFE decreases are 7.8\%, 13.6\%, and 11.6\% for $w$=72, respectively). This results suggests that purely macroeconomic or financial latent uncertainty measures can be improved upon, in certain cases, by utilizing our so-called convolution risk factors that include both high frequency financial data, aas well as mixed frequency macroeconomic data.
+			
+			Third, DPAR and model confidence set results are also promising, indicating significant predictive accuracy gains. Results are again particularly promising when using our macroeconomic risk and our convolution risk factors (i.e., see models CMJV1, CMTRV1, CMBPV1, CMJV1, CMJV2, CMTRV2, CMBPV2, and CMJV2). Still, it is worth noting that models associated with the largest directional accuracy rates are not always the same as those associated with the smallest relative MSFEs. For example, for HS, the DPAR-``best'' model is CMTRV2, in which the directional forecasting accuracy rate is 76.7\% (for $h$=1, $w$=72, and $Sample$ 2). On the other hand, the analogous ``MSFE-best'' model is CMJV1. Of course, all of these models still include convolution factors. 
+			
+			Finally, inspection of the results gathered in Tables 3 and 4 (and in the appendix) indicate a tremendous number of cases for which our latent factor augmented models dominate the AR benchmark, both based on GW tests and based on chi-square tests of independence. Moreover, the model confidence set results gather in Tables B1a-B5B in the supplemental appendix present further evidence of the importance of models that include purely financial as well as convolution risk factors. For example, MRV, MTRV, MBPV, MJV (all of which include financial risk factors )appear in various model confidence sets for HS, IP, and PAY, as do models with convolution uncertainty measures, such as CMRV1, MCTRV1, and CMBPV1, for example.
+			
+			Summarizing, our new latent uncertainty measures are very useful in reducing MSFE and increasing directional predictive accuracy. Moreover, our ``convolution'' type factors that include risk factors derived from state space models that include both mixed frequency macroeconomic variables as well as nonparametric quadratic variation measures based on high frequency financial data appear to perform the best.
+			
+			\subsubsection{Variables most closely related to consumer spending decisions}
+			
+			The variables in this category include the consumer sentiment index (SI), the consumer price index (CPI), and personal consumption expenditures (PCE). Results from our prediction experiments using these variables are gathered in Tables \ref{table:table5A} - \ref{table:table5D}, as well as in the appendix. Our findings can be summarized as follows.
+			
+			First, the ``MSFE-best'' models often include factor augmented models. However, unlike the case of HS, IP, and PAY, where a large number of augmented models yield lower MSFEs than our benchmark AR model, we only observe occasional MSFE improvements for CPI, PCE, and SI. Still, even in the worst performing scenarios, such as in the case of CPI, there is some indication that uncertainty measures may be useful. For example, for CPI at the $h$=5 horizon, the MRV model results in MSFE reductions of 9.6\% (for $w$=36) and 5.1\% (for $w$=72) in $Sample$ 1 and MSFE reductions of 4.4\% ($w$=36) and 5.4\% ($w$=72) in $Sample$ 2. Additionally, for SI at the $h$=1 horizon, the MBPV model results in MSFE reductions of 6.6\% and 14.7\%, for $Sample$ 1 and $Sample$ 2, respectively, when $w$=72. 
+			
+			Second, directional forecast accuracy rates are comparable to rates achieved for our business spending and residential investment variables, when factor augmented models are utilized for directional prediction. Still, as evidenced in 
+			Tables \ref{table:table5C} and \ref{table:table5D}, AR models do sometimes yield the highest directional forecast accuracy rates. Given that this also occurs when predicting the direction of change for HS, IP, and PAY, we have evidence that uncertainty measures are more useful for predicting absolute magnitudes of our variables than turning points. Drilling down into our findings more deeply, note that for CPI, our RV, TRV, and BPV models, as well as our MRV, MTRV, and MBPV models generally result in around 5\% to 6\% increases in directional predictive accuracy, relative to the AR benchmark, when $h$=5 and $w$=72, for both $Sample$ 1 and $Sample$ 2. For PCE, the MRV, MTRV, and MBPV models yield increases in directional accuracy of comparable (and greater) magnitudes,  when $h$=5 and $w$=72, in both sample periods.
+			
+			Finally, it is worth noting that model confidence sets still include a variety models with our latent uncertainty measures. For example, the confidence set for PCE only includes MVJV, while the confidence set for CSI also only includes MVJV (when $w=72$), but includes virtually all of our models with convolution type latent uncertainty measures when $w=36$. Thus, although a little weaker, we again have evidence of the usefulness of the new risk and uncertainty measures introduced in this paper.
+			
+			\subsection{Corporate Bond Yield Forecasting Results}
+			
+			In order to ascertain whether our above findings  apply to other datasets, we investigated the importance of our new measures in the context of predicting corporate bond yields. In particular, we used a subset of 4 of the very best models from our macroeconomic variables prediction experiment for forecasting yields on AAA, AA, A, BBB, BB, and B rated bonds. Results from this experiment are gathered in Table \ref{table:table4} and Tables \ref{table:table5A} - \ref{table:table5D}. Our findings can be summarized as follows. 
+			
+			First, it is very clear upon inspection of the MSFEs in Table \ref{table:table4} that predictive accuracy associated with the use of our uncertainty measures increases as the quality of the bond deteriorates. The greatest gains are associated with junk bonds, while there is little to gain by using uncertainty measures when predicting AAA rated bonds. Take the case where $w=36$ as an example, which is reported in Table \ref{table:table4}. Bonds with B and CCC ratings show the largest MSFE reductions from amongst all bonds, when the RV, TRV, and BPV factor augmented models are utilized. For example, for CCC-rated bond yield forecasting, the TRV model results in MSFE reductions of 9.3\%, 22.4\%, and 13.9\%, for $h$=4 to 6, respectively, in $Sample$ 1; and results in MSFE reductions of 12.9\%, 35.6\%, and 35.8\% in $Sample$ 2. For B-rated bonds, the TRV model results in MSFE reductions of 22.5\%, 25.3\%, and 12.4\%, for $h$=4 to 6, respectively, in $Sample$ 2. However, predictive gains deteriorate as the investment quality of the bond increases. For example, for BB rated bonds in $Sample$ 2, the TRV model results in MSFE reductions of 16.8\%, 11.1\%, and 3.3\%, for $h$=4, 5, and 6, respectively. All of these percentages are lower than the corresponding ones for CCC and B-rated bonds. The same result holds when comparing BBB versus BB-rated bonds, and A versus BBB-rated bonds, etc. Thus, we have strong evidence of the usefulness of our latent financial uncertainty measures (i.e. $MF_t^{vol}$) for predicting corporate bond yields that involve substantial financial risk, as might be expected.
+			
+			Second, notice that the fourth row of entries in each panel of Table \ref{table:table4} summarize results based on the JV model. In this model, the only uncertainty measure is the jump variation type factor. Results are less than starling in these case, as jump-based uncertainty measures are of little use when predicting corporate bond yields. Instead, our uncertainty measures that capture the continuous components of quadratic variation yield the most promising results.
+			
+			Broadly speaking, the above illustration based on bond forecasting again suggests that our new risk and uncertainty factors are useful for reducing MSFE and increasing directional predictive accuracy for a variety of economic variables.  
+			
+			\section{Concluding Remarks}
+			
+			In this paper, we analyze three types of macroeconomic and financial uncertainty measures, and explore the usefulness of said measures in a series of forecasting experiments. The new uncertainty measures are latent variables extracted from state space models that include multiple different frequencies of macroeconomic and financial variables, as well as non-parametrically estimated components of quadratic variation. The state space models are specified in one of two ways. First, they are specified solely using the latent components of quadratic variation, including continuous and jump component variation measures extracted from high frequency S\&P500 data. Alternatively, they are specified using quadratic variation components as well as additional observed variables, including macroeconomic indicators such as interest rates, employment, and production, which are measured at multiple different frequencies. Finally, three types of uncertainty measures are constructed using (i) high frequency financial data; (ii) mixed frequency macroeconomic data; and (iii) both types of data. Our key findings can be summarized as follows. First, our multi-frequency financial and financial-macroeconomic volatility uncertainty measures yield significantly improved predictions for a number of variables including housing starts, industrial production and nonfarm payroll, relative to benchmark models including simple autoregressive models, as well as mixed frequency models driven solely by macroeconomic indicators. Second, the same uncertainty measures are useful for predicting low-grade corporate bond yields; but not high-grade corporate bond yields, underscores the importance of the investment grade of bonds for withstanding turbulent market conditions, as might be expected. Third, four different measures of volatility are used in our analysis, including realized volatility ($RV_t$), truncated realized volatility ($TRV_t$), bi-power variation ($BPV_t$), and jump variation ($JV_t = {RV}_t - {BPV}_t$). In our forecasting experiments, $TRV_t$ is clearly the most effective measure to use when constructing volatility uncertainty measures. Moreover, factors constructed using $JV_t$ perform quite poorly in our prediction experiments.
+			
+			\newpage
+			
+			\nocite{*}
+			\bibliographystyle{plainnat2}
+			\bibliography{draft4bib2}
+			
+			% remove all the temporary files in the folder;  Removing the .bbl and .aux files before those run is recommended, in order to avoid spurious error messages that might corrupt the .aux file currently being generated.%
+			
+			%----------------------------------------------------------------------
+			%------------------------TABLES------------------------------------
+			\newpage
+			\renewcommand{\thetable}{1} 
+			
+			\begin{table}[ht]
+				\centering
+				\caption{Macroeconomic and Financial Variables Used in Uncertainty Measure Construction and in Forecasting Experiments$^1$} 
+				\label{table:table1}
+				\begin{threeparttable}
+					%\def\arraystretch{1.1}
+						\footnotesize
+					\begin{tabulary}{.15\linewidth}{cccc}
+							\toprule
+							Name &Frequency& Description& Treatment\\
+							\midrule
+							$SPY$  & 5-Minute &  SPDR S\&P 500 ETF Trust Price &  $\Delta log(x_t)$  \\
+							$SPR$ & Daily &Yield Curve Spread & no transformation\\
+							&  & (10-year Treasury Note Yield Minus 3-month Yield)& \\
+							$IC$   &Weekly &Initial Claims for Unemployment Insurance & $\Delta log(x_t)$\\
+							$PAY$ &  Monthly& Number of Employees on Non-agricultural Payrolls & $\Delta log(x_t)$\\
+							$GDP$   & Quarterly & Real Gross Domestic Product & $\Delta log(x_t)$\\
+							$IP$ & Monthly & Industrial Production Index & $\Delta log(x_t)$\\
+							$HS$ & Monthly & Housing Starts & $log(x_t)$\\
+							$PCE$ & Monthly & Personal Consumption Expenditures  & $\Delta log(x_t)$\\
+							$SI$ & Monthly & University of Michigan Consumer Sentiment Index & $\Delta x_t$  \\
+							$CPI$ & Monthly & Consumer Price Index Less Food and Energy & $\Delta log(x_t)$\\
+							$AAA$ & Monthly&  US Corporate AAA Effective Yield  & $\Delta x_t$  \\
+							$AA$ & Monthly&  US Corporate AA Effective Yield  & $\Delta x_t$  \\
+							$A$ & Monthly&  US Corporate A Effective Yield  & $\Delta x_t$  \\
+							$BBB$ & Monthly&  US Corporate BBB Effective Yield  & $\Delta x_t$  \\
+							$BB$ & Monthly& US High Yield BB Effective Yield  & $\Delta x_t$  \\
+							$B$ & Monthly& US High Yield B Effective Yield  & $\Delta x_t$  \\
+							$CCC$ & Monthly& US High Yield CCC or Below Effective Yield  & $\Delta x_t$  \\
+							\bottomrule
+						\end{tabulary}
+					%\end{adjustbox}
+					\begin{tablenotes}[flushleft]
+						\footnotesize 
+						\item[1] SPY data were downloaded from the WRDS Trade and Quotes (TAQ) database. All remaining 
+						series were obtained from the FRED-MD database of the St. Louis Federal Reserve Bank and are seasonally 
+						adjusted. Bond classifications from AAA to CCC are based on S\&P500 and Fitch standards.
+					\end{tablenotes}
+				\end{threeparttable}
+			\end{table}
+			
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------
+			\newpage
+			\renewcommand{\thetable}{2} 
+			\begin{table}[h]
+				\centering
+				\caption{Forecasting Models$^1$} 
+				\label{table:table2}
+				\footnotesize
+				\begin{threeparttable}
+					
+					%\begin{adjustbox}{totalheight=0.75\textheight-2\baselineskip}
+					\footnotesize
+						\begin{tabulary}{.15\linewidth}{ll}
+							\toprule
+							Model & Description \\
+							\midrule
+							{Benchmark Model:} \\
+							\textbf{AR:} Autoregression & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \epsilon_t$ \\
+							\midrule
+							{Macroeconomic Uncertainty Measures Augmented Model:} \\
+							\textbf{MAC:}  $AR+\textit{MF}^{mac}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_1 \textit{MF}_t^{\,mac} + \epsilon_t$ \\
+							\midrule
+							{Volatility Uncertainty Measures Augmented Models:} \\
+							\textbf{RV:}  $AR+\textit{MF}^{RV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_3 \textit{MF}_t^{RV} + \epsilon_t$ \\
+							\textbf{TRV:}  $AR+\textit{MF}^{TRV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_3 \textit{MF}_t^{TRV} + \epsilon_t$ \\
+							\textbf{BPV:}  $AR+\textit{MF}^{BPV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_3 \textit{MF}_t^{BPV} + \epsilon_t$ \\
+							\textbf{JV:}  $AR+\textit{MF}^{JV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_3 \textit{MF}_t^{JV} + \epsilon_t$ \\
+							\midrule
+							{Macro-Volatility Convolution Uncertainty Measures Augmented Models:} \\
+							\textbf{CMRV1:}  $AR+\textit{MF}^{mac-RV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_2 \textit{MF}_t^{mac-RV} + \epsilon_t$ \\
+							\textbf{CMTRV1:}  $AR+\textit{MF}^{mac-TRV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_2 \textit{MF}_t^{\text{ mac-TRV}} + \epsilon_t$ \\
+							\textbf{CMBPV1:}  $AR+\textit{MF}^{mac-BPV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_2 \textit{MF}_t^{mac-BPV} + \epsilon_t$ \\
+							\textbf{CMJV1:}  $AR+\textit{MF}^{mac-JV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_2 \textit{MF}_t^{mac-JV} + \epsilon_t$ \\
+							\textbf{CMRV2:}  $AR+\textit{MF}^{mac-RVsqrt}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_2 \textit{MF}_t^{mac-RVsqrt} + \epsilon_t$ \\
+							\textbf{CMTRV2:}  $AR+\textit{MF}^{mac-TRVsqrt}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_2 \textit{MF}_t^{\text{ mac-TRVsqrt}} + \epsilon_t$ \\
+							\textbf{CMBPV2:}  $AR+\textit{MF}^{mac-BPVsqrt}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_2 \textit{MF}_t^{mac-BPVsqrt} + \epsilon_t$ \\
+							\textbf{CMJV2:}  $AR+\textit{MF}^{mac-JVsqrt}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_2 \textit{MF}_t^{mac-JVsqrt} + \epsilon_t$ \\
+							\midrule
+							{Volatility Augmented Models:} \\
+							\textbf{VRV:}  $AR+RV$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \gamma RV_t + \epsilon_t$ \\
+							\textbf{VTRV:}  $AR+TRV$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \gamma TRV_t + \epsilon_t$ \\
+							\textbf{VBPV:}  $AR+BPV$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \gamma BPV_t + \epsilon_t$ \\
+							\textbf{VJV:}  $AR+JV$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \gamma JV_t + \epsilon_t$ \\
+							\midrule
+							{Macroeconomic and Volatility Uncertainty Measures Augmented Models:} \\ 
+							\textbf{MRV:}  $AR+\textit{MF}^{mac}+\textit{MF}^{RV}$  & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_1 \textit{MF}_t^{\,mac} + \rho_2 \textit{MF}_t^{RV} + \epsilon_t$ \\ 
+							\textbf{MTRV:}  $AR+\textit{MF}^{mac}+\textit{MF}^{TRV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_1 \textit{MF}_t^{\,mac} + \rho_2 \textit{MF}_t^{TRV} + \epsilon_t$ \\
+							\textbf{MBPV:}  $AR+\textit{MF}^{mac}+\textit{MF}^{BPV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_1 \textit{MF}_t^{\,mac} + \rho_2 \textit{MF}_t^{BPV} + \epsilon_t$ \\
+							\textbf{MJV:}  $AR+\textit{MF}^{mac}+\textit{MF}^{JV}$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_1 \textit{MF}_t^{\,mac} + \rho_2 \textit{MF}_t^{JV} + \epsilon_t$ \\
+							\midrule
+							{Macroeconomic Uncertainty Measures and Volatility Augmented Models:} \\
+							\textbf{MVRV:}  $AR+\textit{MF}^{mac}+RV$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_1 \textit{MF}_t^{\,mac} + \gamma RV_t + \epsilon_t$ \\
+							\textbf{MVTRV:}  $AR+\textit{MF}^{mac}+TRV$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_1 \textit{MF}_t^{\,mac} + \gamma TRV_t + \epsilon_t$ \\
+							\textbf{MVBPV:}  $AR+\textit{MF}^{mac}+BPV$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_1 \textit{MF}_t^{\,mac} + \gamma BPV_t + \epsilon_t$ \\
+							\textbf{MVJV:}  $AR+\textit{MF}^{mac}+JV$ & $y_{t+h} = c + \sum_{i=1}^{r} \alpha_i y_{t-i} + \rho_1 \textit{MF}_t^{\,mac} + \gamma JV_t + \epsilon_t$ \\
+							\bottomrule
+						\end{tabulary}
+					%\end{adjustbox} 
+				%}}
+					\begin{tablenotes}[flushleft]
+						\footnotesize
+						\item[1] For the AR model, the number of lags, r, is determined using the AIC (results for the case where the SIC is instead used are qualitatively the same).
+						All $MF$ volatility uncertainty measures are constructed as detailed in Section 2. In this table, $\textit{MF}^{mac}$ denotes purely macroeconomic uncertainty measures, while
+						$\textit{MF}^{RV}$, $\textit{MF}^{TRV}$, $\textit{MF}^{BPV}$, and $\textit{MF}^{JV}$ denote volatility uncertainty measures based on the use of $RV$, $TRV$, $BPV$, and $JV$ estimators, respectively. Here, $RV$, $TRV$, $BPV$, and $JV$ correspond to realized volatility, truncated realized volatility, bi-power variation, and the jump component of quadratic variation, respectively. Additionally, $\textit{MF}^{mac-RV}$, $\textit{MF}^{mac-TRV}$, $\textit{MF}^{mac-BPV}$, and $\textit{MF}^{mac-JV}$ are ``convolution'' type uncertainty measures constructed using models with both macroeconomic variables and one of either $RV$, $TRV$, $BPV$, or $JV$. Finally, $\textit{MF}^{mac-RVsqrt}$, $\textit{MF}^{mac-TRVsqrt}$, 
+						$\textit{MF}^{mac-BPVsqrt}$, $\textit{MF}^{mac-JVsqrt}$ are the same, but replace
+						RV, TRV, BPV, and JV estimators with the square roots thereof in their construction. 
+					\end{tablenotes}
+				\end{threeparttable}
+			\end{table}	
+			
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------
+			\newpage
+			\renewcommand{\thetable}{3A} 
+			
+			\begin{table}[h]
+				\centering
+				\caption{Ex-Ante Relative MSFEs for Housing Starts (Sample 1: 2006:1 - 2018:12)$^1$} 
+				\label{table:table3A}
+				\begin{threeparttable}
+						\scriptsize
+					%\footnotesize
+					%\npdecimalsign{.}
+					%\nprounddigits{3}
+					\begin{tabulary}{.15\linewidth}{lllllll} %{l n{1}{3} n{1}{3} n{1}{3} n{1}{3} n{1}{3} n{1}{3}}
+							\toprule
+							\multicolumn{1}{c}{\multirow{2}[0]{*}{Model}} & \multicolumn{6}{c}{Forecast horizon}\\
+							&   1-month &  2-month &3-month &4-month &5-month &  6-month \\
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 36}\\
+							\midrule	
+							
+							AR  & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+							MAC  & 1.173\textsuperscript{***} & 1.092\textsuperscript{***} & 1.104\textsuperscript{***} & 1.027\textsuperscript{ } & 0.981\textsuperscript{***} & \textbf{0.938\textsuperscript{***}} \\
+							RV   & \textbf{0.930\textsuperscript{***}} & \textbf{0.897\textsuperscript{***}} & 0.999\textsuperscript{***} & 1.006\textsuperscript{ } & 1.037\textsuperscript{ } & 1.038\textsuperscript{***} \\
+							TRV   & 0.930\textsuperscript{***} & 0.902\textsuperscript{***} & 1.015\textsuperscript{ } & 1.013\textsuperscript{ } & 1.043\textsuperscript{ } & 1.040\textsuperscript{***} \\
+							BPV  & 0.931\textsuperscript{***} & 0.897\textsuperscript{***} & 1.012\textsuperscript{ } & 1.002\textsuperscript{**} & 1.036\textsuperscript{ } & 1.035\textsuperscript{***} \\
+							JV  & 2.277\textsuperscript{***} & 2.178\textsuperscript{***} & 2.010\textsuperscript{***} & 1.726\textsuperscript{***} & 1.747\textsuperscript{***} & 1.602\textsuperscript{***} \\
+							CMRV1   & 0.999\textsuperscript{***} & 1.096\textsuperscript{***} & 1.161\textsuperscript{***} & 1.028\textsuperscript{***} & 1.004\textsuperscript{*} & 0.968\textsuperscript{***} \\
+							CMTRV1   & 1.019\textsuperscript{ } & 1.003\textsuperscript{*} & \textbf{0.998\textsuperscript{***}} & 1.004\textsuperscript{*} & 1.058\textsuperscript{***} & 1.047\textsuperscript{ } \\
+							CMBPV1   & 0.997\textsuperscript{***} & 1.096\textsuperscript{**} & 1.158\textsuperscript{***} & 1.033\textsuperscript{***} & 1.032\textsuperscript{***} & 0.967\textsuperscript{***} \\
+							CMJV1  & 1.011\textsuperscript{ } & 1.133\textsuperscript{***} & 1.078\textsuperscript{***} & 1.022\textsuperscript{ } & 0.979\textsuperscript{***} & 0.952\textsuperscript{***} \\
+							CMRV2   & 0.992\textsuperscript{***} & 0.974\textsuperscript{***} & 1.011\textsuperscript{ } & \textbf{0.982\textsuperscript{***}} & 1.079\textsuperscript{***} & 1.031\textsuperscript{ } \\
+							CMTRV2   & 0.991\textsuperscript{***} & 0.989\textsuperscript{***} & 1.055\textsuperscript{***} & 1.004\textsuperscript{*} & 1.062\textsuperscript{***} & 1.044\textsuperscript{ } \\
+							CMBPV2  & 1.007\textsuperscript{ } & 1.020\textsuperscript{ } & 1.016\textsuperscript{ } & 0.992\textsuperscript{***} & 1.076\textsuperscript{***} & 1.059\textsuperscript{ } \\
+							CMJV2  & 1.014\textsuperscript{ } & 0.991\textsuperscript{***} & 1.048\textsuperscript{***} & 1.031\textsuperscript{***} & \textbf{0.962\textsuperscript{***}} & 0.963\textsuperscript{***} \\
+							VRV   & 1.040\textsuperscript{***} & 1.022\textsuperscript{ } & 1.052\textsuperscript{ } & 1.041\textsuperscript{***} & 1.037\textsuperscript{***} & 0.983\textsuperscript{***} \\
+							VTRV  & 1.037\textsuperscript{***} & 1.021\textsuperscript{ } & 1.053\textsuperscript{ } & 1.041\textsuperscript{***} & 1.038\textsuperscript{***} & 0.985\textsuperscript{***} \\
+							VBPV   & 1.043\textsuperscript{***} & 1.023\textsuperscript{ } & 1.058\textsuperscript{ } & 1.049\textsuperscript{***} & 1.043\textsuperscript{***} & 0.982\textsuperscript{***} \\
+							VJV  & 1.044\textsuperscript{*} & 0.952\textsuperscript{***} & 0.999\textsuperscript{***} & 0.998\textsuperscript{***} & 0.962\textsuperscript{***} & 0.964\textsuperscript{***} \\
+							MRV  & 1.152\textsuperscript{***} & 1.090\textsuperscript{***} & 1.165\textsuperscript{***} & 1.321\textsuperscript{***} & 1.194\textsuperscript{***} & 1.208\textsuperscript{***} \\
+							MTRV  & 1.151\textsuperscript{***} & 1.091\textsuperscript{***} & 1.181\textsuperscript{***} & 1.336\textsuperscript{***} & 1.199\textsuperscript{***} & 1.218\textsuperscript{***} \\
+							MBPV   & 1.146\textsuperscript{***} & 1.075\textsuperscript{***} & 1.160\textsuperscript{***} & 1.326\textsuperscript{***} & 1.194\textsuperscript{***} & 1.193\textsuperscript{***} \\
+							MJV   & 1.253\textsuperscript{***} & 1.254\textsuperscript{***} & 1.096\textsuperscript{ } & 1.174\textsuperscript{***} & 1.252\textsuperscript{***} & 1.286\textsuperscript{***} \\
+							MVRV  & 1.272\textsuperscript{***} & 1.197\textsuperscript{***} & 1.116\textsuperscript{***} & 1.129\textsuperscript{***} & 1.005\textsuperscript{*} & 1.037\textsuperscript{ } \\
+							MVTRV   & 1.272\textsuperscript{***} & 1.200\textsuperscript{***} & 1.115\textsuperscript{***} & 1.132\textsuperscript{***} & 1.016\textsuperscript{ } & 1.040\textsuperscript{ } \\
+							MVBPV  & 1.272\textsuperscript{***} & 1.196\textsuperscript{***} & 1.119\textsuperscript{***} & 1.129\textsuperscript{***} & 1.011\textsuperscript{ } & 1.032\textsuperscript{ } \\
+							MVJV   & 1.253\textsuperscript{***} & 1.156\textsuperscript{***} & 1.103\textsuperscript{***} & 1.016\textsuperscript{ } & 1.029\textsuperscript{ } & 1.085\textsuperscript{ } \\
+							
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 72}\\
+							\midrule
+							
+							AR  & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+							MAC  & 0.925\textsuperscript{***} & 0.851\textsuperscript{***} & 0.841\textsuperscript{***} & 0.700\textsuperscript{***} & 0.623\textsuperscript{***} & 0.591\textsuperscript{***} \\
+							RV   & \textbf{0.849\textsuperscript{***}} & 0.780\textsuperscript{***} & 0.711\textsuperscript{***} & 0.569\textsuperscript{***} & 0.484\textsuperscript{***} & 0.479\textsuperscript{***} \\
+							TRV   & 0.852\textsuperscript{***} & 0.798\textsuperscript{***} & 0.724\textsuperscript{***} & \textbf{0.561\textsuperscript{***}} & \textbf{0.477\textsuperscript{***}} & \textbf{0.463\textsuperscript{***}} \\
+							BPV  & 0.855\textsuperscript{***} & \textbf{0.779\textsuperscript{***}} & \textbf{0.710\textsuperscript{***}} & 0.567\textsuperscript{***} & 0.482\textsuperscript{***} & 0.477\textsuperscript{***} \\
+							JV  & 1.081\textsuperscript{ } & 1.061\textsuperscript{ } & 1.034\textsuperscript{ } & 0.796\textsuperscript{***} & 0.630\textsuperscript{***} & 0.559\textsuperscript{***} \\
+							CMRV1   & 0.920\textsuperscript{***} & 0.882\textsuperscript{***} & 0.841\textsuperscript{***} & 0.760\textsuperscript{***} & 0.709\textsuperscript{***} & 0.741\textsuperscript{***} \\
+							CMTRV1   & 0.889\textsuperscript{***} & 0.883\textsuperscript{***} & 0.884\textsuperscript{***} & 0.832\textsuperscript{***} & 0.872\textsuperscript{***} & 0.881\textsuperscript{***} \\
+							CMBPV1   & 0.916\textsuperscript{***} & 0.877\textsuperscript{***} & 0.833\textsuperscript{***} & 0.754\textsuperscript{***} & 0.704\textsuperscript{***} & 0.749\textsuperscript{***} \\
+							CMJV1  & 0.906\textsuperscript{***} & 0.892\textsuperscript{***} & 0.880\textsuperscript{***} & 0.812\textsuperscript{***} & 0.756\textsuperscript{***} & 0.792\textsuperscript{***} \\
+							CMRV2   & 0.910\textsuperscript{***} & 0.922\textsuperscript{***} & 0.919\textsuperscript{***} & 0.853\textsuperscript{***} & 0.875\textsuperscript{***} & 0.857\textsuperscript{***} \\
+							CMTRV2   & 0.873\textsuperscript{***} & 0.868\textsuperscript{***} & 0.856\textsuperscript{***} & 0.834\textsuperscript{***} & 0.875\textsuperscript{***} & 0.812\textsuperscript{***} \\
+							CMBPV2  & 0.866\textsuperscript{***} & 0.877\textsuperscript{***} & 0.899\textsuperscript{***} & 0.866\textsuperscript{***} & 0.872\textsuperscript{***} & 0.832\textsuperscript{***} \\
+							CMJV2  & 0.922\textsuperscript{***} & 0.915\textsuperscript{***} & 0.911\textsuperscript{***} & 0.805\textsuperscript{***} & 0.721\textsuperscript{***} & 0.770\textsuperscript{***} \\
+							VRV   & 0.922\textsuperscript{***} & 0.836\textsuperscript{***} & 0.766\textsuperscript{***} & 0.753\textsuperscript{***} & 0.642\textsuperscript{***} & 0.664\textsuperscript{***} \\
+							VTRV  & 0.917\textsuperscript{***} & 0.837\textsuperscript{***} & 0.764\textsuperscript{***} & 0.753\textsuperscript{***} & 0.629\textsuperscript{***} & 0.660\textsuperscript{***} \\
+							VBPV   & 0.923\textsuperscript{***} & 0.837\textsuperscript{***} & 0.764\textsuperscript{***} & 0.754\textsuperscript{***} & 0.637\textsuperscript{***} & 0.667\textsuperscript{***} \\
+							VJV  & 0.938\textsuperscript{***} & 0.863\textsuperscript{***} & 0.883\textsuperscript{***} & 0.794\textsuperscript{***} & 0.698\textsuperscript{***} & 0.723\textsuperscript{***} \\
+							MRV  & 0.886\textsuperscript{***} & 0.806\textsuperscript{***} & 0.785\textsuperscript{***} & 0.660\textsuperscript{***} & 0.607\textsuperscript{***} & 0.615\textsuperscript{***} \\
+							MTRV  & 0.887\textsuperscript{***} & 0.813\textsuperscript{***} & 0.789\textsuperscript{***} & 0.668\textsuperscript{***} & 0.607\textsuperscript{***} & 0.616\textsuperscript{***} \\
+							MBPV   & 0.884\textsuperscript{***} & 0.804\textsuperscript{***} & 0.782\textsuperscript{***} & 0.655\textsuperscript{***} & 0.605\textsuperscript{***} & 0.610\textsuperscript{***} \\
+							MJV   & 1.011\textsuperscript{ } & 0.894\textsuperscript{***} & 0.801\textsuperscript{***} & 0.712\textsuperscript{***} & 0.631\textsuperscript{***} & 0.658\textsuperscript{***} \\
+							MVRV  & 0.930\textsuperscript{***} & 0.823\textsuperscript{***} & 0.838\textsuperscript{***} & 0.706\textsuperscript{***} & 0.627\textsuperscript{***} & 0.639\textsuperscript{***} \\
+							MVTRV   & 0.928\textsuperscript{***} & 0.825\textsuperscript{***} & 0.842\textsuperscript{***} & 0.706\textsuperscript{***} & 0.627\textsuperscript{***} & 0.633\textsuperscript{***} \\
+							MVBPV  & 0.930\textsuperscript{***} & 0.820\textsuperscript{***} & 0.834\textsuperscript{***} & 0.699\textsuperscript{***} & 0.626\textsuperscript{***} & 0.640\textsuperscript{***} \\
+							MVJV   & 0.920\textsuperscript{***} & 0.880\textsuperscript{***} & 0.839\textsuperscript{***} & 0.727\textsuperscript{***} & 0.629\textsuperscript{***} & 0.632\textsuperscript{***} \\
+							
+							\bottomrule
+						\end{tabulary}%
+					%\end{adjustbox}
+				%}}
+				%\npnoround
+					\begin{tablenotes}[flushleft]
+						\scriptsize
+						\item[1] This table reports mean square forecast errors (MSFEs) relative to the AR benchmark model. The forecasting model is given in the first column (see Table 2 for a description of the models). Starred entries indicate rejections of the \cite{white2006} test of conditional predictive accuracy. In particular, ***, **, and *
+						indicate rejection at the  1\%,  5\%, and 10\% levels, respectively. The entire sample period used in the forecasting experiment is 2006:1-2018:12, and ex-ante rolling window MSFEs correspond to predictions made for the period 2012:1 to 2018:12.
+					\end{tablenotes}
+					
+				\end{threeparttable}
+			\end{table}
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------			
+			
+			\newpage
+			\renewcommand{\thetable}{3B} 
+			\begin{table}[h]
+				\centering
+				\caption{Ex-Ante Relative MSFEs for Housing Starts (Sample 2: 2009:1 - 2018:12)$^1$} 
+				\label{table:table3B}
+				\begin{threeparttable}
+				%{\tiny\renewcommand{\arraystretch}{0.8}
+				%\resizebox{!}{.35\paperheight}{%
+					%\begin{tabulary}{lllllll}
+					%\tiny
+					\scriptsize
+					%\footnotesize
+					\begin{tabulary}{.15\linewidth}{lllllll}
+						\toprule
+						\multicolumn{1}{c}{\multirow{2}[0]{*}{Model}} & \multicolumn{6}{c}{Forecast horizon}\\
+						&   1-month &  2-month &3-month &4-month &5-month &  6-month \\
+						\midrule
+						\multicolumn{7}{c}{rolling window size = 36}\\
+						\midrule	
+							
+							AR  & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+							MAC  & 1.231\textsuperscript{***} & 1.114\textsuperscript{**} & 1.166\textsuperscript{ } & 0.970\textsuperscript{***} & 0.967\textsuperscript{***} & 0.969\textsuperscript{***} \\
+							RV   & 0.954\textsuperscript{***} & 0.842\textsuperscript{***} & 0.944\textsuperscript{***} & 0.924\textsuperscript{***} & 1.193\textsuperscript{***} & 1.064\textsuperscript{ } \\
+							TRV   & \textbf{0.950\textsuperscript{***}} & 0.846\textsuperscript{***} & 0.981\textsuperscript{***} & 0.938\textsuperscript{***} & 1.205\textsuperscript{***} & 1.061\textsuperscript{ } \\
+							BPV  & 0.958\textsuperscript{***} & 0.847\textsuperscript{***} & 0.952\textsuperscript{***} & \textbf{0.910\textsuperscript{***}} & 1.187\textsuperscript{***} & 1.050\textsuperscript{ } \\
+							JV  & 2.977\textsuperscript{***} & 3.567\textsuperscript{***} & 3.028\textsuperscript{***} & 1.923\textsuperscript{***} & 2.313\textsuperscript{***} & 2.173\textsuperscript{***} \\
+							CMRV1   & 1.121\textsuperscript{***} & 1.191\textsuperscript{***} & 1.304\textsuperscript{***} & 1.056\textsuperscript{***} & 1.147\textsuperscript{***} & 0.924\textsuperscript{***} \\
+							CMTRV1   & 1.030\textsuperscript{ } & 0.993\textsuperscript{***} & \textbf{0.927\textsuperscript{***}} & 1.074\textsuperscript{***} & 1.050\textsuperscript{***} & 0.990\textsuperscript{***} \\
+							CMBPV1   & 1.122\textsuperscript{***} & 1.181\textsuperscript{***} & 1.296\textsuperscript{***} & 1.074\textsuperscript{***} & 1.149\textsuperscript{***} & \textbf{0.920\textsuperscript{***}} \\
+							CMJV1  & 1.121\textsuperscript{***} & 1.267\textsuperscript{***} & 1.148\textsuperscript{***} & 0.988\textsuperscript{***} & 1.083\textsuperscript{***} & 0.936\textsuperscript{***} \\
+							CMRV2   & 0.958\textsuperscript{***} & 0.995\textsuperscript{***} & 0.944\textsuperscript{***} & 1.023\textsuperscript{ } & 1.114\textsuperscript{***} & 0.986\textsuperscript{***} \\
+							CMTRV2   & 0.994\textsuperscript{***} & 0.984\textsuperscript{***} & 1.081\textsuperscript{ } & 1.052\textsuperscript{***} & 1.061\textsuperscript{***} & 1.009\textsuperscript{ } \\
+							CMBPV2  & 1.003\textsuperscript{*} & 0.987\textsuperscript{***} & 0.970\textsuperscript{***} & 1.030\textsuperscript{ } & 1.098\textsuperscript{***} & 0.988\textsuperscript{***} \\
+							CMJV2  & 1.058\textsuperscript{**} & 0.969\textsuperscript{***} & 1.189\textsuperscript{***} & 1.008\textsuperscript{ } & 0.997\textsuperscript{***} & 0.940\textsuperscript{***} \\
+							VRV   & 1.117\textsuperscript{***} & 1.145\textsuperscript{***} & 1.262\textsuperscript{***} & 1.023\textsuperscript{ } & 1.047\textsuperscript{ } & 1.007\textsuperscript{ } \\
+							VTRV  & 1.107\textsuperscript{***} & 1.136\textsuperscript{***} & 1.259\textsuperscript{***} & 1.021\textsuperscript{ } & 1.045\textsuperscript{ } & 1.008\textsuperscript{ } \\
+							VBPV   & 1.125\textsuperscript{***} & 1.153\textsuperscript{***} & 1.279\textsuperscript{***} & 1.032\textsuperscript{ } & 1.061\textsuperscript{ } & 1.012\textsuperscript{ } \\
+							VJV  & 1.137\textsuperscript{***} & \textbf{0.818\textsuperscript{***}} & 0.989\textsuperscript{***} & 1.058\textsuperscript{***} & \textbf{0.966\textsuperscript{***}} & 0.972\textsuperscript{***} \\
+							MRV  & 1.231\textsuperscript{***} & 1.123\textsuperscript{ } & 1.259\textsuperscript{***} & 1.479\textsuperscript{***} & 1.474\textsuperscript{***} & 1.637\textsuperscript{***} \\
+							MTRV  & 1.232\textsuperscript{***} & 1.121\textsuperscript{ } & 1.316\textsuperscript{***} & 1.512\textsuperscript{***} & 1.476\textsuperscript{***} & 1.652\textsuperscript{***} \\
+							MBPV   & 1.231\textsuperscript{***} & 1.099\textsuperscript{ } & 1.243\textsuperscript{***} & 1.489\textsuperscript{***} & 1.473\textsuperscript{***} & 1.588\textsuperscript{***} \\
+							MJV   & 1.127\textsuperscript{ } & 0.993\textsuperscript{***} & 1.048\textsuperscript{ } & 1.024\textsuperscript{ } & 1.212\textsuperscript{ } & 1.513\textsuperscript{***} \\
+							MVRV  & 1.383\textsuperscript{***} & 1.393\textsuperscript{***} & 1.226\textsuperscript{***} & 1.219\textsuperscript{**} & 1.105\textsuperscript{ } & 1.155\textsuperscript{ } \\
+							MVTRV   & 1.379\textsuperscript{***} & 1.399\textsuperscript{***} & 1.224\textsuperscript{***} & 1.224\textsuperscript{**} & 1.107\textsuperscript{ } & 1.156\textsuperscript{ } \\
+							MVBPV  & 1.389\textsuperscript{***} & 1.400\textsuperscript{***} & 1.225\textsuperscript{***} & 1.217\textsuperscript{*} & 1.102\textsuperscript{ } & 1.148\textsuperscript{ } \\
+							MVJV   & 1.235\textsuperscript{***} & 1.245\textsuperscript{***} & 1.296\textsuperscript{***} & 1.028\textsuperscript{ } & 1.095\textsuperscript{ } & 1.345\textsuperscript{***} \\
+							
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 72}\\
+							\midrule
+							
+							AR  & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+							MAC  & 1.064\textsuperscript{ } & 1.043\textsuperscript{ } & 1.030\textsuperscript{ } & 1.020\textsuperscript{ } & 1.050\textsuperscript{ } & \textbf{0.949\textsuperscript{***}} \\
+							RV   & 0.989\textsuperscript{***} & 0.963\textsuperscript{***} & 0.998\textsuperscript{***} & 1.001\textsuperscript{**} & 0.994\textsuperscript{***} & 0.971\textsuperscript{***} \\
+							TRV   & 0.985\textsuperscript{***} & 0.970\textsuperscript{***} & 1.001\textsuperscript{**} & 0.974\textsuperscript{***} & 0.997\textsuperscript{***} & 0.972\textsuperscript{***} \\
+							BPV  & 1.014\textsuperscript{ } & 0.958\textsuperscript{***} & 0.994\textsuperscript{***} & 0.996\textsuperscript{***} & 0.992\textsuperscript{***} & 0.971\textsuperscript{***} \\
+							JV  & 1.420\textsuperscript{***} & 1.447\textsuperscript{***} & 1.356\textsuperscript{***} & 1.239\textsuperscript{***} & 1.192\textsuperscript{***} & 1.117\textsuperscript{***} \\
+							CMRV1   & 1.037\textsuperscript{ } & 0.950\textsuperscript{***} & 0.978\textsuperscript{***} & 0.965\textsuperscript{***} & 0.958\textsuperscript{***} & 0.980\textsuperscript{***} \\
+							CMTRV1   & 1.033\textsuperscript{ } & \textbf{0.927\textsuperscript{***}} & 1.022\textsuperscript{***} & \textbf{0.951\textsuperscript{***}} & 0.975\textsuperscript{***} & 1.033\textsuperscript{ } \\
+							CMBPV1   & 1.043\textsuperscript{ } & 0.952\textsuperscript{***} & 0.980\textsuperscript{***} & 0.963\textsuperscript{***} & 0.956\textsuperscript{***} & 0.962\textsuperscript{***} \\
+							CMJV1  & \textbf{0.938\textsuperscript{***}} & 0.958\textsuperscript{***} & 1.009\textsuperscript{ } & 1.049\textsuperscript{ } & 0.991\textsuperscript{***} & 1.079\textsuperscript{***} \\
+							CMRV2   & 0.989\textsuperscript{***} & 0.994\textsuperscript{***} & 1.028\textsuperscript{***} & 0.999\textsuperscript{***} & 1.004\textsuperscript{ } & 1.048\textsuperscript{ } \\
+							CMTRV2   & 0.971\textsuperscript{***} & 0.974\textsuperscript{***} & 1.036\textsuperscript{***} & 0.979\textsuperscript{***} & 1.004\textsuperscript{ } & 0.979\textsuperscript{***} \\
+							CMBPV2  & 0.988\textsuperscript{***} & 0.947\textsuperscript{***} & 1.038\textsuperscript{***} & 0.963\textsuperscript{***} & 0.984\textsuperscript{***} & 1.028\textsuperscript{ } \\
+							CMJV2  & 0.955\textsuperscript{***} & 0.943\textsuperscript{***} & 1.024\textsuperscript{***} & 1.036\textsuperscript{*} & 0.983\textsuperscript{***} & 1.083\textsuperscript{***} \\
+							VRV   & 0.999\textsuperscript{***} & 1.008\textsuperscript{ } & 0.956\textsuperscript{***} & 1.017\textsuperscript{ } & 0.949\textsuperscript{***} & 0.984\textsuperscript{***} \\
+							VTRV  & 0.997\textsuperscript{***} & 1.002\textsuperscript{**} & 0.958\textsuperscript{***} & 1.021\textsuperscript{ } & 0.952\textsuperscript{***} & 1.001\textsuperscript{**} \\
+							VBPV   & 1.002\textsuperscript{*} & 1.014\textsuperscript{ } & \textbf{0.955\textsuperscript{***}} & 1.016\textsuperscript{ } & \textbf{0.947\textsuperscript{***}} & 0.993\textsuperscript{***} \\
+							VJV  & 1.019\textsuperscript{ } & 0.961\textsuperscript{***} & 1.026\textsuperscript{ } & 0.998\textsuperscript{***} & 1.006\textsuperscript{ } & 1.032\textsuperscript{*} \\
+							MRV  & 1.106\textsuperscript{*} & 1.027\textsuperscript{ } & 1.049\textsuperscript{ } & 1.053\textsuperscript{ } & 1.087\textsuperscript{ } & 0.982\textsuperscript{***} \\
+							MTRV  & 1.105\textsuperscript{*} & 1.032\textsuperscript{ } & 1.053\textsuperscript{ } & 1.056\textsuperscript{ } & 1.091\textsuperscript{ } & 0.987\textsuperscript{***} \\
+							MBPV   & 1.106\textsuperscript{*} & 1.022\textsuperscript{ } & 1.046\textsuperscript{ } & 1.049\textsuperscript{ } & 1.085\textsuperscript{ } & 0.981\textsuperscript{***} \\
+							MJV   & 1.267\textsuperscript{***} & 1.332\textsuperscript{***} & 1.188\textsuperscript{***} & 1.222\textsuperscript{***} & 1.141\textsuperscript{*} & 1.144\textsuperscript{ } \\
+							MVRV  & 1.147\textsuperscript{***} & 0.991\textsuperscript{***} & 1.040\textsuperscript{ } & 0.984\textsuperscript{***} & 1.060\textsuperscript{ } & 0.986\textsuperscript{***} \\
+							MVTRV   & 1.141\textsuperscript{***} & 0.990\textsuperscript{***} & 1.042\textsuperscript{ } & 0.985\textsuperscript{***} & 1.058\textsuperscript{ } & 1.009\textsuperscript{*} \\
+							MVBPV  & 1.153\textsuperscript{***} & 0.993\textsuperscript{***} & 1.040\textsuperscript{ } & 0.984\textsuperscript{***} & 1.057\textsuperscript{ } & 0.988\textsuperscript{***} \\
+							MVJV   & 1.008\textsuperscript{*} & 1.087\textsuperscript{ } & 0.976\textsuperscript{***} & 1.026\textsuperscript{ } & 1.008\textsuperscript{*} & 0.983\textsuperscript{***} \\
+							
+							\bottomrule 
+						\end{tabulary}%
+					%\end{adjustbox}
+				%}}
+					\begin{tablenotes}[flushleft]
+						\scriptsize
+						\item[1] See notes to Table 3A. The entire sample period used in the forecasting experiment is 2006:1-2018:12, and ex-ante rolling window MSFEs correspond to predictions made for the period 2015:1 to 2018:12.
+					\end{tablenotes}
+					
+				\end{threeparttable}
+			\end{table}
+			
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------			
+			
+			
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------
+			
+			
+			\newpage
+			\renewcommand{\thetable}{3C} 
+			
+			\begin{table}[h]
+				\sisetup{table-auto-round, input-symbols= {*} {**} {***}}
+				\centering
+				\caption{Ex-ante Directional Accuracy Rates for Housing Starts (Sample 1: 2006:1 - 2018:12)$^1$} 
+				\label{table:table3C}
+				\begin{threeparttable}
+					%\begin{adjustbox}{width=\columnwidth,height=280pt}
+					\scriptsize
+					%\footnotesize
+					\begin{tabulary}{.15\linewidth}{lllllll}
+							\toprule
+							\multicolumn{1}{c}{\multirow{2}[0]{*}{Model}} & \multicolumn{6}{c}{Forecast horizon}\\
+							&   1-month &  2-month &3-month &4-month &5-month &  6-month \\
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 36}\\
+							\midrule
+							
+							AR  & 65.8\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 59.5\%\textsuperscript{*} \\
+							MAC  & 62.0\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 64.6\%\textsuperscript{***} \\
+							RV   & 65.8\%\textsuperscript{***} & \textbf{73.4\%\textsuperscript{***}} & 60.8\%\textsuperscript{*} & 68.4\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 55.7\%\textsuperscript{ } \\
+							TRV   & 65.8\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 69.6\%\textsuperscript{***} & \textbf{70.9\%\textsuperscript{***}} & 54.4\%\textsuperscript{ } \\
+							BPV  & 65.8\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 60.8\%\textsuperscript{*} & 69.6\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 55.7\%\textsuperscript{ } \\
+							JV  & 48.1\%\textsuperscript{ } & 49.4\%\textsuperscript{ } & 55.7\%\textsuperscript{ } & 57.0\%\textsuperscript{ } & 55.7\%\textsuperscript{ } & 55.7\%\textsuperscript{ } \\
+							CMRV1   & 64.6\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 59.5\%\textsuperscript{**} & 70.9\%\textsuperscript{***} & 63.3\%\textsuperscript{***} & 64.6\%\textsuperscript{***} \\
+							CMTRV1   & 69.6\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & \textbf{75.9\%\textsuperscript{***}} & 67.1\%\textsuperscript{***} & 58.2\%\textsuperscript{ } \\
+							CMBPV1   & 64.6\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 59.5\%\textsuperscript{**} & 70.9\%\textsuperscript{***} & 63.3\%\textsuperscript{***} & 64.6\%\textsuperscript{***} \\
+							CMJV1  & 67.1\%\textsuperscript{***} & 68.4\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 63.3\%\textsuperscript{***} & 62.0\%\textsuperscript{**} \\
+							CMRV2   & 68.4\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & \textbf{68.4\%\textsuperscript{***}} & 75.9\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 60.8\%\textsuperscript{**} \\
+							CMTRV2   & \textbf{70.9\%\textsuperscript{***}} & 69.6\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 75.9\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 57.0\%\textsuperscript{ } \\
+							CMBPV2  & 69.6\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 75.9\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 58.2\%\textsuperscript{ } \\
+							CMJV2  & 68.4\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 67.1\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 64.6\%\textsuperscript{***} \\
+							VRV   & 65.8\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 60.8\%\textsuperscript{**} & 67.1\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 57.0\%\textsuperscript{ } \\
+							VTRV  & 63.3\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 60.8\%\textsuperscript{**} & 67.1\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 55.7\%\textsuperscript{ } \\
+							VBPV   & 64.6\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 62\%\textsuperscript{**} & 67.1\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 57.0\%\textsuperscript{ } \\
+							VJV  & 68.4\%\textsuperscript{***} & 68.4\%\textsuperscript{***} & 63.3\%\textsuperscript{**} & 74.7\%\textsuperscript{***} & 68.4\%\textsuperscript{***} & 60.8\%\textsuperscript{**} \\
+							MRV  & 59.5\%\textsuperscript{**} & 63.3\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 68.4\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 62.0\%\textsuperscript{**} \\
+							MTRV  & 58.2\%\textsuperscript{*} & 63.3\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 67.1\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 62.0\%\textsuperscript{**} \\
+							MBPV   & 60.8\%\textsuperscript{**} & 63.3\%\textsuperscript{***} & 63.3\%\textsuperscript{**} & 67.1\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 62.0\%\textsuperscript{**} \\
+							MJV   & 60.8\%\textsuperscript{**} & 55.7\%\textsuperscript{ } & 62.0\%\textsuperscript{**} & 64.6\%\textsuperscript{***} & 64.6\%\textsuperscript{***} & \textbf{68.4\%\textsuperscript{***}} \\
+							MVRV  & 57.0\%\textsuperscript{*} & 65.8\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 67.1\%\textsuperscript{***} \\
+							MVTRV   & 57.0\%\textsuperscript{*} & 65.8\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 67.1\%\textsuperscript{***} \\
+							MVBPV  & 57.0\%\textsuperscript{*} & 65.8\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 67.1\%\textsuperscript{***} \\
+							MVJV   & 62.0\%\textsuperscript{**} & 65.8\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 74.7\%\textsuperscript{***} & 68.4\%\textsuperscript{***} & 63.3\%\textsuperscript{**} \\
+							
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 72}\\
+							\midrule
+							
+							AR  & 72.2\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 63.3\%\textsuperscript{***} & 58.2\%\textsuperscript{**} & 48.1\%\textsuperscript{ } & 48.1\%\textsuperscript{ } \\
+							MAC  & 70.9\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 63.3\%\textsuperscript{***} & 64.6\%\textsuperscript{***} \\
+							RV   & 70.9\%\textsuperscript{***} & 74.7\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & \textbf{79.7\%\textsuperscript{***}} & \textbf{73.4\%\textsuperscript{***}} & 68.4\%\textsuperscript{***} \\
+							TRV   & 72.2\%\textsuperscript{***} & 74.7\%\textsuperscript{***} & 68.4\%\textsuperscript{***} & 79.7\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & \textbf{70.9\%\textsuperscript{***}} \\
+							BPV  & 70.9\%\textsuperscript{***} & 74.7\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 79.7\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 67.1\%\textsuperscript{***} \\
+							JV  & 64.6\%\textsuperscript{***} & 60.8\%\textsuperscript{**} & 65.8\%\textsuperscript{***} & 74.7\%\textsuperscript{***} & 63.3\%\textsuperscript{ } & 68.4\%\textsuperscript{***} \\
+							CMRV1   & 72.2\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & \textbf{75.9\%\textsuperscript{***}} & 64.6\%\textsuperscript{***} & 57.0\%\textsuperscript{*} & 53.2\%\textsuperscript{ } \\
+							CMTRV1   & \textbf{74.7\%\textsuperscript{***}} & 72.2\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 63.3\%\textsuperscript{***} & 53.2\%\textsuperscript{ } & 57.0\%\textsuperscript{*} \\
+							CMBPV1   & 72.2\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 64.6\%\textsuperscript{***} & 57.0\%\textsuperscript{*} & 50.6\%\textsuperscript{ } \\
+							CMJV1  & 74.7\%\textsuperscript{***} & 72.2\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 58.2\%\textsuperscript{**} & 53.2\%\textsuperscript{ } & 51.9\%\textsuperscript{ } \\
+							CMRV2   & 73.4\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 54.4\%\textsuperscript{ } & 58.2\%\textsuperscript{*} \\
+							CMTRV2   & 73.4\%\textsuperscript{***} & 72.2\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 64.6\%\textsuperscript{***} & 50.6\%\textsuperscript{ } & 55.7\%\textsuperscript{ } \\
+							CMBPV2  & 73.4\%\textsuperscript{***} & 72.2\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 65.8\%\textsuperscript{***} & 51.9\%\textsuperscript{ } & 57.0\%\textsuperscript{*} \\
+							CMJV2  & 72.2\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 59.5\%\textsuperscript{***} & 58.2\%\textsuperscript{**} & 55.7\%\textsuperscript{ } \\
+							VRV   & 74.7\%\textsuperscript{***} & \textbf{78.5\%\textsuperscript{***}} & 70.9\%\textsuperscript{***} & 60.8\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 60.8\%\textsuperscript{**} \\
+							VTRV  & 74.7\%\textsuperscript{***} & 78.5\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 60.8\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 60.8\%\textsuperscript{**} \\
+							VBPV   & 74.7\%\textsuperscript{***} & 77.2\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 60.8\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 58.2\%\textsuperscript{*} \\
+							VJV  & 73.4\%\textsuperscript{***} & 75.9\%\textsuperscript{***} & 68.4\%\textsuperscript{***} & 60.8\%\textsuperscript{***} & 60.8\%\textsuperscript{**} & 60.8\%\textsuperscript{**} \\
+							MRV  & 68.4\%\textsuperscript{***} & 72.2\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 62.0\%\textsuperscript{***} \\
+							MTRV  & 68.4\%\textsuperscript{***} & 74.7\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 63.3\%\textsuperscript{***} & 60.8\%\textsuperscript{**} \\
+							MBPV   & 68.4\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 73.4\%\textsuperscript{***} & 64.6\%\textsuperscript{***} & 62.0\%\textsuperscript{***} \\
+							MJV   & 63.3\%\textsuperscript{***} & 72.2\%\textsuperscript{***} & 67.1\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 62.0\%\textsuperscript{***} & 58.2\%\textsuperscript{**} \\
+							MVRV  & 65.8\%\textsuperscript{***} & 74.7\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 62.0\%\textsuperscript{***} \\
+							MVTRV   & 65.8\%\textsuperscript{***} & 74.7\%\textsuperscript{***} & 69.6\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 62.0\%\textsuperscript{***} & 60.8\%\textsuperscript{**} \\
+							MVBPV  & 65.8\%\textsuperscript{***} & 74.7\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 72.2\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 62.0\%\textsuperscript{***} \\
+							MVJV   & 67.1\%\textsuperscript{***} & 75.9\%\textsuperscript{***} & 70.9\%\textsuperscript{***} & 72.2\%\textsuperscript{***} & 62.0\%\textsuperscript{**} & 62.0\%\textsuperscript{***} \\
+							
+							\hline
+						\end{tabulary} %
+					%}}
+					%\end{adjustbox}
+					\begin{tablenotes}[flushleft]
+						\scriptsize
+						\item[1] See notes to Table 3A. Entries in this table are direction accuracy rates, and starred entries denote rejection of the directional accuracy test based on the contingency tables discussed in Section 3 and \cite{pesaran1994generalization}.						
+					\end{tablenotes}
+					
+				\end{threeparttable}
+			\end{table}
+			
+			%\newcounter{footnotesintable}
+			
+			%\addtocounter{footnote}{-\thefootnotesintable}
+			%\addtocounter{footnote}{1}\footnotetext[\thefootnote]{See notes to Table 3A. Entries in this table are direction accuracy rates, and starred entries denote rejection of the directional %accuracy test based on the contingency tables discussed in Section 3 and \cite{pesaran1994generalization}.}
+			%\footnote{bla}
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------	
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------
+			\newpage
+			\renewcommand{\thetable}{3D} 
+			
+			\begin{table}[h]
+				\centering
+				\caption{Ex-ante Directional Accuracy Rates for Housing Starts (Sample 2: 2009:1 - 2018:12)$^1$} 
+				\label{table:table3D}
+				\begin{threeparttable}
+					%\begin{adjustbox}{width=\columnwidth,height=280pt}
+					\scriptsize
+					%\footnotesize
+					\begin{tabulary}{.15\linewidth}{lllllll}
+							\toprule
+							\multicolumn{1}{c}{\multirow{2}[0]{*}{Model}} & \multicolumn{6}{c}{Forecast horizon}\\
+							&   1-month &  2-month &3-month &4-month &5-month &  6-month \\
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 36}\\
+							\midrule
+							
+							AR  & 62.8\%\textsuperscript{} & 76.7\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 65.1\%\textsuperscript{**} & 65.1\%\textsuperscript{**} \\
+							MAC  & 65.1\%\textsuperscript{} & 69.8\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 69.8\%\textsuperscript{***} \\
+							RV   & 62.8\%\textsuperscript{} & \textbf{79.1\%\textsuperscript{***}} & 69.8\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 62.8\%\textsuperscript{**} \\
+							TRV   & 62.8\%\textsuperscript{} & 79.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & \textbf{76.7\%\textsuperscript{***}} & 60.5\%\textsuperscript{*} \\
+							BPV  & 62.8\%\textsuperscript{**} & 79.1\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 62.8\%\textsuperscript{**} \\
+							JV  & 41.9\%\textsuperscript{ } & 46.5\%\textsuperscript{ } & 53.5\%\textsuperscript{ } & 58.1\%\textsuperscript{ } & 62.8\%\textsuperscript{*} & 55.8\%\textsuperscript{ } \\
+							CMRV1   & 62.8\%\textsuperscript{**} & 69.8\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 60.5\%\textsuperscript{*} & 74.4\%\textsuperscript{***} \\
+							CMTRV1   & 69.8\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} \\
+							CMBPV1   & 62.8\%\textsuperscript{**} & 69.8\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 60.5\%\textsuperscript{*} & 74.4\%\textsuperscript{***} \\
+							CMJV1  & 65.1\%\textsuperscript{**} & 67.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 60.5\%\textsuperscript{*} & 69.8\%\textsuperscript{***} \\
+							CMRV2   & 69.8\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} \\
+							CMTRV2   & \textbf{72.1\%\textsuperscript{***}} & 69.8\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 65.1\%\textsuperscript{**} \\
+							CMBPV2  & 69.8\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & \textbf{81.4\%\textsuperscript{***}} & 76.7\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} \\
+							CMJV2  & 67.4\%\textsuperscript{**} & 72.1\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 65.1\%\textsuperscript{**} & 69.8\%\textsuperscript{***} \\
+							VRV   & 65.1\%\textsuperscript{**} & 69.8\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 62.8\%\textsuperscript{**} \\
+							VTRV  & 65.1\%\textsuperscript{**} & 69.8\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 60.5\%\textsuperscript{*} \\
+							VBPV   & 62.8\%\textsuperscript{*} & 69.8\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 62.8\%\textsuperscript{**} \\
+							VJV  & 69.8\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 67.4\%\textsuperscript{***} \\
+							MRV  & 58.1\%\textsuperscript{ } & 62.8\%\textsuperscript{**} & 67.4\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 69.8\%\textsuperscript{***} \\
+							MTRV  & 58.1\%\textsuperscript{ } & 62.8\%\textsuperscript{**} & 67.4\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 69.8\%\textsuperscript{***} \\
+							MBPV   & 60.5\%\textsuperscript{*} & 62.8\%\textsuperscript{**} & 69.8\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 69.8\%\textsuperscript{***} \\
+							MJV   & 60.5\%\textsuperscript{*} & 60.5\%\textsuperscript{*} & 67.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 72.1\%\textsuperscript{***} \\
+							MVRV  & 55.8\%\textsuperscript{ } & 67.4\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 67.4\%\textsuperscript{**} & 69.8\%\textsuperscript{***} & \textbf{76.7\%\textsuperscript{***}} \\
+							MVTRV   & 55.8\%\textsuperscript{ } & 67.4\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 65.1\%\textsuperscript{**} & 69.8\%\textsuperscript{***} & 76.7\%\textsuperscript{***} \\
+							MVBPV  & 55.8\%\textsuperscript{ } & 67.4\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} \\
+							MVJV   & 62.8\%\textsuperscript{**} & 67.4\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & \textbf{79.1\%\textsuperscript{***}} & 72.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} \\
+							
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 72}\\
+							\midrule
+							
+							AR  & 74.4\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & 62.8\%\textsuperscript{**} \\
+							MAC  & 67.4\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & \textbf{69.8\%\textsuperscript{***}} \\
+							RV   & 72.1\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & \textbf{67.4\%\textsuperscript{***}} & 67.4\%\textsuperscript{***} \\
+							TRV   & 72.1\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} \\
+							BPV  & 72.1\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 65.1\%\textsuperscript{***} \\
+							JV  & 58.1\%\textsuperscript{**} & 60.5\%\textsuperscript{*} & 72.1\%\textsuperscript{***} & \textbf{79.1\%\textsuperscript{***}} & 58.1\%\textsuperscript{ } & 65.1\%\textsuperscript{**} \\
+							CMRV1   & \textbf{76.7\%\textsuperscript{***}} & 74.4\%\textsuperscript{***} & \textbf{81.4\%\textsuperscript{***}} & 79.1\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & 65.1\%\textsuperscript{**} \\
+							CMTRV1   & 74.4\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 60.5\%\textsuperscript{ } & 65.1\%\textsuperscript{***} \\
+							CMBPV1   & 76.7\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & 65.1\%\textsuperscript{**} \\
+							CMJV1  & 76.7\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 65.1\%\textsuperscript{**} & 65.1\%\textsuperscript{***} \\
+							CMRV2   & 76.7\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & 65.1\%\textsuperscript{***} \\
+							CMTRV2   & 76.7\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 58.1\%\textsuperscript{ } & 65.1\%\textsuperscript{***} \\
+							CMBPV2  & 76.7\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 60.5\%\textsuperscript{ } & 65.1\%\textsuperscript{***} \\
+							CMJV2  & 74.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 65.1\%\textsuperscript{**} & 65.1\%\textsuperscript{***} \\
+							VRV   & 76.7\%\textsuperscript{***} & \textbf{76.7\%\textsuperscript{***}} & 79.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 65.1\%\textsuperscript{**} \\
+							VTRV  & 76.7\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 65.1\%\textsuperscript{**} \\
+							VBPV   & 76.7\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 60.5\%\textsuperscript{*} \\
+							VJV  & 74.4\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 69.8\%\textsuperscript{***} \\
+							MRV  & 60.5\%\textsuperscript{*} & 72.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & 69.8\%\textsuperscript{***} \\
+							MTRV  & 60.5\%\textsuperscript{*} & 72.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & 69.8\%\textsuperscript{***} \\
+							MBPV   & 60.5\%\textsuperscript{*} & 72.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 65.1\%\textsuperscript{**} & 69.8\%\textsuperscript{***} \\
+							MJV   & 60.5\%\textsuperscript{**} & 69.8\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 65.1\%\textsuperscript{**} \\
+							MVRV  & 60.5\%\textsuperscript{ } & 72.1\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & 69.8\%\textsuperscript{***} \\
+							MVTRV   & 60.5\%\textsuperscript{ } & 72.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & 67.4\%\textsuperscript{***} \\
+							MVBPV  & 60.5\%\textsuperscript{ } & 72.1\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & 69.8\%\textsuperscript{***} \\
+							MVJV   & 62.8\%\textsuperscript{**} & 72.1\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 62.8\%\textsuperscript{*} & 67.4\%\textsuperscript{***} \\
+							
+							\bottomrule
+						\end{tabulary}%
+					%\end{adjustbox}
+					\begin{tablenotes}[flushleft]
+						\scriptsize
+						\item[1] See notes to Table 3B and 3C.
+					\end{tablenotes}
+					
+				\end{threeparttable}
+			\end{table}
+			
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------
+			
+			\newpage
+			\renewcommand{\thetable}{4} 
+			
+			\begin{table}[h]
+				\centering
+				\caption{Ex-Ante Relative MSFEs for Corporate Bond Yields using $MF^{vol}$ Augmented Models$^1$} 
+				\label{table:table4}
+				\begin{threeparttable}
+					%\begin{adjustbox}{width=\columnwidth,height=270pt}
+						\tiny
+						%\footnotesize
+						\begin{tabulary}{.15\linewidth}{llllllll}
+							\toprule
+							\multicolumn{1}{c}{\multirow{2}[0]{*}{Target}} & \multicolumn{6}{c}{Forecast horizon}\\
+							&   1-month &  2-month &3-month &4-month &5-month &  6-month \\
+							\midrule
+							\multicolumn{7}{c}{Sample 1: 2006:1 - 2018:12}\\
+							
+							AR    & 1.000\textsuperscript{} & 1.000\textsuperscript{} & 1.000\textsuperscript{} & 1.000\textsuperscript{} & 1.000\textsuperscript{} & 1.000\textsuperscript{} &  \\
+							\midrule
+							\multirow{4}[0]{*}{AAA} & 1.029\textsuperscript{ } & 1.028\textsuperscript{ } & 0.873\textsuperscript{***} & 0.896\textsuperscript{***} & 0.999\textsuperscript{***} & 1.084\textsuperscript{***} &  \\
+							& 1.031\textsuperscript{ } & 1.024\textsuperscript{ } & 0.873\textsuperscript{***} & 0.897\textsuperscript{***} & 0.993\textsuperscript{***} & 1.085\textsuperscript{***} &  \\
+							& 1.030\textsuperscript{ } & 1.029\textsuperscript{ } & 0.876\textsuperscript{***} & 0.895\textsuperscript{***} & 1.000\textsuperscript{***} & 1.087\textsuperscript{***} &  \\
+							& 1.921\textsuperscript{***} & 1.922\textsuperscript{***} & 1.706\textsuperscript{***} & 1.533\textsuperscript{***} & 1.429\textsuperscript{***} & 1.601\textsuperscript{***} &  \\
+							\midrule
+							\multirow{4}[0]{*}{AA} & 1.039\textsuperscript{ } & 1.001\textsuperscript{***} & 0.916\textsuperscript{***} & 0.962\textsuperscript{***} & 1.030\textsuperscript{ } & 1.079\textsuperscript{ } &  \\
+							& 1.039\textsuperscript{ } & 1.000\textsuperscript{***} & 0.921\textsuperscript{***} & 0.968\textsuperscript{***} & 1.036\textsuperscript{ } & 1.086\textsuperscript{ } &  \\
+							& 1.039\textsuperscript{ } & 1.000\textsuperscript{***} & 0.916\textsuperscript{***} & 0.959\textsuperscript{***} & 1.026\textsuperscript{ } & 1.077\textsuperscript{ } &  \\
+							& 1.796\textsuperscript{***} & 1.817\textsuperscript{***} & 1.922\textsuperscript{***} & 2.094\textsuperscript{***} & 1.892\textsuperscript{***} & 2.090\textsuperscript{***} &  \\
+							\midrule
+							\multirow{4}[0]{*}{A} & 1.080\textsuperscript{***} & 1.007\textsuperscript{*} & 0.935\textsuperscript{***} & 1.007\textsuperscript{*} & 1.054\textsuperscript{ } & 1.093\textsuperscript{ } &  \\
+							& 1.081\textsuperscript{***} & 1.006\textsuperscript{*} & 0.938\textsuperscript{***} & 1.010\textsuperscript{*} & 1.060\textsuperscript{ } & 1.098\textsuperscript{ } &  \\
+							& 1.082\textsuperscript{***} & 1.008\textsuperscript{*} & 0.914\textsuperscript{***} & 1.004\textsuperscript{**} & 1.051\textsuperscript{ } & 1.102\textsuperscript{ } &  \\
+							& 1.902\textsuperscript{***} & 1.877\textsuperscript{***} & 2.045\textsuperscript{***} & 2.260\textsuperscript{***} & 2.301\textsuperscript{***} & 2.217\textsuperscript{***} &  \\
+							\midrule
+							\multirow{4}[0]{*}{BBB} & 1.136\textsuperscript{***} & 1.053\textsuperscript{ } & 0.966\textsuperscript{***} & 0.951\textsuperscript{***} & 1.001\textsuperscript{***} & 1.052\textsuperscript{ } &  \\
+							& 1.138\textsuperscript{***} & 1.055\textsuperscript{ } & 0.974\textsuperscript{***} & 0.959\textsuperscript{***} & 1.010\textsuperscript{*} & 1.062\textsuperscript{ } &  \\
+							& 1.137\textsuperscript{***} & 1.077\textsuperscript{***} & 0.958\textsuperscript{***} & 0.943\textsuperscript{***} & 0.982\textsuperscript{***} & 1.044\textsuperscript{ } &  \\
+							& 3.204\textsuperscript{***} & 2.601\textsuperscript{***} & 2.156\textsuperscript{***} & 2.441\textsuperscript{***} & 3.105\textsuperscript{***} & 3.087\textsuperscript{***} &  \\
+							\midrule
+							\multirow{4}[0]{*}{BB} & 1.584\textsuperscript{***} & 1.237\textsuperscript{***} & 1.051\textsuperscript{ } & 1.102\textsuperscript{ } & 1.154\textsuperscript{*} & 1.137\textsuperscript{*} &  \\
+							& 1.594\textsuperscript{***} & 1.244\textsuperscript{***} & 1.083\textsuperscript{ } & 1.119\textsuperscript{ } & 1.165\textsuperscript{**} & 1.137\textsuperscript{*} &  \\
+							& 1.602\textsuperscript{***} & 1.238\textsuperscript{***} & 1.046\textsuperscript{ } & 1.096\textsuperscript{ } & 1.148\textsuperscript{ } & 1.141\textsuperscript{*} &  \\
+							& 3.016\textsuperscript{***} & 2.633\textsuperscript{***} & 2.647\textsuperscript{***} & 3.260\textsuperscript{***} & 3.587\textsuperscript{***} & 3.160\textsuperscript{***} &  \\
+							\midrule
+							\multirow{4}[0]{*}{B} & 1.794\textsuperscript{***} & 1.191\textsuperscript{***} & 0.983\textsuperscript{***} & 0.967\textsuperscript{***} & 1.064\textsuperscript{ } & 1.170\textsuperscript{***} &  \\
+							& 1.816\textsuperscript{***} & 1.188\textsuperscript{***} & 0.991\textsuperscript{***} & 0.978\textsuperscript{***} & 0.985\textsuperscript{***} & 1.180\textsuperscript{***} &  \\
+							& 1.805\textsuperscript{***} & 1.197\textsuperscript{***} & 0.982\textsuperscript{***} & 0.955\textsuperscript{***} & 1.056\textsuperscript{ } & 1.168\textsuperscript{***} &  \\
+							& 4.167\textsuperscript{***} & 2.991\textsuperscript{***} & 2.461\textsuperscript{***} & 3.115\textsuperscript{***} & 3.966\textsuperscript{***} & 3.654\textsuperscript{***} &  \\
+							\midrule
+							\multicolumn{1}{c}{\multirow{4}[0]{*}{CCC or below}} & 1.569\textsuperscript{***} & 1.327\textsuperscript{***} & 1.059\textsuperscript{ } & 0.909\textsuperscript{***} & 0.783\textsuperscript{***} & 0.890\textsuperscript{***} &  \\
+							& 1.591\textsuperscript{***} & 1.331\textsuperscript{***} & 0.973\textsuperscript{***} & 0.901\textsuperscript{***} & 0.794\textsuperscript{***} & 0.879\textsuperscript{***} &  \\
+							& 1.568\textsuperscript{***} & 1.336\textsuperscript{***} & 1.041\textsuperscript{ } & 0.917\textsuperscript{***} & 0.776\textsuperscript{***} & 0.861\textsuperscript{***} &  \\
+							& 3.939\textsuperscript{***} & 4.188\textsuperscript{***} & 4.223\textsuperscript{***} & 2.619\textsuperscript{***} & 2.781\textsuperscript{***} & 3.270\textsuperscript{***} &  \\
+														
+							\midrule
+							\multicolumn{7}{c}{Sample 2: 2009:1 - 2018:12}\\
+														
+							AR    & 1.000\textsuperscript{} & 1.000\textsuperscript{} & 1.000\textsuperscript{} & 1.000\textsuperscript{} & 1.000\textsuperscript{} & 1.000\textsuperscript{} \\
+							\midrule
+							\multirow{4}[0]{*}{AAA} & 1.128\textsuperscript{ } & 1.097\textsuperscript{ } & 0.940\textsuperscript{***} & 1.016\textsuperscript{ } & 1.049\textsuperscript{ } & 1.065\textsuperscript{ } \\
+							& 1.132\textsuperscript{ } & 1.090\textsuperscript{ } & 0.942\textsuperscript{***} & 1.017\textsuperscript{ } & 1.028\textsuperscript{ } & 1.057\textsuperscript{ } \\
+							& 1.125\textsuperscript{ } & 1.100\textsuperscript{ } & 0.945\textsuperscript{***} & 1.019\textsuperscript{ } & 1.058\textsuperscript{ } & 1.076\textsuperscript{ } \\
+							& 2.264\textsuperscript{***} & 2.55\textsuperscript{***} & 2.235\textsuperscript{***} & 2.013\textsuperscript{***} & 2.027\textsuperscript{***} & 2.164\textsuperscript{***} \\
+							\midrule
+							\multirow{4}[0]{*}{AA} & 1.001\textsuperscript{***} & 0.954\textsuperscript{***} & 0.861\textsuperscript{***} & 0.864\textsuperscript{***} & 0.943\textsuperscript{***} & 0.941\textsuperscript{***} \\
+							& 1.000\textsuperscript{***} & 0.952\textsuperscript{***} & 0.864\textsuperscript{***} & 0.868\textsuperscript{***} & 0.945\textsuperscript{***} & 0.946\textsuperscript{***} \\
+							& 0.999\textsuperscript{***} & 0.954\textsuperscript{***} & 0.857\textsuperscript{***} & 0.858\textsuperscript{***} & 0.939\textsuperscript{***} & 0.938\textsuperscript{***} \\
+							& 1.967\textsuperscript{***} & 1.972\textsuperscript{***} & 2.006\textsuperscript{***} & 2.194\textsuperscript{***} & 1.738\textsuperscript{***} & 1.988\textsuperscript{***} \\
+							\midrule
+							\multirow{4}[0]{*}{A} & 1.056\textsuperscript{ } & 0.937\textsuperscript{***} & 0.867\textsuperscript{***} & 0.875\textsuperscript{***} & 0.897\textsuperscript{***} & 0.930\textsuperscript{***} \\
+							& 1.053\textsuperscript{ } & 0.933\textsuperscript{***} & 0.868\textsuperscript{***} & 0.875\textsuperscript{***} & 0.897\textsuperscript{***} & 0.929\textsuperscript{***} \\
+							& 1.057\textsuperscript{ } & 0.939\textsuperscript{***} & 0.827\textsuperscript{***} & 0.874\textsuperscript{***} & 0.893\textsuperscript{***} & 0.948\textsuperscript{***} \\
+							& 2.325\textsuperscript{***} & 2.018\textsuperscript{***} & 2.226\textsuperscript{***} & 2.153\textsuperscript{***} & 2.232\textsuperscript{***} & 2.023\textsuperscript{***} \\
+							\midrule
+							\multirow{4}[0]{*}{BBB} & 1.154\textsuperscript{***} & 1.031\textsuperscript{ } & 0.981\textsuperscript{***} & 0.831\textsuperscript{***} & 0.891\textsuperscript{***} & 0.957\textsuperscript{***} \\
+							& 1.156\textsuperscript{***} & 1.033\textsuperscript{ } & 0.990\textsuperscript{***} & 0.838\textsuperscript{***} & 0.899\textsuperscript{***} & 0.967\textsuperscript{***} \\
+							& 1.149\textsuperscript{***} & 1.059\textsuperscript{ } & 0.975\textsuperscript{***} & 0.821\textsuperscript{***} & 0.859\textsuperscript{***} & 0.942\textsuperscript{***} \\
+							& 5.195\textsuperscript{***} & 3.540\textsuperscript{***} & 2.623\textsuperscript{***} & 2.685\textsuperscript{***} & 3.748\textsuperscript{***} & 3.860\textsuperscript{***} \\
+							\midrule
+							\multirow{4}[0]{*}{BB} & 1.217\textsuperscript{***} & 1.005\textsuperscript{*} & 0.930\textsuperscript{***} & 0.940\textsuperscript{***} & 0.877\textsuperscript{***} & 0.811\textsuperscript{***} \\
+							& 1.215\textsuperscript{***} & 1.004\textsuperscript{*} & 0.971\textsuperscript{***} & 0.961\textsuperscript{***} & 0.888\textsuperscript{***} & 0.812\textsuperscript{***} \\
+							& 1.227\textsuperscript{***} & 1.006\textsuperscript{ } & 0.923\textsuperscript{***} & 0.927\textsuperscript{***} & 0.870\textsuperscript{***} & 0.814\textsuperscript{***} \\
+							& 2.943\textsuperscript{***} & 2.236\textsuperscript{***} & 2.518\textsuperscript{***} & 3.642\textsuperscript{***} & 3.968\textsuperscript{***} & 2.558\textsuperscript{***} \\
+							\midrule
+							\multirow{4}[0]{*}{B} & 1.519\textsuperscript{***} & 0.989\textsuperscript{***} & 0.880\textsuperscript{***} & 0.765\textsuperscript{***} & 0.874\textsuperscript{***} & 0.870\textsuperscript{***} \\
+							& 1.530\textsuperscript{***} & 0.983\textsuperscript{***} & 0.882\textsuperscript{***} & 0.775\textsuperscript{***} & 0.747\textsuperscript{***} & 0.876\textsuperscript{***} \\
+							& 1.526\textsuperscript{***} & 0.997\textsuperscript{***} & 0.878\textsuperscript{***} & 0.751\textsuperscript{***} & 0.865\textsuperscript{***} & 0.872\textsuperscript{***} \\
+							& 4.508\textsuperscript{***} & 2.832\textsuperscript{***} & 2.324\textsuperscript{***} & 3.361\textsuperscript{***} & 4.406\textsuperscript{***} & 3.452\textsuperscript{***} \\
+							\midrule
+							\multicolumn{1}{c}{\multirow{4}[0]{*}{CCC or below}} & 1.278\textsuperscript{***} & 1.127\textsuperscript{***} & 0.997\textsuperscript{***} & 0.861\textsuperscript{***} & 0.649\textsuperscript{***} & 0.672\textsuperscript{***} \\
+							& 1.290\textsuperscript{***} & 1.120\textsuperscript{*} & 0.888\textsuperscript{***} & 0.848\textsuperscript{***} & 0.659\textsuperscript{***} & 0.654\textsuperscript{***} \\
+							& 1.294\textsuperscript{***} & 1.139\textsuperscript{***} & 0.977\textsuperscript{***} & 0.871\textsuperscript{***} & 0.644\textsuperscript{***} & 0.642\textsuperscript{***} \\
+							& 3.667\textsuperscript{***} & 3.555\textsuperscript{***} & 4.292\textsuperscript{***} & 2.561\textsuperscript{***} & 2.617\textsuperscript{***} & 2.916\textsuperscript{***} \\
+							
+							\bottomrule
+						\end{tabulary}%
+					%\end{adjustbox}
+					\begin{tablenotes}[flushleft]
+						\tiny
+						\item[1] See notes to Table 3A. This table reports results for a select set of models that include those that are ``MSFE-best'', relative to the AR benchmark, for the corporate bond yield target variables examined in our prediction experiments. See Section 3 for a discussion of these variables, and Section 4 for a summary of these empirical results. Entries are in blocks of 4 rows for each variable. The four rows contain MSFEs for the following models, in this order: AR+$MF^{RV}$, AR+$MF^{TRV}$, AR+$MF^{BPV}$, and AR+$MF^{JV}$, as depicted in Table 2. 
+					\end{tablenotes}
+					
+				\end{threeparttable}
+			\end{table}
+			
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------	
+			
+			
+			\newpage
+			\renewcommand{\thetable}{5A} 
+			
+			\begin{table}[h]
+				\centering
+				\caption{MSFE-Best Models (Sample 1: 2006:1 - 2018:12)$^1$} 
+				\label{table:table5A}
+				\begin{threeparttable}
+					%\begin{adjustbox}{width=\columnwidth,height=280pt}
+						\scriptsize
+						%\footnotesize
+						\begin{tabulary}{.15\linewidth}{lllllll}
+							\toprule
+							\multicolumn{1}{c}{\multirow{2}[0]{*}{Targets}} & \multicolumn{6}{c}{Forecast horizon}\\
+							&   1-month &  2-month &3-month &4-month &5-month &  6-month \\
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 36}\\
+							\midrule
+							
+								\multicolumn{1}{l}{$HS$ } & \multicolumn{1}{l}{RV} & \multicolumn{1}{l}{RV} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{MAC} \\
+								& \multicolumn{1}{l}{0.930\textsuperscript{***}} & \multicolumn{1}{l}{0.897\textsuperscript{***}} & \multicolumn{1}{l}{0.998\textsuperscript{***}} & \multicolumn{1}{l}{0.982\textsuperscript{***}} & \multicolumn{1}{l}{0.962\textsuperscript{***}} & \multicolumn{1}{l}{0.938\textsuperscript{***}} \\
+								\multicolumn{1}{l}{$IP$ } & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{TRV} \\
+								& \multicolumn{1}{l}{0.987\textsuperscript{***}} & \multicolumn{1}{l}{0.939\textsuperscript{***}} & \multicolumn{1}{l}{0.952\textsuperscript{***}} & 1.010 & \multicolumn{1}{l}{0.973\textsuperscript{***}} & \multicolumn{1}{l}{0.997\textsuperscript{***}} \\
+								\multicolumn{1}{l}{$PAY$ } & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{VBPV} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{VJV} \\
+								& \multicolumn{1}{l}{0.912\textsuperscript{***}} & \multicolumn{1}{l}{1.024\textsuperscript{ }} & \multicolumn{1}{l}{0.978\textsuperscript{***}} & \multicolumn{1}{l}{0.926\textsuperscript{***}} & \multicolumn{1}{l}{0.956\textsuperscript{***}} & \multicolumn{1}{l}{1.010\textsuperscript{*}} \\
+								\multicolumn{1}{l}{$CPI$ } & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{VBPV} \\
+								& \multicolumn{1}{l}{1.025\textsuperscript{***}} & \multicolumn{1}{l}{0.998\textsuperscript{***}} & \multicolumn{1}{l}{0.995\textsuperscript{***}} & \multicolumn{1}{l}{0.972\textsuperscript{***}} & \multicolumn{1}{l}{0.904\textsuperscript{***}} & \multicolumn{1}{l}{1.024\textsuperscript{ }} \\
+								\multicolumn{1}{l}{$PCE$ } & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMBPV1} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV2} \\
+								& \multicolumn{1}{l}{1.008\textsuperscript{ }} & \multicolumn{1}{l}{1.000\textsuperscript{***}} & \multicolumn{1}{l}{1.020\textsuperscript{ }} & \multicolumn{1}{l}{0.986\textsuperscript{***}} & \multicolumn{1}{l}{0.943\textsuperscript{***}} & \multicolumn{1}{l}{0.973\textsuperscript{***}} \\
+								\multicolumn{1}{l}{$SI$ } & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{VRV} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{CMJV2} \\
+								& \multicolumn{1}{l}{1.006\textsuperscript{ }} & \multicolumn{1}{l}{0.998\textsuperscript{***}} & \multicolumn{1}{l}{1.028\textsuperscript{***}} & \multicolumn{1}{l}{1.022\textsuperscript{ }} & \multicolumn{1}{l}{1.012\textsuperscript{ }} & \multicolumn{1}{l}{0.965\textsuperscript{***}} \\
+								\multicolumn{1}{l}{$AAA$ } & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMBPV2} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{MAC} \\
+								& 1.007 & 0.987 & 0.873 & 0.895 & 0.993 & 0.976 \\
+								\multicolumn{1}{l}{$AA$ } & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMTRV1} \\
+								& 0.907 & 0.996 & 0.916 & 0.896 & 0.974 & 1.003 \\
+								\multicolumn{1}{l}{$A$ } & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMTRV1} \\
+								& 0.983 & 0.970 & 0.914 & 0.857 & 0.993 & 1.016 \\
+								\multicolumn{1}{l}{$BBB$ } & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{CMTRV1} \\
+								& 0.997 & 1.012 & 0.949 & 0.940 & 0.982 & 0.934 \\
+								\multicolumn{1}{l}{$BB$ } & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV1} \\
+								& 1.050 & 1.029 & 0.945 & 0.988 & 0.947 & 0.885 \\
+								\multicolumn{1}{l}{$B$ } & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMJV2} \\
+								& 1.054 & 0.996 & 0.911 & 0.830 & 0.964 & 0.940 \\
+								\multicolumn{1}{l}{$CCC$ } & \multicolumn{1}{l}{VBPV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{CMJV2} \\
+								& 1.008 & 0.997 & 0.956 & 0.901 & 0.776 & 0.830 \\
+							
+							
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 72}\\
+							\midrule
+							
+							\multicolumn{1}{l}{$HS$ } & \multicolumn{1}{l}{RV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{TRV} \\
+							& \multicolumn{1}{l}{0.849\textsuperscript{***}} & \multicolumn{1}{l}{0.779\textsuperscript{***}} & \multicolumn{1}{l}{0.710\textsuperscript{***}} & \multicolumn{1}{l}{0.561\textsuperscript{***}} & \multicolumn{1}{l}{0.477\textsuperscript{***}} & \multicolumn{1}{l}{0.463\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$IP$ } & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{MVBPV} & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{MVRV} \\
+							& \multicolumn{1}{l}{0.954\textsuperscript{***}} & \multicolumn{1}{l}{0.985\textsuperscript{***}} & \multicolumn{1}{l}{0.890\textsuperscript{***}} & \multicolumn{1}{l}{0.924\textsuperscript{***}} & \multicolumn{1}{l}{0.95624\textsuperscript{***}} & \multicolumn{1}{l}{0.912\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$PAY$ } & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{VTRV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{VTRV} & \multicolumn{1}{l}{VBPV} & \multicolumn{1}{l}{RV} \\
+							& \multicolumn{1}{l}{0.832\textsuperscript{***}} & \multicolumn{1}{l}{0.931\textsuperscript{***}} & \multicolumn{1}{l}{0.837\textsuperscript{***}} & \multicolumn{1}{l}{0.795\textsuperscript{***}} & \multicolumn{1}{l}{0.788\textsuperscript{***}} & \multicolumn{1}{l}{0.678\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$CPI$ } & \multicolumn{1}{l}{CMRV1} & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{CMBPV2} & \multicolumn{1}{l}{CMRV1} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMJV2} \\
+							& \multicolumn{1}{l}{0.980\textsuperscript{***}} & \multicolumn{1}{l}{1.000\textsuperscript{***}} & \multicolumn{1}{l}{1.007\textsuperscript{ }} & \multicolumn{1}{l}{0.993\textsuperscript{***}} & \multicolumn{1}{l}{0.949\textsuperscript{***}} & \multicolumn{1}{l}{1.001\textsuperscript{**}} \\
+							\multicolumn{1}{l}{$PCE$ } & \multicolumn{1}{l}{CMBPV2} & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{MVTRV} & \multicolumn{1}{l}{MVBPV} & \multicolumn{1}{l}{MAC} \\
+							& \multicolumn{1}{l}{0.977\textsuperscript{***}} & \multicolumn{1}{l}{1.008\textsuperscript{ }} & \multicolumn{1}{l}{0.991\textsuperscript{***}} & \multicolumn{1}{l}{1.025\textsuperscript{ }} & \multicolumn{1}{l}{0.948\textsuperscript{***}} & \multicolumn{1}{l}{0.952\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$SI$ } & \multicolumn{1}{l}{CMBPV1} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMBPV2} & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{CMTRV1} \\
+							& \multicolumn{1}{l}{0.946\textsuperscript{***}} & \multicolumn{1}{l}{1.001\textsuperscript{ }} & \multicolumn{1}{l}{0.991\textsuperscript{***}} & \multicolumn{1}{l}{1.008\textsuperscript{ }} & \multicolumn{1}{l}{0.984\textsuperscript{***}} & \multicolumn{1}{l}{0.985\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$AAA$ } & \multicolumn{1}{l}{MRV} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{MBPV} & \multicolumn{1}{l}{MVBPV} & \multicolumn{1}{l}{MVBPV} \\
+							& 0.862 & 0.942 & 0.942 & 0.908 & 0.888 & 0.862 \\
+							\multicolumn{1}{l}{$AA$ } & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{VTRV} \\
+							& 0.912 & 0.859 & 0.876 & 0.872 & 0.892 & 0.902 \\
+							\multicolumn{1}{l}{$A$ } & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{VTRV} & \multicolumn{1}{l}{VBPV} \\
+							& 0.972 & 0.912 & 0.926 & 0.931 & 0.923 & 0.909 \\
+							\multicolumn{1}{l}{$BBB$ } & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMTRV2} \\
+							& 1.011 & 0.920 & 0.891 & 0.881 & 0.969 & 0.905 \\
+							\multicolumn{1}{l}{$BB$ } & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{CMJV1} \\
+							& 1.012 & 1.011 & 0.883 & 0.977 & 0.942 & 0.883 \\
+							\multicolumn{1}{l}{$B$ } & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMBPV2} & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{CMJV2} \\
+							& 0.977 & 0.986 & 0.920 & 0.981 & 0.946 & 0.901 \\
+							\multicolumn{1}{l}{$CCC$ } & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{CMTRV1} \\
+							& 0.934 & 0.906 & 0.994 & 0.969 & 0.934 & 0.963 \\
+							
+							\bottomrule
+						\end{tabulary}%
+					%\end{adjustbox}
+					\begin{tablenotes}[flushleft]
+						\scriptsize
+						\item[1] See notes to Table 3A. Entries denote MSFE-best models for all 6 macroeconomic and 7 yield target variables examined in the forecasting experiments discussed in Section 3.
+					\end{tablenotes}
+					
+				\end{threeparttable}
+			\end{table}
+			
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------
+			
+			
+			\newpage
+			\renewcommand{\thetable}{5B} 
+			
+			\begin{table}[h]
+				\centering
+				\caption{MSFE-Best Models (Sample 2: 2009:1 - 2018:12)} 
+				\label{table:table5B}
+				\begin{threeparttable}
+					\scriptsize
+					%\footnotesize
+					\begin{tabulary}{.15\linewidth}{lllllll}
+							\toprule
+							\multicolumn{1}{c}{\multirow{2}[0]{*}{Targets}} & \multicolumn{6}{c}{Forecast horizon}\\
+							&   1-month &  2-month &3-month &4-month &5-month &  6-month \\
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 36}\\
+							\midrule
+							
+							\multicolumn{1}{l}{$HS$ } & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMBPV1} \\
+							& \multicolumn{1}{l}{0.950\textsuperscript{***}} & \multicolumn{1}{l}{0.818\textsuperscript{***}} & \multicolumn{1}{l}{0.927\textsuperscript{***}} & \multicolumn{1}{l}{0.910\textsuperscript{***}} & \multicolumn{1}{l}{0.966\textsuperscript{***}} & \multicolumn{1}{l}{0.920\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$IP$ } & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{TRV} \\
+							& \multicolumn{1}{l}{0.931***} & \multicolumn{1}{l}{0.876***} & \multicolumn{1}{l}{0.956***} & 1.018 & \multicolumn{1}{l}{0.975***} & \multicolumn{1}{l}{0.975***} \\
+							\multicolumn{1}{l}{$PAY$ } & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMRV1} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMJV2} \\
+							& \multicolumn{1}{l}{0.828\textsuperscript{***}} & \multicolumn{1}{l}{1.040\textsuperscript{ }} & \multicolumn{1}{l}{0.996\textsuperscript{***}} & \multicolumn{1}{l}{0.910\textsuperscript{***}} & \multicolumn{1}{l}{0.993\textsuperscript{***}} & \multicolumn{1}{l}{0.994\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$CPI$ } & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{CMRV1} & \multicolumn{1}{l}{VBPV} \\
+							& \multicolumn{1}{l}{1.015\textsuperscript{***}} & \multicolumn{1}{l}{0.988\textsuperscript{***}} & \multicolumn{1}{l}{0.986\textsuperscript{***}} & \multicolumn{1}{l}{0.946\textsuperscript{***}} & \multicolumn{1}{l}{0.954\textsuperscript{***}} & \multicolumn{1}{l}{1.043\textsuperscript{ }} \\
+							\multicolumn{1}{l}{$PCE$ } & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{VRV} & \multicolumn{1}{l}{CMTRV1} \\
+							& \multicolumn{1}{l}{0.992\textsuperscript{***}} & \multicolumn{1}{l}{0.977\textsuperscript{***}} & \multicolumn{1}{l}{1.011\textsuperscript{ }} & \multicolumn{1}{l}{1.016\textsuperscript{ }} & \multicolumn{1}{l}{0.992\textsuperscript{***}} & \multicolumn{1}{l}{0.962\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$SI$ } & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{CMJV2} \\
+							& \multicolumn{1}{l}{1.036\textsuperscript{ }} & \multicolumn{1}{l}{1.013\textsuperscript{***}} & \multicolumn{1}{l}{1.012\textsuperscript{ }} & \multicolumn{1}{l}{1.028\textsuperscript{***}} & \multicolumn{1}{l}{0.993\textsuperscript{***}} & \multicolumn{1}{l}{0.976\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$AAA$ } & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMJV2} \\
+							& 0.995 & 0.936 & 0.910 & 0.957 & 0.960 & 0.987 \\
+							\multicolumn{1}{l}{$AA$ } & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMTRV2} \\
+							& 0.999 & 0.952 & 0.857 & 0.815 & 0.841 & 0.931 \\
+							\multicolumn{1}{l}{$A$ } & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{TRV} \\
+							& 1.009 & 0.933 & 0.827 & 0.708 & 0.824 & 0.929 \\
+							\multicolumn{1}{l}{$BBB$ } & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{CMTRV1} \\
+							& 1.023 & 1.007 & 0.975 & 0.821 & 0.859 & 0.847 \\
+							\multicolumn{1}{l}{$BB$ } & \multicolumn{1}{l}{VBPV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{CMJV2} \\
+							& 0.860 & 1.004 & 0.921 & 0.880 & 0.870 & 0.771 \\
+							\multicolumn{1}{l}{$B$ } & \multicolumn{1}{l}{VRV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{CMJV2} \\
+							& 0.945 & 0.935 & 0.851 & 0.727 & 0.669 & 0.824 \\
+							\multicolumn{1}{l}{$CCC$ } & \multicolumn{1}{l}{VBPV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{BPV} \\
+							& 0.993 & 0.964 & 0.888 & 0.848 & 0.644 & 0.642 \\
+														
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 72}\\
+							\midrule
+							
+							\multicolumn{1}{l}{$HS$ } & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{VBPV} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{VBPV} & \multicolumn{1}{l}{MAC} \\
+							& \multicolumn{1}{l}{0.938\textsuperscript{***}} & \multicolumn{1}{l}{0.927\textsuperscript{***}} & \multicolumn{1}{l}{0.955\textsuperscript{***}} & \multicolumn{1}{l}{0.951\textsuperscript{***}} & \multicolumn{1}{l}{0.947\textsuperscript{***}} & \multicolumn{1}{l}{0.949\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$IP$ } & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{MVBPV} & \multicolumn{1}{l}{VRV} & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{MVJV} \\
+							& \multicolumn{1}{l}{0.950***} & \multicolumn{1}{l}{0.962***} & \multicolumn{1}{l}{0.972***} & \multicolumn{1}{l}{0.963***} & \multicolumn{1}{l}{0.963***} & \multicolumn{1}{l}{0.938***} \\
+							\multicolumn{1}{l}{$PAY$ } & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{MRV} & \multicolumn{1}{l}{VTRV} \\
+							& \multicolumn{1}{l}{0.864\textsuperscript{***}} & \multicolumn{1}{l}{1.048\textsuperscript{*}} & \multicolumn{1}{l}{0.975\textsuperscript{***}} & \multicolumn{1}{l}{0.957\textsuperscript{***}} & \multicolumn{1}{l}{0.902\textsuperscript{***}} & \multicolumn{1}{l}{0.953\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$CPI$ } & \multicolumn{1}{l}{CMRV1} & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{CMBPV2} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{TRV} \\
+							& \multicolumn{1}{l}{0.970\textsuperscript{***}} & \multicolumn{1}{l}{0.993\textsuperscript{***}} & \multicolumn{1}{l}{0.985\textsuperscript{***}} & \multicolumn{1}{l}{0.983\textsuperscript{***}} & \multicolumn{1}{l}{0.946\textsuperscript{***}} & \multicolumn{1}{l}{0.995\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$PCE$ } & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{MVBPV} & \multicolumn{1}{l}{MVBPV} & \multicolumn{1}{l}{MAC} \\
+							& \multicolumn{1}{l}{0.979\textsuperscript{***}} & \multicolumn{1}{l}{0.994\textsuperscript{***}} & \multicolumn{1}{l}{0.934\textsuperscript{***}} & \multicolumn{1}{l}{0.962\textsuperscript{***}} & \multicolumn{1}{l}{0.894\textsuperscript{***}} & \multicolumn{1}{l}{0.858\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$SI$ } & \multicolumn{1}{l}{CMBPV1} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMBPV2} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMTRV1} \\
+							& \multicolumn{1}{l}{0.853\textsuperscript{***}} & \multicolumn{1}{l}{1.000\textsuperscript{***}} & \multicolumn{1}{l}{0.982\textsuperscript{***}} & \multicolumn{1}{l}{0.948\textsuperscript{***}} & \multicolumn{1}{l}{0.987\textsuperscript{***}} & \multicolumn{1}{l}{0.943\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$AAA$ } & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{CMBPV2} & \multicolumn{1}{l}{MBPV} & \multicolumn{1}{l}{MVBPV} & \multicolumn{1}{l}{MJV} \\
+							& 0.880 & 0.941 & 0.945 & 0.890 & 0.862 & 0.898 \\
+							\multicolumn{1}{l}{$AA$ } & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{VRV} \\
+							& 0.870 & 0.848 & 0.885 & 0.789 & 0.850 & 0.920 \\
+							\multicolumn{1}{l}{$A$ } & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{MJV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{MTRV} \\
+							& 0.894 & 0.851 & 0.806 & 0.727 & 0.814 & 0.883 \\
+							\multicolumn{1}{l}{$BBB$ } & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{MJV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{BPV} \\
+							& 0.961 & 0.826 & 0.843 & 0.780 & 0.816 & 0.865 \\
+							\multicolumn{1}{l}{$BB$ } & \multicolumn{1}{l}{VBPV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{VTRV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{CMJV2} \\
+							& 0.842 & 0.913 & 0.895 & 0.876 & 0.919 & 0.833 \\
+							\multicolumn{1}{l}{$B$ } & \multicolumn{1}{l}{VBPV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{VJV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMJV2} \\
+							& 0.835 & 0.937 & 0.920 & 0.869 & 0.890 & 0.841 \\
+							\multicolumn{1}{l}{$CCC$ } & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{MVTRV} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{VTRV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{CMJV2} \\
+							& 0.947 & 0.892 & 0.977 & 0.929 & 0.924 & 0.968 \\
+
+							\bottomrule
+						\end{tabulary}%
+					%\end{adjustbox}
+					\begin{tablenotes}[flushleft]
+						\scriptsize
+						\item[1] See notes to Table 5A. Results are analogous to those reported in Table 4A, except that Sample 2 is used instead of Sample 1 in all prediction experiments.
+					\end{tablenotes}
+					
+				\end{threeparttable}
+			\end{table}
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------
+			
+			
+			\newpage
+			\renewcommand{\thetable}{5C} 
+			
+			\begin{table}[h]
+				\centering
+				\caption{Ex-ante Directional Accuracy Rate Best Models (Sample 1: 2006:1 - 2018:12)$^1$} 
+				\label{table:table5C}
+				\begin{threeparttable}
+					\footnotesize
+					\begin{tabulary}{.15\linewidth}{lllllll}
+							\toprule
+							\multicolumn{1}{c}{\multirow{2}[0]{*}{Targets}} & \multicolumn{6}{c}{Forecast horizon}\\
+							&   1-month &  2-month &3-month &4-month &5-month &  6-month \\
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 36}\\
+							\midrule
+							
+							\multicolumn{1}{l}{$HS$ } & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{RV} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{TRV} & \multicolumn{1}{l}{MJV} \\
+							& \multicolumn{1}{l}{70.9\%\textsuperscript{***}} & \multicolumn{1}{l}{73.4\%\textsuperscript{***}} & \multicolumn{1}{l}{68.4\%\textsuperscript{***}} & \multicolumn{1}{l}{75.9\%\textsuperscript{***}} & \multicolumn{1}{l}{70.9\%\textsuperscript{***}} & \multicolumn{1}{l}{68.4\%\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$IP$ } & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{CMBPV2} & \multicolumn{1}{l}{MJV} & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{MRV} \\
+							& \multicolumn{1}{l}{72.2\% \textsuperscript{***}} & \multicolumn{1}{l}{73.4\% \textsuperscript{***}} & \multicolumn{1}{l}{65.8\% \textsuperscript{***}} & \multicolumn{1}{l}{72.2\% \textsuperscript{***}} & \multicolumn{1}{l}{74.7\% \textsuperscript{***}} & \multicolumn{1}{l}{64.6\% \textsuperscript{**}} \\
+							\multicolumn{1}{l}{$PAY$ } & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{MVJV} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMRV2} \\
+							& \multicolumn{1}{l}{78.5\%\textsuperscript{***}} & \multicolumn{1}{l}{81.0\%\textsuperscript{***}} & \multicolumn{1}{l}{72.2\%\textsuperscript{***}} & \multicolumn{1}{l}{72.2\%\textsuperscript{***}} & \multicolumn{1}{l}{75.9\%\textsuperscript{***}} & \multicolumn{1}{l}{75.9\%\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$CPI$ } & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{CMBPV1} & \multicolumn{1}{l}{RV} & \multicolumn{1}{l}{BPV} \\
+							& \multicolumn{1}{l}{72.2\%\textsuperscript{***}} & \multicolumn{1}{l}{81.0\%\textsuperscript{***}} & \multicolumn{1}{l}{81.0\%\textsuperscript{***}} & \multicolumn{1}{l}{83.5\%\textsuperscript{***}} & \multicolumn{1}{l}{82.3\%\textsuperscript{***}} & \multicolumn{1}{l}{77.2\%\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$PCE$ } & \multicolumn{1}{l}{JV} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{JV} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{MAC} \\
+							& \multicolumn{1}{l}{75.9\%\textsuperscript{***}} & \multicolumn{1}{l}{74.7\%\textsuperscript{***}} & \multicolumn{1}{l}{74.7\%\textsuperscript{***}} & \multicolumn{1}{l}{81.0\%\textsuperscript{***}} & \multicolumn{1}{l}{77.2\%\textsuperscript{***}} & \multicolumn{1}{l}{72.2\%\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$SI$ } & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMBPV1} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMRV2} \\
+							& \multicolumn{1}{l}{75.9\%\textsuperscript{***}} & \multicolumn{1}{l}{72.2\%\textsuperscript{***}} & \multicolumn{1}{l}{75.9\%\textsuperscript{***}} & \multicolumn{1}{l}{75.9\%\textsuperscript{***}} & \multicolumn{1}{l}{73.4\%\textsuperscript{***}} & \multicolumn{1}{l}{74.7\%\textsuperscript{***}} \\
+							
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 72}\\
+							\midrule
+							
+							\multicolumn{1}{l}{$HS$ } & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{VRV} & \multicolumn{1}{l}{CMRV1} & \multicolumn{1}{l}{RV} & \multicolumn{1}{l}{RV} & \multicolumn{1}{l}{TRV} \\
+							& \multicolumn{1}{l}{74.7\%\textsuperscript{***}} & \multicolumn{1}{l}{78.5\%\textsuperscript{***}} & \multicolumn{1}{l}{75.9\%\textsuperscript{***}} & \multicolumn{1}{l}{79.7\%\textsuperscript{***}} & \multicolumn{1}{l}{73.4\%\textsuperscript{***}} & \multicolumn{1}{l}{70.9\%\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$IP$ } & \multicolumn{1}{l}{CMTRV2} & \multicolumn{1}{l}{BPV} & \multicolumn{1}{l}{CMBPV2} & \multicolumn{1}{l}{MVRV} & \multicolumn{1}{l}{MJV} & \multicolumn{1}{l}{JV} \\
+							& \multicolumn{1}{l}{75.9\% \textsuperscript{}} & \multicolumn{1}{l}{70.9\% \textsuperscript{***}} & \multicolumn{1}{l}{69.6\% \textsuperscript{***}} & \multicolumn{1}{l}{78.5\% \textsuperscript{***}} & \multicolumn{1}{l}{75.9\% \textsuperscript{***}} & \multicolumn{1}{l}{65.8\% \textsuperscript{*}} \\
+							\multicolumn{1}{l}{$PAY$ } & \multicolumn{1}{l}{VTRV} & \multicolumn{1}{l}{VRV} & \multicolumn{1}{l}{MJV} & \multicolumn{1}{l}{MVTRV} & \multicolumn{1}{l}{RV} & \multicolumn{1}{l}{MAC} \\
+							& \multicolumn{1}{l}{79.7\%\textsuperscript{***}} & \multicolumn{1}{l}{77.2\%\textsuperscript{***}} & \multicolumn{1}{l}{77.2\%\textsuperscript{***}} & \multicolumn{1}{l}{77.2\%\textsuperscript{***}} & \multicolumn{1}{l}{73.4\%\textsuperscript{***}} & \multicolumn{1}{l}{79.7\%\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$CPI$ } & \multicolumn{1}{l}{CMJV1} & \multicolumn{1}{l}{VRV} & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{MRV} & \multicolumn{1}{l}{MJV} \\
+							& \multicolumn{1}{l}{69.6\%\textsuperscript{***}} & \multicolumn{1}{l}{81.0\%\textsuperscript{***}} & \multicolumn{1}{l}{79.7\%\textsuperscript{***}} & \multicolumn{1}{l}{78.5\%\textsuperscript{***}} & \multicolumn{1}{l}{81.0\%\textsuperscript{***}} & \multicolumn{1}{l}{78.5\%\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$PCE$ } & \multicolumn{1}{l}{CMTRV1} & \multicolumn{1}{l}{CMBPV1} & \multicolumn{1}{l}{VRV} & \multicolumn{1}{l}{VRV} & \multicolumn{1}{l}{MTRV} & \multicolumn{1}{l}{VRV} \\
+							& \multicolumn{1}{l}{77.2\%\textsuperscript{***}} & \multicolumn{1}{l}{70.9\%\textsuperscript{***}} & \multicolumn{1}{l}{74.7\%\textsuperscript{***}} & \multicolumn{1}{l}{78.5\%\textsuperscript{***}} & \multicolumn{1}{l}{75.9\%\textsuperscript{***}} & \multicolumn{1}{l}{72.2\%\textsuperscript{***}} \\
+							\multicolumn{1}{l}{$SI$ } & \multicolumn{1}{l}{CMJV2} & \multicolumn{1}{l}{MRV} & \multicolumn{1}{l}{VBPV} & \multicolumn{1}{l}{MAC} & \multicolumn{1}{l}{CMRV2} & \multicolumn{1}{l}{CMJV1} \\
+							& \multicolumn{1}{l}{75.9\%\textsuperscript{***}} & \multicolumn{1}{l}{68.4\%\textsuperscript{***}} & \multicolumn{1}{l}{79.7\%\textsuperscript{***}} & \multicolumn{1}{l}{73.4\%\textsuperscript{***}} & \multicolumn{1}{l}{73.4\%\textsuperscript{***}} & \multicolumn{1}{l}{70.9\%\textsuperscript{***}} \\
+							
+							\bottomrule
+						\end{tabulary}%
+					%\end{adjustbox}
+					\begin{tablenotes}[flushleft]
+						\footnotesize
+						\item[1] See notes to Table 5A. This table is analogous to Table 5A, except that directional accuracy rates best models are reported.  
+					\end{tablenotes}
+					
+				\end{threeparttable}
+			\end{table}
+			
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------
+			
+			\newpage
+			\renewcommand{\thetable}{5D} 
+			
+			\begin{table}[h]
+				\centering
+				\caption{Ex-ante Directional Accuracy Rate Best Models (Sample 2: 2009:1 - 2018:12)$^1$} 
+				\label{table:table5D}
+				\begin{threeparttable}
+					\footnotesize
+					\begin{tabulary}{.15\linewidth}{lllllll}
+							\toprule
+							\multicolumn{1}{c}{\multirow{2}[0]{*}{Targets}} & \multicolumn{6}{c}{Forecast horizon}\\
+							&   1-month &  2-month &3-month &4-month &5-month &  6-month \\
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 36}\\
+							\midrule
+							
+							\multicolumn{1}{l}{$HS$ } & CMTRV2 & RV    & CMBPV2 & MVJV  & TRV   & MVRV \\
+							& 72.1\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 76.7\%\textsuperscript{***} \\
+							\multicolumn{1}{l}{$IP$ } & CMTRV1 & CMJV2 & CMRV1 & MVRV  & MVRV  & MRV \\
+							& 72.1\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 67.4\%\textsuperscript{*} & 76.7\%\textsuperscript{***} & 86.0\%\textsuperscript{***} & 65.1\%\textsuperscript{*} \\
+							\multicolumn{1}{l}{$PAY$ } & TRV   & TRV   & TRV   & MAC   & MVJV  & CMJV2 \\
+							& 83.7\%\textsuperscript{***} & 86.0\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 81.4\%\textsuperscript{***} \\
+							\multicolumn{1}{l}{$CPI$ } & BPV   & MAC   & BPV   & BPV   & RV    & MAC \\
+							& 72.1\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} \\
+							\multicolumn{1}{l}{$PCE$ } & JV    & MTRV  & CMTRV1 & JV    & CMRV2 & MAC \\
+							& 81.4\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 72.1\%\textsuperscript{***} \\
+							\multicolumn{1}{l}{$SI$ } & VJV   & JV    & CMRV2 & MAC   & MVRV  & CMRV1 \\
+							& 79.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 72.1\%\textsuperscript{***} \\
+							
+							\midrule
+							\multicolumn{7}{c}{rolling window size = 72}\\
+							\midrule
+							
+							\multicolumn{1}{l}{$HS$ } & CMRV1 & VRV   & CMRV1 & JV    & RV    & MAC \\
+							& 76.7\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 69.8\%\textsuperscript{***} \\
+							\multicolumn{1}{l}{$IP$ } & CMTRV2 & MAC   & RV    & MRV   & JV    & JV \\
+							& 74.4\%\textsuperscript{} & 74.4\%\textsuperscript{***} & 67.4\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 67.4\%\textsuperscript{ } \\
+							\multicolumn{1}{l}{$PAY$ } & CMBPV2 & CMJV1 & CMRV1 & CMJV2 & MAC   & RV \\
+							& 86.0\%\textsuperscript{***} & 86.0\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 83.7\%\textsuperscript{***} \\
+							\multicolumn{1}{l}{$CPI$ } & VRV   & CMJV2 & CMJV2 & MAC   & JV    & MJV \\
+							& 74.4\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 83.7\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 81.4\%\textsuperscript{***} & 81.4\%\textsuperscript{***} \\
+							\multicolumn{1}{l}{$PCE$ } & CMTRV1 & MAC   & VRV   & MAC   & MRV   & MAC \\
+							& 81.4\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 69.8\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 76.7\%\textsuperscript{***} & 72.1\%\textsuperscript{***} \\
+							\multicolumn{1}{l}{$SI$ } & CMTRV1 & MRV   & VBPV  & MAC   & CMRV2 & VRV \\
+							& 76.7\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 79.1\%\textsuperscript{***} & 74.4\%\textsuperscript{***} & 72.1\%\textsuperscript{***} \\
+							
+							\bottomrule
+						\end{tabulary}%
+					%\end{adjustbox}
+					\begin{tablenotes}[flushleft]
+						\footnotesize
+						\item[1] See notes to Table 5B. Results are analogous to those depicted in Table 5C, except that Sample 2 is used instead of Sample 1 in all prediction experiments.
+					\end{tablenotes}
+					
+				\end{threeparttable}
+			\end{table}
+			
+			
+			
+			
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------
+				
+			
+			\newpage
+			\newpage
+			\newgeometry{left=3cm,bottom=3cm}
+			\begin{landscape}
+				\begin{figure}
+					\centering
+					\caption{Macroeconomic Uncertainty Measure}
+					\label{figure:figure1}
+					\includegraphics[width=22cm,keepaspectratio]{MF_macro.png}
+					\begin{minipage}{.7\linewidth}
+						%\rule{\linewidth}{10em}
+					\footnotesize Notes: In this figure, there are 5 series plotted. The series in gray are the 4 component macroeconomic series used in the state space model that is in turn used to specify the macroeconomic uncertainty measure ($MF^{mac}$). Here,  $MF^{mac}$ is multiplied by minus one, and is depicted using a solid line. See Section 4 for a description of the 4 macroeconomic variables, and Section 2.4 for a discussion of the methodology used to construct $MF^{MAC}$.
+				\end{minipage}
+			
+				\end{figure}
+				
+			\end{landscape}
+			\restoregeometry
+			
+			\newpage
+			\newgeometry{left=3cm,bottom=3cm}
+			\begin{landscape}
+				\begin{figure}
+					\caption{Volatility Uncertainty Measures}
+					\centering
+					\label{figure:figure2}
+					\includegraphics[width=22cm,keepaspectratio]{MF_vol2.png}
+					\begin{minipage}{.7\linewidth}
+					\footnotesize Notes: In this figure, our 4 volatily uncertainty measures are depicted. These include $MF^{RV}$, $MF^{TRV}$, $MF^{BPV}$, and $MF^{JV}$. For illustrative purposes, they are constructed using the variant of our state space model that uses the entire sample period. Of note is that in our prediction experiments, each measure is estiamted anew, prior to the construction of each $h$-step ahead forecast. Thus, the measures reported here correspond to the uncertainty estiamtes used in the constrecution of our final out-of-sample forecast. $MF^{TRV}$ and $MF^{BPV}$ are multiplied by minus one. See Section 3 for a discussion of the methodology used to construct the measures plotted in this figure.
+					\end{minipage}
+				\end{figure}
+			\end{landscape}
+			\restoregeometry
+			
+			
+			\newpage
+			\newgeometry{left=3cm,bottom=3cm}
+			\begin{landscape}
+				\begin{figure}
+					\caption{Macroeconomic-Volatility Convolution Uncertainty Measures}
+					\centering
+					\label{figure:figure3}
+					\includegraphics[width=22cm,keepaspectratio]{MF_macro_vol2.png}
+					\begin{minipage}{.7\linewidth}
+					\footnotesize Notes: See notes to Figure 3. In this figure, our 4 macroeconomic-volatily ``convlution'' uncertainty measures are depicted. These include $MF^{mac-RV}$, $MF^{mac-TRV}$, $MF^{mac-BPV}$, and $MF^{mac-JV}$.
+					\end{minipage}
+				\end{figure}
+			\end{landscape}
+			\restoregeometry
+			
+			
+			\newpage
+			\newgeometry{left=3cm,bottom=3cm}
+			\begin{landscape}
+				\begin{figure}
+					\caption{Square Root Type Macroeconomic-Volatility Convolution Uncertainty Measures}
+					\centering
+					\label{figure:figure4}
+					\includegraphics[width=22cm,keepaspectratio]{MF_macro_vol_sqrt2.png}
+					\begin{minipage}{.7\linewidth}
+					\footnotesize Notes: See notes to Figure 4. Uncertainty measures plotted here correspond to those plotted in Figure 3, except that square-root volatility measures are used in the underlying state space model. The measures depicted are $MF^{mac-RV sqrt}$, $MF^{mac-TRV sqrt}$, $MF^{mac-BPV sqrt}$, and $MF^{mac-JV sqrt}$.
+					\end{minipage}
+				\end{figure}
+			\end{landscape}
+			\restoregeometry
+
+			%----------------------------------------------------------------------
+			%----------------------------------------------------------------------	
+							
+		\end{document}

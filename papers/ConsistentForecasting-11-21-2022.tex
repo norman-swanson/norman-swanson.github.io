@@ -1,0 +1,1905 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 936
+
+
+\documentclass[11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{setspace}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2606}
+%TCIDATA{Codepage=936}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Sunday, July 18, 2004 16:10:34}
+%TCIDATA{LastRevised=Monday, November 21, 2022 12:31:29}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=article.cst}
+%TCIDATA{PageSetup=72,72,72,72,0}
+%TCIDATA{AllPages=
+%F=36,\PARA{038<p type="texpara" tag="Body Text" >\hfill \thepage}
+%}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand{\baselinestretch}{1.0} 
+\textwidth=6.8in
+\textheight=8.7in
+\oddsidemargin=0in
+\evensidemargin=0in
+\topmargin=0in
+\baselineskip=10pt
+\linespread{1.3}
+\input{tcilatex}
+\geometry{left=1in,right=1in,top=1.25in,bottom=1.25in}
+
+\begin{document}
+
+
+\begin{center}
+{\Large {Consistent Factor Estimation and Forecasting in Factor-Augmented
+VAR Models$^{\ast }$}}
+
+\bigskip
+
+John C. Chao$^{1},$ Yang Liu$^{2}$ and Norman R. Swanson$^{2}$
+
+\medskip
+
+$^{1}$University of Maryland and $^{2}$Rutgers University
+
+\medskip
+
+November 21, 2022
+
+\medskip
+
+preliminary and incomplete
+
+\bigskip \bigskip
+
+Abstract
+\end{center}
+
+\begin{spacing}{1.01}
+\noindent In this paper we establish that conditional mean functions associated with $h$-step ahead 
+forecasting equations implied by a factor augmented vector autoregressions (FAVARs) can be consistently estimated
+in the case where factor pervasiveness does not hold. In particular,  we begin by stating a common assumption of 
+factor pervasiveness in which all available predictor variables (excepting a negligible subset) 
+load significantly on the underlying factors. We then establish that 
+even when this assumption is relaxed, consistent factor estimation can be achieved
+if one pre-screens the variables and successfully prunes out the irrelevant
+ones. Furthermore, use of factors estimated in this manner
+when constructing $h$-step ahead forecasting equations
+implied by FAVAR models enables the consistent estimation of the
+conditional mean function of said equations, and conditional mean functions constructed 
+used our precedure are
+consistently estimable in a wide range of situations, including cases
+where violation of factor pervasiveness is such that consistent estimation
+is precluded in the absence of variable pre-screening. 
+\end{spacing}
+
+\bigskip \bigskip \bigskip
+
+\noindent \textit{Keywords: }Factor analysis, factor augmented vector
+autoregression, forecasting, moderate deviation, principal components,
+self-normalization, variable selection.
+
+\medskip
+
+\noindent \textit{JEL Classification: }C32, C33, C38, C52, C53, C55.
+
+\bigskip \bigskip
+
+\begin{spacing}{1.01}
+\noindent $^{\ast }$\textit{Corresponding Author:} John C. Chao, Department of Economics, 7343 Preinkert
+Drive, University of Maryland, chao@econ.umd.edu.
+
+\medskip
+
+\noindent Norman R. Swanson, Department of Economics, 9500 Hamilton Street, Rutgers University,
+nswanson@econ.rutgers.edu. The authors are grateful to Simon Freyaldenhoven,
+Yuan Liao, Minchul Shin, Xiye Yang, and seminar participants at the Federal
+Reserve Bank of Pihadelphia for useful comments received on earlier versions
+of this paper. Chao thanks the University of Maryland for research support.
+\end{spacing}
+
+\newpage
+
+\noindent \noindent \setcounter{page}{2}
+
+\section{Introduction}
+
+\noindent \qquad In economics, three of the key areas in machine learning
+that have drawn considerable attention in recent years include variable
+selection, dimension reduction and shrinkage. One reason for this is the
+availability of new high frequency and high dimensional datasets that are
+being analyzed in areas ranging from targeted marketing and customer
+segmentation to forecasting and maroeconomic policy making. This has in turn
+led to numerous theoretical advances in the areas of estimation,
+implementation, and inference using techinques such as the least absolute
+shrinkage operator (lasso) and principal components analysis (PCA). In this
+paper, we build on pathbreaking work due to Bai and Ng (2002), Stock and
+Watson (2002a,b), Bai (2003), Forni, Hallin, Lippi, and Reichlin (2005), and
+Bai and Ng (2008), in which methods for constructing forecasts based on
+factor-augmented regression models are developed and analyzed. In
+particular, we establish that latent factors that are critical to the
+estimation of factor augmented vector autoregressions (FAVARs) can be
+consistently estimated in cases where factor pervasiveness does not hold,
+where by factor pervasivness we mean that (almost)\ all available predictors
+load significantly on a set of factors that we wish to estimate. To do so,
+we draw on results of Chao and Swanson (CS: 2022a), where a completely
+consistent variable selection procedure useful for specifying FAVAR models
+is developed. We then establish that the conditional mean of the infeasible $%
+h$-step ahead forecasting equation implied by an FAVAR can be consistently
+estimated.
+
+As discussed above, a key assumption commonly used in the factor analysis
+literature to show consistent factor estimation is that of factor
+pervasiveness. This assumption presupposes that all available predictor
+variables in a dataset, with the possible exception of a negligible number
+of them, load significantly on the underlying factors. Needless to say, this
+assumption may not be satisfied by many datasets that are available for
+empirical research. Indeed, a likely scenario is that there is significant
+underlying heterogeneity, so that some of the available variables are
+relevant in the sense that they load significantly on the underlying
+factors, whereas others are irrelevant, in the sense that they do not share
+any common dynamic structure with each other or with the relevant variables
+in the dataset. In this paper, we begin by establishing that, under failure
+of factor pervasiveness in a stylized model with one factor, consistency
+cannot be achieved, and indeed \textit{\ }$\widehat{f}_{t}\overset{p}{%
+\rightarrow }0,$ as $N,T\rightarrow \infty $, where $f_{t}$ is a latent
+factor, $N$ is the number of variables in the dataset being modelled, and $T$
+is the number of time series observations. Findings such as this are the
+impetus for the work of Chao and Swanson (CS: 2022a), where a variable
+selection procedure is developed for pre-selecting relevant predictor
+variables for use in the consistent estimation of latent factors in an FAVAR
+model. Their variable selection procedure is based on the use of easy to
+construct self normalized statistics measuring the covariation between
+target variables to be predicted and possible predictor variables to be used
+in factor estimation. CS (2022a) show that for their procedure, the
+probability of Type I and Type II errors goes to zero, asymptotically,
+implying that the procedure is completely consistent. This property turns
+out to be important because if one tries to simply control the probability
+of a Type I error at some predetermined level, which is the typical approach
+used in multiple hypothesis testing, then one will not in general be able to
+estimate factors consistently, even up to an invertible matrix
+transformation. A main result of the current paper is to show that factors
+estimated using predictor variables selected using the procedure of CS
+(2022a)\ are consistent, up to a rotation. With these results in hand, we
+then show that by using variables selected via our pre-screening procedure
+to estimate the underlying factors, and then inserting these factor
+estimates into $h$-step ahead forecasting equations implied by a FAVAR
+model, we can consistently estimate the conditional mean function of the
+said equations. Importantly, we argue that this result allows the
+conditional mean function of a factor-augmented forecasting equation to be
+consistently estimable in a wide range of situations, and in particular in
+situations where there are violations of factor pervasiveness.
+
+Finally, in order to illustrate the methods discussed in this paper, we
+analyze a large dataset. This part of the paper is to be completed.
+
+Some of the research reported here is related to the well-known supervised
+principal components method proposed by Bair, Hastie, Paul, and Tibshirani
+(2006). Additionally, our research is related to some interesting recent
+work by Giglio, Xiu, and Zhang (2021), who propose a method for selecting
+test assets, with the objective of estimating risk premia in a Fama-MacBeth
+type framework. A crucial difference between the variable selection
+procedure proposed in our paper and those proposed in these papers is that
+we use a score statistic that is self-nomalized, whereas the aforementioned
+papers do not make use of statistics that involve self-normalization. An
+important advantage of self-normalized statistics is their ability to
+accommodate a much wider range of possible tail behavior in the underlying
+distributions, relative to their non-self-normalized counterparts. This
+makes self-normalized statistics better suited for various types of economic
+and financial applications, where the data are known not to exhibit the type
+of exponentially decaying tail behavior assumed in much of the statistics
+literature on high-dimensional models. In addition, the type of models
+studied in Bair, Hastie, Paul, and Tibshirani (2006) and Giglio, Xiu, and
+Zhang (2021) differ significantly from the FAVAR model studied here. In
+particular, Bair, Hastie, Paul, and Tibshirani (2006) study a one-factor
+model in an $i.i.d.$ Gaussian framework so that complications introduced by
+dependence and non-normality of distribution are not considered in their
+paper. Giglio, Xiu, and Zhang (2021) do make certain high-level assumptions
+which may potentially accommodate some dependence both cross-sectionally and
+intertemporally, but they do not consider the implications of variable
+selection and factor estimation for forecasting, and the model that they
+consider is very different from the type of dynamic vector time series model
+studied here.
+
+Our research is also closely related to the work of Bai and Ng (2021), who
+provide results which show that factors can still be estimated consistently
+in certain situations where the factor loadings are weaker than that implied
+by the conventional pervasiveness assumption, although in such cases the
+rate of convergence of the factor estimator is slower and additional
+assumptions are needed. As discussed in the next section of this paper,
+their factor consistency result relies on a key condition, and the
+appropriateness of this condition depends on how severely the condition of
+factor pervasiveness is violated, which is ultimately an empirical issue.%
+\footnote{%
+Various authors have documented cases in economics-related research where
+empirical results suggest that the underlying factors may be quite weak, so
+that the rate condition given in Bai and Ng (2021) may not be appropriate.
+See, for example, the discussions in Jagannathan and Wang (1998), Kan and
+Zhang (1999), Harding (2008), Kleibergen (2009), Ontaski (2012), Bryzgalova
+(2016), Burnside (2016), Gospodinov, Kan, and Robotti (2017), Anatolyev and
+Mikusheva (2021), and Freyaldenhoven (2021a,b).}
+
+The rest of the paper is organized as follows. In Section 2 , we provide our
+counterexample, stated formally as Theorem 2.1, which shows that a latent
+factor may be inconsistently estimated when the standard assumption of
+factor pervasiveness does not hold. In Section 3, we discuss the FAVAR
+model, the variable selection procedure of CS (2022a), and the assumptions
+that are required in the sequel. Section 4 gathers our theoretical results
+on the consistent estimation of latent factors, up to an invertible matrix
+transformation, as well as results on the consistent estimation of the $h$%
+-step ahead predictor, based on the FAVAR model. Section 5 presents the
+results of an empirical illustration where our forecasting approach is
+compared with related approaches in the literature. Finally, Section 6
+offers concluding remarks. Proofs of the main theorems and supporting lemmas
+are given in an appendix as well as a separate online technical supplement
+(see Chao and Swanson (2022c).
+
+Before proceeding, we first say a few words about some of the frequently
+used notation in this paper. Throughout, let $\lambda _{\left( j\right)
+}\left( A\right) $, $\lambda _{\max }\left( A\right) $, $\lambda _{\min
+}\left( A\right) $, and $tr\left( A\right) $ denote, respectively, the $%
+j^{th}$ largest eigenvalue, the maximal eigenvalue, the minimal eigenvalue,
+and the trace of a square matrix $A$. Similarly, let $\sigma _{\left(
+j\right) }\left( B\right) $, $\sigma _{\max }\left( B\right) $, and $\sigma
+_{\min }\left( B\right) $ denote, respectively, the $j^{th}$ largest
+singular value, the maximal singular value, and the minimal singular value
+of a matrix $B$, which is not restricted to be a square matrix. In addition,
+let $\left\Vert a\right\Vert _{2}$ denote the usual Euclidean norm when
+applied to a (finite-dimensional) vector $a$. Also, for a matrix $A$, $%
+\left\Vert A\right\Vert _{2}\equiv \max \left\{ \sqrt{\lambda \left(
+A^{\prime }A\right) }:\lambda \left( A^{\prime }A\right) \text{ is an
+eigenvalue of }A^{\prime }A\right\} $ denotes the matrix spectral norm, and $%
+\left\Vert A\right\Vert _{F}\equiv \sqrt{tr\left\{ A^{\prime }A\right\} }$
+denotes the Frobenius norm. For two random variables $X$ and $Y$, write $%
+X\sim Y,$ if $X/Y=O_{p}\left( 1\right) $ and $Y/X=O_{p}\left( 1\right) $.
+Furthermore, let $\left\vert z\right\vert $ denote the absolute value or the
+modulus of the number $z$; let $\left\lfloor \cdot \right\rfloor $ denote
+the floor function, so that $\left\lfloor x\right\rfloor $ gives the integer
+part of the real number $x$, and let $\iota _{p}=\left( 1,1,...,1\right)
+^{\prime }$ denote a $p\times 1$ vector of ones. Finally, the abbreviation
+w.p.a.1 stands for \textquotedblleft with probability approaching
+one\textquotedblright .
+
+\section{Inconsistency in High-Dimensional Factor Estimation}
+
+To provide some motivation for the problem we will be studying in this
+paper, consider the following simple, stylized one-factor model:
+
+\begin{equation}
+\underset{N\times 1}{Z_{t}}=\underset{N\times 1}{\gamma }\underset{1\times 1}%
+{f_{t}}+\underset{N\times 1}{u_{t}}\text{, }t=1,...,T
+\label{one factor model}
+\end{equation}%
+for which we make the following assumption.
+
+\noindent \textbf{Assumption 2-1: }(a)\textbf{\ }$\left\{ u_{t}\right\}
+\equiv i.i.d.N\left( 0,I_{N}\right) ;$(b) $\left\{ f_{t}\right\} \equiv
+i.i.d.N\left( 0,1\right) ;$and (c) $u_{s}$ and $f_{t}$ are independent for
+all $t,s.$
+
+\noindent Much of the literature on factor analysis focuses on the case
+where the factors are pervasive. In the special case of the simple one
+factor model given in expression (\ref{one factor model}) above,
+pervasiveness means that:%
+\begin{equation*}
+\frac{\left\Vert \gamma \right\Vert _{2}^{2}}{N}\rightarrow c,
+\end{equation*}%
+for some constant $c$ such that $0<c<\infty ,$ where $\left\Vert \gamma
+\right\Vert _{2}=\sqrt{\gamma ^{\prime }\gamma }$. In practice, however, one
+may have a high-dimensional data vector $Z_{t}$ such that not all of the
+components of $Z_{t}$ load significantly on the underlying factor, $f_{t}$.
+In particular, let $\mathcal{P}$ be a permutation matrix which reorders the
+components of $Z_{t}$, so that $\mathcal{P}Z_{t}$ can be partitioned as
+follows:%
+\begin{equation*}
+\mathcal{P}Z_{t}=\left( 
+\begin{array}{c}
+\underset{N_{1}\times 1}{Z_{t}^{\left( 1\right) }} \\ 
+\underset{N_{2}\times 1}{Z_{t}^{\left( 2\right) }}%
+\end{array}%
+\right) ,
+\end{equation*}%
+where $Z_{t}^{\left( 1\right) }=\gamma ^{\left( 1\right)
+}f_{t}+u_{t}^{\left( 1\right) }$ and $Z_{t}^{\left( 2\right) }=u_{t}^{\left(
+2\right) }$ and where all components of the $N_{1}\times 1$ vector $\gamma
+^{\left( 1\right) }$ are different from zero, so that the components of $%
+Z_{t}^{\left( 1\right) }$ all load significantly on $f_{t}$, whereas the
+components of $Z_{t}^{\left( 2\right) }$ do not. Of course, an empirical
+researcher will not typically have \`{a} priori knowledge as to which
+components of $Z_{t}$ will load significantly on $f_{t}$ and which will not.
+The following result shows that if one proceeds with factor estimation
+assuming that the factor is pervasive, then the usual estimator of a factor
+based on principal component methods may be inconsistent and may, in fact,
+behave in a rather pathological manner in large samples. To consider this
+possibility, assume the following condition, which implies a violation of
+the pervasiveness assumption.
+
+\noindent \textbf{Assumption 2-2: }As $N,T\rightarrow \infty $, let $%
+\left\Vert \gamma \right\Vert _{2}\rightarrow \infty $ such that: 
+\begin{equation*}
+\frac{N}{T\left\Vert \gamma \right\Vert _{2}^{2\left( 1+\kappa \right) }}%
+=c+o\left( \frac{1}{\left\Vert \gamma \right\Vert _{2}^{2}}\right) \text{, }
+\end{equation*}%
+for some constant $c,$ such that $0<c<\infty ,$ and for some constant $%
+\kappa ,$ such that $0<\kappa <1$. Note that under Assumption 2-2:%
+\begin{equation*}
+\frac{\left\Vert \gamma \right\Vert _{2}^{2}}{N}\sim \left( TN^{\kappa
+}\right) ^{-\frac{{\large 1}}{\left( {\large 1{\LARGE +}}{\Large \kappa }%
+\right) }}\rightarrow 0\text{ as }N,T\rightarrow \infty ,
+\end{equation*}%
+so that the factor does not satisfy the pervasiveness assumption. This can,
+of course, occur if a significant proportion of the components of $\gamma $
+are zero or are very small. Next, let $\widehat{\pi }_{1}/\left\Vert 
+\widehat{\pi }_{1}\right\Vert _{2}$ denote the (normalized) eigenvector
+associated with the largest eigenvalue of the sample covariance matrix, $%
+\widehat{\Sigma }_{Z}=\mathbf{Z}^{\prime }\mathbf{Z}/T$, where $\mathbf{Z}%
+=\left( Z_{1},...,Z_{T}\right) ^{\prime }.$ Then, the usual principal
+component estimator of $f_{t}$ is given by:%
+\begin{equation*}
+\widehat{f}_{t}=\frac{\left\langle \widehat{\pi }_{1},Z_{t}\right\rangle }{%
+\sqrt{N}\left\Vert \widehat{\pi }_{1}\right\Vert _{2}}\text{.}
+\end{equation*}%
+The following theorem characterizes the asymptotic behavior of this
+estimator under the assumptions given above.
+
+\noindent \textbf{Theorem 2.1:}\textit{\ Suppose that Assumptions 2-1 and
+2-2 hold. Then, for all }$t$\textit{: }$\widehat{f}_{t}\overset{p}{%
+\rightarrow }0,$ as $N,T\rightarrow \infty .$\textit{\ }
+
+\noindent It is well-known that without further identifying assumptions,
+such as those given in Assumption F1 of Stock and Watson (2002a), factors
+can only be estimated consistently up to an invertible matrix
+transformation. However, even in cases where we are not willing to specify
+enough conditions so as to fully identify the factors, estimating the
+factors consistently up to an invertible matrix transformation will often
+suffice for many purposes. One such case is when we are trying to forecast
+using a factor-augmented vector autoregression (FAVAR). As we will show in
+results given in Section 4 of this paper, point forecasts constructed using
+factors which are estimated consistently up to an invertible matrix
+transformation will nevertheless converge in probability to the desired
+infeasible forecast (i.e., the conditional mean of the FAVAR), that in turn
+depends on the true unobserved factors. On the other hand, the problem
+illustrated by the result given in Theorem 1 is different and is in some
+sense more problematic and pathological. The estimated factor in Theorem 1
+converges to zero regardless of what happens to be the realized value of the
+true latent factor. In this case, one clearly cannot consistently estimate
+the conditional mean of the FAVAR.
+
+Theorem 1 is related to results previously given in the statistics
+literature showing the possible inconsistency of sample eigenvectors as
+estimators of population eigenvectors in high dimensional situations. See,
+for example, Paul (2007), Johnstone and Lu (2009), Shen, Shen, Zhu, and
+Marron (2016), and Johnstone and Paul (2018). However, most of the results
+in the statistics literature are not explicitly framed in the setting of a
+factor model, but are instead derived for the related spiked covariance
+model. Theorem 1 is intended to give an inconsistency result of this type,
+but in a context that may be more familiar to researchers in economics.
+
+It should also be noted that, in an interesting and thought-provoking recent
+paper, Bai and Ng (2021) provide results which show that factors can still
+be estimated consistently in certain situations where the factor loadings
+are weaker than that implied by the conventional pervasiveness assumption,
+but that in such cases the rate of convergence is slower and additional
+assumptions are needed. To understand the relationship between their results
+and the example given above, note that a key condition for the consistency
+result given in their paper, when expressed in terms of our notation, is the
+assumption that $N/\left( T\left\Vert \gamma \right\Vert _{2}^{2}\right)
+\rightarrow 0$\footnote{%
+See Assumption A4 of Bai and Ng (2021). Note that Bai and Ng (2021) state
+this condition in the form $N/\left( TN^{\alpha }\right) \rightarrow 0,$ for
+some $\alpha \in \left( 0,1\right] $, but since part (ii) of their
+Assumption A2, when specialized to the one factor model studied here,
+simplifies to the condition that $\lim_{N\rightarrow \infty }\left\Vert
+\gamma \right\Vert _{2}^{2}/N^{\alpha }=\sigma _{\Lambda }>0$, it is easy to
+see that their Assumption A4 is equivalent to the condition that $N/\left(
+T\left\Vert \gamma \right\Vert _{2}^{2}\right) \rightarrow 0$.}. On the
+other hand, if $N/\left( T\left\Vert \gamma \right\Vert _{2}^{2}\right)
+\rightarrow c_{1},$ for some positive constant $c_{1},$ or even worse, if $%
+N/\left( T\left\Vert \gamma \right\Vert _{2}^{2}\right) \rightarrow \infty $%
+, which is essentially what is specified in Assumption 2-2 above, then
+consistent factor estimation cannot be achieved\footnote{%
+Note that Assumption 2-2 is actually stronger than required in order to show
+inconsistency, but that we impose this condition to highlight the fact that,
+in this case, not only is the estimator of the factor inconsistent but it
+actually converges to zero.}. Hence, whether or not consistent factor
+estimation can be attained depends on how nonpervasive the factors are,
+which is ultimately an empirical question, and which depends on the
+application and on the dataset employed. Moreover, various authors have now
+documented cases where empirical results suggest that the underlying factors
+may be quite weak, so that the rate condition given in Bai and Ng (2021) may
+not be appropriate, at least for some of the situations for which factor
+modeling is of interest. For example, see Jagannathan and Wang (1998), Kan
+and Zhang (1999), Harding (2008), Kleibergen (2009), Ontaski (2012),
+Bryzgalova (2016), Burnside (2016), Gospodinov, Kan, and Robotti (2017),
+Anatolyev and Mikusheva (2021), and Freyaldenhoven (2021a,b). In such cases,
+it is of interest to explore the possibility that the weakness in the
+loadings is not uniform across all variables, but rather is due to the fact
+that only a small percentage of the variables loads significantly on the
+underlying factors. Furthermore, even if the empirical situation of interest
+is one where, strictly speaking, the condition $N/\left( T\left\Vert \gamma
+\right\Vert _{2}^{2}\right) \rightarrow 0$ does hold, it may still be
+beneficial in some such instances to do variable pre-screening. This is
+particularly true in situations where the condition $N/\left( T\left\Vert
+\gamma \right\Vert _{2}^{2}\right) \rightarrow 0$ is \textquotedblleft
+barely\textquotedblright\ satisfied, in which case one would expect to pay a
+rather hefty finite sample price for not pruning out variables that do not
+load significantly on the underlying factors, since these variables will add
+unwanted noise to the estimation process. For all these reasons, there is a
+clear need to develop methods that will enable empirical researchers to
+pre-screen the components of $Z_{t},$ so that variables which are
+informative and helpful to the estimation process can be properly identified.
+
+\section{\noindent Model, Assumptions, and Variable Selection in High
+Dimensions}
+
+\noindent \qquad Following CS (2022a), we begin by considering the following 
+$p^{th}$-order factor-augmented vector autoregression (FAVAR):%
+\begin{equation}
+W_{t+1}=\mu +A_{1}W_{t}+\cdot \cdot \cdot +A_{p}W_{t-p+1}+\varepsilon _{t+1}%
+\text{,}  \label{FAVAR}
+\end{equation}%
+where%
+\begin{eqnarray*}
+\underset{\left( d+K\right) \times 1}{W_{t+1}} &=&\left( 
+\begin{array}{c}
+\underset{d\times 1}{Y_{t+1}} \\ 
+\underset{K\times 1}{F_{t+1}}%
+\end{array}%
+\right) \text{, }\underset{\left( d+K\right) \times 1}{\varepsilon _{t+1}}%
+=\left( 
+\begin{array}{c}
+\underset{d\times 1}{\varepsilon _{t+1}^{Y}} \\ 
+\underset{K\times 1}{\varepsilon _{t+1}^{F}}%
+\end{array}%
+\right) \text{, }\underset{\left( d+K\right) \times 1}{\mu }=\left( 
+\begin{array}{c}
+\underset{d\times 1}{\mu _{Y}} \\ 
+\underset{K\times 1}{\mu _{F}}%
+\end{array}%
+\right) ,\text{ and} \\
+\text{ }\underset{\left( d+K\right) \times \left( d+K\right) }{A_{g}}
+&=&\left( 
+\begin{array}{cc}
+\underset{d\times d}{A_{YY,g}} & \underset{d\times K}{A_{YF,g}} \\ 
+\underset{K\times d}{A_{FY,g}} & \underset{K\times K}{A_{FF,g}}%
+\end{array}%
+\right) ,\text{ for }g=1,...,p.
+\end{eqnarray*}%
+This system of equations, where $Y_{t}$ denotes the vector of observable
+economic variables, and $F_{t}$ is a vector of unobserved (latent) factors
+can also be written is several alternative ways, the following two of which
+are are variously used throughout this paper. Namely:%
+\begin{eqnarray}
+Y_{t+1} &=&\mu _{Y}+A_{YY}\underline{Y}_{t}+A_{YF}\underline{F}%
+_{t}+\varepsilon _{t+1}^{Y},  \label{Y component FAVAR} \\
+F_{t+1} &=&\mu _{F}+A_{FY}\underline{Y}_{t}+A_{FF}\underline{F}%
+_{t}+\varepsilon _{t+1}^{F},  \label{F component FAVAR}
+\end{eqnarray}%
+where%
+\begin{eqnarray}
+\underset{d\times dp}{A_{YY}} &=&\left( 
+\begin{array}{cccc}
+A_{YY,1} & A_{YY,2} & \cdots & A_{YY,p}%
+\end{array}%
+\right) ,\text{ }\underset{d\times Kp}{A_{YF}}=\left( 
+\begin{array}{cccc}
+A_{YF,1} & A_{YF,2} & \cdots & A_{YF,p}%
+\end{array}%
+\right) ,\text{ }  \notag \\
+\underset{K\times dp}{A_{FY}} &=&\left( 
+\begin{array}{cccc}
+A_{FY,1} & A_{FY,2} & \cdots & A_{FY,p}%
+\end{array}%
+\right) ,\text{ }\underset{K\times Kp}{A_{FF}}=\left( 
+\begin{array}{cccc}
+A_{FF,1} & A_{FF,2} & \cdots & A_{FF,p}%
+\end{array}%
+\right) ,  \notag \\
+\underset{dp\times 1}{\underline{Y}_{t}} &=&\left( 
+\begin{array}{c}
+Y_{t} \\ 
+Y_{t-1} \\ 
+\vdots \\ 
+Y_{t-p{\LARGE +}1}%
+\end{array}%
+\right) \text{, and}\underset{Kp\times 1}{\underline{F}_{t}}=\left( 
+\begin{array}{c}
+F_{t} \\ 
+F_{t-1} \\ 
+\vdots \\ 
+F_{t-p{\LARGE +}1}%
+\end{array}%
+\right) \text{, }  \label{Yunderscore and Funderscore}
+\end{eqnarray}%
+and%
+\begin{equation*}
+\underset{\left( d+K\right) p\times 1}{\underline{W}_{t}}=\alpha +A%
+\underline{W}_{t-1}+E_{t}\text{,}
+\end{equation*}%
+where $\underline{W}_{t}=\left( 
+\begin{array}{ccccc}
+W_{t}^{\prime } & W_{t-1}^{\prime } & \cdots & W_{t-p{\LARGE +}2}^{\prime }
+& W_{t-p{\LARGE +}1}^{\prime }%
+\end{array}%
+\right) ^{\prime }$ and where%
+\begin{equation}
+\alpha =\left( 
+\begin{array}{c}
+\mu \\ 
+0 \\ 
+\vdots \\ 
+0 \\ 
+0%
+\end{array}%
+\right) \text{, }A=\left( 
+\begin{array}{ccccc}
+A_{1} & A_{2} & \cdots & A_{p-1} & A_{p} \\ 
+I_{d+K} & 0 & \cdots & 0 & 0 \\ 
+0 & I_{d+K} & \ddots & \vdots & 0 \\ 
+\vdots & \ddots & \ddots & 0 & \vdots \\ 
+0 & \cdots & 0 & I_{d+K} & 0%
+\end{array}%
+\right) \text{, and }E_{t}=\left( 
+\begin{array}{c}
+\varepsilon _{t} \\ 
+0 \\ 
+\vdots \\ 
+0 \\ 
+0%
+\end{array}%
+\right) \text{.}  \label{companion form notations}
+\end{equation}%
+The companion form given in equation (\ref{companion form notations}) is
+convenient for establishing certain moment conditions on $\underline{Y}_{t}$
+and $\underline{F}_{t},$ given a moment condition on $\varepsilon _{t},$ and
+for establishing certain mixing properties of the FAVAR model, as shown in
+the proofs of Lemmas C-5 and Lemma C-11 given in Chao and Swanson (2022b).
+It remains to define the relationship between the $F_{t}$ and the variables
+used to extract these factors. To do this, we assume that:%
+\begin{equation}
+\underset{N\times 1}{Z_{t}}\text{ }=\text{ }\underset{N\times Kp}{\Gamma }%
+\underline{F}_{t}+u_{t}\text{, }  \label{overspecified factor model}
+\end{equation}%
+where the properties of $u_{t}$ are given in Assumptions 3-3 and 3-4, below.
+Following Chao and Swanson (2022a), we assume that not all components of $%
+Z_{t}$ provide useful information for estimating $\underline{F}_{t}$,
+implying that the $N\times Kp$ parameter matrix $\Gamma $ may have some rows
+whose elements are all zero. More precisely, let the $1\times Kp$ vector, $%
+\gamma _{i}^{\prime },$ denote the $i^{th}$ row of $\Gamma $, and assume
+that the rows of the matrix $\Gamma $ can be divided into two classes:%
+\begin{eqnarray}
+H &=&\left\{ k\in \left\{ 1,....,N\right\} :\gamma _{k}=0\right\} \text{ and}
+\label{H} \\
+H^{c} &=&\left\{ k\in \left\{ 1,....,N\right\} :\gamma _{k}\neq 0\right\} 
+\text{.}  \label{Hc}
+\end{eqnarray}%
+Thus, there exists a permutation matrix $\mathcal{P}$ such that $\mathcal{P}%
+Z_{t}=\left( 
+\begin{array}{cc}
+Z_{t}^{\left( 1\right) \prime } & Z_{t}^{\left( 2\right) \prime }%
+\end{array}%
+\right) ^{\prime },$ where%
+\begin{eqnarray}
+\underset{N_{1}\times 1}{Z_{t}^{\left( 1\right) }} &=&\Gamma _{1}\underline{F%
+}_{t}+u_{t}^{\left( 1\right) }  \label{Z(1)} \\
+\underset{N_{2}\times 1}{Z_{t}^{\left( 2\right) }} &=&u_{t}^{\left( 2\right)
+}\text{.}  \label{Z(2)}
+\end{eqnarray}%
+In this way, the components of $Z_{t}^{\left( 1\right) }$ can be interpreted
+as \textquotedblleft information\textquotedblright\ variables that are
+useful for estimating $\underline{F}_{t}$. On the other hand, for the
+purpose of factor estimation, the components of the subvector $Z_{t}^{\left(
+2\right) }$ are pure \textquotedblleft noise\textquotedblright\ variables,
+as they do not load on the underlying factors and only add noise if they are
+included in the factor estimation process. Given that an empirical
+researcher will often not have prior knowledge as to which variables are
+elements of $Z_{t}^{\left( 1\right) }$ and which are elements of $%
+Z_{t}^{\left( 2\right) }$, Theorem 2.1 suggests the need for a variable
+selection procedure which will allow us to properly identify the components
+of of $Z_{t}^{\left( 1\right) }$ and to use only these variables when we try
+to estimate $\underline{F}_{t}$; for, if we unknowingly include too many
+components of $Z_{t}^{\left( 2\right) }$ in the estimation process, then
+inconsistent estimation in the sense described in the previous section can
+result.\footnote{%
+In the statistics literature, there is a growing literature on the potential
+inconsistency of sample eigenvectors in high dimensional problems, as
+discussed in Paul (2007), Johnstone and Lu (2009), Shen Shen, Zhu, and
+Marron (2016), and Johnstone and Paul (2018).} As discussed in CS (2022a),
+there is an important related paper by Bai and Ng (2021) that establishes
+factor estimator consistency for cases where $N/(TN_{1})\rightarrow 0$. For
+cases where $N/(TN_{1})\rightarrow c$, or $N/(TN_{1})\rightarrow \infty $,
+where $c$ is a constant, their result does not hold. In this paper, we
+establish that consistency can be achieved in our context even if $%
+N/(TN_{1})\nrightarrow 0$, if one pre-screens variables using the
+self-normalized statistics outlined below. This is important because the
+degree of factor pervasiveness is ultimately data dependent, and one way to
+estimate $N_{1}$ invloves utilizing the variable screening statistic that is
+discussed in the sequel.
+
+In the sequel, we require the following assumptions.
+
+\noindent \textbf{Assumption 3-1: }Suppose that:%
+\begin{equation}
+\det \left\{ I_{\left( d+K\right) }-A_{1}z-\cdot \cdot \cdot
+-A_{p}z^{p}\right\} =0,\text{ implies that }\left\vert z\right\vert >1\text{.%
+}  \label{stability cond}
+\end{equation}
+
+\noindent \textbf{Assumption 3-2: }Let $\varepsilon _{t}$ satisfy the
+following set of conditions: (a) $\left\{ \varepsilon _{t}\right\} $ is an
+independent sequence of random vectors with $E\left[ \varepsilon _{t}\right]
+=0$ $\forall t$; (b) there exists a positive constant $C$ such that $%
+\sup_{t}E\left\Vert \varepsilon _{t}\right\Vert _{2}^{6}\leq C<\infty $; (c) 
+$\varepsilon _{t}$ admits a density $g_{\varepsilon _{t}}$ such that, for
+some positive constant $M<\infty ,\sup_{t}\dint \left\vert g_{\varepsilon
+_{t}}\left( \upsilon -u\right) -g_{\varepsilon _{t}}\left( \upsilon \right)
+\right\vert d\varepsilon \leq M\left\vert u\right\vert $, whenever $%
+\left\vert u\right\vert \leq \overline{\kappa }$ for some constant $%
+\overline{\kappa }>0$; and (d) there exists a constant $\underline{C}>0$
+such that $\inf_{t}\lambda _{\min }\left\{ E\left[ \varepsilon
+_{t}\varepsilon _{t}^{\prime }\right] \right\} \geq \underline{C}>0$.
+
+\noindent \textbf{Assumption 3-3: }Let $u_{i,t}$ be the $i^{th}$ element of
+the error vector $u_{t}$ in expression (\ref{overspecified factor model}),
+and we assume that it satisfies the following conditions: (a) $E\left[
+u_{i,t}\right] =0$ for all $i$ and $t$; (b) there exists a positive constant 
+$\overline{C}$ such that $\sup_{i,t}E\left\vert u_{i,t}\right\vert ^{7}\leq 
+\overline{C}<\infty $, and there exists a constant $\underline{C}>0$ such
+that $\inf_{i,t}E\left[ u_{i,t}^{2}\right] \geq \underline{C}$; (c) define $%
+\mathcal{F}_{i,-\infty }^{t}=\sigma \left(
+....,u_{i,t-2},u_{i,t-1},u_{t}\right) $, $\mathcal{F}_{i,t+m}^{\infty
+}=\sigma \left( u_{i,t+m},u_{i,t+m+1},u_{i,t+m+2},....\right) $, and 
+\begin{equation*}
+\beta _{i}\left( m\right) =\sup_{t}E\left[ \sup \left\{ \left\vert P\left( B|%
+\mathcal{F}_{i,-\infty }^{t}\right) -P\left( B\right) \right\vert :B\in 
+\mathcal{F}_{i,t+m}^{\infty }\right\} \right] \text{.}
+\end{equation*}%
+Assume that there exist constants $a_{1}>0$ and $a_{2}>0$ such that%
+\begin{equation*}
+\beta _{i}\left( m\right) \leq a_{1}\exp \left\{ -a_{2}m\right\} ,\text{ for
+all }i\text{;}
+\end{equation*}%
+and (d) there exists a positive constant $C$ such that $\sup_{t}\left( \frac{%
+1}{N_{1}}\dsum\limits_{i\in H^{{\large c}}}\dsum\limits_{k\in H^{{\large c}%
+}}\left\vert E\left[ u_{i,t}u_{k,t}\right] \right\vert \right) \leq C<\infty 
+$ for every positive integer $N_{1}$, where $H^{{\large c}}$ is defined in
+expression (\ref{Hc}) above.
+
+\noindent \textbf{Assumption 3-4: }$\varepsilon _{t}$ and $u_{i,s}$ are
+independent, for all $i,t,$ and $s$.
+
+\noindent \textbf{Assumption 3-5: }There exists a positive constant $%
+\overline{C},$ such that $\sup_{i\in H^{{\large c}}}\left\Vert \gamma
+_{i}\right\Vert _{2}\leq \overline{C}<\infty $ and $\left\Vert \mu
+\right\Vert _{2}\leq \overline{C}<\infty $, where $\mu =\left( \mu
+_{Y}^{\prime },\mu _{F}^{\prime }\right) ^{\prime }$.
+
+\noindent \textbf{Assumption 3-6: }There exists a positive constant $%
+\overline{C},$ such that:%
+\begin{equation*}
+0<\frac{1}{\overline{C}}\leq \lambda _{\min }\left( \frac{\Gamma ^{\prime
+}\Gamma }{N_{1}}\right) \leq \lambda _{\max }\left( \frac{\Gamma ^{\prime
+}\Gamma }{N_{1}}\right) \leq \overline{C}<\infty \text{ for all }N_{1}\text{%
+, }N_{2}\text{ sufficiently large,}
+\end{equation*}%
+where $N_{1}$ is the number of components of the subvector $Z_{t}^{\left(
+1\right) }$ and $N_{2}$ is the number of components of the subvector $%
+Z_{t}^{\left( 2\right) }$, as previously defined in expressions (\ref{Z(1)})
+and (\ref{Z(2)}).
+
+\noindent \textbf{Assumption 3-7: }Let $A$ be as defined in expression (\ref%
+{companion form notations}) above, and let the eigenvalues of the matrix $%
+I_{\left( d+K\right) p}-A$ be sorted so that:%
+\begin{equation*}
+\left\vert \lambda _{\left( 1\right) }\left( I_{\left( d+K\right)
+p}-A\right) \right\vert \geq \left\vert \lambda _{\left( 2\right) }\left(
+I_{\left( d+K\right) p}-A\right) \right\vert \geq \cdot \cdot \cdot \geq
+\left\vert \lambda _{\left( \left( d+K\right) p\right) }\left( I_{\left(
+d+K\right) p}-A\right) \right\vert =\overline{\phi }_{\min }\text{.}
+\end{equation*}%
+Suppose that there is a constant $\underline{C}>0$ such that%
+\begin{equation}
+\sigma _{\min }\left( I_{\left( d+K\right) p}-A\right) \geq \underline{C}%
+\overline{\phi }_{\min }  \label{lower bd I-A}
+\end{equation}%
+In addition, there exists a positive constant $\overline{C}<\infty $ such
+that, for all positive integer $j$, 
+\begin{equation}
+\sigma _{\max }\left( A^{j}\right) \leq \overline{C}\max \left\{ \left\vert
+\lambda _{\max }\left( A^{j}\right) \right\vert ,\left\vert \lambda _{\min
+}\left( A^{j}\right) \right\vert \right\} .  \label{upper bd A}
+\end{equation}
+
+\noindent Assumption 3-1 is the stability condition that one typically
+assumes for a stationary VAR process, although we allow for possible
+heterogeneity in the distribution of $\varepsilon _{t}$ across time, so that
+our FAVAR process is not necessarily a strictly stationary process. Under
+Assumption 3-1, there exists a vector moving average representation for the
+FAVAR process. Assumption 3-1 is a well known assumption that is equivalent
+to the condition that $\det \left\{ I_{\left( d+K\right) }-Az\right\} =0$
+implies that $\left\vert z\right\vert >1.$
+
+Since the factor loading matrix $\Gamma $ is an $N\times Kp$ matrix, where $%
+N=N_{1}+N_{2}$, the matrix $\Gamma ^{\prime }\Gamma $ will have order of
+magnitude equal to $N$ if the factors are pervasive. Much of the factor
+analysis literature in both econometrics and statistics has studied the case
+where factors are pervasive in this sense. For example, see Bai and Ng
+(2002), Stock and Watson (2002a), Bai (2003), and Fan, Liao, and Mincheva
+(2011, 2013). Assumption 3-6 allows for possible violations of this
+conventional pervasiveness assumption, which will occur in our setup when $%
+N_{1}/N\rightarrow 0$.
+
+\noindent Finally, Assumption 3-7 imposes a condition whereby the extreme
+singular values of the matrices $A^{j}$ and $I_{\left( d+K\right) p}-A$ have
+bounds that depend on the extreme eigenvalues of these matrices. For further
+discussion of this Assumption, see CS (2022a).
+
+Note that Assumptions 3-1, 3-2(a)-(c), and 3-7 are sufficient to prove Lemma
+C-11 of Chao and Swanson (2022c)\footnote{%
+A proof of Lemma C-11 was previously given in Chao and Swanson (2022b).},
+which states that the process $\left\{ W_{t}\right\} $ generated by the
+FAVAR model given in expression (\ref{FAVAR}) is a $\beta $-mixing process
+with $\beta $-mixing coefficient satisfying:%
+\begin{equation*}
+\beta _{W}\left( m\right) \leq a_{1}\exp \left\{ -a_{2}m\right\} ,
+\end{equation*}%
+for some positive constants $a_{1}$ and $a_{2}$, with 
+\begin{equation*}
+\beta _{W}\left( m\right) =\sup_{t}E\left[ \sup \left\{ \left\vert P\left( B|%
+\mathcal{A}_{-\infty }^{t}\right) -P\left( B\right) \right\vert :B\in 
+\mathcal{A}_{t+m}^{\infty }\right\} \right] ,
+\end{equation*}%
+and with $\mathcal{A}_{-\infty }^{t}=\sigma \left(
+...,W_{t-2},W_{t-1},W_{t}\right) $ and $\mathcal{A}_{t+m}^{\infty }=\sigma
+\left( W_{t+m},W_{t+m+1},W_{t+m+2},....\right) $. Note that Assumption 3-2
+(c) rules out situations such as that given in the famous counterexample
+presented by Andrews (1984) which shows that a first-order autoregression
+with errors having a discrete Bernoulli distribution is not $\alpha $%
+-mixing, even if it satisfies the stability condition. Conditions similar to
+Assumption 3-2(c) have also appeared in previous papers, such as Gorodetskii
+(1977) and Pham and Tran (1985), which seek to provide sufficient conditions
+for establishing the $\alpha $ or $\beta $ mixing properties of linear time
+series processes.
+
+Prior to presenting the main theorems of this paper, we first summarize the
+variable selection procedure based on self-normalized statistics that is
+outlined in CS (2022a), and draws on pathbreaking moderate deviation results
+from Chen, Shao, Wu, and Xu (2016). To accommodate data dependence, consider
+self-nomalized statistics that are constructed from observations which are
+first split into blocks in a manner similar to the kind of construction one
+would employ in implementing a block bootstrap or in proving a central limit
+theorem using the blocking technique. One such statistic has the form of an $%
+\ell _{\infty }$ norm and is given by: 
+\begin{equation}
+\max_{1\leq \ell \leq d}\left\vert S_{i,\ell ,T}\right\vert =\max_{1\leq
+\ell \leq d}\left\vert \frac{\overline{S}_{i,\ell ,T}}{\sqrt{\overline{V}%
+_{i,\ell ,T}}}\right\vert ,  \label{max statistic}
+\end{equation}%
+where 
+\begin{eqnarray}
+\overline{S}_{i,\ell ,T} &=&\dsum\limits_{r=1}^{q}\dsum\limits_{t=\left(
+r-1\right) \tau +p}^{\left( r-1\right) \tau +\tau _{1}+p-1}Z_{it}y_{\ell ,t%
+{\LARGE +}1}\text{ and}  \label{numerator max stat} \\
+\overline{V}_{i,\ell ,T} &=&\dsum\limits_{r=1}^{q}\left[ \dsum\limits_{t=%
+\left( r-1\right) \tau +p}^{\left( r-1\right) \tau +\tau
+_{1}+p-1}Z_{it}y_{\ell ,t{\LARGE +}1}\right] ^{2}\text{.}
+\label{denominator max stat}
+\end{eqnarray}%
+Here, $Z_{it}$ denotes the $i^{th}$ component of $Z_{t}$ , $y_{\ell ,t+1}$
+denotes the $\ell ^{th}$ component of $Y_{t+1}$, $\tau _{1}=\left\lfloor
+T_{0}^{\alpha _{{\large 1}}}\right\rfloor $, and $\tau _{2}=\left\lfloor
+T_{0}^{\alpha _{{\large 2}}}\right\rfloor $, where $1>\alpha _{1}\geq \alpha
+_{2}>0$, $\tau =\tau _{1}+\tau _{2}$, $q=\left\lfloor T_{0}/\tau
+\right\rfloor $, and $T_{0}=T-p+1$. Note that the statistic given in
+expression (\ref{max statistic}) can be interpreted as the maximum of the
+(self-normalized) sample covariances between the $i^{th}$ component of $%
+Z_{t} $ and the components of $Y_{t+1}$. A second statistic has the form of
+a pseudo-$L_{1}$ norm and is given by: 
+\begin{equation*}
+\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell ,T}\right\vert
+=\dsum\limits_{\ell =1}^{d}\varpi _{\ell }\left\vert \frac{\overline{S}%
+_{i,\ell ,T}}{\sqrt{\overline{V}_{i,\ell ,T}}}\right\vert ,
+\end{equation*}%
+where $\overline{S}_{i,\ell ,T}$ and $\overline{V}_{i,\ell ,T}$ are as
+defined in expressions (\ref{numerator max stat}) and (\ref{denominator max
+stat}) above and where $\left\{ \varpi _{\ell }:\ell =1,..,d\right\} $
+denotes pre-specified weights, such that $\varpi _{\ell }\geq 0,$ for every $%
+\ell \in \left\{ 1,...,d\right\} $ and $\dsum\nolimits_{\ell =1}^{d}\varpi
+_{\ell }=1$. In order to keep the effects of dependence under control, the
+construction of these statistics is based only on observations in every
+other block. In order to consistently estimate the factors up to an
+invertible matrix transformation, the variable selection procedure here must
+be such that the the probability of a false positive and the probability of
+a false negative converge to zero as $N_{1}$, $N_{2}$, $T\rightarrow \infty $%
+\footnote{%
+Here, a false positive refers to mis-classifying a variable, $Z_{it},$ as a
+relevant variable for the purpose of factor estimation when its factor
+loading $\gamma _{i}^{\prime }=0$, whereas a false negative refers to the
+opposite case, where $\gamma _{i}^{\prime }\neq 0,$ but the variable $Z_{it}$
+is mistakenly classified as irrelevant.}. This is different from the typical
+multiple hypothesis testing approach whereby one tries to control the
+familywise error rate (or, alternatively, the false discovery rate), so that
+it is no greater than $0.05,$ say, but does not try to ensure that this
+probability goes to zero as the sample size grows.
+
+In order to implement this procedure, it reamins only to determine whether
+the $i^{th}$ component of $Z_{t}$ is a relevant variable for the purpose of
+factor estimation. Define $i\in \widehat{H}^{c}$ to indicate that $Z_{it}$
+is a relevant variable and $i\in \widehat{H}$ to indicate that $Z_{it}$ is
+an irrelevant variable, for factor estiamtion. Now, let $\mathbb{S}%
+_{i,T}^{+} $ denote either the statistic $\max_{1\leq \ell \leq d}\left\vert
+S_{i,\ell ,T}\right\vert $ or the statistic $\dsum\nolimits_{\ell
+=1}^{d}\varpi _{\ell }\left\vert S_{i,\ell ,T}\right\vert $. The variable
+selection procedure is based on the decision rule: 
+\begin{equation}
+i\in \left\{ 
+\begin{array}{cc}
+\widehat{H}^{c} & \text{ if }\mathbb{S}_{i,T}^{+}\geq \Phi ^{-1}\left( 1-%
+\frac{\varphi }{2N}\right) \\ 
+\widehat{H} & \text{if }\mathbb{S}_{i,T}^{+}<\Phi ^{-1}\left( 1-\frac{%
+\varphi }{2N}\right)%
+\end{array}%
+\right. ,  \label{var selection decision rule}
+\end{equation}%
+where $\Phi ^{-1}\left( \cdot \right) $ denotes the quantile function or the
+inverse of the cumulative distribution function of the standard normal
+random variable, and where $\varphi $ is a tuning parameter which may depend
+on $N$. Some conditions on $\varphi $ will be given in Assumptions 3-11 and
+3-11* below. For a discussion of the use of the quantile function of the
+standard normal as the threshold function, refer to CS (2022a), and note
+that the threshold function used here is related to the one employed in
+Belloni, Chen, Chernozhukov, and Hansen (2012).
+
+In the sequel, we further require the following assumptions.
+
+\noindent \textbf{Assumption 3-8: }There exists a positive constant, $%
+\underline{c},$ such that for $T$ sufficiently large: 
+\begin{equation*}
+\min_{1\leq \ell \leq d}\min_{i\in H}\min_{r\in \left\{ 1,...,q\right\}
+}E\left\{ \left[ \frac{1}{\sqrt{\tau _{1}}}\dsum\limits_{t=\left( r-1\right)
+\tau +p}^{\left( r-1\right) \tau +\tau _{1}+p-1}y_{\ell ,t{\LARGE +}1}u_{it}%
+\right] ^{2}\right\} \geq \underline{c},
+\end{equation*}%
+where, as defined earlier,%
+\begin{equation*}
+\tau _{1}=\left\lfloor T_{0}^{\alpha _{{\large 1}}}\right\rfloor \text{, }%
+\tau _{2}=\left\lfloor T_{0}^{\alpha _{{\large 2}}}\right\rfloor \text{ for }%
+1>\alpha _{1}\geq \alpha _{2}>0\text{ and }q=\left\lfloor \frac{T_{0}}{\tau
+_{1}+\tau _{2}}\right\rfloor ,
+\end{equation*}%
+and $T_{0}=T-p+1$.
+
+\noindent \textbf{Assumption 3-9: }Let $i\in H^{c}=\left\{ k\in \left\{
+1,....,N\right\} :\gamma _{k}\neq 0\right\} .$Suppose that there exists a
+positive constant, $\underline{c},$ such that, for all $N_{1},N_{2},$and $T$
+sufficiently large:%
+\begin{eqnarray*}
+&&\min_{1\leq \ell \leq d}\min_{{\large i\in }H^{{\large c}}}\left\vert 
+\frac{\mu _{i,\ell ,T}}{q\tau _{1}}\right\vert \\
+&=&\min_{1\leq \ell \leq d}\min_{{\large i\in }H^{{\large c}}}\left\vert 
+\frac{1}{q}\dsum\limits_{r=1}^{q}\frac{1}{\tau _{1}}\dsum\limits_{t=\left(
+r-1\right) \tau +p}^{\left( r-1\right) \tau +\tau _{1}+p-1}\gamma
+_{i}^{\prime }\left\{ E\left[ \underline{F}_{t}\right] \mu _{Y,\ell }+E\left[
+\underline{F}_{t}\underline{Y}_{t}^{\prime }\right] \alpha _{YY,\ell }+E%
+\left[ \underline{F}_{t}\underline{F}_{t}^{\prime }\right] \alpha _{YF,\ell
+}\right\} \right\vert \\
+&\geq &\underline{c}>0,
+\end{eqnarray*}%
+where $\mu _{Y,\ell }=e_{\ell ,d}^{\prime }\mu _{Y}$, $\alpha _{YY,\ell
+}=A_{YY}^{\prime }e_{\ell ,d}$, and $\alpha _{YF,\ell }=A_{YF}^{\prime
+}e_{\ell ,d}.$ Here, $e_{\ell ,d}$ is a $d\times 1$ elementary vector whose $%
+\ell ^{th}$ component is $1$ and all other components are $0$.
+
+\noindent \textbf{Assumption 3-10: }Suppose that, as $N_{1}$, $N_{2}$, and $%
+T\rightarrow \infty $, the following rate conditions hold:
+
+\begin{enumerate}
+\item[(a)] 
+\begin{equation*}
+\frac{\sqrt{\ln N}}{T^{\min \left\{ \frac{{\large 1-\alpha }_{{\large 1}}}{%
+{\large 6}},\frac{{\Large \alpha }_{{\large 2}}}{{\large 2}}\right\} }}%
+\rightarrow 0\text{ }
+\end{equation*}%
+where $1>\alpha _{1}\geq \alpha _{2}>0$ and $N=N_{1}+N_{2}$.
+
+\item[(b)] 
+\begin{equation*}
+\frac{N_{1}}{T^{3\alpha _{{\large 1}}}}\rightarrow 0\text{ where }1>\alpha
+_{1}>0\text{.}
+\end{equation*}
+\end{enumerate}
+
+\noindent \textbf{Assumption 3-11: }Let $\varphi $ satisfy the following two
+conditions: (a) $\varphi \rightarrow 0$ as $N_{1},N_{2}\rightarrow \infty $,
+and (b) there exists some constant $a>0,$ such that $\varphi \geq \frac{1}{%
+N^{a}},$ for all $N_{1},N_{2}$ sufficiently large.
+
+Note that Assumption 3-9 is a fairly mild condition which allows us to
+differentiate the alternative hypothesis, $i\in H^{c},$ from the null
+hypothesis, $i\in H.$ For further discussion of Assumptions 3-8 - 3-11,
+refer to CS (2022a). Given the above assumptions, Theorem 1 of CS (2022a)
+shows that the probability of a false positive, i.e., the probability that $%
+i\in \widehat{H}^{c},$ even though $\gamma _{i}=0$, approaches zero, as $%
+N,T\rightarrow \infty $, and Theorem 2 of the same paper shows that the
+probability of a false negative, i.e., the probability that $i\in \widehat{H}
+$ even though $\gamma _{i}\neq 0$, also approaches zero, as $N,T\rightarrow
+\infty $. Together, these two theorems show that our variable selection
+procedure is (completely) consistent in the sense that the probability of
+committing a misclassification error vanishes as $N,T\rightarrow \infty $.
+CS (2022a) also note that the above variable selection procedure provides us
+with a consistent estimate $\widehat{N}_{1}$ of the unobserved quantity $%
+N_{1}$, where the latter, in light of Assumption 3-6, can be interpreted as
+giving the order of magnitude of $\Gamma ^{\prime }\Gamma $ and is, thus, a
+measure of the overall pervasiveness of the factors in a given application.
+Finally, note that knowledge of the number of factors is not needed to
+implement the above variable selection procedure. Hence, in the case where
+the number of factors needs to be determined empirically, an applied
+researcher could first use our procedure to properly select the relevant
+variables and then apply an information criterion such as that proposed in
+Bai and Ng (2002) to estimate the number of factors.
+
+Before presenting the main theoretical results proven in this paper, it is
+worth making a final comment about variable selection. In particualr, note
+that Bai and Ng (2008)\textbf{\ }address the important issue of choosing
+predictor variables $Z_{it}$ based on their predictability for $Y_{t+1}$.
+While we agree with this viewpoint, it is worth stressing that in our setup,
+whether $Z_{it}$ helps to predict $Y_{t+h}$ depends on two things: (i)
+whether $Z_{it}$ loads significantly on the underlying factors $\underline{F}%
+_{t}$ (i.e., whether $\gamma _{i}\neq 0$ or not) and (ii) whether at least
+some components of $\underline{F}_{t}$ are helpful for predicting certain
+components of $Y_{t+h}$. The variable selection procedure which we propose
+here focuses on the first issue but not the second. This is because, in our
+view, it is important to first obtain good factor estimates with certain
+desirable asymptotic properties before trying to assess which factor may or
+may not be useful for predicting $Y_{t{\LARGE +}h}$. It is important to
+distinguish between these two things because, if we try to do too much at
+the variable selection stage and end up excluding a significant number of
+(predictor) variables that load strongly on at least some of the factors,
+then, this can lead to the factor vector $\underline{F}_{t}$ being
+inconsistently estimated, and this is true even if the variables do not
+individually help to predict $Y_{t+h}$, but instead are crucial for the
+consistent estimation of the factor, which in turn is useful for predicting $%
+Y_{t+h}$.
+
+\section{\noindent Consistent Estimation of Factors and the h-Step Ahead
+Predictor Based on the FAVAR Model}
+
+In this section, we provide our main theoretical results on factor
+estimation and on the estimation of the $h$-step predictor implied by the
+FAVAR model. To obtain these results, we need to impose a further rate
+condition on the tuning parameter, $\varphi $ (see part (c) of Assumption
+3-11*).
+
+\noindent \textbf{Assumption 3-11*: }Let $\varphi $ satisfy the following
+three conditions: (a) $\varphi \rightarrow 0$ as $N_{1},N_{2}\rightarrow
+\infty $, (b)\ there exists some constant $a>0,$ such that $\varphi \geq 
+\frac{1}{N^{a}}$ for all $N_{1},N_{2}$ sufficiently large, and (c) 
+\begin{equation*}
+\max \left\{ \frac{N^{\frac{{\large 2}}{{\large 7}}}\varphi ^{\frac{{\large 5%
+}}{{\large 7}}}}{N_{1}},\frac{N^{\frac{{\large 1}}{{\large 3}}}\varphi }{%
+N_{1}T}\right\} \rightarrow 0\text{ as }N_{1},N_{2},T\rightarrow \infty .
+\end{equation*}
+
+\noindent \textbf{Remark 4.1: }Note that\textbf{\ }the rate condition given
+in part (c) of Assumption 3-11* depends on $N_{1}$. However, if we choose $%
+\varphi $ so that:%
+\begin{equation*}
+\varphi N^{\frac{{\large 2}}{{\large 5}}}=O\left( 1\right) \text{,}
+\end{equation*}%
+then 
+\begin{equation*}
+\frac{N^{\frac{{\large 2}}{{\large 7}}}\varphi ^{\frac{{\large 5}}{{\large 7}%
+}}}{N_{1}}=O\left( \frac{1}{N_{1}}\right) =o\left( 1\right) \text{ and }%
+\frac{N^{\frac{{\large 1}}{{\large 3}}}\varphi }{N_{1}T}=O\left( \frac{1}{%
+N_{1}N^{\frac{{\large 1}}{{\large 15}}}T}\right) =o\left( \frac{1}{N_{1}}%
+\right) \text{.}
+\end{equation*}%
+Hence, with this choice of $\varphi $, Assumption 3-11* part (c) will be
+satisfied as long as $N_{1}\rightarrow \infty $, and there is no need to
+impose any further condition on the rate at which $N_{1}$ grows. Requiring
+that $N_{1}\rightarrow \infty $ is a minimal condition, since if $%
+N_{1}\nrightarrow \infty $; then consistent factor estimation, even up to an
+invertible matrix transformation, is impossible. Additionally, Monte Carlo
+results reported in Section 3 of CS (2022a) show that the variable selection
+procedure discussed above performs very well in finite samples, under the
+tuning parameter choice $\varphi =N^{-\frac{{\large 2}}{{\large 5}}}$, both
+in terms of controlling the probability of a false positive (or Type I)
+error and in terms of controlling the probability of a false negative (or
+Type II) error.
+
+Next, consider the post-variable-selection principal component estimator
+
+\noindent of $\underline{F}_{t}=\left( F_{t}^{\prime },F_{t-1}^{\prime
+},...,F_{t-p{\LARGE +}1}^{\prime }\right) :$ 
+\begin{equation}
+\widehat{\underline{F}}_{t}=\frac{\widehat{\Gamma }^{\prime }Z_{t,N}\left( 
+\widehat{H^{c}}\right) }{\widehat{N}_{1}}\text{,}  \label{factor estimator}
+\end{equation}%
+where%
+\begin{equation*}
+Z_{t,N}\left( \widehat{H^{c}}\right) =\left[ 
+\begin{array}{cccc}
+Z_{1,t}\mathbb{I}\left\{ 1\in \widehat{H^{c}}\right\} & Z_{2,t}\mathbb{I}%
+\left\{ 2\in \widehat{H^{c}}\right\} & \cdots & Z_{N,t}\mathbb{I}\left\{
+N\in \widehat{H^{c}}\right\}%
+\end{array}%
+\right] ^{\prime },
+\end{equation*}%
+with%
+\begin{equation*}
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} =\left\{ 
+\begin{array}{cc}
+1 & \text{if }i\in \widehat{H^{c}}\text{, i.e., if }\mathbb{S}%
+_{i,T}^{+}>\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \\ 
+0 & \text{if }i\in \widehat{H}\text{, i.e., if }\mathbb{S}_{i,T}^{+}\leq
+\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right)%
+\end{array}%
+\right. ,
+\end{equation*}%
+and where $\widehat{N}_{1}=\#\left( \widehat{H^{c}}\right) $, i.e., the
+cardinality of the set $\widehat{H^{c}}$. Here, $\widehat{\Gamma }$ denotes
+the principal component estimator of the loading matrix $\Gamma $
+constructed from taking $\sqrt{\widehat{N}_{1}}$ times the matrix whose
+columns are the eigenvectors of the post-variable-selection sample
+covariance matrix $\widehat{\Sigma }\left( \widehat{H^{c}}\right) $
+associated with the $Kp$ largest eigenvalues of this matrix, where, in this
+case,%
+\begin{equation*}
+\widehat{\Sigma }\left( \widehat{H^{c}}\right) =\frac{Z\left( \widehat{H^{c}}%
+\right) ^{\prime }Z\left( \widehat{H^{c}}\right) }{\widehat{N}_{1}T_{0}}=%
+\frac{1}{\widehat{N}_{1}T_{0}}\dsum\limits_{t=p}^{T}Z_{t,N}\left( \widehat{%
+H^{c}}\right) Z_{t,N}\left( \widehat{H^{c}}\right) ^{\prime },\text{ }
+\end{equation*}%
+with $T_{0}=T-p+1$.
+
+Our next result shows that the estimator given in expression (\ref{factor
+estimator}) consistently estimates the unobserved factors $\underline{F}%
+_{t}, $up to an invertible $Kp\times Kp$ matrix transformation.
+
+\noindent \textbf{Theorem 4.1: }\textit{Suppose that Assumptions 3-1, 3-2,
+3-3, 3-4, 3-5, 3-6, 3-7, 3-8, 3-9, and 3-10 hold. Let }$\widehat{\underline{F%
+}}_{t}$\textit{\ be as defined in expression (\ref{factor estimator}).
+Assume further that the specification of the tuning parameter, }$\varphi ,$%
+\textit{\ in the decision rule (\ref{var selection decision rule}) satisfies
+Assumption 3-11*. Then,}%
+\begin{equation*}
+\left\Vert \widehat{\underline{F}}_{t}-Q^{\prime }\underline{F}%
+_{t}\right\Vert _{2}=o_{p}\left( 1\right) ,\text{ for all fixed }t\text{,}
+\end{equation*}%
+\textit{where}%
+\begin{equation*}
+Q=\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{\frac{{\Large 1}}{%
+{\Large 2}}}\Xi \widehat{V}\text{,}
+\end{equation*}%
+\textit{and where }$\widehat{V}$\textit{\ is the }$Kp\times Kp$\textit{\
+orthogonal matrix given in Lemma D-14, and }$\Xi $\textit{\ is a }$Kp\times
+Kp$\textit{\ orthogonal matrix whose columns are the eigenvectors of the
+matrix }%
+\begin{equation*}
+M_{FF}^{\ast }=\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right)
+^{1/2}M_{FF}\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right)
+^{1/2}=\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{1/2}\frac{1}{%
+T_{0}}\dsum\limits_{t=p}^{T}E\left[ \underline{F}_{t}\underline{F}%
+_{t}^{\prime }\right] \left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right)
+^{1/2}\text{.}
+\end{equation*}
+
+\noindent \qquad If we examine the proof of Theorem 4.1 in the appendix and
+the supporting arguments given in the proof of Lemma D-15 of Appendix D of
+Chao and Swanson (2022c), we see that two of the key components of the proof
+involve showing that:%
+\begin{equation*}
+\left\Vert \frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{\sqrt{N_{1}}}%
+\right\Vert _{2}\overset{p}{\rightarrow }0
+\end{equation*}%
+and that 
+\begin{equation*}
+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\overset{p}{\rightarrow }0\text{.}
+\end{equation*}%
+This is one of the reasons why we argue that initial variable selection
+should focus on determining which variables load strongly on the factors
+without worrying specifically at that stage about the related issues of
+predictability or, for that matter, any other issue. By contrast, if we make
+our initial variable selection based on some more stringent criterion that
+takes into consideration not only variable relevance but also other concerns
+such as predictability, then, we may end up with a much smaller set $%
+\widetilde{H}^{c}$ of selected variables relative to the set $\widehat{H^{c}}
+$ selected under our procedure. In particular, in this case, it may be
+possible that even in large samples a significant number of rows of $\Gamma
+\left( \widetilde{H^{c}}\right) $ may contain only zero elements even though
+the corresponding row of $\Gamma $ is not a zero vector, so that the result:%
+\begin{equation*}
+\left\Vert \frac{\Gamma \left( \widetilde{H^{c}}\right) -\Gamma }{\sqrt{N_{1}%
+}}\right\Vert _{2}\overset{p}{\rightarrow }0
+\end{equation*}%
+may not hold. For the same reason, if we let $\widetilde{N}_{1}$ denote the
+cardinality of the set of selected indices based on an alternative, more
+stringent variable selection procedure, then, the result: 
+\begin{equation*}
+\frac{\widetilde{N}_{1}-N_{1}}{N_{1}}\overset{p}{\rightarrow }0
+\end{equation*}%
+also may not hold, since, by definition, $N_{1}$ is the number of rows of $%
+\Gamma $ which have at least one non-zero element.
+
+Although Theorem 4.1 shows that, without further identifying assumptions, we
+can only estimate the factors $\underline{F}_{t}$ consistently up to an
+invertible $Kp\times Kp$ matrix transformation, this result turns out to be
+sufficient for us to estimate the $h$-step ahead predictor consistently.
+More specifically, in Appendix D of Chao and Swanson (2022c) we show that
+for $h$-step ahead forecasts associated with the (infeasible) forecasting
+equation implied by the FAVAR model (\ref{FAVAR}), we have the form%
+\begin{equation}
+Y_{t{\LARGE +}h}=\beta _{0}+B_{1}^{\prime }\underline{Y}_{t}+B_{2}^{\prime }%
+\underline{F}_{t}+\eta _{t{\LARGE +}h},
+\label{infeasible h step forecast eqn}
+\end{equation}%
+where $\underline{Y}_{t}$ and $\underline{F}_{t}$ are as defined in
+expression (\ref{Yunderscore and Funderscore}) above and where:%
+\begin{eqnarray}
+\beta _{0} &=&\dsum\limits_{j=0}^{h-1}J_{d}A^{j}\alpha \text{, }%
+B_{1}^{\prime }=J_{d}A^{h}\mathcal{P}_{\left( d{\LARGE +}K\right) p}^{\prime
+}S_{d}\text{, }B_{2}^{\prime }=J_{d}A^{h}\mathcal{P}_{\left( d{\LARGE +}%
+K\right) p}^{\prime }S_{K}\text{ and}  \label{beta0 B1 and B2} \\
+\text{ }\eta _{t{\LARGE +}h} &=&\dsum\limits_{j=0}^{h-1}J_{d}A^{j}J_{d%
+{\LARGE +}K}^{\prime }\varepsilon _{t{\LARGE +}h-j}\text{.}  \notag
+\end{eqnarray}%
+Here, $\alpha $ and $A$ are, respectively, the intercept (vector) and the
+coefficient matrix of the companion form defined in expression (\ref%
+{companion form notations}) above, $\mathcal{P}_{\left( d{\LARGE +}K\right)
+p}$ is a permutation matrix such that:%
+\begin{equation*}
+\mathcal{P}_{\left( d{\LARGE +}K\right) p}\underline{W}_{t}=\left( 
+\begin{array}{c}
+\underline{Y}_{t} \\ 
+\underline{F}_{t}%
+\end{array}%
+\right) \text{,}
+\end{equation*}%
+and%
+\begin{eqnarray*}
+S_{d} &=&\left( 
+\begin{array}{c}
+I_{dp} \\ 
+\underset{Kp\times dp}{0}%
+\end{array}%
+\right) \text{, }S_{K}=\left( 
+\begin{array}{c}
+\underset{dp\times Kp}{0} \\ 
+I_{Kp}%
+\end{array}%
+\right) \text{,}\underset{d\times \left( d{\LARGE +}K\right) p}{J_{d}}=\left[
+\begin{array}{cccc}
+I_{d} & 0 & \cdots & 0%
+\end{array}%
+\right] \text{, and} \\
+\text{ }\underset{\left( d{\LARGE +}K\right) \times \left( d{\LARGE +}%
+K\right) p}{J_{d{\LARGE +}K}} &=&\left[ 
+\begin{array}{cccc}
+I_{d{\LARGE +}K} & 0 & \cdots & 0%
+\end{array}%
+\right] \text{.}
+\end{eqnarray*}%
+See\ the beginning of Appendix D of Chao and Swanson (2022c) for a
+derivation of the equation given in expression (\ref{infeasible h step
+forecast eqn}). The reason expression (\ref{infeasible h step forecast eqn})
+is called an infeasible forecasting equation is, of course, because $%
+\underline{F}_{t}$ is not observed, so to obtain a feasible version of this
+forecasting equation, we must replace $\underline{F}_{t}$ in equation (\ref%
+{infeasible h step forecast eqn}) with the estimate $\underline{\widehat{F}}%
+_{t}$ given in expression (\ref{factor estimator}). Doing so, we arrive at a
+feasible $h$-step ahead forecasting equation of the form: 
+\begin{eqnarray}
+Y_{t{\LARGE +}h} &=&\beta _{0}+\dsum\limits_{g=1}^{p}B_{1,g}^{\prime }Y_{t-g%
+{\LARGE +}1}+\dsum\limits_{g=1}^{p}B_{2,g}^{\prime }\widehat{F}_{t-g{\LARGE +%
+}1}+\widehat{\eta }_{t{\LARGE +}h}  \notag \\
+&=&\beta _{0}+B_{1}^{\prime }\underline{Y}_{t}+B_{2}^{\prime }\underline{%
+\widehat{F}}_{t}+\widehat{\eta }_{t{\LARGE +}h}\text{, }
+\label{feasible h step forecast eqn}
+\end{eqnarray}%
+where $\widehat{\eta }_{t{\LARGE +}h}=\eta _{t{\LARGE +}h}-B_{2}^{\prime
+}\left( \underline{\widehat{F}}_{t}-\underline{F}_{t}\right) ,$ with $\eta
+_{t{\LARGE +}h}=\dsum\nolimits_{j=0}^{h-1}J_{d}A^{j}J_{d{\LARGE +}K}^{\prime
+}\varepsilon _{t{\LARGE +}h-j}$.
+
+One can interpret expression (\ref{feasible h step forecast eqn}) as a
+\textquotedblleft reduced form\textquotedblright\ formulation of the
+forecasting equation where the reduced form parameters $\beta _{0}$, $B_{1}$%
+, and $B_{2}$ are nonlinear functions of the parameters $\left( \mu
+,A_{1},....,A_{p}\right) $ of the FAVAR model, in the case where $h>1$. For
+forecasting purposes, while it is possible to estimate the conditional mean
+of the forecasting equation (\ref{feasible h step forecast eqn}) by
+estimating the underlying parameters directly by nonlinear least squares,
+here we choose instead to estimate the conditional mean by estimating the
+reduced form parameters $\beta _{0}$, $B_{1}$, and $B_{2}$ via linear least
+squares. An important reason why we choose this latter approach is due to
+complications that arise both because we are forecasting with a FAVAR which
+contains unobserved factors that must first be estimated and because we do
+not make enough identifying assumptions so that the factors can only be
+estimated consistently up to an invertible $Kp\times Kp$ matrix
+transformation. In fact, it turns out that estimating the underlying
+parameters $\mu ,A_{1},....,A_{p}$ by nonlinear least squares and
+constructing an estimator of the conditional mean of the forecasting
+equation based on these estimates will not lead to a consistently estimated $%
+h$-step predictor, unless further identifying assumptions are made. On the
+other hand, as we will show in Theorem 5 below, estimating the reduced form
+parameters $\beta _{0}$, $B_{1}$, and $B_{2}$ by linear least squares does
+allow us to construct a consistent estimator of the conditional mean, even
+in the absence of additional identifying assumptions.
+
+More precisely, let $\underline{\widehat{F}}_{t}$ denotes the factor
+estimates given in expression (\ref{factor estimator}). Our procedure
+minimizes the least squares criterion function:%
+\begin{eqnarray}
+Q\left( \beta _{0},B_{1},B_{2}\right) &=&\dsum\limits_{t=p}^{T-h}\left\Vert
+Y_{t{\LARGE +}h}-\beta _{0}-B_{1}^{\prime }\underline{Y}_{t}-B_{2}^{\prime }%
+\underline{\widehat{F}}_{t}\right\Vert _{2}^{2}  \notag \\
+&=&\dsum\limits_{t=p}^{T-h}\left\Vert Y_{t{\LARGE +}h}-\beta
+_{0}-\dsum\limits_{g=1}^{p}B_{1,g}^{\prime }Y_{t-g{\LARGE +}%
+1}-\dsum\limits_{g=1}^{p}B_{2,g}^{\prime }\widehat{F}_{t-g{\LARGE +}%
+1}\right\Vert _{2}^{2}  \label{least squares criterion}
+\end{eqnarray}%
+with respect to the parameters $\beta _{0}$, $B_{1}$, and $B_{2},$ and
+delivers the OLS estimates $\widehat{\beta }_{0}$, $\widehat{B}_{1}$, and $%
+\widehat{B}_{2}$. We then forecast $Y_{T{\LARGE +}h}$ using the $h$-step
+predictor:%
+\begin{equation}
+\widehat{Y}_{T{\LARGE +}h}=\widehat{\beta }_{0}+\widehat{B}_{1}^{\prime }%
+\underline{Y}_{T}+\widehat{B}_{2}^{\prime }\underline{\widehat{F}}_{T}\text{%
+. }  \label{h step ahead predictor}
+\end{equation}%
+The following result shows that $\widehat{Y}_{T{\LARGE +}h}$ is a consistent
+estimator of the conditional mean of the infeasible forecast equation (\ref%
+{infeasible h step forecast eqn}).
+
+\medskip
+
+\noindent \textbf{Theorem 4.2: }\textit{Let }$\widehat{Y}_{T{\LARGE +}h}$%
+\textit{\ be as defined in expression (\ref{h step ahead predictor}).
+Suppose that Assumptions 3-1, 3-2, 3-3, 3-4, 3-5, 3-6, 3-7, 3-8, 3-9, 3-10,
+and 3-11* hold. Then,}
+
+\begin{equation*}
+\widehat{Y}_{T{\LARGE +}h}-\left( \beta _{0}+B_{1}^{\prime }\underline{Y}%
+_{T}+B_{2}^{\prime }\underline{F}_{T}\right) \overset{p}{\rightarrow }0\text{
+as }N_{1},N_{2},T\rightarrow \infty \text{.}
+\end{equation*}
+
+\medskip
+
+\section{\noindent Empirical Illustration}
+
+To be completed.
+
+\section{\noindent Conclusion}
+
+In this paper, we study the problem of consistently estimating the
+conditional mean of a factor-augmented forecasting equation based on the
+FAVAR model. When the underlying dynamic factor model generating the latent
+factors is high-dimensional, we show that it is important to pre-screen the
+variables in terms of their association with the underlying factors prior to
+estimation, particularly in cases where one suspects that the conventional
+assumption of factor pervasiveness may not hold. For this purpose, we
+utiluize a new variable selection procedure based on a self-normalized score
+statistic (see Chao and Swanson (CS: 2022) that correctly identifies the set
+of variables which load significantly on the underlying factors, with
+probability approaching one, as the sample sizes go to infinity.
+Furthermore, given that CS(2022) show that estimating the factors using only
+those variables selected by their method allows factors to be consistently
+estimated, up to an invertible matrix transformation, even if the standard
+pervasiveness assumption does not hold, provided that the number of relevant
+variables is sufficiently large. Using the factors estimated in such a
+manner, we show that the conditional mean function of a factor-augmented
+forecasting equation can be consistently estimated, even for the case of
+multi-step ahead forecasts.
+
+\section{\noindent Appendix}
+
+All lemmas denoted C1-C17 and D1-D18 in this appendix are stated and proven
+in an accompanying online appendix (see Chao and Swanson (2022c)).
+
+\textbf{Proof of Theorem 2.1: }The proof of this theorem is rather long, and
+is gathered in Appendix A of Chao and Swanson (2022c).
+
+\textbf{Proof of Theorem 4.1: }
+
+To proceed, note first that the principal component estimator of $\underline{%
+F}_{t}$ can be written as%
+\begin{equation*}
+\widehat{\underline{F}}_{t}=\frac{\widehat{\Gamma }^{\prime }Z_{t,N}\left( 
+\widehat{H^{c}}\right) }{\widehat{N}_{1}}
+\end{equation*}%
+where $\widehat{\Gamma }=\sqrt{\widehat{N}_{1}}\widehat{B}$ and where the
+columns of the matrix $\widehat{B}$ are the eigenvectors associated with the 
+$Kp$ largest eigenvalues of the (post-variable-selection) sample covariance
+matrix 
+\begin{equation*}
+\widehat{\Sigma }\left( \widehat{H^{c}}\right) =\frac{Z\left( \widehat{H^{c}}%
+\right) ^{\prime }Z\left( \widehat{H^{c}}\right) }{\widehat{N}_{1}T_{0}}.
+\end{equation*}%
+Moreover, by the result of part (d) of Lemma D-14, the matrix $\widehat{B}$
+has the representation%
+\begin{equation*}
+\widehat{B}=\widehat{G}_{1}\widehat{V}
+\end{equation*}%
+where $\widehat{G}_{1}$ is an $N\times Kp$ matrix, whose columns define an
+orthonormal basis for an invariant subspace of $\widehat{\Sigma }\left( 
+\widehat{H^{c}}\right) $ and where $\widehat{V}$ is a $Kp\times Kp$
+orthogonal matrix as defined in expression (\ref{V eigenvector matrix}) in
+part (c) of Lemma D-14. (See Lemma D-14 and also Lemma D-13 for additional
+discussion on the origin of this representation). Making use of this
+representation, we can further write%
+\begin{eqnarray*}
+\widehat{\underline{F}}_{t}-Q^{\prime }\underline{F}_{t} &=&\frac{\sqrt{%
+\widehat{N}_{1}}\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}Z_{t,N}\left( \widehat{H^{c}}\right) }{\widehat{N}_{1}}-Q^{\prime }%
+\underline{F}_{t} \\
+&=&\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma
+\left( \widehat{H^{c}}\right) \underline{F}_{t}}{\sqrt{\widehat{N}_{1}}}+%
+\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}U_{t,N}\left( 
+\widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}}}-Q^{\prime }\underline{F}_{t}
+\\
+&=&\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma
+\left( \widehat{H^{c}}\right) \underline{F}_{t}}{\sqrt{\widehat{N}_{1}}}%
+-Q^{\prime }\underline{F}_{t}+\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}%
+}} \\
+&=&\left( \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma \left( \widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}}}-Q^{\prime
+}\right) \underline{F}_{t}+\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}%
+}}
+\end{eqnarray*}%
+Next, note that%
+\begin{eqnarray*}
+\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma }{\sqrt{%
+\widehat{N}_{1}}}-Q^{\prime } &=&\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}\Gamma }{\sqrt{N_{1}}\sqrt{\left( \widehat{N}%
+_{1}-N_{1}+N_{1}\right) /N_{1}}}-Q^{\prime } \\
+&=&\left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{{\large 1}}{%
+{\large 2}}}\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma }{\sqrt{N_{1}}}-Q^{\prime } \\
+&=&\left[ \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}-1+1\right] \frac{\widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}-Q^{\prime } \\
+&=&\left[ \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}-1\right] \frac{\widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}+\frac{\widehat{V}^{\prime }%
+\widehat{G}_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}-Q^{\prime }
+\end{eqnarray*}%
+and%
+\begin{eqnarray*}
+\frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{\sqrt{\widehat{N}_{1}}}
+&=&\frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{\sqrt{N_{1}}\sqrt{%
+\left( \widehat{N}_{1}-N_{1}+N_{1}\right) /N_{1}}} \\
+&=&\left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{{\large 1}}{%
+{\large 2}}}\left( \frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{%
+\sqrt{N_{1}}}\right)
+\end{eqnarray*}%
+so that%
+\begin{eqnarray*}
+&&\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma \left( 
+\widehat{H^{c}}\right) \underline{F}_{t}}{\sqrt{\widehat{N}_{1}}} \\
+&=&Q^{\prime }\underline{F}_{t}+\left( \frac{\widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}\Gamma }{\sqrt{\widehat{N}_{1}}}-Q^{\prime }\right) 
+\underline{F}_{t}+\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\left( \frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{\sqrt{\widehat{N%
+}_{1}}}\right) \underline{F}_{t} \\
+&=&Q^{\prime }\underline{F}_{t}+\left( \frac{\widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}-Q^{\prime }\right) \underline{F%
+}_{t}+\left[ \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}-1\right] \frac{\widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}\underline{F}_{t} \\
+&&+\left[ \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}\right] \widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}\left( \frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{%
+\sqrt{N}_{1}}\right) \underline{F}_{t}
+\end{eqnarray*}%
+It follows that%
+\begin{eqnarray*}
+\widehat{\underline{F}}_{t}-Q^{\prime }\underline{F}_{t} &=&\left( \frac{%
+\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma \left( 
+\widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}}}-Q^{\prime }\right) 
+\underline{F}_{t}+\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime 
+}}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}}} \\
+&=&\left( \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma }{\sqrt{N_{1}}}-Q^{\prime }\right) \underline{F}_{t}+\left[ \left( 1+%
+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{{\large 1}}{{\large 2}}%
+}-1\right] \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma }{\sqrt{N_{1}}}\underline{F}_{t} \\
+&&+\left[ \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}\right] \widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}\left( \frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{%
+\sqrt{N}_{1}}\right) \underline{F}_{t}+\frac{\widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{\widehat{%
+N}_{1}}}
+\end{eqnarray*}%
+Hence, applying the triangle inequality as well as parts (a)-(c), (g), and
+(i) of Lemma D-15 along with the Slutsky's theorem, we obtain 
+\begin{eqnarray*}
+&&\left\Vert \widehat{\underline{F}}_{t}-Q^{\prime }\underline{F}%
+_{t}\right\Vert _{2} \\
+&\leq &\left\Vert \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime 
+}}\Gamma }{\sqrt{N_{1}}}-Q^{\prime }\right\Vert _{2}\left\Vert \underline{F}%
+_{t}\right\Vert _{2}+\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}%
+\right) ^{-\frac{{\large 1}}{{\large 2}}}-1\right\vert \left\Vert \frac{%
+\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}%
+\right\Vert _{2}\left\Vert \underline{F}_{t}\right\Vert _{2} \\
+&&+\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}\right\vert \left\Vert \widehat{V}^{\prime }\widehat{%
+G}_{1}^{{\Large \prime }}\right\Vert _{2}\left\Vert \frac{\Gamma \left( 
+\widehat{H^{c}}\right) -\Gamma }{\sqrt{N}_{1}}\right\Vert _{2}\left\Vert 
+\underline{F}_{t}\right\Vert _{2}+\left\Vert \frac{\widehat{V}^{\prime }%
+\widehat{G}_{1}^{{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) }{%
+\sqrt{\widehat{N}_{1}}}\right\Vert _{2} \\
+&=&\left\Vert \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma }{\sqrt{N_{1}}}-Q^{\prime }\right\Vert _{2}\left\Vert \underline{F}%
+_{t}\right\Vert _{2}+\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}%
+\right) ^{-\frac{{\large 1}}{{\large 2}}}-1\right\vert \left\Vert \frac{%
+\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}%
+\right\Vert _{2}\left\Vert \underline{F}_{t}\right\Vert _{2} \\
+&&+\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}\right\vert \left\Vert \frac{\Gamma \left( \widehat{%
+H^{c}}\right) -\Gamma }{\sqrt{N}_{1}}\right\Vert _{2}\left\Vert \underline{F}%
+_{t}\right\Vert _{2}+\left\Vert \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}%
+}}\right\Vert _{2} \\
+&&\left( \text{since }\left\Vert \widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}\right\Vert _{2}=\lambda _{\max }\left( \widehat{G}_{1}%
+\widehat{V}\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\right)
+=\lambda _{\max }\left( \widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime 
+}}\widehat{G}_{1}\widehat{V}\right) =\lambda _{\max }\left( I_{Kp}\right)
+=1\right) \\
+&=&o_{p}\left( 1\right) O_{p}\left( 1\right) +o_{p}\left( 1\right)
+O_{p}\left( 1\right) O_{p}\left( 1\right) +O_{p}\left( 1\right) o_{p}\left(
+1\right) O_{p}\left( 1\right) +o_{p}\left( 1\right) \\
+&=&o_{p}\left( 1\right) \text{. }\square
+\end{eqnarray*}
+
+\medskip
+
+\noindent
+
+\noindent \textbf{Proof of Theorem 4.2:}
+
+To proceed, note that for any $a\in \mathbb{R}^{d}$ such that $\left\Vert
+a\right\Vert _{2}=1$, we have%
+\begin{eqnarray*}
+&&\left\vert a^{\prime }\widehat{Y}_{T{\LARGE +}h}-a^{\prime }\left( \beta
+_{0}+B_{1}^{\prime }\underline{Y}_{T}+B_{2}^{\prime }\underline{F}%
+_{T}\right) \right\vert \\
+&=&\left\vert a^{\prime }\left( \widehat{\beta }_{0}+\widehat{B}_{1}^{\prime
+}\underline{Y}_{T}+\widehat{B}_{2}^{\prime }\underline{\widehat{F}}%
+_{T}\right) -a^{\prime }\left( \beta _{0}+B_{1}^{\prime }\underline{Y}%
+_{T}+B_{2}^{\prime }\underline{F}_{T}\right) \right\vert \\
+&=&\left\vert a^{\prime }\left( \widehat{\beta }_{0}-\beta _{0}\right)
++a^{\prime }\left( \widehat{B}_{1}-B_{1}\right) ^{\prime }\underline{Y}%
+_{T}\right. \\
+&&\left. +a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}+Q^{-1}B_{2}\right)
+^{\prime }\left( \widehat{\underline{F}}_{T}-Q^{\prime }\underline{F}%
+_{T}+Q^{\prime }\underline{F}_{T}\right) -a^{\prime }B_{2}^{\prime }%
+\underline{F}_{T}\right\vert \\
+&\leq &\left\vert a^{\prime }\left( \widehat{\beta }_{0}-\beta _{0}\right)
+\right\vert +\left\vert a^{\prime }\left( \widehat{B}_{1}-B_{1}\right)
+^{\prime }\underline{Y}_{T}\right\vert +\left\vert a^{\prime }\left( 
+\widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime }\left( \widehat{\underline{F}}%
+_{T}-Q^{\prime }\underline{F}_{T}\right) \right\vert \\
+&&+\left\vert a^{\prime }B_{2}^{\prime }Q^{-1\prime }\left( \widehat{%
+\underline{F}}_{T}-Q^{\prime }\underline{F}_{T}\right) \right\vert
++\left\vert a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}Q^{\prime }\underline{F}_{T}\right\vert +\left\vert a^{\prime
+}B_{2}^{\prime }Q^{-1\prime }Q^{\prime }\underline{F}_{T}-a^{\prime
+}B_{2}^{\prime }\underline{F}_{T}\right\vert \\
+&=&\left\vert a^{\prime }\left( \widehat{\beta }_{0}-\beta _{0}\right)
+\right\vert +\left\vert a^{\prime }\left( \widehat{B}_{1}-B_{1}\right)
+^{\prime }\underline{Y}_{T}\right\vert +\left\vert a^{\prime }\left( 
+\widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime }\left( \widehat{\underline{F}}%
+_{T}-Q^{\prime }\underline{F}_{T}\right) \right\vert \\
+&&+\left\vert a^{\prime }B_{2}^{\prime }Q^{-1\prime }\left( \widehat{%
+\underline{F}}_{T}-Q^{\prime }\underline{F}_{T}\right) \right\vert
++\left\vert a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}Q^{\prime }\underline{F}_{T}\right\vert
+\end{eqnarray*}%
+Lemma D-18 and Slutsky's theorem directly imply that%
+\begin{equation*}
+\left\vert a^{\prime }\left( \widehat{\beta }_{0}-\beta _{0}\right)
+\right\vert =o_{p}\left( 1\right)
+\end{equation*}%
+Now, applying the CS inequality, we obtain%
+\begin{eqnarray*}
+\left\vert a^{\prime }\left( \widehat{B}_{1}-B_{1}\right) ^{\prime }%
+\underline{Y}_{T}\right\vert &\leq &\sqrt{a^{\prime }\left( \widehat{B}%
+_{1}-B_{1}\right) ^{\prime }\left( \widehat{B}_{1}-B_{1}\right) a}\sqrt{%
+\underline{Y}_{T}^{\prime }\underline{Y}_{T}} \\
+&=&\sqrt{a^{\prime }\left( \widehat{B}_{1}-B_{1}\right) ^{\prime }\left( 
+\widehat{B}_{1}-B_{1}\right) a}\left\Vert \underline{Y}_{T}\right\Vert
+_{2}^{2},
+\end{eqnarray*}%
+and%
+\begin{eqnarray*}
+&&\left\vert a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}Q^{\prime }\underline{F}_{T}\right\vert \\
+&\leq &\sqrt{a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) a}\sqrt{\underline{F}_{T}^{\prime
+}QQ^{\prime }\underline{F}_{T}} \\
+&=&\sqrt{a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) a}\sqrt{\underline{F}_{T}^{\prime
+}\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{1/2}\Xi \widehat{V}%
+\widehat{V}^{\prime }\Xi ^{\prime }\left( \frac{\Gamma ^{\prime }\Gamma }{%
+N_{1}}\right) ^{1/2}\underline{F}_{T}} \\
+&=&\sqrt{a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) a}\sqrt{\underline{F}_{T}^{\prime
+}\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) \underline{F}_{T}} \\
+&\leq &\sqrt{\lambda _{\max }\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}%
+\right) }\sqrt{a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) a}\left\Vert \underline{F}%
+_{T}\right\Vert _{2}^{2} \\
+&\leq &\overline{C}\sqrt{a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}%
+\right) ^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) a}\left\Vert 
+\underline{F}_{T}\right\Vert _{2}^{2}
+\end{eqnarray*}%
+Moreover, note that%
+\begin{eqnarray*}
+E\left[ \left\Vert \underline{Y}_{T}\right\Vert _{2}^{2}\right] &\leq
+&\left( E\left\Vert \underline{Y}_{T}\right\Vert _{2}^{6}\right) ^{\frac{%
+{\Large 1}}{{\Large 3}}}\text{ \ }\left( \text{by Liapunov's inequality}%
+\right) \\
+&\leq &\overline{C}^{\frac{{\Large 1}}{{\Large 3}}}=C<\infty \text{ \ }%
+\left( \text{by Lemma C-5}\right)
+\end{eqnarray*}%
+and%
+\begin{eqnarray*}
+E\left[ \left\Vert \underline{F}_{T}\right\Vert _{2}^{2}\right] &\leq
+&\left( E\left\Vert \underline{F}_{T}\right\Vert _{2}^{6}\right) ^{\frac{%
+{\Large 1}}{{\Large 3}}}\text{ \ }\left( \text{by Liapunov's inequality}%
+\right) \\
+&\leq &\overline{C}^{\frac{{\Large 1}}{{\Large 3}}}=C<\infty \text{ \ }%
+\left( \text{by Lemma C-5}\right)
+\end{eqnarray*}%
+Hence, for any $\epsilon >0$, set $C_{\epsilon }=\sqrt{C/\epsilon }$, and
+Markov's inequality then implies that, for all $T>p-1$, 
+\begin{equation*}
+\Pr \left\{ \left\Vert \underline{Y}_{T}\right\Vert _{2}\geq C_{\epsilon
+}\right\} =\Pr \left\{ \left\Vert \underline{Y}_{T}\right\Vert _{2}^{2}\geq
+C_{\epsilon }^{2}\right\} \leq \frac{E\left[ \left\Vert \underline{Y}%
+_{T}\right\Vert _{2}^{2}\right] }{C_{\epsilon }^{2}}=\frac{\epsilon E\left[
+\left\Vert \underline{Y}_{T}\right\Vert _{2}^{2}\right] }{C}\leq \epsilon
+\end{equation*}%
+from which it follows that%
+\begin{equation*}
+\left\Vert \underline{Y}_{T}\right\Vert _{2}=O_{p}\left( 1\right) \text{.}
+\end{equation*}%
+In a similar way, we can also show that%
+\begin{equation*}
+\left\Vert \underline{F}_{T}\right\Vert _{2}=O_{p}\left( 1\right) \text{.}
+\end{equation*}%
+Application of the result given in Lemma D-18 then allows us to deduce that%
+\begin{equation*}
+\left\vert a^{\prime }\left( \widehat{B}_{1}-B_{1}\right) ^{\prime }%
+\underline{Y}_{T}\right\vert \leq \sqrt{a^{\prime }\left( \widehat{B}%
+_{1}-B_{1}\right) ^{\prime }\left( \widehat{B}_{1}-B_{1}\right) a}\left\Vert 
+\underline{Y}_{T}\right\Vert _{2}^{2}=o_{p}\left( 1\right)
+\end{equation*}%
+and 
+\begin{eqnarray*}
+&&\left\vert a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}Q^{\prime }\underline{F}_{T}\right\vert \\
+&\leq &\sqrt{a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) a}\sqrt{\underline{F}_{T}^{\prime
+}QQ^{\prime }\underline{F}_{T}} \\
+&\leq &\sqrt{a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) a}\sqrt{\lambda _{\max }\left(
+QQ^{\prime }\right) }\left\Vert \underline{F}_{T}\right\Vert _{2} \\
+&=&\sqrt{a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) a}\sqrt{\lambda _{\max }\left\{
+\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{\frac{{\Large 1}}{%
+{\Large 2}}}\Xi \widehat{V}\widehat{V}^{\prime }\Xi ^{\prime }\left( \frac{%
+\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{\frac{{\Large 1}}{{\Large 2}}%
+}\right\} }\left\Vert \underline{F}_{T}\right\Vert _{2} \\
+&=&\sqrt{a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) a}\sqrt{\lambda _{\max }\left\{
+\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) \right\} }\left\Vert 
+\underline{F}_{T}\right\Vert _{2} \\
+&&\left( \text{since }\widehat{V}\widehat{V}^{\prime }=I_{Kp}\text{ and }\Xi
+\Xi ^{\prime }=I_{Kp}\right) \\
+&\leq &\sqrt{\overline{C}}\sqrt{a^{\prime }\left( \widehat{B}%
+_{2}-Q^{-1}B_{2}\right) ^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) a%
+}\left\Vert \underline{F}_{T}\right\Vert _{2}\text{ \ }\left( \text{by
+Assumption 3-6}\right) \\
+&=&o_{p}\left( 1\right)
+\end{eqnarray*}%
+In addition, we can apply the CS inequality to get%
+\begin{eqnarray*}
+&&\left\vert a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}\left( \widehat{\underline{F}}_{T}-Q^{\prime }\underline{F}_{T}\right)
+\right\vert \\
+&\leq &\sqrt{a^{\prime }\left( \widehat{B}_{1}-B_{1}\right) ^{\prime }\left( 
+\widehat{B}_{1}-B_{1}\right) a}\sqrt{\left( \widehat{\underline{F}}%
+_{T}-Q^{\prime }\underline{F}_{T}\right) ^{\prime }\left( \widehat{%
+\underline{F}}_{T}-Q^{\prime }\underline{F}_{T}\right) } \\
+&\leq &\sqrt{a^{\prime }\left( \widehat{B}_{1}-B_{1}\right) ^{\prime }\left( 
+\widehat{B}_{1}-B_{1}\right) a}\left\Vert \widehat{\underline{F}}%
+_{T}-Q^{\prime }\underline{F}_{T}\right\Vert _{2} \\
+&=&o_{p}\left( 1\right) \text{ \ }\left( \text{by Lemma D-18 and part (j) of
+Lemma D-15 in Appendix D}\right)
+\end{eqnarray*}%
+and%
+\begin{eqnarray*}
+&&\left\vert a^{\prime }B_{2}^{\prime }Q^{-1\prime }\left( \widehat{%
+\underline{F}}_{T}-Q^{\prime }\underline{F}_{T}\right) \right\vert \\
+&\leq &\sqrt{a^{\prime }B_{2}^{\prime }Q^{-1\prime }Q^{-1}B_{2}a}\sqrt{%
+\left( \widehat{\underline{F}}_{T}-Q^{\prime }\underline{F}_{T}\right)
+^{\prime }\left( \widehat{\underline{F}}_{T}-Q^{\prime }\underline{F}%
+_{T}\right) } \\
+&=&\sqrt{a^{\prime }B_{2}^{\prime }Q^{-1\prime }Q^{-1}B_{2}a}\left\Vert 
+\widehat{\underline{F}}_{T}-Q^{\prime }\underline{F}_{T}\right\Vert _{2} \\
+&\leq &\sqrt{\left[ \lambda _{\min }\left( \frac{\Gamma ^{\prime }\Gamma }{%
+N_{1}}\right) \right] ^{-1}\lambda _{\max }\left( B_{2}^{\prime
+}B_{2}\right) }\left\Vert \widehat{\underline{F}}_{T}-Q^{\prime }\underline{F%
+}_{T}\right\Vert _{2}\text{ } \\
+&\leq &\sqrt{C^{\ast }}\left\Vert \widehat{\underline{F}}_{T}-Q^{\prime }%
+\underline{F}_{T}\right\Vert _{2}\text{ \ }\left( \text{for some positive
+constant }C^{\ast }\text{ as shown in}\right. \text{ } \\
+&&\left. \text{expression (\ref{quad form HinvB2}) in Appendix D. See the
+proof of part (d) of Lemma D-17}\right) \\
+&=&o_{p}\left( 1\right) \text{ \ }\left( \text{by part (j) of Lemma D-15}%
+\right)
+\end{eqnarray*}%
+Putting everything together and applying Slutsky's theorem, we then obtain 
+\begin{eqnarray*}
+&&\left\vert a^{\prime }\widehat{Y}_{T{\LARGE +}h}-a^{\prime }\left( \beta
+_{0}+B_{1}^{\prime }\underline{Y}_{T}+B_{2}^{\prime }\underline{F}%
+_{T}\right) \right\vert \\
+&\leq &\left\vert a^{\prime }\left( \widehat{\beta }_{0}-\beta _{0}\right)
+\right\vert +\left\vert a^{\prime }\left( \widehat{B}_{1}-B_{1}\right)
+^{\prime }\underline{Y}_{T}\right\vert +\left\vert a^{\prime }\left( 
+\widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime }\left( \widehat{\underline{F}}%
+_{T}-Q^{\prime }\underline{F}_{T}\right) \right\vert \\
+&&+\left\vert a^{\prime }B_{2}^{\prime }Q^{-1\prime }\left( \widehat{%
+\underline{F}}_{T}-Q^{\prime }\underline{F}_{T}\right) \right\vert
++\left\vert a^{\prime }\left( \widehat{B}_{2}-Q^{-1}B_{2}\right) ^{\prime
+}Q^{\prime }\underline{F}_{T}\right\vert \\
+&=&o_{p}\left( 1\right) \text{.}
+\end{eqnarray*}%
+Since the above argument holds for all $a\in \mathbb{R}^{d}$ such that $%
+\left\Vert a\right\Vert _{2}=1$, we further deduce that%
+\begin{equation*}
+\widehat{Y}_{T{\LARGE +}h}-\left( \beta _{0}+B_{1}^{\prime }\underline{Y}%
+_{T}+B_{2}^{\prime }\underline{F}_{T}\right) =o_{p}\left( 1\right) \text{.}
+\end{equation*}%
+as required. $\square $\noindent
+
+\bigskip
+
+\begin{thebibliography}{99}
+\bibitem{} Anatolyev, S. and A. Mikusheva (2021): \textquotedblleft Factor
+Models with Many Assets: Strong Factors, Weak Factors, and the Two-Pass
+Procedure,\textquotedblright\ \textit{Journal of Econometrics}, forthcoming.
+
+\bibitem{} Andrews, D.W.K. (1984): \textquotedblleft Non-strong Mixing
+Autoregressive Processes,\textquotedblright\ \textit{Journal of Applied
+Probability}, 21, 930-934.
+
+\bibitem{} Bai, J. and S. Ng (2002): \textquotedblleft Determining the
+Number of Factors in Approximate Factor Models,\textquotedblright\ \textit{%
+Econometrica}, 70, 191-221.
+
+\bibitem{} Bai, J. (2003): \textquotedblleft Inferential Theory for Factor
+Models of Large Dimensions,\textquotedblright\ \textit{Econometrica}, 71,
+135-171.
+
+\bibitem{} Bai, J. and S. Ng (2008): \textquotedblleft Forecasting Economic
+Time Series Using Targeted Predictors,\textquotedblright\ \textit{Journal of
+Econometrics}, 146, 304-317.
+
+\bibitem{} Bai, J. and S. Ng (2021): \textquotedblleft Approximate Factor
+Models with Weaker Loading,\textquotedblright\ Working Paper, Columbia
+University.
+
+\bibitem{} Bai, Z. D. and Y. Q. Yin (1993): \textquotedblleft Limit of the
+Smallest Eigenvalue of a Large Dimensional Sample Covariance Matrix," 
+\textit{Annals of Probability}, 21, 1275-1294.
+
+\bibitem{} Bair, E., T. Hastie, D. Paul, and R. Tibshirani (2006):
+\textquotedblleft Prediction by Supervised Principal
+Components,\textquotedblright\ \textit{Journal of the American Statistical
+Association}, 101, 119-137.
+
+\bibitem{} Belloni, A., D. Chen, V. Chernozhukov, and C. Hansen (2012):
+\textquotedblleft Sparse Models and Methods for Optimal Instruments with an
+Application to Eminent Domain,\textquotedblright\ \textit{Econometrica}, 80,
+2369-2429.
+
+\bibitem{} Billingsley, P. (1995): \textit{Probability and Measure}. New
+York: John Wiley \& Sons.
+
+\bibitem{} Borovkova, S., R. Burton, and H. Dehling (2001):
+\textquotedblleft Limit Theorems for Functionals of Mixing Processes to
+U-Statistics and Dimension Estimation,\textquotedblright\ \textit{%
+Transactions of the American Mathematical Society}, 353, 4261-4318.
+
+\bibitem{} Bryzgalova, S. (2016): \textquotedblleft Spurious Factors in
+Linear Asset Pricing Models,\textquotedblright\ Working Paper, Stanford
+Graduate School of Business.
+
+\bibitem{} Burnside, C. (2016): \textquotedblleft Identification and
+Inference in Linear Stochastic Discount Factor Models with Excess
+Returns,\textquotedblright\ \textit{Journal of Financial Econometrics}, 14,
+295-330.
+
+\bibitem{} Chao, J. C. and N. R. Swanson (2022a): \textquotedblleft
+Selecting the Relevant Variables for Factor Estimation in a Factor-Augmented
+VAR Model,\textquotedblright\ Working Paper, Rutgers University and
+University of Maryland.
+
+\bibitem{} Chao, J. C. and N. R. Swanson (2022b): Technical Appendix to
+\textquotedblleft Consistent Estimation, Variable Selection, and Forecasting
+in Factor-Augmented VAR Models,\textquotedblright\ Working Paper, Rutgers
+University and University of Maryland.
+
+\bibitem{} Chao, J. C. and N. R. Swanson (2022c): Texchnical Appendix to
+"Consistent Factor Estimation and Forecasting in Factor-Augmented VAR
+Models,\textquotedblright\ Working Paper, Rutgers University and University
+of Maryland.
+
+\bibitem{} Chen, X., Q. Shao, W. B. Wu, and L. Xu (2016): \textquotedblleft
+Self-normalized Cram\'{e}r-type Moderate Deviations under
+Dependence,\textquotedblright\ \textit{Annals of Statistics}, 44, 1593-1617.
+
+\bibitem{} Davidson. J. (1994): \textit{Stochastic Limit Theory: An
+Introduction for Econometricians}. New York: Oxford University Press.
+
+\bibitem{} Davidson, K. R. and S. J. Szarek (2001): \textquotedblleft Local
+Operator Theory, Random Matrices and Banach Spaces.\textquotedblright\ In 
+\textit{Handbook of the Geometry of Banach Spaces}, 1, 317-366. Amsterdam:
+North-Holland.
+
+\bibitem{} Fan, J., Y. Liao, and M. Mincheva (2011): \textquotedblleft
+High-dimensional Covariance Matrix Estimation in Approximate Factor
+Models,\textquotedblright\ \textit{Annals of Statistics}, 39, 3320-3356.
+
+\bibitem{} Fan, J., Y. Liao, and M. Mincheva (2013): \textquotedblleft Large
+Covariance Estimation by Thresholding Principal Orthogonal Complements," 
+\textit{Journal of the Royal Statistical Society, Series B}, 75, 603-680.
+
+\bibitem{} Freyaldenhoven, S. (2021a): \textquotedblleft Factor Models with
+Local Factors - Determining the Number of Relevant
+Factors,\textquotedblright\ \textit{Journal of Econometrics}, forthcoming.
+
+\bibitem{} Freyaldenhoven, S. (2021b): \textquotedblleft Identification
+through Sparsity in Factor Models: The $\ell _{1}$-Rotation
+Criterion,\textquotedblright\ Working Paper, Federal Reserve Bank of
+Philadelphia.
+
+\bibitem{} Giglio, S., D. Xiu, and D. Zhang (2021): \textquotedblleft Test
+Assets and Weak Factors,\textquotedblright\ Working Paper, Yale School of
+Management and the Booth School of Business, University of Chicago.
+
+\bibitem{} Golub, G. H. and C. F. van Loan (1996): \textit{Matrix
+Computations}, 3rd Edition. Baltimore: The Johns Hopkins University Press.
+
+\bibitem{} Goroketskii, V. V. (1977): \textquotedblleft On the Strong Mixing
+Property for Linear Sequences,\textquotedblright\ \textit{Theory of
+Probability and Applications}, 22, 411-413.
+
+\bibitem{} Gospodinov, N., R. Kan, and C. Robotti (2017): \textquotedblleft
+Spurious Inference in Reduced-Rank Asset Pricing Models,\textquotedblright\ 
+\textit{Econometrica}, 85, 1613-1628.
+
+\bibitem{} Harding, M. C. (2008): \textquotedblleft Explaining the Single
+Factor Bias of Arbitrage Pricing Models in Finite
+Samples,\textquotedblright\ \textit{Economics Letters}, 99, 85-88.
+
+\bibitem{} Horn, R. and C. Johnson (1985): \textit{Matrix Analysis}.
+Cambridge University Press.
+
+\bibitem{} Jagannathan, R. and Z. Wang (1998): \textquotedblleft An
+Asymptotic Theory for Estimating Beta-Pricing Models Using Cross-Sectional
+Regression,\textquotedblright\ \textit{Journal of Finance}, 53, 1285-1309.
+
+\bibitem{} Johnstone, I. M. and A. Lu (2009): \textquotedblleft On
+Consistency and Sparsity for Principal Components Analysis in High
+Dimensions,\textquotedblright\ \textit{Journal of the American Statistical
+Association}, 104, 682-697.
+
+\bibitem{} Johnstone, I. M. and D. Paul (2018): \textquotedblleft PCA in
+High Dimensions: An Orientation,\textquotedblright\ \textit{Proceedings of
+the IEEE}, 106, 1277-1292.
+
+\bibitem{} Kan, R. and C. Zhang (1999): \textquotedblleft Two-Pass Tests of
+Asset Pricing Models with Useless Factors,\textquotedblright\ \textit{%
+Journal of Finance}, 54, 203-235.
+
+\bibitem{} Kleibergen, F. (2009): \textquotedblleft Tests of Risk Premia in
+Linear Factor Models,\textquotedblright\ \textit{Journal of Econometrics},
+149, 149-173.
+
+\bibitem{} L\"{u}tkepohl, H. (2005): \textit{New Introduction to Multiple
+Time Series Analysis}. New York: Springer.
+
+\bibitem{} Nadler, B. (2008): \textquotedblleft Finite Sample Approximation
+Results for Principal Component Analysis: A Matrix Perturbation
+Approach,\textquotedblright\ \textit{Annals of Statistics}, 36, 2791-2817.
+
+\bibitem{} Onatski, A. (2012): \textquotedblleft Asymptotics of the
+Principal Components Estimator of Large Factor Models with Weakly
+Influential Factors,\textquotedblright\ \textit{Journal of Econometrics},
+168, 244-258.
+
+\bibitem{} Paul, D. (2007): \textquotedblleft Asymptotics of Sample
+Eigenstructure for a Large Dimensional Spiked Covariance
+Model,\textquotedblright\ \textit{Statistica Sinica}, 17, 1617-1642.
+
+\bibitem{} Pham, T. D. and L. T. Tran (1985): \textquotedblleft Some Mixing
+Properties of Time Series Models,\textquotedblright\ \textit{Stochastic
+Processes and Their Applications}, 19, 297-303.
+
+\bibitem{} Ruhe, A. (1975): \textquotedblleft On the Closeness of
+Eigenvalues and Singular Values for Almost Normal
+Matrices,\textquotedblright\ \textit{Linear Algebra and Its Applications},
+11, 87-94.
+
+\bibitem{} Shen, D., H. Shen, H. Zhu, J.S. Marron (2016): \textquotedblleft
+The Statistics and Mathematics of High Dimension Low Sample Size
+Asymptotics,\textquotedblright\ \textit{Statistica Sinica}, 26, 1747-1770.
+
+\bibitem{} Stewart, G.W. (1973): \textquotedblleft Error and Perturbation
+Bounds for Subspaces Associated with Certain Eigenvalue
+Problems,\textquotedblright\ \textit{SIAM Review}, 15, 727-764.
+
+\bibitem{} Stewart, G.W. and J. Sun (1990): \textit{Matrix Perturbation
+Theory}. Boston: Academic Press.
+
+\bibitem{} Stock, J. H. and M. W. Watson (2002a): \textquotedblleft
+Forecasting Using Principal Components from a Large Number of
+Predictors,\textquotedblright\ \textit{Journal of the American Statistical
+Association}, 97, 1167-1179.
+
+\bibitem{} Stock, J. H. and M. W. Watson (2002b): \textquotedblleft
+Macroeconomic Forecasting Using Diffusion Indexes,\textquotedblright\ 
+\textit{Journal of Business and Economic Statistics}, 20, 147-162.
+
+\bibitem{} Vershynin, R. (2012): \textquotedblleft Introduction to the
+Non-asymptotic Analysis of Random Matrices,\textquotedblright\ In \textit{%
+Compressed Sensing}, \textit{Theory and Applications, }210-268. Cambridge
+University Press.
+
+\bibitem{} Wang, W. and J. Fan (2017): \textquotedblleft Asymptotics of
+Empirical Eigenstructure for High Dimensional Spiked
+Covariance,\textquotedblright\ \textit{Annals of Statistics}, 45, 1342-1374.
+\end{thebibliography}
+
+\end{document}

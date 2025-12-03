@@ -1,0 +1,1825 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 936
+
+\documentclass[12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage[onehalfspacing]{setspace}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{Codepage=936}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Sunday, July 18, 2004 16:10:34}
+%TCIDATA{LastRevised=Monday, April 11, 2022 10:17:17}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{CSTFile=article.cst}
+%TCIDATA{PageSetup=72,72,72,72,0}
+%TCIDATA{AllPages=
+%F=36,\PARA{038<p type="texpara" tag="Body Text" >\hfill \thepage}
+%}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand{\baselinestretch}{1.3} 
+\textwidth=6.8in
+\textheight=8.7in
+\oddsidemargin=0in
+\evensidemargin=0in
+\topmargin=0in
+\baselineskip=10pt
+\linespread{1.0}
+\input{tcilatex}
+\geometry{left=1in,right=1in,top=1.25in,bottom=1.25in}
+
+\begin{document}
+
+\title{Online Appendix to\\
+\textquotedblleft Selecting the Relevant Variables for Factor Estimation in
+a Factor-Augmented VAR Model"}
+\author{John C. Chao\thanks{%
+Department of Economics, 7343 Preinkert Drive, University of Maryland,
+jcchao@umd.edu} and Norman R. Swanson\thanks{%
+Department of Economics, 9500 Hamilton Street, Rutgers University,
+nswanson@econ.rutgers.edu.}\thanks{%
+The authors are grateful to Simon Freyaldenhoven, Yuan Liao, Minchul Shin,
+Xiye Yang, and seminar participants at the Federal Reserve Bank of
+Philadelphia for useful comments received on earlier versions of this paper.
+Chao thanks the University of Maryland for reseach support.}}
+\date{April 11, 2022}
+\maketitle
+
+\begin{abstract}
+This Online Appendix is comprised of two sections. In the first section, we
+give a theorem which shows that, even in the case where the conventional
+factor pervasiveness assumption does not hold, consistent estimation of the
+factors can be achieved if the variables used for factor estimation are
+selected based on the variable selection procedure introduced in our main
+paper. Section 2 of this Online Appendix then gives a proof of this theorem
+as well as the proofs of some supporting lemmas.
+\end{abstract}
+
+\noindent \noindent \setcounter{page}{1}
+
+\section{Consistent Estimation of Factors after Variable Pre-Screening}
+
+\noindent \qquad In this section of the Online Appendix, we give a theorem
+which shows that if the variable selection procedure introduced in our main
+paper is used to pre-screen the variables prior to factor estimation; then,
+consistent factor estimation, up to an invertible matrix transformation, can
+be achieved. It should be noted that being able to estimate the factors
+consistently up to an invertible matrix transformation is already sufficient
+for us to be able to consistently estimate the conditional mean function of
+a factor-augmented forecast equation. This has been shown in an earlier
+version of our paper, Chao and Swanson (2022a); see Theorem 5 of that paper.
+Hence, we do not make further identifying assumptions here to try to
+estimate the factors consistently, say, up to a sign change. However,
+consistent factor estimation up to a sign change could be achieved within
+our framework, if we were to make additional identifying assumptions such as
+those given in Stock and Watson (2002).
+
+For the factor estimation problem, we need to impose some further
+conditions, in addition to the assumptions given in the body of the main
+paper. These additional assumptions are stated below.
+
+\noindent \textbf{Assumption OA-1: }There exists a constant $\underline{C}>0$
+such that $\inf_{t}\lambda _{\min }\left\{ E\left[ \varepsilon
+_{t}\varepsilon _{t}^{\prime }\right] \right\} \geq \underline{C}>0$.
+
+\noindent \textbf{Assumption OA-2: }There exists a positive constant $C$
+such that $\sup_{t}\left( \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}%
+}}\dsum\limits_{k\in H^{{\large c}}}\left\vert E\left[ u_{i,t}u_{k,t}\right]
+\right\vert \right) $
+
+\noindent $\leq C<\infty $ for every positive integer $N_{1}$, where $H^{%
+{\large c}}=\left\{ k\in \left\{ 1,....,N\right\} :\gamma _{k}\neq 0\right\} 
+$.
+
+\noindent \textbf{Assumption OA-3: }There exists a positive constant $%
+\overline{C},$ such that:%
+\begin{equation*}
+0<\frac{1}{\overline{C}}\leq \lambda _{\min }\left( \frac{\Gamma ^{\prime
+}\Gamma }{N_{1}}\right) \leq \lambda _{\max }\left( \frac{\Gamma ^{\prime
+}\Gamma }{N_{1}}\right) \leq \overline{C}<\infty \text{ for all }N_{1}\text{%
+, }N_{2}\text{ sufficiently large,}
+\end{equation*}%
+where $N_{1}$ is the number of relevant variables or the number of
+components of the subvector $Z_{t}^{\left( 1\right) }$ and $N_{2}$ is the
+number of irrelvant variables or the number of components of the subvector $%
+Z_{t}^{\left( 2\right) }$, with $Z_{t}^{\left( 1\right) }$ and $%
+Z_{t}^{\left( 2\right) }$ as defined in expressions (9) and (10) of the main
+paper.
+
+\noindent \textbf{Assumption OA-4: }Let $\mathbb{S}_{i,T}^{+}$ denote either
+the statistic $\max_{1\leq \ell \leq d}\left\vert S_{i,\ell ,T}\right\vert $
+or the statistic $\dsum\nolimits_{\ell =1}^{d}\varpi _{\ell }\left\vert
+S_{i,\ell ,T}\right\vert $, and let $\varphi $ be the tuning parameter of
+the variable selection decision rule%
+\begin{equation}
+i\in \left\{ 
+\begin{array}{cc}
+\widehat{H}^{c} & \text{ if }\mathbb{S}_{i,T}^{+}\geq \Phi ^{-1}\left( 1-%
+\frac{\varphi }{2N}\right) \\ 
+\widehat{H} & \text{if }\mathbb{S}_{i,T}^{+}<\Phi ^{-1}\left( 1-\frac{%
+\varphi }{2N}\right)%
+\end{array}%
+\right. ,  \label{var selection decision rule}
+\end{equation}%
+as described in section 2 of the main paper. In addition, let $N=N_{1}+N_{2}$%
+, and assume that $\varphi $ satisfies the following three conditions: (a) $%
+\varphi \rightarrow 0$ as $N_{1},N_{2}\rightarrow \infty $, (b)\ there
+exists some constant $a>0,$ such that $\varphi \geq \frac{1}{N^{a}}$ for all 
+$N_{1},N_{2}$ sufficiently large, and (c) 
+\begin{equation*}
+\max \left\{ \frac{N^{\frac{{\large 2}}{{\large 7}}}\varphi ^{\frac{{\large 5%
+}}{{\large 7}}}}{N_{1}},\frac{N^{\frac{{\large 1}}{{\large 3}}}\varphi }{%
+N_{1}T}\right\} \rightarrow 0\text{ as }N_{1},N_{2},T\rightarrow \infty .
+\end{equation*}
+
+\medskip
+
+\noindent \textbf{Remark OA1.1: }
+
+\noindent \textbf{(a) }Since the factor loading matrix $\Gamma $ is an $%
+N\times Kp$ matrix, the matrix $\Gamma ^{\prime }\Gamma $ will have order of
+magnitude equal to $N$ under the conventional assumption of factor
+pervasiveness. Much of the factor analysis literature in both econometrics
+and statistics has studied the case where factors are pervasive in this
+sense. Assumption OA-3 above allows for possible violations of this
+conventional pervasiveness assumption, which will occur in our setup when $%
+N_{1}/N\rightarrow 0$.
+
+\noindent \textbf{(b) }Note that\textbf{\ }the rate condition given in part
+(c) of Assumption OA-4 depends on $N_{1}$. However, if we choose $\varphi $
+so that $\varphi N^{\frac{{\large 2}}{{\large 5}}}=O\left( 1\right) $; then, 
+\begin{equation*}
+\frac{N^{\frac{{\large 2}}{{\large 7}}}\varphi ^{\frac{{\large 5}}{{\large 7}%
+}}}{N_{1}}=O\left( \frac{1}{N_{1}}\right) =o\left( 1\right) \text{ and }%
+\frac{N^{\frac{{\large 1}}{{\large 3}}}\varphi }{N_{1}T}=O\left( \frac{1}{%
+N_{1}N^{\frac{{\large 1}}{{\large 15}}}T}\right) =o\left( \frac{1}{N_{1}}%
+\right) \text{.}
+\end{equation*}%
+Hence, with this choice of $\varphi $, Assumption OA-4 part (c) will be
+satisfied as long as $N_{1}\rightarrow \infty $, and there is no need to
+impose any further condition on the rate at which $N_{1}$ grows. Requiring
+that $N_{1}\rightarrow \infty $ is a minimal condition, since if $%
+N_{1}\nrightarrow \infty $; then consistent factor estimation, even up to an
+invertible matrix transformation, is impossible. Moreover, Monte Carlo
+results reported in Section 3 of the main paper show that our variable
+selection procedure performs very well in finite samples, under the tuning
+parameter choice $\varphi =N^{-\frac{{\large 2}}{{\large 5}}}$, both in
+terms of controlling the probability of a false positive (or Type I) error
+and in terms of controlling the probability of a false negative (or Type II)
+error.
+
+\medskip
+
+Next, consider the post-variable-selection principal component estimator
+
+\noindent of $\underline{F}_{t}=\left( F_{t}^{\prime },F_{t-1}^{\prime
+},...,F_{t-p{\LARGE +}1}^{\prime }\right) $ given by 
+\begin{equation}
+\widehat{\underline{F}}_{t}=\frac{\widehat{\Gamma }^{\prime }Z_{t,N}\left( 
+\widehat{H^{c}}\right) }{\widehat{N}_{1}}\text{,}  \label{factor estimator}
+\end{equation}%
+where $Z_{t,N}\left( \widehat{H^{c}}\right) =\left[ 
+\begin{array}{cccc}
+Z_{1,t}\mathbb{I}\left\{ 1\in \widehat{H^{c}}\right\} , & Z_{2,t}\mathbb{I}%
+\left\{ 2\in \widehat{H^{c}}\right\} , & \cdots , & Z_{N,t}\mathbb{I}\left\{
+N\in \widehat{H^{c}}\right\}%
+\end{array}%
+\right] ^{\prime }$, with%
+\begin{equation*}
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} =\left\{ 
+\begin{array}{cc}
+1 & \text{if }i\in \widehat{H^{c}}\text{, i.e., if }\mathbb{S}_{i,T}^{+}\geq
+\Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \\ 
+0 & \text{if }i\in \widehat{H}\text{, i.e., if }\mathbb{S}_{i,T}^{+}<\Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right)%
+\end{array}%
+\right. ,
+\end{equation*}%
+and where $\widehat{N}_{1}=\#\left( \widehat{H^{c}}\right) $, i.e., the
+cardinality of the set $\widehat{H^{c}}$. Here, $\widehat{\Gamma }$ denotes
+the principal component estimator of the loading matrix $\Gamma $,
+constructed from taking $\sqrt{\widehat{N}_{1}}$ times a matrix whose
+columns are the eigenvectors associated with the $Kp$ largest eigenvalues of
+the post-variable-selection sample covariance matrix $\widehat{\Sigma }%
+\left( \widehat{H^{c}}\right) $, where, in this case,%
+\begin{equation}
+\widehat{\Sigma }\left( \widehat{H^{c}}\right) =\frac{Z\left( \widehat{H^{c}}%
+\right) ^{\prime }Z\left( \widehat{H^{c}}\right) }{\widehat{N}_{1}T_{0}}=%
+\frac{1}{\widehat{N}_{1}T_{0}}\dsum\limits_{t=p}^{T}Z_{t,N}\left( \widehat{%
+H^{c}}\right) Z_{t,N}\left( \widehat{H^{c}}\right) ^{\prime },\text{ }
+\label{post-selection sample cov matrix}
+\end{equation}%
+with $T_{0}=T-p+1$.
+
+Our next result shows that the estimator given in expression (\ref{factor
+estimator}) consistently estimates the unobserved factors $\underline{F}_{t}$%
+, up to an invertible $Kp\times Kp$ matrix transformation.
+
+\medskip
+
+\noindent \textbf{Theorem 3: }\textit{Suppose that Assumptions 2-1, 2-2,
+2-3, 2-4, 2-5, 2-6, 2-7, 2-8, and 2-9 of the main paper hold. Suppose, in
+addition, that Assumptions OA-1, OA-2, OA-3, and OA-4 also hold. Let }$%
+\widehat{\underline{F}}_{t}$\textit{\ be as defined in expression (\ref%
+{factor estimator}). Then,}%
+\begin{equation*}
+\left\Vert \widehat{\underline{F}}_{t}-Q^{\prime }\underline{F}%
+_{t}\right\Vert _{2}=o_{p}\left( 1\right) ,\text{ for all fixed }t\text{,}
+\end{equation*}%
+\textit{where }$Q=\left( \Gamma ^{\prime }\Gamma /N_{1}\right) ^{\frac{%
+{\Large 1}}{{\Large 2}}}\Xi \widehat{V}$, \textit{and where }$\widehat{V}$%
+\textit{\ is the }$Kp\times Kp$\textit{\ orthogonal matrix given in
+expression (\ref{V eigenvector matrix}) below, and }$\Xi $\textit{\ is a }$%
+Kp\times Kp$\textit{\ orthogonal matrix whose columns are the eigenvectors
+of the matrix }%
+\begin{equation*}
+M_{FF}^{\ast }=\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right)
+^{1/2}M_{FF}\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right)
+^{1/2}=\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{1/2}\frac{1}{%
+T_{0}}\dsum\limits_{t=p}^{T}E\left[ \underline{F}_{t}\underline{F}%
+_{t}^{\prime }\right] \left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right)
+^{1/2}\text{.}
+\end{equation*}
+
+\noindent \textbf{Remark OA1.2:}\noindent \noindent
+
+\noindent \textbf{(a)} If we examine the proof of Theorem 3 as well as the
+supporting arguments given in the proof of Lemma OA-2 (both of which can be
+found in the next section of this Online Appendix), we see that two of the
+key components of the proof involve showing that $\left\Vert \left( \Gamma
+\left( \widehat{H^{c}}\right) -\Gamma \right) /\sqrt{N_{1}}\right\Vert _{2}%
+\overset{p}{\rightarrow }0$ and that $\left( \widehat{N}_{1}-N_{1}\right)
+/N_{1}\overset{p}{\rightarrow }0$. This is one of the reasons why in Remark
+2.3(b) of the main paper, we have argued that initial variable selection
+should focus on determining which variables load strongly on the factors
+without worrying specifically at that stage about the related issues of
+predictability or, for that matter, any other issue. By contrast, if we make
+our initial variable selection based on some more stringent criterion that
+takes into consideration not only variable relevance but also other concerns
+such as predictability, then, we may end up with a much smaller set $%
+\widetilde{H}^{c}$ of selected variables relative to the set $\widehat{H^{c}}
+$ selected under our procedure. In particular, in this case, it may be
+possible that even in large samples a significant number of the rows of $%
+\Gamma \left( \widetilde{H^{c}}\right) $ may contain only zero elements even
+though the corresponding rows of $\Gamma $ are not zero vectors, so that the
+desired result $\left\Vert \left( \Gamma \left( \widetilde{H^{c}}\right)
+-\Gamma \right) /\sqrt{N_{1}}\right\Vert _{2}\overset{p}{\rightarrow }0$ may
+not hold. For the same reason, if we let $\widetilde{N}_{1}$ denote the
+cardinality of the set of selected indices based on an alternative, more
+stringent variable selection procedure, then, the result $\left( \widetilde{N%
+}_{1}-N_{1}\right) /N_{1}\overset{p}{\rightarrow }0$ also may not hold,
+since, by definition, $N_{1}$ is the number of rows of $\Gamma $ which have
+at least one non-zero element.
+
+\noindent \textbf{(b)} Note that, with the proper specification of the
+tuning parameter $\varphi $, the consistent factor estimation result given
+in Theorem 3 can be attained without the condition $N/\left( TN_{1}\right)
+\rightarrow 0$ given in Bai and Ng (2021). Theorem 3 does require that $%
+N_{1}\rightarrow \infty $, which is a minimal condition as previously argued
+in Remark OA1.1(b).
+
+\section{Proofs of Theorem 3 and of Supporting Lemmas}
+
+\noindent \qquad This section gives the proof of Theorem 3 followed by the
+statement and proof of two supporting lemmas: Lemmas OA-1 and Lemma
+OA-2.\newpage
+
+\noindent \textbf{Proof of Theorem 3: }
+
+To proceed, note first that the principal component estimator of $\underline{%
+F}_{t}$ can be written as $\widehat{\underline{F}}_{t}=\widehat{\Gamma }%
+^{\prime }Z_{t,N}\left( \widehat{H^{c}}\right) /\widehat{N}_{1}$, where $%
+\widehat{\Gamma }=\sqrt{\widehat{N}_{1}}\widehat{B}$ and where the columns
+of the matrix $\widehat{B}$ are the eigenvectors associated with the $Kp$
+largest eigenvalues of the (post-variable-selection) sample covariance
+matrix $\widehat{\Sigma }\left( \widehat{H^{c}}\right) =Z\left( \widehat{%
+H^{c}}\right) ^{\prime }Z\left( \widehat{H^{c}}\right) /\left( \widehat{N}%
+_{1}T_{0}\right) $. Moreover, by the result of part (d) of Lemma OA-1, the
+matrix $\widehat{B}$ has the representation $\widehat{B}=\widehat{G}_{1}%
+\widehat{V}$, where $\widehat{G}_{1}$ is an $N\times Kp$ matrix, whose
+columns define an orthonormal basis for an invariant subspace of $\widehat{%
+\Sigma }\left( \widehat{H^{c}}\right) $ and where $\widehat{V}$ is a $%
+Kp\times Kp$ orthogonal matrix as defined in expression (\ref{V eigenvector
+matrix}) in part (c) of Lemma OA-1. Making use of this representation, we
+can further write%
+\begin{eqnarray*}
+\widehat{\underline{F}}_{t}-Q^{\prime }\underline{F}_{t} &=&\frac{\sqrt{%
+\widehat{N}_{1}}\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}Z_{t,N}\left( \widehat{H^{c}}\right) }{\widehat{N}_{1}}-Q^{\prime }%
+\underline{F}_{t} \\
+&=&\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma
+\left( \widehat{H^{c}}\right) \underline{F}_{t}}{\sqrt{\widehat{N}_{1}}}+%
+\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}U_{t,N}\left( 
+\widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}}}-Q^{\prime }\underline{F}_{t}
+\\
+&=&\left( \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma \left( \widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}}}-Q^{\prime
+}\right) \underline{F}_{t}+\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}%
+}}
+\end{eqnarray*}%
+where $\Gamma \left( \widehat{H^{c}}\right) =\left( \mathbb{I}\left\{ 1\in 
+\widehat{H^{c}}\right\} \gamma _{1},...,\mathbb{I}\left\{ N\in \widehat{H^{c}%
+}\right\} \gamma _{N}\right) ^{\prime }$ and
+
+\noindent $U_{t,N}\left( \widehat{H^{c}}\right) =\left( \mathbb{I}\left\{
+1\in \widehat{H^{c}}\right\} u_{1,t},...,\mathbb{I}\left\{ N\in \widehat{%
+H^{c}}\right\} u_{N,t}\right) ^{\prime }$. Next, write
+
+\noindent $\left( \widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma /\sqrt{\widehat{N}_{1}}\right) -Q^{\prime }=\left[ \left( 1+\left[ 
+\widehat{N}_{1}-N_{1}\right] /N_{1}\right) ^{-\frac{{\large 1}}{{\large 2}}%
+}-1\right] \left( \widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma /\sqrt{N_{1}}\right) +\left( \widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}\Gamma /\sqrt{N_{1}}\right) -Q^{\prime }$
+
+\noindent and $\left( \Gamma \left( \widehat{H^{c}}\right) -\Gamma \right) /%
+\sqrt{\widehat{N}_{1}}=\left( 1+\left[ \widehat{N}_{1}-N_{1}\right]
+/N_{1}\right) ^{-\frac{{\large 1}}{{\large 2}}}\left( \left[ \Gamma \left( 
+\widehat{H^{c}}\right) -\Gamma \right] /\sqrt{N_{1}}\right) $, so that%
+\begin{eqnarray*}
+\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma \left( 
+\widehat{H^{c}}\right) \underline{F}_{t}}{\sqrt{\widehat{N}_{1}}}
+&=&Q^{\prime }\underline{F}_{t}+\left( \frac{\widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}\Gamma }{\sqrt{\widehat{N}_{1}}}-Q^{\prime }\right) 
+\underline{F}_{t}+\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\left( \frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{\sqrt{\widehat{N%
+}_{1}}}\right) \underline{F}_{t} \\
+&=&Q^{\prime }\underline{F}_{t}+\left( \frac{\widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}-Q^{\prime }\right) \underline{F%
+}_{t}+\left[ \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}-1\right] \frac{\widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}\underline{F}_{t} \\
+&&+\left[ \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}\right] \widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}\left( \frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{%
+\sqrt{N}_{1}}\right) \underline{F}_{t}
+\end{eqnarray*}%
+It follows that%
+\begin{eqnarray*}
+\widehat{\underline{F}}_{t}-Q^{\prime }\underline{F}_{t} &=&\left( \frac{%
+\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma \left( 
+\widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}}}-Q^{\prime }\right) 
+\underline{F}_{t}+\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime 
+}}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}}} \\
+&=&\left( \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma }{\sqrt{N_{1}}}-Q^{\prime }\right) \underline{F}_{t}+\left[ \left( 1+%
+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{{\large 1}}{{\large 2}}%
+}-1\right] \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma }{\sqrt{N_{1}}}\underline{F}_{t} \\
+&&+\left[ \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}\right] \widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}\left( \frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{%
+\sqrt{N}_{1}}\right) \underline{F}_{t}+\frac{\widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{\widehat{%
+N}_{1}}}
+\end{eqnarray*}%
+Hence, applying the triangle inequality as well as parts (a)-(c), (g), and
+(h) of Lemma OA-2 along with the Slutsky's theorem, we obtain 
+\begin{eqnarray*}
+&&\left\Vert \widehat{\underline{F}}_{t}-Q^{\prime }\underline{F}%
+_{t}\right\Vert _{2} \\
+&\leq &\left\Vert \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime 
+}}\Gamma }{\sqrt{N_{1}}}-Q^{\prime }\right\Vert _{2}\left\Vert \underline{F}%
+_{t}\right\Vert _{2}+\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}%
+\right) ^{-\frac{{\large 1}}{{\large 2}}}-1\right\vert \left\Vert \frac{%
+\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}%
+\right\Vert _{2}\left\Vert \underline{F}_{t}\right\Vert _{2} \\
+&&+\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}\right\vert \left\Vert \widehat{V}^{\prime }\widehat{%
+G}_{1}^{{\Large \prime }}\right\Vert _{2}\left\Vert \frac{\Gamma \left( 
+\widehat{H^{c}}\right) -\Gamma }{\sqrt{N}_{1}}\right\Vert _{2}\left\Vert 
+\underline{F}_{t}\right\Vert _{2}+\left\Vert \frac{\widehat{V}^{\prime }%
+\widehat{G}_{1}^{{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) }{%
+\sqrt{\widehat{N}_{1}}}\right\Vert _{2} \\
+&=&\left\Vert \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma }{\sqrt{N_{1}}}-Q^{\prime }\right\Vert _{2}\left\Vert \underline{F}%
+_{t}\right\Vert _{2}+\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}%
+\right) ^{-\frac{{\large 1}}{{\large 2}}}-1\right\vert \left\Vert \frac{%
+\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }}\Gamma }{\sqrt{N_{1}}}%
+\right\Vert _{2}\left\Vert \underline{F}_{t}\right\Vert _{2} \\
+&&+\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}\right\vert \left\Vert \frac{\Gamma \left( \widehat{%
+H^{c}}\right) -\Gamma }{\sqrt{N}_{1}}\right\Vert _{2}\left\Vert \underline{F}%
+_{t}\right\Vert _{2}+\left\Vert \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}%
+}}\right\Vert _{2} \\
+&&\left( \text{since }\left\Vert \widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}\right\Vert _{2}=\sqrt{\lambda _{\max }\left( \widehat{G}%
+_{1}\widehat{V}\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\right) }=\sqrt{\lambda _{\max }\left( \widehat{V}^{\prime }\widehat{G}%
+_{1}^{{\Large \prime }}\widehat{G}_{1}\widehat{V}\right) }=\sqrt{\lambda
+_{\max }\left( I_{Kp}\right) }=1\right) \\
+&=&o_{p}\left( 1\right) O_{p}\left( 1\right) +o_{p}\left( 1\right)
+O_{p}\left( 1\right) O_{p}\left( 1\right) +O_{p}\left( 1\right) o_{p}\left(
+1\right) O_{p}\left( 1\right) +o_{p}\left( 1\right) \\
+&=&o_{p}\left( 1\right) \text{. }\square
+\end{eqnarray*}
+
+\medskip
+
+\noindent \textbf{Lemma OA-1: }Let $\widehat{\Sigma }\left( \widehat{H^{c}}%
+\right) $ be the post-variable-selection sample covariance matrix as defined
+in expression (\ref{post-selection sample cov matrix}), and let $T_{0}=T-p+1$%
+, as before. Decompose $\widehat{\Sigma }\left( \widehat{H^{c}}\right) $ as $%
+\widehat{\Sigma }\left( \widehat{H^{c}}\right) =A+E$, where $A=\Gamma
+M_{FF}\Gamma ^{\prime }/N_{1}$ and where 
+\begin{eqnarray}
+E &=&\widehat{\Sigma }\left( \widehat{H^{c}}\right) -\frac{\Gamma
+M_{FF}\Gamma ^{\prime }}{N_{1}}  \notag \\
+&=&\left( \Gamma \left( \widehat{H^{c}}\right) M_{FF}\Gamma \left( \widehat{%
+H^{c}}\right) ^{\prime }/\widehat{N}_{1}-\Gamma M_{FF}\Gamma ^{\prime
+}/N_{1}\right) +\frac{1}{\widehat{N}_{1}}\Gamma \left( \widehat{H^{c}}%
+\right) \left[ \frac{\underline{F}^{\prime }\underline{F}}{T_{0}}-M_{FF}%
+\right] \Gamma \left( \widehat{H^{c}}\right) ^{\prime }  \notag \\
+&&+\frac{U\left( \widehat{H^{c}}\right) ^{\prime }\underline{F}\Gamma \left( 
+\widehat{H^{c}}\right) ^{\prime }}{\widehat{N}_{1}T_{0}}+\frac{\Gamma \left( 
+\widehat{H^{c}}\right) \underline{F}^{\prime }U\left( \widehat{H^{c}}\right) 
+}{\widehat{N}_{1}T_{0}}+\frac{U\left( \widehat{H^{c}}\right) ^{\prime
+}U\left( \widehat{H^{c}}\right) }{\widehat{N}_{1}T_{0}},  \label{E matrix}
+\end{eqnarray}%
+with $U\left( \widehat{H^{c}}\right) =$ $\left( \mathbb{I}\left\{ 1\in 
+\widehat{H^{c}}\right\} u_{1\cdot },...,\mathbb{I}\left\{ N\in \widehat{H^{c}%
+}\right\} u_{N\cdot }\right) $ and $M_{FF}=T_{0}^{-1}\dsum%
+\nolimits_{t=p}^{T}E\left[ \underline{F}_{t}\underline{F}_{t}^{\prime }%
+\right] $. Let Assumptions 2-1, 2-2, 2-3, 2-4 2-5, 2-6, 2-7, 2-9, OA-1,
+OA-2, OA-3, and OA-4 all hold; and define $\underset{N\times N}{G}=\left[ 
+\begin{array}{cc}
+\underset{N\times Kp}{G_{1}} & \underset{N\times \left( N-Kp\right) }{G_{2}}%
+\end{array}%
+\right] $ to be an orthogonal matrix whose columns are the eigenvectors of
+the matrix $A$. Without loss of generality, suppose also that the columns of 
+$G_{1}$ are the eigenvectors associated with the non-zero eigenvalues of $A$%
+, whereas $G_{2}$ contains the eigenvectors associated with the zero
+eigenvalue which has an algebraic multiplicity of $N-Kp$ in this case%
+\footnote{%
+An explicit proof that $0$ is an eigenvalue of the matrix $A=\Gamma
+M_{FF}\Gamma ^{\prime }/N_{1}$ with algebraic multiplicity equaling $N-Kp$
+is given in the Technical Appendix of an earlier version of this paper, Chao
+and Swanson (2022b) which is available at http://econweb.umd.edu/\symbol{126}%
+chao/Research/research\_files/AppConFacVarSel-03-18-2022.pdf. In particular,
+this result is shown in part (a) of Lemma D-11 in Appendix D of Chao and
+Swanson (2022b).}. Partition the matrices $G^{\prime }AG$ and $G^{\prime }EG$
+as follows:%
+\begin{eqnarray*}
+G^{\prime }AG &=&\left( 
+\begin{array}{cc}
+\underset{Kp\times Kp}{\Lambda _{1}} & \underset{Kp\times \left( N-Kp\right) 
+}{0} \\ 
+\underset{\left( N-Kp\right) \times Kp}{0} & \underset{\left( N-Kp\right)
+\times \left( N-Kp\right) }{\Lambda _{2}}%
+\end{array}%
+\right) =\left( 
+\begin{array}{cc}
+\underset{Kp\times Kp}{\Lambda _{1}} & \underset{Kp\times \left( N-Kp\right) 
+}{0} \\ 
+\underset{\left( N-Kp\right) \times Kp}{0} & \underset{\left( N-Kp\right)
+\times \left( N-Kp\right) }{0}%
+\end{array}%
+\right) \text{ and} \\
+G^{\prime }EG &=&\left( 
+\begin{array}{cc}
+\underset{Kp\times Kp}{E_{11}} & \underset{Kp\times \left( N-Kp\right) }{%
+E_{21}^{\prime }} \\ 
+\underset{\left( N-Kp\right) \times Kp}{E_{21}} & \underset{\left(
+N-Kp\right) \times \left( N-Kp\right) }{E_{22}}%
+\end{array}%
+\right) \text{,}
+\end{eqnarray*}%
+where $\Lambda _{1}$ is a diagonal matrix whose diagonal elements are the $%
+Kp $ largest eigevalues of the matrix $A$.\footnote{%
+An explicit proof showing that $G^{\prime }AG$ can be partitioned in the
+manner given here is also provided in the proof of Lemma D-11 of Chao and
+Swanson (2022b).}\qquad\ 
+
+Under the assumed conditions, the following statements are true.
+
+\begin{enumerate}
+\item[(a)] There exists a $\left( N-Kp\right) \times Kp$ matrix $R$ such
+that the columns of the matrix $\widehat{G}_{1}=\left( G_{1}+G_{2}R\right)
+\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}$ define an orthonormal basis for a
+subspace that is
+
+invariant for $\widehat{\Sigma }\left( \widehat{H^{c}}\right) =A+E$ w.p.a.1.
+Moreover, $\left\Vert R\right\Vert _{2}=o_{p}\left( 1\right) $ as $%
+N_{1},N_{2},$ and $T\rightarrow \infty $.
+
+\item[(b)] $\left\Vert \widehat{G}_{1}-G_{1}\right\Vert _{2}=o_{p}\left(
+1\right) $ as $N_{1},$ $N_{2}$, and $T\rightarrow \infty $.
+
+\item[(c)] The exists a unique symmetric matrix $L$ such that $\left(
+A+E\right) \widehat{G}_{1}=\widehat{G}_{1}L$. Moreover, let 
+\begin{equation}
+\widehat{\Lambda }=diag\left( \widehat{\lambda }_{1},...,\widehat{\lambda }%
+_{Kp}\right)  \label{LambdaL}
+\end{equation}%
+denote a diagonal matrix whose diagonal elements are the eigenvalues of the
+matrix $L$, and let%
+\begin{equation}
+\widehat{V}=\left( 
+\begin{array}{cccc}
+\widehat{v}_{1} & \widehat{v}_{2} & \cdots & \widehat{v}_{Kp}%
+\end{array}%
+\right)  \label{V eigenvector matrix}
+\end{equation}%
+be a $Kp\times Kp$ matrix whose $\ell ^{th}$ column (i.e., $\widehat{v}%
+_{\ell }$) is an eigenvector of $L$ associated with the eigenvalue $\widehat{%
+\lambda }_{\ell }$ for $\ell =1,...,Kp$. Then, $\widehat{V}$ is an
+orthogonal matrix and $\left( \widehat{G}_{1}\widehat{v}_{\ell },\widehat{%
+\lambda }_{\ell }\right) $ is an eigenpair for the matrix $A+E$ for $\ell
+=1,...,Kp$.
+
+\item[(d)] The columns of the matrix $\widehat{G}_{1}\widehat{V}=\left( 
+\begin{array}{cccc}
+\widehat{G}_{1}\widehat{v}_{1} & \widehat{G}_{1}\widehat{v}_{2} & \cdots & 
+\widehat{G}_{1}\widehat{v}_{Kp}%
+\end{array}%
+\right) $ are the eigenvectors associated with the $Kp$ largest eigenvalues
+of the post-variable-selection sample covariance matrix $A+E=\widehat{\Sigma 
+}\left( \widehat{H^{c}}\right) $.
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{Proof of Lemm OA-1: }
+
+To show part (a), we first verify that two key conditions of Theorem 8.1.10
+of Golub and van Loan (1996), i.e.,%
+\begin{equation}
+\text{sep}\left( \Lambda _{1},\Lambda _{2}\right) =\min_{X{\Large \neq }0}%
+\frac{\left\Vert \Lambda _{1}X-X\Lambda _{2}\right\Vert _{F}}{\left\Vert
+X\right\Vert _{F}}>0  \label{sep bd from zero}
+\end{equation}%
+and 
+\begin{equation}
+\left\Vert E\right\Vert _{2}\leq \frac{\text{sep}\left( \Lambda _{1},\Lambda
+_{2}\right) }{5}=\frac{1}{5}\min_{X{\Large \neq }0}\frac{\left\Vert \Lambda
+_{1}X-X\Lambda _{2}\right\Vert _{F}}{\left\Vert X\right\Vert _{F}}\text{,}
+\label{upper bd E}
+\end{equation}%
+are satisfied here\footnote{%
+It should be noted that Golub and van Loan (1996) use slightly different
+notations than we do here. In particular, the two conditions given in
+expressions (\ref{sep bd from zero}) and (\ref{upper bd E}), if stated in
+their notations, would be sep$\left( D_{1},D_{2}\right) >0$ and $\left\Vert
+E\right\Vert _{2}\leq \frac{sep\left( D_{1},D_{2}\right) }{5}$.}. To
+proceed, let ran$\left( G_{1}\right) $ denote the range space of $G_{1}$,
+i.e., ran$\left( G_{1}\right) =\left\{ g\in \mathbb{R}^{N}:g=G_{1}b\text{
+for some }b\in \mathbb{R}^{Kp}\right\} $; and, by definition, $\Lambda _{1}$
+is a $Kp\times Kp$ diagonal matrix whose diagonal elements are the non-zero
+eigenvalues of the matrix $A=\Gamma M_{FF}\Gamma ^{\prime }/N_{1}$. Now, for
+any $\widetilde{g}\in $ ran$\left( G_{1}\right) $, note that there exists $%
+b\in \mathbb{R}^{Kp}$ such that $g^{\ast }=A\widetilde{g}=\left( \Gamma
+M_{FF}\Gamma ^{\prime }/N_{1}\right) G_{1}b=G_{1}\Lambda _{1}b=G_{1}b^{\ast
+} $, where $b^{\ast }=\Lambda _{1}b$, from which it follows that $g^{\ast
+}\in $ ran$\left( G_{1}\right) $, so that ran$\left( G_{1}\right) $ is an
+invariant subspace of $A$. Next, given Assumptions 2-1, 2-2(a)-(b), 2-5,
+2-6, OA-1, and OA-3, it is straightforward to show that there exists a
+positive constant $\underline{c}$ such that 
+\begin{equation}
+\text{sep}\left( \Lambda _{1},\Lambda _{2}\right) =\text{sep}\left( \Lambda
+_{1},0\right) =\min_{X{\Large \neq }0}\frac{\left\Vert \Lambda
+_{1}X\right\Vert _{F}}{\left\Vert X\right\Vert _{F}}\geq \lambda _{\min
+}\left( \Lambda _{1}\right) =\lambda _{\min }\left( \frac{M_{FF}^{1/2}\Gamma
+^{\prime }\Gamma M_{FF}^{1/2}}{N_{1}}\right) \geq \underline{c}>0\text{ }
+\label{lower bd for sep}
+\end{equation}%
+for all $N_{1}$ and $N_{2}$ sufficiently large\footnote{%
+A more detailed proof of the result that sep$\left( \Lambda _{1},\Lambda
+_{2}\right) \geq \underline{c}>0$ can be found in the Technical Appendix of
+an earlier version of this paper, Chao and Swanson (2022b). In particular,
+this result is shown in part (c) of Lemma D-11 in Appendix D of Chao and
+Swanson (2022b).}, so that the condition given in expression (\ref{sep bd
+from zero}) is fulfilled. In addition, by the result given in Lemma D-10 of
+Chao and Swanson (2022b), we have $\left\Vert E\right\Vert _{2}=\left\Vert 
+\widehat{\Sigma }\left( \widehat{H^{c}}\right) -\left( \Gamma M_{FF}\Gamma
+^{\prime }/N_{1}\right) \right\Vert _{2}=o_{p}\left( 1\right) $ \ as $N_{1}$%
+, $N_{2}$, and $T\rightarrow \infty $; from which it follows that $%
+\left\Vert E\right\Vert _{2}\leq sep\left( \Lambda _{1},0\right) /5$ w.p.a.1
+as $N_{1}$, $N_{2}$, and $T\rightarrow \infty $, so that the condition given
+in expression (\ref{upper bd E}) is also satisfied w.p.a.1. Hence,
+application of Theorem 8.1.10 of Golub and van Loan (1996) allows us to
+conclude that there exists a $\left( N-Kp\right) \times Kp$ matrix $R$ such
+that the columns of the matrix $\widehat{G}_{1}=\left( G_{1}+G_{2}R\right)
+\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}$ define an orthonormal basis for a
+subspace that is invariant for $A+E$ w.p.a.1. In addition,%
+\begin{eqnarray*}
+\left\Vert R\right\Vert _{2} &\leq &\frac{4}{\text{sep}\left( \Lambda
+_{1},0\right) }\left\Vert E\right\Vert _{2}\leq 4\left[ \lambda _{\min
+}\left( \frac{M_{FF}^{1/2}\Gamma ^{\prime }\Gamma M_{FF}^{1/2}}{N_{1}}%
+\right) \right] ^{-1}\left\Vert E\right\Vert _{2} \\
+&\leq &\frac{4}{\underline{c}}\left\Vert E\right\Vert _{2}\text{ \ }\left( 
+\text{for some }\underline{c}>0\text{ given expression (\ref{lower bd for
+sep})}\right) \\
+&=&o_{p}\left( 1\right) \text{,}
+\end{eqnarray*}%
+which shows result (a).
+
+To show that $\left\Vert \widehat{G}_{1}-G_{1}\right\Vert _{2}=o_{p}\left(
+1\right) $, we first show that an explicit representation for $G_{1}$ can be
+given as $G_{1}=\left( \Gamma /\sqrt{N_{1}}\right) \left( \Gamma ^{\prime
+}\Gamma /N_{1}\right) ^{-1/2}\Xi =\Gamma \left( \Gamma ^{\prime }\Gamma
+\right) ^{-1/2}\Xi $ , where $\Xi $ is an orthogonal matrix whose columns
+are eigenvectors of the matrix $M_{FF}^{\ast }=\left( \Gamma ^{\prime
+}\Gamma /N_{1}\right) ^{1/2}M_{FF}\left( \Gamma ^{\prime }\Gamma
+/N_{1}\right) ^{1/2}$. To see that this representation satisfies the various
+properties we require of $G_{1}$, note first that $G_{1}^{\prime }G_{1}=\Xi
+^{\prime }\left( \Gamma ^{\prime }\Gamma /N_{1}\right) ^{-1/2}\left( \Gamma
+^{\prime }\Gamma /N_{1}\right) \left( \Gamma ^{\prime }\Gamma /N_{1}\right)
+^{-1/2}\Xi $ $=I_{Kp}$; hence, $G_{1}$ so represented does have orthonormal
+columns. Moreover, note that%
+\begin{eqnarray}
+\frac{\Gamma M_{FF}\Gamma ^{\prime }}{N_{1}}G_{1} &=&\frac{\Gamma }{\sqrt{%
+N_{1}}}M_{FF}\frac{\Gamma ^{\prime }\Gamma }{N_{1}}\left( \frac{\Gamma
+^{\prime }\Gamma }{N_{1}}\right) ^{-1/2}\Xi =\frac{\Gamma }{\sqrt{N_{1}}}%
+\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{-1/2}M_{FF}^{\ast
+}\Xi \text{ \ }=\Gamma \left( \Gamma ^{\prime }\Gamma \right) ^{-1/2}\Xi
+\Lambda _{1}  \notag \\
+&=&G_{1}\Lambda _{1}  \label{eigen eqn for A}
+\end{eqnarray}%
+where $\Lambda _{1}$ is a $Kp\times Kp$ diagonal matrix whose diagonal
+elements are the eigenvalues of the matrix $M_{FF}^{\ast }$, which also
+happen to be the non-zero eigenvalues of the matrix $A=\Gamma M_{FF}\Gamma
+^{\prime }/N_{1}$. Pre-multiplying the above equation by $G_{1}^{\prime }$,
+we obtain $G_{1}^{\prime }\left( \Gamma M_{FF}\Gamma ^{\prime }/N_{1}\right)
+G_{1}=G_{1}^{\prime }G_{1}\Lambda _{1}=\Lambda _{1}$. Since equation (\ref%
+{eigen eqn for A}) shows that the columns of $\Gamma \left( \Gamma ^{\prime
+}\Gamma \right) ^{-1/2}\Xi $ are indeed the eigenvectors of the matrix $%
+A=\Gamma M_{FF}\Gamma ^{\prime }/N_{1}$, by the argument given previously in
+the proof of part (a) above, we can then deduce that ran$\left( G_{1}\right) 
+$, the range space of $G_{1}$ with $G_{1}=\Gamma \left( \Gamma ^{\prime
+}\Gamma \right) ^{-1/2}\Xi $, is an invariant subspace of $A$. It follows
+that setting $G_{1}=\Gamma \left( \Gamma ^{\prime }\Gamma \right) ^{-1/2}\Xi 
+$ \ fulfills all the required properties which we have previously specified
+for $G_{1}$.
+
+Next, write%
+\begin{eqnarray*}
+\widehat{G}_{1}-G_{1} &=&\left( G_{1}+G_{2}R\right) \left( I_{Kp}+R^{\prime
+}R\right) ^{-1/2}-G_{1} \\
+&=&G_{1}\left[ \left( I_{Kp}+R^{\prime }R\right) ^{-1/2}-I_{Kp}\right]
++G_{2}R\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}
+\end{eqnarray*}%
+\begin{equation*}
+=\frac{\Gamma }{\sqrt{N_{1}}}\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}%
+\right) ^{-1/2}\Xi \left[ \left( I_{Kp}+R^{\prime }R\right) ^{-1/2}-I_{Kp}%
+\right] +G_{2}R\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}
+\end{equation*}%
+Applying the submultiplicative property of matrix norms and the triangle
+inequality, we obtain%
+\begin{eqnarray*}
+\left\Vert \widehat{G}_{1}-G_{1}\right\Vert _{2} &\leq &\left\Vert \frac{%
+\Gamma }{\sqrt{N_{1}}}\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right)
+^{-1/2}\right\Vert _{2}\left\Vert \Xi \right\Vert _{2}\left\Vert \left(
+I_{Kp}+R^{\prime }R\right) ^{-1/2}-I_{Kp}\right\Vert _{2} \\
+&&+\left\Vert G_{2}\right\Vert _{2}\left\Vert R\right\Vert _{2}\left\Vert
+\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}\right\Vert _{2} \\
+&=&\left\Vert I_{Kp}-\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}\right\Vert
+_{2}+\left\Vert R\right\Vert _{2}\left\Vert \left( I_{Kp}+R^{\prime
+}R\right) ^{-1/2}\right\Vert _{2}
+\end{eqnarray*}%
+where the last equality follows from the fact that $\left\Vert \Xi
+\right\Vert _{2}=\sqrt{\lambda _{\max }\left( \Xi ^{\prime }\Xi \right) }=%
+\sqrt{\lambda _{\max }\left( I_{Kp}\right) }=1$, $\left\Vert
+G_{2}\right\Vert _{2}=\sqrt{\lambda _{\max }\left( G_{2}^{\prime
+}G_{2}\right) }=\sqrt{\lambda _{\max }\left( I_{N-Kp}\right) }=1$,
+
+\noindent $\left\Vert \left( I_{Kp}+R^{\prime }R\right)
+^{-1/2}-I_{Kp}\right\Vert _{2}=\left\Vert I_{Kp}-\left( I_{Kp}+R^{\prime
+}R\right) ^{-1/2}\right\Vert _{2}$, and 
+\begin{equation*}
+\text{ }\left\Vert \frac{\Gamma }{\sqrt{N_{1}}}\left( \frac{\Gamma ^{\prime
+}\Gamma }{N_{1}}\right) ^{-1/2}\right\Vert _{2}=\sqrt{\lambda _{\max
+}\left\{ \left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{-1/2}\frac{%
+\Gamma ^{\prime }\Gamma }{N_{1}}\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}%
+\right) ^{-1/2}\right\} }=\sqrt{\lambda _{\max }\left\{ I_{Kp}\right\} }=1%
+\text{.}
+\end{equation*}%
+Now, , if $\left( \lambda ,\rho \right) $ is an eigen-pair of $R^{\prime }R$%
+; then, by definition, $R^{\prime }R\rho =\lambda \rho $ with $\lambda \geq
+0 $, since $R^{\prime }R$ is a positive semidefinite matrix. It follows by
+elementary properties of eigenvalues and eigenvectors that, in this case, $%
+\left( \sqrt{1+\lambda }-1\right) /\sqrt[\backslash ]{1+\lambda }$ will be
+an eigenvalue of the matrix $I_{Kp}-\left( I_{Kp}+R^{\prime }R\right)
+^{-1/2} $ associated with the eigenvector $\rho $, so that 
+\begin{equation*}
+\left[ I_{Kp}-\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}\right] \rho =\frac{%
+\sqrt{1+\lambda }-1}{\sqrt[\backslash ]{1+\lambda }}\rho
+\end{equation*}%
+Next, let $g\left( \lambda \right) =\left( \sqrt{1+\lambda }-1\right) /\sqrt[%
+\backslash ]{1+\lambda }$; and, by taking derivative of $g\left( \lambda
+\right) $ with respect to $\lambda $, we obtain%
+\begin{equation*}
+g^{\prime }\left( \lambda \right) =\frac{1}{2}\frac{1}{1+\lambda }-\frac{1}{2%
+}\frac{\sqrt{1+\lambda }-1}{\left( 1+\lambda \right) ^{3/2}}=\frac{1}{%
+2\left( 1+\lambda \right) ^{3/2}}>0\text{ for all }\lambda \geq 0\text{,}
+\end{equation*}%
+so that, in particular, $g\left( \lambda \right) $ is an increasing function
+of $\lambda $ for $\lambda \geq 0$. Making use of these results, we see that%
+\begin{eqnarray*}
+&&\left\Vert \widehat{G}_{1}-G_{1}\right\Vert _{2} \\
+&\leq &\left\Vert I_{Kp}-\left( I_{Kp}+R^{\prime }R\right)
+^{-1/2}\right\Vert _{2}+\left\Vert R\right\Vert _{2}\left\Vert \left(
+I_{Kp}+R^{\prime }R\right) ^{-1/2}\right\Vert _{2}
+\end{eqnarray*}%
+\begin{eqnarray*}
+&=&\sqrt{\lambda _{\max }\left( \left[ I_{Kp}-\left( I_{Kp}+R^{\prime
+}R\right) ^{-1/2}\right] ^{\prime }\left[ I_{Kp}-\left( I_{Kp}+R^{\prime
+}R\right) ^{-1/2}\right] \right) } \\
+&&+\left\Vert R\right\Vert _{2}\sqrt{\lambda _{\max }\left( \left(
+I_{Kp}+R^{\prime }R\right) ^{-1/2\prime }\left( I_{Kp}+R^{\prime }R\right)
+^{-1/2}\right) } \\
+&=&\lambda _{\max }\left[ I_{Kp}-\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}%
+\right] +\left\Vert R\right\Vert _{2}\lambda _{\max }\left[ \left(
+I_{Kp}+R^{\prime }R\right) ^{-1/2}\right] \\
+&\leq &\frac{\sqrt{1+\lambda _{\max }\left( R^{\prime }R\right) }-1}{\sqrt[%
+\backslash ]{1+\lambda _{\min }\left( R^{\prime }R\right) }}+\frac{%
+\left\Vert R\right\Vert _{2}}{\sqrt[\backslash ]{1+\lambda _{\min }\left(
+R^{\prime }R\right) }} \\
+&\leq &\sqrt{1+\left\Vert R\right\Vert _{2}^{2}}-1+\left\Vert R\right\Vert
+_{2}\text{ \ } \\
+&=&o_{p}\left( 1\right) \text{ as }N_{1},\text{ }N_{2}\text{, and }%
+T\rightarrow \infty \text{ }\left( \text{since }\left\Vert R\right\Vert
+_{2}=o_{p}\left( 1\right) \right) \text{. }
+\end{eqnarray*}
+
+To show part (c), note that, by the result given in part (a) above, the
+columns of $\widehat{G}_{1}=\left( G_{1}+G_{2}R\right) \left(
+I_{r}+R^{\prime }R\right) ^{-1/2}$ form an orthonormal basis for a subspace
+that is invariant for $A+E$. It then follows from applying Theorem 3.9 on
+page 22 of Stewart and Sun (1990) that there exists a unique matrix $L$ such
+that $\left( A+E\right) \widehat{G}_{1}=\left( A+E\right) \left(
+G_{1}+G_{2}R\right) \left( I_{r}+R^{\prime }R\right) ^{-1/2}=\left(
+G_{1}+G_{2}R\right) \left( I_{r}+R^{\prime }R\right) ^{-1/2}L=\widehat{G}%
+_{1}L$. Note further that, since by assumption $G=\left[ 
+\begin{array}{cc}
+G_{1} & G_{2}%
+\end{array}%
+\right] $ is an orthogonal matrix, we have%
+\begin{eqnarray*}
+\widehat{G}_{1}^{\prime }\widehat{G}_{1} &=&\left( I_{Kp}+R^{\prime
+}R\right) ^{-1/2}\left( G_{1}^{\prime }+R^{\prime }G_{2}^{\prime }\right)
+\left( G_{1}+G_{2}R\right) \left( I_{Kp}+R^{\prime }R\right) ^{-1/2} \\
+&=&\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}\left( G_{1}^{\prime
+}G_{1}+R^{\prime }G_{2}^{\prime }G_{1}+G_{1}^{\prime }G_{2}R+R^{\prime
+}G_{2}^{\prime }G_{2}R\right) \left( I_{Kp}+R^{\prime }R\right) ^{-1/2} \\
+&=&\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}\left( I_{Kp}+R^{\prime
+}R\right) \left( I_{Kp}+R^{\prime }R\right) ^{-1/2} \\
+&=&I_{Kp}
+\end{eqnarray*}%
+which, in turn, implies that $\widehat{G}_{1}^{\prime }\left( A+E\right) 
+\widehat{G}_{1}=\widehat{G}_{1}^{\prime }\left( \left[ \Gamma M_{FF}\Gamma
+^{\prime }/N_{1}\right] +E\right) \widehat{G}_{1}=\widehat{G}_{1}^{\prime }%
+\widehat{G}_{1}L=L$, so that $L$ must be symmetric since, in our case here, $%
+A+E=\left( \Gamma M_{FF}\Gamma ^{\prime }N_{1}\right) +\widehat{\Sigma }%
+\left( \widehat{H^{c}}\right) -\left( \Gamma M_{FF}\Gamma ^{\prime
+}/N_{1}\right) =\widehat{\Sigma }\left( \widehat{H^{c}}\right) =Z\left( 
+\widehat{H^{c}}\right) ^{\prime }Z\left( \widehat{H^{c}}\right) /\left(
+N_{1}T_{0}\right) $ is a symmetric matrix. Now, let $\widehat{\Lambda }%
+=diag\left( \widehat{\lambda }_{1},...,\widehat{\lambda }_{Kp}\right) $ and $%
+\widehat{V}=\left( 
+\begin{array}{cccc}
+\widehat{v}_{1} & \widehat{v}_{2} & \cdots & \widehat{v}_{Kp}%
+\end{array}%
+\right) $ be as defined in expressions (\ref{LambdaL}) and (\ref{V
+eigenvector matrix}). The fact that $L$ is symmetric implies that $\widehat{V%
+}$ is an orthogonal matrix. In addition, further application of Theorem 3.9
+of Stewart and Sun (1990) shows that $\left( \widehat{G}_{1}\widehat{v}_{g},%
+\widehat{\lambda }_{g}\right) $ is an eigenpair for the matrix $A+E$ for $%
+g=1,...,Kp$.
+
+Finally, to show part (d), let $G=\left( 
+\begin{array}{cc}
+G_{1} & G_{2}%
+\end{array}%
+\right) $, and note that, by assumption, 
+\begin{equation*}
+G^{\prime }AG=\left( 
+\begin{array}{cc}
+G_{1}^{\prime }AG_{1} & G_{1}^{\prime }AG_{2} \\ 
+G_{2}^{\prime }AG_{1} & G_{2}^{\prime }AG_{2}%
+\end{array}%
+\right) =\left( 
+\begin{array}{cc}
+\Lambda _{1} & 0 \\ 
+0 & 0%
+\end{array}%
+\right) =\Lambda \text{,}
+\end{equation*}%
+where $\Lambda _{1}=diag\left( \lambda _{1,1.},...,\lambda _{1,Kp}\right) $
+contains the $Kp$ largest eigenvalues of $A$. Without loss of generality, we
+can further assume that $\lambda _{1,1.},...,\lambda _{1,Kp}$ are ordered,
+so that $\lambda _{1,j}=\lambda _{\left( j\right) }\left( A\right) $, i.e., $%
+\lambda _{1,j}$ is the $j^{th}$ largest eigenvalue of $A$.\footnote{%
+If this is not the case; then, we can always define a permutation matrix $%
+\mathcal{P}$ such that $\Lambda ^{\ast }=\mathcal{P}^{\prime }\Lambda 
+\mathcal{P}$ results in a diagonal matrix whose diagonal elements are
+repermutated in such a way, so that the required ordering of the eigenvalues
+is satisfied. Moreover, since $\mathcal{P}$ is an orthogonal matrix, it
+further follows that $A=G\mathcal{PP}^{\prime }\Lambda \mathcal{PP}^{\prime
+}G^{\prime }=G\mathcal{P}\Lambda ^{\ast }\mathcal{P}^{\prime }G^{\prime }$.
+Now, define $\widetilde{G}=G\mathcal{P}$, and note that $\widetilde{G}$ is
+an orthogonal matrix whose columns are just the columns of $G$ repermutated.
+Hence, we can simply proceed with our analysis using $\widetilde{G}$ in lieu
+of $G$, and the associated eigenvalues will be in the order which we have
+assumed.} Given that, $G^{\prime }G=GG^{\prime }=I_{N}$, we have $\left( 
+\begin{array}{cc}
+AG_{1} & AG_{2}%
+\end{array}%
+\right) =AG=G\Lambda =\left( 
+\begin{array}{cc}
+G_{1}\Lambda _{1} & 0%
+\end{array}%
+\right) $, from which it follows that%
+\begin{equation}
+AG_{1}G_{1}^{\prime }\widehat{G}_{1}\widehat{v}_{\ell }=G_{1}\Lambda
+_{1}G_{1}^{\prime }\widehat{G}_{1}\widehat{v}_{\ell }\text{, for }\ell \in
+\left\{ 1,...,Kp\right\} \text{.}  \label{AG1G1'G1hatv1hat}
+\end{equation}%
+Now, the result of part (c) above shows $\left( \widehat{G}_{1}\widehat{v}%
+_{\ell },\widehat{\lambda }_{\ell }\right) $ to be an eigenpair of the
+matrix $A+E$ for $\ell \in \left\{ 1,...,Kp\right\} $, so that 
+\begin{equation}
+\left( A+E\right) \widehat{G}_{1}\widehat{v}_{\ell }=\widehat{\lambda }%
+_{\ell }\widehat{G}_{1}\widehat{v}_{\ell }\text{ for }\ell \in \left\{
+1,...,Kp\right\}  \label{A+E eigen eqn}
+\end{equation}%
+where $\widehat{G}_{1}=\left( G_{1}+G_{2}R\right) \left( I_{Kp}+R^{\prime
+}R\right) ^{-1/2}$. Multiplying both sides of expression (\ref{A+E eigen eqn}%
+) by $\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime
+}G_{1}G_{1}^{\prime }$, we get 
+\begin{eqnarray}
+\widehat{\lambda }_{\ell }\widehat{v}_{\ell }^{\prime }\widehat{G}%
+_{1}^{\prime }G_{1}G_{1}^{\prime }\widehat{G}_{1}\widehat{v}_{\ell } &=&%
+\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime }G_{1}G_{1}^{\prime
+}\left( A+E\right) \widehat{G}_{1}\widehat{v}_{\ell }  \notag \\
+&=&\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime }G_{1}G_{1}^{\prime
+}A\widehat{G}_{1}\widehat{v}_{\ell }+\widehat{v}_{\ell }^{\prime }\widehat{G}%
+_{1}^{\prime }G_{1}G_{1}^{\prime }E\widehat{G}_{1}\widehat{v}_{\ell }
+\label{lambdavGhatG1G1'Ghatv}
+\end{eqnarray}%
+Since $A=\Gamma M_{FF}\Gamma ^{\prime }/N_{1}$ is symmetric, it further
+follows by expression (\ref{AG1G1'G1hatv1hat}) that%
+\begin{equation}
+\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime }G_{1}G_{1}^{\prime }A=%
+\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime }G_{1}G_{1}^{\prime
+}A^{\prime }=\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime
+}G_{1}\Lambda _{1}G_{1}^{\prime }  \label{vGhatG1G1'A}
+\end{equation}%
+Moreover, note that%
+\begin{eqnarray*}
+0 &\leq &\left( \widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime
+}G_{1}G_{1}^{\prime }E\widehat{G}_{1}\widehat{v}_{\ell }\right) ^{2} \\
+&\leq &\left( \widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime
+}G_{1}G_{1}^{\prime }\widehat{G}_{1}\widehat{v}_{\ell }\right) \left( 
+\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime }E^{\prime }E\widehat{G}%
+_{1}\widehat{v}_{\ell }\right) \text{ }\left( \text{by CS inequality and the
+fact that }G_{1}^{\prime }G_{1}=I_{Kp}\right) \\
+&=&\left[ \widehat{v}_{\ell }^{\prime }\left( I_{Kp}+R^{\prime }R\right) ^{-%
+\frac{1}{2}}\left( G_{1}^{\prime }+R^{\prime }G_{2}^{\prime }\right)
+G_{1}G_{1}^{\prime }\left( G_{1}+G_{2}R\right) \left( I_{Kp}+R^{\prime
+}R\right) ^{-\frac{1}{2}}\widehat{v}_{\ell }\right] \left( \widehat{v}_{\ell
+}^{\prime }\widehat{G}_{1}^{\prime }E^{\prime }E\widehat{G}_{1}\widehat{v}%
+_{\ell }\right) \\
+&\leq &\left[ \widehat{v}_{\ell }^{\prime }\left( I_{Kp}+R^{\prime }R\right)
+^{-1}\widehat{v}_{\ell }\right] \lambda _{\max }\left( E^{\prime }E\right)
+\end{eqnarray*}%
+from which it follows that%
+\begin{eqnarray}
+-\sqrt{\widehat{v}_{\ell }^{\prime }\left( I_{Kp}+R^{\prime }R\right) ^{-1}%
+\widehat{v}_{\ell }}\left\Vert E\right\Vert _{2} &=&-\sqrt{\widehat{v}_{\ell
+}^{\prime }\left( I_{Kp}+R^{\prime }R\right) ^{-1}\widehat{v}_{\ell }}\sqrt{%
+\lambda _{\max }\left( E^{\prime }E\right) }  \notag \\
+&\leq &-\sqrt{\left( \widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime
+}G_{1}G_{1}^{\prime }E\widehat{G}_{1}\widehat{v}_{\ell }\right) ^{2}}  \notag
+\\
+&\leq &-\left\vert \widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime
+}G_{1}G_{1}^{\prime }E\widehat{G}_{1}\widehat{v}_{\ell }\right\vert  \notag
+\end{eqnarray}%
+\begin{equation}
+\leq \widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime
+}G_{1}G_{1}^{\prime }E\widehat{G}_{1}\widehat{v}_{\ell }\text{.}
+\label{vG1hatG1G1'EG1hatv}
+\end{equation}%
+Combining expressions (\ref{lambdavGhatG1G1'Ghatv}), (\ref{vGhatG1G1'A}),
+and (\ref{vG1hatG1G1'EG1hatv}), we see that%
+\begin{eqnarray}
+\widehat{\lambda }_{\ell }\widehat{v}_{\ell }^{\prime }\widehat{G}%
+_{1}^{\prime }G_{1}G_{1}^{\prime }\widehat{G}_{1}\widehat{v}_{\ell } &=&%
+\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime }G_{1}G_{1}^{\prime }A%
+\widehat{G}_{1}\widehat{v}_{\ell }+\widehat{v}_{\ell }^{\prime }\widehat{G}%
+_{1}^{\prime }G_{1}G_{1}^{\prime }E\widehat{G}_{1}\widehat{v}_{\ell }  \notag
+\\
+&\geq &\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime }G_{1}\Lambda
+_{1}G_{1}^{\prime }\widehat{G}_{1}\widehat{v}_{\ell }-\sqrt{\widehat{v}%
+_{\ell }^{\prime }\left( I_{Kp}+R^{\prime }R\right) ^{-1}\widehat{v}_{\ell }}%
+\left\Vert E\right\Vert _{2}  \label{lambdavGhatG1G1'Ghatv bd}
+\end{eqnarray}%
+for $\ell \in \left\{ 1,...,Kp\right\} $. In addition, note that%
+\begin{eqnarray*}
+\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime }G_{1}G_{1}^{\prime }%
+\widehat{G}_{1}\widehat{v}_{\ell } &=&\widehat{v}_{\ell }^{\prime }\widehat{G%
+}_{1}^{\prime }G_{1}G_{1}^{\prime }\left( G_{1}+G_{2}R\right) \left(
+I_{Kp}+R^{\prime }R\right) ^{-1/2}\widehat{v}_{\ell } \\
+&=&\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime }G_{1}\left(
+I_{Kp}+R^{\prime }R\right) ^{-1/2}\widehat{v}_{\ell } \\
+&=&\widehat{v}_{\ell }^{\prime }\left( I_{Kp}+R^{\prime }R\right)
+^{-1/2}\left( G_{1}^{\prime }+R^{\prime }G_{2}^{\prime }\right) G_{1}\left(
+I_{Kp}+R^{\prime }R\right) ^{-1/2}\widehat{v}_{\ell } \\
+&=&\widehat{v}_{\ell }^{\prime }\left( I_{Kp}+R^{\prime }R\right) ^{-1}%
+\widehat{v}_{\ell } \\
+&>&0
+\end{eqnarray*}%
+Hence, dividing both sides of expression (\ref{lambdavGhatG1G1'Ghatv bd}) by 
+$\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime }G_{1}G_{1}^{\prime }%
+\widehat{G}_{1}\widehat{v}_{\ell }$, we obtain%
+\begin{eqnarray*}
+\widehat{\lambda }_{\ell } &\geq &\frac{\widehat{v}_{\ell }^{\prime }%
+\widehat{G}_{1}^{\prime }G_{1}\Lambda _{1}G_{1}^{\prime }\widehat{G}_{1}%
+\widehat{v}_{\ell }}{\widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime
+}G_{1}G_{1}^{\prime }\widehat{G}_{1}\widehat{v}_{\ell }}-\frac{\sqrt{%
+\widehat{v}_{\ell }^{\prime }\left( I_{Kp}+R^{\prime }R\right) ^{-1}\widehat{%
+v}_{\ell }}\left\Vert E\right\Vert _{2}}{\widehat{v}_{\ell }^{\prime }%
+\widehat{G}_{1}^{\prime }G_{1}G_{1}^{\prime }\widehat{G}_{1}\widehat{v}%
+_{\ell }}\text{ } \\
+&=&\widetilde{v}_{\ell }^{\prime }\Lambda _{1}\widetilde{v}_{\ell }-\frac{%
+\sqrt{\widehat{v}_{\ell }^{\prime }\left( I_{Kp}+R^{\prime }R\right) ^{-1}%
+\widehat{v}_{\ell }}\left\Vert E\right\Vert _{2}}{\widehat{v}_{\ell
+}^{\prime }\left( I_{Kp}+R^{\prime }R\right) ^{-1}\widehat{v}_{\ell }} \\
+&=&\widetilde{v}_{\ell }^{\prime }\Lambda _{1}\widetilde{v}_{\ell }-\frac{%
+\left\Vert E\right\Vert _{2}}{\sqrt{\widehat{v}_{\ell }^{\prime }\left(
+I_{Kp}+R^{\prime }R\right) ^{-1}\widehat{v}_{\ell }}} \\
+&=&\dsum\limits_{j=1}^{Kp}\widetilde{v}_{\ell ,j}^{2}\lambda _{1,j}-\frac{%
+\left\Vert E\right\Vert _{2}}{\sqrt{\widehat{v}_{\ell }^{\prime }\left(
+I_{Kp}+R^{\prime }R\right) ^{-1}\widehat{v}_{\ell }}}
+\end{eqnarray*}%
+where $\widetilde{v}_{\ell }=G_{1}^{\prime }\widehat{G}_{1}\widehat{v}_{\ell
+}/\left( \widehat{v}_{\ell }^{\prime }\widehat{G}_{1}^{\prime
+}G_{1}G_{1}^{\prime }\widehat{G}_{1}\widehat{v}_{\ell }\right) $ so that $%
+\left\Vert \widetilde{v}_{\ell }\right\Vert _{2}^{2}=\dsum\limits_{\ell
+=1}^{Kp}\widetilde{v}_{\ell ,j}^{2}=1$. Note also that, by applying Theorem
+8.1.10 of Golub and van Loan (1996) (or GvL for short), we have%
+\begin{eqnarray*}
+\widehat{v}_{\ell }^{\prime }\left( I_{Kp}+R^{\prime }R\right) ^{-1}\widehat{%
+v}_{\ell } &\geq &\lambda _{\min }\left\{ \left( I_{Kp}+R^{\prime }R\right)
+^{-1}\right\} \widehat{v}_{\ell }^{\prime }\widehat{v}_{\ell } \\
+\text{ \ } &=&\frac{1}{\lambda _{\max }\left( I_{Kp}+R^{\prime }R\right) }%
+\text{ }\left( \text{given that }\left\Vert \widehat{v}_{\ell }\right\Vert
+_{2}^{2}=1\right) \\
+&\geq &\frac{1}{1+\lambda _{\max }\left( R^{\prime }R\right) }=\frac{1}{%
+1+\left\Vert R\right\Vert _{2}^{2}}
+\end{eqnarray*}%
+\begin{eqnarray*}
+&\geq &\left[ 1+\frac{16\left\Vert E_{21}\right\Vert _{2}^{2}}{\left( \text{%
+sep}\left( \Lambda _{1},\Lambda _{2}\right) \right) ^{2}}\right] ^{-1}\text{
+\ }\left( \text{by Theorem 8.1.10 of GvL}\right) \\
+&\geq &\left[ 1+\frac{16\left\Vert E\right\Vert _{2}^{2}}{\left( \text{sep}%
+\left( \Lambda _{1},\Lambda _{2}\right) \right) ^{2}}\right] ^{-1}\text{ \ }%
+\left( \text{since }\left\Vert E_{21}\right\Vert _{2}^{2}\leq \left\Vert
+E\right\Vert _{2}^{2}\right) \\
+&\geq &\left[ 1+\frac{16\left( \text{sep}\left( \Lambda _{1},\Lambda
+_{2}\right) \right) ^{2}/25}{\left( \text{sep}\left( \Lambda _{1},\Lambda
+_{2}\right) \right) ^{2}}\right] ^{-1}=\frac{25}{41}\text{.}
+\end{eqnarray*}%
+Making use of this lower bound, we obtain $\widehat{\lambda }_{\ell }\geq
+\dsum\nolimits_{j=1}^{Kp}\widetilde{v}_{\ell ,j}^{2}\lambda _{1,j}-\left(
+\left\Vert E\right\Vert _{2}/\sqrt{\widehat{v}_{\ell }^{\prime }\left(
+I_{Kp}+R^{\prime }R\right) ^{-1}\widehat{v}_{\ell }}\right) $
+
+\noindent $=\dsum\nolimits_{j=1}^{Kp}\widetilde{v}_{\ell ,j}^{2}\lambda
+_{1,j}-\frac{25}{41}\left\Vert E\right\Vert _{2}$. Next, the ordering of the
+eigenvalues of the matrices $A+E$ and $A$ be given by $\lambda _{\left(
+1\right) }\left( A+E\right) \geq \cdot \cdot \cdot \geq \lambda _{\left(
+Kp\right) }\left( A+E\right) \geq \lambda _{\left( Kp+1\right) }\left(
+A+E\right) \geq \cdot \cdot \cdot \geq \lambda _{\left( N\right) }\left(
+A+E\right) $ and $\lambda _{\left( 1\right) }\left( A\right) \geq \cdot
+\cdot \cdot \geq \lambda _{\left( Kp\right) }\left( A\right) \geq \lambda
+_{\left( Kp+1\right) }\left( A\right) \geq \cdot \cdot \cdot \geq \lambda
+_{\left( N\right) }\left( A\right) $. Since $A=\Gamma M_{FF}\Gamma ^{\prime
+}/N_{1}$ and since $Rank\left( A\right) =Kp$ for all $N_{1}$, $N_{2}$, and $%
+T $ sufficiently large\footnote{%
+An explicit proof that $Rank\left( A\right) =Kp$ for all $N_{1}$, $N_{2}$,
+and $T$ sufficiently large is given in the Technical Appendix of an earlier
+version of this paper, Chao and Swanson (2022b). In particular, this result
+is shown in part (a) of Lemma D-11 in Appendix D of Chao and Swanson (2022b).%
+}; it follows that $\lambda _{\left( Kp+1\right) }\left( A\right) =\cdot
+\cdot \cdot =\lambda _{\left( N\right) }\left( A\right) =0$. In addition, by
+Corollary 8.1.6 of Golub and van Loan (1996), we have the inequality $%
+\lambda _{\left( Kp+1\right) }\left( A+E\right) \leq \lambda _{\left(
+Kp+1\right) }\left( A\right) +\left\Vert E\right\Vert _{2}$. Making use of
+these results, we see that, for any $\ell \in \left\{ 1,...,Kp\right\} $,%
+\begin{eqnarray*}
+\widehat{\lambda }_{\ell }-\lambda _{\left( Kp+1\right) }\left( A+E\right)
+&\geq &\dsum\limits_{j=1}^{Kp}\widetilde{v}_{\ell ,j}^{2}\lambda _{1,j}-%
+\frac{25}{41}\left\Vert E\right\Vert _{2}-\left\{ \lambda _{\left(
+Kp+1\right) }\left( A\right) +\left\Vert E\right\Vert _{2}\right\} \\
+&=&\dsum\limits_{j=1}^{Kp}\widetilde{v}_{\ell ,j}^{2}\lambda _{\left(
+j\right) }\left( A\right) -\frac{66}{41}\left\Vert E\right\Vert _{2}\text{ \ 
+}\left( \text{since }\lambda _{\left( Kp+1\right) }\left( A\right) =0\text{
+and }\lambda _{1,j}=\lambda _{\left( j\right) }\left( A\right) \right) \\
+&\geq &\dsum\limits_{j=1}^{Kp}\widetilde{v}_{\ell ,j}^{2}\lambda _{\left(
+j\right) }\left( A\right) -\frac{66}{41}\frac{\text{sep}\left( \Lambda
+_{1},\Lambda _{2}\right) }{5}\text{ \ \ \ \ }\left( \text{by Theorem 8.1.10
+of \ GvL}\right) \\
+&=&\dsum\limits_{j=1}^{Kp}\widetilde{v}_{\ell ,j}^{2}\lambda _{\left(
+j\right) }\left( A\right) -\frac{66}{205}\text{sep}\left( \Lambda
+_{1},0\right) \text{ }\left( \text{since }\Lambda _{2}=0\text{ here}\right)
+\\
+&\geq &\lambda _{\min }\left( \Lambda _{1}\right) -\frac{66}{205}\text{sep}%
+\left( \Lambda _{1},0\right) \text{ }\left( \text{since }\Lambda
+_{1}=diag\left( \lambda _{\left( 1\right) }\left( A\right) ,...,\lambda
+_{\left( Kp\right) }\left( A\right) \right) \right) \\
+&=&\frac{139}{205}\text{sep}\left( \Lambda _{1},0\right) \text{ } \\
+&\geq &\frac{139}{205}\underline{c}>0\text{ \ }\left( \text{by expression (%
+\ref{lower bd for sep})}\right) \text{. }
+\end{eqnarray*}%
+where the last equality above follows from the fact that sep$\left( \Lambda
+_{1},0\right) =\lambda _{\min }\left( \Lambda _{1}\right) $ by Theorem 3.1
+on page 247 of Stewart and Sun (1990) since $A$ is symmetric in this case.
+This shows that the set $\left\{ \widehat{\lambda }_{1},...,\widehat{\lambda 
+}_{Kp}\right\} $ contains the $Kp$ largest eigenvalues of the matrix $A+E$.
+It further follows from the result given in part (c) that the columns of the
+matrix $\widehat{G}_{1}\widehat{V}=\left( 
+\begin{array}{cccc}
+\widehat{G}_{1}\widehat{v}_{1} & \widehat{G}_{1}\widehat{v}_{2} & \cdots & 
+\widehat{G}_{1}\widehat{v}_{Kp}%
+\end{array}%
+\right) $ are the eigenvectors associated with the $Kp$ largest eigenvalues
+of the matrix $A+E$. $\square $
+
+\medskip
+
+\noindent \textbf{Lemma OA-2: }Suppose that Assumptions 2-1, 2-2, 2-3, 2-4,
+2-5, 2-6, 2-7, 2-8, 2-9, OA-3, and OA-4 hold. Then, the following statements
+are true.
+
+\begin{enumerate}
+\item[(a)] $\left( \widehat{N}_{1}-N_{1}\right) /N_{1}\overset{p}{%
+\rightarrow }0$
+
+\item[(b)] $\left\Vert \left[ \Gamma \left( \widehat{H^{c}}\right) -\Gamma %
+\right] /\sqrt{N_{1}}\right\Vert _{2}\overset{p}{\rightarrow }0$
+
+\item[(c)] Let $\widehat{G}_{1}=\left( G_{1}+G_{2}R\right) \left(
+I_{Kp}+R^{\prime }R\right) ^{-1/2}$, where $G_{1}$, $G_{2}$, and $R$ are as
+defined in Lemma OA-1 above. Also, let $\widehat{V}$ be the $Kp\times Kp$
+orthogonal matrix given in expression (\ref{V eigenvector matrix}) of Lemma
+OA-1. Then, there exists some positive constant $\overline{C}$ such that $%
+\left\Vert \widehat{V}^{\prime }\widehat{G}_{1}^{\prime }\Gamma /\sqrt{N_{1}}%
+\right\Vert _{2}\leq \sqrt{\lambda _{\max }\left( \Gamma ^{\prime }\Gamma
+/N_{1}\right) }\leq \overline{C}<\infty $ for $N_{1},N_{2}$, and $T$
+sufficiently large. In addition,
+
+$\left\Vert \widehat{V}^{\prime }\widehat{G}_{1}^{\prime }\Gamma /\sqrt{N_{1}%
+}-Q^{\prime }\right\Vert _{2}\overset{p}{\rightarrow }0$, where $Q=\left(
+\Gamma ^{\prime }\Gamma /N_{1}\right) ^{\frac{{\Large 1}}{{\Large 2}}}\Xi 
+\widehat{V}$, with $\Xi $ being the $Kp\times Kp$ orthogonal matrix whose
+columns are the eigenvectors of the matrix
+
+$M_{FF}^{\ast }=\left( \Gamma ^{\prime }\Gamma /N_{1}\right) ^{1/2}\frac{1}{%
+T-p+1}\dsum\nolimits_{t=p}^{T}E\left[ \underline{F}_{t}\underline{F}%
+_{t}^{\prime }\right] \left( \Gamma ^{\prime }\Gamma /N_{1}\right) ^{1/2}$.
+
+\item[(d)] For all fixed index $t$, $\left\Vert G_{1}^{\prime }U_{t,N}\left( 
+\widehat{H^{c}}\right) /\sqrt{N_{1}}\right\Vert _{2}=o_{p}\left( 1\right) $.
+
+\item[(e)] For all fixed index $t$, $\left\Vert U_{t,N}\left( \widehat{H^{c}}%
+\right) /\sqrt{N_{1}}\right\Vert _{2}^{2}=O_{p}\left( 1\right) $.
+
+\item[(f)] For all fixed index $t$, $\left\Vert G_{2}^{\prime }U_{t,N}\left( 
+\widehat{H^{c}}\right) /\sqrt{N_{1}}\right\Vert _{2}=O_{p}\left( 1\right) $.
+
+\item[(g)] Let $\widehat{G}_{1}=\left( G_{1}+G_{2}R\right) \left(
+I_{Kp}+R^{\prime }R\right) ^{-1/2}$, where $G_{1}$, $G_{2}$, and $R$ are as
+defined in Lemma OA-1 above. Also, let $\widehat{V}$ be the $Kp\times Kp$
+orthogonal matrix given in expression (\ref{V eigenvector matrix}) of Lemma
+OA-1. Then, for all fixed index $t$, $\left\Vert \widehat{V}^{\prime }%
+\widehat{G}_{1}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) /\sqrt{%
+\widehat{N}_{1}}\right\Vert _{2}\overset{p}{\rightarrow }0$ as $N_{1}$, $%
+N_{2}$, and $T\rightarrow \infty $.
+
+\item[(h)] $\left\Vert \underline{F}_{t}\right\Vert _{2}=O_{p}\left(
+1\right) $ for all $t$.
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{Proof of Lemma OA-2:}
+
+To show part (a), note first that, for any $\epsilon >0$,%
+\begin{eqnarray*}
+\left\{ \left\vert \frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right\vert \geq
+\epsilon \right\} &=&\left\{ \left\vert \frac{1}{N_{1}}\dsum\limits_{i=1}^{N}%
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right\vert \geq \epsilon
+\right\} \\
+&=&\left\{ \left\vert \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}%
+}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right) +\frac{1}{%
+N_{1}}\dsum\limits_{i\in H}\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\}
+\right\vert \geq \epsilon \right\} \\
+&\subseteq &\left\{ \left\vert \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c%
+}}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right)
+\right\vert +\left\vert \frac{1}{N_{1}}\dsum\limits_{i\in H}\mathbb{I}%
+\left\{ i\in \widehat{H^{c}}\right\} \right\vert \geq \epsilon \right\} \\
+&\subseteq &\left\{ \left\vert \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c%
+}}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right)
+\right\vert \geq \frac{\epsilon }{2}\right\} \cup \left\{ \left\vert \frac{1%
+}{N_{1}}\dsum\limits_{i\in H}\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\}
+\right\vert \geq \frac{\epsilon }{2}\right\}
+\end{eqnarray*}%
+By Markov's inequality, we have%
+\begin{eqnarray*}
+&&\Pr \left( \left\vert \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}%
+}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right)
+\right\vert \geq \frac{\epsilon }{2}\right) \\
+&=&\Pr \left( \left\vert \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}%
+}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right)
+\right\vert ^{2}\geq \frac{\epsilon ^{2}}{4}\right) \\
+&\leq &\frac{4}{\epsilon ^{2}}E\left\{ \left\vert \frac{1}{N_{1}}%
+\dsum\limits_{i\in H^{{\large c}}}\left( \mathbb{I}\left\{ i\in \widehat{%
+H^{c}}\right\} -1\right) \right\vert ^{2}\right\} \\
+&=&\frac{4}{\epsilon ^{2}}\frac{1}{N_{1}^{2}}\dsum\limits_{i\in H^{{\large c}%
+}}\dsum\limits_{k\in H^{{\large c}}}E\left[ \left( \mathbb{I}\left\{ i\in 
+\widehat{H^{c}}\right\} -1\right) \left( \mathbb{I}\left\{ k\in \widehat{%
+H^{c}}\right\} -1\right) \right] \\
+&=&\frac{4}{\epsilon ^{2}}\frac{1}{N_{1}^{2}}\dsum\limits_{i\in H^{{\large c}%
+}}\dsum\limits_{k\in H^{{\large c}}}\left\{ \Pr \left( \left\{ i\in \widehat{%
+H^{c}}\right\} \cap \left\{ k\in \widehat{H^{c}}\right\} \right) -\Pr \left(
+k\in \widehat{H^{c}}\right) \right\} \\
+&&+\frac{4}{\epsilon ^{2}}\frac{1}{N_{1}^{2}}\dsum\limits_{i\in H^{{\large c}%
+}}\dsum\limits_{k\in H^{{\large c}}}\left\{ 1-\Pr \left( i\in \widehat{H^{c}}%
+\right) \right\} \\
+&\leq &\frac{4}{\epsilon ^{2}}\frac{1}{N_{1}^{2}}\dsum\limits_{i\in H^{%
+{\large c}}}\dsum\limits_{k\in H^{{\large c}}}\left\{ \Pr \left( k\in 
+\widehat{H^{c}}\right) -\Pr \left( k\in \widehat{H^{c}}\right) \right\} +%
+\frac{4}{\epsilon ^{2}}\frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}%
+}}\left\{ 1-\Pr \left( i\in \widehat{H^{c}}\right) \right\} \\
+&\leq &\frac{4}{\epsilon ^{2}}\frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}%
+}}\left\{ 1-\min_{i\in H^{{\large c}}}\Pr \left( i\in \widehat{H^{c}}\right)
+\right\} \rightarrow 0\text{ as }N_{1},N_{2}\text{, and }T\rightarrow \infty 
+\text{.}
+\end{eqnarray*}%
+where the last line above follows from the fact that, for $i\in H^{c}$ and
+for either the case where $\mathbb{S}_{i,T}^{+}=\dsum\nolimits_{\ell
+=1}^{d}\varpi _{\ell }\left\vert S_{i,\ell ,T}\right\vert $ or the case
+where $\mathbb{S}_{i,T}^{+}=\max_{1\leq \ell \leq d}\left\vert S_{i,\ell
+,T}\right\vert $, we can apply the results of Theorem 2 of the main paper to
+obtain $\min_{i\in H^{{\large c}}}\Pr \left( i\in \widehat{H^{c}}\right)
+\geq \Pr \left( \dbigcap\limits_{i\in H^{{\large c}}}\left\{ \mathbb{S}%
+_{i,T}^{+}\geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right\}
+\right) $
+
+\noindent $=P\left( \min_{{\large i\in }H^{{\large c}}}\mathbb{S}%
+_{i,T}^{+}\geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right)
+\rightarrow 1$. Also, making use of Markov's inequality, we obtain, for
+either the case where $\mathbb{S}_{i,T}^{+}=\dsum\nolimits_{\ell
+=1}^{d}\varpi _{\ell }\left\vert S_{i,\ell ,T}\right\vert $ or the case
+where $\mathbb{S}_{i,T}^{+}=\max_{1\leq \ell \leq d}\left\vert S_{i,\ell
+,T}\right\vert $,%
+\begin{eqnarray*}
+\Pr \left( \left\vert \frac{1}{N_{1}}\dsum\limits_{i\in H}\mathbb{I}\left\{
+i\in \widehat{H^{c}}\right\} \right\vert \geq \frac{\epsilon }{2}\right)
+&=&\Pr \left( \frac{1}{N_{1}}\dsum\limits_{i\in H}\mathbb{I}\left\{ i\in 
+\widehat{H^{c}}\right\} \geq \frac{\epsilon }{2}\right) \\
+&\leq &\frac{2}{\epsilon }E\left[ \frac{1}{N_{1}}\dsum\limits_{i\in H}%
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \right] \\
+&=&\frac{2}{\epsilon }\frac{1}{N_{1}}\dsum\limits_{i\in H}\Pr \left( i\in 
+\widehat{H^{c}}\right) \\
+&=&\frac{2}{\epsilon }\frac{1}{N_{1}}\dsum\limits_{i\in H}\Pr \left( \mathbb{%
+S}_{i,T}^{+}\geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) \\
+&\leq &\frac{2}{\epsilon }\frac{dN_{2}\varphi }{NN_{1}}\left[ 1+o\left(
+1\right) \right] \\
+&\rightarrow &0\text{ }\left( \text{since }\frac{\varphi }{N_{1}}\rightarrow
+0\text{ and }\frac{N_{2}}{N}=O\left( 1\right) \right)
+\end{eqnarray*}%
+where the last inequality above follows by an argument similar to that given
+in the proof of Theorem 1 of the main paper. Combining these results, we
+have that%
+\begin{eqnarray*}
+&&\Pr \left( \left\vert \frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right\vert \geq
+\epsilon \right) \\
+&\leq &\Pr \left( \left\{ \left\vert \frac{1}{N_{1}}\dsum\limits_{i\in H^{%
+{\large c}}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right)
+\right\vert \geq \frac{\epsilon }{2}\right\} \cup \left\{ \left\vert \frac{1%
+}{N_{1}}\dsum\limits_{i\in H}\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\}
+\right\vert \geq \frac{\epsilon }{2}\right\} \right) \\
+&\leq &\Pr \left( \left\vert \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}%
+}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right)
+\right\vert \geq \frac{\epsilon }{2}\right) +\Pr \left( \left\vert \frac{1}{%
+N_{1}}\dsum\limits_{i\in H}\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\}
+\right\vert \geq \frac{\epsilon }{2}\right) \\
+&\rightarrow &0
+\end{eqnarray*}
+
+For part (b), note that%
+\begin{eqnarray*}
+\left\Vert \frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{\sqrt{N_{1}}}%
+\right\Vert _{F}^{2} &=&\frac{1}{N_{1}}tr\left\{ \left( \Gamma \left( 
+\widehat{H^{c}}\right) -\Gamma \right) ^{\prime }\left( \Gamma \left( 
+\widehat{H^{c}}\right) -\Gamma \right) \right\} \\
+&=&\frac{1}{N_{1}}\dsum\limits_{i=1}^{N}tr\left\{ \left( \mathbb{I}\left\{
+i\in \widehat{H^{c}}\right\} \gamma _{i}-\gamma _{i}\right) \left( \mathbb{I}%
+\left\{ i\in \widehat{H^{c}}\right\} \gamma _{i}-\gamma _{i}\right) ^{\prime
+}\right\} \\
+&=&\frac{1}{N_{1}}\dsum\limits_{i=1}^{N}\left( \mathbb{I}\left\{ i\in 
+\widehat{H^{c}}\right\} \gamma _{i}-\gamma _{i}\right) ^{\prime }\left( 
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \gamma _{i}-\gamma _{i}\right)
+\end{eqnarray*}%
+\begin{eqnarray*}
+&=&\frac{1}{N_{1}}\dsum\limits_{i=1}^{N}\gamma _{i}^{\prime }\gamma _{i}%
+\left[ 1-\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \right] \\
+&=&\frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}}}\gamma _{i}^{\prime
+}\gamma _{i}\left[ 1-\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \right] 
+\text{ }\left( \text{since }\gamma _{i}=0\text{ for }i\in H\right)
+\end{eqnarray*}%
+Applying Markov's inequality, we have, for any $\epsilon >0$,%
+\begin{eqnarray*}
+\Pr \left( \left\Vert \frac{\Gamma \left( \widehat{H^{c}}\right) -\Gamma }{%
+\sqrt{N_{1}}}\right\Vert _{F}^{2}\geq \epsilon \right) &\leq &\frac{1}{%
+\epsilon }E\left\{ \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}}}\gamma
+_{i}^{\prime }\gamma _{i}\left[ 1-\mathbb{I}\left\{ i\in \widehat{H^{c}}%
+\right\} \right] \right\} \\
+&=&\frac{1}{\epsilon }\frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}%
+}}\gamma _{i}^{\prime }\gamma _{i}\left[ 1-\Pr \left( i\in \widehat{H^{c}}%
+\right) \right] \\
+&\leq &\frac{1}{\epsilon }\left[ 1-\min_{i\in H^{{\large c}}}\Pr \left( i\in 
+\widehat{H^{c}}\right) \right] \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c%
+}}}\gamma _{i}^{\prime }\gamma _{i} \\
+&\leq &\frac{1}{\epsilon }\left[ 1-\min_{i\in H^{{\large c}}}\Pr \left( i\in 
+\widehat{H^{c}}\right) \right] \left( \sup_{i\in H^{{\large c}}}\left\Vert
+\gamma _{i}\right\Vert _{2}\right) ^{2} \\
+&\leq &\frac{1}{\epsilon }\left[ 1-\min_{i\in H^{{\large c}}}\Pr \left( i\in 
+\widehat{H^{c}}\right) \right] \overline{C}^{2}\text{ \ }\left( \text{by
+Assumption 2-5}\right) \\
+&\rightarrow &0
+\end{eqnarray*}%
+where the last line follows from the fact that $\min_{i\in H^{{\large c}%
+}}\Pr \left( i\in \widehat{H^{c}}\right) \rightarrow 1$ by Theorem 2 of the
+main paper. Using this result, we further deduce that $\left\Vert \left(
+\Gamma \left( \widehat{H^{c}}\right) -\Gamma \right) /\sqrt{N_{1}}%
+\right\Vert _{2}\leq \left\Vert \left( \Gamma \left( \widehat{H^{c}}\right)
+-\Gamma \right) /\sqrt{N_{1}}\right\Vert _{F}\overset{p}{\rightarrow }0.$
+
+Turning our attention to part (c), note that since, by definition,
+
+\noindent $\widehat{G}_{1}=\left( G_{1}+G_{2}R\right) \left(
+I_{Kp}+R^{\prime }R\right) ^{-1/2}$, where $G_{1}^{\prime }G_{1}=I_{Kp}$, $%
+G_{2}^{\prime }G_{2}=I_{N-Kp}$, and $G_{1}^{\prime }G_{2}=0$; it follows
+that $\widehat{G}_{1}^{\prime }\widehat{G}_{1}=\left( I_{Kp}+R^{\prime
+}R\right) ^{-1/2}\left( G_{1}^{\prime }+R^{\prime }G_{2}^{\prime }\right)
+\left( G_{1}+G_{2}R\right) \left( I_{Kp}+R^{\prime }R\right) ^{-1/2}$
+
+\noindent $=\left( I_{Kp}+R^{\prime }R\right) ^{-1/2}\left( I_{Kp}+R^{\prime
+}R\right) \left( I_{Kp}+R^{\prime }R\right) ^{-1/2}=I_{Kp}$. Hence, by
+Assumption OA-3,%
+\begin{eqnarray*}
+\left\Vert \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\Gamma }{\sqrt{N_{1}}}\right\Vert _{2} &\leq &\left\Vert \widehat{V}%
+^{\prime }\widehat{G}_{1}^{{\Large \prime }}\right\Vert _{2}\left\Vert \frac{%
+\Gamma }{\sqrt{N_{1}}}\right\Vert _{2}=\sqrt{\lambda _{\max }\left( \widehat{%
+G}_{1}\widehat{V}\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}\right) }\sqrt{\lambda _{\max }\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}%
+\right) } \\
+&=&\sqrt{\lambda _{\max }\left( \widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}\widehat{G}_{1}\widehat{V}\right) }\sqrt{\lambda _{\max
+}\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) } \\
+&=&\sqrt{\lambda _{\max }\left( I_{Kp}\right) }\sqrt{\lambda _{\max }\left( 
+\frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) }\text{ \ }\left( \text{since }%
+\widehat{V}\text{ is an orthogonal matrix}\right)
+\end{eqnarray*}%
+\begin{equation*}
+=\sqrt{\lambda _{\max }\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) }%
+\leq \overline{C}<\infty \text{ for }N_{1},N_{2}\text{ sufficiently large\ }
+\end{equation*}%
+Now, to show the second result in part (c), note that, since $Q=\left(
+\Gamma ^{\prime }\Gamma /N_{1}\right) ^{\frac{{\Large 1}}{{\Large 2}}}\Xi 
+\widehat{V}$ and $G_{1}=\left( \Gamma /\sqrt{N_{1}}\right) \left( \Gamma
+^{\prime }\Gamma /N_{1}\right) ^{-1/2}\Xi =\Gamma \left( \Gamma ^{\prime
+}\Gamma \right) ^{-1/2}\Xi $ , we can write%
+\begin{eqnarray*}
+\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{\prime }\Gamma }{\sqrt{N_{1}}}%
+-Q^{\prime } &=&\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{\prime }\Gamma }{%
+\sqrt{N_{1}}}-\widehat{V}^{\prime }\Xi ^{\prime }\left( \frac{\Gamma
+^{\prime }\Gamma }{N_{1}}\right) ^{\frac{{\Large 1}}{{\Large 2}}}=\frac{%
+\widehat{V}^{\prime }\widehat{G}_{1}^{\prime }\Gamma }{\sqrt{N_{1}}}-%
+\widehat{V}^{\prime }\Xi ^{\prime }\left( \frac{\Gamma ^{\prime }\Gamma }{%
+N_{1}}\right) ^{-1/2}\frac{\Gamma ^{\prime }\Gamma }{N_{1}} \\
+&=&\frac{\widehat{V}^{\prime }\widehat{G}_{1}^{\prime }\Gamma }{\sqrt{N_{1}}}%
+-\frac{\widehat{V}^{\prime }G_{1}^{\prime }\Gamma }{\sqrt{N_{1}}}=\widehat{V}%
+^{\prime }\left( \widehat{G}_{1}-G_{1}\right) ^{\prime }\frac{\Gamma }{\sqrt{%
+N_{1}}}
+\end{eqnarray*}%
+from which it follows that%
+\begin{eqnarray*}
+\left\Vert \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{\prime }\Gamma }{%
+\sqrt{N_{1}}}-Q^{\prime }\right\Vert _{2} &\leq &\left\Vert \widehat{V}%
+^{\prime }\right\Vert _{2}\left\Vert \left( \widehat{G}_{1}-G_{1}\right)
+^{\prime }\right\Vert _{2}\left\Vert \frac{\Gamma }{\sqrt{N_{1}}}\right\Vert
+_{2} \\
+&=&\sqrt{\lambda _{\max }\left( \widehat{V}\widehat{V}^{\prime }\right) }%
+\sqrt{\lambda _{\max }\left\{ \left( \widehat{G}_{1}-G_{1}\right) \left( 
+\widehat{G}_{1}-G_{1}\right) ^{\prime }\right\} }\sqrt{\lambda _{\max
+}\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) } \\
+&=&\sqrt{\lambda _{\max }\left( I_{Kp}\right) }\sqrt{\lambda _{\max }\left\{
+\left( \widehat{G}_{1}-G_{1}\right) ^{\prime }\left( \widehat{G}%
+_{1}-G_{1}\right) \right\} }\sqrt{\lambda _{\max }\left( \frac{\Gamma
+^{\prime }\Gamma }{N_{1}}\right) } \\
+&\leq &\sqrt{\overline{C}}\left\Vert \widehat{G}_{1}-G_{1}\right\Vert _{2}%
+\text{ \ }\left( \text{by Assumption OA-3}\right) \\
+&=&o_{p}\left( 1\right) \text{ \ as }N_{1},\text{ }N_{2}\text{, and }%
+T\rightarrow \infty \text{\ }\left( \text{by part (b) of Lemma OA-1}\right) 
+\text{.}
+\end{eqnarray*}
+
+Next, to show part (d), we first write%
+\begin{eqnarray}
+&&\left\Vert \frac{G_{1}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) }{%
+\sqrt{N_{1}}}\right\Vert _{2}^{2}  \notag \\
+&=&\dsum\limits_{k=1}^{Kp}\left( \dsum\limits_{i\in H^{{\large c}}}\mathbb{I}%
+\left\{ i\in \widehat{H^{c}}\right\} \frac{g_{1,ik}u_{i,t}}{\sqrt{N_{1}}}%
++\dsum\limits_{i\in H}\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \frac{%
+g_{1,ik}u_{i,t}}{\sqrt{N_{1}}}\right) ^{2}  \notag \\
+&\leq &2\dsum\limits_{k=1}^{Kp}\left( \dsum\limits_{i\in H^{{\large c}}}%
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \frac{g_{1,ik}u_{i,t}}{\sqrt{%
+N_{1}}}\right) ^{2}+2\dsum\limits_{k=1}^{Kp}\left( \dsum\limits_{i\in H}%
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \frac{g_{1,ik}u_{i,t}}{\sqrt{%
+N_{1}}}\right) ^{2}  \label{GU/N1^0.5}
+\end{eqnarray}%
+where $g_{1,ik}$ denotes the $\left( i,k\right) ^{th}$ element of $G_{1}$.
+Now, consider the first term on the right-hand side of expression (\ref%
+{GU/N1^0.5}). Write%
+\begin{equation*}
+2\dsum\limits_{k=1}^{Kp}\left( \dsum\limits_{i\in H^{{\large c}}}\mathbb{I}%
+\left\{ i\in \widehat{H^{c}}\right\} \frac{g_{1,ik}u_{i,t}}{\sqrt{N_{1}}}%
+\right) ^{2}
+\end{equation*}%
+\begin{eqnarray*}
+&=&\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\left( \dsum\limits_{i\in H^{%
+{\large c}}}\left[ \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1+1\right]
+g_{1,ik}u_{i,t}\right) ^{2} \\
+&=&\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\left( \dsum\limits_{i\in H^{%
+{\large c}}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right)
+g_{1,ik}u_{i,t}\right) ^{2}+\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\left(
+\dsum\limits_{i\in H^{{\large c}}}g_{1,ik}u_{i,t}\right) ^{2} \\
+&&+\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\dsum\limits_{i\in H^{{\large c}%
+}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right)
+g_{1,ik}u_{i,t}\dsum\limits_{j\in H^{{\large c}}}g_{1,jk}u_{j,t} \\
+&&+\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\dsum\limits_{i\in H^{{\large c}%
+}}g_{1,ik}u_{i,t}\dsum\limits_{j\in H^{{\large c}}}\left( \mathbb{I}\left\{
+j\in \widehat{H^{c}}\right\} -1\right) g_{1,jk}u_{j,t} \\
+&=&\mathcal{E}_{1,1,t}+\mathcal{E}_{1,2,t}+\mathcal{E}_{1,3,t}+\mathcal{E}%
+_{1,4,t},\text{ }\left( say\right) \text{.}
+\end{eqnarray*}
+
+Focusing first on the term $\mathcal{E}_{1,1,t}$, we have%
+\begin{eqnarray*}
+\mathcal{E}_{1,1,t} &=&\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\left(
+\dsum\limits_{i\in H^{{\large c}}}\left( \mathbb{I}\left\{ i\in \widehat{%
+H^{c}}\right\} -1\right) g_{1,ik}u_{i,t}\right) ^{2} \\
+&=&\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\left( \left\vert
+\dsum\limits_{i\in H^{{\large c}}}\left( \mathbb{I}\left\{ i\in \widehat{%
+H^{c}}\right\} -1\right) g_{1,ik}u_{i,t}\right\vert \right) ^{2} \\
+&\leq &2\dsum\limits_{k=1}^{Kp}\left( \frac{1}{N_{1}}\dsum\limits_{i\in H^{%
+{\large c}}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right)
+^{2}\right) \left( \dsum\limits_{i\in H^{{\large c}}}g_{1,ik}^{2}u_{i,t}^{2}%
+\right) \text{ }\left( \text{by CS inequality}\right) \\
+&=&2\dsum\limits_{k=1}^{Kp}\left[ \frac{1}{N_{1}}\dsum\limits_{i\in H^{%
+{\large c}}}\left( 1-\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \right) %
+\right] \left( \dsum\limits_{i\in H^{{\large c}}}g_{1,ik}^{2}u_{i,t}^{2}%
+\right)
+\end{eqnarray*}%
+Now, for either the case where $\mathbb{S}_{i,T}^{+}=\dsum\nolimits_{\ell
+=1}^{d}\varpi _{\ell }\left\vert S_{i,\ell ,T}\right\vert $ or the case
+where $\mathbb{S}_{i,T}^{+}=\max_{1\leq \ell \leq d}\left\vert S_{i,\ell
+,T}\right\vert $, we have%
+\begin{eqnarray*}
+0 &\leq &E\left[ \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}}}\left( 1-%
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \right) \right] =\frac{1}{%
+N_{1}}\dsum\limits_{i\in H^{{\large c}}}\left[ 1-\Pr \left( i\in \widehat{%
+H^{c}}\right) \right] \\
+&=&\frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}}}\left[ 1-P\left( \mathbb{%
+S}_{i,T}^{+}\geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) %
+\right] \\
+&\leq &1-P\left( \min_{i\in H^{{\large c}}}\mathbb{S}_{i,T}^{+}\geq \Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) \text{ }\left( \text{given
+that }N_{1}=\#\left\{ H^{c}\right\} \right) \\
+&\rightarrow &0\text{ }\left( \text{since }P\left( \min_{i\in H^{{\large c}}}%
+\mathbb{S}_{i,T}^{+}\geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}\right)
+\right) \rightarrow 1\text{ by Theorem 2 of the main paper}\right) \text{.}
+\end{eqnarray*}%
+Moreover, by part (b) of Assumption 2-3, we have $E\left[ \dsum\nolimits_{i%
+\in H^{{\large c}}}g_{1,ik}^{2}u_{i,t}^{2}\right] =\dsum\nolimits_{i\in H^{%
+{\large c}}}g_{1,ik}^{2}E\left[ u_{i,t}^{2}\right] \leq
+C\dsum\nolimits_{i=1}^{N}g_{1,ik}^{2}\leq C$. It follows by Markov's
+inequality that $\frac{1}{N_{1}}\dsum\nolimits_{i\in H^{{\large c}}}\left( 1-%
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \right) =o_{p}\left( 1\right) 
+$ and $\dsum\nolimits_{i\in H^{{\large c}}}g_{1,ik}^{2}u_{i,t}^{2}=O_{p}%
+\left( 1\right) $ from which we deduce that
+
+\noindent $\mathcal{E}_{1,1,t}=2N_{1}^{-1}\dsum\nolimits_{k=1}^{Kp}\left(
+\dsum\nolimits_{i\in H^{{\large c}}}\left( \mathbb{I}\left\{ i\in \widehat{%
+H^{c}}\right\} -1\right) g_{1,ik}u_{i,t}\right) ^{2}$
+
+\noindent $\leq 2\dsum\nolimits_{k=1}^{Kp}\left[ N_{1}^{-1}\dsum\nolimits_{i%
+\in H^{{\large c}}}\left( 1-\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\}
+\right) \right] \left( \dsum\nolimits_{i\in H^{{\large c}%
+}}g_{1,ik}^{2}u_{i,t}^{2}\right) =o_{p}\left( 1\right) $. Consider next the
+term $\mathcal{E}_{1,2,t}$. To proceed, let $U_{t,N}\left( H^{c}\right) $
+denote an $N\times 1$ vector whose $i^{th}$ component $U_{i,t,N}\left(
+H^{c}\right) $ is given by $U_{i,t,N}\left( H^{c}\right) =u_{i,t}\mathbb{I}%
+\left\{ i\in H^{c}\right\} $, and we can write%
+\begin{eqnarray*}
+\mathcal{E}_{1,2,t} &=&\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\left(
+\dsum\limits_{i\in H^{{\large c}}}g_{1,ik}u_{i,t}\right) ^{2}=2\left\Vert 
+\frac{G_{1}^{\prime }U_{t,N}\left( H^{c}\right) }{\sqrt{N_{1}}}\right\Vert
+_{2}^{2} \\
+&\leq &2tr\left\{ \frac{G_{1}^{\prime }U_{t,N}\left( H^{c}\right)
+U_{t,N}\left( H^{c}\right) ^{\prime }G_{1}}{N_{1}}\right\} \\
+&=&2tr\left\{ \Xi ^{\prime }\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}%
+\right) ^{-1/2}\frac{\Gamma ^{\prime }}{\sqrt{N_{1}}}\frac{U_{t,N}\left(
+H^{c}\right) U_{t,N}\left( H^{c}\right) ^{\prime }}{N_{1}}\frac{\Gamma }{%
+\sqrt{N_{1}}}\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{-1/2}\Xi
+\right\} \\
+&=&2tr\left\{ \left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{-1/2}%
+\frac{\Gamma ^{\prime }}{\sqrt{N_{1}}}\frac{U_{t,N}\left( H^{c}\right)
+U_{t,N}\left( H^{c}\right) ^{\prime }}{N_{1}}\frac{\Gamma }{\sqrt{N_{1}}}%
+\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{-1/2}\right\} \\
+&=&2tr\left\{ \frac{\Gamma _{\ast }^{\prime }U_{t,N}\left( H^{c}\right)
+U_{t,N}\left( H^{c}\right) ^{\prime }\Gamma _{\ast }}{N_{1}^{2}}\right\} 
+\text{ }\left( \text{letting }\Gamma _{\ast }=\Gamma \left( \frac{\Gamma
+^{\prime }\Gamma }{N_{1}}\right) ^{-1/2}\right) \\
+&=&\frac{2}{N_{1}^{2}}U_{t,N}\left( H^{c}\right) ^{\prime }\Gamma _{\ast
+}\Gamma _{\ast }^{\prime }U_{t,N}\left( H^{c}\right) =\frac{2}{N_{1}^{2}}%
+\dsum\limits_{i\in H^{{\large c}}}\dsum\limits_{j\in H^{{\large c}}}\gamma
+_{\ast ,i}^{\prime }\gamma _{\ast ,j}u_{i,t}u_{j,t}
+\end{eqnarray*}%
+where $\gamma _{\ast ,i}^{\prime }$ denotes the $i^{th}$ row of $\Gamma
+_{\ast }=\Gamma \left( \Gamma ^{\prime }\Gamma /N_{1}\right) ^{-1/2}$.
+Hence, by Assumptions 2-5, OA-2, and OA-3, there exist positive constants $%
+\overline{c}$, $\underline{C}$, and $\overline{C}$ such that%
+\begin{eqnarray*}
+0 &\leq &E\left[ \mathcal{E}_{1,2,t}\right] \\
+&=&\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\dsum\limits_{i\in H^{{\large c}%
+}}\dsum\limits_{j\in H^{{\large c}}}g_{1,ik}g_{1,jk}E\left[ u_{i,t}u_{j,t}%
+\right] \\
+&=&\frac{2}{N_{1}^{2}}\dsum\limits_{i\in H^{{\large c}}}\dsum\limits_{j\in
+H^{{\large c}}}\gamma _{\ast ,i}^{\prime }\gamma _{\ast ,j}E\left[
+u_{i,t}u_{j,t}\right] =\frac{2}{N_{1}^{2}}\dsum\limits_{i\in H^{{\large c}%
+}}\dsum\limits_{j\in H^{{\large c}}}\gamma _{i}^{\prime }\left( \frac{\Gamma
+^{\prime }\Gamma }{N_{1}}\right) ^{-1/2}\left( \frac{\Gamma ^{\prime }\Gamma 
+}{N_{1}}\right) ^{-1/2}\gamma _{j}E\left[ u_{i,t}u_{j,t}\right] \\
+&\leq &\frac{2}{N_{1}^{2}}\dsum\limits_{i\in H^{{\large c}%
+}}\dsum\limits_{j\in H^{{\large c}}}\left\vert \gamma _{i}^{\prime }\left( 
+\frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{-1/2}\left( \frac{\Gamma
+^{\prime }\Gamma }{N_{1}}\right) ^{-1/2}\gamma _{j}\right\vert \left\vert E%
+\left[ u_{i,t}u_{j,t}\right] \right\vert \\
+&\leq &\frac{2}{N_{1}^{2}}\dsum\limits_{i\in H^{{\large c}%
+}}\dsum\limits_{j\in H^{{\large c}}}\sqrt{\gamma _{i}^{\prime }\left( \frac{%
+\Gamma ^{\prime }\Gamma }{N_{1}}\right) ^{-1}\gamma _{i}}\sqrt{\gamma
+_{i}^{\prime }\left( \frac{\Gamma ^{\prime }\Gamma }{N_{1}}\right)
+^{-1}\gamma _{i}}\left\vert E\left[ u_{i,t}u_{j,t}\right] \right\vert
+\end{eqnarray*}%
+\begin{eqnarray*}
+&\leq &2\overline{C}\frac{1}{N_{1}^{2}}\dsum\limits_{i\in H^{{\large c}%
+}}\dsum\limits_{j\in H^{{\large c}}}\left\vert E\left[ u_{i,t}u_{j,t}\right]
+\right\vert \text{ \ }\left( \text{by Assumption 2-5 and OA-3}\right) \\
+&\leq &2\overline{C}\frac{C}{N_{1}}\text{ }\rightarrow 0\text{ as }%
+N_{1}\rightarrow \infty \text{ }\left( \text{by Assumption OA-2}\right) 
+\text{.}
+\end{eqnarray*}%
+It follows by Markov's inequality that $\mathcal{E}_{1,2,t}=o_{p}\left(
+1\right) $. Now, for $\mathcal{E}_{1,3,t}$, note that, by applying the
+triangle and CS inequalities, we have
+
+\noindent $\left\vert \mathcal{E}_{1,3,t}\right\vert \leq
+2N_{1}^{-1}\dsum\nolimits_{k=1}^{Kp}\left\vert \dsum\nolimits_{i\in H^{%
+{\large c}}}\left( \mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} -1\right)
+g_{1,ik}u_{i,t}\dsum\nolimits_{j\in H^{{\large c}}}g_{1,jk}u_{j,t}\right%
+\vert $
+
+\noindent $\leq \sqrt{2N_{1}^{-1}\dsum\nolimits_{k=1}^{Kp}\left[
+\dsum\nolimits_{i\in H^{{\large c}}}\left( \mathbb{I}\left\{ i\in \widehat{%
+H^{c}}\right\} -1\right) g_{1,ik}u_{i,t}\right] ^{2}}\sqrt{%
+2N_{1}^{-1}\dsum\nolimits_{k=1}^{Kp}\left[ \dsum\nolimits_{j\in H^{{\large c}%
+}}g_{1,jk}u_{j,t}\right] ^{2}}$
+
+\noindent $=\sqrt{\mathcal{E}_{1,1,t}}\sqrt{\mathcal{E}_{1,2,t}}=o_{p}\left(
+1\right) $. Similarly, we also have
+
+\noindent $\left\vert \mathcal{E}_{1,4,t}\right\vert \leq
+2N_{1}^{-1}\dsum\nolimits_{k=1}^{Kp}\left\vert \dsum\nolimits_{i\in H^{%
+{\large c}}}g_{1,ik}u_{i,t}\dsum\nolimits_{j\in H^{{\large c}}}\left( 
+\mathbb{I}\left\{ j\in \widehat{H^{c}}\right\} -1\right)
+g_{1,jk}u_{j,t}\right\vert $
+
+\noindent $\leq \sqrt{\mathcal{E}_{1,2,t}}\sqrt{\mathcal{E}_{1,1,t}}%
+=o_{p}\left( 1\right) $.
+
+\noindent \qquad Application of the Slutsky's theorem then allows us to
+deduce that%
+\begin{equation*}
+\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\dsum\limits_{i\in H^{{\large c}%
+}}\dsum\limits_{j\in H^{{\large c}}}\mathbb{I}\left\{ i\in \widehat{H^{c}}%
+\right\} \mathbb{I}\left\{ j\in \widehat{H^{c}}\right\}
+g_{1,ik}g_{1,jk}u_{i,t}u_{j,t}=\mathcal{E}_{1,1,t}+\mathcal{E}_{1,2,t}+%
+\mathcal{E}_{1,3,t}+\mathcal{E}_{1,4,t}=o_{p}\left( 1\right) \text{.}
+\end{equation*}
+
+Next, consider the second term on the right-hand side of expression (\ref%
+{GU/N1^0.5}). In this case, write%
+\begin{eqnarray*}
+&&\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\dsum\limits_{i\in
+H}\dsum\limits_{j\in H}\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} 
+\mathbb{I}\left\{ j\in \widehat{H^{c}}\right\} g_{1,ik}g_{1,jk}u_{i,t}u_{j,t}
+\\
+&=&\frac{2}{N_{1}}\dsum\limits_{k=1}^{Kp}\left( \dsum\limits_{i\in H}\mathbb{%
+I}\left\{ i\in \widehat{H^{c}}\right\} g_{1,ik}u_{i,t}\right) ^{2}=\frac{2}{%
+N_{1}}\dsum\limits_{k=1}^{Kp}\left( \left\vert \dsum\limits_{i\in H}\mathbb{I%
+}\left\{ i\in \widehat{H^{c}}\right\} g_{1,ik}u_{i,t}\right\vert \right) ^{2}
+\\
+&\leq &2\dsum\limits_{k=1}^{Kp}\left[ \frac{1}{N_{1}}\dsum\limits_{i\in H}%
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \right] \left[
+\dsum\limits_{i\in H}g_{1,ik}^{2}u_{i,t}^{2}\right]
+\end{eqnarray*}%
+Note that, for either the case where $\mathbb{S}_{i,T}^{+}=\dsum\nolimits_{%
+\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell ,T}\right\vert $ or the case
+where $\mathbb{S}_{i,T}^{+}=\max_{1\leq \ell \leq d}\left\vert S_{i,\ell
+,T}\right\vert $, we have, by applying an argument similar to that given in
+the proof of Theorem 1 of the main paper,%
+\begin{eqnarray*}
+0 &\leq &E\left[ \frac{1}{N_{1}}\dsum\limits_{i\in H}\mathbb{I}\left\{ i\in 
+\widehat{H^{c}}\right\} \right] =\frac{1}{N_{1}}\dsum\limits_{i\in H}\Pr
+\left( i\in \widehat{H^{c}}\right) =\frac{1}{N_{1}}\dsum\limits_{i\in
+H}P\left( \mathbb{S}_{i,T}^{+}\geq \Phi ^{-1}\left( 1-\frac{\varphi }{2N}%
+\right) \right) \\
+&\leq &\frac{dN_{2}\varphi }{NN_{1}}\left\{ 1+2^{2}A\left[ 1+\left( \Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) ^{3}\right] T^{-\left(
+1-\alpha _{{\large 1}}\right) \frac{{\large 1}}{{\large 2}}}\right\} =\frac{%
+dN_{2}\varphi }{N_{1}\left( N_{1}+N_{2}\right) }\left[ 1+o\left( 1\right) %
+\right] \rightarrow 0\text{, }
+\end{eqnarray*}%
+as $N_{1},N_{2},T\rightarrow \infty $. Moreover, making use of part (b) of
+Assumption 2-3, we have
+
+\noindent $E\left[ \dsum\nolimits_{i\in H}g_{1,ik}^{2}u_{i,t}^{2}\right]
+=\dsum\nolimits_{i\in H}g_{1,ik}^{2}E\left[ u_{i,t}^{2}\right] \leq
+C\dsum\nolimits_{i=1}^{N}g_{1,ik}^{2}\leq C$. It follows by Markov's
+inequality that
+
+\noindent $N_{1}^{-1}\dsum\nolimits_{i\in H}\mathbb{I}\left\{ i\in \widehat{%
+H^{c}}\right\} =o_{p}\left( 1\right) $ and $\dsum\nolimits_{i\in
+H}g_{1,ik}^{2}u_{i,t}^{2}=O_{p}\left( 1\right) $, from which we deduce that $%
+2N^{-1}\dsum\nolimits_{k=1}^{Kp}\dsum\nolimits_{i\in H}\dsum\nolimits_{j\in
+H}\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \mathbb{I}\left\{ j\in 
+\widehat{H^{c}}\right\} g_{1,ik}g_{1,jk}u_{i,t}u_{j,t}$
+
+\noindent $\leq 2\dsum\nolimits_{k=1}^{Kp}\left[ N^{-1}\dsum\nolimits_{i\in
+H}\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} \right] \left[
+\dsum\nolimits_{i\in H}g_{1,ik}^{2}u_{i,t}^{2}\right] =o_{p}\left( 1\right) $%
+.
+
+Combining these results and using the inequality $\sqrt{a_{1}+a_{2}}\leq 
+\sqrt{a_{1}}+\sqrt{a_{2}}$ for $a_{1}\geq 0$ and $a_{2}\geq 0$, we further
+obtain, for all $t$,%
+\begin{eqnarray*}
+\left\Vert \frac{G_{1}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{%
+N_{1}}}\right\Vert _{2} &\leq &\sqrt{\frac{2}{N_{1}}\dsum\limits_{k=1}^{K}%
+\dsum\limits_{i\in H^{{\large c}}}\dsum\limits_{j\in H^{{\large c}}}\mathbb{I%
+}\left\{ i\in \widehat{H^{c}}\right\} \mathbb{I}\left\{ j\in \widehat{H^{c}}%
+\right\} g_{1,ik}g_{1,jk}u_{i,t}u_{j,t}} \\
+&&+\sqrt{\frac{2}{N_{1}}\dsum\limits_{k=1}^{K}\dsum\limits_{i\in
+H}\dsum\limits_{j\in H}\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} 
+\mathbb{I}\left\{ j\in \widehat{H^{c}}\right\} g_{1,ik}g_{1,jk}u_{i,t}u_{j,t}%
+} \\
+&=&o_{p}\left( 1\right) \text{.}
+\end{eqnarray*}
+
+For part (e), write%
+\begin{eqnarray*}
+\left\Vert U_{t,N}\left( \widehat{H^{c}}\right) /\sqrt{N_{1}}\right\Vert
+_{2}^{2} &=&N_{1}^{-1}\dsum\nolimits_{i=1}^{N}\mathbb{I}\left\{ i\in 
+\widehat{H^{c}}\right\} u_{i,t}^{2} \\
+&=&N_{1}^{-1}\dsum\nolimits_{i\in H^{{\large c}}}\mathbb{I}\left\{ i\in 
+\widehat{H^{c}}\right\} u_{i,t}^{2}+N_{1}^{-1}\dsum\nolimits_{i\in H}\mathbb{%
+I}\left\{ i\in \widehat{H^{c}}\right\} u_{i,t}^{2} \\
+&\leq &N_{1}^{-1}\dsum\nolimits_{i\in H^{{\large c}}}u_{i,t}^{2}+N_{1}^{-1}%
+\dsum\nolimits_{i\in H}\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\}
+u_{i,t}^{2}
+\end{eqnarray*}%
+Note that, by Assumption 2-3(b), $E\left[ N_{1}^{-1}\dsum\nolimits_{i\in H^{%
+{\large c}}}u_{i,t}^{2}\right] =N_{1}^{-1}\dsum\nolimits_{i\in H^{{\large c}%
+}}E\left[ u_{i,t}^{2}\right] \leq C$
+
+\noindent $\left( \text{since }N_{1}=\#\left\{ H^{c}\right\} \right) $, so
+that, by applying Markov's inequality, we obtain $N_{1}^{-1}\dsum%
+\nolimits_{i\in H^{{\large c}}}u_{i,t}^{2}=O_{p}\left( 1\right) $. Moreover,
+note that, for any $\epsilon >0$, $\dbigcap\nolimits_{i\in H}\left\{ i\notin 
+\widehat{H^{c}}\right\} \subseteq \left\{ N_{1}^{-1}\dsum\nolimits_{i\in H}%
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} u_{i,t}^{2}<\epsilon \right\} 
+$, so that by DeMorgan's law $\left\{ N_{1}^{-1}\dsum\nolimits_{i\in H}%
+\mathbb{I}\left\{ i\in \widehat{H^{c}}\right\} u_{i,t}^{2}\geq \epsilon
+\right\} \subseteq \left\{ \dbigcap\nolimits_{i\in H}\left\{ i\notin 
+\widehat{H^{c}}\right\} \right\} ^{c}$
+
+\noindent $=\dbigcup\nolimits_{i\in H}\left\{ i\in \widehat{H^{c}}\right\} $%
+. Hence, for either the case where $\mathbb{S}_{i,T}^{+}=\dsum\nolimits_{%
+\ell =1}^{d}\varpi _{\ell }\left\vert S_{i,\ell ,T}\right\vert $ or the case
+where $\mathbb{S}_{i,T}^{+}=\max_{1\leq \ell \leq d}\left\vert S_{i,\ell
+,T}\right\vert $, we have, by applying an argument similar to that given in
+the proof of Theorem 1 of the main paper,%
+\begin{equation*}
+\Pr \left\{ \frac{1}{N_{1}}\dsum\limits_{i\in H}\mathbb{I}\left\{ i\in 
+\widehat{H^{c}}\right\} u_{i,t}^{2}\geq \epsilon \right\} \leq \Pr \left\{
+\dbigcup\limits_{i\in H}\left\{ i\in \widehat{H^{c}}\right\} \right\}
+\end{equation*}%
+\begin{eqnarray*}
+&\leq &\dsum\limits_{i\in H}\Pr \left\{ i\in \widehat{H^{c}}\right\}
+=\dsum\limits_{i\in H}P\left( \mathbb{S}_{i,T}^{+}\geq \Phi ^{-1}\left( 1-%
+\frac{\varphi }{2N}\right) \right) \\
+&\leq &\frac{dN_{2}\varphi }{N}\left\{ 1+2^{2}A\left[ 1+\left( \Phi
+^{-1}\left( 1-\frac{\varphi }{2N}\right) \right) ^{3}\right] T^{-\left(
+1-\alpha _{{\large 1}}\right) \frac{{\large 1}}{{\large 2}}}\right\} \\
+&=&\frac{dN_{2}\varphi }{N_{1}+N_{2}}\left[ 1+o\left( 1\right) \right]
+\rightarrow 0\text{ as }N_{1},N_{2},T\rightarrow \infty
+\end{eqnarray*}%
+Hence, $N_{1}^{-1}\dsum\nolimits_{i\in H}\mathbb{I}\left\{ i\in \widehat{%
+H^{c}}\right\} u_{i,t}^{2}=o_{p}\left( 1\right) $ from which it further
+follows that
+
+\noindent $\left\Vert U_{t,N}\left( \widehat{H^{c}}\right) /\sqrt{N_{1}}%
+\right\Vert _{2}^{2}\leq \frac{1}{N_{1}}\dsum\limits_{i\in H^{{\large c}%
+}}u_{i,t}^{2}+\frac{1}{N_{1}}\dsum\limits_{i\in H}\mathbb{I}\left\{ i\in 
+\widehat{H^{c}}\right\} u_{i,t}^{2}=O_{p}\left( 1\right) +o_{p}\left(
+1\right) =O_{p}\left( 1\right) $.
+
+Turning our attention to part (f), note first that since $G=\left[ 
+\begin{array}{cc}
+G_{1} & G_{2}%
+\end{array}%
+\right] $ is an orthogonal matrix, we have $I_{N}=GG^{\prime
+}=G_{1}G_{1}^{\prime }+G_{2}G_{2}^{\prime }$ or $G_{2}G_{2}^{\prime
+}=I_{N}-G_{1}G_{1}^{\prime }$. Hence, we can write $\left\Vert G_{2}^{\prime
+}U_{t,N}\left( \widehat{H^{c}}\right) /\sqrt{N_{1}}\right\Vert
+_{2}^{2}=U_{t,N}\left( \widehat{H^{c}}\right) ^{\prime }U_{t,N}\left( 
+\widehat{H^{c}}\right) /N_{1}-U_{t,N}\left( \widehat{H^{c}}\right) ^{\prime
+}G_{1}G_{1}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) /N_{1}$
+
+\noindent $\leq \left\Vert U_{t,N}\left( \widehat{H^{c}}\right) /\sqrt{N_{1}}%
+\right\Vert _{2}^{2}+\left\Vert G_{1}^{\prime }U_{t,N}\left( \widehat{H^{c}}%
+\right) /\sqrt{N_{1}}\right\Vert _{2}^{2}$. Applying the results from parts
+(d) and (e) above, we then obtain $\left\Vert G_{2}^{\prime }U_{t,N}\left( 
+\widehat{H^{c}}\right) /\sqrt{N_{1}}\right\Vert _{2}^{2}\leq \left\Vert
+U_{t,N}\left( \widehat{H^{c}}\right) /\sqrt{N_{1}}\right\Vert
+_{2}^{2}+\left\Vert G_{1}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) /%
+\sqrt{N_{1}}\right\Vert _{2}^{2}$
+
+\noindent $=O_{p}\left( 1\right) +o_{p}\left( 1\right) =O_{p}\left( 1\right) 
+$, from which it follows by Slutsky't theorem that
+
+\noindent $\left\Vert G_{2}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) /%
+\sqrt{N_{1}}\right\Vert _{2}=O_{p}\left( 1\right) $.
+
+Now, to show part (g), first write $\widehat{V}^{\prime }\widehat{G}_{1}^{%
+{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) /\sqrt{\widehat{N}_{1}}
+$
+
+\noindent $=\left( 1+\left[ \widehat{N}_{1}-N_{1}\right] /N_{1}\right) ^{-%
+\frac{{\large 1}}{{\large 2}}}\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large %
+\prime }}U_{t,N}\left( \widehat{H^{c}}\right) /\sqrt{N_{1}}$. Using the fact
+that $\widehat{V}^{\prime }\widehat{V}=I_{Kp}$ so that $\left\Vert \widehat{V%
+}\right\Vert _{2}=1$, we have%
+\begin{eqnarray*}
+\left\Vert \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{N_{1}}}\right\Vert _{2}
+&=&\left\Vert \frac{\widehat{V}^{\prime }\left( I_{Kp}+R^{\prime }R\right)
+^{-1/2}\left[ G_{1}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) +R^{\prime
+}G_{2}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) \right] }{\sqrt{N_{1}}}%
+\right\Vert _{2} \\
+&\leq &\left\Vert \widehat{V}\right\Vert _{2}\left\Vert \left(
+I_{Kp}+R^{\prime }R\right) ^{-\frac{1}{2}}\right\Vert _{2}\left\{ \left\Vert 
+\frac{G_{1}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{N_{1}}}%
+\right\Vert _{2}+\left\Vert R\right\Vert _{2}\left\Vert \frac{G_{2}^{\prime
+}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{N_{1}}}\right\Vert _{2}\right\}
+\\
+&\leq &\frac{1}{\sqrt[\backslash ]{1+\lambda _{\min }\left( R^{\prime
+}R\right) }}\left\{ \left\Vert \frac{G_{1}^{\prime }U_{t,N}\left( \widehat{%
+H^{c}}\right) }{\sqrt{N_{1}}}\right\Vert _{2}+\left\Vert R\right\Vert
+_{2}\left\Vert \frac{G_{2}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) }{%
+\sqrt{N_{1}}}\right\Vert _{2}\right\} \text{.}
+\end{eqnarray*}%
+It follows that%
+\begin{equation*}
+\left\Vert \frac{\widehat{V}^{\prime }\widehat{G}_{1}^{{\Large \prime }%
+}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{\widehat{N}_{1}}}\right\Vert
+_{2}=\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-\frac{%
+{\large 1}}{{\large 2}}}\right\vert \left\Vert \frac{\widehat{V}^{\prime }%
+\widehat{G}_{1}^{{\Large \prime }}U_{t,N}\left( \widehat{H^{c}}\right) }{%
+\sqrt{N_{1}}}\right\Vert _{2}
+\end{equation*}%
+\begin{eqnarray*}
+&\leq &\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-%
+\frac{{\large 1}}{{\large 2}}}\right\vert \frac{1}{\sqrt[\backslash ]{%
+1+\lambda _{\min }\left( R^{\prime }R\right) }}\left\{ \left\Vert \frac{%
+G_{1}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{N_{1}}}%
+\right\Vert _{2}+\left\Vert R\right\Vert _{2}\left\Vert \frac{G_{2}^{\prime
+}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{N_{1}}}\right\Vert _{2}\right\}
+\\
+&\leq &\left\vert \left( 1+\frac{\widehat{N}_{1}-N_{1}}{N_{1}}\right) ^{-%
+\frac{{\large 1}}{{\large 2}}}\right\vert \left\{ \left\Vert \frac{%
+G_{1}^{\prime }U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{N_{1}}}%
+\right\Vert _{2}+\left\Vert R\right\Vert _{2}\left\Vert \frac{G_{2}^{\prime
+}U_{t,N}\left( \widehat{H^{c}}\right) }{\sqrt{N_{1}}}\right\Vert
+_{2}\right\} =o_{p}\left( 1\right)
+\end{eqnarray*}
+
+\noindent where the last equality follows from the fact that $\left\Vert
+R\right\Vert _{2}\overset{p}{\rightarrow }0$, $\left\vert \left( 1+\left[ 
+\widehat{N}_{1}-N_{1}\right] /N_{1}\right) ^{-\frac{{\large 1}}{{\large 2}}%
+}\right\vert \overset{p}{\rightarrow }1$, $\left\Vert G_{1}^{\prime
+}U_{t,N}\left( \widehat{H^{c}}\right) /\sqrt{N_{1}}\right\Vert _{2}\overset{p%
+}{\rightarrow }0$, and $\left\Vert G_{2}^{\prime }U_{t,N}\left( \widehat{%
+H^{c}}\right) /\sqrt{N_{1}}\right\Vert _{2}=O_{p}\left( 1\right) $, given
+results previously provided in part (a) in Lemma OA-1 and in parts (a), (d),
+and (f) of this lemma.
+
+To show part (h), note first that, under Assumptions 2-1, 2-2(a)-(b), 2-5,
+and OA-3; there exists a positive constant $\overline{C}$ such that $%
+E\left\Vert \underline{F}_{t}\right\Vert _{2}^{6}\leq \overline{C}<\infty $%
+\footnote{%
+An explicit proof that, under Assumptions 2-1, 2-2(a)-(b), 2-5, and 2-6;
+there exists some positive constant $\overline{C}$ such that $E\left\Vert 
+\underline{F}_{t}\right\Vert _{2}^{6}\leq $ $\overline{C}$ is given in the
+Technical Appendix of an earlier version of this paper, Chao and Swanson
+(2022b). In particular, this result is shown in Lemma C-5 in Appendix C of
+Chao and Swanson (2022b).}. Hence, for any $\epsilon >0$, let $C_{\epsilon }=%
+\overline{C}^{\frac{{\Large 1}}{{\Large 6}}}/\sqrt{\epsilon }$; and we can
+apply Markov's inequality and then Liapunov's inequality to obtain $\Pr
+\left( \left\Vert \underline{F}_{t}\right\Vert _{2}\geq C_{\epsilon }\right)
+\leq \Pr \left( \left\Vert \underline{F}_{t}\right\Vert _{2}^{2}\geq
+C_{\epsilon }^{2}\right) \leq C_{\epsilon }^{-2}E\left\Vert \underline{F}%
+_{t}\right\Vert _{2}^{2}\leq C_{\epsilon }^{-2}\left( E\left\Vert \underline{%
+F}_{t}\right\Vert _{2}^{6}\right) ^{\frac{{\Large 1}}{{\Large 3}}}\leq
+\epsilon \overline{C}^{-\frac{{\Large 1}}{{\Large 3}}}\overline{C}^{\frac{%
+{\Large 1}}{{\Large 3}}}\leq \epsilon $, from which it follows that $%
+\left\Vert \underline{F}_{t}\right\Vert _{2}=O_{p}\left( 1\right) $ for all $%
+t$. $\square $
+
+\medskip
+
+\begin{thebibliography}{9}
+\bibitem{} Bai, J. and S. Ng (2021): \textquotedblleft Approximate Factor
+Models with Weaker Loading,\textquotedblright\ Working Paper, Columbia
+University.
+
+\bibitem{} Chao, J. C. and N. R. Swanson (2022a): \textquotedblleft
+Consistent Estimation, Variable Selection, and Forecasting in
+Factor-Augmented VAR Models," Working Paper, Rutgers University and
+University of Maryland.
+
+\bibitem{} Chao, J. C. and N. R. Swanson (2022b): Technical Appendix to
+\textquotedblleft Consistent Estimation, Variable Selection, and Forecasting
+in Factor-Augmented VAR Models," Working Paper, Rutgers University and
+University of Maryland.
+
+\bibitem{} Golub, G. H. and C. F. van Loan (1996): \textit{Matrix
+Computations}, 3rd Edition. Baltimore: The Johns Hopkins University Press.
+
+\bibitem{} Stewart, G.W. and J. Sun (1990): \textit{Matrix Perturbation
+Theory}. Boston: Academic Press.
+
+\bibitem{} Stock, J. H. and M. W. Watson (2002): \textquotedblleft
+Forecasting Using Principal Components from a Large Number of
+Predictors,\textquotedblright\ \textit{Journal of the American Statistical
+Association}, 97, 1167-1179.
+\end{thebibliography}
+
+\end{document}

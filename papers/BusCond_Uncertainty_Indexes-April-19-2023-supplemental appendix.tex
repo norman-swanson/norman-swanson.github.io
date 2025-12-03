@@ -1,0 +1,590 @@
+
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+
+\title{Supplemental Appendix to: An Assessment of the Marginal Predictive Content of Business Conditions and Economic Uncertainty Indexes\thanks{Yang Liu, Department of Economics, Rutgers University, 75 Hamilton Street, New Brunswick, NJ 08901, USA, yl1241@economics.rutgers.edu. Norman R. Swanson, Department of Economics, Rutgers University, 75 Hamilton Street, New Brunswick, NJ 08901, USA, nswanson@economics.rutgers.edu. We are grateful to Mingmian Cheng, Valentina Corradi, Frank Diebold, Hyun Hak Kim, John Landon-Lane, Yuan Liao, Weijia Peng, and Chun Yao for useful comments and suggestions on the topics explored in this paper.}}
+
+\author{Yang Liu and Norman R. Swanson \\ Rutgers University}
+\date{April 2023}
+
+%\usepackage{natbib}  %% conflicted bib package
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage[autopunct=true]{csquotes}
+\usepackage{setspace}
+\usepackage{rotating}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{CJK}
+\usepackage{threeparttable}
+  \usepackage{geometry}
+  \geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
+  \usepackage{pdfpages}
+ \usepackage{blindtext}
+  \usepackage{mathrsfs}
+  %\usepackage{floatrow}
+  \usepackage{caption}
+  \usepackage{adjustbox}
+  \usepackage{hyperref}  %% reference link
+  \hypersetup{           %% reference link color set
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue
+  }
+  \usepackage{apacite}  %% APA citation
+
+
+\begin{document}
+%\begin{sloppypar}
+\maketitle
+\begin{abstract}
+%%%% simplely introduce topic/ our main purposes/ data and procedures/ conclusions
+  This appendix contains additional tables and figures that are discussed in the main paper.
+\end{abstract}
+\vspace{3in}
+\begin{flushleft}
+\textit{Keywords:} Latent factor, business conditions index, macroeconomic uncertainty measure, principal components analysis, least absolute shrinkage operator, high dimensional data, big data.
+\end{flushleft}
+
+\bigskip
+\newpage
+
+\begin{doublespace}
+  
+
+
+\newgeometry{left=0.2cm,right=0.2cm, top=2cm, bottom=2cm}
+\begin{table}[h]
+\renewcommand\arraystretch{1.5}
+\caption{Comparison of the Predictive Accuracy of AR(SIC) + EUI + BCI Models with AR(SIC) + BCI Models\thanks{*}}
+     \centering
+      \tiny 
+      \begin{threeparttable}
+    \begin{tabular}{p{0.3cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}}
+    \hline
+    \hline
+   & \multicolumn{10}{c}{Factor Extraction Method used to Construct Business Conditions Indexes} \\
+			& \multicolumn{1}{c}{Target Variable} & \multicolumn{1}{l}{PCA} & \multicolumn{1}{l}{Lasso} & \multicolumn{1}{l}{LPCA} & \multicolumn{1}{l}{AP} & \multicolumn{1}{l}{GP1} & \multicolumn{1}{l}{GP2} &\multicolumn{1}{l}{GF1} & \multicolumn{1}{l}{GF2} & \multicolumn{1}{l}{EPCA} & \multicolumn{1}{l}{JLN} \\
+          \hline
+         
+          & RPI   & 0.928 & 0.934 & 0.936 & 0.955 & 0.926 & 0.948 & 0.941 & 0.933 & 0.962 & \textbf{0.924 } \\
+          & INDPRO & 0.924 & 0.927 & \textbf{0.879 } & 0.921 & 0.916 & 0.937 & 0.928 & 0.906 & 0.921 & 0.945 \\
+          & UNRATE & 0.903 & 0.89  & 0.89  & 0.928 & 0.889 & \textbf{0.876 } & 0.881 & 0.903 & 0.946 & 0.931 \\
+          & CLAIMS & 0.892 & 0.858 & \textbf{0.849 } & 0.927 & 0.933 & 0.9   & 0.886 & 0.897 & 0.851 & 0.936 \\
+    h=1   & HOUST & 0.976 & \textbf{0.920 } & 0.927 & 0.988 & 0.927 & 0.966 & 0.966 & 0.951 & 0.971 & 0.972 \\
+          & PERMIT & 0.963 & \textbf{0.898 } & \textbf{0.898 } & 0.95 ** & 0.922 & 0.974 & 0.944 & 0.975 & 0.944 & 0.968 * \\
+          & RCON & 0.766 & \textbf{0.672 } & 0.719 & 0.804 & 0.696 & 0.793 & 0.761 & 0.846 & 0.737 & 0.764 \\
+          & MTS & 0.914 & \textbf{0.797 } & 0.832 & 0.923 & 0.844 & 0.905 & 0.948 & 0.963 & 0.911 & 0.851 \\
+          & M2  & 0.909 & 0.876 & 0.887 & 0.92  & \textbf{0.855 } & 0.918 & 0.899 & 0.934 & 0.916 & 0.94 \\
+          & R10  & 1.009 & 0.957 & 0.959 & 0.971 & \textbf{0.948 *} & 0.974 & 0.985 & 0.969 & 1.008 * & 0.989 \\
+          & PPI   & 1.005 * & 0.939 & \textbf{0.937 } & 0.966 & 0.942 & 0.977 & 0.97  & 0.973 & 1.009 * & 0.975 \\
+          & CPI   & 1.014 & 0.977 & 0.984 & 1.011 & \textbf{0.973 } & 0.993 & 0.99  & 1.003 & 1.015 & 0.985 \\
+          & PCECI & 1.009 & \textbf{0.964 } & 0.971 & 1.002 & 0.965 & 0.992 & 0.985 & 0.976 & 0.997 & 0.986 \\
+          & S\&P500 & 0.93  & \textbf{0.885 } & 0.895 & 0.931 & 0.895 & 0.915 & 0.91  & 0.935 & 0.941 & 0.938 \\
+    \hline
+          & RPI   & 0.947 & 0.971 ** & 0.964 & 0.975 & 0.973 & \textbf{0.932 } & 0.988 & 0.941 & 0.978 & 0.947 \\
+          & INDPRO & 0.881 & 0.945 & 0.898 & 0.941 & 0.964 & \textbf{0.824 } & 0.99  & 0.836 & 0.945 & 0.948 \\
+          & UNRATE & 0.806 & 0.935 & 0.877 & 0.889 & 0.935 & \textbf{0.794 } & 0.991 & 0.819 & 0.908 & 0.916 \\
+          & CLAIMS & 0.774 & 0.861 & 0.812 & 0.794 * & 0.961 & \textbf{0.747 } & 0.995 & 0.779 & 0.864 & 0.877 \\
+    h=3   & HOUST & 0.896 & 0.823 ** & 0.905 & 0.941 & 0.877 & \textbf{0.843 } & 0.984 & 0.871 & 0.96  & 0.927 \\
+          & PERMIT & 0.929 & 0.792 ** & 0.927 & 0.981 & \textbf{0.860 } & 0.813 ** & 1.003 & 0.861 & 0.98  & 0.964 \\
+          & RCON & 0.737 & 0.909 & 0.842 & 0.807 & 0.862 & 0.726 & 0.975 & \textbf{0.679 } & 0.811 & 0.812 \\
+          & MTS & 0.834 & 0.947 & 0.907 & 0.909 & 0.92  & 0.828 & 0.99  & \textbf{0.823 } & 0.914 & 0.908 \\
+          & M2  & 0.921 & 0.967 & 0.966 & 0.949 & 0.958 * & 0.886 & 0.962 & \textbf{0.883 } & 0.971 & 0.954 \\
+          & R10  & 0.95  & 0.965 & 0.956 & 0.995 & 0.977 & 0.95 * & 0.952 & \textbf{0.936 } & 0.964 & 0.986 \\
+          & PPI   & 0.928 & 0.945 * & 0.938 * & 0.934 & 0.943 & 0.923 & 0.955 & \textbf{0.906 } & 0.961 & 0.966 * \\
+          & CPI   & 0.968 & 0.951 & 0.944 * & 0.971 * & 0.945 & 0.963 & \textbf{0.921 } & 0.929 * & 0.987 & 0.972 ** \\
+          & PCECI & 0.968 & 0.949 * & 0.944 * & 0.962 ** & 0.95  & 0.955 & \textbf{0.935 } & 0.936 & 0.989 & 0.97 ** \\
+          & S\&P500 & 0.965 & 0.954 & 0.95  & 1.002 & 0.955 & 0.947 & 0.959 & 0.951 & 0.985 & \textbf{0.944 } \\
+    \hline
+          & RPI   & 1.001 & 0.966 & 0.969 & 0.99  & 0.982 & 0.987 & 0.988 & 0.969 * & 0.969 & \textbf{0.964 } \\
+          & INDPRO & 0.981 ** & 0.924 & 0.948 & 0.982 * & 0.947 * & 0.946 & 0.966 & 0.966 & 0.963 & \textbf{0.920 } \\
+          & UNRATE & 0.925 & 0.974 & 0.989 & 0.96  & 0.987 & \textbf{0.877 } & 0.989 & 0.978 & 0.979 & 0.929 \\
+          & CLAIMS & 0.924 & 0.974 & 0.976 & 0.932 & 0.982 & \textbf{0.877 } & 0.979 & 0.944 & 0.964 & 0.942 \\
+    h=6   & HOUST & 0.909 * & 0.884 & \textbf{0.875 } & 0.908 & 0.854 ** & 0.874 *** & 0.931 & 0.993 & 0.929 & 0.982 \\
+          & PERMIT & 0.9 * & 0.83  & 0.813 * & 0.983 & \textbf{0.828 } & 0.845 *** & 0.95  & 0.97  & 0.981 & 1.001 * \\
+          & RCON & 0.981 * & 0.885 & 0.898 & 0.954 & 0.978 * & 0.918 & 0.987 * & 0.964 & 0.935 & \textbf{0.811 } \\
+          & MTS & 0.987 * & 0.953 & 0.954 & 0.953 & 0.966 & 0.942 & 0.968 & 0.952 & 0.956 & \textbf{0.900 } \\
+          & M2  & 0.979 * & 0.94  & \textbf{0.932 } & 0.957 & 0.97 * & 0.962 & 0.972 & 0.954 & 0.959 & 0.958 \\
+          & R10  & 1.005 & \textbf{0.962 } & 0.975 & 0.983 & 0.973 & 0.973 & 0.969 & 0.98  & 0.985 & 0.984 \\
+          & PPI   & 0.986 & 0.964 ** & 0.962 *** & 0.985 * & 0.966 * & 0.986 & \textbf{0.924 } & 0.976 * & 0.981 ** & 0.98 ** \\
+          & CPI   & 0.99  & 0.967 & 0.968 * & 0.989 & 0.964 * & 0.968 & \textbf{0.860 } & 0.972 * & 0.983 & 0.98 \\
+          & PCECI & 0.992 & 0.967 & 0.97 * & 0.996 & 0.985 & 0.977 & \textbf{0.882 } & 0.971 ** & 0.984 & 0.98 \\
+          & S\&P500 & 0.999 & 0.966 & 0.965 & 1.008 & 0.945 & 1.004 & \textbf{0.803 } & 0.981 & 1.005 & 0.974 \\
+    \hline
+          & RPI   & 0.982 & \textbf{0.875 } & 0.878 & 0.972 & 0.977 & 0.997 & 0.96  & 0.949 & 0.907 * & 0.995 *** \\
+          & INDPRO & 0.961 & \textbf{0.850 } & 0.904 & 0.958 * & 0.968 & 0.976 & 0.911 & 0.993 & 0.853 ** & 0.987 *** \\
+          & UNRATE & 0.967 & \textbf{0.830 } & 0.861 & 0.971 & 0.985 * & 0.966 & 0.965 & 0.986 & 0.902 * & 0.972 *** \\
+          & CLAIMS & 0.983 & \textbf{0.869 } & 0.87  & 0.948 & 0.992 & 0.971 & 0.98  & 0.968 & 0.917 & 0.983 *** \\
+    h=12  & HOUST & \textbf{0.791 } & 0.895 & 0.889 & 0.885 & 0.926 & 0.976 & 0.919 & 0.959 & 0.902 * & 0.993 *** \\
+          & PERMIT & \textbf{0.780 } & 0.817 & 0.808 & 0.912 & 0.877 & 0.954 * & 0.96 ** & 0.94 *** & 0.934 *** & 0.982 *** \\
+          & RCON & 0.957 & 0.844 & 0.846 & 0.876 & 0.986 & 0.89  & 0.98  & 0.976 & \textbf{0.793 } & 0.961 *** \\
+          & MTS & 0.949 & 0.813 & 0.81  & 0.937 & 0.98  & 0.949 * & 0.966 & 0.986 & \textbf{0.754 } & 0.98 *** \\
+          & M2  & 0.976 * & 0.907 ** & \textbf{0.905 } & 0.979 & 0.972 * & 0.956 ** & 0.951 & 0.969 & 0.909 & 0.987 *** \\
+          & R10  & 0.996 ** & 0.949 & 0.949 & 0.987 & 0.965 & 1.022 * & \textbf{0.893 } & 0.979 & 0.963 & 0.995 *** \\
+          & PPI   & 0.985 & 0.972 & 0.966 & 0.985 & 0.953 & 0.972 & \textbf{0.910 } & 0.968 & 0.97  & 0.979 *** \\
+          & CPI   & 0.986 & 0.973 & 0.965 & 0.988 & 0.956 & 0.99  & \textbf{0.909 } & 0.965 & 0.974 & 0.984 *** \\
+          & PCECI & 0.99  & 0.973 & 0.968 & 0.991 & 0.955 & 0.994 & \textbf{0.906 } & 0.968 & 0.964 & 0.981 *** \\
+          & S\&P500 & 0.99  & 0.981 & 0.967 & 0.982 & 0.943 & 0.979 & \textbf{0.775 } & 0.947 & 0.947 ** & 1.006 *** \\
+  
+  
+\hline
+\hline
+\end{tabular}
+ \begin{tablenotes}
+ \scriptsize
+    \item[*] Notes: See notes to Table 2 in the main paper. Tabulated entries are relative mean squared forecast error (MSFEs) for our 14 target variables, and for forecast horizons of h=1,3,6, and 12 months ahead. The benchmark model is AR(SIC) model augmented with business conditions indexes (BCIs). The benchmark model is in the denominator of the reported statistics, so that entries less than unity indicate that our more complex models which include economic uncertainty indexes (EUIs) and business conditions indexes (BCIs) have lower MSFEs. The forecast period is 2004:6-2021:6, and all models are estimated anew prior to the construction of each forecast. Entries in bold denote method with lowest relative MSFE for a given target variable and forecast horizon. Starred entries indicate rejection of the null hypothesis of equal conditional predictive ability using the \citeA{giacomini2006tests} conditional predictive accuracy test. Significance levels for the test include ``$***$" for $p<0.01$, ``$**$" for $p<0.05$, ``$*$" for $p<0.1$.
+   \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+
+\newgeometry{left=0.2cm,right=0.2cm, top=2cm, bottom=2cm}
+\newpage
+\begin{table}[h]
+\renewcommand\arraystretch{1.5}
+\caption{Comparison of the Predictive Accuracy of AR(SIC) + EUI + BCI Models with AR(SIC) + EUI Models\thanks{*}}
+     \centering
+      \tiny 
+      \begin{threeparttable}
+     \begin{tabular}{p{0.3cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}}
+    \hline
+    \hline
+   & \multicolumn{10}{c}{Factor Extraction Method used to Construct Business Conditions Indexes} \\
+			& \multicolumn{1}{c}{Target Variable} & \multicolumn{1}{l}{PCA} & \multicolumn{1}{l}{Lasso} & \multicolumn{1}{l}{LPCA} & \multicolumn{1}{l}{AP} & \multicolumn{1}{l}{GP1} & \multicolumn{1}{l}{GP2} &\multicolumn{1}{l}{GF1} & \multicolumn{1}{l}{GF2} & \multicolumn{1}{l}{EPCA} & \multicolumn{1}{l}{JLN} \\
+          \hline
+     
+          & RPI   & 0.752 * & 0.851 & 0.834 & 0.806 & 0.83  & 0.763 & 0.826 ** & 0.752 * & \textbf{0.677 *} & 0.779 \\
+          & INDPRO & 0.662 * & 0.624 ** & 0.967 & 0.651 * & 0.734 ** & 0.684 * & 0.65 ** & 0.703 & 0.608 ** & \textbf{0.559} \\
+          & UNRATE & 0.54 ** & \textbf{0.521 ***} & 0.534 * & 0.541 & 0.533 ** & 0.546 * & 0.535 * & 0.632 & 0.523 ** & 0.566 * \\
+          & CLAIMS & 0.517 & 0.595 & 0.582 & 0.651 * & 0.671 & 0.573 & 0.511 * & 0.502 & \textbf{0.5 *} & 0.659 \\
+    h=1   & HOUST & 0.618 *** & 0.554 *** & 0.553 *** & 0.558 *** & 0.604 *** & 0.594 *** & 0.737 ** & 0.609 *** & \textbf{0.51 ***} & 0.668 *** \\
+          & PERMIT & 0.684 *** & 0.881 & 0.87  & 0.72 ** & 0.94  & 0.7 ** & 0.77 * & 0.785 * & \textbf{0.661 ***} & 0.847 ** \\
+          & RCON & 0.573 ** & 0.985 & 0.981 & 0.729 ** & 0.984 & 0.729 ** & 0.982 & 0.9 * & \textbf{0.517 **} & 0.892 *** \\
+          & MTS & 0.514 ** & 0.909 * & 0.899 * & 0.534 * & 0.716 ** & 0.517 ** & 0.793 * & 0.732 ** & \textbf{0.512 **} & 0.68 \\
+          & M2  & 0.759 *** & 0.788 * & 0.764 ** & 0.756 *** & 0.892 & \textbf{0.754 **} & 0.898 * & 0.766 ** & 0.755 ** & 0.985 \\
+          & R10  & 0.866 & \textbf{0.855} & 0.917 & 0.902 & 0.872 & 0.881 & 0.94  & 0.934 & 0.865 & 0.887 \\
+          & PPI   & 0.74 * & 0.986 & 0.986 & 0.925 & 0.978 & 0.748 ** & 0.955 & 0.835 & \textbf{0.729 *} & 0.818 \\
+          & CPI   & 0.818 * & 0.9   & 0.901 & 0.765 ** & 0.95  & 0.768 * & 0.882 * & 0.857 * & \textbf{0.659 ***} & 0.935 \\
+          & PCECI & 0.769 ** & 0.822 *** & 0.822 *** & 0.856 * & 0.707 ** & 0.76 *** & 0.833 * & 0.816 ** & \textbf{0.654 ***} & 0.936 \\
+          & S\&P500 & 0.846 & 0.995 & 0.98  & 0.89  & 0.996 & 0.843 ** & 0.942 & 0.944 & \textbf{0.749} & 0.951 \\
+   \hline
+          & RPI   & 0.83 ** & 0.849 ** & 0.841 ** & 0.814 ** & 0.842 ** & 0.844 ** & 0.852 * & 0.838 ** & \textbf{0.719 **} & 0.91 \\
+          & INDPRO & 0.836 ** & \textbf{0.69} & 0.958 & 0.788 * & 0.896 * & 0.766 * & 0.757 & 0.886 * & 0.785 * & 0.897 \\
+          & UNRATE & 0.75  & \textbf{0.603} & 0.692 & 0.739 * & 0.693 & 0.716 & 0.675 & 0.855 & 0.646 & 0.743 \\
+          & CLAIMS & 0.831 & 0.849 & 0.803 & 0.843 & 0.848 & 0.786 & 0.753 * & 0.768 & \textbf{0.675} & 0.88 * \\
+    h=3   & HOUST & 0.642 *** & 0.707 ** & 0.649 *** & 0.616 ** & 0.719 *** & 0.702 *** & 0.704 *** & 0.724 *** & \textbf{0.527 ***} & 0.703 *** \\
+          & PERMIT & \textbf{0.714 ***} & 0.867 ** & 0.83 ** & 0.754 *** & 0.898 ** & 0.737 & 0.737 *** & 0.772 ** & 0.719 *** & 0.864 * \\
+          & RCON & 0.866 & 0.933 & 0.881 & 0.83  & 0.871 & 0.734 & 0.949 & 0.797 & \textbf{0.563} & 0.932 \\
+          & MTS & 0.899 & 0.963 & 0.972 & \textbf{0.773} & 0.903 & 0.813 & 0.891 & 0.913 * & 0.816 & 0.953 \\
+          & M2  & 0.847 & 0.842 * & 0.846 * & 0.854 & 0.946 & \textbf{0.789} & 0.945 * & 0.837 & 0.817 & 0.989 \\
+          & R10  & 0.894 & \textbf{0.855 **} & 0.992 & 0.958 & 0.929 & 0.915 * & 0.916 & 0.991 & 0.902 & 0.926 \\
+          & PPI   & \textbf{0.859 ***} & 1.012 & 1.013 & 0.984 & 0.992 & 0.901 ** & 0.984 & 0.939 & 0.868 ** & 0.933 ** \\
+          & CPI   & 0.866 & 0.959 & 0.956 * & 0.904 & 0.978 & 0.903 & 0.936 *** & 0.929 * & \textbf{0.842 *} & 0.968 \\
+          & PCECI & 0.87 * & 0.956 & 0.955 & 0.901 ** & 0.885 & 0.911 & 0.929 & 0.915 & \textbf{0.819 *} & 0.973 \\
+          & S\&P500 & 0.815 & 1.001 & 0.96  & 0.874 * & 1.007 & 0.846 & 0.969 & 0.934 & \textbf{0.761 *} & 0.978 \\
+   \hline
+          & RPI   & 0.877 * & 0.865 * & 0.875 * & 0.856 & 0.851 ** & 0.905 & 0.864 ** & 0.879 * & \textbf{0.787 *} & 0.963 \\
+          & INDPRO & 0.828 * & \textbf{0.68 *} & 0.992 ** & 0.783 & 0.8   & 0.834 & 0.832 & 0.96  & 0.768 ** & 0.905 \\
+          & UNRATE & 0.843 & \textbf{0.663} & 0.846 & 0.821 & 0.811 & 0.797 & 0.879 & 0.934 & 0.746 & 0.926 \\
+          & CLAIMS & 0.875 & 0.897 & 0.904 & 0.885 & 0.895 & 0.861 & 0.868 & 0.862 & \textbf{0.822} & 0.972 \\
+    h=6   & HOUST & 0.597 *** & 0.665 *** & 0.651 *** & 0.59 ** & 0.804 *** & 0.705 * & 0.693 *** & 0.681 *** & \textbf{0.565 ***} & 0.728 ** \\
+          & PERMIT & \textbf{0.624 ***} & 0.683 ** & 0.668 ** & 0.708 * & 0.881 ** & 0.819 & 0.698 ** & 0.766 ** & 0.665 *** & 0.889 * \\
+          & RCON & 0.75  & 0.814 & 0.86  & 0.779 & 0.87  & 0.783 & 0.865 & 0.781 & \textbf{0.58} & 0.93 \\
+          & MTS & 0.864 * & 0.986 & 0.986 & 0.86 * & 0.872 & 0.876 & 0.912 & 0.894 & \textbf{0.825} & 0.978 \\
+          & M2  & 0.872 & 0.939 & 0.939 & 0.885 & 0.998 & 0.888 & 0.952 & 0.904 & \textbf{0.871 **} & 0.99 \\
+          & R10  & 0.947 & \textbf{0.903} & 0.991 & 0.967 & 0.962 & 0.932 & 0.928 & 0.995 & 0.946 & 0.984 \\
+          & PPI   & 0.863 ** & 0.997 & 0.997 & 0.973 & 1.008 & 0.918 * & 0.989 & 0.91  & \textbf{0.861 **} & 0.924 \\
+          & CPI   & 0.883 *** & 0.94  & 0.938 & 0.95  & 0.98  & 0.87  & 0.93  & 0.919 & \textbf{0.835 *} & 0.967 \\
+          & PCECI & 0.875 ** & 0.981 & 0.98  & 0.913 & 0.873 & 0.908 & 0.937 * & 0.912 & \textbf{0.841 *} & 0.966 * \\
+          & S\&P500 & 0.844 & 0.984 & 0.973 & 0.897 & 0.981 & 0.914 & 0.995 & 0.965 & \textbf{0.784} & 0.936 \\
+   \hline
+          & RPI   & 0.877 & 0.833 & 0.83  & 0.88  & 0.839 & 0.877 & 0.831 & 0.881 & \textbf{0.745 *} & 0.995 *** \\
+          & INDPRO & 0.854 & \textbf{0.632} & 0.988 & 0.713 * & 0.819 & 0.781 & 0.87  & 0.973 & 0.68 * & 0.926 *** \\
+          & UNRATE & 0.858 & \textbf{0.682} & 0.827 & 0.781 & 0.799 & 0.866 & 0.914 & 0.959 & 0.684 & 0.976 *** \\
+          & CLAIMS & 0.889 & 0.849 & 0.849 & 0.816 & 0.871 & 0.906 & 0.862 & 0.881 & \textbf{0.808} & 0.95 *** \\
+    h=12  & HOUST & 0.554 & 0.615 & 0.607 ** & 0.559 * & 0.892 & 0.627 & 0.775 & 0.651 *** & \textbf{0.549 **} & 0.792 *** \\
+          & PERMIT & 0.584 & 0.565 & 0.557 ** & 0.575 & 0.899 ** & 0.844 & 0.716 & 0.735 *** & \textbf{0.541 **} & 0.894 *** \\
+          & RCON & 0.825 & 0.813 & 0.813 & 0.674 & 0.805 & 0.821 & 0.8   & 0.751 & \textbf{0.602} & 0.937 *** \\
+          & MTS & 0.86  & 0.976 & 0.976 & 0.74  & 0.832 & 0.869 & 0.984 & 0.972 & \textbf{0.694} & 0.983 *** \\
+          & M2  & 0.959 ** & 0.942 ** & 0.943 & 0.943 & 1.003 ** & 0.981 ** & 0.934 & 0.933 & \textbf{0.889} & 0.97 *** \\
+          & R10  & 0.933 ** & \textbf{0.866} & 0.981 & 0.971 & 0.95  & 0.915 * & 0.967 & 0.996 & 0.929 & 0.99 *** \\
+          & PPI   & 0.9   & 0.995 & 0.995 & 0.981 & 0.989 & 0.933 & 0.988 & 0.916 & \textbf{0.89} & 0.968 *** \\
+          & CPI   & 0.905 & 0.98  & 0.979 & 0.884 & 0.987 & 0.888 & 0.972 & 0.964 & \textbf{0.873} & 0.982 *** \\
+          & PCECI & 0.905 & 0.998 & 0.997 & 0.911 & 0.896 & 0.894 & 0.95  & 0.94  & \textbf{0.882} & 0.987 *** \\
+          & S\&P500 & 0.881 & 0.947 & 0.946 * & 0.929 & 0.908 & 0.957 & 0.953 & 0.906 & \textbf{0.793 ***} & 0.98 *** \\
+   
+
+   
+
+\hline
+\hline
+\end{tabular}
+ \begin{tablenotes}
+ \scriptsize
+    \item[*] Notes: See notes to Table 1. In this table, the benchmark model is AR(SIC) model augmented with economic uncertainty indexes (EUIs). However, the alternative forecasting model is AR(SIC) includes economic uncertainty indexes (EUIs) and business conditions indexes (BCIs) together. 
+   \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+
+\newgeometry{left=0.2cm,right=0.2cm, top=2cm, bottom=2cm}
+\newpage
+\begin{table}[h]
+\renewcommand\arraystretch{1.5}
+\caption{Comparison of the Predictive Accuracy of AR(SIC) + EUI Models with AR(SIC) + BCI Models\thanks{*}}
+     \centering
+      \tiny 
+      \begin{threeparttable}
+  \begin{tabular}{p{0.3cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}p{1.2cm}}
+    \hline
+    \hline
+   & \multicolumn{10}{c}{Factor Extraction Method used to Construct Business Conditions Indexes} \\
+			& \multicolumn{1}{c}{Target Variable} & \multicolumn{1}{l}{PCA} & \multicolumn{1}{l}{Lasso} & \multicolumn{1}{l}{LPCA} & \multicolumn{1}{l}{AP} & \multicolumn{1}{l}{GP1} & \multicolumn{1}{l}{GP2} &\multicolumn{1}{l}{GF1} & \multicolumn{1}{l}{GF2} & \multicolumn{1}{l}{EPCA} & \multicolumn{1}{l}{JLN} \\
+          \hline
+
+          & RPI   & 1.234 & \textbf{1.098} & 1.123 & 1.184 & 1.115 & 1.243 & 1.139 & 1.241 * & 1.421 ** & 1.186 \\
+          & INDPRO & 1.395 * & 1.485 ** & \textbf{0.91} & 1.414 * & 1.247 & 1.371 * & 1.429 ** & 1.289 & 1.514 ** & 1.692 \\
+          & UNRATE & 1.508 * & 1.56 ** & 1.521 & 1.56  & 1.494 * & 1.558 * & 1.589 & \textbf{1.265} & 1.622 * & 1.645 \\
+          & CLAIMS & 1.726 & 1.443 & 1.457 & 1.425 & \textbf{1.39} & 1.572 & 1.74  & 1.816 & 1.808 & 1.421 \\
+    h=1   & HOUST & 1.58 *** & 1.661 *** & 1.678 *** & 1.771 *** & 1.536 *** & 1.627 *** & \textbf{1.31 **} & 1.561 *** & 1.784 *** & 1.455 *** \\
+          & PERMIT & 1.408 *** & 1.019 & 1.033 & 1.32 ** & \textbf{0.981} & 1.391 ** & 1.226 & 1.243 & 1.428 *** & 1.143 * \\
+          & RCON & 1.338 & \textbf{0.683} & 0.733 & 1.104 & 0.708 & 1.089 & 0.776 & 0.94  & 1.397 * & 0.857 \\
+          & MTS & 1.625 ** & \textbf{0.877} & 0.926 & 1.584 * & 1.178 & 1.656 * & 1.195 & 1.316 * & 1.629 ** & 1.252 \\
+          & M2  & 1.198 & 1.112 & 1.16  & 1.217 & 0.959 & 1.217 & 1.002 & 1.219 & 1.214 & \textbf{0.954} \\
+          & R10  & 1.165 & 1.118 & 1.046 & 1.077 & 1.087 & 1.106 & 1.048 & \textbf{1.038} & 1.165 & 1.115 \\
+          & PPI   & 1.358 * & 0.953 & \textbf{0.95} & 1.045 & 0.963 & 1.306 * & 1.016 & 1.166 & 1.383 * & 1.193 \\
+          & CPI   & 1.24 * & 1.087 & 1.092 & 1.321 ** & \textbf{1.025} & 1.294 * & 1.122 & 1.171 * & 1.54 *** & 1.053 \\
+          & PCECI & 1.312 *** & 1.172 ** & 1.181 ** & 1.17 ** & 1.366 ** & 1.305 *** & 1.182 & 1.195 * & 1.524 *** & \textbf{1.053} \\
+          & S\&P500 & 1.099 & \textbf{0.89} & 0.914 & 1.047 & 0.899 & 1.086 & 0.966 & 0.991 & 1.257 & 0.987 \\
+   \hline
+          & RPI   & 1.141 * & 1.144 * & 1.146 ** & 1.198 ** & 1.156 ** & 1.104 & 1.16 * & 1.123 & 1.36 ** & \textbf{1.04} \\
+          & INDPRO & 1.054 & 1.369 & \textbf{0.938} & 1.194 & 1.076 ** & 1.077 & 1.307 & 0.943 & 1.204 ** & 1.056 \\
+          & UNRATE & 1.075 & 1.551 & 1.268 * & 1.203 ** & 1.349 * & 1.108 & 1.467 & \textbf{0.958} & 1.406 & 1.233 \\
+          & CLAIMS & \textbf{0.932} & 1.014 & 1.011 & 0.942 & 1.132 & 0.95  & 1.321 & 1.013 & 1.28  & 0.997 \\
+    h=3   & HOUST & 1.396 ** & \textbf{1.164} & 1.394 *** & 1.527 ** & 1.221 & 1.202 & 1.397 *** & 1.203 & 1.51 *** & 1.319 * \\
+          & PERMIT & 1.303 ** & \textbf{0.913} & 1.116 & 1.301 * & 0.958 & 1.104 & 1.361 *** & 1.115 & 1.363 *** & 1.115 \\
+          & RCON & \textbf{0.851} & 0.974 & 0.956 & 0.973 & 0.989 & 0.989 & 1.028 & 0.852 & 1.44  & 0.871 \\
+          & MTS & 0.928 & 0.984 & 0.932 & 1.176 & 1.02  & 1.019 & 1.111 & \textbf{0.902} & 1.121 & 0.953 \\
+          & M2  & 1.087 & 1.149 & 1.141 & 1.111 & 1.012 & 1.123 & 1.018 & 1.054 & 1.188 & \textbf{0.965} \\
+          & R10  & 1.063 & 1.129 * & 0.964 & 1.038 & 1.052 & 1.039 & 1.039 & \textbf{0.944} & 1.069 & 1.065 \\
+          & PPI   & 1.08  & 0.934 *** & \textbf{0.926 ***} & 0.95  & 0.951 & 1.025 & 0.97  & 0.966 & 1.107 * & 1.036 \\
+          & CPI   & 1.118 & 0.991 & 0.988 & 1.073 & \textbf{0.966} & 1.066 & 0.984 & 1     & 1.172 & 1.004 \\
+          & PCECI & 1.113 & 0.993 & \textbf{0.989} & 1.068 & 1.073 & 1.047 & 1.007 & 1.023 & 1.207 * & 0.997 \\
+          & S\&P500 & 1.185 & 0.953 & 0.99  & 1.147 * & \textbf{0.948} & 1.12  & 0.99  & 1.018 & 1.294 * & 0.965 \\
+   \hline
+          & RPI   & 1.148 ** & 1.116 * & 1.106 * & 1.155 & 1.154 ** & 1.081 & 1.144 & 1.1   & 1.231 & \textbf{0.997} \\
+          & INDPRO & 1.183 * & 1.362 ** & \textbf{0.951} & 1.245 & 1.183 & 1.124 & 1.16  & 1.017 & 1.259 * & 1.005 \\
+          & UNRATE & 1.09  & 1.468 & 1.168 & 1.168 & 1.22  & 1.102 & 1.125 & 1.045 & 1.311 & \textbf{1.004} \\
+          & CLAIMS & 1.056 & 1.086 & 1.08  & 1.059 & 1.097 & 1.021 & 1.128 & 1.085 & 1.168 & \textbf{0.969} \\
+    h=6   & HOUST & 1.566 *** & 1.324 & 1.337 & 1.551 * & \textbf{1.005 *} & 1.252 & 1.343 * & 1.447 ** & 1.711 *** & 1.351 * \\
+          & PERMIT & 1.481 *** & 1.214 & 1.21  & 1.363 * & \textbf{0.912} & 1.104 & 1.362 ** & 1.245 & 1.498 *** & 1.126 \\
+          & RCON & 1.311 & 1.086 & 1.043 & 1.223 & 1.121 & 1.172 & 1.141 & 1.23  & 1.603 & \textbf{0.873} \\
+          & MTS & 1.144 * & 0.969 & 0.968 & 1.108 & 1.103 & 1.073 & 1.06  & 1.075 & 1.165 & \textbf{0.912} \\
+          & M2  & 1.123 & 1     & 0.989 & 1.08  & 0.967 ** & 1.091 & 1.021 & 1.051 & 1.103 ** & \textbf{0.961} \\
+          & R10  & 1.061 & 1.06 * & \textbf{0.972} & 1.021 & 1.007 & 1.047 & 1.045 & 0.983 & 1.053 & 1 \\
+          & PPI   & 1.14 * & 0.963 ** & 0.961 ** & 1.01  & 0.955 * & 1.073 & \textbf{0.935} & 1.068 & 1.138 * & 1.062 \\
+          & CPI   & 1.119 *** & 1.023 & 1.022 & 1.043 & 0.976 & 1.116 & \textbf{0.925} & 1.052 * & 1.174 & 1.014 \\
+          & PCECI & 1.132 * & 0.981 & 0.981 & 1.091 & 1.127 & 1.078 & \textbf{0.941} & 1.055 & 1.169 * & 1.014 \\
+          & S\&P500 & 1.179 & 0.977 & 0.983 & 1.121 & 0.966 & 1.096 & \textbf{0.809} & 1.013 & 1.275 & 1.039 \\
+   \hline
+          & RPI   & 1.119 & 1.054 & 1.057 & 1.102 & 1.167 & 1.142 & 1.154 & 1.075 * & 1.215 ** & \textbf{0.999 ***} \\
+          & INDPRO & 1.134 & 1.367 & \textbf{0.911} & 1.356 ** & 1.157 & 1.239 & 1.046 & 1.021 & 1.262 ** & 1.067 *** \\
+          & UNRATE & 1.137 * & 1.223 & 1.041 & 1.251 & 1.225 & 1.135 & 1.056 & 1.027 & 1.322 & \textbf{0.998 ***} \\
+          & CLAIMS & 1.106 & \textbf{1.022} & 1.025 & 1.183 & 1.139 & 1.089 & 1.136 & 1.098 & 1.135 & 1.036 *** \\
+    h=12  & HOUST & 1.667 & 1.43  & 1.459 & 1.59  & \textbf{0.766} & 1.571 & 1.186 & 1.467 & 1.7 *** & 1.258 *** \\
+          & PERMIT & 1.575 & 1.414 & 1.443 & 1.563 & \textbf{0.816 *} & 1.131 & 1.339 ** & 1.272 ** & 1.67 ** & 1.107 *** \\
+          & RCON & 1.133 & 1.035 & 1.042 & 1.363 & 1.221 & 1.115 & 1.224 & 1.296 & 1.32  & \textbf{1.033 ***} \\
+          & MTS & 1.113 & \textbf{0.823} & 0.828 & 1.287 & 1.161 & 1.116 & 0.982 & 1.014 & 1.093 & 1 *** \\
+          & M2  & 1.024 & \textbf{0.954} & 0.957 * & 1.04  & 0.959 ** & 0.988 ** & 1.019 & 1.038 & 1.022 & 1.018 *** \\
+          & R10  & 1.079 * & 1.095 & 0.964 & 1.014 & 1.005 & 1.102 *** & \textbf{0.926} & 0.982 & 1.039 & 1.006 *** \\
+          & PPI   & 1.098 ** & 0.961 ** & 0.966 * & 1.002 * & 0.948 * & 1.049 & \textbf{0.921} & 1.055 & 1.091 * & 1.015 *** \\
+          & CPI   & 1.098 & 0.977 & 0.981 & 1.115 & 0.95  & 1.113 & \textbf{0.935} & 1     & 1.116 & 1.001 *** \\
+          & PCECI & 1.099 & 0.963 & 0.965 & 1.089 & 1.055 * & 1.11  & \textbf{0.953} & 1.028 & 1.095 & 0.993 *** \\
+          & S\&P500 & 1.123 & 1.01  & 1.015 ** & 1.059 & 0.994 & 1.043 & \textbf{0.813} & 1.048 & 1.202 ** & 1.027 *** \\
+   
+\hline
+\hline
+\end{tabular}
+ \begin{tablenotes}
+ \scriptsize
+     \item[*] Notes: See notes to Table 1. In this table, the benchmark model is AR(SIC) model augmented with business conditions indexes (BCIs). However, the alternative forecasting model is AR(SIC) model includes economic uncertainty indexes (EUIs). 
+   \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+  
+\newgeometry{left=0.2cm, right=0.2cm,top=3cm,bottom=3cm}
+\newpage
+\begin{table}[h]
+\renewcommand\arraystretch{1}
+\center{Table 4: Top 3  ``MSFE-Best'' Factor Extraction Methods IV\thanks{*}}  
+	\center{	Comparison of AR(SIC) + EUI + BCI Models with AR(SIC) + BCI Models} \\
+ \vspace{0.1in}
+     \centering
+      \scriptsize
+      \begin{threeparttable}
+    \begin{tabular}{p{2.5cm}p{1cm}p{2.5cm}p{2.5cm}p{2.5cm}p{2.5cm}}
+    \hline
+    \hline
+
+          Target Variable & Rank & h=1 & h=3  & h=6 & h=12 \\
+  \hline
+    
+   
+    \multicolumn{1}{l}{RPI} & 1     & JLN & GP2   & JLN & Lasso \\
+          & 2     & GP1   & GF2   & Lasso & LPCA \\
+          & 3     & PCA   & PCA   & LPCA & EPCA * \\
+    \multicolumn{1}{l}{INDPRO} & 1     & LPCA & GP2   & JLN & Lasso \\
+          & 2     & GF2   & GF2   & Lasso & EPCA ** \\
+          & 3     & GP1   & PCA   & GP2   & LPCA \\
+    \multicolumn{1}{l}{UNRATE} & 1     & GP2   & GP2   & GP2   & Lasso \\
+          & 2     & GF1   & PCA   & PCA   & LPCA \\
+          & 3     & GP1   & GF2   & JLN & EPCA * \\
+    \multicolumn{1}{l}{CLAIMS} & 1     & LPCA & GP2   & GP2   & Lasso \\
+          & 2     & EPCA & PCA   & PCA   & LPCA \\
+          & 3     & Lasso & GF2   & AP    & EPCA \\
+    \multicolumn{1}{l}{HOUST} & 1     & Lasso & Lasso ** & GP1 ** & PCA \\
+          & 2     & LPCA & GP2   & GP2 *** & AP \\
+          & 3     & GP1   & GF2   & LPCA & LPCA \\
+    \multicolumn{1}{l}{PERMIT} & 1     & Lasso & Lasso ** & LPCA * & PCA \\
+          & 2     & LPCA & GP2 ** & GP1   & LPCA \\
+          & 3     & GP1   & GP1   & Lasso & Lasso \\
+    \multicolumn{1}{l}{RCON} & 1     & Lasso & GF2   & JLN & EPCA \\
+          & 2     & GP1   & GP2   & Lasso & Lasso \\
+          & 3     & LPCA & PCA   & LPCA & LPCA \\
+    \multicolumn{1}{l}{MTS} & 1     & Lasso & GF2   & JLN & EPCA \\
+          & 2     & LPCA & GP2   & GP2   & LPCA \\
+          & 3     & GP1   & PCA   & GF2   & Lasso \\
+    \multicolumn{1}{l}{M2} & 1     & GP1   & GF2   & LPCA & LPCA \\
+          & 2     & Lasso & GP2   & Lasso & Lasso ** \\
+          & 3     & LPCA & PCA   & GF2   & EPCA \\
+    \multicolumn{1}{l}{R10} & 1     & GP1 * & GF2   & Lasso & GF1 \\
+          & 2     & Lasso & PCA   & GF1   & Lasso \\
+          & 3     & LPCA & GP2 * & GP1   & LPCA \\
+    \multicolumn{1}{l}{PPI} & 1     & LPCA & GF2   & GF1   & GF1 \\
+          & 2     & Lasso & GP2   & LPCA *** & GP1 \\
+          & 3     & GP1   & PCA   & Lasso ** & LPCA \\
+    \multicolumn{1}{l}{CPI} & 1     & GP1   & GF1   & GF1   & GF1 \\
+          & 2     & Lasso & GF2 * & GP1 * & GP1 \\
+          & 3     & LPCA & LPCA * & Lasso & LPCA \\
+    \multicolumn{1}{l}{PCECI} & 1     & Lasso & GF1   & GF1   & GF1 \\
+          & 2     & GP1   & GF2   & Lasso & GP1 \\
+          & 3     & LPCA & LPCA * & LPCA * & EPCA \\
+    \multicolumn{1}{l}{S\&P500} & 1     & Lasso & JLN & GF1   & GF1 \\
+          & 2     & LPCA & GP2   & GP1   & GP1 \\
+          & 3     & GP1   & LPCA & LPCA & GF2 \\
+   
+
+   
+\hline
+\hline
+\end{tabular}
+ \begin{tablenotes}
+ \scriptsize
+     \item[*] Notes: See notes to Table 3. Entries in this table are the top 3 ``MSFE-best'' forecasting models, selected by comparing forecasts from benchmark AR(SIC)+BCI model with AR(SIC)+EUI+BCI models. For each of these models, the associated factor extraction method used when constructing the EUIs and BCIs is also given. Starred entries indicate rejection of the null hypothesis of equal conditional predictive ability, and indicate that our alternative models that include EUIs and BCIs are yield more accurate predictions than AR(SIC)+BCI benchmark model, using the \citeA{giacomini2006tests} conditional predictive accuracy test. Significance levels for the test include ``$***$" for $p<0.01$, ``$**$" for $p<0.05$, ``$*$" for $p<0.1$.
+  
+   \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+ 
+
+  
+\newgeometry{left=0.2cm, right=0.2cm,top=3cm,bottom=3cm}
+\newpage
+\begin{table}[h]
+\renewcommand\arraystretch{1}
+\center{Table 5: Top 3  ``MSFE-Best'' Factor Extraction Methods V\thanks{*}}  
+	\center{	Comparison of AR(SIC) + EUI + BCI Models with AR(SIC) + EUI Models} \\
+ \vspace{0.1in}
+      \scriptsize
+      \begin{threeparttable}
+   \begin{tabular}{p{2.5cm}p{1cm}p{2.5cm}p{2.5cm}p{2.5cm}p{2.5cm}}
+    \hline
+    \hline
+
+          Target Variable & Rank & h=1 & h=3  & h=6 & h=12 \\
+  \hline
+   
+    \multicolumn{1}{l}{RPI} & 1     & EPCA * & EPCA ** & EPCA * & EPCA * \\
+          & 2     & PCA * & AP ** & GP1 ** & Lasso \\
+          & 3     & GF2 * & PCA ** & AP    & LPCA \\
+    \multicolumn{1}{l}{INDPRO} & 1     & JLN & Lasso & Lasso * & Lasso \\
+          & 2     & EPCA ** & GF1   & EPCA ** & EPCA ** \\
+          & 3     & Lasso ** & GP2 * & AP    & AP * \\
+    \multicolumn{1}{l}{UNRATE} & 1     & Lasso *** & Lasso & Lasso & Lasso \\
+          & 2     & EPCA ** & EPCA & EPCA & EPCA * \\
+          & 3     & GP1 ** & GF1   & GP1   & AP \\
+    \multicolumn{1}{l}{CLAIMS} & 1     & EPCA * & EPCA & EPCA & AP \\
+          & 2     & GF2   & GF1 * & PCA   & EPCA \\
+          & 3     & GF1 * & GF2   & GF2   & Lasso \\
+    \multicolumn{1}{l}{HOUST} & 1     & EPCA *** & EPCA *** & EPCA *** & EPCA * \\
+          & 2     & LPCA *** & AP ** & AP ** & AP \\
+          & 3     & Lasso *** & PCA *** & PCA *** & PCA \\
+    \multicolumn{1}{l}{PERMIT} & 1     & EPCA *** & PCA *** & EPCA ** & EPCA *** \\
+          & 2     & PCA *** & EPCA *** & PCA *** & LPCA \\
+          & 3     & GP2 ** & GP2   & LPCA ** & Lasso \\
+    \multicolumn{1}{l}{RCON} & 1     & EPCA ** & EPCA & EPCA & EPCA \\
+          & 2     & PCA ** & GP2   & PCA   & AP \\
+          & 3     & AP ** & GF2   & AP    & GF2 \\
+    \multicolumn{1}{l}{MTS} & 1     & EPCA ** & AP    & EPCA & EPCA \\
+          & 2     & PCA ** & GP2   & AP *  & AP \\
+          & 3     & GP2 ** & EPCA & PCA * & GP1 \\
+    \multicolumn{1}{l}{M2} & 1     & GP2 ** & GP2   & EPCA ** & EPCA \\
+          & 2     & EPCA ** & EPCA & PCA   & PCA * \\
+          & 3     & AP *** & GF2   & GP2   & GF1 \\
+    \multicolumn{1}{l}{R10} & 1     & Lasso & Lasso ** & Lasso & Lasso \\
+          & 2     & EPCA & PCA   & GF1   & GP2 * \\
+          & 3     & PCA   & EPCA & GP2   & EPCA \\
+    \multicolumn{1}{l}{PPI} & 1     & EPCA * & PCA *** & EPCA ** & EPCA \\
+          & 2     & PCA * & EPCA ** & PCA * & PCA \\
+          & 3     & GP2 ** & GP2 ** & GF2   & GF2 \\
+    \multicolumn{1}{l}{CPI} & 1     & EPCA *** & EPCA * & EPCA * & EPCA \\
+          & 2     & AP ** & PCA   & GP2   & AP \\
+          & 3     & GP2 * & GP2   & PCA *** & GP2 \\
+    \multicolumn{1}{l}{PCECI} & 1     & EPCA *** & EPCA * & EPCA * & EPCA \\
+          & 2     & GP1 ** & PCA * & GP1   & GP1 \\
+          & 3     & GP2 *** & GP1   & PCA * & GP2 \\
+    \multicolumn{1}{l}{S\&P500} & 1     & EPCA & EPCA * & EPCA & EPCA ** \\
+          & 2     & GP2 ** & PCA   & PCA   & PCA \\
+          & 3     & PCA   & GP2   & AP    & GF2 \\
+   
+
+\hline
+\hline
+\end{tabular}
+ \begin{tablenotes}
+ \scriptsize
+     \item[*] Notes: See notes to Table 4. This table lists the top 3 factor extraction methods used in our``MSFE-best'' forecasting models, when comparing benchmark AR(SIC)+EUI model with alternative AR(SIC)+EUI+BCI model. 
+  
+   \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+
+
+\newgeometry{left=0.2cm, right=0.2cm,top=3cm,bottom=3cm}
+\newpage
+\begin{table}[h]
+%\renewcommand\arraystretch{1}
+\center{Table 6: Top 3  ``MSFE-Best'' Factor Extraction Methods VI\thanks{*}}  
+	\center{	Comparison of AR(SIC) + EUI Models with AR(SIC) + BCI Models} \\
+ \vspace{0.1in}
+      \scriptsize
+      \begin{threeparttable}
+  \begin{tabular}{p{2.5cm}p{1cm}p{2.5cm}p{2.5cm}p{2.5cm}p{2.5cm}}
+    \hline
+    \hline
+
+          Target Variable & Rank & h=1 & h=3  & h=6 & h=12 \\
+  \hline
+   
+    \multicolumn{1}{l}{RPI} & 1     & Lasso & JLN & JLN & JLN *** \\
+          & 2     & GP1   & GP2   & GP2   & Lasso \\
+          & 3     & LPCA & GF2   & GF2   & LPCA \\
+    \multicolumn{1}{l}{INDPRO} & 1     & LPCA & LPCA & LPCA & LPCA \\
+          & 2     & GP1   & GF2   & JLN & GF2 \\
+          & 3     & GF2   & PCA   & GF2   & GF1 \\
+    \multicolumn{1}{l}{UNRATE} & 1     & GF2   & GF2   & JLN & JLN *** \\
+          & 2     & GP1   & PCA   & GF2   & GF2 \\
+          & 3     & PCA * & GP2   & PCA   & LPCA \\
+    \multicolumn{1}{l}{CLAIMS} & 1     & GP1   & PCA   & JLN & Lasso \\
+          & 2     & JLN & AP    & GP2   & LPCA \\
+          & 3     & AP    & GP2   & PCA   & JLN *** \\
+    \multicolumn{1}{l}{HOUST} & 1     & GF1 ** & Lasso & GP1 * & GP1 \\
+          & 2     & JLN *** & GP2   & GP2   & GF1 \\
+          & 3     & GP1 *** & GF2   & Lasso & JLN *** \\
+    \multicolumn{1}{l}{PERMIT} & 1     & GP1   & Lasso & GP1   & GP1 * \\
+          & 2     & Lasso & GP1   & GP2   & JLN *** \\
+          & 3     & LPCA & GP2   & JLN & GP2 \\
+    \multicolumn{1}{l}{RCON} & 1     & Lasso & PCA   & JLN & JLN *** \\
+          & 2     & GP1   & GF2   & LPCA & Lasso \\
+          & 3     & LPCA & JLN & Lasso & LPCA \\
+    \multicolumn{1}{l}{MTS} & 1     & Lasso & GF2   & JLN & Lasso \\
+          & 2     & LPCA & PCA   & LPCA & LPCA \\
+          & 3     & GP1   & LPCA & Lasso & GF1 \\
+    \multicolumn{1}{l}{M2} & 1     & JLN & JLN & JLN & Lasso \\
+          & 2     & GP1   & GP1   & GP1 ** & LPCA * \\
+          & 3     & GF1   & GF1   & LPCA & GP1 ** \\
+    \multicolumn{1}{l}{R10} & 1     & GF2   & GF2   & LPCA & GF1 \\
+          & 2     & LPCA & LPCA & GF2   & LPCA \\
+          & 3     & GF1   & AP    & JLN & GF2 \\
+    \multicolumn{1}{l}{PPI} & 1     & LPCA & LPCA *** & GF1   & GF1 \\
+          & 2     & Lasso & Lasso *** & GP1 * & GP1 * \\
+          & 3     & GP1   & AP    & LPCA ** & Lasso ** \\
+    \multicolumn{1}{l}{CPI} & 1     & GP1   & GP1   & GF1   & GF1 \\
+          & 2     & JLN & GF1   & GP1   & GP1 \\
+          & 3     & Lasso & LPCA & JLN & Lasso \\
+    \multicolumn{1}{l}{PCECI} & 1     & JLN & LPCA & GF1   & GF1 \\
+          & 2     & AP ** & Lasso & Lasso & Lasso \\
+          & 3     & Lasso ** & JLN & LPCA & LPCA \\
+    \multicolumn{1}{l}{S\&P500} & 1     & Lasso & GP1   & GF1   & GF1 \\
+          & 2     & GP1   & Lasso & GP1   & GP1 \\
+          & 3     & LPCA & JLN & Lasso & Lasso \\
+  
+\hline
+\hline
+\end{tabular}
+ \begin{tablenotes}
+ \scriptsize
+     \item[*] Notes: See notes to Table 4. This table lists the top 3 factor extraction methods used in our``MSFE-best'' forecasting models, when comparing benchmark AR(SIC)+BCI model with alternative AR(SIC)+EUI model.
+  
+   \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+
+\newgeometry{left=2cm,right=2cm,top=2.4cm,bottom=2.2cm}
+\newpage
+    \begin{figure}[H]
+               \centering
+       %\caption{Plots of Housing Starts, Housing Permits, Various Economic Uncertainty Indexes, and the VIX\footnotemark[*]}
+       \caption{Plots of Housing Starts and Permits, Various Economic Uncertainty Indexes, and the VIX (Forecasting Horizon, h=3){*}}
+      \label{Figure1}
+               \includegraphics[width=14.4cm,height=5.85cm]{PCA_index_h3.jpg}
+           \end{figure}
+       
+   
+    \begin{figure}[H]
+               \centering
+         \includegraphics[width=14.4cm,height=5.85cm]{other_index_h3.jpg}
+           \end{figure}
+
+ \begin{figure}[H]
+               \centering
+  \includegraphics[width=14.4cm,height=5.85cm]{Ng_index_h3.jpg}
+ \caption*{{*}Notes: See notes to Table 3 in the main paper. The above three figures include various plots of our economic uncertainty indexes (EUIs), HOUST, PERMIT, and the VIX, which is also compared with the EUIs proposed in \citeA{jurado2015measuring}. All EUI plots depict real-time measures constructed for the period 1992:6-2021:6, and updated prior to the construction of each new forecast reported on in Tables 3-9 in the main paper and Tables 1-6 in the supplemental appendix.}
+           \end{figure}
+
+
+
+\newgeometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\newpage
+    \begin{figure}[H]
+        
+       \caption{Plots of Housing Starts and Permits, Various Economic Uncertainty Indexes, and the VIX (Forecasting Horizon, h=6){*}}
+      \label{Figure1}
+    \includegraphics[width=14.4cm,height=5.85cm]{PCA_index_h6.jpg}
+           \end{figure}
+       
+   
+    \begin{figure}[H]
+     \includegraphics[width=14.4cm,height=5.85cm]{other_index_h6.jpg}
+           \end{figure}
+
+\begin{figure}[H]
+    
+  \includegraphics[width=14.4cm,height=5.85cm]{Ng_index_h6.jpg}
+   \caption*{{*}Notes: See notes to Figure 1.}
+           \end{figure}
+
+
+
+
+
+\end{doublespace}
+
+\end{document}

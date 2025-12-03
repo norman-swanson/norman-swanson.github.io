@@ -1,0 +1,1965 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 936
+
+
+\documentclass[11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage[onehalfspacing]{setspace}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2606}
+%TCIDATA{Codepage=936}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Sunday, July 18, 2004 16:10:34}
+%TCIDATA{LastRevised=Tuesday, December 20, 2022 19:10:27}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{CSTFile=article.cst}
+%TCIDATA{PageSetup=72,72,72,72,0}
+%TCIDATA{AllPages=
+%F=36,\PARA{038<p type="texpara" tag="Body Text" >\hfill \thepage}
+%}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand{\baselinestretch}{1.3} 
+\textwidth=6.8in
+\textheight=8.7in
+\oddsidemargin=0in
+\evensidemargin=0in
+\topmargin=0in
+\baselineskip=10pt
+\linespread{1.0}
+\input{tcilatex}
+\geometry{left=1in,right=1in,top=1.25in,bottom=1.25in}
+
+\begin{document}
+
+
+\noindent \noindent \setcounter{page}{1}
+
+\begin{center}
+\textbf{Supplemental Appendix for \textquotedblleft Jackknife Estimation of
+a Cluster-Sample IV Regression Model with Many Weak Instruments" \footnote{%
+Corresponding author: John C. Chao, Department of Economics, 7343 Preinkert
+Drive, University of Maryland, chao@econ.umd.edu. Norman R. Swanson,
+Department of Economics, 9500 Hamilton Street, Rutgers University,
+nswanson@econ.rutgers.edu. Tiemen Woutersen, Department of Economics, 1130 E
+Helen Street, University of Arizona, woutersen@arizona.edu. The authors
+would like to thank the Editor, Xiaohong Chen, an Associate Editor, and an
+anonymous referee for very helpful comments and suggestions. The authors
+also owe special thanks to Jerry Hausman and Whitney Newey for many
+discussions on the topic of this paper over a number of years. In addition,
+thanks are owed to all of the particpants of the 2019 MIT Conference
+Honoring Whitney Newey for comments on and advice given on an earlier
+verison of this work. Finally, the authors wish to thank Miriam Arden for
+excellent research assistance. Chao thanks the University of Maryland for
+research support, and Woutersen's work was supported by an Eller College of
+Management Research Grant.}}
+
+John C. Chao, Norman R. Swanson, and Tiemen Woutersen
+
+\textit{First Draft}: September 5, 2020 \ \ \textit{This Version}: December
+20, 2022
+
+\textbf{Abstract}
+\end{center}
+
+This Supplemental Appendix is comprised of two sub-appendices. Appendix S1
+provides proofs for Theorems 2 and 3 of the main paper. Appendix S2 states
+additional supporting lemmas used to prove the main theorems of the paper.
+Proofs for these additional lemmas are reported in a separate Online
+Appendix which can be viewed at the URL:
+
+\noindent
+
+\noindent http://econweb.umd.edu/\symbol{126}chao/Research/research%
+\_files/Additional\_
+
+\noindent
+Online\_Appendix\_Jackknife\_Estimation\_Cluster\_Sample\_IV\_Model%
+\_December\_20\_2022.pdf
+
+\section*{Appendix S1: Proof of Theorems 2 and 3}
+
+\noindent \textbf{Proof of Theorem 2: }Define $\mathcal{Y}_{n}=\Upsilon
+^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon /\sqrt{n}%
++D_{\mu }^{-1}\underline{U}^{\prime }A\varepsilon $.{\small \ }Note that, by
+the result of Lemma S2-9 given in Appendix S2 below, we have that $D_{\mu
+}^{-1}\widehat{\Delta }\left( \delta _{0}\right) =\Upsilon ^{\prime
+}Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon /\sqrt{n}+D_{\mu }^{-1}%
+\underline{U}^{\prime }A\varepsilon +o_{p}\left( 1\right) =\mathcal{Y}%
+_{n}+o_{p}\left( 1\right) $.
+
+\noindent We now establish the asymptotic normality of $\mathcal{Y}_{n}$,
+upon appropriate standardization, in the case where $K_{2,n}/\left( \mu
+_{n}^{\min }\right) ^{2}=O\left( 1\right) $. To proceed, let $a\in \mathbb{R}%
+^{d}$ such that $\left\Vert a\right\Vert _{2}=1$ and define $b_{1n}=\Sigma
+_{n}^{-1/2}a$. and $b_{2n}=\sqrt{K_{2,n}}D_{\mu }^{-1}\Sigma _{n}^{-1/2}a$,
+where $\Sigma _{n}=VC\left( \mathcal{Y}_{n}|\mathcal{F}_{n}^{Z}\right)
+=\Sigma _{1,n}+\Sigma _{2,n}$, with $\Sigma _{1,n}=VC\left( \Upsilon
+^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon /\sqrt{n}|%
+\mathcal{F}_{n}^{Z}\right) $ and $\Sigma _{2,n}=VC\left( D_{\mu }^{-1}%
+\underline{U}^{\prime }A\varepsilon |\mathcal{F}_{n}^{Z}\right) $. Now, let $%
+\mathcal{L}_{\left( i,t\right) ,n}$
+
+\noindent $=b_{1n}^{\prime }\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }e_{\left( i,t\right) }\varepsilon _{\left( i,t\right) }/%
+\sqrt{n}$ and $\mathcal{N}_{\left( i,t\right)
+,n}=K_{2,n}^{-1/2}\dsum\nolimits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }\left[ \underline{u}_{2,\left(
+i,t\right) ,n}\varepsilon _{\left( j,s\right) }+\underline{u}_{2,\left(
+j,s\right) ,n}\varepsilon _{\left( i,t\right) }\right] $, where $\underline{u%
+}_{2,\left( i,t\right) ,n}=$ $b_{2n}^{\prime }\underline{U}_{\left(
+i,t\right) }$, with $\underline{u}_{2,\left( j,s\right) ,n}$ similarly
+defined, and where $e_{\left( i,t\right) }$ denotes an $m_{n}\times 1$
+elementary vector whose $\left( i,t\right) ^{th}$ component is $1$ and all
+other components are $0$. Using these notations, note that we can write $%
+a^{\prime }\Sigma _{n}^{-1/2}\mathcal{Y}_{n}=\mathcal{L}_{\left( 1,1\right)
+,n}+\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}\left\{ \mathcal{L}_{\left(
+i,t\right) ,n}+\mathcal{N}_{\left( i,t\right) ,n}\right\} $. Next, observe
+that, 
+\begin{eqnarray*}
+E\left[ \mathcal{L}_{\left( 1,1\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] 
+&=&E\left[ \varepsilon _{\left( 1,1\right) }^{2}|\mathcal{F}_{n}^{Z}\right] 
+\frac{\left[ a^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime
+}M^{\left( Z_{1},Q\right) }e_{\left( 1,1\right) }\right] ^{2}}{n} \\
+&\leq &E\left[ \varepsilon _{\left( 1,1\right) }^{2}|\mathcal{F}_{n}^{Z}%
+\right] a^{\prime }\Sigma _{n}^{-1}a\left( \frac{\left\Vert \Upsilon
+^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }e_{\left( 1,1\right)
+}\right\Vert _{2}}{\sqrt{n}}\right) ^{2}\text{ (by CS inequality)}
+\end{eqnarray*}%
+\begin{eqnarray*}
+&\leq &\left( \max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \varepsilon
+_{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \right) a^{\prime
+}\Sigma _{n}^{-1}a\left( \frac{\max_{1\leq \left( i,t\right) \leq
+m_{n}}\left\Vert \Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}e_{\left( i,t\right) }\right\Vert _{2}}{\sqrt{n}}\right) ^{2} \\
+&=&o_{p}\left( 1\right) \text{ }
+\end{eqnarray*}%
+in light of Assumptions 2(i) and 7 and part (d) of Lemma S2-3\footnote{%
+Lemma S2-3 is stated in Appendix S2 below. A proof of this lemma is provided
+in section 1 of the Additional Online Appendix which can be viewed at the
+URL:
+\par
+\noindent http://econweb.umd.edu/\symbol{126}chao/Research/research%
+\_files/Additional\_Online\_Appendix\_Jackknife\_Estimation\_
+\par
+\noindent Cluster\_Sample\_IV\_Model\_December\_20\_2022.pdf}. Moreover,
+under Assumptions 2 and 3(iii), there exists a positive constant $C^{\ast }$
+such that 
+\begin{eqnarray*}
+E_{Z}\left\{ \left( E\left[ \mathcal{L}_{\left( 1,1\right) ,n}^{2}|\mathcal{F%
+}_{n}^{Z}\right] \right) ^{2}\right\}  &=&\frac{E_{Z}\left\{ \left[
+a^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }e_{\left( 1,1\right) }\right] ^{4}\left( E\left[ \varepsilon
+_{\left( 1,1\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \right) ^{2}\right\} }{%
+n^{2}} \\
+&\leq &\frac{C}{n^{2}}E\left( \left[ a^{\prime }\Sigma _{n}^{-1/2}\Upsilon
+^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }e_{\left( 1,1\right) }%
+\right] ^{4}\right) \text{ (by Assumption 2(i))} \\
+&\leq &CE\left( \frac{a^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime
+}Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }Z_{2}\Upsilon \Sigma _{n}^{-1/2}a}{%
+n}\right) ^{2}\text{ (by CS inequality)} \\
+&\leq &C\overline{C}=C^{\ast }<\infty \text{ (by Assumption 3(iii) and Lemma
+S2-3(d))}
+\end{eqnarray*}%
+Since the upper bound above does not depend on $n$, we further deduce that
+
+\noindent $\sup_{n}E_{Z}\left\{ \left( E\left[ \mathcal{L}_{\left(
+1,1\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] \right) ^{2}\right\} <\infty $%
+. It follows by the law of iterated expectations and by Theorem 25.12 of
+Billingsley (1995) that $E\left( \mathcal{L}_{\left( 1,1\right)
+,n}^{2}\right) =E_{Z}\left( E\left[ \mathcal{L}_{\left( 1,1\right) ,n}^{2}|%
+\mathcal{F}_{n}^{Z}\right] \right) \rightarrow 0$. Application of Markov's
+inequality then allows us to deduce that $\mathcal{L}_{\left( 1,1\right)
+,n}=b_{1n}^{\prime }\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }e_{\left( 1,1\right) }\varepsilon _{\left( 1,1\right) }/%
+\sqrt{n}$
+
+\noindent $=o_{p}\left( 1\right) $, from which we obtain the representation $%
+a^{\prime }\Sigma _{n}^{-1/2}\mathcal{Y}_{n}=\mathcal{V}_{n}+o_{p}\left(
+1\right) $, where
+
+\noindent $\mathcal{V}_{n}=\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}%
+\mathcal{V}_{\left( i,t\right) ,n}$ with $\mathcal{V}_{\left( i,t\right) ,n}=%
+\mathcal{L}_{\left( i,t\right) ,n}+\mathcal{N}_{\left( i,t\right) ,n}$. Note
+we can also write $\mathcal{V}_{n}=\mathcal{L}_{n}+\mathcal{N}_{n}$, where $%
+\mathcal{L}_{n}=\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}\mathcal{L}%
+_{\left( i,t\right) ,n}$ and $\mathcal{N}_{n}=\dsum\nolimits_{\left(
+i,t\right) =2}^{m_{n}}\mathcal{N}_{\left( i,t\right) ,n}$.
+
+\noindent \qquad Next, define the $\sigma $-fields $\mathcal{F}_{\left(
+i,t\right) ,n}=\sigma \left( \left\{ \varepsilon _{\left( k,\upsilon \right)
+},U_{\left( k,\upsilon \right) }\right\} _{\left( k,\upsilon \right)
+=1}^{\left( i,t\right) },Z\right) $ \ for $\left( i,t\right) =1,2,...,m_{n}$%
+, note that by construction $\mathcal{F}_{\left( i,t\right) -1,n}\subseteq 
+\mathcal{F}_{\left( i,t\right) ,n}$ for $\left( i,t\right) =2,...,m_{n}$ and 
+$\mathcal{V}_{\left( i,t\right) ,n}$ is $\mathcal{F}_{\left( i,t\right) ,n}$%
+-measurable. Note also that, under Assumption 1, it is easily seen that $E%
+\left[ \mathcal{V}_{\left( i,t\right) ,n}|\mathcal{F}_{\left( i,t\right)
+-1,n}\right] =0$. In addition, note that, by part (d)\ of Lemma S2-3 and
+Lemma S2-6, and Assumption 2(i); 
+\begin{eqnarray}
+E\left[ \underline{u}_{2,\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right]
+&\leq &\left( b_{2n}^{\prime }b_{2n}\right) \max_{1\leq \left( i,t\right)
+\leq m_{n}}E\left[ \left\Vert \underline{U}_{\left( i,t\right) }\right\Vert
+_{2}^{2}|\mathcal{F}_{n}^{Z}\right]  \notag \\
+&\leq &\frac{K_{2,n}}{\left( \mu _{n}^{\min }\right) ^{2}}a^{\prime }\Sigma
+_{n}^{-1}a\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \left\Vert 
+\underline{U}_{\left( i,t\right) }\right\Vert _{2}^{2}|\mathcal{F}_{n}^{Z}%
+\right] =O_{a.s.}\left( 1\right)  \label{var u2 bound}
+\end{eqnarray}%
+since, for this theorem, we assume that $K_{2,n}/\left( \mu _{n}^{\min
+}\right) ^{2}=O\left( 1\right) $. It follows then from straightforward
+calculations, from applying the triangle and CS inequalities, as well as
+from expression (\ref{var u2 bound}), part (d) of Lemma S2-1, part (d) of
+Lemma S2-3, and Assumptions 2(i) and 3(iii) that%
+\begin{eqnarray*}
+&&Var\left( \mathcal{V}_{\left( i,t\right) ,n}|\mathcal{F}_{n}^{Z}\right) \\
+&=&E\left[ \mathcal{L}_{\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right]
++E\left[ \mathcal{N}_{\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] \\
+&\leq &\left( \max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \varepsilon
+_{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \right) a^{\prime
+}\Sigma _{n}^{-1}a\lambda _{\max }\left( \frac{\Upsilon ^{\prime
+}Z_{2}^{\prime }Z_{2}\Upsilon }{n}\right) \\
+&&+\frac{4}{K_{2,n}}\left( \max_{1\leq \left( i,t\right) \leq m_{n}}E\left[
+\varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \right)
+\left( \max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \underline{u}%
+_{2,\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] \right) \left(
+\max_{1\leq \left( i,t\right) \leq m_{n}}\dsum\limits_{\left( j,s\right)
+=1}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\right) \\
+&=&O_{a.s.}\left( 1\right) +O_{a.s.}\left( \frac{K_{2,n}}{\left( \mu
+_{n}^{\min }\right) ^{2}n}\right) =O_{a.s.}\left( 1\right)
+\end{eqnarray*}%
+By the law of iterated expectations and Theorem 16.1 of Billingsley (1995),
+there exists a constant $\overline{C}$ such that $Var\left( \mathcal{V}%
+_{\left( i,t\right) ,n}\right) =E\left( \mathcal{V}_{\left( i,t\right)
+,n}^{2}\right) =E_{Z}\left[ E\left( \mathcal{V}_{\left( i,t\right) ,n}^{2}|%
+\mathcal{F}_{n}^{Z}\right) \right] \leq \overline{C}<\infty $ for all $n$
+sufficiently large. These results show that $\left\{ \mathcal{V}_{\left(
+i,t\right) ,n},\mathcal{F}_{\left( i,t\right) ,n},1\leq \left( i,t\right)
+\leq m_{n}\text{, }n\geq 1\right\} $ forms a square-integrable martingale
+difference array.
+
+To show the asymptotic normality of $\mathcal{V}_{n}$, we verify the
+conditions of the central limit theorem for martingale difference arrays
+given in Lemma S2-15. To proceed, first consider condition (\ref{MDA CLT
+cond 1b}), which, as noted in the remark following Lemma S2-15, is a
+sufficient condition for condition (\ref{MDA CLT cond 1}) of Lemma S2-15. We
+shall verify (\ref{MDA CLT cond 1b}) for the case where $\delta =2$. Note
+first that, by applying Lo\`{e}ve's $c_{r}$ inequality, we get
+
+\begin{equation*}
+\dsum\limits_{\left( i,t\right) =2}^{m_{n}}E\left[ \mathcal{V}_{\left(
+i,t\right) ,n}^{4}\right] =\dsum\limits_{\left( i,t\right) =2}^{m_{n}}E\left[
+\left( \mathcal{L}_{\left( i,t\right) ,n}+\mathcal{N}_{\left( i,t\right)
+,n}\right) ^{4}\right] \leq 8\dsum\limits_{\left( i,t\right) =2}^{m_{n}}E%
+\left[ \mathcal{L}_{\left( i,t\right) ,n}^{4}\right] +8\dsum\limits_{\left(
+i,t\right) =2}^{m_{n}}E\left[ \mathcal{N}_{\left( i,t\right) ,n}^{4}\right]
+\end{equation*}%
+Hence, to verify condition (\ref{MDA CLT cond 1b}), it suffices to show that 
+$\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}E\left[ \mathcal{L}_{\left(
+i,t\right) ,n}^{4}\right] =o\left( 1\right) $ and
+
+\noindent $\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}E\left[ \mathcal{N}%
+_{\left( i,t\right) ,n}^{4}\right] =o\left( 1\right) $. To do this, we first
+focus on a conditional expectation analogue of $\dsum\nolimits_{\left(
+i,t\right) =2}^{m_{n}}E\left[ \mathcal{L}_{\left( i,t\right) ,n}^{4}\right] $%
+. Note that%
+\begin{eqnarray*}
+&&\dsum\limits_{\left( i,t\right) =2}^{m_{n}}E\left[ \mathcal{L}_{\left(
+i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right] \\
+&=&\frac{1}{n^{2}}\dsum\limits_{\left( i,t\right) =2}^{m_{n}}\left[
+a^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }e_{\left( i,t\right) }\right] ^{4}E\left[ \varepsilon
+_{\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] \\
+&\leq &a^{\prime }\Sigma _{n}^{-1}a\frac{1}{n}\dsum\limits_{\left(
+i,t\right) =2}^{m_{n}}\left[ a^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime
+}Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }e_{\left( i,t\right) }\right]
+^{2}\left( \frac{\left\Vert \Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }e_{\left( i,t\right) }\right\Vert _{2}}{\sqrt{n}}\right)
+^{2}E\left[ \varepsilon _{\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] 
+\text{ } \\
+&&\text{(by CS inequality)}
+\end{eqnarray*}%
+\begin{eqnarray*}
+&\leq &a^{\prime }\Sigma _{n}^{-1}a\left( \max_{1\leq \left( i,t\right) \leq
+m_{n}}E\left[ \varepsilon _{\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}%
+\right] \right) \left( \frac{\max_{1\leq \left( i,t\right) \leq
+m_{n}}\left\Vert \Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}e_{\left( i,t\right) }\right\Vert _{2}}{\sqrt{n}}\right) ^{2} \\
+&&\times \frac{1}{n}a^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime
+}Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }\dsum\limits_{\left( i,t\right)
+=1}^{m_{n}}e_{\left( i,t\right) }e_{\left( i,t\right) }^{\prime }M^{\left(
+Z_{1},Q\right) }Z_{2}\Upsilon \Sigma _{n}^{-1/2}a \\
+&\leq &a^{\prime }\Sigma _{n}^{-1}a\left( \max_{1\leq \left( i,t\right) \leq
+m_{n}}E\left[ \varepsilon _{\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}%
+\right] \right) \left( \frac{\max_{1\leq \left( i,t\right) \leq
+m_{n}}\left\Vert \Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}e_{\left( i,t\right) }\right\Vert _{2}}{\sqrt{n}}\right) ^{2} \\
+&&\times \frac{a^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime
+}M^{\left( Z_{1},Q\right) }Z_{2}\Upsilon \Sigma _{n}^{-1/2}a}{n} \\
+&\leq &\left( a^{\prime }\Sigma _{n}^{-1}a\right) ^{2}\left( \max_{1\leq
+\left( i,t\right) \leq m_{n}}E\left[ \varepsilon _{\left( i,t\right) }^{4}|%
+\mathcal{F}_{n}^{Z}\right] \right) \left( \frac{\max_{1\leq \left(
+i,t\right) \leq m_{n}}\left\Vert \Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }e_{\left( i,t\right) }\right\Vert _{2}}{\sqrt{n}}\right)
+^{2}\lambda _{\max }\left( \frac{\Upsilon ^{\prime }Z_{2}^{\prime
+}Z_{2}\Upsilon }{n}\right) \\
+&\leq &C\left( \frac{\max_{1\leq \left( i,t\right) \leq m_{n}}\left\Vert
+\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }e_{\left(
+i,t\right) }\right\Vert _{2}}{\sqrt{n}}\right) ^{2}=o_{p}\left( 1\right) 
+\text{ }
+\end{eqnarray*}%
+where the last line above follows from Assumptions 2(i), 3(iii), and 7 and
+by Lemma S2-3(d). Next, note that, under Assumptions 2 and 3(iii), there
+exists a positive constant $C^{\ast }$ such that%
+\begin{eqnarray*}
+&&E_{Z}\left( \dsum\limits_{\left( i,t\right) =2}^{m_{n}}E\left[ \mathcal{L}%
+_{\left( i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right] \right) ^{2} \\
+&=&\frac{1}{n^{4}}\dsum\limits_{\left( i,t\right)
+=2}^{m_{n}}\dsum\limits_{\left( j,s\right) =2}^{m_{n}}E_{Z}\left( \left[
+a^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }e_{\left( i,t\right) }\right] ^{4}\left[ a^{\prime }\Sigma
+_{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}e_{\left( j,s\right) }\right] ^{4}\right. \\
+&&\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\left. \times E%
+\left[ \varepsilon _{\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] E%
+\left[ \varepsilon _{\left( j,s\right) }^{4}|\mathcal{F}_{n}^{Z}\right]
+\right) \\
+&\leq &\frac{C}{n^{4}}\dsum\limits_{\left( i,t\right)
+=2}^{m_{n}}\dsum\limits_{\left( j,s\right) =2}^{m_{n}}E_{Z}\left( \left[
+a^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }e_{\left( i,t\right) }\right] ^{4}\left[ a^{\prime }\Sigma
+_{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}e_{\left( j,s\right) }\right] ^{4}\right)
+\end{eqnarray*}%
+\begin{eqnarray*}
+\text{ } &\leq &\frac{C}{n^{4}}E_{Z}\left\{ a^{\prime }\Sigma
+_{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}\dsum\limits_{\left( i,t\right) =1}^{m_{n}}e_{\left( i,t\right) }e_{\left(
+i,t\right) }^{\prime }M^{\left( Z_{1},Q\right) }Z_{2}\Upsilon \Sigma
+_{n}^{-1/2}aa^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime
+}M^{\left( Z_{1},Q\right) }\right. \\
+&&\text{ \ \ \ \ \ \ \ \ \ \ }\left. \times \text{\ }\dsum\limits_{\left(
+j,s\right) =1}^{m_{n}}e_{\left( j,s\right) }e_{\left( j,s\right) }^{\prime
+}M^{\left( Z_{1},Q\right) }Z_{2}\Upsilon \Sigma _{n}^{-1/2}a\left( a^{\prime
+}\Sigma _{n}^{-1/2}\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }Z_{2}\Upsilon \Sigma _{n}^{-1/2}a\right) ^{2}\right\} \text{
+\ } \\
+&=&CE_{Z}\left( \frac{a^{\prime }\Sigma _{n}^{-1/2}\Upsilon ^{\prime
+}Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }Z_{2}\Upsilon \Sigma _{n}^{-1/2}a}{%
+n}\right) ^{4} \\
+&\leq &C\overline{C}=C^{\ast }<\infty \text{ \ (by Assumption 3(iii) and
+Lemma S2-3(d))}
+\end{eqnarray*}%
+where the second inequality above follows from applying the CS inequality.
+Since the upper bound above does not depend on $n$, we further deduce that
+
+\noindent $\sup_{n}E_{Z}\left( \dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}E%
+\left[ \mathcal{L}_{\left( i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right]
+\right) ^{2}<\infty $. It follows by the law of iterated expectations and by
+Theorem 25.12 of Billingsley (1995) that $\dsum\nolimits_{\left( i,t\right)
+=2}^{m_{n}}E\left[ \mathcal{L}_{\left( i,t\right) ,n}^{4}\right]
+=\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}E_{Z}\left( E\left[ \mathcal{L}%
+_{\left( i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right] \right) \rightarrow 0$%
+.
+
+Turning our attention to the bilinear term, note that by Lo\`{e}ve's $c_{r}$
+inequality we have
+
+\noindent $\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}E\left[ \mathcal{N}%
+_{\left( i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right] \leq \mathcal{R}_{1}+%
+\mathcal{R}_{2}$, where
+
+\noindent $\mathcal{R}_{1}=\dsum\nolimits_{\left( i,t\right)
+=2}^{m_{n}}\left( 8/K_{2,n}^{2}\right) E\left[ \left( \dsum\nolimits_{\left(
+j,s\right) =1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right)
+}\underline{u}_{2,\left( i,t\right) }\varepsilon _{\left( j,s\right)
+}\right) ^{4}|\mathcal{F}_{n}^{Z}\right] $ and
+
+\noindent $\mathcal{R}_{2}=\dsum\nolimits_{\left( i,t\right)
+=2}^{m_{n}}\left( 8/K_{2,n}^{2}\right) E\left[ \left( \dsum\nolimits_{\left(
+j,s\right) =1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right)
+}\underline{u}_{2,\left( j,s\right) }\varepsilon _{\left( i,t\right)
+}\right) ^{4}|\mathcal{F}_{n}^{Z}\right] $. Focusing first on the term $%
+\mathcal{R}_{1}$, note that, by straightforward calculations as well as by
+making use of Assumptions 2(i) and 5(ii), parts (b) and (c) of Lemma S2-1,
+part (d) of Lemma S2-3, and Lemma S2-6; we deduce that, there exists a
+positive constant $\overline{C}$ such that%
+\begin{eqnarray*}
+\frac{\left( \mu _{n}^{\min }\right) ^{4}n}{K_{2,n}^{2}}\mathcal{R}_{1}
+&\leq &24n\left( a^{\prime }\Sigma _{n}^{-1}a\right) ^{2}\left( \max_{1\leq
+\left( i,t\right) \leq m_{n}}E\left[ \left\Vert \underline{U}_{\left(
+i,t\right) }\right\Vert _{2}^{4}|\mathcal{F}_{n}^{Z}\right] \right) \left(
+\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \varepsilon _{\left(
+i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] \right) \\
+&&\times \left[ \frac{1}{K_{2,n}^{2}}\dsum\limits_{\substack{ \left(
+i,t\right) ,\left( j,s\right) =1  \\ \left( i,t\right) \neq \left(
+j,s\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{4}+\frac{1}{%
+K_{2,n}^{2}}\dsum\limits_{\left( i,t\right) =1}^{m_{n}}\dsum\limits 
+_{\substack{ \left( j,s\right) ,\left( k,\upsilon \right) =1  \\ \left(
+j,s\right) \neq \left( i,t\right) ,\left( k,\upsilon \right) \neq \left(
+i,t\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}A_{\left(
+i,t\right) ,\left( k,\upsilon \right) }^{2}\right] \\
+&\leq &\overline{C}n\left[ \frac{1}{K_{2,n}^{2}}\dsum\limits_{\substack{ %
+\left( i,t\right) ,\left( j,s\right) =1  \\ \left( i,t\right) \neq \left(
+j,s\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{4}+\frac{1}{%
+K_{2,n}^{2}}\dsum\limits_{\left( i,t\right) =1}^{m_{n}}\dsum\limits 
+_{\substack{ \left( j,s\right) ,\left( k,\upsilon \right) =1  \\ \left(
+j,s\right) \neq \left( i,t\right) ,\left( k,\upsilon \right) \neq \left(
+i,t\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}A_{\left(
+i,t\right) ,\left( k,\upsilon \right) }^{2}\right] \\
+&=&O_{a.s.}\left( \frac{K_{2,n}}{n}\right) +O_{a.s.}\left( 1\right)
+=O_{a.s.}\left( 1\right) \text{.}
+\end{eqnarray*}%
+Applying the law of iterated expectations and Theorem 16.1 of Billingsley
+(1995), we then have%
+\begin{eqnarray*}
+&&\frac{\left( \mu _{n}^{\min }\right) ^{4}n}{K_{2,n}^{2}}E_{Z}\left( 
+\mathcal{R}_{1}\right) \\
+&\leq &\overline{C}nE_{Z}\left[ \frac{1}{K_{2,n}^{2}}\dsum\limits_{\substack{
+\left( i,t\right) ,\left( j,s\right) =1  \\ \left( i,t\right) \neq \left(
+j,s\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{4}+\frac{1}{%
+K_{2,n}^{2}}\dsum\limits_{\left( i,t\right) =1}^{m_{n}}\dsum\limits 
+_{\substack{ \left( j,s\right) ,\left( k,\upsilon \right) =1  \\ \left(
+j,s\right) \neq \left( i,t\right) ,\left( k,\upsilon \right) \neq \left(
+i,t\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}A_{\left(
+i,t\right) ,\left( k,\upsilon \right) }^{2}\right] \\
+&=&O\left( 1\right)
+\end{eqnarray*}%
+from which we further deduce that%
+\begin{equation*}
+E_{Z}\left( \mathcal{R}_{1}\right) =\dsum\limits_{\left( i,t\right)
+=2}^{m_{n}}\frac{8}{K_{2,n}^{2}}E\left[ \left( \dsum\nolimits_{\left(
+j,s\right) =1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right)
+}\underline{u}_{2,\left( i,t\right) }\varepsilon _{\left( j,s\right)
+}\right) ^{4}\right] =O\left( \frac{K_{2,n}^{2}}{\left( \mu _{n}^{\min
+}\right) ^{4}n}\right) =o\left( 1\right)
+\end{equation*}%
+In a similar way, we can also show that
+
+\noindent $E_{Z}\left( \mathcal{R}_{2}\right) =\left( 8/K_{2,n}^{2}\right) E%
+\left[ \dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}\left(
+\dsum\nolimits_{\left( j,s\right) =1}^{\left( i,t\right) -1}A_{\left(
+j,s\right) ,\left( i,t\right) }\underline{u}_{2,\left( j,s\right)
+}\varepsilon _{\left( i,t\right) }\right) ^{4}\right] =o\left( 1\right) $.
+It follows that
+
+\noindent $\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}E\left[ \mathcal{N}%
+_{\left( i,t\right) ,n}^{4}\right] \leq E_{Z}\left( \mathcal{R}_{1}\right)
++E_{Z}\left( \mathcal{R}_{2}\right) =o\left( 1\right) $. This verifies
+condition (\ref{MDA CLT cond 1b}).
+
+Next, we verify condition (\ref{MDA CLT cond 2}) of Lemma S2-15. To proceed,
+first let $s_{Z}^{2}=Var\left[ \mathcal{V}_{n}|\mathcal{F}_{n}^{Z}\right]
+=Var\left( \dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}\mathcal{V}_{\left(
+i,t\right) ,n}|\mathcal{F}_{n}^{Z}\right) $, and note that%
+\begin{equation}
+s_{Z}^{2}=Var\left( \frac{b_{1n}^{\prime }\Upsilon ^{\prime }Z_{2}^{\prime
+}M^{\left( Z_{1},Q\right) }\varepsilon }{\sqrt{n}}+\frac{b_{2n}^{\prime }%
+\underline{U}^{\prime }A\varepsilon }{\sqrt{K_{2,n}}}|\mathcal{F}%
+_{n}^{Z}\right) +o_{p}\left( 1\right) =a^{\prime }\Sigma _{n}^{-1/2}\Sigma
+_{n}\Sigma _{n}^{-1/2}a+o_{p}\left( 1\right) =1+o_{p}\left( 1\right)
+\label{limit of s2}
+\end{equation}
+
+\noindent On the other hand, by straightforward calculation, we can write%
+\begin{eqnarray}
+s_{Z}^{2} &=&\frac{1}{n}\dsum\limits_{\left( i,t\right) =2}^{m_{n}}\left[
+b_{1n}^{\prime }\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}e_{\left( i,t\right) }\right] ^{2}E\left[ \varepsilon _{\left( i,t\right)
+}^{2}|\mathcal{F}_{n}^{Z}\right]  \notag \\
+&&+\frac{1}{K_{2,n}}\dsum\limits_{\left( i,t\right)
+=2}^{m_{n}}\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\left\{ E\left[ \underline{u}%
+_{2,\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] E\left[ \varepsilon
+_{\left( j,s\right) }^{2}|\mathcal{F}_{n}^{Z}\right] +E\left[ \underline{u}%
+_{2,\left( j,s\right) }^{2}|\mathcal{F}_{n}^{Z}\right] E\left[ \varepsilon
+_{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \right\}  \notag \\
+&&+\frac{2}{K_{2,n}}\dsum\limits_{\left( i,t\right)
+=2}^{m_{n}}\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }^{2}E\left[ \underline{u}%
+_{2,\left( i,t\right) }\varepsilon _{\left( i,t\right) }|\mathcal{F}_{n}^{Z}%
+\right] E\left[ \underline{u}_{2,\left( j,s\right) }\varepsilon _{\left(
+j,s\right) }|\mathcal{F}_{n}^{Z}\right]  \label{s^2}
+\end{eqnarray}%
+Making use of expression (\ref{s^2}), we obtain, after some further
+calculations,%
+\begin{eqnarray*}
+&&\dsum\limits_{\left( i,t\right) =2}^{m_{n}}E\left[ \mathcal{V}_{\left(
+i,t\right) ,n}^{2}|\mathcal{F}_{\left( i,t\right) -1,n}\right] -s_{Z}^{2} \\
+&=&\frac{2}{\sqrt{n}}\dsum\limits_{\left( i,t\right)
+=2}^{m_{n}}\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right) -1}\left[
+b_{1n}^{\prime }\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}e_{\left( i,t\right) }\right] \frac{A_{\left( i,t\right) ,\left( j,s\right)
+}}{\sqrt{K_{2,n}}}\left\{ \varepsilon _{\left( j,s\right) }E\left[
+\varepsilon _{\left( i,t\right) }\underline{u}_{2,\left( i,t\right) }|%
+\mathcal{F}_{n}^{Z}\right] +\underline{u}_{2,\left( j,s\right) }E\left[
+\varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \right\} \\
+&&+\dsum\limits_{\left( i,t\right) =2}^{m_{n}}\dsum\limits_{\left(
+j,s\right) =1}^{\left( i,t\right) -1}\frac{A_{\left( i,t\right) ,\left(
+j,s\right) }^{2}}{K_{2,n}}\left( \varepsilon _{\left( j,s\right) }^{2}-E%
+\left[ \varepsilon _{\left( j,s\right) }^{2}|\mathcal{F}_{n}^{Z}\right]
+\right) E\left[ \underline{u}_{2,\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}%
+\right] \\
+&&+\dsum\limits_{\left( i,t\right) =2}^{m_{n}}\dsum\limits_{\left(
+j,s\right) =1}^{\left( i,t\right) -1}\frac{A_{\left( i,t\right) ,\left(
+j,s\right) }^{2}}{K_{2,n}}\left( \underline{u}_{2,\left( j,s\right) }^{2}-E%
+\left[ \underline{u}_{2,\left( j,s\right) }^{2}|\mathcal{F}_{n}^{Z}\right]
+\right) E\left[ \varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}%
+\right] \\
+&&+2\dsum\limits_{\left( i,t\right) =2}^{m_{n}}\dsum\limits_{\left(
+j,s\right) =1}^{\left( i,t\right) -1}\frac{A_{\left( i,t\right) ,\left(
+j,s\right) }^{2}}{K_{2,n}}\left( \varepsilon _{\left( j,s\right) }\underline{%
+u}_{2,\left( j,s\right) }-E\left[ \underline{u}_{2,\left( j,s\right)
+}\varepsilon _{\left( j,s\right) }|\mathcal{F}_{n}^{Z}\right] \right) E\left[
+\underline{u}_{2,\left( i,t\right) }\varepsilon _{\left( i,t\right) }|%
+\mathcal{F}_{n}^{Z}\right] \\
+&&+2\dsum\limits_{\left( i,t\right) =3}^{m_{n}}\dsum\limits_{\left(
+j,s\right) =2}^{\left( i,t\right) -1}\dsum\limits_{\left( k,\upsilon \right)
+=1}^{\left( j,s\right) -1}\frac{A_{\left( i,t\right) ,\left( j,s\right)
+}A_{\left( i,t\right) ,\left( k,\upsilon \right) }}{K_{2,n}}E\left[ 
+\underline{u}_{2,\left( i,t\right) }\varepsilon _{\left( i,t\right) }|%
+\mathcal{F}_{n}^{Z}\right] \left\{ \underline{u}_{2,\left( j,s\right)
+}\varepsilon _{\left( k,\upsilon \right) }+\varepsilon _{\left( j,s\right) }%
+\underline{u}_{2,\left( k,\upsilon \right) }\right\}
+\end{eqnarray*}%
+\begin{eqnarray*}
+&&+2\dsum\limits_{\left( i,t\right) =3}^{m_{n}}\dsum\limits_{\left(
+j,s\right) =2}^{\left( i,t\right) -1}\dsum\limits_{\left( k,\upsilon \right)
+=1}^{\left( j,s\right) -1}\frac{A_{\left( i,t\right) ,\left( j,s\right)
+}A_{\left( i,t\right) ,\left( k,\upsilon \right) }}{K_{2,n}}\varepsilon
+_{\left( j,s\right) }\varepsilon _{\left( k,\upsilon \right) }E\left[ 
+\underline{u}_{2,\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \\
+&&+2\dsum\limits_{\left( i,t\right) =3}^{m_{n}}\dsum\limits_{\left(
+j,s\right) =2}^{\left( i,t\right) -1}\dsum\limits_{\left( k,\upsilon \right)
+=1}^{\left( j,s\right) -1}\frac{A_{\left( i,t\right) ,\left( j,s\right)
+}A_{\left( i,t\right) ,\left( k,\upsilon \right) }}{K_{2,n}}\underline{u}%
+_{2,\left( j,s\right) }\underline{u}_{2,\left( k,\upsilon \right) }E\left[
+\varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \\
+&=&\mathcal{T}_{1}+\mathcal{T}_{2}+\mathcal{T}_{3}+\mathcal{T}_{4}+\mathcal{T%
+}_{5}+\mathcal{T}_{6}+\mathcal{T}_{7},\text{ }\left( say\right)
+\end{eqnarray*}
+
+Note first that, by applying parts (a)-(c) of Lemma S2-14, we have $\mathcal{%
+T}_{1}\overset{p}{\rightarrow }0$, $\mathcal{T}_{2}\overset{p}{\rightarrow }%
+0 $, and $\mathcal{T}_{3}\overset{p}{\rightarrow }0$. Consider next the term%
+\begin{equation*}
+\mathcal{T}_{4}=2\dsum\limits_{\left( i,t\right)
+=2}^{m_{n}}\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right) -1}\frac{%
+A_{\left( i,t\right) ,\left( j,s\right) }^{2}}{K_{2,n}}\left( \underline{u}%
+_{2,\left( j,s\right) }\varepsilon _{\left( j,s\right) }-E\left[ \underline{u%
+}_{2,\left( j,s\right) }\varepsilon _{\left( j,s\right) }|\mathcal{F}_{n}^{Z}%
+\right] \right) E\left[ \underline{u}_{2,\left( i,t\right) }\varepsilon
+_{\left( i,t\right) }|\mathcal{F}_{n}^{Z}\right] .
+\end{equation*}%
+In this case, we apply part (a) of Lemma S2-8 with $u_{\left( j,s\right) }=%
+\underline{u}_{2,\left( j,s\right) }$, $\overline{\psi }_{\left( j,s\right)
+}=E\left[ \underline{u}_{2,\left( j,s\right) }\varepsilon _{\left(
+j,s\right) }|\mathcal{F}_{n}^{Z}\right] $, and $\phi _{\left( i,t\right) }=E%
+\left[ \underline{u}_{2,\left( i,t\right) }\varepsilon _{\left( i,t\right) }|%
+\mathcal{F}_{n}^{Z}\right] $. Note that, in this case, $\left\{ \left( 
+\underline{u}_{2,\left( i,t\right) },\varepsilon _{\left( i,t\right)
+}\right) \right\} _{\left( i,t\right) =1}^{m_{n}}$ is independent
+conditional on $\mathcal{F}_{n}^{Z}$, and $\max_{1\leq \left( i,t\right)
+\leq m_{n}}E\left[ \varepsilon _{\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}%
+\right] \leq C$ $a.s.$ by Assumptions 1 and 2(i), respectively. Moreover,
+note that Assumption 2, part (d) of Lemma S2-3, Lemma S2-6, and the fact
+that $K_{2,n}/\left( \mu _{n}^{\min }\right) ^{2}=O\left( 1\right) $ in this
+case together imply that there exists a constant $C\geq 1$ such that $E\left[
+\underline{u}_{2,\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] \leq %
+\left[ K_{2,n}^{2}/\left( \mu _{n}^{\min }\right) ^{4}\right] E\left[
+\left\Vert \underline{U}_{\left( i,t\right) }\right\Vert _{2}^{4}|\mathcal{F}%
+_{n}^{Z}\right] \left( a^{\prime }\Sigma _{n}^{-1}a\right) ^{2}\leq C<\infty 
+$ \ $a.s.$ for all $\left( i,t\right) \in \left\{ 1,2,...,m_{n}\right\} $
+and for all $n$ sufficiently large, so that
+
+\noindent $\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \underline{u}%
+_{2,\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] \leq C$ \ $a.s.n.$
+Finally, using the upper bound derived in expression (29) in the proof of
+part (a) of Lemma S2-14\footnote{%
+A proof of Lemma S2-14 is given in section 1 of the Additional Online
+Appendix which can be viewed at the URL:
+\par
+\noindent http://econweb.umd.edu/\symbol{126}chao/Research/research%
+\_files/Additional\_Online\_Appendix\_Jackknife\_Estimation\_
+\par
+\noindent Cluster\_Sample\_IV\_Model\_December\_20\_2022.pdf}, we obtain
+
+\noindent $\max_{1\leq \left( i,t\right) \leq m_{n}}\left\vert \phi _{\left(
+i,t\right) }\right\vert \leq \max_{1\leq \left( i,t\right) \leq m_{n}}E\left[
+\left\vert \underline{u}_{2,\left( i,t\right) }\varepsilon _{\left(
+i,t\right) }\right\vert |\mathcal{F}_{n}^{Z}\right] \leq C$ $a.s.n.$ and $%
+\max_{1\leq \left( j,s\right) \leq m_{n}}\left\vert \overline{\psi }_{\left(
+j,s\right) }\right\vert \leq \max_{1\leq \left( i,t\right) \leq m_{n}}E\left[
+\left\vert \underline{u}_{2,\left( j,s\right) }\varepsilon _{\left(
+j,s\right) }\right\vert |\mathcal{F}_{n}^{Z}\right] \leq C$ $a.s.n.$ It
+follows by part (a) of Lemma S2-8 that $\mathcal{T}_{4}\overset{p}{%
+\rightarrow }0$.
+
+Now, consider $\mathcal{T}_{5}$. Here, we apply part (b) of Lemma S2-8 with $%
+u_{\left( j,s\right) }=\underline{u}_{2,\left( j,s\right) }$ and $\phi
+_{\left( i,t\right) }=E\left[ \underline{u}_{2,\left( i,t\right)
+}\varepsilon _{\left( i,t\right) }|\mathcal{F}_{n}^{Z}\right] $. Note again
+that $\left\{ \left( \underline{u}_{2,\left( i,t\right) },\varepsilon
+_{\left( i,t\right) }\right) \right\} _{\left( i,t\right) =1}^{m_{n}}$ is
+independent conditional on $\mathcal{F}_{n}^{Z}$, and $\max_{1\leq \left(
+i,t\right) \leq m_{n}}E\left[ \varepsilon _{\left( i,t\right) }^{4}|\mathcal{%
+F}_{n}^{Z}\right] \leq C$ $a.s.$ by Assumptions 1 and 2(i), respectively.
+Moreover, previously, we have shown that $E\left[ \underline{u}_{2,\left(
+i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] \leq C$ \ $a.s.n.$ and $%
+\max_{1\leq \left( i,t\right) \leq m_{n}}\left\vert \phi _{\left( i,t\right)
+}\right\vert \leq C$ $a.s.n.$ Hence, applying part (b) of Lemma S2-8, we
+deduce that $\mathcal{T}_{5}\overset{p}{\rightarrow }0$.
+
+Turning our attention to $\mathcal{T}_{6}$, we note that, for this term, we
+can apply part (c) of Lemma S2-8 with $\phi _{\left( i,t\right) }=E\left[ 
+\underline{u}_{2,\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] $. From (%
+\ref{var u2 bound}), there exists a positive constant $C$ such that $E\left[ 
+\underline{u}_{2,\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \leq
+C<\infty $ \ $a.s.$ for all $\left( i,t\right) \in \left\{
+1,2,...,m_{n}\right\} $ and for all $n$ sufficiently large, so that
+
+\noindent $\max_{1\leq \left( i,t\right) \leq m_{n}}\left\vert \phi _{\left(
+i,t\right) }\right\vert =\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ 
+\underline{u}_{2,\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \leq C$ $%
+a.s.n.$ Hence, applying part (c) of Lemma S2-8, we obtain $\mathcal{T}_{6}%
+\overset{p}{\rightarrow }0.$
+
+Finally, consider $\mathcal{T}_{7}$. In this case, we apply part (d) of
+Lemma S2-8 with $u_{\left( j,s\right) }=\underline{u}_{2,\left( j,s\right) }$%
+, $u_{\left( k,\upsilon \right) }=\underline{u}_{2,\left( k,\upsilon \right)
+}$, and $\phi _{\left( i,t\right) }=E\left[ \varepsilon _{\left( i,t\right)
+}^{2}|\mathcal{F}_{n}^{Z}\right] $. Using a conditional version of
+Liapounov's inequality and Assumption 2(i), we obtain $E\left[ \varepsilon
+_{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \leq \left( E\left[
+\varepsilon _{\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] \right)
+^{1/2}\leq C<\infty $ \ $a.s.$ for all $\left( i,t\right) \in \left\{
+1,2,...,m_{n}\right\} $ and for all $n$, so that $\max_{1\leq \left(
+i,t\right) \leq m_{n}}\left\vert \phi _{\left( i,t\right) }\right\vert $
+
+\noindent $=\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \varepsilon
+_{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \leq C$ $a.s.$
+Moreover, as noted previously, Assumption 2, part (d) of Lemma S2-3, Lemma
+S2-6, and the fact that $K_{2,n}/\left( \mu _{n}^{\min }\right) ^{2}=O\left(
+1\right) $ together imply that
+
+\noindent $\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \underline{u}%
+_{2,\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] \leq C$ \ $a.s.n.$ It
+follows by applying part (d) of Lemma S2-8 that $\mathcal{T}_{7}\overset{p}{%
+\rightarrow }0.$
+
+The above argument shows that $\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}E%
+\left[ \mathcal{V}_{\left( i,t\right) ,n}^{2}|\mathcal{F}_{\left( i,t\right)
+-1,n}\right] -s_{Z}^{2}=\dsum\nolimits_{k=1}^{7}\mathcal{T}_{k}=o_{p}\left(
+1\right) $. On the other hand, expression (\ref{limit of s2}) above implies
+that $s_{Z}^{2}-1=o_{p}\left( 1\right) $. Putting these two results
+together, we obtain $\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}E\left[ 
+\mathcal{V}_{\left( i,t\right) ,n}^{2}|\mathcal{F}_{\left( i,t\right) -1,n}%
+\right] -1=o_{p}\left( 1\right) $, which establishes condition (\ref{MDA CLT
+cond 2}) of Lemma S2-15.
+
+It now follows from Lemma S2-15 that
+
+\noindent $\mathcal{V}_{n}=\dsum\nolimits_{\left( i,t\right)
+=2}^{m_{n}}\left\{ b_{1n}^{\prime }\Upsilon ^{\prime }Z_{2}^{\prime
+}M^{Q}e_{\left( i,t\right) }\varepsilon _{\left( i,t\right) }/\sqrt{n}%
++\dsum\nolimits_{\left( j,s\right) =1}^{\left( i,t\right) -1}A_{\left(
+i,t\right) ,\left( j,s\right) }\left[ \underline{u}_{2,\left( i,t\right)
+}\varepsilon _{\left( j,s\right) }+\underline{u}_{2,\left( j,s\right)
+}\varepsilon _{\left( i,t\right) }\right] \right\} \overset{d}{\rightarrow }%
+N\left( 0,1\right) $. Since, previously, we have shown that $a^{\prime
+}\Sigma _{n}^{-1/2}\mathcal{Y}_{n}=\mathcal{V}_{n}+o_{p}\left( 1\right) $,
+this further implies that $a^{\prime }\Sigma _{n}^{-1/2}\mathcal{Y}_{n}%
+\overset{d}{\rightarrow }N\left( 0,1\right) $. Given that this result holds
+for all $a\in \mathbb{R}^{d}$ such that $\left\Vert a\right\Vert _{2}=1$, we
+can then apply the Cram\'{e}r-Wold device to obtain%
+\begin{equation}
+\Sigma _{n}^{-1/2}\mathcal{Y}_{n}=\Sigma _{n}^{-1/2}\left( \frac{\Upsilon
+^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon }{\sqrt{n}}%
++D_{\mu }^{-1}\underline{U}^{\prime }A\varepsilon \right) \overset{d}{%
+\rightarrow }N\left( 0,I_{d}\right)  \label{asy normality V}
+\end{equation}%
+Next, let $H_{n}=\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}Z_{2}\Upsilon /n$, $\Lambda _{I,n}=H_{n}^{-1}\Sigma _{n}H_{n}^{-1}$, and $%
+\mathcal{Y}_{n}=\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}\varepsilon /\sqrt{n}+D_{\mu }^{-1}\underline{U}^{\prime }A\varepsilon $,
+as given above. Consider first $\widehat{\delta }_{L,n}$. Theorem 1 has
+already shown that $\widehat{\delta }_{L,n}\overset{p}{\rightarrow }\delta
+_{0}$. To show asymptotic normality of $\widehat{\delta }_{L}$, note first
+that, by Lemma S2-11, $\widehat{\delta }_{L,n}$ satisfies the set of
+(normalized) first-order conditions $\widehat{\Delta }\left( \widehat{\delta 
+}_{L,n}\right) =0$, where
+
+\noindent $\widehat{\Delta }\left( \delta \right) =-\left[ \left( y-X\delta
+\right) ^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\delta \right) /2%
+\right] \left[ \partial \widehat{Q}_{FELIM}\left( \delta \right) /\partial
+\delta \right] $. Applying the mean-value theorem to each component of $%
+\widehat{\Delta }\left( \delta \right) $ and expanding it around the point $%
+\delta =\delta _{0}$, we obtain $0=\widehat{\Delta }\left( \widehat{\delta }%
+_{L,n}\right) =\widehat{\Delta }\left( \delta _{0}\right) +\left( \partial 
+\widehat{\Delta }\left( \overline{\delta }_{n}\right) /\partial \delta
+^{\prime }\right) \left( \widehat{\delta }_{L,n}-\delta _{0}\right) $, with $%
+\overline{\delta }_{n}$ lying on the line segment between $\widehat{\delta }%
+_{L,n}$ and $\delta _{0}$. Multiplying both sides of this equation by $%
+D_{\mu }^{-1}$, we further obtain%
+\begin{equation}
+0=D_{\mu }^{-1}\widehat{\Delta }\left( \delta _{0}\right) +D_{\mu }^{-1}%
+\frac{\partial \widehat{\Delta }\left( \overline{\delta }_{n}\right) }{%
+\partial \delta ^{\prime }}\left( \widehat{\delta }_{L,n}-\delta _{0}\right)
+=D_{\mu }^{-1}\widehat{\Delta }\left( \delta _{0}\right) +D_{\mu }^{-1}\frac{%
+\partial \widehat{\Delta }\left( \overline{\delta }_{n}\right) }{\partial
+\delta ^{\prime }}D_{\mu }^{-1}D_{\mu }\left( \widehat{\delta }_{L,n}-\delta
+_{0}\right)  \label{mean value approx}
+\end{equation}%
+From the result of Lemma S2-10, we have $-D_{\mu }^{-1}\left( \partial 
+\widehat{\Delta }\left( \overline{\delta }_{n}\right) /\partial \delta
+^{\prime }\right) D_{\mu }^{-1}=H_{n}+o_{p}\left( 1\right) $, where $%
+H_{n}=\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}Z_{2}\Upsilon /n$ is a positive definite matrix $a.s.n.$ by Assumption
+3(iii), which, in turn, implies that $D_{\mu }^{-1}\left( \partial \widehat{%
+\Delta }\left( \overline{\delta }_{n}\right) /\partial \delta ^{\prime
+}\right) D_{\mu }^{-1}$ is nonsingular and, thus, invertible w.p.a.1. It
+follows that, for all $n$ sufficiently large, we can solve for $D_{\mu
+}\left( \widehat{\delta }_{L,n}-\delta _{0}\right) $ in (\ref{mean value
+approx}) above to get%
+\begin{eqnarray}
+D_{\mu }\left( \widehat{\delta }_{L,n}-\delta _{0}\right) &=&-\left[ D_{\mu
+}^{-1}\left( \frac{\partial \widehat{\Delta }\left( \overline{\delta }%
+_{n}\right) }{\partial \delta ^{\prime }}\right) D_{\mu }^{-1}\right]
+^{-1}D_{\mu }^{-1}\widehat{\Delta }\left( \delta _{0}\right)  \notag \\
+&=&H_{n}^{-1}\left( \frac{\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }\varepsilon }{\sqrt{n}}+D_{\mu }^{-1}\underline{U}^{\prime
+}A\varepsilon \right) \left[ 1+o_{p}\left( 1\right) \right] \text{,}
+\label{scaled FELIM}
+\end{eqnarray}%
+where the last equality follows by applying Lemma S2-9. By part (d) of Lemma
+S2-3, $\Sigma _{n}$ is positive definite $a.s.n.$, so that $\Sigma _{n}^{-1}$
+is well-defined for all $n$ sufficiently large, and both $\Sigma _{n}^{1/2}$
+and $\Sigma _{n}^{-1/2}$ can be taken to be symmetric matrices. Since $H_{n}$
+is also symmetric, it further follows that $\Lambda _{I,n}=H_{n}^{-1}\Sigma
+_{n}H_{n}^{-1}$ is symmetric and positive definite $a.s.n.$, and both $%
+\Lambda _{I,n}^{-1}=\left( H_{n}^{-1}\Sigma _{n}H_{n}^{-1}\right) ^{-1}$ and 
+$\Lambda _{I,n}^{-1/2}=\left( H_{n}^{-1}\Sigma _{n}H_{n}^{-1}\right) ^{-1/2}$
+are well-defined for all $n$ sufficiently large. Multiplying both sides of
+the equation above by $\Lambda _{I,n}^{-1/2}$, we then get $\Lambda
+_{I,n}^{-1/2}D_{\mu }\left( \widehat{\delta }_{L,n}-\delta _{0}\right)
+=\left( H_{n}^{-1}\Sigma _{n}H_{n}^{-1}\right) ^{-1/2}H_{n}^{-1}\mathcal{Y}%
+_{n}\left[ 1+o_{p}\left( 1\right) \right] $, where $\mathcal{Y}_{n}=\Upsilon
+^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon /\sqrt{n}%
++D_{\mu }^{-1}\underline{U}^{\prime }A\varepsilon $. Let $R_{W,n}=\left(
+H_{n}^{-1}\Sigma _{n}H_{n}^{-1}\right) ^{-1/2}H_{n}^{-1}\Sigma _{n}^{1/2}$,
+and note that $R_{W,n}R_{W,n}^{\prime }=I_{d}$ for all $n$ sufficiently
+large. It, thus, follows from the result given in (\ref{asy normality V})
+above and the continuous mapping theorem that $\Lambda _{I,n}^{-1/2}D_{\mu
+}\left( \widehat{\delta }_{L,n}-\delta _{0}\right) \overset{d}{\rightarrow }%
+N\left( 0,I_{d}\right) $, as $n\rightarrow \infty $, as required.
+
+Turning our attention now to $\widehat{\delta }_{F,n}$, note that we can
+write this estimator, appropriately standardized, as%
+\begin{equation}
+D_{\mu }\left( \widehat{\delta }_{F,n}-\delta _{0}\right) =\left( D_{\mu
+}^{-1}X^{\prime }\left[ A-\widehat{\ell }_{F,n}M^{\left( Z_{1},Q\right) }%
+\right] XD_{\mu }^{-1}\right) ^{-1}D_{\mu }^{-1}X^{\prime }\left[ A-\widehat{%
+\ell }_{F,n}M^{\left( Z_{1},Q\right) }\right] \left( y-X\delta _{0}\right)
+\label{FEFUL standardized}
+\end{equation}%
+so that, multiplying by $\Lambda _{I,n}^{-1/2}=\left( H_{n}^{-1}\Sigma
+_{n}H_{n}^{-1}\right) ^{-1/2}$ and applying Lemmas S2-12 and S2-13, we
+obtain $\Lambda _{I,n}^{-1/2}D_{\mu }\left( \widehat{\delta }_{F,n}-\delta
+_{0}\right) =\left( H_{n}^{-1}\Sigma _{n}H_{n}^{-1}\right) ^{-1/2}H_{n}^{-1}%
+\mathcal{Y}_{n}\left[ 1+o_{p}\left( 1\right) \right] $. It follows from the
+result given in (\ref{asy normality V}) above and the continuous mapping
+theorem that $\Lambda _{I,n}^{-1/2}D_{\mu }\left( \widehat{\delta }%
+_{F,n}-\delta _{0}\right) \overset{d}{\rightarrow }N\left( 0,I_{d}\right) $,
+as $n\rightarrow \infty $, as required. $\square $
+
+\medskip
+
+\noindent \textbf{Proof of Theorem 3: }To proceed, note that, in this case, $%
+\left( \mu _{n}^{\min }\right) /\sqrt{K_{2,n}}=o\left( 1\right) $ but $\sqrt{%
+K_{2,n}}/\left( \mu _{n}^{\min }\right) ^{2}$
+
+\noindent $\rightarrow 0$, so that, by the result given in Lemma S2-9, we
+have%
+\begin{equation}
+\frac{\mu _{n}^{\min }}{\sqrt{K_{2,n}}}D_{\mu }^{-1}\widehat{\Delta }\left(
+\delta _{0}\right) =\frac{\mu _{n}^{\min }}{\sqrt{K_{2,n}}}D_{\mu }^{-1}%
+\underline{U}^{\prime }A\varepsilon +o_{p}\left( 1\right)
+\label{Thm3 initial approx}
+\end{equation}
+
+\noindent where $\underline{U}=U-\varepsilon \rho ^{\prime }$. Again, let $%
+H_{n}=\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}Z_{2}\Upsilon /n$, and $\Sigma _{2,n}=VC\left( D_{\mu }^{-1}\underline{U}%
+^{\prime }A\varepsilon |\mathcal{F}_{n}^{Z}\right) $
+
+\noindent $=D_{\mu }^{-1}VC\left( \underline{U}^{\prime }A\varepsilon |%
+\mathcal{F}_{n}^{Z}\right) D_{\mu }^{-1}$. Now, by assumption, $\widetilde{L}%
+_{n}$ can be any sequence of bounded $\left( l\times d\right) $ non-random
+matrices such that $\lambda _{\min }\left( \left( \mu _{n}^{\min }\right)
+^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}\widetilde{L}%
+_{n}^{\prime }/K_{2,n}\right) \geq \underline{C}$ \ $a.s.n.$ for some
+constant $\underline{C}$ $>0$. It follows that $\left( \mu _{n}^{\min
+}\right) ^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}\widetilde{L}%
+_{n}^{\prime }/K_{2,n}$ is positive definite $a.s.n.$, so that, with
+probability one, $\left( \left( \mu _{n}^{\min }\right) ^{2}\widetilde{L}%
+_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}\widetilde{L}_{n}^{\prime
+}/K_{2,n}\right) ^{-1/2}$ is well-defined for all $n$ sufficiently large.
+Hence, we can let
+
+\noindent $\widetilde{\mathcal{N}}_{n}=\left( \left( \mu _{n}^{\min }\right)
+^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}\widetilde{L}%
+_{n}^{\prime }/K_{2,n}\right) ^{-1/2}\widetilde{L}_{n}H_{n}^{-1}\left( \mu
+_{n}^{\min }/\sqrt{K_{2,n}}\right) D_{\mu }^{-1}\underline{U}^{\prime
+}A\varepsilon $ and construct the linear combination $\mathcal{J}%
+_{n}=a^{\prime }\widetilde{\mathcal{N}}_{n}$ for any $a\in \mathbb{R}^{d}$
+such that $\left\Vert a\right\Vert _{2}=1$. Next, define $\underline{u}%
+_{\left( i,t\right) ,n}=a^{\prime }\left( \left( \mu _{n}^{\min }\right) ^{2}%
+\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}\widetilde{L}_{n}^{\prime
+}/K_{2,n}\right) ^{-1/2}\widetilde{L}_{n}H_{n}^{-1}D_{\mu }^{-1}\underline{U}%
+_{\left( i,t\right) }$, with $\underline{u}_{\left( j,s\right) ,n}$
+similarly defined, and we can write $\mathcal{J}_{n}=\left( \mu _{n}^{\min }/%
+\sqrt{K_{2,n}}\right) \dsum\nolimits_{\left( i,t\right)
+=2}^{m_{n}}\dsum\nolimits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }\left[ \underline{u}_{\left(
+i,t\right) ,n}\varepsilon _{\left( j,s\right) }+\underline{u}_{\left(
+j,s\right) ,n}\varepsilon _{\left( i,t\right) }\right] $
+
+\noindent $=\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}\mathcal{J}_{\left(
+i,t\right) ,n}$, where $\mathcal{J}_{\left( i,t\right) ,n}=\left( \mu
+_{n}^{\min }/\sqrt{K_{2,n}}\right) \dsum\nolimits_{\left( j,s\right)
+=1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right) }\left[ 
+\underline{u}_{\left( i,t\right) ,n}\varepsilon _{\left( j,s\right) }+%
+\underline{u}_{\left( j,s\right) ,n}\varepsilon _{\left( i,t\right) }\right] 
+$. Again, define the $\sigma $-fields $\mathcal{F}_{\left( i,t\right)
+,n}=\sigma \left( \left\{ \varepsilon _{\left( k,\upsilon \right)
+},U_{\left( k,\upsilon \right) }\right\} _{\left( k,\upsilon \right)
+=1}^{\left( i,t\right) },Z\right) $ \ for $\left( i,t\right) =1,2,...,m_{n}$%
+, noting that by construction $\mathcal{F}_{\left( i,t\right) -1,n}\subseteq 
+\mathcal{F}_{\left( i,t\right) ,n}$ for $\left( i,t\right) =2,...,m_{n}$ and 
+$\mathcal{J}_{\left( i,t\right) ,n}$ is $\mathcal{F}_{\left( i,t\right) ,n}-$%
+measurable. In addition, note that, using Assumption 1, it is easily seen
+that $E\left[ \underline{u}_{\left( i,t\right) ,n}|\mathcal{F}_{\left(
+i,t\right) -1,n}\right] =0$ and $E\left[ \varepsilon _{\left( i,t\right) }|%
+\mathcal{F}_{\left( i,t\right) -1,n}\right] =0$, from which it follows that $%
+E\left[ \mathcal{J}_{\left( i,t\right) ,n}|\mathcal{F}_{\left( i,t\right)
+-1,n}\right] =$
+
+\noindent $\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right)
+\dsum\nolimits_{\left( j,s\right) =1}^{\left( i,t\right) -1}A_{\left(
+i,t\right) ,\left( j,s\right) }\left\{ \varepsilon _{\left( j,s\right) }E%
+\left[ \underline{u}_{\left( i,t\right) ,n}|\mathcal{F}_{\left( i,t\right)
+-1,n}\right] +\underline{u}_{\left( j,s\right) ,n}E\left[ \varepsilon
+_{\left( i,t\right) }|\mathcal{F}_{\left( i,t\right) -1,n}\right] \right\}
+=0 $. Moreover, applying the CS inequality and making use of the fact that 
+\begin{equation}
+E\left[ \underline{u}_{\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right]
+\leq \frac{\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \left\Vert 
+\underline{U}_{\left( i,t\right) }\right\Vert _{2}^{2}|\mathcal{F}_{n}^{Z}%
+\right] \left\Vert \widetilde{L}_{n}\right\Vert _{F}^{2}}{\lambda _{\min
+}\left( \left( \mu _{n}^{\min }\right) ^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma
+_{2,n}H_{n}^{-1}\widetilde{L}_{n}^{\prime }/K_{2,n}\right) \left[ \lambda
+_{\min }\left( H_{n}\right) \right] ^{2}}\left( \frac{1}{\mu _{n}^{\min }}%
+\right) ^{2}=O_{a.s.}\left( \frac{1}{\left( \mu _{n}^{\min }\right) ^{2}}%
+\right)  \label{2nd moment bd on u bar}
+\end{equation}%
+and that $E\left[ \varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}%
+\right] \leq \overline{C}$ $a.s.$ by Assumption 2(i), we see that%
+\begin{eqnarray}
+&&Var\left( \mathcal{J}_{\left( i,t\right) ,n}|\mathcal{F}_{n}^{Z}\right) 
+\notag \\
+&\leq &\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}%
+\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right) -1}A_{\left(
+i,t\right) ,\left( j,s\right) }^{2}\left( E\left[ \underline{u}_{\left(
+i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] E\left[ \varepsilon _{\left(
+j,s\right) }^{2}|\mathcal{F}_{n}^{Z}\right] +E\left[ \varepsilon _{\left(
+i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] E\left[ \underline{u}_{\left(
+j,s\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] \right.  \notag \\
+&&\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\left. +2\sqrt{E\left[ \underline{u}%
+_{\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] E\left[ \varepsilon
+_{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] }\sqrt{E\left[ 
+\underline{u}_{\left( j,s\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] E\left[
+\varepsilon _{\left( j,s\right) }^{2}|\mathcal{F}_{n}^{Z}\right] }\right) 
+\notag \\
+&\leq &\frac{4\overline{C}^{2}}{\left( \mu _{n}^{\min }\right) ^{2}}\frac{%
+\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits_{\left( j,s\right)
+=1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right) }^{2}=%
+\frac{4\overline{C}^{2}}{K_{2,n}}\dsum\limits_{\left( j,s\right) =1}^{\left(
+i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\text{ }a.s.n.
+\label{cond var of J}
+\end{eqnarray}%
+Hence, applying the law of iterated expectations, part (d) of Lemma S2-1,
+and Theorem 16.1 of Billingsley (1995), we further deduce that $Var\left( 
+\mathcal{J}_{\left( i,t\right) ,n}\right) =E_{Z}\left[ E\left( \mathcal{J}%
+_{\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right) \right] $
+
+\noindent $\leq \left( 4\overline{C}^{2}/K_{2,n}\right)
+\dsum\nolimits_{\left( j,s\right) =1}^{\left( i,t\right) -1}E_{Z}\left[
+A_{\left( i,t\right) ,\left( j,s\right) }^{2}\right] \leq C$ for some
+positive constant $C$ for all $n$ sufficiently large. These results show
+that $\left\{ \mathcal{J}_{\left( i,t\right) ,n},\mathcal{F}_{\left(
+i,t\right) ,n},1\leq \left( i,t\right) \leq m_{n}\text{, }n\geq 1\right\} $
+forms a square-integrable martingale difference array.
+
+Next, we verify condition (\ref{MDA CLT cond 1b}) of the central limit
+theorem for martingale difference arrays given in Lemma S2-15 below. By Lo%
+\`{e}ve's $c_{r}$ inequality we have%
+\begin{eqnarray}
+&&\dsum\limits_{\left( i,t\right) =2}^{m_{n}}E\left[ \left( \frac{\mu
+_{n}^{\min }}{\sqrt{K_{2,n}}}\dsum\limits_{\left( j,s\right) =1}^{\left(
+i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right) }\left[ \underline{u}%
+_{\left( i,t\right) ,n}\varepsilon _{\left( j,s\right) }+\underline{u}%
+_{\left( j,s\right) ,n}\varepsilon _{\left( i,t\right) }\right] \right) ^{4}|%
+\mathcal{F}_{n}^{Z}\right]  \notag \\
+&\leq &8\dsum\limits_{\left( i,t\right) =2}^{m_{n}}\frac{\left( \mu
+_{n}^{\min }\right) ^{4}}{K_{2,n}^{2}}E\left[ \left( \dsum\limits_{\left(
+j,s\right) =1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right)
+}\underline{u}_{\left( i,t\right) ,n}\varepsilon _{\left( j,s\right)
+}\right) ^{4}|\mathcal{F}_{n}^{Z}\right]  \notag \\
+&&+8\dsum\limits_{\left( i,t\right) =2}^{m_{n}}\frac{\left( \mu _{n}^{\min
+}\right) ^{4}}{K_{2,n}^{2}}E\left[ \left( \dsum\limits_{\left( j,s\right)
+=1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right) }%
+\underline{u}_{\left( j,s\right) ,n}\varepsilon _{\left( i,t\right) }\right)
+^{4}|\mathcal{F}_{n}^{Z}\right]  \notag \\
+&=&\mathcal{E}_{1}+\mathcal{E}_{2},\text{ }\left( say\right) \text{.}
+\label{4th moment bilinear form}
+\end{eqnarray}%
+Focusing first on $\mathcal{E}_{1}$, it is easy to see that there exists
+some positive constant $C$ such that%
+\begin{eqnarray*}
+&&\mathcal{E}_{1} \\
+&=&\frac{8\left( \mu _{n}^{\min }\right) ^{4}}{K_{2,n}^{2}}E\left[
+\dsum\limits_{\left( i,t\right) =2}^{m_{n}}\left( \dsum\limits_{\left(
+j,s\right) =1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right)
+}\underline{u}_{\left( i,t\right) ,n}\varepsilon _{\left( j,s\right)
+}\right) ^{4}|\mathcal{F}_{n}^{Z}\right] \\
+&\leq &\frac{8\left( \mu _{n}^{\min }\right) ^{4}}{K_{2,n}^{2}}%
+\dsum\limits_{\left( i,t\right) =1}^{m_{n}}\dsum\limits_{\substack{ \left(
+j,s\right) =1  \\ \left( j,s\right) \neq \left( i,t\right) }}%
+^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{4}E\left[ \underline{u}%
+_{\left( i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right] E\left[ \varepsilon
+_{\left( j,s\right) }^{4}|\mathcal{F}_{n}^{Z}\right] \\
+&&+\frac{24\left( \mu _{n}^{\min }\right) ^{4}}{K_{2,n}^{2}}%
+\dsum\limits_{\left( i,t\right) =1}^{m_{n}}\dsum\limits_{\substack{ \left(
+j,s\right) ,\left( k,\upsilon \right) =1  \\ \left( j,s\right) \neq \left(
+i,t\right) ,\left( k,\upsilon \right) \neq \left( i,t\right)  \\ \left(
+j,s\right) \neq \left( k,\upsilon \right) }}^{m_{n}}A_{\left( i,t\right)
+,\left( j,s\right) }^{2}A_{\left( i,t\right) ,\left( k,\upsilon \right)
+}^{2}E\left[ \underline{u}_{\left( i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}%
+\right] E\left[ \varepsilon _{\left( j,s\right) }^{2}|\mathcal{F}_{n}^{Z}%
+\right] E\left[ \varepsilon _{\left( k,\upsilon \right) }^{2}|\mathcal{F}%
+_{n}^{Z}\right] \\
+&\leq &\frac{C}{K_{2,n}}\left[ \frac{1}{K_{2,n}}\dsum\limits_{\substack{ %
+\left( i,t\right) ,\left( j,s\right) =1  \\ \left( j,s\right) \neq \left(
+i,t\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{4}+\frac{1}{%
+K_{2,n}}\dsum\limits_{\left( i,t\right) =1}^{m_{n}}\dsum\limits_{\substack{ %
+\left( j,s\right) ,\left( k,\upsilon \right) =1  \\ \left( j,s\right) \neq
+\left( i,t\right) ,\left( k,\upsilon \right) \neq \left( i,t\right) }}%
+^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}A_{\left( i,t\right)
+,\left( k,\upsilon \right) }^{2}\right]
+\end{eqnarray*}%
+where the second inequality above follows from Assumption 2(i) and from an
+upper bound on the conditional fourth moment of
+
+\noindent $\underline{u}_{\left( i,t\right) ,n}=a^{\prime }\left( \left( \mu
+_{n}^{\min }\right) ^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}%
+\widetilde{L}_{n}^{\prime }/K_{2,n}\right) ^{-1/2}\widetilde{L}%
+_{n}H_{n}^{-1}D_{\mu }^{-1}\underline{U}_{\left( i,t\right) }$ given by%
+\begin{eqnarray}
+E\left[ \underline{u}_{\left( i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right]
+&\leq &\frac{1}{\left( \mu _{n}^{\min }\right) ^{4}}\left( \max_{1\leq
+\left( i,t\right) \leq m_{n}}E\left[ \left\Vert \underline{U}_{\left(
+i,t\right) }\right\Vert _{2}^{4}|\mathcal{F}_{n}^{Z}\right] \right) \frac{1}{%
+\left[ \lambda _{\min }\left( H_{n}\right) \right] ^{4}}  \notag \\
+&&\times \left\Vert \widetilde{L}_{n}\right\Vert _{F}^{4}\left( \frac{1}{%
+\lambda _{\min }\left( \left( \mu _{n}^{\min }\right) ^{2}\widetilde{L}%
+_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}\widetilde{L}_{n}^{\prime
+}/K_{2,n}\right) }\right) ^{2}  \notag \\
+&\leq &\frac{C^{\ast }}{\left( \mu _{n}^{\min }\right) ^{4}}\text{ \ }a.s.n.%
+\text{, for some constant }C^{\ast }>0\text{.}
+\label{4th moment bd on u tilde}
+\end{eqnarray}%
+Note also that, in deriving the upper bound given in (\ref{4th moment bd on
+u tilde}), we have applied Assumption 3(iii), Lemma S2-6, the boundedness of 
+$\left\Vert \widetilde{L}_{n}\right\Vert _{F}^{2}$ , and the assumption that
+
+\noindent $\lambda _{\min }\left( \left( \mu _{n}^{\min }\right) ^{2}%
+\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}\widetilde{L}_{n}^{\prime
+}/K_{2,n}\right) \geq \underline{C}>0$ \ $a.s.n.$ Moreover, by parts (b) and
+(c) of Lemma S2-1, we have that $K_{2,n}^{-1}\dsum\nolimits_{\left(
+i,t\right) ,\left( j,s\right) =1,\left( i,t\right) \neq \left( j,s\right)
+}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{4}=O_{a.s.}\left(
+K_{2,n}^{2}/n^{2}\right) $ and
+
+\noindent $K_{2,n}^{-1}\dsum\nolimits_{\left( i,t\right)
+=1}^{m_{n}}\dsum\nolimits_{\left( j,s\right) ,\left( k,\upsilon \right)
+=1,\left( j,s\right) \neq \left( i,t\right) ,\left( k,\upsilon \right) \neq
+\left( i,t\right) }^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right)
+}^{2}A_{\left( i,t\right) ,\left( k,\upsilon \right) }^{2}=O_{a.s.}\left(
+K_{2,n}/n\right) $. from which it follows that $n\mathcal{E}%
+_{1}=O_{a.s.}\left( 1\right) $ in light of Assumption 5(ii). Hence, by
+applying the law of iterated expectations and Theorem 16.1 of Billingsley
+(1995), we obtain, for all $n$ sufficiently large,%
+\begin{eqnarray*}
+&&nE_{Z}\left[ \mathcal{E}_{1}\right] \\
+&=&\frac{8n\left( \mu _{n}^{\min }\right) ^{4}}{K_{2,n}^{2}}E_{Z}\left\{ E%
+\left[ \dsum\limits_{\left( i,t\right) =2}^{m_{n}}\left(
+\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right) -1}A_{\left(
+i,t\right) ,\left( j,s\right) }\underline{u}_{\left( i,t\right)
+,n}\varepsilon _{\left( j,s\right) }\right) ^{4}|\mathcal{F}_{n}^{Z}\right]
+\right\} \\
+&\leq &\frac{Cn}{K_{2,n}}\left\{ E_{Z}\left[ \frac{1}{K_{2,n}}\dsum\limits 
+_{\substack{ \left( i,t\right) ,\left( j,s\right) =1  \\ \left( i,t\right)
+\neq \left( j,s\right) }}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right)
+}^{4}+\frac{1}{K_{2,n}}\dsum\limits_{\left( i,t\right)
+=1}^{m_{n}}\dsum\limits_{\substack{ \left( j,s\right) ,\left( k,\upsilon
+\right) =1  \\ \left( j,s\right) \neq \left( i,t\right) ,\left( k,\upsilon
+\right) \neq \left( i,t\right) }}^{m_{n}}A_{\left( i,t\right) ,\left(
+j,s\right) }^{2}A_{\left( i,t\right) ,\left( k,\upsilon \right) }^{2}\right]
+\right\} \\
+&=&O\left( 1\right) \text{,}
+\end{eqnarray*}%
+which shows that $E_{Z}\left[ \mathcal{E}_{1}\right] =O\left( 1/n\right)
+=o\left( 1\right) $. In a similar way, we can also show that
+
+\noindent $E_{Z}\left[ \mathcal{E}_{2}\right] =8\left[ \left( \mu _{n}^{\min
+}\right) ^{4}/K_{2,n}^{2}\right] E\left[ \dsum\nolimits_{\left( i,t\right)
+=2}^{m_{n}}\left( \dsum\nolimits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( j,s\right) ,\left( i,t\right) }\underline{u}_{\left( i,t\right)
+,n}\varepsilon _{\left( i,t\right) }\right) ^{4}\right] =o\left( 1\right) $.
+Condition (\ref{MDA CLT cond 1b}) of Lemma S2-15 then follows from these
+calculations since%
+\begin{equation*}
+\dsum\limits_{\left( i,t\right) =2}^{m_{n}}E\left[ \left( \frac{\mu
+_{n}^{\min }}{\sqrt{K_{2,n}}}\dsum\limits_{\left( j,s\right) =1}^{\left(
+i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right) }\left[ \underline{u}%
+_{\left( i,t\right) ,n}\varepsilon _{\left( j,s\right) }+\underline{u}%
+_{\left( j,s\right) ,n}\varepsilon _{\left( i,t\right) }\right] \right) ^{4}%
+\right] \leq E_{Z}\left[ \mathcal{E}_{1}\right] +E_{Z}\left[ \mathcal{E}_{2}%
+\right] =o\left( 1\right)
+\end{equation*}
+
+Next, we verify condition (\ref{MDA CLT cond 2}) of Lemma S2-15. Note first
+that, by construction, $Var\left( \mathcal{J}_{n}|\mathcal{F}_{n}^{Z}\right) 
+$
+
+\noindent $=a^{\prime }\left( \widetilde{L}_{n}\Lambda _{II,n}\widetilde{L}%
+_{n}^{\prime }\right) ^{-1/2}\widetilde{L}_{n}\Lambda _{II,n}\widetilde{L}%
+_{n}^{\prime }\left( \widetilde{L}_{n}\Lambda _{II,n}\widetilde{L}%
+_{n}^{\prime }\right) ^{-1/2}a=1$, with $\Lambda _{II,n}=\left[ \left( \mu
+_{n}^{\min }\right) ^{2}/K_{2,n}\right] H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}$.
+This, in turn, implies that $Var\left( \mathcal{J}_{n}\right) =E_{Z}\left[
+E\left( \mathcal{J}_{n}^{2}|\mathcal{F}_{n}^{Z}\right) \right] =E_{Z}\left[
+Var\left( \mathcal{J}_{n}|\mathcal{F}_{n}^{Z}\right) \right] =1$. On the
+other hand, by direct calculation, we obtain%
+\begin{eqnarray}
+1 &=&Var\left( \mathcal{J}_{n}|\mathcal{F}_{n}^{Z}\right)  \notag \\
+&=&\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits_{\left(
+i,t\right) =2}^{m_{n}}\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }^{2}E\left[ \varepsilon _{\left(
+j,s\right) }^{2}|\mathcal{F}_{n}^{Z}\right] E\left[ \underline{u}_{\left(
+i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right]  \notag \\
+&&+\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits_{\left(
+i,t\right) =2}^{m_{n}}\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }^{2}E\left[ \underline{u}%
+_{\left( j,s\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] E\left[ \varepsilon
+_{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right]  \notag
+\end{eqnarray}%
+\begin{equation}
++2\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits_{\left(
+i,t\right) =2}^{m_{n}}\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }^{2}E\left[ \underline{u}%
+_{\left( j,s\right) ,n}\varepsilon _{\left( j,s\right) }|\mathcal{F}_{n}^{Z}%
+\right] E\left[ \underline{u}_{\left( i,t\right) ,n}\varepsilon _{\left(
+i,t\right) }|\mathcal{F}_{n}^{Z}\right]  \label{normalized cond var}
+\end{equation}%
+Making use of expression (\ref{normalized cond var}), we obtain, after some
+further calculations,%
+\begin{eqnarray}
+&&\dsum\limits_{\left( i,t\right) =2}^{m_{n}}E\left[ \mathcal{J}_{\left(
+i,t\right) ,n}^{2}|\mathcal{F}_{\left( i,t\right) -1,n}\right] -1  \notag \\
+&=&\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits_{\left(
+i,t\right) =2}^{m_{n}}\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\left( \varepsilon _{\left(
+j,s\right) }^{2}-E\left[ \varepsilon _{\left( j,s\right) }^{2}|\mathcal{F}%
+_{n}^{Z}\right] \right) E\left[ \underline{u}_{\left( i,t\right) ,n}^{2}|%
+\mathcal{F}_{n}^{Z}\right]  \notag \\
+&&+\frac{\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits_{\left(
+i,t\right) =2}^{m_{n}}\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\left( \underline{u}_{\left(
+j,s\right) ,n}^{2}-E\left[ \underline{u}_{\left( j,s\right) ,n}^{2}|\mathcal{%
+F}_{n}^{Z}\right] \right) E\left[ \varepsilon _{\left( i,t\right) }^{2}|%
+\mathcal{F}_{n}^{Z}\right]  \notag \\
+&&+\frac{2\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits_{\left(
+i,t\right) =2}^{m_{n}}\dsum\limits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\left( \underline{u}_{\left(
+j,s\right) ,n}\varepsilon _{\left( j,s\right) }-E\left[ \underline{u}%
+_{\left( j,s\right) ,n}\varepsilon _{\left( j,s\right) }|\mathcal{F}_{n}^{Z}%
+\right] \right) E\left[ \underline{u}_{\left( i,t\right) ,n}\varepsilon
+_{\left( i,t\right) }|\mathcal{F}_{n}^{Z}\right]  \notag \\
+&&+\frac{2\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits_{\left(
+i,t\right) =3}^{m_{n}}\dsum\limits_{\left( j,s\right) =2}^{\left( i,t\right)
+-1}\dsum\limits_{\left( k,\upsilon \right) =1}^{\left( j,s\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }A_{\left( i,t\right) ,\left(
+k,\upsilon \right) }E\left[ \underline{u}_{\left( i,t\right) ,n}\varepsilon
+_{\left( i,t\right) }|\mathcal{F}_{n}^{Z}\right] \left\{ \underline{u}%
+_{\left( j,s\right) ,n}\varepsilon _{\left( k,\upsilon \right) }+\varepsilon
+_{\left( j,s\right) }\underline{u}_{\left( k,\upsilon \right) ,n}\right\} 
+\notag \\
+&&+\frac{2\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits_{\left(
+i,t\right) =3}^{m_{n}}\dsum\limits_{\left( j,s\right) =2}^{\left( i,t\right)
+-1}\dsum\limits_{\left( k,\upsilon \right) =1}^{\left( j,s\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }A_{\left( i,t\right) ,\left(
+k,\upsilon \right) }\varepsilon _{\left( j,s\right) }\varepsilon _{\left(
+k,\upsilon \right) }E\left[ \underline{u}_{\left( i,t\right) ,n}^{2}|%
+\mathcal{F}_{n}^{Z}\right]  \notag \\
+&&+\frac{2\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}\dsum\limits_{\left(
+i,t\right) =3}^{m_{n}}\dsum\limits_{\left( j,s\right) =2}^{\left( i,t\right)
+-1}\dsum\limits_{\left( k,\upsilon \right) =1}^{\left( j,s\right)
+-1}A_{\left( i,t\right) ,\left( j,s\right) }A_{\left( i,t\right) ,\left(
+k,\upsilon \right) }\underline{u}_{\left( j,s\right) ,n}\underline{u}%
+_{\left( k,\upsilon \right) ,n}E\left[ \varepsilon _{\left( i,t\right) }^{2}|%
+\mathcal{F}_{n}^{Z}\right]  \notag \\
+&=&\mathcal{TT}_{1}+\mathcal{TT}_{2}+\mathcal{TT}_{3}+\mathcal{TT}_{4}+%
+\mathcal{TT}_{5}+\mathcal{TT}_{6}  \label{Thm 3 cond 2}
+\end{eqnarray}
+
+To analyze the terms $\mathcal{TT}_{k}$ $\left( k=1,..,6\right) $, note
+first that, by applying parts (b) and (a) of Lemma S2-16, we obtain $%
+\mathcal{TT}_{1}\overset{p}{\rightarrow }0$ and $\mathcal{TT}_{2}\overset{p}{%
+\rightarrow }0$, respectively. Consider now the term 
+\begin{equation*}
+\mathcal{TT}_{3}=\frac{2\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}%
+\dsum\limits_{\left( i,t\right) =2}^{m_{n}}\dsum\limits_{\left( j,s\right)
+=1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right)
+}^{2}\left( \underline{u}_{\left( j,s\right) ,n}\varepsilon _{\left(
+j,s\right) }-E\left[ \underline{u}_{\left( j,s\right) ,n}\varepsilon
+_{\left( j,s\right) }|\mathcal{F}_{n}^{Z}\right] \right) E\left[ \underline{u%
+}_{\left( i,t\right) ,n}\varepsilon _{\left( i,t\right) }|\mathcal{F}_{n}^{Z}%
+\right]
+\end{equation*}%
+In this case, we apply part (a) of Lemma S2-8 with $u_{\left( j,s\right)
+,n}=\left( \mu _{n}^{\min }\right) \underline{u}_{\left( j,s\right) ,n}$,
+
+\noindent $\overline{\psi }_{\left( j,s\right) }=E\left[ \left( \mu
+_{n}^{\min }\right) \underline{u}_{\left( j,s\right) ,n}\varepsilon _{\left(
+j,s\right) }|\mathcal{F}_{n}^{Z}\right] $, and $\phi _{\left( i,t\right) }=E%
+\left[ \left( \mu _{n}^{\min }\right) \underline{u}_{\left( i,t\right)
+,n}\varepsilon _{\left( i,t\right) }|\mathcal{F}_{n}^{Z}\right] $. Note
+that, in this case, $\left\{ \left( u_{\left( i,t\right) ,n},\varepsilon
+_{\left( i,t\right) }\right) \right\} _{\left( i,t\right) =1}^{m_{n}}$ is
+independent conditional on $\mathcal{F}_{n}^{Z}=\sigma \left( Z\right) $, and
+
+\noindent $\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \varepsilon
+_{\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] \leq C$ $a.s.$ by
+Assumptions 1(i) and 2(i), respectively. Moreover, the upper bound given by (%
+\ref{4th moment bd on u tilde}) implies that there exists a constant $%
+C^{\ast }>0$ such that
+
+\noindent\ $\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ u_{\left(
+i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right] =\max_{1\leq \left( i,t\right)
+\leq m_{n}}\left( \mu _{n}^{\min }\right) ^{4}E\left[ \underline{u}_{\left(
+i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right] \leq \left( \mu _{n}^{\min
+}\right) ^{4}C^{\ast }/\left( \mu _{n}^{\min }\right) ^{4}=C^{\ast }$ \ $%
+a.s.n.$ Finally, note that, by using the fact that
+
+\noindent $\underline{u}_{\left( i,t\right) ,n}=a^{\prime }\left( \left( \mu
+_{n}^{\min }\right) ^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}%
+\widetilde{L}_{n}^{\prime }/K_{2,n}\right) ^{-1/2}\widetilde{L}%
+_{n}H_{n}^{-1}D_{\mu }^{-1}\underline{U}_{\left( i,t\right) }$ and by
+applying Assumption 2(i), Lemma S2-6, and the assumption that
+
+\noindent $\lambda _{\min }\left( \left( \mu _{n}^{\min }\right) ^{2}%
+\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}\widetilde{L}_{n}^{\prime
+}/K_{2,n}\right) \geq \underline{C}>0$ \ $a.s.n.$; we can show that there
+exists a constant $C>0$ such that%
+\begin{eqnarray}
+&&E\left[ \left\vert \left( \mu _{n}^{\min }\right) \underline{u}_{\left(
+i,t\right) ,n}\varepsilon _{\left( i,t\right) }\right\vert |\mathcal{F}%
+_{n}^{Z}\right]  \notag \\
+&=&\left( \mu _{n}^{\min }\right) E\left[ \left\vert \varepsilon _{\left(
+i,t\right) }\underline{U}_{\left( i,t\right) }^{\prime }D_{\mu
+}^{-1}H_{n}^{-1}\widetilde{L}_{n}^{\prime }\left( \frac{\left( \mu
+_{n}^{\min }\right) ^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}%
+\widetilde{L}_{n}^{\prime }}{K_{2,n}}\right) ^{-1/2}a\right\vert |\mathcal{F}%
+_{n}^{Z}\right]  \notag \\
+&\leq &\left( \mu _{n}^{\min }\right) \sqrt{E\left[ \varepsilon _{\left(
+i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] }\left[ a^{\prime }\left( \frac{%
+\left( \mu _{n}^{\min }\right) ^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma
+_{2,n}H_{n}^{-1}\widetilde{L}_{n}^{\prime }}{K_{2,n}}\right) ^{-1/2}%
+\widetilde{L}_{n}H_{n}^{-1}D_{\mu }^{-1}\right.  \notag \\
+&&\left. \times E\left[ \underline{U}_{\left( i,t\right) }\underline{U}%
+_{\left( i,t\right) }^{\prime }|\mathcal{F}_{n}^{Z}\right] D_{\mu
+}^{-1}H_{n}^{-1}\widetilde{L}_{n}^{\prime }\left( \frac{\left( \mu
+_{n}^{\min }\right) ^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}%
+\widetilde{L}_{n}^{\prime }}{K_{2,n}}\right) ^{-1/2}a\right] ^{1/2}\text{(by
+CS inequality)}  \notag \\
+&\leq &\left( \mu _{n}^{\min }\right) \sqrt{E\left[ \varepsilon _{\left(
+i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] }\frac{1}{\left( \mu _{n}^{\min
+}\right) }\left( \sqrt{\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[
+\left\Vert \underline{U}_{\left( i,t\right) }\right\Vert _{2}^{2}|\mathcal{F}%
+_{n}^{Z}\right] }\right)  \notag \\
+&&\times \frac{1}{\lambda _{\min }\left( \Upsilon ^{\prime }Z_{2}^{\prime
+}M^{\left( Z_{1},Q\right) }Z_{2}\Upsilon /n\right) }\left\Vert \widetilde{L}%
+_{n}\right\Vert _{F}\left( \frac{1}{\sqrt{\lambda _{\min }\left( \left( \mu
+_{n}^{\min }\right) ^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}%
+\widetilde{L}_{n}^{\prime }/K_{2,n}\right) }}\right)  \notag \\
+&\leq &C<\infty \text{ \ }a.s.\text{ for all }\left( i,t\right) \in \left\{
+1,2,...,m_{n}\right\} \text{ and for all }n\text{ sufficiently large}
+\label{bd on cov of e and u tilde}
+\end{eqnarray}%
+from which we further deduce that $\max_{\left( i,t\right) }\left\vert \phi
+_{\left( i,t\right) }\right\vert \leq \max_{\left( i,t\right) }E\left[
+\left\vert \left( \mu _{n}^{\min }\right) \underline{u}_{\left( i,t\right)
+,n}\varepsilon _{\left( i,t\right) }\right\vert |\mathcal{F}_{n}^{Z}\right]
+\leq C$ $a.s.n.$and also that $\max_{\left( j,s\right) }\left\vert \overline{%
+\psi }_{\left( j,s\right) }\right\vert \leq \max_{\left( j,s\right) }E\left[
+\left\vert \left( \mu _{n}^{\min }\right) \underline{u}_{\left( j,s\right)
+,n}\varepsilon _{\left( j,s\right) }\right\vert |\mathcal{F}_{n}^{Z}\right]
+\leq C$ $a.s.n.$ Hence, applying part (a) of Lemma S2-8, we have $\mathcal{TT%
+}_{3}\overset{p}{\rightarrow }0$.
+
+Next, consider the term%
+\begin{equation*}
+\mathcal{TT}_{4}=\frac{2\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}%
+\dsum\limits_{\left( i,t\right) =3}^{m_{n}}\dsum\limits_{\left( j,s\right)
+=2}^{\left( i,t\right) -1}\dsum\limits_{\left( k,\upsilon \right)
+=1}^{\left( j,s\right) -1}A_{\left( i,t\right) ,\left( j,s\right) }A_{\left(
+i,t\right) ,\left( k,\upsilon \right) }E\left[ \underline{u}_{\left(
+i,t\right) ,n}\varepsilon _{\left( i,t\right) }|\mathcal{F}_{n}^{Z}\right]
+\left\{ \underline{u}_{\left( j,s\right) ,n}\varepsilon _{\left( k,\upsilon
+\right) }+\varepsilon _{\left( j,s\right) }\underline{u}_{\left( k,\upsilon
+\right) ,n}\right\}
+\end{equation*}%
+Here, we apply part (b) of Lemma S2-8 with $u_{\left( j,s\right) ,n}=\left(
+\mu _{n}^{\min }\right) \underline{u}_{\left( j,s\right) ,n}$ and
+
+\noindent $\phi _{\left( i,t\right) }=E\left[ \left( \mu _{n}^{\min }\right) 
+\underline{u}_{\left( i,t\right) ,n}\varepsilon _{\left( i,t\right) }|%
+\mathcal{F}_{n}^{Z}\right] $. Note that $\left\{ \left( u_{\left( i,t\right)
+,n},\varepsilon _{\left( i,t\right) }\right) \right\} _{\left( i,t\right)
+=1}^{m_{n}}$ is independent conditional on $\mathcal{F}_{n}^{Z}=\sigma
+\left( Z\right) $, and
+
+\noindent $\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \varepsilon
+_{\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}\right] \leq C$ $a.s.$ by
+Assumptions 1 and 2(i), respectively. Moreover, from calculations given
+previously, we have $\max_{1\leq \left( i,t\right) \leq m_{n}}\left( \mu
+_{n}^{\min }\right) ^{4}E\left[ \underline{u}_{\left( i,t\right) ,n}^{4}|%
+\mathcal{F}_{n}^{Z}\right] \leq C$ \ $a.s.n.$ and
+
+\noindent $\max_{\left( i,t\right) }\left\vert \phi _{\left( i,t\right)
+}\right\vert \leq C$ $a.s.n.$ Hence, by applying part (b) of Lemma S2-8, we
+deduce that $\mathcal{TT}_{4}\overset{p}{\rightarrow }0$.
+
+Turning our attention to the term%
+\begin{equation*}
+\mathcal{TT}_{5}=\frac{2\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}%
+\dsum\limits_{\left( i,t\right) =3}^{m_{n}}\dsum\limits_{\left( j,s\right)
+=2}^{\left( i,t\right) -1}\dsum\limits_{\left( k,\upsilon \right)
+=1}^{\left( j,s\right) -1}A_{\left( i,t\right) ,\left( j,s\right) }A_{\left(
+i,t\right) ,\left( k,\upsilon \right) }\varepsilon _{\left( j,s\right)
+}\varepsilon _{\left( k,\upsilon \right) }E\left[ \underline{u}_{\left(
+i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right]
+\end{equation*}%
+For this term, we apply part (c) of Lemma S2-8 with $\phi _{\left(
+i,t\right) }=E\left[ u_{\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] 
+$ and $u_{\left( i,t\right) ,n}=\left( \mu _{n}^{\min }\right) \underline{u}%
+_{\left( i,t\right) ,n}$. From (\ref{2nd moment bd on u bar}), there exists
+a positive constant $C$ such that $E\left[ u_{\left( i,t\right) ,n}^{2}|%
+\mathcal{F}_{n}^{Z}\right] $
+
+\noindent $=\left( \mu _{n}^{\min }\right) ^{2}E\left[ \underline{u}_{\left(
+i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] \leq C<\infty $ \ $a.s.$ for
+all $\left( i,t\right) \in \left\{ 1,2,...,m_{n}\right\} $ and for all $n$
+sufficiently large, so that $\max_{\left( i,t\right) }\left\vert \phi
+_{\left( i,t\right) }\right\vert =\max_{1\leq \left( i,t\right) \leq m_{n}}E%
+\left[ u_{\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] \leq C$ $%
+a.s.n.$ Hence, applying part (c) of Lemma S2-8, we obtain $\mathcal{TT}_{5}%
+\overset{p}{\rightarrow }0$.
+
+Finally, consider the term%
+\begin{equation*}
+\mathcal{TT}_{6}=\frac{2\left( \mu _{n}^{\min }\right) ^{2}}{K_{2,n}}%
+\dsum\limits_{\left( i,t\right) =3}^{m_{n}}\dsum\limits_{\left( j,s\right)
+=2}^{\left( i,t\right) -1}\dsum\limits_{\left( k,\upsilon \right)
+=1}^{\left( j,s\right) -1}A_{\left( i,t\right) ,\left( j,s\right) }A_{\left(
+i,t\right) ,\left( k,\upsilon \right) }\underline{u}_{\left( j,s\right) ,n}%
+\underline{u}_{\left( k,\upsilon \right) ,n}E\left[ \varepsilon _{\left(
+i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right]
+\end{equation*}%
+In this case, we apply part (d) of Lemma S2-8 with $u_{\left( j,s\right)
+}=\left( \mu _{n}^{\min }\right) \underline{u}_{\left( j,s\right) ,n}$, $%
+u_{\left( k,\upsilon \right) }=\left( \mu _{n}^{\min }\right) \underline{u}%
+_{\left( k,\upsilon \right) ,n}$, and $\phi _{\left( i,t\right) }=E\left[
+\varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] $. Using a
+conditional version of Liapounov's inequality and Assumption 2(i), we obtain 
+$E\left[ \varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right]
+\leq \left( E\left[ \varepsilon _{\left( i,t\right) }^{4}|\mathcal{F}_{n}^{Z}%
+\right] \right) ^{1/2}\leq C<\infty $ \ $a.s.$ for all $\left( i,t\right)
+\in \left\{ 1,2,...,m_{n}\right\} $ and for all $n$ sufficiently large, so
+that $\max_{\left( i,t\right) }\left\vert \phi _{\left( i,t\right)
+}\right\vert =\max_{\left( i,t\right) }E\left[ \varepsilon _{\left(
+i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \leq C$ $a.s.n.$ Moreover, the
+upper bound in (\ref{4th moment bd on u tilde}) implies that $\max_{1\leq
+\left( i,t\right) \leq m_{n}}E\left[ u_{\left( i,t\right) ,n}^{4}|\mathcal{F}%
+_{n}^{Z}\right] =\max_{1\leq \left( i,t\right) \leq m_{n}}\left( \mu
+_{n}^{\min }\right) ^{4}E\left[ \underline{u}_{\left( i,t\right) ,n}^{4}|%
+\mathcal{F}_{n}^{Z}\right] $
+
+\noindent $\leq C$ \ $a.s.n.$ It follows by applying part (d) of Lemma S2-8
+that $\mathcal{TT}_{6}\overset{p}{\rightarrow }0$.
+
+It follows from the above calculations that the terms $\mathcal{TT}_{k}$ $%
+\overset{p}{\rightarrow }0$ for each $k\in \left\{ 1,...,6\right\} $, which
+in light of equation (\ref{Thm 3 cond 2}) implies that $\dsum\nolimits_{%
+\left( i,t\right) =2}^{m_{n}}E\left[ \mathcal{J}_{\left( i,t\right) ,n}^{2}|%
+\mathcal{F}_{\left( i,t\right) -1,n}\right] -1=o_{p}\left( 1\right) $. This
+establishes condition (\ref{MDA CLT cond 2}) of Lemma S2-15. It now follows
+from Lemma S2-15 that $\mathcal{J}_{n}$
+
+\noindent $=\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right) a^{\prime }\left(
+\left( \mu _{n}^{\min }\right) ^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma
+_{2,n}H_{n}^{-1}\widetilde{L}_{n}^{\prime }/K_{2,n}\right) ^{-1/2}\widetilde{%
+L}_{n}H_{n}^{-1}D_{\mu }^{-1}\underline{U}^{\prime }A\varepsilon \overset{d}{%
+\rightarrow }N\left( 0,1\right) $. Since this result holds for all $a\in 
+\mathbb{R}^{d}$ such that $\left\Vert a\right\Vert _{2}=1$, applying the Cram%
+\'{e}r-Wold device, we further deduce that%
+\begin{equation}
+\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right) \left( \widetilde{L}%
+_{n}\Lambda _{II,n}\widetilde{L}_{n}^{\prime }\right) ^{-1/2}\widetilde{L}%
+_{n}H_{n}^{-1}D_{\mu }^{-1}\underline{U}^{\prime }A\varepsilon \overset{d}{%
+\rightarrow }N\left( 0,I_{d}\right) ,  \label{asy normality CaseII}
+\end{equation}%
+where $\Lambda _{II,n}=\left( \mu _{n}^{\min }\right) ^{2}H_{n}^{-1}\Sigma
+_{2,n}H_{n}^{-1}/K_{2,n}$ with $H_{n}=\Upsilon ^{\prime }Z_{2}^{\prime
+}M^{\left( Z_{1},Q\right) }Z_{2}\Upsilon /n$. Next, recall that $\widehat{%
+\Delta }\left( \delta \right) =-\left[ \left( y-X\delta \right) ^{\prime
+}M^{\left( Z_{1},Q\right) }\left( y-X\delta \right) /2\right] \left[
+\partial \widehat{Q}_{FELIM}\left( \delta \right) /\partial \delta \right] $%
+; and note that, by Lemma S2-10, we have $-D_{\mu }^{-1}\left( \partial 
+\widehat{\Delta }\left( \overline{\delta }_{n}\right) /\partial \delta
+^{\prime }\right) D_{\mu }^{-1}=H_{n}+o_{p}\left( 1\right) $, with $H_{n}$
+being positive definite in light of Assumption 3(iii), so that upon
+inverting the expansion given in expression (\ref{mean value approx}) above
+and multiplying by $\left( \mu _{n}^{\min }\right) /\sqrt{K_{2,n}}$, we
+obtain%
+\begin{equation*}
+\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right) D_{\mu }\left( \widehat{\delta 
+}_{L,n}-\delta _{0}\right) =\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right)
+H_{n}^{-1}D_{\mu }^{-1}\widehat{\Delta }\left( \delta _{0}\right) \left[
+1+o_{p}\left( 1\right) \right]
+\end{equation*}%
+\begin{equation*}
+=\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right) H_{n}^{-1}D_{\mu }^{-1}%
+\underline{U}^{\prime }A\varepsilon \left[ 1+o_{p}\left( 1\right) \right] 
+\text{,}
+\end{equation*}
+
+\noindent where the last equality comes from applying expression (\ref{Thm3
+initial approx}). It follows by multiplying both sides of the equation above
+by $\left( \widetilde{L}_{n}\Lambda _{II,n}\widetilde{L}_{n}\right) ^{-1/2}%
+\widetilde{L}_{n}$ and applying the result given in expression (\ref{asy
+normality CaseII}) that $\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right)
+\left( \widetilde{L}_{n}\Lambda _{II,n}\widetilde{L}_{n}\right) ^{-1/2}%
+\widetilde{L}_{n}D_{\mu }\left( \widehat{\delta }_{L,n}-\delta _{0}\right) 
+\overset{d}{\rightarrow }N\left( 0,I_{d}\right) $. \textit{\ }
+
+Turning our attention now to $\widehat{\delta }_{F,n}$, note that, using
+expression (\ref{FEFUL standardized}) above, we can write%
+\begin{eqnarray*}
+&&\frac{\left( \mu _{n}^{\min }\right) D_{\mu }\left( \widehat{\delta }%
+_{F,n}-\delta _{0}\right) }{\sqrt{K_{2,n}}} \\
+&=&\frac{\left( \mu _{n}^{\min }\right) \left( D_{\mu }^{-1}X^{\prime }\left[
+A-\widehat{\ell }_{F,n}M^{\left( Z_{1},Q\right) }\right] XD_{\mu
+}^{-1}\right) ^{-1}D_{\mu }^{-1}X^{\prime }\left[ A-\widehat{\ell }%
+_{F,n}M^{\left( Z_{1},Q\right) }\right] \left( y-X\delta _{0}\right) }{\sqrt{%
+K_{2,n}}}
+\end{eqnarray*}%
+It follows by applying Lemmas S2-12 and S2-13 that%
+\begin{equation}
+\frac{\mu _{n}^{\min }}{\sqrt{K_{2,n}}}D_{\mu }\left( \widehat{\delta }%
+_{F,n}-\delta _{0}\right) =\frac{\mu _{n}^{\min }}{\sqrt{K_{2,n}}}%
+H_{n}^{-1}D_{\mu }^{-1}\underline{U}^{\prime }A\varepsilon +o_{p}\left(
+1\right) \text{,}  \label{normalized FEFUL II}
+\end{equation}%
+noting that, in this case, $\left( \mu _{n}^{\min }\right) /\sqrt{K_{2,n}}%
+=o\left( 1\right) $ but $\sqrt{K_{2,n}}/\left( \mu _{n}^{\min }\right)
+^{2}\rightarrow 0$. It follows by multiplying both sides of equation (\ref%
+{normalized FEFUL II}) above by $\left( \widetilde{L}_{n}\Lambda _{II,n}%
+\widetilde{L}_{n}\right) ^{-1/2}\widetilde{L}_{n}$ and applying the result
+given in expression (\ref{asy normality CaseII}) that
+
+\noindent $\left( \mu _{n}^{\min }/\sqrt{K_{2,n}}\right) \left( \widetilde{L}%
+_{n}\Lambda _{II,n}\widetilde{L}_{n}\right) ^{-1/2}\widetilde{L}_{n}D_{\mu
+}\left( \widehat{\delta }_{F,n}-\delta _{0}\right) \overset{d}{\rightarrow }%
+N\left( 0,I_{d}\right) $. $\square $
+
+\section*{\noindent Appendix S2: Key Lemmas Used in Proving the Main
+Theorems\noindent}
+
+\noindent \qquad In this appendix, we state a number of lemmas that are used
+in the proofs of the main theorems of the paper. Proofs for these lemmas are
+available in a separate online appendix which can be viewed at the URL:
+http://econweb.umd.edu/\symbol{126}chao/Research/research\_files/Additional%
+\_Online\_
+
+\noindent
+Appendix\_Jackknife\_Estimation\_Cluster\_Sample\_IV\_Model\_December\_20%
+\_2022.pdf
+
+\medskip
+
+\noindent \textbf{Lemma S2-1: }Let $A=P^{\perp }-M^{\left( Z,Q\right) }D_{%
+\widehat{\vartheta }}M^{\left( Z,Q\right) }$. Then, under Assumptions 2-6,
+the following statements hold as $K_{2,n}$, $n\rightarrow \infty $.
+
+\noindent (a) $\dsum\nolimits_{\left( i,t\right) ,\left( j,s\right)
+=1,\left( i,t\right) \neq \left( j,s\right) }^{m_{n}}A_{\left( i,t\right)
+,\left( j,s\right) }^{2}=O_{a.s.}\left( K_{2,n}\right) $.
+
+\noindent (b) $\dsum\nolimits_{\left( i,t\right) ,\left( j,s\right)
+=1,\left( i,t\right) \neq \left( j,s\right) }^{m_{n}}A_{\left( i,t\right)
+,\left( j,s\right) }^{4}=O_{a.s.}\left( K_{2,n}^{3}/n^{2}\right) $.
+
+\noindent (c) $\dsum\nolimits_{\left( j,s\right)
+=1}^{m_{n}}\dsum\nolimits_{\left( i,t\right) ,\left( k,\upsilon \right)
+=1,\left( i,t\right) \neq \left( j,s\right) ,\left( k,\upsilon \right) \neq
+\left( j,s\right) }^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right)
+}^{2}A_{\left( j,s\right) ,\left( k,\upsilon \right) }^{2}=O_{a.s.}\left(
+K_{2,n}^{2}/n\right) $.
+
+\noindent (d) $\max_{1\leq \left( i,t\right) \leq m_{n}}\left(
+\dsum\nolimits_{\left( j,s\right) =1}^{m_{n}}A_{\left( i,t\right) ,\left(
+j,s\right) }^{2}\right) =O_{a.s.}\left( K_{2,n}/n\right) $.
+
+\noindent (e) $\dsum\nolimits_{i_{1},i_{2}=1}^{n}\dsum\nolimits_{j=1,j\neq
+i_{1},i_{2}}^{n}\dsum\nolimits_{t_{1}=1}^{T_{i_{1}}}\dsum%
+\nolimits_{t_{2}=1}^{T_{i_{2}}}\dsum\nolimits_{s_{1},s_{2}=1}^{T_{j}}A_{%
+\left( i_{1},t_{1}\right) ,\left( j,s_{1}\right) }^{2}A_{\left(
+i_{2},t_{2}\right) ,\left( j,s_{2}\right) }^{2}=O_{a.s.}\left(
+K_{2,n}^{2}/n\right) $ and $\dsum\nolimits_{i=1}^{n}\dsum%
+\nolimits_{j_{1}=1,j_{1}\neq i}^{n}\dsum\nolimits_{j_{2}=1,j_{2}\neq
+i}^{n}\dsum\nolimits_{t_{1},t_{2}=1}^{T_{i}}\dsum%
+\nolimits_{s_{1}=1}^{T_{j_{1}}}\dsum\nolimits_{s_{2}=1}^{T_{j_{2}}}A_{\left(
+i,t_{1}\right) ,\left( j_{1},s_{1}\right) }^{2}A_{\left( i,t_{2}\right)
+,\left( j_{2},s_{2}\right) }^{2}=O_{a.s.}\left( K_{2,n}^{2}/n\right) $
+
+\noindent (f) $\dsum\nolimits_{i=1}^{n}\dsum\nolimits_{t=1}^{T_{i}}\dsum%
+\nolimits_{s=1}^{T_{i}}A_{\left( i,t\right) ,\left( i,s\right)
+}^{2}=O_{a.s.}\left( K_{2,n}^{2}/n\right) $.
+
+\noindent (g) $\dsum\nolimits_{i=1}^{n}\dsum\nolimits_{s_{1},t_{1}=1,s_{1}%
+\neq t_{1}}^{T_{i}}\dsum\nolimits_{s_{2},t_{2}=1,s_{2}\neq
+t_{2}}^{T_{i}}A_{\left( i,t_{1}\right) ,\left( i,s_{1}\right) }^{2}A_{\left(
+i,t_{2}\right) ,\left( i,s_{2}\right) }^{2}=O_{a.s.}\left(
+K_{2,n}^{4}/n^{3}\right) $.
+
+\noindent \textbf{Lemma S2-2: }Let Assumptions 1-6 be satisfied. Then, the
+following statements are true: (a) $D_{\mu }^{-1}X^{\prime }M^{\left(
+Z_{1},Q\right) }XD_{\mu }^{-1}=O_{p}\left( n\left( \mu _{n}^{\min }\right)
+^{-2}\right) $; (b) $D_{\mu }^{-1}X^{\prime }AXD_{\mu
+}^{-1}=H_{n}+o_{p}\left( 1\right) $, where $H_{n}=\Upsilon ^{\prime
+}Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }Z_{2}\Upsilon /n=O_{p}\left(
+1\right) $.
+
+\medskip
+
+\noindent \textbf{Lemma S2-3: }Let $\underline{U}=U-\varepsilon \rho
+^{\prime }$ and $\underline{U}_{\left( i,t\right) }=U_{\left( i,t\right)
+}-\rho \varepsilon _{\left( i,t\right) }$ and let $VC\left( X|\mathcal{F}%
+_{n}^{Z}\right) $ denote the conditional covariance matrix of the random
+vector $X$ given $\mathcal{F}_{n}^{Z}$. Under Assumptions 1-2, 5-6, and 8;
+there exists positive constants $0<\underline{C}\leq \overline{C}<\infty $
+such that the following statements are true.
+
+\noindent (a) $\lambda _{\max }\left[ VC\left( \Upsilon ^{\prime
+}Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon /\sqrt{n}|\mathcal{F}%
+_{n}^{Z}\right) \right] \leq \overline{C}$ \ \ $a.s.$ and $\lambda _{\min }%
+\left[ VC\left( \Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}\varepsilon /\sqrt{n}|\mathcal{F}_{n}^{Z}\right) \right] \geq \underline{C}$
+\ $a.s.$ for all $n$ sufficiently large.
+
+\noindent (b) $VC\left( \underline{U}^{\prime }A\varepsilon /\sqrt{K_{2,n}}|%
+\mathcal{F}_{n}^{Z}\right) \geq \underline{C}I_{d}>\underset{d\times d}{0}$
+\ $a.s.$, for all $n$ sufficiently large.
+
+\noindent (c) $\lambda _{\max }\left( VC\left[ \underline{U}^{\prime
+}A\varepsilon /\sqrt{K_{2,n}}|\mathcal{F}_{n}^{Z}\right] \right) \leq 
+\overline{C}$ \ $a.s.$, $\lambda _{\max }\left( VC\left[ \underline{U}%
+^{\prime }A\varepsilon /\sqrt{K_{2,n}}\right] \right) \leq \overline{C}$,
+
+\noindent $\lambda _{\max }\left( VC\left[ U^{\prime }A\varepsilon /\sqrt{%
+K_{2,n}}|\mathcal{F}_{n}^{Z}\right] \right) \leq \overline{C}$ \ $a.s.$, and 
+$\lambda _{\max }\left( VC\left[ U^{\prime }A\varepsilon /\sqrt{K_{2,n}}%
+\right] \right) \leq \overline{C}$, for all $n$ sufficiently large.
+
+\noindent (d) For any $a\in \mathbb{R}^{d}$ with $\left\Vert a\right\Vert
+_{2}=1$ and for all $n$ sufficiently large, $\lambda _{\min }\left( \Sigma
+_{n}\right) \geq \underline{C}>0$ $a.s.$ and $a^{\prime }\Sigma
+_{n}^{-1}a\leq \overline{C}<\infty $ \ $a.s.$, where $\Sigma _{n}=VC\left( 
+\mathcal{Y}_{n}|\mathcal{F}_{n}^{Z}\right) =\Sigma _{1,n}+\Sigma _{2,n}$, as
+defined in section 4 of the main paper, and where $\mathcal{Y}_{n}=\Upsilon
+^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon /\sqrt{n}%
++D_{\mu }^{-1}\underline{U}^{\prime }A\varepsilon $.
+
+\noindent \textbf{Lemma S2-4: }Under Assumptions 1-6, $D_{\mu
+}^{-1}X^{\prime }A\varepsilon =\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }\varepsilon /\sqrt{n}+D_{\mu }^{-1}U^{\prime }A\varepsilon $
+
+\noindent $=O_{p}\left( \max \left\{ 1,\sqrt{K_{2,n}}/\left( \mu _{n}^{\min
+}\right) \right\} \right) $
+
+\noindent \textbf{Lemma S2-5: }Under Assumptions 1-6, $D_{\mu
+}^{-1}X^{\prime }M^{\left( Z_{1},Q\right) }\varepsilon =O_{p}\left( n/\mu
+_{n}^{\min }\right) $.
+
+\noindent
+
+\noindent \textbf{Lemma S2-6: }If Assumptions 2 and 8 are satisfied; then,
+for $1\leq p\leq 8$ and for all $n$, there exists a positive constant $C$
+such that $\max_{1\leq \left( i,t\right) \leq m_{n}}E\left[ \left\Vert 
+\underline{U}_{\left( i,t\right) }\right\Vert _{2}^{p}|\mathcal{F}_{n}^{Z}%
+\right] \leq C<\infty \ a.s.$, where $\underline{U}_{\left( i,t\right)
+}=U_{\left( i,t\right) }-\rho \varepsilon _{\left( i,t\right) }$.
+
+\noindent \textbf{Lemma S2-7: }Under Assumptions 1-6, the following results
+hold: (a) $\widehat{\ell }_{L,n}=o_{p}\left( \left[ \mu _{n}^{\min }\right]
+^{2}/n\right) $; (b) $\widehat{\ell }_{F,n}=o_{p}\left( \left[ \mu
+_{n}^{\min }\right] ^{2}/n\right) $.
+
+\noindent
+
+\noindent \textbf{Lemma S2-8: }Let $A$ be as defined above. Assume that%
+{\small \ }i){\small \ }$\left( u_{\left( 1,1\right) ,n},\varepsilon
+_{\left( 1,1\right) }\right) ,...,\left( u_{\left( 1,T_{1}\right)
+,n},\varepsilon _{\left( 1,T_{1}\right) }\right) ,$
+
+\noindent $\left( u_{\left( 2,1\right) ,n},\varepsilon _{\left( 2,1\right)
+,n}\right) ,...,\left( u_{\left( 2,T_{2}\right) ,n},\varepsilon _{\left(
+2,T_{2}\right) ,n}\right) ,...,\left( u_{\left( n,1\right) ,n},\varepsilon
+_{\left( n,1\right) ,n}\right) ....,\left( u_{\left( n,T_{n}\right)
+,n},\varepsilon _{\left( n,T_{n}\right) ,n}\right) ${\small \ }are
+independent conditional on $\mathcal{F}_{n}^{Z}=\sigma \left( Z\right) $;
+ii)\ there exists a constant $C$\ such that, almost surely for all $n$
+sufficiently large, $\max_{1\leq \left( i,t\right) \leq m_{n}}E\left(
+u_{\left( i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right) \leq C$, $%
+\max_{1\leq \left( i,t\right) \leq m_{n}}E\left( \varepsilon _{\left(
+i,t\right) ,n}^{4}|\mathcal{F}_{n}^{Z}\right) \leq C$, and
+
+\noindent $\max_{1\leq \left( i,t\right) \leq m_{n}}\left\vert \phi _{\left(
+i,t\right) ,n}\right\vert \leq C$. In addition, define $\overline{\psi }%
+_{\left( j,s\right) ,n}=E\left[ u_{\left( j,s\right) ,n}\varepsilon _{\left(
+j,s\right) ,n}|\mathcal{F}_{n}^{Z}\right] $ for $\left( j,s\right)
+=1,...,m_{n}$. Then, under Assumptions 5 and 6, the following statements are
+true:
+
+\noindent (a) $K_{2,n}^{-1}\dsum\nolimits_{1\leq \left( j,s\right) <\left(
+i,t\right) \leq m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\phi
+_{\left( i,t\right) ,n}\left\{ u_{\left( j,s\right) ,n}\varepsilon _{\left(
+j,s\right) ,n}-\overline{\psi }_{\left( j,s\right) ,n}\right\} \overset{p}{%
+\rightarrow }0$;
+
+\noindent (b) $K_{2,n}^{-1}\dsum\nolimits_{1\leq \text{ }\left( k,\upsilon
+\right) <\left( j,s\right) <\left( i,t\right) \leq \text{ }m_{n}}A_{\left(
+i,t\right) ,\left( j,s\right) }A_{\left( i,t\right) ,\left( k,\upsilon
+\right) }\phi _{\left( i,t\right) ,n}\left\{ u_{\left( j,s\right)
+,n}\varepsilon _{\left( k,\upsilon \right) ,n}+\varepsilon _{\left(
+j,s\right) ,n}u_{\left( k,\upsilon \right) ,n}\right\} \overset{p}{%
+\rightarrow }0$;
+
+\noindent (c) $K_{2,n}^{-1}\dsum\nolimits_{1\leq \text{ }\left( k,\upsilon
+\right) <\left( j,s\right) <\left( i,t\right) \leq \text{ }m_{n}}A_{\left(
+i,t\right) ,\left( j,s\right) }A_{\left( i,t\right) ,\left( k,\upsilon
+\right) }\phi _{\left( i,t\right) ,n}\varepsilon _{\left( j,s\right)
+,n}\varepsilon _{\left( k,\upsilon \right) ,n}\overset{p}{\rightarrow }0$;
+
+\noindent (d) $K_{2,n}^{-1}\dsum\nolimits_{1\leq \text{ }\left( k,\upsilon
+\right) <\left( j,s\right) <\left( i,t\right) \leq \text{ }m_{n}}A_{\left(
+i,t\right) ,\left( j,s\right) }A_{\left( i,t\right) ,\left( k,\upsilon
+\right) }\phi _{\left( i,t\right) ,n}u_{\left( j,s\right) ,n}u_{\left(
+k,\upsilon \right) ,n}\overset{p}{\rightarrow }0$.
+
+\noindent \textbf{Lemma S2-9: }Let 
+\begin{equation*}
+\widehat{\Delta }\left( \delta _{0}\right) =-\frac{\left( y-X\delta
+_{0}\right) ^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\delta _{0}\right) 
+}{2}\left. \frac{\partial }{\partial \delta }\left\{ \frac{\left( y-X\delta
+\right) ^{\prime }A\left( y-X\delta \right) }{\left( y-X\delta \right)
+^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\delta \right) }\right\}
+\right\vert _{\delta =\delta _{0}}\text{.}
+\end{equation*}%
+If Assumptions 1-6 and 8 are satisfied; then, $D_{\mu }^{-1}\widehat{\Delta }%
+\left( \delta _{0}\right) =\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left(
+Z_{1},Q\right) }\varepsilon /\sqrt{n}+D_{\mu }^{-1}\underline{U}^{\prime
+}A\varepsilon +o_{p}\left( 1\right) $, where $\underline{U}=U-\varepsilon
+\rho ^{\prime }$ and where $\rho =\lim_{n\rightarrow \infty }E\left[
+U^{\prime }M^{Q}\varepsilon \right] /E\left[ \varepsilon ^{\prime
+}M^{Q}\varepsilon \right] $.
+
+\noindent \textbf{Lemma S2-10: }Let Assumptions 1-6 be satisfied, and let $%
+\overline{\delta }_{n}$ be any estimator such that, as $n\rightarrow \infty $%
+, $D_{\mu }\left( \overline{\delta }_{n}-\delta _{0}\right) /\mu _{n}^{\min
+}=o_{p}\left( 1\right) $. Then, $-D_{\mu }^{-1}\left( \partial \widehat{%
+\Delta }\left( \overline{\delta }_{n}\right) /\partial \delta ^{\prime
+}\right) D_{\mu }^{-1}=H_{n}+o_{p}\left( 1\right) $, where $H_{n}=\Upsilon
+^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }Z_{2}\Upsilon /n$ and
+where
+
+\noindent $\widehat{\Delta }\left( \delta \right) =-\left[ \left( y-X\delta
+\right) ^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\delta \right) /2%
+\right] \left[ \partial \widehat{Q}_{FELIM}\left( \delta \right) /\partial
+\delta \right] $
+
+\noindent $=X^{\prime }A\left( y-X\delta \right) -\widehat{\ell }\left(
+\delta \right) X^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\delta \right) 
+$, with
+
+\noindent $\widehat{\ell }\left( \delta \right) =\left( y-X\delta \right)
+^{\prime }A\left( y-X\delta \right) /\left[ \left( y-X\delta \right)
+^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\delta \right) \right] $. In
+addition, we also have%
+\begin{equation}
+D_{\mu }^{-1}X^{\prime }\left[ A-\widehat{\ell }\left( \overline{\delta }%
+_{n}\right) M^{\left( Z_{1},Q\right) }\right] XD_{\mu
+}^{-1}=H_{n}+o_{p}\left( 1\right) \text{.}  \label{LIM denom term}
+\end{equation}
+
+\medskip
+
+\noindent \textbf{Lemma S2-11: }Let $\widehat{\ell }_{L}=Q\left( \widetilde{%
+\beta }\right) =\min_{\beta \in \overline{B}}Q\left( \beta \right) $, where $%
+Q\left( \beta \right) $ is as defined in Assumption 9. Then, $\widehat{\ell }%
+_{L}$ is also the smallest root of the determinantal equation $\det \left[ 
+\overline{X}^{\prime }A\overline{X}-\ell \overline{X}^{\prime }M^{\left(
+Z_{1},Q\right) }\overline{X}\right] =0$, where $\overline{X}=\left[ y,X%
+\right] $. Assume in addition that condition (13) in Assumption 9 is
+satisfied; then, $\widehat{\ell }_{L}$ has the representation 
+\begin{equation}
+\widehat{\ell }_{L}=\frac{\left( y-X\widehat{\delta }_{L}\right) ^{\prime
+}A\left( y-X\widehat{\delta }_{L}\right) }{\left( y-X\widehat{\delta }%
+_{L}\right) ^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\widehat{\delta }%
+_{L}\right) }\text{,}  \label{FELIM root}
+\end{equation}%
+where $\widehat{\delta }_{L}$ denotes the FELIM\ estimator. Moreover, $%
+\overline{X}^{\prime }A\left( y-X\widehat{\delta }_{L}\right) -\widehat{\ell 
+}_{L}\overline{X}^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\widehat{%
+\delta }_{L}\right) $
+
+\noindent $=0$. In particular, this implies that $\widehat{\Delta }\left( 
+\widehat{\delta }_{L}\right) =0$, where
+
+\noindent $\widehat{\Delta }\left( \delta \right) =-\left[ \left( y-X\delta
+\right) ^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\delta \right) /2%
+\right] \left( \partial \widehat{Q}_{FELIM}\left( \delta \right) /\partial
+\delta \right) $, so that $\widehat{\delta }_{L}$ satisfies the set of
+(normalized) first-order conditions for minimizing the variance ratio
+objective function $\widehat{Q}_{FELIM}\left( \delta \right) =\left(
+y-X\delta \right) ^{\prime }A\left( y-X\delta \right) /\left[ \left(
+y-X\delta \right) ^{\prime }M^{\left( Z_{1},Q\right) }\left( y-X\delta
+\right) \right] $.
+
+\noindent
+
+\noindent \textbf{Lemma S2-12: }If Assumptions 1-6 are satisfied; then,
+
+\noindent $D_{\mu }^{-1}X^{\prime }\left[ A-\widehat{\ell }_{F,n}M^{\left(
+Z_{1},Q\right) }\right] XD_{\mu }^{-1}=H_{n}+o_{p}\left( 1\right) $, where $%
+H_{n}=\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}Z_{2}\Upsilon /n$,
+
+\noindent $\widehat{\ell }_{F,n}=\left[ \widehat{\ell }_{L,n}-\left( 1-%
+\widehat{\ell }_{L,n}\right) \left( C/m_{n}\right) \right] /\left[ 1-\left(
+1-\widehat{\ell }_{L,n}\right) \left( C/m_{n}\right) \right] $, and $%
+\widehat{\ell }_{L,n}$ is smallest root of the determinantal equation $\det
+\left\{ \overline{X}^{\prime }A\overline{X}-\ell \overline{X}^{\prime
+}M^{\left( Z_{1},Q\right) }\overline{X}\right\} =0$, with $\overline{X}=%
+\left[ 
+\begin{array}{cc}
+y & X%
+\end{array}%
+\right] $.
+
+\noindent \noindent \textbf{Lemma S2-13: }If Assumptions 1-6 and 8-9 are
+satisfied; then, $D_{\mu }^{-1}X^{\prime }\left[ A-\widehat{\ell }%
+_{F,n}M^{\left( Z_{1},Q\right) }\right] \left( y-X\delta _{0}\right) $
+
+\noindent $=\mathcal{Y}_{n}\left[ 1+o_{p}\left( 1\right) \right] $, where $%
+\mathcal{Y}_{n}=\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}\varepsilon /\sqrt{n}+D_{\mu }^{-1}\underline{U}^{\prime }A\varepsilon $
+with $\underline{U}=U-\varepsilon \rho ^{\prime }$ and
+
+\noindent $\rho =\lim_{n\rightarrow \infty }E\left[ U^{\prime
+}M^{Q}\varepsilon \right] /E\left[ \varepsilon ^{\prime }M^{Q}\varepsilon %
+\right] $.
+
+\noindent
+
+\noindent \textbf{Lemma S2-14: }For any $a\in \mathbb{R}^{d}$ such that $%
+\left\Vert a\right\Vert =1$, define $b_{1n}=\Sigma _{n}^{-1/2}a$, $b_{2n}=%
+\sqrt{K_{2,n}}D_{\mu }^{-1}\Sigma _{n}^{-1/2}a$, $\underline{u}_{2,\left(
+i,t\right) ,n}=b_{2n}^{\prime }\underline{U}_{\left( i,t\right) }$
+
+\noindent $=\sqrt{K_{2,n}}a^{\prime }\Sigma _{n}^{-1/2}D_{\mu }^{-1}%
+\underline{U}_{\left( i,t\right) }$, $\sigma _{\left( i,t\right) ,n}^{2}=E%
+\left[ \varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] $, $%
+\widetilde{\psi }_{\left( i,t\right) ,n}=E\left[ \underline{u}_{2,\left(
+i,t\right) ,n}\varepsilon _{\left( i,t\right) }|\mathcal{F}_{n}^{Z}\right] $%
+, and $\widetilde{\omega }_{\left( i,t\right) }^{2}=E\left[ \underline{u}%
+_{2,\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] $. If Assumptions
+1-2 and 5-6 are satisfied; then, the following statements are true.
+
+\noindent (a) $\dsum\nolimits_{\left( i,t\right)
+=2}^{m_{n}}\dsum\nolimits_{\left( j,s\right) =1}^{\left( i,t\right) -1}\left[
+b_{1n}^{\prime }\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right)
+}e_{\left( i,t\right) }/\sqrt{n}\right] \left( A_{\left( i,t\right) ,\left(
+j,s\right) }/\sqrt{K_{2,n}}\right) \left\{ \varepsilon _{\left( j,s\right) }%
+\widetilde{\psi }_{\left( i,t\right) ,n}+\underline{u}_{2,\left( j,s\right)
+}\sigma _{\left( i,t\right) ,n}^{2}\right\} $
+
+\noindent $=O_{p}\left( K_{2,n}^{1/4}/\mu _{n}^{\min }\right) =o_{p}\left(
+1\right) $.
+
+\noindent (b) $\dsum\nolimits_{\left( i,t\right)
+=2}^{m_{n}}\dsum\nolimits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}\left( A_{\left( i,t\right) ,\left( j,s\right) }^{2}/K_{2,n}\right)
+\left( \varepsilon _{\left( j,s\right) }^{2}-\sigma _{\left( j,s\right)
+,n}^{2}\right) \widetilde{\omega }_{\left( i,t\right) ,n}^{2}=O_{p}\left(
+K_{2,n}\left( \mu _{n}^{\min }\right) ^{-2}n^{-1/2}\right) =o_{p}\left(
+1\right) $.
+
+\noindent (c) $\dsum\nolimits_{\left( i,t\right)
+=2}^{m_{n}}\dsum\nolimits_{\left( j,s\right) =1}^{\left( i,t\right)
+-1}\left( A_{\left( i,t\right) ,\left( j,s\right) }^{2}/K_{2,n}\right)
+\left( \underline{u}_{2,\left( j,s\right) ,n}^{2}-\widetilde{\omega }%
+_{\left( j,s\right) ,n}^{2}\right) \sigma _{\left( i,t\right)
+,n}^{2}=O_{p}\left( K_{2,n}\left( \mu _{n}^{\min }\right)
+^{-2}n^{-1/2}\right) =o_{p}\left( 1\right) $.
+
+\qquad \noindent
+
+\noindent \textbf{Lemma S2-15 (G\"{a}nsler and Stute, 1977): }Let $\left\{
+X_{i,n},\mathcal{F}_{i,n},1\leq i\leq k_{n},n\geq 1\right\} $ be a square
+integrable martingale difference array. Suppose that for all $\epsilon >0$%
+\begin{eqnarray}
+&&\dsum\limits_{i=1}^{k_{n}}E\left[ X_{i,n}^{2}\mathbb{I}\left\{ \left\vert
+X_{i,n}\right\vert >\epsilon \right\} |\mathcal{F}_{i-1,n}\right] \overset{p}%
+{\rightarrow }0\text{ and}  \label{MDA CLT cond 1} \\
+&&\dsum\limits_{i=1}^{k_{n}}E\left[ X_{i,n}^{2}|\mathcal{F}_{i-1,n}\right] 
+\overset{p}{\rightarrow }1\text{.}  \label{MDA CLT cond 2}
+\end{eqnarray}%
+Then, $\dsum\nolimits_{i=1}^{k_{n}}X_{i,n}\overset{d}{\rightarrow }N\left(
+0,1\right) $.
+
+\medskip
+
+\noindent \textbf{Remark: }Note that a sufficient condition for condition (%
+\ref{MDA CLT cond 1}), which we will verify in lieu of (\ref{MDA CLT cond 1}%
+) in the proof of Theorems 2 and 3\ in Appendix S1, is the following%
+\begin{equation}
+\dsum\limits_{i=1}^{k_{n}}E\left[ \left\vert X_{i,n}\right\vert ^{2+\delta }%
+\right] \overset{p}{\rightarrow }0\text{, for some }\delta >0.
+\label{MDA CLT cond 1b}
+\end{equation}
+
+\bigskip
+
+\noindent \textbf{Lemma S2-16: }Let $\widetilde{L}_{n}$ be a sequence of $%
+l\times d$ nonrandom matrices (with $l\leq d$) such that $\left\Vert 
+\widetilde{L}_{n}\right\Vert _{F}^{2}\leq \overline{C}<\infty $ for some
+constant $\overline{C}$, and let $\Sigma _{2,n}=VC\left( D_{\mu }^{-1}%
+\underline{U}^{\prime }A\varepsilon |\mathcal{F}_{n}^{Z}\right) $
+
+\noindent $=D_{\mu }^{-1}VC\left( \underline{U}^{\prime }A\varepsilon |%
+\mathcal{F}_{n}^{Z}\right) D_{\mu }^{-1}$. Assume that there exists a
+positive constant $\underline{C}$ such that
+
+\noindent $\lambda _{\min }\left( \left( \mu _{n}^{\min }\right) ^{2}%
+\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}\widetilde{L}_{n}^{\prime
+}/K_{2,n}\right) \geq \underline{C}>0$ $a.s.n$. Furthermore, let $a\in 
+\mathbb{R}^{d}$ such that $\left\Vert a\right\Vert _{2}=1$ and let $%
+\underline{u}_{a,\left( i,t\right) ,n}=a^{\prime }\left( \left( \mu
+_{n}^{\min }\right) ^{2}\widetilde{L}_{n}H_{n}^{-1}\Sigma _{2,n}H_{n}^{-1}%
+\widetilde{L}_{n}^{\prime }/K_{2,n}\right) ^{-1/2}\widetilde{L}_{n}D_{\mu
+}^{-1}\underline{U}_{\left( i,t\right) }$. Let Assumptions 1-2 and 5-6 be
+satisfied and assume that $\left( \mu _{n}^{\min }\right)
+^{2}/K_{2,n}=o\left( 1\right) $ but
+
+\noindent $\sqrt{K_{2,n}}/\left( \mu _{n}^{\min }\right) ^{2}\rightarrow 0$.
+Under these conditions, the following statements are true:
+
+\noindent (a) $\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}\right]
+\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}\dsum\nolimits_{\left(
+j,s\right) =1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right)
+}^{2}\left( \underline{u}_{a,\left( j,s\right) ,n}^{2}-E\left[ \underline{u}%
+_{a,\left( j,s\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] \right) E\left[
+\varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] $
+
+$=O_{p}\left( n^{-1/2}\right) =o_{p}\left( 1\right) $;
+
+\noindent (b) $\left[ \left( \mu _{n}^{\min }\right) ^{2}/K_{2,n}\right]
+\dsum\nolimits_{\left( i,t\right) =2}^{m_{n}}\dsum\nolimits_{\left(
+j,s\right) =1}^{\left( i,t\right) -1}A_{\left( i,t\right) ,\left( j,s\right)
+}^{2}\left( \varepsilon _{\left( j,s\right) }^{2}-E\left[ \varepsilon
+_{\left( j,s\right) }^{2}|\mathcal{F}_{n}^{Z}\right] \right) E\left[ 
+\underline{u}_{a,\left( i,t\right) ,n}^{2}|\mathcal{F}_{n}^{Z}\right] $
+
+\noindent $=O_{p}\left( n^{-1/2}\right) =o_{p}\left( 1\right) $.
+
+\medskip
+
+\noindent \textbf{Lemma S2-17 \ }Under Assumptions 1-6, $D_{\mu
+}^{-1}X^{\prime }AD\left( \varepsilon \circ \varepsilon \right) AXD_{\mu
+}^{-1}=\Sigma _{1,n}$
+
+\noindent $+\dsum\nolimits_{\left( i,t\right) ,\left( j,s\right) =1,\left(
+i,t\right) \neq \left( j,s\right) }^{m_{n}}A_{\left( i,t\right) ,\left(
+j,s\right) }^{2}\sigma _{\left( i,t\right) }^{2}D_{\mu }^{-1}\Psi _{\left(
+j,s\right) }D_{\mu }^{-1}+o_{p}\left( 1\right) $, where $\Sigma
+_{1,n}=\Upsilon ^{\prime }Z_{2}^{\prime }M^{\left( Z_{1},Q\right) }D_{\sigma
+^{2}}M^{\left( Z_{1},Q\right) }Z_{2}\Upsilon /n$,
+
+\noindent $\sigma _{\left( i,t\right) }^{2}=E\left[ \varepsilon _{\left(
+i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] $, $D_{\sigma ^{2}}=diag\left(
+\sigma _{\left( 1,1\right) }^{2},...,\sigma _{\left( n,T_{n}\right)
+}^{2}\right) $, and $\Psi _{\left( j,s\right) }=E\left[ U_{\left( j,s\right)
+}U_{\left( j,s\right) }^{\prime }|\mathcal{F}_{n}^{Z}\right] $.
+
+\medskip
+
+\noindent \textbf{Lemma S2-18 }Let Assumptions 1-6 and 8 be satisfied, and
+let $\left\{ \widehat{\delta }_{n}\right\} $ be any sequence of estimators
+such that $\left\Vert \widehat{\delta }_{n}-\delta _{0}\right\Vert _{2}%
+\overset{p}{\rightarrow }0$ as $n\rightarrow \infty $, as long as $\sqrt{%
+K_{2,n}}/\left( \mu _{n}^{\min }\right) ^{2}\rightarrow 0$. Also, define the
+following notations: let $\widehat{\varepsilon }=M^{\left( Z,Q\right)
+}\left( y-X\widehat{\delta }_{n}\right) $, $J=\left[ M^{Q}\circ M^{Q}\right]
+^{-1}$, $S_{1}=X^{\prime }AD\left( J\left[ \widehat{\varepsilon }\circ 
+\widehat{\varepsilon }\right] \right) AX$, $S_{2}=\left( \widehat{%
+\varepsilon }\circ \widehat{\varepsilon }\right) ^{\prime }J\left( A\circ
+A\right) J\left( \widehat{\varepsilon }\iota _{d}^{\prime }\circ M^{\left(
+Z,Q\right) }X\right) $,
+
+\noindent $\underline{S}_{2}=\left( \widehat{\varepsilon }\circ \widehat{%
+\varepsilon }\right) ^{\prime }J\left( A\circ A\right) J\left( \widehat{%
+\varepsilon }\iota _{d}^{\prime }\circ \widehat{\underline{U}}\right) $ with 
+$\widehat{\underline{U}}=M^{\left( Z,Q\right) }X-\widehat{\varepsilon }%
+\widehat{\rho }_{n}^{\prime }$, $S_{3}=\left( \widehat{\varepsilon }\circ 
+\widehat{\varepsilon }\right) ^{\prime }J\left( A\circ A\right) J\left( 
+\widehat{\varepsilon }\circ \widehat{\varepsilon }\right) $,
+
+\noindent $S_{4}=\left( \widehat{\varepsilon }\iota _{d}^{\prime }\circ
+M^{\left( Z,Q\right) }X\right) ^{\prime }J\left( A\circ A\right) J\left( 
+\widehat{\varepsilon }\iota _{d}^{\prime }\circ M^{\left( Z,Q\right)
+}X\right) $, $\underline{S}_{4}=\left( \widehat{\varepsilon }\iota
+_{d}^{\prime }\circ \widehat{\underline{U}}\right) ^{\prime }J\left( A\circ
+A\right) J\left( \widehat{\varepsilon }\iota _{d}^{\prime }\circ \widehat{%
+\underline{U}}\right) $, and $\Sigma _{1,n}=\Upsilon ^{\prime }Z_{2}^{\prime
+}M^{\left( Z_{1},Q\right) }D_{\sigma ^{2}}M^{\left( Z_{1},Q\right)
+}Z_{2}\Upsilon /n$. In addition, define $\sigma _{\left( i,t\right) }^{2}=E%
+\left[ \varepsilon _{\left( i,t\right) }^{2}|\mathcal{F}_{n}^{Z}\right] $,
+
+\noindent $D_{\sigma ^{2}}=diag\left( \sigma _{\left( 1,1\right)
+}^{2},...,\sigma _{\left( n,T_{n}\right) }^{2}\right) $, $\phi _{\left(
+i,t\right) }=E\left[ U_{\left( i,t\right) }\varepsilon _{\left( i,t\right) }|%
+\mathcal{F}_{n}^{Z}\right] $, $\Psi _{\left( i,t\right) }=E\left[ U_{\left(
+i,t\right) }U_{\left( i,t\right) }^{\prime }|\mathcal{F}_{n}^{Z}\right] $,
+
+\noindent $\underline{\phi }_{\left( i,t\right) }=E\left[ \underline{U}%
+_{\left( i,t\right) }\varepsilon _{\left( i,t\right) }|\mathcal{F}_{n}^{Z}%
+\right] $, and $\underline{\Psi }_{\left( i,t\right) }=E\left[ \underline{U}%
+_{\left( i,t\right) }\underline{U}_{\left( i,t\right) }^{\prime }|\mathcal{F}%
+_{n}^{Z}\right] $ where $\underline{U}_{\left( i,t\right) }=U_{\left(
+i,t\right) }-\rho \varepsilon _{\left( i,t\right) }$ and where for
+notational convenience we suppress the dependence of $\sigma _{\left(
+i,t\right) }^{2}$, $\phi _{\left( i,t\right) }$, $\Psi _{\left( i,t\right) }$%
+, $\underline{\phi }_{\left( i,t\right) }$, and $\underline{\Psi }_{\left(
+i,t\right) }$ on $\mathcal{F}_{n}^{Z}=\sigma \left( Z\right) $. Then, under
+the above conditions, the following statements are true.
+
+\begin{enumerate}
+\item[(a)] $D_{\mu }^{-1}S_{1}D_{\mu }^{-1}=\Sigma
+_{1,n}+\dsum\nolimits_{\left( i,t\right) ,\left( j,s\right) =1,\left(
+i,t\right) \neq \left( j,s\right) }^{m_{n}}A_{\left( i,t\right) ,\left(
+j,s\right) }^{2}\sigma _{\left( i,t\right) }^{2}D_{\mu }^{-1}\Psi _{\left(
+j,s\right) }D_{\mu }^{-1}$
+
+$+o_{p}\left( \max \left\{ 1,K_{2,n}\left( \mu _{n}^{\min }\right)
+^{-2}\right\} \right) $.
+
+\item[(b)] $S_{3}/K_{2,n}-K_{2,n}^{-1}\dsum\nolimits_{\left( i,t\right)
+,\left( j,s\right) =1,\left( i,t\right) \neq \left( j,s\right)
+}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}\sigma _{\left(
+i,t\right) }^{2}\sigma _{\left( j,s\right) }^{2}=o_{p}\left( 1\right) $.
+
+\item[(c)] $D_{\mu }^{-1}S_{4}D_{\mu }^{-1}-\dsum\nolimits_{\left(
+i,t\right) ,\left( j,s\right) =1,\left( i,t\right) \neq \left( j,s\right)
+}^{m_{n}}A_{\left( i,t\right) ,\left( j,s\right) }^{2}D_{\mu }^{-1}\phi
+_{\left( i,t\right) }\phi _{\left( j,s\right) }^{\prime }D_{\mu
+}^{-1}=o_{p}\left( K_{2,n}\left( \mu _{n}^{\min }\right) ^{-2}\right) $.
+
+\item[(d)] $\left( \mu _{n}^{\min }/K_{2,n}\right) S_{2}D_{\mu }^{-1}-\left(
+\mu _{n}^{\min }/K_{2,n}\right) \dsum\nolimits_{\left( i,t\right) ,\left(
+j,s\right) =1,\left( i,t\right) \neq \left( j,s\right) }^{m_{n}}A_{\left(
+i,t\right) ,\left( j,s\right) }^{2}\sigma _{\left( i,t\right) }^{2}\phi
+_{\left( j,s\right) }^{\prime }D_{\mu }^{-1}=o_{p}\left( 1\right) $.
+
+\item[(e)] $D_{\mu }^{-1}\widehat{\rho }_{n}=O_{p}\left( \left( \mu
+_{n}^{\min }\right) ^{-1}\right) $ and $D_{\mu }^{-1}\left( \widehat{\rho }%
+_{n}-\rho \right) =o_{p}\left( \left( \mu _{n}^{\min }\right) ^{-1}\right) $%
+, where $\rho =\lim_{n\rightarrow \infty }\rho _{n}=\lim_{n\rightarrow
+\infty }\left( E\left[ U^{\prime }M^{Q}\varepsilon \right] /n\right) /\left(
+E\left[ \varepsilon ^{\prime }M^{Q}\varepsilon \right] /n\right) $.
+
+\item[(f)] $D_{\mu }^{-1}\underline{S}_{4}D_{\mu
+}^{-1}-\dsum\nolimits_{\left( i,t\right) ,\left( j,s\right) =1,\left(
+i,t\right) \neq \left( j,s\right) }^{m_{n}}A_{\left( i,t\right) ,\left(
+j,s\right) }^{2}D_{\mu }^{-1}\underline{\phi }_{\left( i,t\right) }%
+\underline{\phi }_{\left( j,s\right) }^{\prime }D_{\mu }^{-1}=o_{p}\left(
+K_{2,n}\left( \mu _{n}^{\min }\right) ^{-2}\right) $.
+
+\item[(g)] $\left( \mu _{n}^{\min }/K_{2,n}\right) -\left( \mu _{n}^{\min
+}/K_{2,n}\right) \dsum\nolimits_{\left( i,t\right) ,\left( j,s\right)
+=1,\left( i,t\right) \neq \left( j,s\right) }^{m_{n}}A_{\left( i,t\right)
+,\left( j,s\right) }^{2}\sigma _{\left( i,t\right) }^{2}\underline{\phi }%
+_{\left( j,s\right) }^{\prime }D_{\mu }^{-1}=o_{p}(1)$.
+\end{enumerate}
+
+\begin{thebibliography}{9}
+\bibitem{} Billingsley, P. (1995). \textit{Probability and Measure. }New
+York: John Wiley \& Sons.
+
+\bibitem{} G\"{a}nsler, P. and W. Stute (1977). \textit{%
+Wahrscheinlichkeitstheorie}. New York: Springer-Verlag
+\end{thebibliography}
+
+\end{document}
